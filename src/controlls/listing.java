@@ -34,9 +34,9 @@ public class listing {
 			// then loop through the games from source
 
 			/* Print to console that looks like this:
-			-----------------------------------------------------------------
-			|id    | developer                      | played_version        |
-			| Last update | name											|
+			----------------------------------------------------------------- // 65 characters
+			|id    | developer                      | played_version        | // 6|32|23 6+32+23=61+4=65
+			| LastUpdate | name                                             | // 12|50 12+50=62+3=65
 			-----------------------------------------------------------------
 			|999999| asd     				  		| v0.1.1something		|
 			| 6969-69-69  | asdasdasdasdasdasda								|
@@ -63,10 +63,13 @@ public class listing {
 							else if (id.length() == 5) {id = "0"+id;}
 							String name = e.getElementsByTagName("name").item(0).getTextContent().trim();
 							for (int k = 0; k < 50 - name.length(); k++) {name += " ";}
+							//if (name.length() < 49) {System.out.println("Fuck");}
 							String developer = e.getElementsByTagName("developer").item(0).getTextContent().trim();
-							for (int k = 0; k < 35 - developer.length(); k++) {developer += " ";}
+							for (int k = 0; k < 32 - developer.length(); k++) {developer += " ";}
+							//if (developer.length() < 31) {System.out.println("Fuck2");}
 							String played_version = e.getElementsByTagName("played_version").item(0).getTextContent().trim();
-							for (int k = 0; k < 20 - played_version.length(); k++) {played_version += " ";}
+							for (int k = 0; k < 23 - played_version.length(); k++) {played_version += " ";}
+							//if (played_version.length() < 22) {System.out.println("Fuck3");}
 							String dateof_lastupate = e.getElementsByTagName("dateof_lastupate").item(0).getTextContent().trim();
 							System.out.println("|" + id + "| " + developer + " | " + played_version + " |");
 							System.out.println("| " + dateof_lastupate + " | " + name + " |");

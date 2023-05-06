@@ -11,11 +11,11 @@ public class menuSystem {
 		File f = new File("hentai.xml");
         //System.out.println(f);
 
-		Scanner keyboarScan = new Scanner(System.in);
+		Scanner keyboardScan = new Scanner(System.in);
 		System.out.println("---------------");
 		System.out.println("Welcome to a game database\nPress enter to continue:\n(Note: nsfw possible)");
 		System.out.println("---------------");
-		keyboarScan.nextLine();
+		keyboardScan.nextLine();
 		boolean stayInMenu = true;
 		while (stayInMenu){
 			System.out.println("0. List all games");
@@ -25,7 +25,7 @@ public class menuSystem {
 			System.out.println("4. Exit");
 			System.out.print("Choose an option: ");
 			
-			int option = keyboarScan.nextInt();
+			int option = keyboardScan.nextInt();
 			switch (option){
 				case 0:
 					System.out.println("---------------");
@@ -37,13 +37,13 @@ public class menuSystem {
 					System.out.println("---------------");
 					System.out.println("Add new game");
 					System.out.println("---------------");
-					add.addGameControl(f, keyboarScan);
+					add.addGameControl(f, keyboardScan);
 					break;
 				case 2:
 					System.out.println("---------------");
 					System.out.println("Remove game");
 					System.out.println("---------------");
-					remove.removeGameControl(f, keyboarScan);
+					remove.removeGameControl(f, keyboardScan);
 					break;
 				case 3:
 					System.out.println("---------------");
@@ -55,7 +55,7 @@ public class menuSystem {
 					System.out.println("Exit");
 					System.out.println("---------------");
 					stayInMenu = false;
-					keyboarScan.close();
+					keyboardScan.close();
 					break;
 				default:
 					System.out.print("\033[H\033[2J");

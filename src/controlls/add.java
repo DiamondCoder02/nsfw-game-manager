@@ -21,7 +21,7 @@ import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 public class add {
-	public static void addGameControl(File file, Scanner keyboarScan) {
+	public static void addGameControl(File file, Scanner keyboardScan) {
 		boolean wantToContinue = true;
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -30,20 +30,20 @@ public class add {
 
 			Element root = doc.getDocumentElement();
 			Element source = (Element) root.getElementsByTagName("source").item(0);
-			keyboarScan.nextLine();
+			keyboardScan.nextLine();
 
 			while (wantToContinue) {
 				System.out.println("Enter game id: ");
-				String id = keyboarScan.nextLine();
+				String id = keyboardScan.nextLine();
 				System.out.println("---------------");
 				System.out.println("Enter game name: ");
-				String name = keyboarScan.nextLine();
+				String name = keyboardScan.nextLine();
 				System.out.println("---------------");
 				System.out.println("Enter developer name: ");
-				String developer = keyboarScan.nextLine();
+				String developer = keyboardScan.nextLine();
 				System.out.println("---------------");
 				System.out.println("Enter played version: ");
-				String played_version = keyboarScan.nextLine();
+				String played_version = keyboardScan.nextLine();
 				System.out.println("---------------");
 				// set date as current date
 				String currentTimeAsOfRunning = LocalDate.now().toString();
@@ -69,7 +69,7 @@ public class add {
 				source.appendChild(newGame);
 
 				System.out.println("Do you want to add another game? (y/n)");
-				String answer = keyboarScan.nextLine();
+				String answer = keyboardScan.nextLine();
 				System.out.println("---------------");
 				if (answer.equals("n")) {
 					wantToContinue = false;
@@ -79,6 +79,7 @@ public class add {
 			}
 			DOMSource domsource = new DOMSource(doc);
 			StreamResult result = new StreamResult("hentai_out.xml");
+			// StreamResult result = new StreamResult(file);
 			Transformer transformer = TransformerFactory.newInstance().newTransformer();
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");

@@ -15,7 +15,7 @@ You cannot use these normally -->
 		If there is id but something goes wrong and one or more info is not available 
 		Actually, while there is no api/rss, this is not needed
 		-->
-		<game id="011">
+		<game id="1">
 			<name>na</name>
 			<developer>na</developer>
 			<played_version>na</played_version>

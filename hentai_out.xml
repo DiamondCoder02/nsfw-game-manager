@@ -12,7 +12,7 @@ You cannot use these normally -->
     </settings>
     <source from="f95zone">
         <!-- If there is id but something goes wrong and one or more info is not available -->
-        <game id="011">
+        <game id="11">
             <name>na</name>
             <developer>na</developer>
             <played_version>na</played_version>

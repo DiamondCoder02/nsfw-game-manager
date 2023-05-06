@@ -79,4 +79,34 @@ Anyway, I added a simple menu and i fixed an anoying thing with the Scanner abou
 
 Back from shower and with dinner I search for solutions.
 
-~~I'm stupid, date fixed~~
+~~I'm stupid, date fixed~~ Fuck the xml time to make removal.
+
+## 2023.05.06 22:06
+
+There is a reason I love github copilot and I don't prefer ChatGPT
+
+After an hour this should be nice, just need some tweaking:
+
+``` txt
+-----------------------------------------------------------------
+|id    | developer                | played_version              |
+| LastUpdate | name                                                                                    |
+-----------------------------------------------------------------
+|011| na | na |
+| 0000-00-00 | na |
+-----------------------------------------------------------------
+```
+
+To this later:
+
+``` txt
+-----------------------------------------------------------------
+|id    | developer                | played_version              |
+| LastUpdate | name                                            |
+-----------------------------------------------------------------
+|011   | na                       | na                          |
+| 0000-00-00 | na                                               |
+-----------------------------------------------------------------
+```
+
+*Note: changing taps into spaces at name fixed weird formating.*

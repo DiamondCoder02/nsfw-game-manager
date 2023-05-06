@@ -18,6 +18,7 @@ public class menuSystem {
 		keyboarScan.nextLine();
 		boolean stayInMenu = true;
 		while (stayInMenu){
+			System.out.println("0. List all games");
 			System.out.println("1. Add new game");
 			System.out.println("2. Remove game");
 			System.out.println("3. Update game info");
@@ -26,6 +27,12 @@ public class menuSystem {
 			
 			int option = keyboarScan.nextInt();
 			switch (option){
+				case 0:
+					System.out.println("---------------");
+					System.out.println("List all games");
+					System.out.println("---------------");
+					listing.listAllGamesControl(f);
+					break;
 				case 1:
 					System.out.println("---------------");
 					System.out.println("Add new game");
@@ -36,6 +43,7 @@ public class menuSystem {
 					System.out.println("---------------");
 					System.out.println("Remove game");
 					System.out.println("---------------");
+					remove.removeGameControl(f, keyboarScan);
 					break;
 				case 3:
 					System.out.println("---------------");

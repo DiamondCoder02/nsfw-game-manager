@@ -16,30 +16,30 @@ After waking up and finally stoped drinking...
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
 <nsfwgames>
-	<settings>
-		<autoupdate>true</autoupdate>
-	</settings>
-	<source from="f95zone">
-		<game id="74965">
-			<name>!Ω Factorial Omega: My Dystopian Robot Girlfriend</name>
-			<developer>Incontinent Cell</developer>
-			<old_version>v0.61 beta</old_version>
-			<new_version>v0.85.69</new_version>
-		</game>
-		<game id="19095">
-			<name>2037 - Almost ready Inc.</name>
-			<developer>MadAlice</developer>
-			<old_version>v0.9.6</old_version>
-			<new_version>v0.9.6</new_version>
-		</game>
-		<!-- If there is id but something goes wrong and one or more info is not available -->
-		<game id="011">
-			<name>na</name>
-			<developer>na</developer>
-			<old_version>na</old_version>
-			<new_version>na</new_version>
-		</game>
-	</source>
+ <settings>
+  <autoupdate>true</autoupdate>
+ </settings>
+ <source from="f95zone">
+  <game id="74965">
+   <name>!Ω Factorial Omega: My Dystopian Robot Girlfriend</name>
+   <developer>Incontinent Cell</developer>
+   <old_version>v0.61 beta</old_version>
+   <new_version>v0.85.69</new_version>
+  </game>
+  <game id="19095">
+   <name>2037 - Almost ready Inc.</name>
+   <developer>MadAlice</developer>
+   <old_version>v0.9.6</old_version>
+   <new_version>v0.9.6</new_version>
+  </game>
+  <!-- If there is id but something goes wrong and one or more info is not available -->
+  <game id="011">
+   <name>na</name>
+   <developer>na</developer>
+   <old_version>na</old_version>
+   <new_version>na</new_version>
+  </game>
+ </source>
 </nsfwgames>
 ```
 
@@ -49,13 +49,28 @@ Anyway. I did some changes and this should be better as a test:
 
 ``` xml
 <game id="74965">
-	<!-- all this is string -->
-	<name>!Ω Factorial Omega: My Dystopian Robot Girlfriend</name>
-	<developer>Incontinent Cell</developer>
-	<played_version>v0.61 beta</played_version>
-	<!-- handle date as integer - ddmmyyyy -->
-	<dateof_lastupate>11052021</dateof_lastupate>
+ <!-- all this is string -->
+ <name>!Ω Factorial Omega: My Dystopian Robot Girlfriend</name>
+ <developer>Incontinent Cell</developer>
+ <played_version>v0.61 beta</played_version>
+ <!-- handle date as integer - ddmmyyyy -->
+ <dateof_lastupate>11052021</dateof_lastupate>
 </game>
 ```
 
 Time to push to github.
+
+## 2023.05.06 16:40 Forgot to log but anyway
+
+Added the whole add command for console. Although I need to format the save.
+
+Also started the menu system.
+
+## 2023.05.06 18:13
+
+Aftor long painfull googling I found the problem for one thing. Noone told us the proper use of Scanner package.
+Anyway, I added a simple menu and i fixed an anoying thing with the Scanner about exhausting the input.
+[Solution was this.](https://stackoverflow.com/questions/13576734/java-while-loop-for-menu-selection-console-based-program)
+
+- There is a bug for Date, need fix.
+- I also hate xml style, need to fix that too.

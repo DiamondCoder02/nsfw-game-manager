@@ -12,6 +12,13 @@ You cannot use these normally -->
 		<autoupdate>true</autoupdate>
 	</settings>
 	<source from="f95zone">
+		<!-- If there is id but something goes wrong and one or more info is not available -->
+		<game id="011">
+			<name>na</name>
+			<developer>na</developer>
+			<played_version>na</played_version>
+			<dateof_lastupate>00000000</dateof_lastupate> 
+		</game>
 		<game id="74965">
 			<name>!Ω Factorial Omega: My Dystopian Robot Girlfriend</name>
 			<developer>Incontinent Cell</developer>
@@ -24,13 +31,6 @@ You cannot use these normally -->
 			<developer>MadAlice</developer>
 			<played_version>v0.9.6</played_version>
 			<dateof_lastupate>22062020</dateof_lastupate> 
-		</game>
-		<!-- If there is id but something goes wrong and one or more info is not available -->
-		<game id="011">
-			<name>na</name>
-			<developer>na</developer>
-			<played_version>na</played_version>
-			<dateof_lastupate>00000000</dateof_lastupate> 
 		</game>
 	</source>
 </nsfwgames>

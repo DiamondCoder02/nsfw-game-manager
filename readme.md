@@ -74,3 +74,9 @@ Anyway, I added a simple menu and i fixed an anoying thing with the Scanner abou
 
 - There is a bug for Date, need fix.
 - I also hate xml style, need to fix that too.
+
+## 2023.05.06 20:23
+
+Back from shower and with dinner I search for solutions.
+
+~~I'm stupid, date fixed~~

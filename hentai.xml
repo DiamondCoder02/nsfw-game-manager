@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- this is a comment -->
 <!-- Special char: 
 &		&amp;
 <		&lt; 
@@ -12,25 +11,28 @@ You cannot use these normally -->
 		<autoupdate>true</autoupdate>
 	</settings>
 	<source from="f95zone">
-		<!-- If there is id but something goes wrong and one or more info is not available -->
+		<!-- 
+		If there is id but something goes wrong and one or more info is not available 
+		Actually, while there is no api/rss, this is not needed
+		-->
 		<game id="011">
 			<name>na</name>
 			<developer>na</developer>
 			<played_version>na</played_version>
-			<dateof_lastupate>00000000</dateof_lastupate> 
+			<dateof_lastupate>0000-00-00</dateof_lastupate> 
 		</game>
 		<game id="74965">
 			<name>!Ω Factorial Omega: My Dystopian Robot Girlfriend</name>
 			<developer>Incontinent Cell</developer>
 			<played_version>v0.61 beta</played_version>
 			<!-- handle date as integer - ddmmyyyy -->
-			<dateof_lastupate>11052021</dateof_lastupate>
+			<dateof_lastupate>2021-05-11</dateof_lastupate>
 		</game>
 		<game id="19095">
 			<name>2037 - Almost ready Inc.</name>
 			<developer>MadAlice</developer>
 			<played_version>v0.9.6</played_version>
-			<dateof_lastupate>22062020</dateof_lastupate> 
+			<dateof_lastupate>2020-06-22</dateof_lastupate> 
 		</game>
 	</source>
 </nsfwgames>

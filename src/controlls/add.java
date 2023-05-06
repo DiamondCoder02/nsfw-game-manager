@@ -2,7 +2,7 @@ package controlls;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -23,7 +23,7 @@ import org.xml.sax.SAXException;
 public class add {
 	public static void addGameControl(File file, Scanner keyboarScan) {
 		boolean wantToContinue = true;
-		try{
+		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			Document doc = builder.parse(file);
@@ -32,7 +32,7 @@ public class add {
 			Element source = (Element) root.getElementsByTagName("source").item(0);
 			keyboarScan.nextLine();
 
-			while (wantToContinue){
+			while (wantToContinue) {
 				System.out.println("Enter game id: ");
 				String id = keyboarScan.nextLine();
 				System.out.println("---------------");
@@ -46,7 +46,9 @@ public class add {
 				String played_version = keyboarScan.nextLine();
 				System.out.println("---------------");
 				// set date as current date
-				Integer dateof_lastupate = Date.valueOf(java.time.LocalDate.now()).hashCode();
+				String currentTimeAsOfRunning = LocalDate.now().toString();
+				String dateof_lastupate = String.format(currentTimeAsOfRunning, "yyyy.mm.dd.");
+				// make format as yyyymmdd
 
 				Element newGame = doc.createElement("game");
 				newGame.setAttribute("id", id);
@@ -69,12 +71,12 @@ public class add {
 				System.out.println("Do you want to add another game? (y/n)");
 				String answer = keyboarScan.nextLine();
 				System.out.println("---------------");
-				if (answer.equals("n")){
+				if (answer.equals("n")) {
 					wantToContinue = false;
 					System.out.print("\033[H\033[2J");
 					System.out.flush();
 				}
-			} 
+			}
 			DOMSource domsource = new DOMSource(doc);
 			StreamResult result = new StreamResult("hentai_out.xml");
 			Transformer transformer = TransformerFactory.newInstance().newTransformer();
@@ -85,9 +87,9 @@ public class add {
 			System.out.println("---------------");
 			System.out.println("Game(s) saved");
 			System.out.println("---------------");
-		} catch (ParserConfigurationException e){
-            throw new RuntimeException(e);
-        } catch (SAXException e) {
+		} catch (ParserConfigurationException e) {
+			throw new RuntimeException(e);
+		} catch (SAXException e) {
 			throw new RuntimeException(e);
 		} catch (IOException e) {
 			throw new RuntimeException(e);

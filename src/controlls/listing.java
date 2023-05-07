@@ -1,17 +1,12 @@
 package controlls;
 
-import java.io.File;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Element;
 
 public class listing {
-	public static void listAllGamesControl(File f) {
+	public static void listAllGamesControl(Document dom) {
 		try {
 			/* 
 			<nsfwgames>
@@ -25,10 +20,6 @@ public class listing {
 				</source>
 			</nsfwgames>
 			*/
-			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-			DocumentBuilder db = dbf.newDocumentBuilder();
-			Document dom = db.parse(f);
-			dom.normalize();
 			// first get the source from f95zone
 			NodeList source = dom.getElementsByTagName("source");
 			// then loop through the games from source
@@ -99,7 +90,7 @@ public class listing {
 				}
 			}
 			*/
-		} catch (Exception e) {
+		} catch(Exception e) {
 			System.out.println(e);
 		}
 	}

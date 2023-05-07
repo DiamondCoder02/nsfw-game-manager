@@ -1,5 +1,7 @@
 # F95zone game manager
 
+[IMPORTANT!!!](https://github.com/DiamondPRO02/Program-modszertan-Java/blob/master)
+
 Maybe good idea
 
 ## 2023.05.06 02:43
@@ -115,3 +117,8 @@ To this later:
 
 I'm done with listing, should be fine for now. Next is remove.
 Luckily remove was easy to write. Way to easy. I'm scared...
+
+## 2023.05.07 02:49
+
+Now with Dinner, I have not much idea how to handle the update...
+Probably with asking ID, then what to change, but I'm sure I can make it better.

@@ -1,10 +1,6 @@
 package controlls;
 
-import java.io.File;
 import java.util.Scanner;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -12,13 +8,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class remove {
-	public static void removeGameControl(File file, Scanner keyboardScan) {
+	public static void removeGameControl(Document dom, Scanner keyboardScan) {
 		boolean wantToContinue = true;
 		try {
-			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-			DocumentBuilder db = dbf.newDocumentBuilder();
-			Document dom = db.parse(file);
-			dom.normalize();
 			keyboardScan.nextLine();
 			NodeList source = dom.getElementsByTagName("source");
 			while (wantToContinue){

@@ -122,3 +122,8 @@ Luckily remove was easy to write. Way to easy. I'm scared...
 
 Now with Dinner, I have not much idea how to handle the update...
 Probably with asking ID, then what to change, but I'm sure I can make it better.
+
+## 2023.05.07 03:37
+
+Most stuff is done, only remaining is the update. But that is after sleep.
+I also need to test as I haven't bug tested yet.

@@ -9,8 +9,6 @@ public class menuSystem {
 		System.out.flush();
 
 		File f = new File("hentai.xml");
-        //System.out.println(f);
-
 		Scanner keyboardScan = new Scanner(System.in);
 		System.out.println("---------------");
 		System.out.println("Welcome to a game database\nPress enter to continue:\n(Note: nsfw possible)");

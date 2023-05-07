@@ -48,7 +48,6 @@ public class add {
 				// set date as current date
 				String currentTimeAsOfRunning = LocalDate.now().toString();
 				String dateof_lastupate = String.format(currentTimeAsOfRunning, "yyyy-mm-dd");
-				// make format as yyyymmdd
 
 				Element newGame = doc.createElement("game");
 				newGame.setAttribute("id", id);

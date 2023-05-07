@@ -19,9 +19,10 @@ public class remove {
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document dom = db.parse(file);
 			dom.normalize();
-			// first get the source from f95zone
+			keyboardScan.nextLine();
 			NodeList source = dom.getElementsByTagName("source");
 			while (wantToContinue){
+				Boolean foundThing = false;
 				System.out.println("Enter game id: ");
 				String id = keyboardScan.nextLine();
 				System.out.println("---------------");
@@ -34,15 +35,18 @@ public class remove {
 							if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
 								Element e = (Element) gameNode;
 								String ids = e.getAttribute("id").trim();
-								if (id.equals(ids)) {
+								if (ids.equals(id)) {
+									String name = e.getElementsByTagName("name").item(0).getTextContent().trim();
+									System.out.println(name+" with id: "+ids+" has been removed");
 									sourceNode.removeChild(gameNode);
-									System.out.println("Game with id: "+id+" has been removed");
+									foundThing = true;
 									break;
 								}
 							}
 						}
 					}
 				}
+				if (!foundThing) {System.out.println("Game with id: "+id+" was not found");}
 				System.out.println("---------------");
 				System.out.println("Do you want to remove another game? (y/n)");
 				String answer = keyboardScan.nextLine();

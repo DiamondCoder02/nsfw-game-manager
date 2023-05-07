@@ -1,6 +1,6 @@
-# Maybe good idea
+# F95zone game manager
 
-(I had a vsc project with git ready for long time, I just started now.)
+Maybe good idea
 
 ## 2023.05.06 02:43
 

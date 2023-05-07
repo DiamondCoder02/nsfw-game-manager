@@ -134,3 +134,5 @@ I also need to test as I haven't bug tested yet.
 
 At least in 3 hourse I'm done. Update system works and editing is saved temporary to another file.
 Bughunting?
+
+Honestly it's done, only question how will I submit this to teacher...

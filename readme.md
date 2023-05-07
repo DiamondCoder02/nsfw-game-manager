@@ -127,3 +127,10 @@ Probably with asking ID, then what to change, but I'm sure I can make it better.
 
 Most stuff is done, only remaining is the update. But that is after sleep.
 I also need to test as I haven't bug tested yet.
+
+## 2023.05.07 12:00
+
+4-5 hours of sleep is enough, right?
+
+At least in 3 hourse I'm done. Update system works and editing is saved temporary to another file.
+Bughunting?

@@ -2,6 +2,11 @@ package controlls;
 
 import java.util.Scanner;
 
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -45,6 +50,14 @@ public class remove {
 				System.out.println("---------------");
 				if (answer.equals("n")) {wantToContinue = false;}
 			}
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource domsource = new DOMSource(dom);
+			StreamResult result = new StreamResult("hentai_out.xml");
+			transformer.transform(domsource, result);
+			System.out.println("---------------");
+			System.out.println("Game(s) removed");
+			System.out.println("---------------");
 		} catch(Exception e) {
 			System.out.println(e);
 		}

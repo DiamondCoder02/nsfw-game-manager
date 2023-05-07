@@ -13,69 +13,50 @@ import controlls.*;
 
 public class menuSystem {
 	public static void main(String[] args) {
-		try{
-			File file = new File("hentai.xml");
+		try {
+			File file = new File("test.xml");
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document dom = db.parse(file);
 			dom.normalize();
-
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
-
 			Scanner keyboardScan = new Scanner(System.in);
-			System.out.println("---------------");
-			System.out.println("Welcome to a game database\nPress enter to continue:\n(Note: nsfw possible)");
-			System.out.println("---------------");
+
+			textEasy("Welcome to a game database\nPress enter to continue:");
 			keyboardScan.nextLine();
 			boolean stayInMenu = true;
-			while (stayInMenu){
+			while (stayInMenu) {
 				System.out.println("0. List all games");
 				System.out.println("1. Add new game");
 				System.out.println("2. Remove game");
 				System.out.println("3. Update game info");
 				System.out.println("4. Exit");
 				System.out.print("Choose an option: ");
-				
+
 				int option = keyboardScan.nextInt();
-				switch (option){
+				switch (option) {
 					case 0:
-						System.out.println("---------------");
-						System.out.println("List all games");
-						System.out.println("---------------");
+						textEasy("List all games");
 						listing.listAllGamesControl(dom);
 						break;
 					case 1:
-						System.out.println("---------------");
-						System.out.println("Add new game");
-						System.out.println("---------------");
+						textEasy("Add new game");
 						add.addGameControl(dom, keyboardScan);
 						break;
 					case 2:
-						System.out.println("---------------");
-						System.out.println("Remove game");
-						System.out.println("---------------");
+						textEasy("Remove game");
 						remove.removeGameControl(dom, keyboardScan);
 						break;
 					case 3:
-						System.out.println("---------------");
-						System.out.println("Update game info");
-						System.out.println("---------------");
+						textEasy("Update game info");
 						update.updateGameControl(dom, keyboardScan);
 						break;
 					case 4:
-						System.out.println("---------------");
-						System.out.println("Exit");
-						System.out.println("---------------");
+						textEasy("Thank you for using this program!");
 						stayInMenu = false;
 						keyboardScan.close();
 						break;
 					default:
-						System.out.print("\033[H\033[2J");
-						System.out.flush();
-						System.out.println("---------------");
-						System.out.println("Invalid option");
-						System.out.println("---------------");
+						textEasy("Invalid option");
 						break;
 				}
 			}
@@ -86,5 +67,13 @@ public class menuSystem {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	public static void textEasy(String message) {
+		System.out.print("\033[H\033[2J");
+		System.out.flush();
+		System.out.println("---------------");
+		System.out.println(message);
+		System.out.println("---------------");
 	}
 }

@@ -22,8 +22,6 @@ public class listing {
 			*/
 			// first get the source from f95zone
 			NodeList source = dom.getElementsByTagName("source");
-			// then loop through the games from source
-
 			/* Print to console that looks like this:
 			----------------------------------------------------------------- // 65 characters
 			|id    | developer                      | played_version        | // 6|32|23 6+32+23=61+4=65
@@ -69,27 +67,6 @@ public class listing {
 					}
 				}
 			}
-			/* 
-			for (int i = 0; i < studentNodes.getLength(); i++) {
-				Node n = studentNodes.item(i);
-				if (n.getNodeType() == Node.ELEMENT_NODE) {
-					Element e = (Element) n;
-					String name = e.getElementsByTagName("name").item(0).getTextContent().trim();
-					String major = e.getElementsByTagName("major").item(0).getTextContent().trim();
-					int year = Integer.parseInt(e.getElementsByTagName("year").item(0).getTextContent().trim());
-				}
-			}
-			*/
-
-			/* 
-			for (int i = 0; i < source.getLength(); i++) {
-				NodeList game = source.item(i).getChildNodes();
-				for (int j = 0; j < game.getLength(); j++) {
-					System.out.println(game.item(j).getNodeName());
-					System.out.println(game.item(j).getTextContent());
-				}
-			}
-			*/
 		} catch(Exception e) {
 			System.out.println(e);
 		}

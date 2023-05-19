@@ -7,10 +7,6 @@ import static java.lang.System.out;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -21,8 +17,20 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JDialog;
+
+import xmlFolderHandle.initFirst;
+import xmlFolderHandle.isIDInDatabase;
+import xmlFolderHandle.loadDoc;
+import xmlFolderHandle.saveDoc;
+
+import windowJframe.addGameToFile;
+import windowJframe.removeGameFromFile;
+import windowJframe.updateGameFromToFile;
 
 public class mainInit {
 	public static void main(String[] args) {
@@ -34,74 +42,12 @@ public class mainInit {
 			dom.normalize();
 			Window window = new Window();
 			
-			String[] columnNames = allColumns(dom);
-			Object[][] data = loadGames(dom, columnNames);
+			String[] columnNames = initFirst.allColumns(dom);
+			Object[][] data = initFirst.loadGames(dom, columnNames);
 			window.WindowCreate(columnNames, data);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	public static String[] allColumns(Document dom) {
-		String columnNames[] = new String[30];
-		Integer counter = 0;
-		try{
-			NodeList settingsNode = dom.getElementsByTagName("settings");
-			Node settingsNodeElement = settingsNode.item(0);
-			if (settingsNodeElement.getNodeType() == Node.ELEMENT_NODE) {
-				Element e = (Element) settingsNodeElement;
-				NodeList showncolumns = e.getElementsByTagName("showncolumns");
-				for (int i = 0; i < showncolumns.getLength(); i++) {
-					Node showncolumnsNode = showncolumns.item(i);
-					if (showncolumnsNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element e2 = (Element) showncolumnsNode;
-						String enabled = e2.getAttribute("enabled").trim();
-						if (enabled.equals("true")) {
-							String column = e2.getTextContent().trim();
-							columnNames[counter] = column;
-							counter++;
-						}
-					}
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		String[] finalColumnNames = new String[counter];
-		for (int i = 0; i < counter; i++) {
-			finalColumnNames[i] = columnNames[i];
-		}
-		return finalColumnNames;
-	}
-
-	public static Object[][] loadGames(Document dom, String[] columnNames) {
-		Object[][] allDataFromFile = new Object[100][5];
-		Integer counter = 0;
-		NodeList source = dom.getElementsByTagName("source");
-		for (int i = 0; i < source.getLength(); i++) {
-			Node sourceNode = source.item(i);
-			if (sourceNode.getNodeType() == Node.ELEMENT_NODE) {
-				NodeList game = sourceNode.getChildNodes();
-				for (int j = 0; j < game.getLength(); j++) {
-					Node gameNode = game.item(j);
-					if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element e = (Element) gameNode;
-						for (int n = 0; n < columnNames.length; n++) {
-							switch (columnNames[n]) {
-								case "ID": allDataFromFile[counter][n] = e.getAttribute("id").trim(); break;
-								case "Name": allDataFromFile[counter][n] = e.getElementsByTagName("name").item(0).getTextContent().trim(); break;
-								case "Developer": allDataFromFile[counter][n] = e.getElementsByTagName("developer").item(0).getTextContent().trim(); break;
-								case "Played version": allDataFromFile[counter][n] = e.getElementsByTagName("played_version").item(0).getTextContent().trim(); break;
-								case "Date of last update": allDataFromFile[counter][n] = e.getElementsByTagName("dateof_lastupate").item(0).getTextContent().trim(); break;
-								default: break;
-							}
-						}
-						counter++;
-					}
-				}
-			}
-		}
-		return allDataFromFile;
 	}
 }
 
@@ -129,7 +75,7 @@ class Window extends JFrame implements ActionListener{
 		mb.add(games = new JMenu("Games"));
 		games.add(addGame = new JMenuItem("Add game"));
 		games.add(removeGame = new JMenuItem("Remove game"));
-		games.add(updateList = new JMenuItem("Update list"));
+		games.add(updateList = new JMenuItem("Update game"));
 		games.addSeparator();
 		games.add(saveFileToDifferent = new JMenuItem("Save file to different"));
 		games.addSeparator();
@@ -143,7 +89,7 @@ class Window extends JFrame implements ActionListener{
 		refreshFile.addActionListener(this);
 
 		boolean[] columnVisibility, otherSettings;
-		Document dom = loadDoc();
+		Document dom = loadDoc.loadDocument();
 		NodeList settingsNode = dom.getElementsByTagName("settings");
 		Node settingsNodeElement = settingsNode.item(0);
 		if (settingsNodeElement.getNodeType() == Node.ELEMENT_NODE) {
@@ -222,7 +168,7 @@ class Window extends JFrame implements ActionListener{
 
 	public static void columnVisibility(String gac) {
 		try{
-			Document dom = loadDoc();
+			Document dom = loadDoc.loadDocument();
 			NodeList settingsNode = dom.getElementsByTagName("settings");
 			Node settingsNodeElement = settingsNode.item(0);
 			if (settingsNodeElement.getNodeType() == Node.ELEMENT_NODE) {
@@ -240,8 +186,8 @@ class Window extends JFrame implements ActionListener{
 							} else {
 								e2.setAttribute("enabled", "true");
 							}
-							out.println("changed!");
-							saveDoc(dom);
+							JOptionPane.showMessageDialog(null, "Changes will be visible after restart", "Success", JOptionPane.INFORMATION_MESSAGE);
+							saveDoc.saveDocument(dom);
 						}
 					}
 				}
@@ -251,20 +197,98 @@ class Window extends JFrame implements ActionListener{
 		}
 	}
 
+	public void updateGameFromToFile(){
+		JOptionPane optionPane = new JOptionPane();
+		JTextField id = new JTextField();
+		Object[] message = {
+			"ID of the game to update:", id
+		};
+		optionPane.setMessage(message);
+		optionPane.setMessageType(JOptionPane.PLAIN_MESSAGE);
+		JDialog dialog = optionPane.createDialog(null, "Update game");
+		dialog.setVisible(true);
+		String idValue = id.getText();
+		if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "ID is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
+		if (isIDInDatabase.isInDatabase(idValue)) {
+			try{
+				Document dom = loadDoc.loadDocument();
+				NodeList source = dom.getElementsByTagName("source");
+				for (int i = 0; i < source.getLength(); i++) {
+					Node sourceNode = source.item(i);
+					if (sourceNode.getNodeType() == Node.ELEMENT_NODE) {
+						NodeList game = sourceNode.getChildNodes();
+						for (int j = 0; j < game.getLength(); j++) {
+							Node gameNode = game.item(j);
+							if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
+								Element e = (Element) gameNode;
+								String ids = e.getAttribute("id").trim();
+								if (ids.equals(idValue)) {
+									String oldname = e.getElementsByTagName("name").item(0).getTextContent().trim();
+									String olddeveloper = e.getElementsByTagName("developer").item(0).getTextContent().trim();
+									String oldplayed_version = e.getElementsByTagName("played_version").item(0).getTextContent().trim();
+									String olddateof_lastupate = e.getElementsByTagName("dateof_lastupate").item(0).getTextContent().trim();
+									String[] columnNames = {"ID", "Name", "Developer", "Played version", "Date of last update"};
+									Object[][] data = {{ids, oldname, olddeveloper, oldplayed_version, olddateof_lastupate}};
+									JTable table = new JTable(data, columnNames);
+									table.setBounds(30, 40, 200, 300);
+									setLayout(new BorderLayout());
+									add(table.getTableHeader(), BorderLayout.PAGE_START);
+									add(table, BorderLayout.CENTER);
+									JTextField newname = new JTextField();
+									JTextField newdeveloper = new JTextField();
+									JTextField newplayed_version = new JTextField();
+									JTextField newdateof_lastupate = new JTextField();
+									Object[] message2 = {
+										"ID: "+ids,
+										"Name: (required)", newname,
+										"Developer:", newdeveloper,
+										"Played version:", newplayed_version,
+										"Date of last update:", newdateof_lastupate
+									};
+									int option = JOptionPane.showConfirmDialog(null, message2, "Update game", JOptionPane.OK_CANCEL_OPTION);
+									if (option == JOptionPane.OK_OPTION) {
+										String newnameValue = newname.getText();
+										String newdeveloperValue = newdeveloper.getText();
+										String newplayed_versionValue = newplayed_version.getText();
+										String newdateof_lastupateValue = newdateof_lastupate.getText();
+										if (newnameValue.equals("")) { JOptionPane.showMessageDialog(null, "name is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
+										if (newdeveloperValue.equals("")) { newdeveloperValue = olddeveloper; }
+										if (newplayed_versionValue.equals("")) { newplayed_versionValue = oldplayed_version; }
+										if (newdateof_lastupateValue.equals("")) { newdateof_lastupateValue = olddateof_lastupate; }
+										e.getElementsByTagName("name").item(0).setTextContent(newnameValue);
+										e.getElementsByTagName("developer").item(0).setTextContent(newdeveloperValue);
+										e.getElementsByTagName("played_version").item(0).setTextContent(newplayed_versionValue);
+										e.getElementsByTagName("dateof_lastupate").item(0).setTextContent(newdateof_lastupateValue);
+										saveDoc.saveDocument(dom);
+										JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" has been updated", "Success", JOptionPane.INFORMATION_MESSAGE);
+										break;
+									} else {
+										JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" has not been updated", "Success", JOptionPane.INFORMATION_MESSAGE);
+										break;
+									}
+								} else {
+									JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" doesn't exists", "Error", JOptionPane.ERROR_MESSAGE); break;
+								}
+							}
+						}
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" doesn't exists", "Error", JOptionPane.ERROR_MESSAGE); return;
+		}
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// out.println(e);
 		String gac = e.getActionCommand();
 		switch (gac) {
-			case "Add game":
-				out.println("Add game");
-				break;
-			case "Remove game":
-				out.println("Remove game");
-				break;
-			case "Update list":
-				out.println("Update list");
-				break;
+			case "Add game": addGameToFile.addOneGameToFile(); break;
+			case "Remove game": removeGameFromFile.removeOneGameFromFile(); break;
+			case "Update game": updateGameFromToFile(); /*updateGameFromToFile.updateOneGameFromToFile() ;*/ break;
 			case "Save file to different":
 				out.println("Save file to different");
 				break;
@@ -294,36 +318,7 @@ class Window extends JFrame implements ActionListener{
 			case "Credits":
 				out.println("Credits");
 				break;
-			default:
-				out.println("Unknown settings interaction");
-				break;
-		}
-	}
-
-	public static Document loadDoc(){
-		try {
-			File file = new File("hentai.xml");
-			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-			DocumentBuilder db = dbf.newDocumentBuilder();
-			Document dom = db.parse(file);
-			dom.normalize();
-			return dom;
-		} catch (Exception e) {
-			e.printStackTrace();
-			out.println("Error loading file");
-		}
-		return null;
-	}
-	public static void saveDoc(Document dom){
-		try {
-			TransformerFactory transformerFactory = TransformerFactory.newInstance();
-			Transformer transformer = transformerFactory.newTransformer();
-			DOMSource domsource = new DOMSource(dom);
-			StreamResult result = new StreamResult("hentai.xml");
-			transformer.transform(domsource, result);
-		} catch (Exception e) {
-			e.printStackTrace();
-			out.println("Error saving file");
+			default: JOptionPane.showMessageDialog(null, "Error, this should never happen!!!", "Error", JOptionPane.ERROR_MESSAGE); break;
 		}
 	}
 }

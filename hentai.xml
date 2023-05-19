@@ -21,9 +21,9 @@ You cannot use these normally --><nsfwgames>
 		Actually, while there is no api/rss, this is not needed
 		-->
 		<game id="1">
-			<name>na</name>
-			<developer>na</developer>
-			<played_version>na</played_version>
+			<name>test</name>
+			<developer>test</developer>
+			<played_version>test</played_version>
 			<dateof_lastupate>0000-00-00</dateof_lastupate> 
 		</game>
 		<game id="74965">
@@ -36,7 +36,7 @@ You cannot use these normally --><nsfwgames>
 			<name>2037 - Almost ready Inc.</name>
 			<developer>MadAlice</developer>
 			<played_version>v0.9.6</played_version>
-			<dateof_lastupate>2020-06-22</dateof_lastupate> 
+			<dateof_lastupate>2020-06-22</dateof_lastupate>
 		</game>
 	</source>
 </nsfwgames><!-- Special char: 

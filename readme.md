@@ -5,6 +5,8 @@ Maybe good idea
 Now that this is independent from uni work... Time to make it better
 and to torture myself
 
+Because I'm lazy everything is handled with ids, mostly.
+
 ---
 ---
 
@@ -16,9 +18,9 @@ and to torture myself
 
 Games tab:
 
-- [ ] add game
-- [ ] remove game
-- [ ] update game
+- [x] add game
+- [x] remove game
+- [x] update game
 - [ ] save file to different location
 - [ ] api and file refresh??? Is this needed?
 

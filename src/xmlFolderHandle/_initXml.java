@@ -5,7 +5,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class initFirst {
+public class _initXml {
 	public static String[] allColumns(Document dom) {
 		String columnNames[] = new String[30];
 		Integer counter = 0;

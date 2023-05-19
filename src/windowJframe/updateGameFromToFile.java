@@ -13,8 +13,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import xmlFolderHandle.isIDInDatabase;
-import xmlFolderHandle.loadDoc;
-import xmlFolderHandle.saveDoc;
+import xmlFolderHandle.saveLoadDoc;
 
 public class updateGameFromToFile {
 	public static void updateOneGameFromToFile(){
@@ -31,7 +30,7 @@ public class updateGameFromToFile {
 		if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "ID is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
 		if (isIDInDatabase.isInDatabase(idValue)) {
 			try{
-				Document dom = loadDoc.loadDocument();
+				Document dom = saveLoadDoc.loadDocument();
 				NodeList source = dom.getElementsByTagName("source");
 				for (int i = 0; i < source.getLength(); i++) {
 					Node sourceNode = source.item(i);
@@ -80,7 +79,7 @@ public class updateGameFromToFile {
 										e.getElementsByTagName("developer").item(0).setTextContent(newdeveloperValue);
 										e.getElementsByTagName("played_version").item(0).setTextContent(newplayed_versionValue);
 										e.getElementsByTagName("dateof_lastupate").item(0).setTextContent(newdateof_lastupateValue);
-										saveDoc.saveDocument(dom);
+										saveLoadDoc.saveDocument(dom);
 										JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" has been updated", "Success", JOptionPane.INFORMATION_MESSAGE);
 										break;
 									} else { JOptionPane.showMessageDialog(null, "Cancelled", "Success", JOptionPane.INFORMATION_MESSAGE); break; }

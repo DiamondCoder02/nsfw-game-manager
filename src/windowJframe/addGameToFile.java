@@ -10,8 +10,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import xmlFolderHandle.isIDInDatabase;
-import xmlFolderHandle.loadDoc;
-import xmlFolderHandle.saveDoc;
+import xmlFolderHandle.saveLoadDoc;
 
 public class addGameToFile {
 	public static void addOneGameToFile(){
@@ -43,7 +42,7 @@ public class addGameToFile {
 			JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" already exists", "Error", JOptionPane.ERROR_MESSAGE); return;
 		} else {
 			try{
-				Document dom = loadDoc.loadDocument();
+				Document dom = saveLoadDoc.loadDocument();
 				NodeList source = dom.getElementsByTagName("source");
 				for (int i = 0; i < source.getLength(); i++) {
 					Node sourceNode = source.item(i);
@@ -72,7 +71,7 @@ public class addGameToFile {
 									newGame.appendChild(newPlayed_version);
 									newGame.appendChild(newDateof_lastupate);
 									sourceNode.appendChild(newGame);
-									saveDoc.saveDocument(dom);
+									saveLoadDoc.saveDocument(dom);
 									JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" has been added", "Success", JOptionPane.INFORMATION_MESSAGE);
 									break;
 								}

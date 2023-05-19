@@ -22,8 +22,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import xmlFolderHandle.isIDInDatabase;
-import xmlFolderHandle.loadDoc;
-import xmlFolderHandle.saveDoc;
+import xmlFolderHandle.saveLoadDoc;
 
 public class _initFrame extends JFrame implements ActionListener {
 	JMenuBar mb;
@@ -62,7 +61,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		refreshFile.addActionListener(this);
 
 		boolean[] columnVisibility, otherSettings;
-		Document dom = loadDoc.loadDocument();
+		Document dom = saveLoadDoc.loadDocument();
 		NodeList settingsNode = dom.getElementsByTagName("settings");
 		Node settingsNodeElement = settingsNode.item(0);
 		if (settingsNodeElement.getNodeType() == Node.ELEMENT_NODE) {
@@ -145,7 +144,7 @@ public class _initFrame extends JFrame implements ActionListener {
 
 	public static void columnVisibility(String gac) {
 		try{
-			Document dom = loadDoc.loadDocument();
+			Document dom = saveLoadDoc.loadDocument();
 			NodeList settingsNode = dom.getElementsByTagName("settings");
 			Node settingsNodeElement = settingsNode.item(0);
 			if (settingsNodeElement.getNodeType() == Node.ELEMENT_NODE) {
@@ -164,7 +163,7 @@ public class _initFrame extends JFrame implements ActionListener {
 								e2.setAttribute("enabled", "true");
 							}
 							JOptionPane.showMessageDialog(null, "Changes will be visible after restart", "Success", JOptionPane.INFORMATION_MESSAGE);
-							saveDoc.saveDocument(dom);
+							saveLoadDoc.saveDocument(dom);
 						}
 					}
 				}
@@ -188,7 +187,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "ID is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
 		if (isIDInDatabase.isInDatabase(idValue)) {
 			try{
-				Document dom = loadDoc.loadDocument();
+				Document dom = saveLoadDoc.loadDocument();
 				NodeList source = dom.getElementsByTagName("source");
 				for (int i = 0; i < source.getLength(); i++) {
 					Node sourceNode = source.item(i);
@@ -236,7 +235,7 @@ public class _initFrame extends JFrame implements ActionListener {
 										e.getElementsByTagName("developer").item(0).setTextContent(newdeveloperValue);
 										e.getElementsByTagName("played_version").item(0).setTextContent(newplayed_versionValue);
 										e.getElementsByTagName("dateof_lastupate").item(0).setTextContent(newdateof_lastupateValue);
-										saveDoc.saveDocument(dom);
+										saveLoadDoc.saveDocument(dom);
 										JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" has been updated", "Success", JOptionPane.INFORMATION_MESSAGE);
 										break;
 									} else {

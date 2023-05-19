@@ -18,9 +18,9 @@ Because I'm lazy everything is handled with ids, mostly.
 
 Games tab:
 
-- [x] add game
-- [x] remove game
-- [x] update game
+- [x] ~~add game~~
+- [x] ~~remove game~~
+- [x] ~~update game~~
 - [ ] save file to different location
 - [ ] api and file refresh??? Is this needed?
 

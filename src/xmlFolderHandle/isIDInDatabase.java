@@ -8,7 +8,7 @@ import org.w3c.dom.NodeList;
 public class isIDInDatabase {
 	public static boolean isInDatabase(String givenID){
 		try{
-			Document dom = loadDoc.loadDocument();
+			Document dom = saveLoadDoc.loadDocument();
 			NodeList source = dom.getElementsByTagName("source");
 			for (int i = 0; i < source.getLength(); i++) {
 				Node sourceNode = source.item(i);

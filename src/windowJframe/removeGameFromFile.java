@@ -10,8 +10,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import xmlFolderHandle.isIDInDatabase;
-import xmlFolderHandle.loadDoc;
-import xmlFolderHandle.saveDoc;
+import xmlFolderHandle.saveLoadDoc;
 
 public class removeGameFromFile {
 	public static void removeOneGameFromFile(){
@@ -28,7 +27,7 @@ public class removeGameFromFile {
 		if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "ID is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
 		if (isIDInDatabase.isInDatabase(idValue)) {
 			try{
-				Document dom = loadDoc.loadDocument();
+				Document dom = saveLoadDoc.loadDocument();
 				NodeList source = dom.getElementsByTagName("source");
 				for (int i = 0; i < source.getLength(); i++) {
 					Node sourceNode = source.item(i);
@@ -43,7 +42,7 @@ public class removeGameFromFile {
 								int option = JOptionPane.showConfirmDialog(null, "Game with id: "+ids+" and name: "+name+" will be removed. Are you sure?", "Remove game", JOptionPane.OK_CANCEL_OPTION);
 								if (option == JOptionPane.OK_OPTION) {
 									sourceNode.removeChild(gameNode);
-									saveDoc.saveDocument(dom);
+									saveLoadDoc.saveDocument(dom);
 									JOptionPane.showMessageDialog(null, "Game with id: "+ids+" and name: "+name+" has been removed", "Success", JOptionPane.INFORMATION_MESSAGE);
 									break;
 								} else { JOptionPane.showMessageDialog(null, "Cancelled", "Success", JOptionPane.INFORMATION_MESSAGE); break; }

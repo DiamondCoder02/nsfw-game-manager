@@ -184,7 +184,7 @@ class Window extends JFrame implements ActionListener{
 		JMenu settings;
 		mb.add(settings = new JMenu("Settings"));
 		JMenu show;
-		settings.add(show = new JMenu("Show"));
+		settings.add(show = new JMenu("Shown informations"));
 		show.add(showID = new JCheckBoxMenuItem("ID", columnVisibility[0]));
 		show.add(showName = new JCheckBoxMenuItem("Name", columnVisibility[1]));
 		show.add(showDeveloper = new JCheckBoxMenuItem("Developer", columnVisibility[2]));
@@ -254,40 +254,6 @@ class Window extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// out.println(e);
-		/*
-		java.awt.event.ActionEvent[
-			ACTION_PERFORMED,
-			cmd=Update list,
-			when=1684320105639,
-			modifiers=Button1
-		] on javax.swing.JMenuItem[,1,45,139x21,
-			invalid,
-			alignmentX=0.0,
-			alignmentY=0.0,
-			border=javax.swing.plaf.metal.MetalBorders$MenuItemBorder@1824827e,
-			flags=264,
-			maximumSize=,
-			minimumSize=,
-			preferredSize=,
-			defaultIcon=,
-			disabledIcon=,
-			disabledSelectedIcon=,
-			margin=javax.swing.plaf.InsetsUIResource[
-				top=2,
-				left=2,
-				bottom=2,
-				right=2
-			],
-			paintBorder=true,
-			paintFocus=false,
-			pressedIcon=,
-			rolloverEnabled=false,
-			rolloverIcon=,
-			rolloverSelectedIcon=,
-			selectedIcon=,
-			text=Update list
-		]
-		 */
 		String gac = e.getActionCommand();
 		switch (gac) {
 			case "Add game":

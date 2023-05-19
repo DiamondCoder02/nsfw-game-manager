@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Special char: 
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- Special char: 
 &		&amp;
 <		&lt; 
 >		&gt;
 ""		&quot;
 '' 		&apos;
-You cannot use these normally -->
-<nsfwgames>
+You cannot use these normally --><nsfwgames>
 	<settings>
-		<autoupdate>true</autoupdate>
+		<otherSettings enabled="false">darkmode</otherSettings>
+		<otherSettings enabled="false">autoFetchNews</otherSettings>
+		<otherSettings enabled="false">autoUpdateGames</otherSettings>
+		<showncolumns enabled="true">ID</showncolumns>
+		<showncolumns enabled="true">Name</showncolumns>
+		<showncolumns enabled="true">Developer</showncolumns>
+		<showncolumns enabled="true">Played version</showncolumns>
+		<showncolumns enabled="true">Date of last update</showncolumns>
 	</settings>
 	<source from="f95zone">
 		<!-- 
@@ -25,7 +30,6 @@ You cannot use these normally -->
 			<name>!Ω Factorial Omega: My Dystopian Robot Girlfriend</name>
 			<developer>Incontinent Cell</developer>
 			<played_version>v0.61 beta</played_version>
-			<!-- handle date as integer - ddmmyyyy -->
 			<dateof_lastupate>2021-05-11</dateof_lastupate>
 		</game>
 		<game id="19095">
@@ -35,9 +39,7 @@ You cannot use these normally -->
 			<dateof_lastupate>2020-06-22</dateof_lastupate> 
 		</game>
 	</source>
-</nsfwgames>
-
-<!-- Special char: 
+</nsfwgames><!-- Special char: 
 
 <students university="PTE">
 	<student nationality="magyar">

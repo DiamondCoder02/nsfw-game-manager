@@ -31,7 +31,8 @@ public class _initFrame extends JFrame implements ActionListener {
 	JMenuItem refreshFromAPI, refreshFile, saveFileToDifferent;
 
 	JCheckBoxMenuItem darkMode, autoFetchNews, autoUpdateGames;
-	JCheckBoxMenuItem showID, showName, showDeveloper, showPlayedVersion, showDateOfLastUpdate;
+	JCheckBoxMenuItem showID, showName, showDeveloper, showPlayedVersion, showDateOfLastUpdate, showhowFarUserPlayed, showDeletedFromPc;
+	JCheckBoxMenuItem showEngine, showOS, ShowSelfNote;
 
 	JMenuItem dataToShow, faq, credits;
 
@@ -96,7 +97,7 @@ public class _initFrame extends JFrame implements ActionListener {
 				}
 			}
 		} else {
-			columnVisibility = new boolean[5];
+			columnVisibility = new boolean[10];
 			otherSettings = new boolean[3];
 		}
 
@@ -109,16 +110,28 @@ public class _initFrame extends JFrame implements ActionListener {
 		show.add(showDeveloper = new JCheckBoxMenuItem("Developer", columnVisibility[2]));
 		show.add(showPlayedVersion = new JCheckBoxMenuItem("Played version", columnVisibility[3]));
 		show.add(showDateOfLastUpdate = new JCheckBoxMenuItem("Date of last update", columnVisibility[4]));
+		show.add(showhowFarUserPlayed = new JCheckBoxMenuItem("Player prograssion", columnVisibility[5]));
+		show.add(showDeletedFromPc = new JCheckBoxMenuItem("Deleted from pc", columnVisibility[6]));
+		show.add(showEngine = new JCheckBoxMenuItem("Engine", columnVisibility[7]));
+		// show.add(showOS = new JCheckBoxMenuItem("OS", columnVisibility[8]));
+		show.add(ShowSelfNote = new JCheckBoxMenuItem("Self note", columnVisibility[9]));
+
 		settings.addSeparator();
 		settings.add(darkMode = new JCheckBoxMenuItem("Dark mode", otherSettings[0]));
 		settings.addSeparator();
 		settings.add(autoFetchNews = new JCheckBoxMenuItem("Auto fetch game updates", otherSettings[1]));
 		settings.add(autoUpdateGames = new JCheckBoxMenuItem("Auto update games", otherSettings[2]));
+
 		showID.addActionListener(this);
 		showName.addActionListener(this);
 		showDeveloper.addActionListener(this);
 		showPlayedVersion.addActionListener(this);
 		showDateOfLastUpdate.addActionListener(this);
+		showhowFarUserPlayed.addActionListener(this);
+		showDeletedFromPc.addActionListener(this);
+		showEngine.addActionListener(this);
+		// showOS.addActionListener(this);
+		ShowSelfNote.addActionListener(this);
 		autoFetchNews.addActionListener(this);
 		autoUpdateGames.addActionListener(this);
 		darkMode.addActionListener(this);
@@ -136,6 +149,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		add(table.getTableHeader(), BorderLayout.PAGE_START);
 		add(table, BorderLayout.CENTER);
 
+		// TODO exit
 		JMenuItem exit;
 		mb.add(exit = new JMenu("Exit"));
 		exit.addActionListener(this);
@@ -204,8 +218,13 @@ public class _initFrame extends JFrame implements ActionListener {
 									String olddeveloper = e.getElementsByTagName("developer").item(0).getTextContent().trim();
 									String oldplayed_version = e.getElementsByTagName("played_version").item(0).getTextContent().trim();
 									String olddateof_lastupate = e.getElementsByTagName("dateof_lastupate").item(0).getTextContent().trim();
-									String[] columnNames = {"ID", "Name", "Developer", "Played version", "Date of last update"};
-									Object[][] data = {{ids, oldname, olddeveloper, oldplayed_version, olddateof_lastupate}};
+									String oldhowFarUserPlayed = e.getElementsByTagName("howFarUserPlayed").item(0).getTextContent().trim();
+									String olddeletedFromPc = e.getElementsByTagName("deletedFromPc").item(0).getTextContent().trim();
+									String oldengine = e.getElementsByTagName("engine").item(0).getTextContent().trim();
+									// String oldos = e.getElementsByTagName("os").item(0).getTextContent().trim();
+									String oldselfNote = e.getElementsByTagName("selfNote").item(0).getTextContent().trim();
+									String[] columnNames = {"ID", "Name", "Developer", "Played version", "Date of last update", "Player prograssion", "Deleted from pc", "Engine", "Self note"};
+									Object[][] data = {{ids, oldname, olddeveloper, oldplayed_version, olddateof_lastupate, oldhowFarUserPlayed, olddeletedFromPc, oldengine, oldselfNote}};
 									JTable table = new JTable(data, columnNames);
 									table.setBounds(30, 40, 200, 300);
 									setLayout(new BorderLayout());
@@ -215,12 +234,22 @@ public class _initFrame extends JFrame implements ActionListener {
 									JTextField newdeveloper = new JTextField();
 									JTextField newplayed_version = new JTextField();
 									JTextField newdateof_lastupate = new JTextField();
+									JTextField newhowFarUserPlayed = new JTextField();
+									JTextField newdeletedFromPc = new JTextField();
+									JTextField newengine = new JTextField();
+									// JTextField newos = new JTextField();
+									JTextField newselfNote = new JTextField();
 									Object[] message2 = {
 										"ID: "+ids,
 										"Name: (required)", newname,
 										"Developer:", newdeveloper,
 										"Played version:", newplayed_version,
-										"Date of last update:", newdateof_lastupate
+										"Date of last update:", newdateof_lastupate,
+										"Player prograssion:", newhowFarUserPlayed,
+										"Deleted from pc:", newdeletedFromPc,
+										"Engine:", newengine,
+										// "OS:", newos,
+										"Self note:", newselfNote
 									};
 									int option = JOptionPane.showConfirmDialog(null, message2, "Update game", JOptionPane.OK_CANCEL_OPTION);
 									if (option == JOptionPane.OK_OPTION) {
@@ -228,14 +257,29 @@ public class _initFrame extends JFrame implements ActionListener {
 										String newdeveloperValue = newdeveloper.getText();
 										String newplayed_versionValue = newplayed_version.getText();
 										String newdateof_lastupateValue = newdateof_lastupate.getText();
+										String newhowFarUserPlayedValue = newhowFarUserPlayed.getText();
+										String newdeletedFromPcValue = newdeletedFromPc.getText();
+										String newengineValue = newengine.getText();
+										// String newosValue = newos.getText();
+										String newselfNoteValue = newselfNote.getText();
 										if (newnameValue.equals("")) { JOptionPane.showMessageDialog(null, "name is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
 										if (newdeveloperValue.equals("")) { newdeveloperValue = olddeveloper; }
 										if (newplayed_versionValue.equals("")) { newplayed_versionValue = oldplayed_version; }
 										if (newdateof_lastupateValue.equals("")) { newdateof_lastupateValue = olddateof_lastupate; }
+										if (newhowFarUserPlayedValue.equals("")) { newhowFarUserPlayedValue = oldhowFarUserPlayed; }
+										if (newdeletedFromPcValue.equals("")) { newdeletedFromPcValue = olddeletedFromPc; }
+										if (newengineValue.equals("")) { newengineValue = oldengine; }
+										// if (newosValue.equals("")) { newosValue = oldos; }
+										if (newselfNoteValue.equals("")) { newselfNoteValue = oldselfNote; }
 										e.getElementsByTagName("name").item(0).setTextContent(newnameValue);
 										e.getElementsByTagName("developer").item(0).setTextContent(newdeveloperValue);
 										e.getElementsByTagName("played_version").item(0).setTextContent(newplayed_versionValue);
 										e.getElementsByTagName("dateof_lastupate").item(0).setTextContent(newdateof_lastupateValue);
+										e.getElementsByTagName("howFarUserPlayed").item(0).setTextContent(newhowFarUserPlayedValue);
+										e.getElementsByTagName("deletedFromPc").item(0).setTextContent(newdeletedFromPcValue);
+										e.getElementsByTagName("engine").item(0).setTextContent(newengineValue);
+										// e.getElementsByTagName("os").item(0).setTextContent(newosValue);
+										e.getElementsByTagName("selfNote").item(0).setTextContent(newselfNoteValue);
 										saveLoadDoc.saveDocument(dom);
 										JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" has been updated", "Success", JOptionPane.INFORMATION_MESSAGE);
 										break;
@@ -278,6 +322,11 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Developer": columnVisibility(gac); break;
 			case "Played version": columnVisibility(gac); break;
 			case "Date of last update": columnVisibility(gac); break;
+			case "Player prograssion": columnVisibility(gac); break;
+			case "Deleted from pc": columnVisibility(gac); break;
+			case "Engine": columnVisibility(gac); break;
+			// case "OS": columnVisibility(gac); break;
+			case "Self note": columnVisibility(gac); break;
 			case "Dark mode":
 				out.println("Dark mode");
 				break;

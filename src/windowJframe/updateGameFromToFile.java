@@ -46,11 +46,16 @@ public class updateGameFromToFile {
 									String olddeveloper = e.getElementsByTagName("developer").item(0).getTextContent().trim();
 									String oldplayed_version = e.getElementsByTagName("played_version").item(0).getTextContent().trim();
 									String olddateof_lastupate = e.getElementsByTagName("dateof_lastupate").item(0).getTextContent().trim();
-									String[] columnNames = {"ID", "Name", "Developer", "Played version", "Date of last update"};
-									Object[][] data = {{ids, oldname, olddeveloper, oldplayed_version, olddateof_lastupate}};
+									String oldhowFarUserPlayed = e.getElementsByTagName("howFarUserPlayed").item(0).getTextContent().trim();
+									String olddeletedFromPc = e.getElementsByTagName("deletedFromPc").item(0).getTextContent().trim();
+									String oldengine = e.getElementsByTagName("engine").item(0).getTextContent().trim();
+									// String oldos = e.getElementsByTagName("os").item(0).getTextContent().trim();
+									String oldselfNote = e.getElementsByTagName("selfNote").item(0).getTextContent().trim();
+									String[] columnNames = {"ID", "Name", "Developer", "Played version", "Date of last update", "Player prograssion", "Deleted from pc", "Engine", "Self note"};
+									Object[][] data = {{ids, oldname, olddeveloper, oldplayed_version, olddateof_lastupate, oldhowFarUserPlayed, olddeletedFromPc, oldengine, oldselfNote}};
 									JTable table = new JTable(data, columnNames);
 									table.setBounds(30, 40, 200, 300);
-									// TODO table lol
+									// TODO fix this
 									// setLayout(new BorderLayout());
 									// add(table.getTableHeader(), BorderLayout.PAGE_START);
 									// add(table, BorderLayout.CENTER);
@@ -58,12 +63,22 @@ public class updateGameFromToFile {
 									JTextField newdeveloper = new JTextField();
 									JTextField newplayed_version = new JTextField();
 									JTextField newdateof_lastupate = new JTextField();
+									JTextField newhowFarUserPlayed = new JTextField();
+									JTextField newdeletedFromPc = new JTextField();
+									JTextField newengine = new JTextField();
+									// JTextField newos = new JTextField();
+									JTextField newselfNote = new JTextField();
 									Object[] message2 = {
 										"ID: "+ids,
 										"Name: (required)", newname,
 										"Developer:", newdeveloper,
 										"Played version:", newplayed_version,
-										"Date of last update:", newdateof_lastupate
+										"Date of last update:", newdateof_lastupate,
+										"Player prograssion:", newhowFarUserPlayed,
+										"Deleted from pc:", newdeletedFromPc,
+										"Engine:", newengine,
+										// "OS:", newos,
+										"Self note:", newselfNote
 									};
 									int option = JOptionPane.showConfirmDialog(null, message2, "Update game", JOptionPane.OK_CANCEL_OPTION);
 									if (option == JOptionPane.OK_OPTION) {
@@ -71,18 +86,36 @@ public class updateGameFromToFile {
 										String newdeveloperValue = newdeveloper.getText();
 										String newplayed_versionValue = newplayed_version.getText();
 										String newdateof_lastupateValue = newdateof_lastupate.getText();
+										String newhowFarUserPlayedValue = newhowFarUserPlayed.getText();
+										String newdeletedFromPcValue = newdeletedFromPc.getText();
+										String newengineValue = newengine.getText();
+										// String newosValue = newos.getText();
+										String newselfNoteValue = newselfNote.getText();
 										if (newnameValue.equals("")) { JOptionPane.showMessageDialog(null, "name is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
 										if (newdeveloperValue.equals("")) { newdeveloperValue = olddeveloper; }
 										if (newplayed_versionValue.equals("")) { newplayed_versionValue = oldplayed_version; }
 										if (newdateof_lastupateValue.equals("")) { newdateof_lastupateValue = olddateof_lastupate; }
+										if (newhowFarUserPlayedValue.equals("")) { newhowFarUserPlayedValue = oldhowFarUserPlayed; }
+										if (newdeletedFromPcValue.equals("")) { newdeletedFromPcValue = olddeletedFromPc; }
+										if (newengineValue.equals("")) { newengineValue = oldengine; }
+										// if (newosValue.equals("")) { newosValue = oldos; }
+										if (newselfNoteValue.equals("")) { newselfNoteValue = oldselfNote; }
 										e.getElementsByTagName("name").item(0).setTextContent(newnameValue);
 										e.getElementsByTagName("developer").item(0).setTextContent(newdeveloperValue);
 										e.getElementsByTagName("played_version").item(0).setTextContent(newplayed_versionValue);
 										e.getElementsByTagName("dateof_lastupate").item(0).setTextContent(newdateof_lastupateValue);
+										e.getElementsByTagName("howFarUserPlayed").item(0).setTextContent(newhowFarUserPlayedValue);
+										e.getElementsByTagName("deletedFromPc").item(0).setTextContent(newdeletedFromPcValue);
+										e.getElementsByTagName("engine").item(0).setTextContent(newengineValue);
+										// e.getElementsByTagName("os").item(0).setTextContent(newosValue);
+										e.getElementsByTagName("selfNote").item(0).setTextContent(newselfNoteValue);
 										saveLoadDoc.saveDocument(dom);
 										JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" has been updated", "Success", JOptionPane.INFORMATION_MESSAGE);
 										break;
-									} else { JOptionPane.showMessageDialog(null, "Cancelled", "Success", JOptionPane.INFORMATION_MESSAGE); break; }
+									} else {
+										JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" has not been updated", "Success", JOptionPane.INFORMATION_MESSAGE);
+										break;
+									}
 								}
 							}
 						}

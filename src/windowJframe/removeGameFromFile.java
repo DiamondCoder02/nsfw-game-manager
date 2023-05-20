@@ -38,14 +38,16 @@ public class removeGameFromFile {
 							if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
 								Element e = (Element) gameNode;
 								String ids = e.getAttribute("id").trim();
-								String name = e.getElementsByTagName("name").item(0).getTextContent().trim();
-								int option = JOptionPane.showConfirmDialog(null, "Game with id: "+ids+" and name: "+name+" will be removed. Are you sure?", "Remove game", JOptionPane.OK_CANCEL_OPTION);
-								if (option == JOptionPane.OK_OPTION) {
-									sourceNode.removeChild(gameNode);
-									saveLoadDoc.saveDocument(dom);
-									JOptionPane.showMessageDialog(null, "Game with id: "+ids+" and name: "+name+" has been removed", "Success", JOptionPane.INFORMATION_MESSAGE);
-									break;
-								} else { JOptionPane.showMessageDialog(null, "Cancelled", "Success", JOptionPane.INFORMATION_MESSAGE); break; }
+								if ( ids.equals(idValue)) {
+									String name = e.getElementsByTagName("name").item(0).getTextContent().trim();
+									int option = JOptionPane.showConfirmDialog(null, "Game with id: "+ids+" and name: "+name+" will be removed. Are you sure?", "Remove game", JOptionPane.OK_CANCEL_OPTION);
+									if (option == JOptionPane.OK_OPTION) {
+										sourceNode.removeChild(gameNode);
+										saveLoadDoc.saveDocument(dom);
+										JOptionPane.showMessageDialog(null, "Game with id: "+ids+" and name: "+name+" has been removed", "Success", JOptionPane.INFORMATION_MESSAGE);
+										break;
+									} else { JOptionPane.showMessageDialog(null, "Cancelled", "Success", JOptionPane.INFORMATION_MESSAGE); break; }
+								}
 							}
 						}
 					}

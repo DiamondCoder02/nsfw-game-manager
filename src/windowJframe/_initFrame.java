@@ -39,7 +39,8 @@ public class _initFrame extends JFrame implements ActionListener {
 	public void WindowCreate(String[] columnNames, Object[][] dataFromXMLFile) {
 		// TODO - https://stackoverflow.com/questions/7628121/how-can-i-refresh-or-reload-the-jframe
 		setTitle("Hentai Game Database");
-		setSize(1000, 500);
+		setSize(1500, 1000);
+		// TODO have small minimum size
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setJMenuBar(mb = new JMenuBar());
 
@@ -242,8 +243,6 @@ public class _initFrame extends JFrame implements ActionListener {
 										JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" has not been updated", "Success", JOptionPane.INFORMATION_MESSAGE);
 										break;
 									}
-								} else {
-									JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" doesn't exists", "Error", JOptionPane.ERROR_MESSAGE); break;
 								}
 							}
 						}

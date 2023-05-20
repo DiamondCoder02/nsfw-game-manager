@@ -14,49 +14,56 @@ import xmlFolderHandle.saveLoadDoc;
 
 public class removeGameFromFile {
 	public static void removeOneGameFromFile(){
-		JOptionPane optionPane = new JOptionPane();
-		JTextField id = new JTextField();
-		Object[] message = {
-			"ID of the game to remove:", id
-		};
-		optionPane.setMessage(message);
-		optionPane.setMessageType(JOptionPane.PLAIN_MESSAGE);
-		JDialog dialog = optionPane.createDialog(null, "Remove game");
-		dialog.setVisible(true);
-		String idValue = id.getText();
-		if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "ID is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
-		if (isIDInDatabase.isInDatabase(idValue)) {
-			try{
-				Document dom = saveLoadDoc.loadDocument();
-				NodeList source = dom.getElementsByTagName("source");
-				for (int i = 0; i < source.getLength(); i++) {
-					Node sourceNode = source.item(i);
-					if (sourceNode.getNodeType() == Node.ELEMENT_NODE) {
-						NodeList game = sourceNode.getChildNodes();
-						for (int j = 0; j < game.getLength(); j++) {
-							Node gameNode = game.item(j);
-							if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
-								Element e = (Element) gameNode;
-								String ids = e.getAttribute("id").trim();
-								if ( ids.equals(idValue)) {
-									String name = e.getElementsByTagName("name").item(0).getTextContent().trim();
-									int option = JOptionPane.showConfirmDialog(null, "Game with id: "+ids+" and name: "+name+" will be removed. Are you sure?", "Remove game", JOptionPane.OK_CANCEL_OPTION);
-									if (option == JOptionPane.OK_OPTION) {
-										sourceNode.removeChild(gameNode);
-										saveLoadDoc.saveDocument(dom);
-										JOptionPane.showMessageDialog(null, "Game with id: "+ids+" and name: "+name+" has been removed", "Success", JOptionPane.INFORMATION_MESSAGE);
-										break;
-									} else { JOptionPane.showMessageDialog(null, "Cancelled", "Success", JOptionPane.INFORMATION_MESSAGE); break; }
+		boolean repeat = true;
+		while (repeat) {
+			JOptionPane optionPane = new JOptionPane();
+			JTextField id = new JTextField();
+			Object[] message = {
+				"ID of the game to remove:", id
+			};
+			optionPane.setMessage(message);
+			optionPane.setMessageType(JOptionPane.PLAIN_MESSAGE);
+			JDialog dialog = optionPane.createDialog(null, "Remove game");
+			dialog.setVisible(true);
+			String idValue = id.getText();
+			if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "ID is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
+			if (isIDInDatabase.isInDatabase(idValue)) {
+				try{
+					Document dom = saveLoadDoc.loadDocument();
+					NodeList source = dom.getElementsByTagName("source");
+					for (int i = 0; i < source.getLength(); i++) {
+						Node sourceNode = source.item(i);
+						if (sourceNode.getNodeType() == Node.ELEMENT_NODE) {
+							NodeList game = sourceNode.getChildNodes();
+							for (int j = 0; j < game.getLength(); j++) {
+								Node gameNode = game.item(j);
+								if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
+									Element e = (Element) gameNode;
+									String ids = e.getAttribute("id").trim();
+									if ( ids.equals(idValue)) {
+										String name = e.getElementsByTagName("name").item(0).getTextContent().trim();
+										int option = JOptionPane.showConfirmDialog(null, "Game with id: "+ids+" and name: "+name+" will be removed. Are you sure?", "Remove game", JOptionPane.OK_CANCEL_OPTION);
+										if (option == JOptionPane.OK_OPTION) {
+											sourceNode.removeChild(gameNode);
+											saveLoadDoc.saveDocument(dom);
+											JOptionPane.showMessageDialog(null, "Game with id: "+ids+" and name: "+name+" has been removed", "Success", JOptionPane.INFORMATION_MESSAGE);
+										} else { JOptionPane.showMessageDialog(null, "Cancelled", "Success", JOptionPane.INFORMATION_MESSAGE); }
+										int optionToRepeat = JOptionPane.showConfirmDialog(null, "Do you want to delete another game?", "Delete game", JOptionPane.YES_NO_OPTION);
+										if (optionToRepeat == JOptionPane.NO_OPTION) { repeat = false; break; } else { break; }
+									}
 								}
 							}
 						}
 					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-			} catch (Exception e) {
-				e.printStackTrace();
+			} else {
+				JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" doesn't exists", "Error", JOptionPane.ERROR_MESSAGE);
+				int optionToRepeat = JOptionPane.showConfirmDialog(null, "Do you want to delete another game?", "Delete game", JOptionPane.YES_NO_OPTION);
+				if (optionToRepeat == JOptionPane.NO_OPTION) { repeat = false; }
+				return;
 			}
-		} else {
-			JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" doesn't exists", "Error", JOptionPane.ERROR_MESSAGE); return;
 		}
 	}
 }

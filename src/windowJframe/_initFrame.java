@@ -38,7 +38,7 @@ public class _initFrame extends JFrame implements ActionListener {
 
 	JTable table;
 	public void WindowCreate(String[] columnNames, Object[][] dataFromXMLFile) {
-		// TODO - https://stackoverflow.com/questions/7628121/how-can-i-refresh-or-reload-the-jframe
+		// TODO - reload table after setting change
 		setTitle("Hentai Game Database");
 		setSize(1500, 1000);
 		// TODO have small minimum size
@@ -155,37 +155,6 @@ public class _initFrame extends JFrame implements ActionListener {
 		exit.addActionListener(this);
 
 		setVisible(true);
-	}
-
-	public static void columnVisibility(String gac) {
-		try{
-			Document dom = saveLoadDoc.loadDocument();
-			NodeList settingsNode = dom.getElementsByTagName("settings");
-			Node settingsNodeElement = settingsNode.item(0);
-			if (settingsNodeElement.getNodeType() == Node.ELEMENT_NODE) {
-				Element e = (Element) settingsNodeElement;
-				NodeList showncolumns = e.getElementsByTagName("showncolumns");
-				for (int i = 0; i < showncolumns.getLength(); i++) {
-					Node showncolumnsNode = showncolumns.item(i);
-					if (showncolumnsNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element e2 = (Element) showncolumnsNode;
-						String column = e2.getTextContent().trim();
-						if (column.equals(gac)) {
-							String enabled = e2.getAttribute("enabled").trim();
-							if (enabled.equals("true")) {
-								e2.setAttribute("enabled", "false");
-							} else {
-								e2.setAttribute("enabled", "true");
-							}
-							JOptionPane.showMessageDialog(null, "Changes will be visible after restart", "Success", JOptionPane.INFORMATION_MESSAGE);
-							saveLoadDoc.saveDocument(dom);
-						}
-					}
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void updateGameFromToFile(){
@@ -317,16 +286,16 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "API refresh":
 				out.println("API refresh");
 				break;
-			case "ID": columnVisibility(gac); break;
-			case "Name": columnVisibility(gac); break;
-			case "Developer": columnVisibility(gac); break;
-			case "Played version": columnVisibility(gac); break;
-			case "Date of last update": columnVisibility(gac); break;
-			case "Player prograssion": columnVisibility(gac); break;
-			case "Deleted from pc": columnVisibility(gac); break;
-			case "Engine": columnVisibility(gac); break;
-			// case "OS": columnVisibility(gac); break;
-			case "Self note": columnVisibility(gac); break;
+			case "ID": settingsManager.columnVisibility(gac); break;
+			case "Name": settingsManager.columnVisibility(gac); break;
+			case "Developer": settingsManager.columnVisibility(gac); break;
+			case "Played version": settingsManager.columnVisibility(gac); break;
+			case "Date of last update": settingsManager.columnVisibility(gac); break;
+			case "Player prograssion": settingsManager.columnVisibility(gac); break;
+			case "Deleted from pc": settingsManager.columnVisibility(gac); break;
+			case "Engine": settingsManager.columnVisibility(gac); break;
+			// case "OS": settingsManager.columnVisibility(gac); break;
+			case "Self note": settingsManager.columnVisibility(gac); break;
 			case "Dark mode":
 				out.println("Dark mode");
 				break;
@@ -336,12 +305,8 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Auto update games":
 				out.println("Auto update games");
 				break;
-			case "FAQ":
-				out.println("FAQ");
-				break;
-			case "Credits":
-				out.println("Credits");
-				break;
+			case "FAQ": otherButtonsThingies.FACKQU(); break;
+			case "Credits": otherButtonsThingies.money(); break;
 			case "Exit":
 				out.println("Exit");
 				break;

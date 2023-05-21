@@ -4,6 +4,7 @@
 >		&gt;
 ""		&quot;
 '' 		&apos;
+	<name>John &amp; Doe</name>
 You cannot use these normally --><nsfwgames>
 	<settings>
 		<otherSettings enabled="false">darkmode</otherSettings>
@@ -71,14 +72,4 @@ You cannot use these normally --><nsfwgames>
 			<selfNote>-</selfNote>
 		</game>
 	</source>
-</nsfwgames><!-- Special char: 
-
-<students university="PTE">
-	<student nationality="magyar">
-		<name>John &amp; Doe</name>
-		<major>prog.info</major>
-		<year>1</year>
-	</student>
-</students>
-
-You cannot use these normally -->
+</nsfwgames>

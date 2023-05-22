@@ -26,7 +26,7 @@ Games tab:
 
 Other tab:
 
-- [ ] Show game info needs more options, but the first five is good
+- [x] Show game info needs more options, but the first five is good
 - [ ] FAQ
 - [ ] Credits
 
@@ -47,7 +47,7 @@ Settings tab:
 
 ### Limitations and bugs
 
-- [ ] You have to reastart the app to see edited columns
+- [x] ~~You have to reastart the app to see edited columns~~ Not anymore
 
 ---
 ---

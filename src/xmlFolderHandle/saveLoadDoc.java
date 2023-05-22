@@ -24,7 +24,7 @@ public class saveLoadDoc {
 			return dom;
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error loading file", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error loading database file", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		return null;
 	}
@@ -37,7 +37,7 @@ public class saveLoadDoc {
 			transformer.transform(domsource, result);
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error saving file", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error saving database file", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 

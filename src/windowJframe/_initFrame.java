@@ -28,7 +28,7 @@ public class _initFrame extends JFrame implements ActionListener {
 	JMenuBar mb;
 
 	JMenuItem addGame, removeGame, updateList;
-	JMenuItem refreshFromAPI, refreshFile, saveFileToDifferent;
+	JMenuItem refreshFromAPI, refreshEverything, saveFileToDifferent;
 
 	JCheckBoxMenuItem darkMode, autoFetchNews, autoUpdateGames;
 	JCheckBoxMenuItem showID, showName, showDeveloper, showPlayedVersion, showDateOfLastUpdate, showhowFarUserPlayed, showDeletedFromPc;
@@ -36,9 +36,8 @@ public class _initFrame extends JFrame implements ActionListener {
 
 	JMenuItem dataToShow, faq, credits;
 
-	JTable table;
+	static JTable table;
 	public void WindowCreate(String[] columnNames, Object[][] dataFromXMLFile) {
-		// TODO - reload table after setting change
 		setTitle("Hentai Game Database");
 		setSize(1500, 1000);
 		// TODO have small minimum size
@@ -53,14 +52,14 @@ public class _initFrame extends JFrame implements ActionListener {
 		games.addSeparator();
 		games.add(saveFileToDifferent = new JMenuItem("Save file to different"));
 		games.addSeparator();
-		games.add(refreshFile = new JMenuItem("File refresh"));
+		games.add(refreshEverything = new JMenuItem("Refresh everything"));
 		games.add(refreshFromAPI = new JMenuItem("API refresh"));
 		addGame.addActionListener(this);
 		removeGame.addActionListener(this);
 		updateList.addActionListener(this);
 		saveFileToDifferent.addActionListener(this);
 		refreshFromAPI.addActionListener(this);
-		refreshFile.addActionListener(this);
+		refreshEverything.addActionListener(this);
 
 		boolean[] columnVisibility, otherSettings;
 		Document dom = saveLoadDoc.loadDocument();
@@ -111,10 +110,10 @@ public class _initFrame extends JFrame implements ActionListener {
 		show.add(showPlayedVersion = new JCheckBoxMenuItem("Played version", columnVisibility[3]));
 		show.add(showDateOfLastUpdate = new JCheckBoxMenuItem("Date of last update", columnVisibility[4]));
 		show.add(showhowFarUserPlayed = new JCheckBoxMenuItem("Player prograssion", columnVisibility[5]));
-		show.add(showDeletedFromPc = new JCheckBoxMenuItem("Deleted from pc", columnVisibility[6]));
+		show.add(showDeletedFromPc = new JCheckBoxMenuItem("Still on pc?", columnVisibility[6]));
 		show.add(showEngine = new JCheckBoxMenuItem("Engine", columnVisibility[7]));
 		// show.add(showOS = new JCheckBoxMenuItem("OS", columnVisibility[8]));
-		show.add(ShowSelfNote = new JCheckBoxMenuItem("Self note", columnVisibility[9]));
+		show.add(ShowSelfNote = new JCheckBoxMenuItem("Personal Notes", columnVisibility[9]));
 
 		settings.addSeparator();
 		settings.add(darkMode = new JCheckBoxMenuItem("Dark mode", otherSettings[0]));
@@ -192,7 +191,7 @@ public class _initFrame extends JFrame implements ActionListener {
 									String oldengine = e.getElementsByTagName("engine").item(0).getTextContent().trim();
 									// String oldos = e.getElementsByTagName("os").item(0).getTextContent().trim();
 									String oldselfNote = e.getElementsByTagName("selfNote").item(0).getTextContent().trim();
-									String[] columnNames = {"ID", "Name", "Developer", "Played version", "Date of last update", "Player prograssion", "Deleted from pc", "Engine", "Self note"};
+									String[] columnNames = {"ID", "Name", "Developer", "Played version", "Date of last update", "Player prograssion", "Still on pc?", "Engine", "Personal Notes"};
 									Object[][] data = {{ids, oldname, olddeveloper, oldplayed_version, olddateof_lastupate, oldhowFarUserPlayed, olddeletedFromPc, oldengine, oldselfNote}};
 									JTable table = new JTable(data, columnNames);
 									table.setBounds(30, 40, 200, 300);
@@ -215,10 +214,10 @@ public class _initFrame extends JFrame implements ActionListener {
 										"Played version:", newplayed_version,
 										"Date of last update:", newdateof_lastupate,
 										"Player prograssion:", newhowFarUserPlayed,
-										"Deleted from pc:", newdeletedFromPc,
+										"Still on pc?:", newdeletedFromPc,
 										"Engine:", newengine,
 										// "OS:", newos,
-										"Self note:", newselfNote
+										"Personal Notes:", newselfNote
 									};
 									int option = JOptionPane.showConfirmDialog(null, message2, "Update game", JOptionPane.OK_CANCEL_OPTION);
 									if (option == JOptionPane.OK_OPTION) {
@@ -269,6 +268,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		}
 	}
 
+	public static void refreshTable(){saveLoadDoc.reloadTable(table);}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// out.println(e);
@@ -278,38 +278,36 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Remove game": removeGameFromFile.removeOneGameFromFile(); break;
 			case "Update game": updateGameFromToFile(); break;
 			case "Save file to different":
-				out.println("Save file to different");
-				break;
-			case "File refresh":
-				out.println("File refresh");
-				break;
+					out.println("Save file to different");
+					break;
+			case "Refresh everything": refreshTable(); break;
 			case "API refresh":
-				out.println("API refresh");
-				break;
+					out.println("API refresh");
+					break;
 			case "ID": settingsManager.columnVisibility(gac); break;
 			case "Name": settingsManager.columnVisibility(gac); break;
 			case "Developer": settingsManager.columnVisibility(gac); break;
 			case "Played version": settingsManager.columnVisibility(gac); break;
 			case "Date of last update": settingsManager.columnVisibility(gac); break;
 			case "Player prograssion": settingsManager.columnVisibility(gac); break;
-			case "Deleted from pc": settingsManager.columnVisibility(gac); break;
+			case "Still on pc?": settingsManager.columnVisibility(gac); break;
 			case "Engine": settingsManager.columnVisibility(gac); break;
 			// case "OS": settingsManager.columnVisibility(gac); break;
-			case "Self note": settingsManager.columnVisibility(gac); break;
+			case "Personal Notes": settingsManager.columnVisibility(gac); break;
 			case "Dark mode":
-				out.println("Dark mode");
-				break;
+					out.println("Dark mode");
+					break;
 			case "Auto fetch game updates":
-				out.println("Auto fetch game updates");
-				break;
+					out.println("Auto fetch game updates");
+					break;
 			case "Auto update games":
-				out.println("Auto update games");
-				break;
+					out.println("Auto update games");
+					break;
 			case "FAQ": otherButtonsThingies.FACKQU(); break;
 			case "Credits": otherButtonsThingies.money(); break;
 			case "Exit":
-				out.println("Exit");
-				break;
+					out.println("Exit");
+					break;
 			default: JOptionPane.showMessageDialog(null, "Error, this should never happen!!!", "Error", JOptionPane.ERROR_MESSAGE); break;
 		}
 	}

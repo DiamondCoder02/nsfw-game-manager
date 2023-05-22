@@ -16,6 +16,7 @@ import xmlFolderHandle.isIDInDatabase;
 import xmlFolderHandle.saveLoadDoc;
 
 public class updateGameFromToFile {
+	// TODO fix updateGame
 	public static void updateOneGameFromToFile(){
 		JOptionPane optionPane = new JOptionPane();
 		JTextField id = new JTextField();

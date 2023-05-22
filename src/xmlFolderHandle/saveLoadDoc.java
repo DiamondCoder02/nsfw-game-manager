@@ -3,6 +3,7 @@ package xmlFolderHandle;
 import java.io.File;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -38,5 +39,12 @@ public class saveLoadDoc {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Error saving file", "Error", JOptionPane.ERROR_MESSAGE);
 		}
+	}
+
+	public static void reloadTable(JTable table) {
+		Document dom = saveLoadDoc.loadDocument();
+		String[] columnNames = _initXml.allColumns(dom);
+		Object[][] data = _initXml.loadGames(dom, columnNames);
+		table.setModel(new JTable(data, columnNames).getModel());
 	}
 }

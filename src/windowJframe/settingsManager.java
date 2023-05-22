@@ -1,7 +1,5 @@
 package windowJframe;
 
-import javax.swing.JOptionPane;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -30,8 +28,8 @@ public class settingsManager {
 							} else {
 								e2.setAttribute("enabled", "true");
 							}
-							JOptionPane.showMessageDialog(null, "Changes will be visible after restart", "Success", JOptionPane.INFORMATION_MESSAGE);
 							saveLoadDoc.saveDocument(dom);
+							_initFrame.refreshTable();
 						}
 					}
 				}

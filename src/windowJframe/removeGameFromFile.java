@@ -47,9 +47,9 @@ public class removeGameFromFile {
 											sourceNode.removeChild(gameNode);
 											saveLoadDoc.saveDocument(dom);
 											JOptionPane.showMessageDialog(null, "Game with id: "+ids+" and name: "+name+" has been removed", "Success", JOptionPane.INFORMATION_MESSAGE);
+											_initFrame.refreshTable();
 										} else { JOptionPane.showMessageDialog(null, "Cancelled", "Success", JOptionPane.INFORMATION_MESSAGE); }
-										int optionToRepeat = JOptionPane.showConfirmDialog(null, "Do you want to delete another game?", "Delete game", JOptionPane.YES_NO_OPTION);
-										if (optionToRepeat == JOptionPane.NO_OPTION) { repeat = false; break; } else { break; }
+										break;
 									}
 								}
 							}
@@ -60,10 +60,10 @@ public class removeGameFromFile {
 				}
 			} else {
 				JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" doesn't exists", "Error", JOptionPane.ERROR_MESSAGE);
-				int optionToRepeat = JOptionPane.showConfirmDialog(null, "Do you want to delete another game?", "Delete game", JOptionPane.YES_NO_OPTION);
-				if (optionToRepeat == JOptionPane.NO_OPTION) { repeat = false; }
 				return;
 			}
+			int optionToRepeat = JOptionPane.showConfirmDialog(null, "Do you want to delete another game?", "Delete game", JOptionPane.YES_NO_OPTION);
+			if (optionToRepeat == JOptionPane.NO_OPTION) { repeat = false; }
 		}
 	}
 }

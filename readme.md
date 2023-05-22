@@ -26,9 +26,9 @@ Games tab:
 
 Other tab:
 
-- [x] Show game info needs more options, but the first five is good
-- [ ] FAQ
-- [ ] Credits
+- [x] ~~Show game info needs more options, but the first five is good~~
+- [x] ~~FAQ~~
+- [x] ~~Credits~~
 
 Settings tab:
 
@@ -48,6 +48,7 @@ Settings tab:
 ### Limitations and bugs
 
 - [x] ~~You have to reastart the app to see edited columns~~ Not anymore
+- [ ] If there is not a single line it table unable to add new game
 
 ---
 ---

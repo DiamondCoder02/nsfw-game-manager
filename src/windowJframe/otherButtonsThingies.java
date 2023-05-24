@@ -1,12 +1,39 @@
 package windowJframe;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+import xmlFolderHandle.saveLoadDoc;
+
 public class otherButtonsThingies {
+	public static void saveFileCopy(){ // TODO saveFileCopy
+		JFileChooser chooser = new JFileChooser(); 
+		chooser.setCurrentDirectory(new java.io.File("."));
+		chooser.setDialogTitle("Save file copy");
+		chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		chooser.setAcceptAllFileFilterUsed(false);
+		
+		if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
+			System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
+			System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
+
+			String path = chooser.getSelectedFile().toString();
+			if (!path.endsWith(".xml")) { path = path+".xml"; }
+			saveLoadDoc.saveDocument(path);
+		}
+		else {
+			System.out.println("No Selection ");
+			return;
+		}
+	}
+
+
 	public static void FACKQU(){ // TODO faq
 		JOptionPane.showMessageDialog(null, "FAQ\n\n"+
 		"Q: What is this?\nA: A simple excel like hentai game manager.\n\n"+
 		"Q: Why this exist?\nA: Because I had enough managing my games in an excel table and wanted something better.\n\n"+
+		"Q: Where the data is stored?\nA: Everything is saved at: C:\\Users\\{name}\\AppData\\Roaming\\DiamondCoder\\nsfwGameManager\\hentai.xml\n"+
+		"You can also save a copy under \"Games\" => \"Save file copy\" button.\n\n"+
 		"Q: Features?\nA: -----*Currently:*-----\n"+
 		"- Add, store, update, remove game infos manually\n"+
 		"-----*Plans:*-----\n"+
@@ -16,7 +43,7 @@ public class otherButtonsThingies {
 		"- Colorful table\n"+
 		"- (Far future) If I can, I will also add to download/detect what games are downloaded\n"+
 		"\n"+
-		"Q: qu?\nA: an\n\n",
+		"Q: placeholder?\nA: placeholder!\n\n",
 		"Frequently Asked Questions", 
 		JOptionPane.INFORMATION_MESSAGE);
 	}
@@ -32,5 +59,12 @@ public class otherButtonsThingies {
 		"Full open source: https://github.com/DiamondPRO02/nsfw-game-manager",
 		"Credit", 
 		JOptionPane.INFORMATION_MESSAGE);
+	}
+
+	public static void sureAboutExit(){
+		int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit?", "Exit", JOptionPane.OK_CANCEL_OPTION);
+		if (option == JOptionPane.OK_OPTION) {
+			System.exit(0);
+		}
 	}
 }

@@ -46,6 +46,21 @@ public class saveLoadDoc {
 		}
 	}
 
+	public static void saveDocument(String path){
+		try {
+			Document dom = loadDocument();
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			// transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			DOMSource domsource = new DOMSource(dom);
+			StreamResult result = new StreamResult(path);
+			transformer.transform(domsource, result);
+		} catch (Exception e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Error saving database file", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
 	public static void reloadTable(JTable table) {
 		Document dom = saveLoadDoc.loadDocument();
 		String[] columnNames = _initXml.allColumns(dom);

@@ -13,6 +13,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import org.w3c.dom.Document;
@@ -146,6 +147,9 @@ public class _initFrame extends JFrame implements ActionListener {
 		setLayout(new BorderLayout());
 		add(table.getTableHeader(), BorderLayout.PAGE_START);
 		add(table, BorderLayout.CENTER);
+
+        JScrollPane pane = new JScrollPane(table);
+        add(pane, BorderLayout.CENTER);
 
 		JMenuItem exit;
 		mb.add(exit = new JMenuItem("Exit"));

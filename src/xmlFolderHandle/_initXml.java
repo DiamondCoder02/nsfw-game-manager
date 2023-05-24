@@ -39,13 +39,14 @@ public class _initXml {
 	}
 
 	public static Object[][] loadGames(Document dom, String[] columnNames) {
-		Object[][] allDataFromFile = new Object[100][10];
+		Object[][] allDataFromFile = null;
 		Integer counter = 0;
 		NodeList source = dom.getElementsByTagName("source");
 		for (int i = 0; i < source.getLength(); i++) {
 			Node sourceNode = source.item(i);
 			if (sourceNode.getNodeType() == Node.ELEMENT_NODE) {
 				NodeList game = sourceNode.getChildNodes();
+				allDataFromFile = new Object[game.getLength()][columnNames.length];
 				for (int j = 0; j < game.getLength(); j++) {
 					Node gameNode = game.item(j);
 					if (gameNode.getNodeType() == Node.ELEMENT_NODE) {

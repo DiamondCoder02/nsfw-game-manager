@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 import xmlFolderHandle.saveLoadDoc;
 
 public class otherButtonsThingies {
-	public static void saveFileCopy(){ // TODO saveFileCopy
+	public static void saveFileCopy(){
 		JFileChooser chooser = new JFileChooser(); 
 		chooser.setCurrentDirectory(new java.io.File("."));
 		chooser.setDialogTitle("Save file copy");

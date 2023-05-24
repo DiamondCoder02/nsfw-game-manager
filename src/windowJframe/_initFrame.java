@@ -249,6 +249,7 @@ public class _initFrame extends JFrame implements ActionListener {
 										// e.getElementsByTagName("os").item(0).setTextContent(newosValue);
 										e.getElementsByTagName("selfNote").item(0).setTextContent(newselfNoteValue);
 										saveLoadDoc.saveDocument(dom);
+										_initFrame.refreshTable();
 										JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" has been updated", "Success", JOptionPane.INFORMATION_MESSAGE);
 										break;
 									} else {

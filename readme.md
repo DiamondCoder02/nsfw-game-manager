@@ -7,6 +7,10 @@ and to torture myself
 
 Because I'm lazy everything is handled with ids, mostly.
 
+## Important
+
+- Database file: AppData\Roaming\DiamondCoder\nsfwGameManager\hentai.xml
+
 ---
 ---
 
@@ -48,7 +52,7 @@ Settings tab:
 ### Limitations and bugs
 
 - [x] ~~You have to reastart the app to see edited columns~~ Not anymore
-- [ ] If there is not a single line it table unable to add new game
+- [x] ~~If there is not a single line it table unable to add new game~~ Fixed
 
 ---
 ---

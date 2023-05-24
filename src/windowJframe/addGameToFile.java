@@ -66,53 +66,42 @@ public class addGameToFile {
 					for (int i = 0; i < source.getLength(); i++) {
 						Node sourceNode = source.item(i);
 						if (sourceNode.getNodeType() == Node.ELEMENT_NODE) {
-							NodeList game = sourceNode.getChildNodes();
-							for (int j = 0; j < game.getLength(); j++) {
-								Node gameNode = game.item(j);
-								if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
-									Element e = (Element) gameNode;
-									String ids = e.getAttribute("id").trim();
-									if (ids.equals(idValue)) {
-										JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" already exists", "Error", JOptionPane.ERROR_MESSAGE);
-									} else {
-										Element newGame = dom.createElement("game");
-										Element newName = dom.createElement("name");
-										Element newDeveloper = dom.createElement("developer");
-										Element newPlayed_version = dom.createElement("played_version");
-										Element newDateof_lastupate = dom.createElement("dateof_lastupate");
-										Element newHowFarUserPlayed = dom.createElement("howFarUserPlayed");
-										Element newDeletedFromPc = dom.createElement("deletedFromPc");
-										Element newEngine = dom.createElement("engine");
-										//Element newOS = dom.createElement("OS");
-										Element newSelfNote = dom.createElement("selfNote");
-										newGame.setAttribute("id", idValue);
-										newName.setTextContent(nameValue);
-										newDeveloper.setTextContent(developerValue);
-										newPlayed_version.setTextContent(played_versionValue);
-										newDateof_lastupate.setTextContent(dateOfLastUpdateValue);
-										newHowFarUserPlayed.setTextContent(howFarUserPlayedValue);
-										newDeletedFromPc.setTextContent(deletedFromPcValue);
-										newEngine.setTextContent(engineValue);
-										//newOS.setTextContent(osValue);
-										newSelfNote.setTextContent(selfNoteValue);
-										newGame.appendChild(newName);
-										newGame.appendChild(newDeveloper);
-										newGame.appendChild(newPlayed_version);
-										newGame.appendChild(newDateof_lastupate);
-										newGame.appendChild(newHowFarUserPlayed);
-										newGame.appendChild(newDeletedFromPc);
-										newGame.appendChild(newEngine);
-										//newGame.appendChild(newOS);
-										newGame.appendChild(newSelfNote);
-										sourceNode.appendChild(newGame);
-										saveLoadDoc.saveDocument(dom);
-										JOptionPane.showMessageDialog(null, nameValue+" with id: "+idValue+" has been added", "Success", JOptionPane.INFORMATION_MESSAGE);
-										_initFrame.refreshTable();
-									}
-									int option = JOptionPane.showConfirmDialog(null, "Do you want to add another game?", "Add game", JOptionPane.YES_NO_OPTION);
-									if (option == JOptionPane.NO_OPTION) { repeat = false; break; } else { break; }
-								}
-							}
+							Element newGame = dom.createElement("game");
+							Element newName = dom.createElement("name");
+							Element newDeveloper = dom.createElement("developer");
+							Element newPlayed_version = dom.createElement("played_version");
+							Element newDateof_lastupate = dom.createElement("dateof_lastupate");
+							Element newHowFarUserPlayed = dom.createElement("howFarUserPlayed");
+							Element newDeletedFromPc = dom.createElement("deletedFromPc");
+							Element newEngine = dom.createElement("engine");
+							//Element newOS = dom.createElement("OS");
+							Element newSelfNote = dom.createElement("selfNote");
+							newGame.setAttribute("id", idValue);
+							newName.setTextContent(nameValue);
+							newDeveloper.setTextContent(developerValue);
+							newPlayed_version.setTextContent(played_versionValue);
+							newDateof_lastupate.setTextContent(dateOfLastUpdateValue);
+							newHowFarUserPlayed.setTextContent(howFarUserPlayedValue);
+							newDeletedFromPc.setTextContent(deletedFromPcValue);
+							newEngine.setTextContent(engineValue);
+							//newOS.setTextContent(osValue);
+							newSelfNote.setTextContent(selfNoteValue);
+							newGame.appendChild(newName);
+							newGame.appendChild(newDeveloper);
+							newGame.appendChild(newPlayed_version);
+							newGame.appendChild(newDateof_lastupate);
+							newGame.appendChild(newHowFarUserPlayed);
+							newGame.appendChild(newDeletedFromPc);
+							newGame.appendChild(newEngine);
+							//newGame.appendChild(newOS);
+							newGame.appendChild(newSelfNote);
+							sourceNode.appendChild(newGame);
+							saveLoadDoc.saveDocument(dom);
+							_initFrame.refreshTable();
+							JOptionPane.showMessageDialog(null, nameValue+" with id: "+idValue+" has been added", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+							int option = JOptionPane.showConfirmDialog(null, "Do you want to add another game?", "Add game", JOptionPane.YES_NO_OPTION);
+							if (option == JOptionPane.NO_OPTION) { repeat = false; break; } else { break; }
 						}
 					}
 				} catch (Exception e) {

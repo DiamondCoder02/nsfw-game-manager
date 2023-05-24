@@ -46,7 +46,7 @@ public class saveLoadDoc {
 		}
 	}
 
-	public static void saveDocument(String path){
+	public static void saveADocument(String path){
 		try {
 			Document dom = loadDocument();
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -102,38 +102,6 @@ public class saveLoadDoc {
 
 			<selfNote>This is shit games</selfNote>
 		</game>
-
-		<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-		<nsfwgames>
-			<settings>
-				<otherSettings enabled="false">darkmode</otherSettings>
-				<otherSettings enabled="false">autoFetchNews</otherSettings>
-				<otherSettings enabled="false">autoUpdateGames</otherSettings>
-				<showncolumns enabled="true">ID</showncolumns>
-				<showncolumns enabled="true">Name</showncolumns>
-				<showncolumns enabled="true">Developer</showncolumns>
-				<showncolumns enabled="true">Played version</showncolumns>
-				<showncolumns enabled="true">Date of last update</showncolumns>
-				<showncolumns enabled="true">Player prograssion</showncolumns>
-				<showncolumns enabled="true">Still on pc?</showncolumns>
-				<showncolumns enabled="true">Engine</showncolumns>
-					<showncolumns enabled="false">OS</showncolumns>
-				<showncolumns enabled="true">Personal Notes</showncolumns>
-			</settings>
-			<source from="f95zone">
-				<game id="19095">
-					<name>2037 - Almost ready Inc.</name>
-					<developer>MadAlice</developer>
-					<played_version>v0.9.6</played_version>
-					<dateof_lastupate>2020-06-22</dateof_lastupate>
-					<howFarUserPlayed>Completed</howFarUserPlayed>
-					<deletedFromPc>yes</deletedFromPc>
-					<engine>HTML</engine>
-						<OS and="n" ios="n" lin="n" mac="n" other="n" win="y">-</OS>
-					<selfNote>-</selfNote>
-				</game>
-			</source>
-		</nsfwgames>
 		*/
 		try {
 			new File(System.getenv("APPDATA")+"\\DiamondCoder\\nsfwGameManager").mkdirs(); 
@@ -149,17 +117,17 @@ public class saveLoadDoc {
 
 			Element settings = doc.createElement("settings");
 			rootElement.appendChild(settings);
-			Element otherSettings1 = doc.createElement("otherSettings");
+			Element otherSettings1 = doc.createElement("othersettings");
 			otherSettings1.setAttribute("enabled", "false");
-			otherSettings1.appendChild(doc.createTextNode("darkmode"));
+			otherSettings1.appendChild(doc.createTextNode("Dark mode"));
 			settings.appendChild(otherSettings1);
-			Element otherSettings2 = doc.createElement("otherSettings");
+			Element otherSettings2 = doc.createElement("othersettings");
 			otherSettings2.setAttribute("enabled", "false");
-			otherSettings2.appendChild(doc.createTextNode("autoFetchNews"));
+			otherSettings2.appendChild(doc.createTextNode("Auto fetch game updates"));
 			settings.appendChild(otherSettings2);
-			Element otherSettings3 = doc.createElement("otherSettings");
+			Element otherSettings3 = doc.createElement("othersettings");
 			otherSettings3.setAttribute("enabled", "false");
-			otherSettings3.appendChild(doc.createTextNode("autoUpdateGames"));
+			otherSettings3.appendChild(doc.createTextNode("Auto update games"));
 			settings.appendChild(otherSettings3);
 			Element showncolumns1 = doc.createElement("showncolumns");
 			showncolumns1.setAttribute("enabled", "true");

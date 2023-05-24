@@ -19,7 +19,7 @@ public class otherButtonsThingies {
 
 			String path = chooser.getSelectedFile().toString();
 			if (!path.endsWith(".xml")) { path = path+".xml"; }
-			saveLoadDoc.saveDocument(path);
+			saveLoadDoc.saveADocument(path);
 		}
 		else {
 			System.out.println("No Selection ");
@@ -56,7 +56,8 @@ public class otherButtonsThingies {
 		"The main of this was to convert my old excel file into something more readeble.\n"+
 		"Main focus is something dynamic and easy to use for hentai games.\n\n"+
 		"Thank you for using this program.\n\n"+
-		"Full open source: https://github.com/DiamondPRO02/nsfw-game-manager",
+		"Full open source: https://github.com/DiamondPRO02/nsfw-game-manager\n"+
+		"Support me on Patreon: https://www.patreon.com/DiamondCoder",
 		"Credit", 
 		JOptionPane.INFORMATION_MESSAGE);
 	}

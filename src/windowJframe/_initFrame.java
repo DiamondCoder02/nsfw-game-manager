@@ -3,25 +3,23 @@ package windowJframe;
 import static java.lang.System.out;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import xmlFolderHandle.isIDInDatabase;
 import xmlFolderHandle.saveLoadDoc;
 
 public class _initFrame extends JFrame implements ActionListener {
@@ -38,9 +36,10 @@ public class _initFrame extends JFrame implements ActionListener {
 
 	static JTable table;
 	public void WindowCreate(String[] columnNames, Object[][] dataFromXMLFile) {
+		// TODO text size small on large display - https://bugs.openjdk.org/browse/JDK-8202973
 		setTitle("Hentai Game Database");
 		setSize(1500, 1000);
-		// TODO have small minimum size
+		setMinimumSize(new Dimension(500, 500));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setJMenuBar(mb = new JMenuBar());
 
@@ -50,7 +49,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		games.add(removeGame = new JMenuItem("Remove game"));
 		games.add(updateList = new JMenuItem("Update game"));
 		games.addSeparator();
-		games.add(saveFileToDifferent = new JMenuItem("Save file to different"));
+		games.add(saveFileToDifferent = new JMenuItem("Save file copy"));
 		games.addSeparator();
 		games.add(refreshEverything = new JMenuItem("Refresh everything"));
 		games.add(refreshFromAPI = new JMenuItem("API refresh"));
@@ -81,7 +80,7 @@ public class _initFrame extends JFrame implements ActionListener {
 					}
 				}
 			}
-			NodeList otherSettingsNode = e.getElementsByTagName("otherSettings");
+			NodeList otherSettingsNode = e.getElementsByTagName("othersettings");
 			otherSettings = new boolean[otherSettingsNode.getLength()];
 			for (int i = 0; i < otherSettingsNode.getLength(); i++) {
 				Node otherSettingsNodeElement = otherSettingsNode.item(i);
@@ -148,125 +147,11 @@ public class _initFrame extends JFrame implements ActionListener {
 		add(table.getTableHeader(), BorderLayout.PAGE_START);
 		add(table, BorderLayout.CENTER);
 
-		// TODO exit
 		JMenuItem exit;
-		mb.add(exit = new JMenu("Exit"));
+		mb.add(exit = new JMenuItem("Exit"));
 		exit.addActionListener(this);
 
 		setVisible(true);
-	}
-
-	public void updateGameFromToFile(){
-		JOptionPane optionPane = new JOptionPane();
-		JTextField id = new JTextField();
-		Object[] message = {
-			"ID of the game to update:", id
-		};
-		optionPane.setMessage(message);
-		optionPane.setMessageType(JOptionPane.PLAIN_MESSAGE);
-		JDialog dialog = optionPane.createDialog(null, "Update game");
-		dialog.setVisible(true);
-		String idValue = id.getText();
-		if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "ID is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
-		if (isIDInDatabase.isInDatabase(idValue)) {
-			try{
-				Document dom = saveLoadDoc.loadDocument();
-				NodeList source = dom.getElementsByTagName("source");
-				for (int i = 0; i < source.getLength(); i++) {
-					Node sourceNode = source.item(i);
-					if (sourceNode.getNodeType() == Node.ELEMENT_NODE) {
-						NodeList game = sourceNode.getChildNodes();
-						for (int j = 0; j < game.getLength(); j++) {
-							Node gameNode = game.item(j);
-							if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
-								Element e = (Element) gameNode;
-								String ids = e.getAttribute("id").trim();
-								if (ids.equals(idValue)) {
-									String oldname = e.getElementsByTagName("name").item(0).getTextContent().trim();
-									String olddeveloper = e.getElementsByTagName("developer").item(0).getTextContent().trim();
-									String oldplayed_version = e.getElementsByTagName("played_version").item(0).getTextContent().trim();
-									String olddateof_lastupate = e.getElementsByTagName("dateof_lastupate").item(0).getTextContent().trim();
-									String oldhowFarUserPlayed = e.getElementsByTagName("howFarUserPlayed").item(0).getTextContent().trim();
-									String olddeletedFromPc = e.getElementsByTagName("deletedFromPc").item(0).getTextContent().trim();
-									String oldengine = e.getElementsByTagName("engine").item(0).getTextContent().trim();
-									// String oldos = e.getElementsByTagName("os").item(0).getTextContent().trim();
-									String oldselfNote = e.getElementsByTagName("selfNote").item(0).getTextContent().trim();
-									String[] columnNames = {"ID", "Name", "Developer", "Played version", "Date of last update", "Player prograssion", "Still on pc?", "Engine", "Personal Notes"};
-									Object[][] data = {{ids, oldname, olddeveloper, oldplayed_version, olddateof_lastupate, oldhowFarUserPlayed, olddeletedFromPc, oldengine, oldselfNote}};
-									JTable table = new JTable(data, columnNames);
-									table.setBounds(30, 40, 200, 300);
-									setLayout(new BorderLayout());
-									add(table.getTableHeader(), BorderLayout.PAGE_START);
-									add(table, BorderLayout.CENTER);
-									JTextField newname = new JTextField();
-									JTextField newdeveloper = new JTextField();
-									JTextField newplayed_version = new JTextField();
-									JTextField newdateof_lastupate = new JTextField();
-									JTextField newhowFarUserPlayed = new JTextField();
-									JTextField newdeletedFromPc = new JTextField();
-									JTextField newengine = new JTextField();
-									// JTextField newos = new JTextField();
-									JTextField newselfNote = new JTextField();
-									Object[] message2 = {
-										"ID: "+ids,
-										"Name: (required)", newname,
-										"Developer:", newdeveloper,
-										"Played version:", newplayed_version,
-										"Date of last update:", newdateof_lastupate,
-										"Player prograssion:", newhowFarUserPlayed,
-										"Still on pc?:", newdeletedFromPc,
-										"Engine:", newengine,
-										// "OS:", newos,
-										"Personal Notes:", newselfNote
-									};
-									int option = JOptionPane.showConfirmDialog(null, message2, "Update game", JOptionPane.OK_CANCEL_OPTION);
-									if (option == JOptionPane.OK_OPTION) {
-										String newnameValue = newname.getText();
-										String newdeveloperValue = newdeveloper.getText();
-										String newplayed_versionValue = newplayed_version.getText();
-										String newdateof_lastupateValue = newdateof_lastupate.getText();
-										String newhowFarUserPlayedValue = newhowFarUserPlayed.getText();
-										String newdeletedFromPcValue = newdeletedFromPc.getText();
-										String newengineValue = newengine.getText();
-										// String newosValue = newos.getText();
-										String newselfNoteValue = newselfNote.getText();
-										if (newnameValue.equals("")) { JOptionPane.showMessageDialog(null, "name is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
-										if (newdeveloperValue.equals("")) { newdeveloperValue = olddeveloper; }
-										if (newplayed_versionValue.equals("")) { newplayed_versionValue = oldplayed_version; }
-										if (newdateof_lastupateValue.equals("")) { newdateof_lastupateValue = olddateof_lastupate; }
-										if (newhowFarUserPlayedValue.equals("")) { newhowFarUserPlayedValue = oldhowFarUserPlayed; }
-										if (newdeletedFromPcValue.equals("")) { newdeletedFromPcValue = olddeletedFromPc; }
-										if (newengineValue.equals("")) { newengineValue = oldengine; }
-										// if (newosValue.equals("")) { newosValue = oldos; }
-										if (newselfNoteValue.equals("")) { newselfNoteValue = oldselfNote; }
-										e.getElementsByTagName("name").item(0).setTextContent(newnameValue);
-										e.getElementsByTagName("developer").item(0).setTextContent(newdeveloperValue);
-										e.getElementsByTagName("played_version").item(0).setTextContent(newplayed_versionValue);
-										e.getElementsByTagName("dateof_lastupate").item(0).setTextContent(newdateof_lastupateValue);
-										e.getElementsByTagName("howFarUserPlayed").item(0).setTextContent(newhowFarUserPlayedValue);
-										e.getElementsByTagName("deletedFromPc").item(0).setTextContent(newdeletedFromPcValue);
-										e.getElementsByTagName("engine").item(0).setTextContent(newengineValue);
-										// e.getElementsByTagName("os").item(0).setTextContent(newosValue);
-										e.getElementsByTagName("selfNote").item(0).setTextContent(newselfNoteValue);
-										saveLoadDoc.saveDocument(dom);
-										_initFrame.refreshTable();
-										JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" has been updated", "Success", JOptionPane.INFORMATION_MESSAGE);
-										break;
-									} else {
-										JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" has not been updated", "Success", JOptionPane.INFORMATION_MESSAGE);
-										break;
-									}
-								}
-							}
-						}
-					}
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else {
-			JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" doesn't exists", "Error", JOptionPane.ERROR_MESSAGE); return;
-		}
 	}
 
 	public static void refreshTable(){saveLoadDoc.reloadTable(table);}
@@ -277,38 +162,29 @@ public class _initFrame extends JFrame implements ActionListener {
 		switch (gac) {
 			case "Add game": addGameToFile.addOneGameToFile(); break;
 			case "Remove game": removeGameFromFile.removeOneGameFromFile(); break;
-			case "Update game": updateGameFromToFile(); break;
-			case "Save file to different":
-					out.println("Save file to different");
-					break;
+			case "Update game": updateGameFromToFile.updateOneGameFromToFile(); break;
+			case "Save file copy": otherButtonsThingies.saveFileCopy();	break;
 			case "Refresh everything": refreshTable(); break;
 			case "API refresh":
+					JOptionPane.showMessageDialog(null, "API is not implemented at all yet.\nCome back later.", "Error", JOptionPane.ERROR_MESSAGE);
 					out.println("API refresh");
 					break;
-			case "ID": settingsManager.columnVisibility(gac); break;
-			case "Name": settingsManager.columnVisibility(gac); break;
-			case "Developer": settingsManager.columnVisibility(gac); break;
-			case "Played version": settingsManager.columnVisibility(gac); break;
-			case "Date of last update": settingsManager.columnVisibility(gac); break;
-			case "Player prograssion": settingsManager.columnVisibility(gac); break;
-			case "Still on pc?": settingsManager.columnVisibility(gac); break;
-			case "Engine": settingsManager.columnVisibility(gac); break;
-			// case "OS": settingsManager.columnVisibility(gac); break;
-			case "Personal Notes": settingsManager.columnVisibility(gac); break;
-			case "Dark mode":
-					out.println("Dark mode");
-					break;
-			case "Auto fetch game updates":
-					out.println("Auto fetch game updates");
-					break;
-			case "Auto update games":
-					out.println("Auto update games");
-					break;
+			case "ID": settingsManager.xmlSettings("showncolumns", gac); break;
+			case "Name": settingsManager.xmlSettings("showncolumns", gac); break;
+			case "Developer": settingsManager.xmlSettings("showncolumns", gac); break;
+			case "Played version": settingsManager.xmlSettings("showncolumns", gac); break;
+			case "Date of last update": settingsManager.xmlSettings("showncolumns", gac); break;
+			case "Player prograssion": settingsManager.xmlSettings("showncolumns", gac); break;
+			case "Still on pc?": settingsManager.xmlSettings("showncolumns", gac); break;
+			case "Engine": settingsManager.xmlSettings("showncolumns", gac); break;
+			// case "OS": settingsManager.xmlSettings("showncolumns", gac); break;
+			case "Personal Notes": settingsManager.xmlSettings("showncolumns", gac); break;
+			case "Dark mode": settingsManager.xmlSettings("othersettings", gac); break; // TODO
+			case "Auto fetch game updates": settingsManager.xmlSettings("othersettings", gac); break; // TODO
+			case "Auto update games": settingsManager.xmlSettings("othersettings", gac); break; // TODO
 			case "FAQ": otherButtonsThingies.FACKQU(); break;
 			case "Credits": otherButtonsThingies.money(); break;
-			case "Exit":
-					out.println("Exit");
-					break;
+			case "Exit": otherButtonsThingies.sureAboutExit(); break;
 			default: JOptionPane.showMessageDialog(null, "Error, this should never happen!!!", "Error", JOptionPane.ERROR_MESSAGE); break;
 		}
 	}

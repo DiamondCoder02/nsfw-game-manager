@@ -1,10 +1,7 @@
 package windowJframe;
 
-import java.awt.BorderLayout;
-
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import org.w3c.dom.Document;
@@ -52,14 +49,6 @@ public class updateGameFromToFile {
 									String oldengine = e.getElementsByTagName("engine").item(0).getTextContent().trim();
 									// String oldos = e.getElementsByTagName("os").item(0).getTextContent().trim();
 									String oldselfNote = e.getElementsByTagName("selfNote").item(0).getTextContent().trim();
-									String[] columnNames = {"ID", "Name", "Developer", "Played version", "Date of last update", "Player prograssion", "Deleted from pc", "Engine", "Self note"};
-									Object[][] data = {{ids, oldname, olddeveloper, oldplayed_version, olddateof_lastupate, oldhowFarUserPlayed, olddeletedFromPc, oldengine, oldselfNote}};
-									JTable table = new JTable(data, columnNames);
-									table.setBounds(30, 40, 200, 300);
-									// TODO fix this
-									// setLayout(new BorderLayout());
-									// add(table.getTableHeader(), BorderLayout.PAGE_START);
-									// add(table, BorderLayout.CENTER);
 									JTextField newname = new JTextField();
 									JTextField newdeveloper = new JTextField();
 									JTextField newplayed_version = new JTextField();
@@ -71,7 +60,7 @@ public class updateGameFromToFile {
 									JTextField newselfNote = new JTextField();
 									Object[] message2 = {
 										"ID: "+ids,
-										"Name: (required)", newname,
+										"Name:", newname,
 										"Developer:", newdeveloper,
 										"Played version:", newplayed_version,
 										"Date of last update:", newdateof_lastupate,
@@ -92,7 +81,7 @@ public class updateGameFromToFile {
 										String newengineValue = newengine.getText();
 										// String newosValue = newos.getText();
 										String newselfNoteValue = newselfNote.getText();
-										if (newnameValue.equals("")) { JOptionPane.showMessageDialog(null, "name is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
+										if (newnameValue.equals("")) { newnameValue = oldname; }
 										if (newdeveloperValue.equals("")) { newdeveloperValue = olddeveloper; }
 										if (newplayed_versionValue.equals("")) { newplayed_versionValue = oldplayed_version; }
 										if (newdateof_lastupateValue.equals("")) { newdateof_lastupateValue = olddateof_lastupate; }

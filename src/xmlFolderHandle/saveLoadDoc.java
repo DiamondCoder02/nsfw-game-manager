@@ -36,6 +36,7 @@ public class saveLoadDoc {
 		try {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
+			// transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			DOMSource domsource = new DOMSource(dom);
 			StreamResult result = new StreamResult(path);
 			transformer.transform(domsource, result);
@@ -224,6 +225,7 @@ public class saveLoadDoc {
 			doc.appendChild(rootElement);
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
+			// transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			DOMSource domsource = new DOMSource(doc);
 			// System.out.println(System.getenv("APPDATA"));
 			StreamResult result = new StreamResult(path);

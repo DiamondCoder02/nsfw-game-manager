@@ -43,6 +43,8 @@ public class otherButtonsThingies {
 		"- Colorful table\n"+
 		"- (Far future) If I can, I will also add to download/detect what games are downloaded\n"+
 		"\n"+
+		"Q: Support?\nA: Patreon: https://www.patreon.com/DiamondCoder\n\n"+
+		"Q: Can I help code / Error in the program?\nA: All isssue and help is accepted on github: https://github.com/DiamondPRO02/nsfw-game-manager\n\n"+
 		"Q: placeholder?\nA: placeholder!\n\n",
 		"Frequently Asked Questions", 
 		JOptionPane.INFORMATION_MESSAGE);

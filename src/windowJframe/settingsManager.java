@@ -39,4 +39,31 @@ public class settingsManager {
 			e.printStackTrace();
 		}
 	}
+
+	public static boolean[] loadSettings(String tagName) {
+		boolean[] settings;
+		Document dom = saveLoadDoc.loadDocument();
+		NodeList settingsNode = dom.getElementsByTagName("settings");
+		Node settingsNodeElement = settingsNode.item(0);
+		if (settingsNodeElement.getNodeType() == Node.ELEMENT_NODE) {
+			Element e = (Element) settingsNodeElement;
+			NodeList showncolumns = e.getElementsByTagName(tagName);
+			settings = new boolean[showncolumns.getLength()];
+			for (int i = 0; i < showncolumns.getLength(); i++) {
+				Node showncolumnsNode = showncolumns.item(i);
+				if (showncolumnsNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element e2 = (Element) showncolumnsNode;
+					String enabled = e2.getAttribute("enabled").trim();
+					if (enabled.equals("true")) {
+						settings[i] = true;
+					} else {
+						settings[i] = false;
+					}
+				}
+			}
+		} else {
+			settings = new boolean[10];
+		}
+		return settings;
+	}
 }

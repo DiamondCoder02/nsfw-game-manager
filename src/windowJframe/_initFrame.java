@@ -16,11 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
 import xmlFolderHandle.saveLoadDoc;
 
 public class _initFrame extends JFrame implements ActionListener {
@@ -62,43 +57,8 @@ public class _initFrame extends JFrame implements ActionListener {
 		refreshEverything.addActionListener(this);
 
 		boolean[] columnVisibility, otherSettings;
-		Document dom = saveLoadDoc.loadDocument();
-		NodeList settingsNode = dom.getElementsByTagName("settings");
-		Node settingsNodeElement = settingsNode.item(0);
-		if (settingsNodeElement.getNodeType() == Node.ELEMENT_NODE) {
-			Element e = (Element) settingsNodeElement;
-			NodeList showncolumns = e.getElementsByTagName("showncolumns");
-			columnVisibility = new boolean[showncolumns.getLength()];
-			for (int i = 0; i < showncolumns.getLength(); i++) {
-				Node showncolumnsNode = showncolumns.item(i);
-				if (showncolumnsNode.getNodeType() == Node.ELEMENT_NODE) {
-					Element e2 = (Element) showncolumnsNode;
-					String enabled = e2.getAttribute("enabled").trim();
-					if (enabled.equals("true")) {
-						columnVisibility[i] = true;
-					} else {
-						columnVisibility[i] = false;
-					}
-				}
-			}
-			NodeList otherSettingsNode = e.getElementsByTagName("othersettings");
-			otherSettings = new boolean[otherSettingsNode.getLength()];
-			for (int i = 0; i < otherSettingsNode.getLength(); i++) {
-				Node otherSettingsNodeElement = otherSettingsNode.item(i);
-				if (otherSettingsNodeElement.getNodeType() == Node.ELEMENT_NODE) {
-					Element e2 = (Element) otherSettingsNodeElement;
-					String enabled = e2.getAttribute("enabled").trim();
-					if (enabled.equals("true")) {
-						otherSettings[i] = true;
-					} else {
-						otherSettings[i] = false;
-					}
-				}
-			}
-		} else {
-			columnVisibility = new boolean[10];
-			otherSettings = new boolean[3];
-		}
+		columnVisibility = settingsManager.loadSettings("showncolumns");
+		otherSettings = settingsManager.loadSettings("othersettings");
 
 		JMenu settings;
 		mb.add(settings = new JMenu("Settings"));

@@ -143,7 +143,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Engine": settingsManager.xmlSettings("showncolumns", gac); break;
 			// case "OS": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Personal Notes": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "Dark mode": settingsManager.xmlSettings("othersettings", gac); break; // TODO darkmode
+			case "Dark mode": settingsManager.xmlSettings("othersettings", gac); JOptionPane.showMessageDialog(null, "Not implemented yet.\nCome back later.", "Error", JOptionPane.ERROR_MESSAGE);break; // TODO darkmode
 			case "Auto fetch game updates": settingsManager.xmlSettings("othersettings", gac);JOptionPane.showMessageDialog(null, "API is not implemented at all yet.\nCome back later.", "Error", JOptionPane.ERROR_MESSAGE); break; // TODO api1
 			case "Auto update games": settingsManager.xmlSettings("othersettings", gac);JOptionPane.showMessageDialog(null, "API is not implemented at all yet.\nCome back later.", "Error", JOptionPane.ERROR_MESSAGE); break; // TODO api2
 			case "FAQ": otherButtonsThingies.FACKQU(); break;

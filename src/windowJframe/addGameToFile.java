@@ -28,17 +28,22 @@ public class addGameToFile {
 			JTextField played_version = new JTextField(15);
 			JTextField dateOfLastUpdate = new JTextField(12);
 
+			// Not played, In progress, Finish, 100% Finished
 			JRadioButton howFarUserPlayed_NotPlayed = new JRadioButton("Not played", true), howFarUserPlayed_Playing = new JRadioButton("In progress", false), howFarUserPlayed_Finished = new JRadioButton("Finish", false), howFarUserPlayed_100Percent = new JRadioButton("100% Finished", false);
 			howFarUserPlayed_NotPlayed.setActionCommand("Not played"); howFarUserPlayed_Playing.setActionCommand("In progress"); howFarUserPlayed_Finished.setActionCommand("Finish"); howFarUserPlayed_100Percent.setActionCommand("100% Finished");
 			ButtonGroup howFarUserPlayed = new ButtonGroup(); howFarUserPlayed.add(howFarUserPlayed_NotPlayed); howFarUserPlayed.add(howFarUserPlayed_Playing); howFarUserPlayed.add(howFarUserPlayed_Finished); howFarUserPlayed.add(howFarUserPlayed_100Percent);
 			JPanel howFarUserPlayedPanel = new JPanel(); howFarUserPlayedPanel.add(howFarUserPlayed_NotPlayed); howFarUserPlayedPanel.add(howFarUserPlayed_Playing); howFarUserPlayedPanel.add(howFarUserPlayed_Finished); howFarUserPlayedPanel.add(howFarUserPlayed_100Percent);
-
+			// Yes, No, Unknown
 			JRadioButton stillOnPc_yes = new JRadioButton("Yes", true), stillOnPc_no = new JRadioButton("No", false), stillOnPc_unknown = new JRadioButton("Unknown", false);
 			stillOnPc_yes.setActionCommand("yes"); stillOnPc_no.setActionCommand("no"); stillOnPc_unknown.setActionCommand("unknown");
 			ButtonGroup stillOnPc = new ButtonGroup(); stillOnPc.add(stillOnPc_yes); stillOnPc.add(stillOnPc_no); stillOnPc.add(stillOnPc_unknown);
 			JPanel stillOnPcPanel = new JPanel(); stillOnPcPanel.add(stillOnPc_yes); stillOnPcPanel.add(stillOnPc_no); stillOnPcPanel.add(stillOnPc_unknown);
+			// Flash, HTML, Java, QSP, RenPy, RPGmaker, Unity, Unreal, WinGit, WolfRPG, other/unknown
+			JRadioButton engine_Flash = new JRadioButton("Flash"), engine_HTML = new JRadioButton("HTML"), engine_Java = new JRadioButton("Java"), engine_QSP = new JRadioButton("QSP"), engine_RenPy = new JRadioButton("RenPy"), engine_RPGmaker = new JRadioButton("RPGmaker"), engine_Unity = new JRadioButton("Unity"), engine_Unreal = new JRadioButton("Unreal"), engine_WinGit = new JRadioButton("WinGit"), engine_WolfRPG = new JRadioButton("WolfRPG"), engine_other = new JRadioButton("other/unknown", true);
+			engine_Flash.setActionCommand("Flash"); engine_HTML.setActionCommand("HTML"); engine_Java.setActionCommand("Java"); engine_QSP.setActionCommand("QSP"); engine_RenPy.setActionCommand("RenPy"); engine_RPGmaker.setActionCommand("RPGmaker"); engine_Unity.setActionCommand("Unity"); engine_Unreal.setActionCommand("Unreal"); engine_WinGit.setActionCommand("WinGit"); engine_WolfRPG.setActionCommand("WolfRPG"); engine_other.setActionCommand("other/unknown");
+			ButtonGroup engineGroup = new ButtonGroup(); engineGroup.add(engine_Flash); engineGroup.add(engine_HTML); engineGroup.add(engine_Java); engineGroup.add(engine_QSP); engineGroup.add(engine_RenPy); engineGroup.add(engine_RPGmaker); engineGroup.add(engine_Unity); engineGroup.add(engine_Unreal); engineGroup.add(engine_WinGit); engineGroup.add(engine_WolfRPG); engineGroup.add(engine_other);
+			JPanel enginePanel = new JPanel(); enginePanel.add(engine_Flash); enginePanel.add(engine_HTML); enginePanel.add(engine_Java); enginePanel.add(engine_QSP); enginePanel.add(engine_RenPy); enginePanel.add(engine_RPGmaker); enginePanel.add(engine_Unity); enginePanel.add(engine_Unreal); enginePanel.add(engine_WinGit); enginePanel.add(engine_WolfRPG); enginePanel.add(engine_other);
 
-			JTextField engine = new JTextField(10);
 			//<OS win="y" lin="n" mac="n" and="y" other="y">randomOS</OS>
 			// JCheckBox os = new JCheckBox();
 			JTextField selfNote = new JTextField(50);
@@ -58,7 +63,7 @@ public class addGameToFile {
 			JLabel stillOnPclabel = new JLabel("Is the game still on pc?");
 			panel.add(stillOnPclabel); panel.add(stillOnPcPanel);
 			JLabel enginelabel = new JLabel("Engine:");
-			panel.add(enginelabel); panel.add(engine);
+			panel.add(enginelabel); panel.add(enginePanel);
 			// JLabel oslabel = new JLabel("OS:");
 			// panel.add(oslabel);
 			// panel.add(os);
@@ -74,7 +79,7 @@ public class addGameToFile {
 			String dateOfLastUpdateValue = dateOfLastUpdate.getText();
 			String howFarUserPlayedValue = howFarUserPlayed.getSelection().getActionCommand();
 			String stillOnPcValue = stillOnPc.getSelection().getActionCommand();
-			String engineValue = engine.getText();
+			String engineValue = engineGroup.getSelection().getActionCommand();
 			// String osValue = os.getText();
 			String selfNoteValue = selfNote.getText();
 

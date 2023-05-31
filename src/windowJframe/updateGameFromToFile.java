@@ -75,8 +75,16 @@ public class updateGameFromToFile {
 										JRadioButton r = (JRadioButton) stillOnPcPanel.getComponent(k);
 										if (r.getActionCommand().equals(oldstillOnPc)) { r.setSelected(true); }
 									}
+									// Flash, HTML, Java, QSP, RenPy, RPGmaker, Unity, Unreal, WinGit, WolfRPG, other/unknown
+									JRadioButton engine_Flash = new JRadioButton("Flash"), engine_HTML = new JRadioButton("HTML"), engine_Java = new JRadioButton("Java"), engine_QSP = new JRadioButton("QSP"), engine_RenPy = new JRadioButton("RenPy"), engine_RPGmaker = new JRadioButton("RPGmaker"), engine_Unity = new JRadioButton("Unity"), engine_Unreal = new JRadioButton("Unreal"), engine_WinGit = new JRadioButton("WinGit"), engine_WolfRPG = new JRadioButton("WolfRPG"), engine_other = new JRadioButton("other/unknown", true);
+									engine_Flash.setActionCommand("Flash"); engine_HTML.setActionCommand("HTML"); engine_Java.setActionCommand("Java"); engine_QSP.setActionCommand("QSP"); engine_RenPy.setActionCommand("RenPy"); engine_RPGmaker.setActionCommand("RPGmaker"); engine_Unity.setActionCommand("Unity"); engine_Unreal.setActionCommand("Unreal"); engine_WinGit.setActionCommand("WinGit"); engine_WolfRPG.setActionCommand("WolfRPG"); engine_other.setActionCommand("other/unknown");
+									ButtonGroup engineGroup = new ButtonGroup(); engineGroup.add(engine_Flash); engineGroup.add(engine_HTML); engineGroup.add(engine_Java); engineGroup.add(engine_QSP); engineGroup.add(engine_RenPy); engineGroup.add(engine_RPGmaker); engineGroup.add(engine_Unity); engineGroup.add(engine_Unreal); engineGroup.add(engine_WinGit); engineGroup.add(engine_WolfRPG); engineGroup.add(engine_other);
+									JPanel enginePanel = new JPanel(); enginePanel.add(engine_Flash); enginePanel.add(engine_HTML); enginePanel.add(engine_Java); enginePanel.add(engine_QSP); enginePanel.add(engine_RenPy); enginePanel.add(engine_RPGmaker); enginePanel.add(engine_Unity); enginePanel.add(engine_Unreal); enginePanel.add(engine_WinGit); enginePanel.add(engine_WolfRPG); enginePanel.add(engine_other);
+									for (int k = 0; k < enginePanel.getComponentCount(); k++) {
+										JRadioButton r = (JRadioButton) enginePanel.getComponent(k);
+										if (r.getActionCommand().equals(oldengine)) { r.setSelected(true); }
+									}
 
-									JTextField newengine = new JTextField();
 									// JTextField newos = new JTextField();
 									JTextField newselfNote = new JTextField();
 									JLabel Namelabel = new JLabel("Name: (required)");
@@ -92,7 +100,7 @@ public class updateGameFromToFile {
 									JLabel stillOnPclabel = new JLabel("Deleted from pc:");
 									panel.add(stillOnPclabel); panel.add(stillOnPcPanel);
 									JLabel enginelabel = new JLabel("Engine:");
-									panel.add(enginelabel); panel.add(newengine);
+									panel.add(enginelabel); panel.add(enginePanel);
 									// JLabel oslabel = new JLabel("OS:");
 									// panel.add(oslabel);
 									// panel.add(os);
@@ -107,7 +115,7 @@ public class updateGameFromToFile {
 										String newdateof_lastupateValue = newdateof_lastupate.getText();
 										String newhowFarUserPlayedValue = howFarUserPlayed.getSelection().getActionCommand();
 										String newstillOnPcValue = stillOnPc.getSelection().getActionCommand();
-										String newengineValue = newengine.getText();
+										String newengineValue = engineGroup.getSelection().getActionCommand();
 										// String newosValue = newos.getText();
 										String newselfNoteValue = newselfNote.getText();
 										if (newnameValue.equals("")) { newnameValue = oldname; }

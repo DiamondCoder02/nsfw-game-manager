@@ -48,16 +48,25 @@ public class updateGameFromToFile {
 									String oldname = e.getElementsByTagName("name").item(0).getTextContent().trim();
 									String olddeveloper = e.getElementsByTagName("developer").item(0).getTextContent().trim();
 									String oldplayed_version = e.getElementsByTagName("played_version").item(0).getTextContent().trim();
+									String olddateof_lastplayed = e.getElementsByTagName("dateof_lastplayed").item(0).getTextContent().trim();
+									String olduser_rated = e.getElementsByTagName("user_rating").item(0).getTextContent().trim();
+									String oldnewest_version = e.getElementsByTagName("newest_version").item(0).getTextContent().trim();
 									String olddateof_lastupate = e.getElementsByTagName("dateof_lastupate").item(0).getTextContent().trim();
+									String oldpeople_rated = e.getElementsByTagName("people_rating").item(0).getTextContent().trim();
 									String oldhowFarUserPlayed = e.getElementsByTagName("howFarUserPlayed").item(0).getTextContent().trim();
 									String oldstillOnPc = e.getElementsByTagName("stillOnPc").item(0).getTextContent().trim();
 									String oldengine = e.getElementsByTagName("engine").item(0).getTextContent().trim();
 									// String oldos = e.getElementsByTagName("os").item(0).getTextContent().trim();
 									String oldselfNote = e.getElementsByTagName("selfNote").item(0).getTextContent().trim();
+									
 									JTextField newname = new JTextField();
 									JTextField newdeveloper = new JTextField();
 									JTextField newplayed_version = new JTextField();
+									JTextField newdateof_lastplayed = new JTextField();
+									JTextField newuser_rated = new JTextField();
+									JTextField newnewest_version = new JTextField();
 									JTextField newdateof_lastupate = new JTextField();
+									JTextField newpeople_rated = new JTextField();
 
 									JRadioButton howFarUserPlayed_NotPlayed = new JRadioButton("Not played"), howFarUserPlayed_Playing = new JRadioButton("In progress"), howFarUserPlayed_Finished = new JRadioButton("Finish"), howFarUserPlayed_100Percent = new JRadioButton("100% Finished");
 									howFarUserPlayed_NotPlayed.setActionCommand("Not played"); howFarUserPlayed_Playing.setActionCommand("In progress"); howFarUserPlayed_Finished.setActionCommand("Finish"); howFarUserPlayed_100Percent.setActionCommand("100% Finished");
@@ -87,24 +96,33 @@ public class updateGameFromToFile {
 
 									// JTextField newos = new JTextField();
 									JTextField newselfNote = new JTextField();
-									JLabel Namelabel = new JLabel("Name: (required)");
+
+									JLabel Namelabel = new JLabel("Name: (required)" + " (old: "+oldname+")");
 									panel.add(Namelabel); panel.add(newname);
-									JLabel developerlabel = new JLabel("Developer:");
+									JLabel developerlabel = new JLabel("Developer:" + " (old: "+olddeveloper+")");
 									panel.add(developerlabel); panel.add(newdeveloper);
-									JLabel played_versionlabel = new JLabel("Played version:");
+									JLabel played_versionlabel = new JLabel("Played version:" + " (old: "+oldplayed_version+")");
 									panel.add(played_versionlabel); panel.add(newplayed_version);
-									JLabel dateOfLastUpdatelabel = new JLabel("Date of last update:");
+									JLabel dateof_lastplayedlabel = new JLabel("Last time played:" + " (old: "+olddateof_lastplayed+")");
+									panel.add(dateof_lastplayedlabel); panel.add(newdateof_lastplayed);
+									JLabel user_ratedlabel = new JLabel("Rated:" + " (old: "+olduser_rated+")");
+									panel.add(user_ratedlabel); panel.add(newuser_rated);
+									JLabel newest_versionlabel = new JLabel("Newest version:" + " (old: "+oldnewest_version+")");
+									panel.add(newest_versionlabel); panel.add(newnewest_version);
+									JLabel dateOfLastUpdatelabel = new JLabel("Date of last update:" + " (old: "+olddateof_lastupate+")");
 									panel.add(dateOfLastUpdatelabel); panel.add(newdateof_lastupate);
-									JLabel howFarUserPlayedlabel = new JLabel("Player prograssion:");
+									JLabel people_ratedlabel = new JLabel("People rating:" + " (old: "+oldpeople_rated+")");
+									panel.add(people_ratedlabel); panel.add(newpeople_rated);
+									JLabel howFarUserPlayedlabel = new JLabel("Player prograssion:" + " (old: "+oldhowFarUserPlayed+")");
 									panel.add(howFarUserPlayedlabel); panel.add(howFarUserPlayedPanel);
-									JLabel stillOnPclabel = new JLabel("Deleted from pc:");
+									JLabel stillOnPclabel = new JLabel("Deleted from pc:" + " (old: "+oldstillOnPc+")");
 									panel.add(stillOnPclabel); panel.add(stillOnPcPanel);
-									JLabel enginelabel = new JLabel("Engine:");
+									JLabel enginelabel = new JLabel("Engine:" + " (old: "+oldengine+")");
 									panel.add(enginelabel); panel.add(enginePanel);
-									// JLabel oslabel = new JLabel("OS:");
+									// JLabel oslabel = new JLabel("OS:" + " (old: "+oldos+")");
 									// panel.add(oslabel);
 									// panel.add(os);
-									JLabel selfNotelabel = new JLabel("Self note:");
+									JLabel selfNotelabel = new JLabel("Self note:" + " (old: "+oldselfNote+")");
 									panel.add(selfNotelabel); panel.add(newselfNote);
 									panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 									int option = JOptionPane.showConfirmDialog(null, panel, "Update game", JOptionPane.OK_CANCEL_OPTION);
@@ -112,7 +130,11 @@ public class updateGameFromToFile {
 										String newnameValue = newname.getText();
 										String newdeveloperValue = newdeveloper.getText();
 										String newplayed_versionValue = newplayed_version.getText();
+										String newdateof_lastplayedValue = newdateof_lastplayed.getText();
+										String newuser_ratedValue = newuser_rated.getText();
+										String newnewest_versionValue = newnewest_version.getText();
 										String newdateof_lastupateValue = newdateof_lastupate.getText();
+										String newpeople_ratedValue = newpeople_rated.getText();
 										String newhowFarUserPlayedValue = howFarUserPlayed.getSelection().getActionCommand();
 										String newstillOnPcValue = stillOnPc.getSelection().getActionCommand();
 										String newengineValue = engineGroup.getSelection().getActionCommand();
@@ -121,7 +143,11 @@ public class updateGameFromToFile {
 										if (newnameValue.equals("")) { newnameValue = oldname; }
 										if (newdeveloperValue.equals("")) { newdeveloperValue = olddeveloper; }
 										if (newplayed_versionValue.equals("")) { newplayed_versionValue = oldplayed_version; }
+										if (newdateof_lastplayedValue.equals("")) { newdateof_lastplayedValue = olddateof_lastplayed; }
+										if (newuser_ratedValue.equals("")) { newuser_ratedValue = olduser_rated; }
+										if (newnewest_versionValue.equals("")) { newnewest_versionValue = oldnewest_version; }
 										if (newdateof_lastupateValue.equals("")) { newdateof_lastupateValue = olddateof_lastupate; }
+										if (newpeople_ratedValue.equals("")) { newpeople_ratedValue = oldpeople_rated; }
 										if (newhowFarUserPlayedValue.equals("")) { newhowFarUserPlayedValue = oldhowFarUserPlayed; }
 										if (newstillOnPcValue.equals("")) { newstillOnPcValue = oldstillOnPc; }
 										if (newengineValue.equals("")) { newengineValue = oldengine; }
@@ -130,7 +156,11 @@ public class updateGameFromToFile {
 										e.getElementsByTagName("name").item(0).setTextContent(newnameValue);
 										e.getElementsByTagName("developer").item(0).setTextContent(newdeveloperValue);
 										e.getElementsByTagName("played_version").item(0).setTextContent(newplayed_versionValue);
+										e.getElementsByTagName("dateof_lastplayed").item(0).setTextContent(newdateof_lastplayedValue);
+										e.getElementsByTagName("user_rating").item(0).setTextContent(newuser_ratedValue);
+										e.getElementsByTagName("newest_version").item(0).setTextContent(newnewest_versionValue);
 										e.getElementsByTagName("dateof_lastupate").item(0).setTextContent(newdateof_lastupateValue);
+										e.getElementsByTagName("people_rating").item(0).setTextContent(newpeople_ratedValue);
 										e.getElementsByTagName("howFarUserPlayed").item(0).setTextContent(newhowFarUserPlayedValue);
 										e.getElementsByTagName("stillOnPc").item(0).setTextContent(newstillOnPcValue);
 										e.getElementsByTagName("engine").item(0).setTextContent(newengineValue);

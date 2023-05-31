@@ -25,7 +25,7 @@ public class _initFrame extends JFrame implements ActionListener {
 	JMenuItem refreshFromAPI, refreshEverything, saveFileToDifferent;
 
 	JCheckBoxMenuItem darkMode, autoFetchNews, autoUpdateGames;
-	JCheckBoxMenuItem showID, showName, showDeveloper, showPlayedVersion, showDateOfLastUpdate, showhowFarUserPlayed, showDeletedFromPc;
+	JCheckBoxMenuItem showID, showName, showDeveloper, showPlayedVersion, showLastTimePlayed, showRated, showNewestVersion, showDateOfLastUpdate, showPeopleRating, showhowFarUserPlayed, showDeletedFromPc;
 	JCheckBoxMenuItem showEngine, showOS, ShowSelfNote;
 
 	JMenuItem dataToShow, faq, credits;
@@ -34,7 +34,7 @@ public class _initFrame extends JFrame implements ActionListener {
 	public void WindowCreate(String[] columnNames, Object[][] dataFromXMLFile) {
 		// TODO text size small on large display - https://bugs.openjdk.org/browse/JDK-8202973
 		setTitle("Hentai Game Database");
-		setSize(1500, 1000);
+		setSize(1500, 600);
 		setMinimumSize(new Dimension(500, 500));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setJMenuBar(mb = new JMenuBar());
@@ -68,12 +68,16 @@ public class _initFrame extends JFrame implements ActionListener {
 		show.add(showName = new JCheckBoxMenuItem("Name", columnVisibility[1]));
 		show.add(showDeveloper = new JCheckBoxMenuItem("Developer", columnVisibility[2]));
 		show.add(showPlayedVersion = new JCheckBoxMenuItem("Played version", columnVisibility[3]));
-		show.add(showDateOfLastUpdate = new JCheckBoxMenuItem("Date of last update", columnVisibility[4]));
-		show.add(showhowFarUserPlayed = new JCheckBoxMenuItem("Player prograssion", columnVisibility[5]));
-		show.add(showDeletedFromPc = new JCheckBoxMenuItem("Still on pc?", columnVisibility[6]));
-		show.add(showEngine = new JCheckBoxMenuItem("Engine", columnVisibility[7]));
-		// show.add(showOS = new JCheckBoxMenuItem("OS", columnVisibility[8]));
-		show.add(ShowSelfNote = new JCheckBoxMenuItem("Personal Notes", columnVisibility[9]));
+		show.add(showLastTimePlayed = new JCheckBoxMenuItem("Last time played", columnVisibility[4]));
+		show.add(showRated = new JCheckBoxMenuItem("Rated", columnVisibility[5]));
+		show.add(showNewestVersion = new JCheckBoxMenuItem("Newest version", columnVisibility[6]));
+		show.add(showDateOfLastUpdate = new JCheckBoxMenuItem("Date of last update", columnVisibility[7]));
+		show.add(showPeopleRating = new JCheckBoxMenuItem("People rating", columnVisibility[8]));
+		show.add(showhowFarUserPlayed = new JCheckBoxMenuItem("Player prograssion", columnVisibility[9]));
+		show.add(showDeletedFromPc = new JCheckBoxMenuItem("Still on pc?", columnVisibility[10]));
+		show.add(showEngine = new JCheckBoxMenuItem("Engine", columnVisibility[11]));
+		// show.add(showOS = new JCheckBoxMenuItem("OS", columnVisibility[12]));
+		show.add(ShowSelfNote = new JCheckBoxMenuItem("Personal Notes", columnVisibility[13]));
 
 		settings.addSeparator();
 		settings.add(darkMode = new JCheckBoxMenuItem("Dark mode", otherSettings[0]));
@@ -85,7 +89,11 @@ public class _initFrame extends JFrame implements ActionListener {
 		showName.addActionListener(this);
 		showDeveloper.addActionListener(this);
 		showPlayedVersion.addActionListener(this);
+		showLastTimePlayed.addActionListener(this);
+		showRated.addActionListener(this);
+		showNewestVersion.addActionListener(this);
 		showDateOfLastUpdate.addActionListener(this);
+		showPeopleRating.addActionListener(this);
 		showhowFarUserPlayed.addActionListener(this);
 		showDeletedFromPc.addActionListener(this);
 		showEngine.addActionListener(this);
@@ -137,7 +145,11 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Name": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Developer": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Played version": settingsManager.xmlSettings("showncolumns", gac); break;
+			case "Last time played": settingsManager.xmlSettings("showncolumns", gac); break;
+			case "Rated": settingsManager.xmlSettings("showncolumns", gac); break;
+			case "Newest version": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Date of last update": settingsManager.xmlSettings("showncolumns", gac); break;
+			case "People rating": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Player prograssion": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Still on pc?": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Engine": settingsManager.xmlSettings("showncolumns", gac); break;

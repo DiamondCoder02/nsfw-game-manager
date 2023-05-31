@@ -62,7 +62,7 @@ public class settingsManager {
 				}
 			}
 		} else {
-			settings = new boolean[10];
+			settings = new boolean[30];
 		}
 		return settings;
 	}

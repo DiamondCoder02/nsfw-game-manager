@@ -26,8 +26,12 @@ public class addGameToFile {
 			JTextField name = new JTextField(40);
 			JTextField developer = new JTextField(20);
 			JTextField played_version = new JTextField(15);
+			JTextField dateof_lastplayed = new JTextField(20);
+			JTextField user_rating = new JTextField(20);
+			JTextField newest_version = new JTextField(12);
 			JTextField dateOfLastUpdate = new JTextField(12);
-
+			JTextField people_rating = new JTextField(20);
+			
 			// Not played, In progress, Finish, 100% Finished
 			JRadioButton howFarUserPlayed_NotPlayed = new JRadioButton("Not played", true), howFarUserPlayed_Playing = new JRadioButton("In progress", false), howFarUserPlayed_Finished = new JRadioButton("Finish", false), howFarUserPlayed_100Percent = new JRadioButton("100% Finished", false);
 			howFarUserPlayed_NotPlayed.setActionCommand("Not played"); howFarUserPlayed_Playing.setActionCommand("In progress"); howFarUserPlayed_Finished.setActionCommand("Finish"); howFarUserPlayed_100Percent.setActionCommand("100% Finished");
@@ -54,11 +58,19 @@ public class addGameToFile {
 			panel.add(Namelabel); panel.add(name);
 			JLabel developerlabel = new JLabel("Developer:");
 			panel.add(developerlabel); panel.add(developer);
-			JLabel played_versionlabel = new JLabel("Played version:");
+			JLabel played_versionlabel = new JLabel("Last version you played:");
 			panel.add(played_versionlabel); panel.add(played_version);
-			JLabel dateOfLastUpdatelabel = new JLabel("Date of last update:");
+			JLabel dateof_lastplayedlabel = new JLabel("Last time you updated the game:");
+			panel.add(dateof_lastplayedlabel); panel.add(dateof_lastplayed);
+			JLabel user_ratinglabel = new JLabel("Rating by you:");
+			panel.add(user_ratinglabel); panel.add(user_rating);
+			JLabel newest_versionlabel = new JLabel("Online newest version:");
+			panel.add(newest_versionlabel); panel.add(newest_version);
+			JLabel dateOfLastUpdatelabel = new JLabel("Online date of last update:");
 			panel.add(dateOfLastUpdatelabel); panel.add(dateOfLastUpdate);
-			JLabel howFarUserPlayedlabel = new JLabel("Player prograssion:");
+			JLabel people_ratinglabel = new JLabel("Rating by online people:");
+			panel.add(people_ratinglabel); panel.add(people_rating);
+			JLabel howFarUserPlayedlabel = new JLabel("How far you progressed in the game:");
 			panel.add(howFarUserPlayedlabel); panel.add(howFarUserPlayedPanel);
 			JLabel stillOnPclabel = new JLabel("Is the game still on pc?");
 			panel.add(stillOnPclabel); panel.add(stillOnPcPanel);
@@ -76,7 +88,11 @@ public class addGameToFile {
 			String nameValue = name.getText();
 			String developerValue = developer.getText();
 			String played_versionValue = played_version.getText();
+			String dateof_lastplayedValue = dateof_lastplayed.getText();
+			String user_ratingValue = user_rating.getText();
+			String newest_versionValue = newest_version.getText();
 			String dateOfLastUpdateValue = dateOfLastUpdate.getText();
+			String people_ratingValue = people_rating.getText();
 			String howFarUserPlayedValue = howFarUserPlayed.getSelection().getActionCommand();
 			String stillOnPcValue = stillOnPc.getSelection().getActionCommand();
 			String engineValue = engineGroup.getSelection().getActionCommand();
@@ -98,7 +114,11 @@ public class addGameToFile {
 							Element newName = dom.createElement("name");
 							Element newDeveloper = dom.createElement("developer");
 							Element newPlayed_version = dom.createElement("played_version");
+							Element newDateof_lastplayed = dom.createElement("dateof_lastplayed");
+							Element newUser_rating = dom.createElement("user_rating");
+							Element newNewest_version = dom.createElement("newest_version");
 							Element newDateof_lastupate = dom.createElement("dateof_lastupate");
+							Element newPeople_rating = dom.createElement("people_rating");
 							Element newHowFarUserPlayed = dom.createElement("howFarUserPlayed");
 							Element newstillOnPc = dom.createElement("stillOnPc");
 							Element newEngine = dom.createElement("engine");
@@ -108,7 +128,11 @@ public class addGameToFile {
 							newName.setTextContent(nameValue);
 							newDeveloper.setTextContent(developerValue);
 							newPlayed_version.setTextContent(played_versionValue);
+							newDateof_lastplayed.setTextContent(dateof_lastplayedValue);
+							newUser_rating.setTextContent(user_ratingValue);
+							newNewest_version.setTextContent(newest_versionValue);
 							newDateof_lastupate.setTextContent(dateOfLastUpdateValue);
+							newPeople_rating.setTextContent(people_ratingValue);
 							newHowFarUserPlayed.setTextContent(howFarUserPlayedValue);
 							newstillOnPc.setTextContent(stillOnPcValue);
 							newEngine.setTextContent(engineValue);
@@ -117,7 +141,11 @@ public class addGameToFile {
 							newGame.appendChild(newName);
 							newGame.appendChild(newDeveloper);
 							newGame.appendChild(newPlayed_version);
+							newGame.appendChild(newDateof_lastplayed);
+							newGame.appendChild(newUser_rating);
+							newGame.appendChild(newNewest_version);
 							newGame.appendChild(newDateof_lastupate);
+							newGame.appendChild(newPeople_rating);
 							newGame.appendChild(newHowFarUserPlayed);
 							newGame.appendChild(newstillOnPc);
 							newGame.appendChild(newEngine);

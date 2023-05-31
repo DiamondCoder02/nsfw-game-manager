@@ -57,7 +57,11 @@ public class _initXml {
 								case "Name": allDataFromFile[counter][n] = e.getElementsByTagName("name").item(0).getTextContent().trim(); break;
 								case "Developer": allDataFromFile[counter][n] = e.getElementsByTagName("developer").item(0).getTextContent().trim(); break;
 								case "Played version": allDataFromFile[counter][n] = e.getElementsByTagName("played_version").item(0).getTextContent().trim(); break;
+								case "Last time played": allDataFromFile[counter][n] = e.getElementsByTagName("dateof_lastplayed").item(0).getTextContent().trim(); break;
+								case "Rated": allDataFromFile[counter][n] = e.getElementsByTagName("user_rating").item(0).getTextContent().trim(); break;
+								case "Newest version": allDataFromFile[counter][n] = e.getElementsByTagName("newest_version").item(0).getTextContent().trim(); break;
 								case "Date of last update": allDataFromFile[counter][n] = e.getElementsByTagName("dateof_lastupate").item(0).getTextContent().trim(); break;
+								case "People rating": allDataFromFile[counter][n] = e.getElementsByTagName("people_rating").item(0).getTextContent().trim(); break;
 								case "Player prograssion": allDataFromFile[counter][n] = e.getElementsByTagName("howFarUserPlayed").item(0).getTextContent().trim(); break;
 								case "Still on pc?": allDataFromFile[counter][n] = e.getElementsByTagName("stillOnPc").item(0).getTextContent().trim(); break;
 								case "Engine": allDataFromFile[counter][n] = e.getElementsByTagName("engine").item(0).getTextContent().trim(); break;

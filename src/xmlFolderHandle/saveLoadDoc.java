@@ -86,21 +86,9 @@ public class saveLoadDoc {
 			<name>testname</name>
 			<developer>testdeveloper</developer>
 
-				idea: if games is completed or onhold or abondoned, 
-				have small thing at the online last version
-			<onlineVersion>v0.1</onlineVersion>
-			<played_version>v0.2</played_version>
-			<dateof_lastupate>0000-00-00</dateof_lastupate>
-			<onlineLastUpdate>0009-09-09</onlineLastUpdate>
-			<websiteRate>10/10</websiteRate>
-			<howFarUserPlayed>finished/tobecompleted/neverplayed</howFarUserPlayed>
-			<stillOnPc>true/false</stillOnPc>
-			<engine>Unreal/Renpy</engine>
-
-			<OS>Win./Linux/Mac/Android</OS>		Choose one of these maybe?
-			<OS win="y" lin="n" mac="n" and="y" other="y">randomOS</OS>
-
-			<selfNote>This is shit games</selfNote>
+			idea: if games is completed or onhold or abondoned, 
+			have small thing at the online last version
+			<newest_version>v0.1</newest_version>
 		</game>
 		*/
 		try {
@@ -147,7 +135,7 @@ public class saveLoadDoc {
 			showncolumns7.appendChild(doc.createTextNode("Still on pc?")); settings.appendChild(showncolumns7);
 			Element showncolumns8 = doc.createElement("showncolumns"); showncolumns8.setAttribute("enabled", "true");
 			showncolumns8.appendChild(doc.createTextNode("Engine")); settings.appendChild(showncolumns8);
-			Element showncolumns0 = doc.createElement("showncolumns"); showncolumns0.setAttribute("enabled", "false");
+			Element showncolumns0 = doc.createElement("showncolumns"); showncolumns0.setAttribute("enabled", "true");
 			showncolumns0.appendChild(doc.createTextNode("OS")); settings.appendChild(showncolumns0);
 			Element showncolumns9 = doc.createElement("showncolumns"); showncolumns9.setAttribute("enabled", "true");
 			showncolumns9.appendChild(doc.createTextNode("Personal Notes")); settings.appendChild(showncolumns9);
@@ -168,7 +156,7 @@ public class saveLoadDoc {
 			Element newHowFarUserPlayed = doc.createElement("howFarUserPlayed");
 			Element newstillOnPc = doc.createElement("stillOnPc");
 			Element newEngine = doc.createElement("engine");
-			//Element newOS = doc.createElement("OS");
+			Element newOS = doc.createElement("OS");
 			Element newSelfNote = doc.createElement("selfNote");
 			newGame.setAttribute("id", "000000");
 			newName.appendChild(doc.createTextNode("Example game"));
@@ -182,7 +170,7 @@ public class saveLoadDoc {
 			newHowFarUserPlayed.appendChild(doc.createTextNode("Not played"));
 			newstillOnPc.appendChild(doc.createTextNode("No"));
 			newEngine.appendChild(doc.createTextNode("HTML"));
-			//newOS.appendChild(doc.createTextNode("-"));
+			newOS.appendChild(doc.createTextNode("Linux"));
 			newSelfNote.appendChild(doc.createTextNode("-"));
 			newGame.appendChild(newName);
 			newGame.appendChild(newDeveloper);
@@ -195,7 +183,7 @@ public class saveLoadDoc {
 			newGame.appendChild(newHowFarUserPlayed);
 			newGame.appendChild(newstillOnPc);
 			newGame.appendChild(newEngine);
-			//newGame.appendChild(newOS);
+			newGame.appendChild(newOS);
 			newGame.appendChild(newSelfNote);
 			source.appendChild(newGame);
 
@@ -204,7 +192,6 @@ public class saveLoadDoc {
 			Transformer transformer = transformerFactory.newTransformer();
 			// transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			DOMSource domsource = new DOMSource(doc);
-			// System.out.println(System.getenv("APPDATA"));
 			StreamResult result = new StreamResult(path);
 			transformer.transform(domsource, result);
 		} catch (Exception e) {

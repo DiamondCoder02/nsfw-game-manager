@@ -2,6 +2,7 @@ package windowJframe;
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -56,7 +57,7 @@ public class updateGameFromToFile {
 									String oldhowFarUserPlayed = e.getElementsByTagName("howFarUserPlayed").item(0).getTextContent().trim();
 									String oldstillOnPc = e.getElementsByTagName("stillOnPc").item(0).getTextContent().trim();
 									String oldengine = e.getElementsByTagName("engine").item(0).getTextContent().trim();
-									// String oldos = e.getElementsByTagName("os").item(0).getTextContent().trim();
+									String oldos = e.getElementsByTagName("os").item(0).getTextContent().trim();
 									String oldselfNote = e.getElementsByTagName("selfNote").item(0).getTextContent().trim();
 
 									JTextField newname = new JTextField();
@@ -95,6 +96,14 @@ public class updateGameFromToFile {
 										JRadioButton r = (JRadioButton) enginePanel.getComponent(k);
 										if (r.getActionCommand().equals(oldengine)) { r.setSelected(true); }
 									}
+									// Windows, Linux, Mac, Android, other
+									JCheckBox os_win = new JCheckBox("Windows"), os_lin = new JCheckBox("Linux"), os_mac = new JCheckBox("Mac"), os_and = new JCheckBox("Android"), os_other = new JCheckBox("other");
+									os_win.setActionCommand("windows"); os_lin.setActionCommand("linux"); os_mac.setActionCommand("mac"); os_and.setActionCommand("android"); os_other.setActionCommand("other");
+									JPanel osPanel = new JPanel(); osPanel.add(os_win); osPanel.add(os_lin); osPanel.add(os_mac); osPanel.add(os_and); osPanel.add(os_other);
+									for (int k = 0; k < osPanel.getComponentCount(); k++) {
+										JCheckBox r = (JCheckBox) osPanel.getComponent(k);
+										if (oldos.contains(r.getActionCommand())) { r.setSelected(true); }
+									}
 
 									// JTextField newos = new JTextField();
 									JTextField newselfNote = new JTextField();
@@ -121,9 +130,8 @@ public class updateGameFromToFile {
 									panel.add(stillOnPclabel); panel.add(stillOnPcPanel);
 									JLabel enginelabel = new JLabel("Engine:" + " (old: "+oldengine+")");
 									panel.add(enginelabel); panel.add(enginePanel);
-									// JLabel oslabel = new JLabel("OS:" + " (old: "+oldos+")");
-									// panel.add(oslabel);
-									// panel.add(os);
+									JLabel oslabel = new JLabel("OS:" + " (old: "+oldos+")");
+									panel.add(oslabel); panel.add(osPanel);
 									JLabel selfNotelabel = new JLabel("Self note:" + " (old: "+oldselfNote+")");
 									panel.add(selfNotelabel); panel.add(newselfNote);
 									panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
@@ -140,7 +148,13 @@ public class updateGameFromToFile {
 										String newhowFarUserPlayedValue = howFarUserPlayed.getSelection().getActionCommand();
 										String newstillOnPcValue = stillOnPc.getSelection().getActionCommand();
 										String newengineValue = engineGroup.getSelection().getActionCommand();
-										// String newosValue = newos.getText();
+										String newosValue = "";
+										if (os_win.isSelected()) { newosValue += "Windows - "; }
+										if (os_lin.isSelected()) { newosValue += "Linux - "; }
+										if (os_mac.isSelected()) { newosValue += "Mac - "; }
+										if (os_and.isSelected()) { newosValue += "Android - "; }
+										if (os_other.isSelected()) { newosValue += "other"; }
+										if (newosValue.endsWith(" - ")) { newosValue = newosValue.substring(0, newosValue.length() - 3); }
 										String newselfNoteValue = newselfNote.getText();
 										if (newnameValue.equals("")) { newnameValue = oldname; }
 										if (newdeveloperValue.equals("")) { newdeveloperValue = olddeveloper; }
@@ -150,9 +164,9 @@ public class updateGameFromToFile {
 										if (newnewest_versionValue.equals("")) { newnewest_versionValue = oldnewest_version; }
 										if (newdateof_lastupateValue.equals("")) { newdateof_lastupateValue = olddateof_lastupate; }
 										if (newpeople_ratedValue.equals("")) { newpeople_ratedValue = oldpeople_rated; }
-										if (newhowFarUserPlayedValue.equals("")) { newhowFarUserPlayedValue = oldhowFarUserPlayed; }
-										if (newstillOnPcValue.equals("")) { newstillOnPcValue = oldstillOnPc; }
-										if (newengineValue.equals("")) { newengineValue = oldengine; }
+										// if (newhowFarUserPlayedValue.equals("")) { newhowFarUserPlayedValue = oldhowFarUserPlayed; }
+										// if (newstillOnPcValue.equals("")) { newstillOnPcValue = oldstillOnPc; }
+										// if (newengineValue.equals("")) { newengineValue = oldengine; }
 										// if (newosValue.equals("")) { newosValue = oldos; }
 										if (newselfNoteValue.equals("")) { newselfNoteValue = oldselfNote; }
 										e.getElementsByTagName("name").item(0).setTextContent(newnameValue);
@@ -166,7 +180,7 @@ public class updateGameFromToFile {
 										e.getElementsByTagName("howFarUserPlayed").item(0).setTextContent(newhowFarUserPlayedValue);
 										e.getElementsByTagName("stillOnPc").item(0).setTextContent(newstillOnPcValue);
 										e.getElementsByTagName("engine").item(0).setTextContent(newengineValue);
-										// e.getElementsByTagName("os").item(0).setTextContent(newosValue);
+										e.getElementsByTagName("os").item(0).setTextContent(newosValue);
 										e.getElementsByTagName("selfNote").item(0).setTextContent(newselfNoteValue);
 										saveLoadDoc.saveDocument(dom);
 										_initFrame.refreshTable();

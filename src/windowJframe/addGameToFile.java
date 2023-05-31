@@ -2,6 +2,7 @@ package windowJframe;
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -47,14 +48,16 @@ public class addGameToFile {
 			engine_Flash.setActionCommand("Flash"); engine_HTML.setActionCommand("HTML"); engine_Java.setActionCommand("Java"); engine_QSP.setActionCommand("QSP"); engine_RenPy.setActionCommand("RenPy"); engine_RPGmaker.setActionCommand("RPGmaker"); engine_Unity.setActionCommand("Unity"); engine_Unreal.setActionCommand("Unreal"); engine_WinGit.setActionCommand("WinGit"); engine_WolfRPG.setActionCommand("WolfRPG"); engine_other.setActionCommand("other/unknown");
 			ButtonGroup engineGroup = new ButtonGroup(); engineGroup.add(engine_Flash); engineGroup.add(engine_HTML); engineGroup.add(engine_Java); engineGroup.add(engine_QSP); engineGroup.add(engine_RenPy); engineGroup.add(engine_RPGmaker); engineGroup.add(engine_Unity); engineGroup.add(engine_Unreal); engineGroup.add(engine_WinGit); engineGroup.add(engine_WolfRPG); engineGroup.add(engine_other);
 			JPanel enginePanel = new JPanel(); enginePanel.add(engine_Flash); enginePanel.add(engine_HTML); enginePanel.add(engine_Java); enginePanel.add(engine_QSP); enginePanel.add(engine_RenPy); enginePanel.add(engine_RPGmaker); enginePanel.add(engine_Unity); enginePanel.add(engine_Unreal); enginePanel.add(engine_WinGit); enginePanel.add(engine_WolfRPG); enginePanel.add(engine_other);
+			// Windows, Linux, Mac, Android, other
+			JCheckBox os_win = new JCheckBox("Windows"), os_lin = new JCheckBox("Linux"), os_mac = new JCheckBox("Mac"), os_and = new JCheckBox("Android"), os_other = new JCheckBox("other");
+			os_win.setActionCommand("windows"); os_lin.setActionCommand("linux"); os_mac.setActionCommand("mac"); os_and.setActionCommand("android"); os_other.setActionCommand("other");
+			JPanel osPanel = new JPanel(); osPanel.add(os_win); osPanel.add(os_lin); osPanel.add(os_mac); osPanel.add(os_and); osPanel.add(os_other);
+
+			JTextField selfNote = new JTextField(50);
 
 			howFarUserPlayedPanel.setLayout(new BoxLayout(howFarUserPlayedPanel, BoxLayout.X_AXIS));
 			stillOnPcPanel.setLayout(new BoxLayout(stillOnPcPanel, BoxLayout.X_AXIS));
-			enginePanel.setLayout(new BoxLayout(enginePanel, BoxLayout.PAGE_AXIS));
-
-			//<OS win="y" lin="n" mac="n" and="y" other="y">randomOS</OS>
-			// JCheckBox os = new JCheckBox();
-			JTextField selfNote = new JTextField(50);
+			enginePanel.setLayout(new BoxLayout(enginePanel, BoxLayout.X_AXIS));
 
 			JLabel IDlabel = new JLabel("ID: (required)");
 			panel.add(IDlabel); panel.add(id);
@@ -80,14 +83,13 @@ public class addGameToFile {
 			panel.add(stillOnPclabel); panel.add(stillOnPcPanel);
 			JLabel enginelabel = new JLabel("Engine:");
 			panel.add(enginelabel); panel.add(enginePanel);
-			// JLabel oslabel = new JLabel("OS:");
-			// panel.add(oslabel);
-			// panel.add(os);
+			JLabel oslabel = new JLabel("OS:");
+			panel.add(oslabel); panel.add(osPanel);
 			JLabel selfNotelabel = new JLabel("Self note:");
 			panel.add(selfNotelabel); panel.add(selfNote);
+
 			panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 			//panel.setLayout(new GridLayout(15, 1, 1, 1));
-
 			JOptionPane.showMessageDialog(null, panel, "Add game", JOptionPane.PLAIN_MESSAGE);
 
 			String idValue = id.getText();
@@ -102,7 +104,13 @@ public class addGameToFile {
 			String howFarUserPlayedValue = howFarUserPlayed.getSelection().getActionCommand();
 			String stillOnPcValue = stillOnPc.getSelection().getActionCommand();
 			String engineValue = engineGroup.getSelection().getActionCommand();
-			// String osValue = os.getText();
+			String osValue = "";
+			if (os_win.isSelected()) { osValue += "Windows / "; }
+			if (os_lin.isSelected()) { osValue += "Linux / "; }
+			if (os_mac.isSelected()) { osValue += "Mac / "; }
+			if (os_and.isSelected()) { osValue += "Android / "; }
+			if (os_other.isSelected()) { osValue += "other"; }
+			if (osValue.endsWith(" - ")) { osValue = osValue.substring(0, osValue.length() - 3); }
 			String selfNoteValue = selfNote.getText();
 
 			if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "ID is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
@@ -128,7 +136,7 @@ public class addGameToFile {
 							Element newHowFarUserPlayed = dom.createElement("howFarUserPlayed");
 							Element newstillOnPc = dom.createElement("stillOnPc");
 							Element newEngine = dom.createElement("engine");
-							//Element newOS = dom.createElement("OS");
+							Element newOS = dom.createElement("os");
 							Element newSelfNote = dom.createElement("selfNote");
 							newGame.setAttribute("id", idValue);
 							newName.setTextContent(nameValue);
@@ -142,7 +150,7 @@ public class addGameToFile {
 							newHowFarUserPlayed.setTextContent(howFarUserPlayedValue);
 							newstillOnPc.setTextContent(stillOnPcValue);
 							newEngine.setTextContent(engineValue);
-							//newOS.setTextContent(osValue);
+							newOS.setTextContent(osValue);
 							newSelfNote.setTextContent(selfNoteValue);
 							newGame.appendChild(newName);
 							newGame.appendChild(newDeveloper);
@@ -155,7 +163,7 @@ public class addGameToFile {
 							newGame.appendChild(newHowFarUserPlayed);
 							newGame.appendChild(newstillOnPc);
 							newGame.appendChild(newEngine);
-							//newGame.appendChild(newOS);
+							newGame.appendChild(newOS);
 							newGame.appendChild(newSelfNote);
 							sourceNode.appendChild(newGame);
 							saveLoadDoc.saveDocument(dom);

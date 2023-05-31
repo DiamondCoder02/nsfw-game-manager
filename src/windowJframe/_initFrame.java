@@ -76,7 +76,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		show.add(showhowFarUserPlayed = new JCheckBoxMenuItem("Player prograssion", columnVisibility[9]));
 		show.add(showDeletedFromPc = new JCheckBoxMenuItem("Still on pc?", columnVisibility[10]));
 		show.add(showEngine = new JCheckBoxMenuItem("Engine", columnVisibility[11]));
-		// show.add(showOS = new JCheckBoxMenuItem("OS", columnVisibility[12]));
+		show.add(showOS = new JCheckBoxMenuItem("OS", columnVisibility[12]));
 		show.add(ShowSelfNote = new JCheckBoxMenuItem("Personal Notes", columnVisibility[13]));
 
 		settings.addSeparator();
@@ -97,7 +97,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		showhowFarUserPlayed.addActionListener(this);
 		showDeletedFromPc.addActionListener(this);
 		showEngine.addActionListener(this);
-		// showOS.addActionListener(this);
+		showOS.addActionListener(this);
 		ShowSelfNote.addActionListener(this);
 		autoFetchNews.addActionListener(this);
 		autoUpdateGames.addActionListener(this);
@@ -153,7 +153,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Player prograssion": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Still on pc?": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Engine": settingsManager.xmlSettings("showncolumns", gac); break;
-			// case "OS": settingsManager.xmlSettings("showncolumns", gac); break;
+			case "OS": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Personal Notes": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Dark mode": settingsManager.xmlSettings("othersettings", gac); JOptionPane.showMessageDialog(null, "Not implemented yet.\nCome back later.", "Error", JOptionPane.ERROR_MESSAGE);break; // TODO darkmode
 			case "Auto fetch game updates": settingsManager.xmlSettings("othersettings", gac);JOptionPane.showMessageDialog(null, "API is not implemented at all yet.\nCome back later.", "Error", JOptionPane.ERROR_MESSAGE); break; // TODO api1

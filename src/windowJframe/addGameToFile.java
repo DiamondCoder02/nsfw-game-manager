@@ -48,6 +48,10 @@ public class addGameToFile {
 			ButtonGroup engineGroup = new ButtonGroup(); engineGroup.add(engine_Flash); engineGroup.add(engine_HTML); engineGroup.add(engine_Java); engineGroup.add(engine_QSP); engineGroup.add(engine_RenPy); engineGroup.add(engine_RPGmaker); engineGroup.add(engine_Unity); engineGroup.add(engine_Unreal); engineGroup.add(engine_WinGit); engineGroup.add(engine_WolfRPG); engineGroup.add(engine_other);
 			JPanel enginePanel = new JPanel(); enginePanel.add(engine_Flash); enginePanel.add(engine_HTML); enginePanel.add(engine_Java); enginePanel.add(engine_QSP); enginePanel.add(engine_RenPy); enginePanel.add(engine_RPGmaker); enginePanel.add(engine_Unity); enginePanel.add(engine_Unreal); enginePanel.add(engine_WinGit); enginePanel.add(engine_WolfRPG); enginePanel.add(engine_other);
 
+			howFarUserPlayedPanel.setLayout(new BoxLayout(howFarUserPlayedPanel, BoxLayout.X_AXIS));
+			stillOnPcPanel.setLayout(new BoxLayout(stillOnPcPanel, BoxLayout.X_AXIS));
+			enginePanel.setLayout(new BoxLayout(enginePanel, BoxLayout.PAGE_AXIS));
+
 			//<OS win="y" lin="n" mac="n" and="y" other="y">randomOS</OS>
 			// JCheckBox os = new JCheckBox();
 			JTextField selfNote = new JTextField(50);
@@ -82,6 +86,8 @@ public class addGameToFile {
 			JLabel selfNotelabel = new JLabel("Self note:");
 			panel.add(selfNotelabel); panel.add(selfNote);
 			panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+			//panel.setLayout(new GridLayout(15, 1, 1, 1));
+
 			JOptionPane.showMessageDialog(null, panel, "Add game", JOptionPane.PLAIN_MESSAGE);
 
 			String idValue = id.getText();

@@ -58,7 +58,7 @@ public class updateGameFromToFile {
 									String oldengine = e.getElementsByTagName("engine").item(0).getTextContent().trim();
 									// String oldos = e.getElementsByTagName("os").item(0).getTextContent().trim();
 									String oldselfNote = e.getElementsByTagName("selfNote").item(0).getTextContent().trim();
-									
+
 									JTextField newname = new JTextField();
 									JTextField newdeveloper = new JTextField();
 									JTextField newplayed_version = new JTextField();
@@ -68,6 +68,7 @@ public class updateGameFromToFile {
 									JTextField newdateof_lastupate = new JTextField();
 									JTextField newpeople_rated = new JTextField();
 
+									// Not played, In progress, Finish, 100% Finished
 									JRadioButton howFarUserPlayed_NotPlayed = new JRadioButton("Not played"), howFarUserPlayed_Playing = new JRadioButton("In progress"), howFarUserPlayed_Finished = new JRadioButton("Finish"), howFarUserPlayed_100Percent = new JRadioButton("100% Finished");
 									howFarUserPlayed_NotPlayed.setActionCommand("Not played"); howFarUserPlayed_Playing.setActionCommand("In progress"); howFarUserPlayed_Finished.setActionCommand("Finish"); howFarUserPlayed_100Percent.setActionCommand("100% Finished");
 									ButtonGroup howFarUserPlayed = new ButtonGroup(); howFarUserPlayed.add(howFarUserPlayed_NotPlayed); howFarUserPlayed.add(howFarUserPlayed_Playing); howFarUserPlayed.add(howFarUserPlayed_Finished); howFarUserPlayed.add(howFarUserPlayed_100Percent);
@@ -76,6 +77,7 @@ public class updateGameFromToFile {
 										JRadioButton r = (JRadioButton) howFarUserPlayedPanel.getComponent(k);
 										if (r.getActionCommand().equals(oldhowFarUserPlayed)) { r.setSelected(true); }
 									}
+									// Yes, No, Unknown
 									JRadioButton stillOnPc_yes = new JRadioButton("Yes"), stillOnPc_no = new JRadioButton("No"), stillOnPc_unknown = new JRadioButton("Unknown");
 									stillOnPc_yes.setActionCommand("yes"); stillOnPc_no.setActionCommand("no"); stillOnPc_unknown.setActionCommand("unknown");
 									ButtonGroup stillOnPc = new ButtonGroup(); stillOnPc.add(stillOnPc_yes); stillOnPc.add(stillOnPc_no); stillOnPc.add(stillOnPc_unknown);

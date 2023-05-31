@@ -100,12 +100,8 @@ public class updateGameFromToFile {
 									JCheckBox os_win = new JCheckBox("Windows"), os_lin = new JCheckBox("Linux"), os_mac = new JCheckBox("Mac"), os_and = new JCheckBox("Android"), os_other = new JCheckBox("other");
 									os_win.setActionCommand("windows"); os_lin.setActionCommand("linux"); os_mac.setActionCommand("mac"); os_and.setActionCommand("android"); os_other.setActionCommand("other");
 									JPanel osPanel = new JPanel(); osPanel.add(os_win); osPanel.add(os_lin); osPanel.add(os_mac); osPanel.add(os_and); osPanel.add(os_other);
-									for (int k = 0; k < osPanel.getComponentCount(); k++) {
-										JCheckBox r = (JCheckBox) osPanel.getComponent(k);
-										if (oldos.contains(r.getActionCommand())) { r.setSelected(true); }
-									}
+									if (oldos.contains("Windows")) { os_win.setSelected(true); } if (oldos.contains("Linux")) { os_lin.setSelected(true); } if (oldos.contains("Mac")) { os_mac.setSelected(true); } if (oldos.contains("Android")) { os_and.setSelected(true); } if (oldos.contains("other")) { os_other.setSelected(true); }
 
-									// JTextField newos = new JTextField();
 									JTextField newselfNote = new JTextField();
 
 									JLabel Namelabel = new JLabel("Name: (required)" + " (old: "+oldname+")");

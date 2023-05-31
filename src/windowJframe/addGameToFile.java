@@ -17,7 +17,6 @@ import xmlFolderHandle.isIDInDatabase;
 import xmlFolderHandle.saveLoadDoc;
 
 public class addGameToFile {
-	
 	public static void addOneGameToFile(){
 		boolean repeat = true;
 		while (repeat) {
@@ -65,7 +64,6 @@ public class addGameToFile {
 			// panel.add(os);
 			JLabel selfNotelabel = new JLabel("Self note:");
 			panel.add(selfNotelabel); panel.add(selfNote);
-
 			panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 			JOptionPane.showMessageDialog(null, panel, "Add game", JOptionPane.PLAIN_MESSAGE);
 

@@ -67,7 +67,6 @@ public class updateGameFromToFile {
 										JRadioButton r = (JRadioButton) howFarUserPlayedPanel.getComponent(k);
 										if (r.getActionCommand().equals(oldhowFarUserPlayed)) { r.setSelected(true); }
 									}
-
 									JRadioButton stillOnPc_yes = new JRadioButton("Yes"), stillOnPc_no = new JRadioButton("No"), stillOnPc_unknown = new JRadioButton("Unknown");
 									stillOnPc_yes.setActionCommand("yes"); stillOnPc_no.setActionCommand("no"); stillOnPc_unknown.setActionCommand("unknown");
 									ButtonGroup stillOnPc = new ButtonGroup(); stillOnPc.add(stillOnPc_yes); stillOnPc.add(stillOnPc_no); stillOnPc.add(stillOnPc_unknown);
@@ -99,7 +98,6 @@ public class updateGameFromToFile {
 									// panel.add(os);
 									JLabel selfNotelabel = new JLabel("Self note:");
 									panel.add(selfNotelabel); panel.add(newselfNote);
-
 									panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 									int option = JOptionPane.showConfirmDialog(null, panel, "Update game", JOptionPane.OK_CANCEL_OPTION);
 									if (option == JOptionPane.OK_OPTION) {

@@ -59,7 +59,7 @@ public class _initXml {
 								case "Played version": allDataFromFile[counter][n] = e.getElementsByTagName("played_version").item(0).getTextContent().trim(); break;
 								case "Date of last update": allDataFromFile[counter][n] = e.getElementsByTagName("dateof_lastupate").item(0).getTextContent().trim(); break;
 								case "Player prograssion": allDataFromFile[counter][n] = e.getElementsByTagName("howFarUserPlayed").item(0).getTextContent().trim(); break;
-								case "Still on pc?": allDataFromFile[counter][n] = e.getElementsByTagName("deletedFromPc").item(0).getTextContent().trim(); break;
+								case "Still on pc?": allDataFromFile[counter][n] = e.getElementsByTagName("stillOnPc").item(0).getTextContent().trim(); break;
 								case "Engine": allDataFromFile[counter][n] = e.getElementsByTagName("engine").item(0).getTextContent().trim(); break;
 								// <OS win="y" lin="y" mac="n" and="y" ios="n" other="n">-</OS>
 								// <OS win="y" lin="y" mac="n" and="y" ios="n" other="y">Random unknown os</OS>

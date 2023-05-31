@@ -94,7 +94,7 @@ public class saveLoadDoc {
 			<onlineLastUpdate>0009-09-09</onlineLastUpdate>
 			<websiteRate>10/10</websiteRate>
 			<howFarUserPlayed>finished/tobecompleted/neverplayed</howFarUserPlayed>
-			<deletedFromPc>true/false</deletedFromPc>
+			<stillOnPc>true/false</stillOnPc>
 			<engine>Unreal/Renpy</engine>
 
 			<OS>Win./Linux/Mac/Android</OS>		Choose one of these maybe?
@@ -180,7 +180,7 @@ public class saveLoadDoc {
 			Element newPlayed_version = doc.createElement("played_version");
 			Element newDateof_lastupate = doc.createElement("dateof_lastupate");
 			Element newHowFarUserPlayed = doc.createElement("howFarUserPlayed");
-			Element newDeletedFromPc = doc.createElement("deletedFromPc");
+			Element newstillOnPc = doc.createElement("stillOnPc");
 			Element newEngine = doc.createElement("engine");
 			//Element newOS = doc.createElement("OS");
 			Element newSelfNote = doc.createElement("selfNote");
@@ -190,7 +190,7 @@ public class saveLoadDoc {
 			newPlayed_version.appendChild(doc.createTextNode("v0.0.0"));
 			newDateof_lastupate.appendChild(doc.createTextNode("2020-01-01"));
 			newHowFarUserPlayed.appendChild(doc.createTextNode("Not played"));
-			newDeletedFromPc.appendChild(doc.createTextNode("no"));
+			newstillOnPc.appendChild(doc.createTextNode("No"));
 			newEngine.appendChild(doc.createTextNode("HTML"));
 			//newOS.appendChild(doc.createTextNode("-"));
 			newSelfNote.appendChild(doc.createTextNode("-"));
@@ -199,7 +199,7 @@ public class saveLoadDoc {
 			newGame.appendChild(newPlayed_version);
 			newGame.appendChild(newDateof_lastupate);
 			newGame.appendChild(newHowFarUserPlayed);
-			newGame.appendChild(newDeletedFromPc);
+			newGame.appendChild(newstillOnPc);
 			newGame.appendChild(newEngine);
 			//newGame.appendChild(newOS);
 			newGame.appendChild(newSelfNote);

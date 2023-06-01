@@ -66,8 +66,10 @@ public class saveLoadDoc {
 		String[] columnNames = _initXml.allColumns(dom);
 		Object[][] data = _initXml.loadGames(dom, columnNames);
 		table.setModel(new JTable(data, columnNames).getModel());
+		// TODO change row color if Not played, In progress, Finish, 100% Finished in Player prograssion	column
+		// Not played: red, In progress: yellow, Finish: blue, 100% Finished: green
 	}
-
+	
 	private static void createFile() {
 		/* 
 		Special char: 
@@ -165,6 +167,7 @@ public class saveLoadDoc {
 			newDateof_lastplayed.appendChild(doc.createTextNode("2020-01-01"));
 			newUser_rating.appendChild(doc.createTextNode("10/10"));
 			newNewest_version.appendChild(doc.createTextNode("v1.0.0"));
+			// newNewest_version.setAttribute("finished", "true");
 			newDateof_lastupate.appendChild(doc.createTextNode("2020-01-03"));
 			newPeople_rating.appendChild(doc.createTextNode("8/10"));
 			newHowFarUserPlayed.appendChild(doc.createTextNode("Not played"));

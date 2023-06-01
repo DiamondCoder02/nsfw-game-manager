@@ -88,6 +88,7 @@ public class addGameToFile {
 			JLabel selfNotelabel = new JLabel("Self note:");
 			panel.add(selfNotelabel); panel.add(selfNote);
 
+			// TODO move everything to the left
 			panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 			//panel.setLayout(new GridLayout(15, 1, 1, 1));
 			JOptionPane.showMessageDialog(null, panel, "Add game", JOptionPane.PLAIN_MESSAGE);

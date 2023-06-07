@@ -78,24 +78,20 @@ public class saveLoadDoc {
 
 	private static JTable getNewRenderedTable(final JTable table) {
 		// change row color - Not played: red, In progress: yellow, Finish: blue, 100% Finished: green
+		Color np = new Color(255, 110, 130);
+		Color ip = new Color(255, 255, 120);
+		Color fi = new Color(100, 170, 255);
+		Color ff = new Color(130, 255, 130);
 		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
 			@Override
 			public Component getTableCellRendererComponent(JTable table,
 					Object value, boolean isSelected, boolean hasFocus, int row, int col) {
 				super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, col);
 				String status = (String) table.getModel().getValueAt(row, 9);
-				if ("Not played".equals(status)) {
-					setBackground(Color.RED);
-					setForeground(Color.BLACK);
-				} else if ("In progress".equals(status)) {
-					setBackground(Color.YELLOW);
-					setForeground(Color.BLACK);
-				} else if ("Finish".equals(status)) {
-					setBackground(Color.BLUE);
-					setForeground(Color.WHITE);
-				} else if ("100% Finished".equals(status)) {
-					setBackground(Color.GREEN);
-					setForeground(Color.BLACK);
+				if ("Not played".equals(status)) { setBackground(np);
+				} else if ("In progress".equals(status)) { setBackground(ip);
+				} else if ("Finish".equals(status)) { setBackground(fi);
+				} else if ("100% Finished".equals(status)) { setBackground(ff);
 				} else {
 					setBackground(table.getBackground());
 					setForeground(table.getForeground());

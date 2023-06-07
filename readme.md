@@ -36,7 +36,7 @@ Other tab:
 
 Settings tab:
 
-- [ ] darkmode
+- [x] darkmode
 - [ ] autofetchnewgames
 - [ ] autoUpdateGames
 

@@ -78,10 +78,21 @@ public class saveLoadDoc {
 
 	private static JTable getNewRenderedTable(final JTable table) {
 		// change row color - Not played: red, In progress: yellow, Finish: blue, 100% Finished: green
-		Color np = new Color(255, 110, 130);
-		Color ip = new Color(255, 255, 120);
-		Color fi = new Color(100, 170, 255);
-		Color ff = new Color(130, 255, 130);
+		// boolean[] otherSettings = settingsManager.loadSettings("othersettings");
+		Color np, ip, fi, ff;
+		// if (otherSettings[0]){
+			np = new Color(255, 110, 130);
+			ip = new Color(255, 255, 120);
+			fi = new Color(100, 170, 255);
+			ff = new Color(130, 255, 130);
+		/* 
+		} else {
+			np = new Color(255, 0, 0);
+			ip = new Color(255, 255, 0);
+			fi = new Color(0, 0, 255);
+			ff = new Color(0, 255, 0);
+		}
+		*/
 		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
 			@Override
 			public Component getTableCellRendererComponent(JTable table,

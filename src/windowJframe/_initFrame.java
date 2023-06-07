@@ -110,8 +110,10 @@ public class _initFrame extends JFrame implements ActionListener {
 		faq.addActionListener(this);
 		credits.addActionListener(this);
 
-		table = new JTable(dataFromXMLFile, columnNames);
+		table = new JTable();
+		saveLoadDoc.reloadTable(table);
 		table.setBounds(30, 40, 200, 300);
+		table.setAutoCreateRowSorter(true);
 		setLayout(new BorderLayout());
 		add(table.getTableHeader(), BorderLayout.PAGE_START);
 		add(table, BorderLayout.CENTER);

@@ -75,6 +75,14 @@ public class _initXml {
 				}
 			}
 		}
+		for (int i = 0; i < allDataFromFile.length; i++) {
+			if (allDataFromFile[i][0] == null) {
+				Object[][] allDataFromFile2 = new Object[i][columnNames.length];
+				for (int j = 0; j < i; j++) { for (int n = 0; n < columnNames.length; n++) { allDataFromFile2[j][n] = allDataFromFile[j][n]; } }
+				allDataFromFile = allDataFromFile2;
+				break;
+			}
+		}
 		return allDataFromFile;
 	}
 }

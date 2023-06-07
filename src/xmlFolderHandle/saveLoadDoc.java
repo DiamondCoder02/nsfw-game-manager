@@ -1,9 +1,12 @@
 package xmlFolderHandle;
 
 import java.io.File;
+import java.awt.Color;
+import java.awt.Component;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -15,11 +18,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 public class saveLoadDoc {
-	static String path = System.getenv("APPDATA")+"\\DiamondCoder\\nsfwGameManager\\hentai.xml";
-	public static Document loadDocument(){
+	static String path = System.getenv("APPDATA") + "\\DiamondCoder\\nsfwGameManager\\hentai.xml";
+
+	public static Document loadDocument() {
 		// find file
 		File file = new File(path);
-		if (!file.exists()) { createFile(); }
+		if (!file.exists()) {
+			createFile();
+		}
 		try {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
@@ -32,7 +38,8 @@ public class saveLoadDoc {
 		}
 		return null;
 	}
-	public static void saveDocument(Document dom){
+
+	public static void saveDocument(Document dom) {
 		try {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
@@ -46,7 +53,7 @@ public class saveLoadDoc {
 		}
 	}
 
-	public static void saveADocument(String path){
+	public static void saveADocument(String path) {
 		try {
 			Document dom = loadDocument();
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -66,40 +73,70 @@ public class saveLoadDoc {
 		String[] columnNames = _initXml.allColumns(dom);
 		Object[][] data = _initXml.loadGames(dom, columnNames);
 		table.setModel(new JTable(data, columnNames).getModel());
-		// TODO change row color if Not played, In progress, Finish, 100% Finished in Player prograssion	column
-		// Not played: red, In progress: yellow, Finish: blue, 100% Finished: green
+		getNewRenderedTable(table);
 	}
-	
+
+	private static JTable getNewRenderedTable(final JTable table) {
+		// change row color - Not played: red, In progress: yellow, Finish: blue, 100%
+		// Finished: green
+		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+			@Override
+			public Component getTableCellRendererComponent(JTable table,
+					Object value, boolean isSelected, boolean hasFocus, int row, int col) {
+				super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, col);
+				String status = (String) table.getModel().getValueAt(row, 9);
+				if ("Not played".equals(status)) {
+					setBackground(Color.RED);
+					setForeground(Color.BLACK);
+				} else if ("In progress".equals(status)) {
+					setBackground(Color.YELLOW);
+					setForeground(Color.BLACK);
+				} else if ("Finish".equals(status)) {
+					setBackground(Color.BLUE);
+					setForeground(Color.WHITE);
+				} else if ("100% Finished".equals(status)) {
+					setBackground(Color.GREEN);
+					setForeground(Color.BLACK);
+				} else {
+					setBackground(table.getBackground());
+					setForeground(table.getForeground());
+				}
+				return this;
+			}
+		});
+		return table;
+	}
+
 	private static void createFile() {
-		/* 
-		Special char: 
-		&		&amp;
-		<		&lt; 
-		>		&gt;
-		""		&quot;
-		'' 		&apos;
-		<name>John &amp; Doe</name>
-
-		If there is id but something goes wrong and one or more info is not available 
-		Actually, while there is no api/rss, this is not needed?
-		<game id="1">
-				idea: some stuff can be demonstrated with styles 
-				or put a star or symbol
-			<name>testname</name>
-			<developer>testdeveloper</developer>
-
-			idea: if games is completed or onhold or abondoned, 
-			have small thing at the online last version
-			<newest_version>v0.1</newest_version>
-		</game>
-		*/
+		/*
+		 * Special char:
+		 * & &amp;
+		 * < &lt;
+		 * > &gt;
+		 * "" &quot;
+		 * '' &apos;
+		 * <name>John &amp; Doe</name>
+		 * 
+		 * If there is id but something goes wrong and one or more info is not available
+		 * Actually, while there is no api/rss, this is not needed?
+		 * <game id="1">
+		 * idea: some stuff can be demonstrated with styles
+		 * or put a star or symbol
+		 * <name>testname</name>
+		 * <developer>testdeveloper</developer>
+		 * 
+		 * idea: if games is completed or onhold or abondoned,
+		 * have small thing at the online last version
+		 * <newest_version>v0.1</newest_version>
+		 * </game>
+		 */
 		try {
-			new File(System.getenv("APPDATA")+"\\DiamondCoder\\nsfwGameManager").mkdirs(); 
+			new File(System.getenv("APPDATA") + "\\DiamondCoder\\nsfwGameManager").mkdirs();
 		} catch (Exception e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Error creating database folders", "Error", JOptionPane.ERROR_MESSAGE);
 		}
-		try{
+		try {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.newDocument();

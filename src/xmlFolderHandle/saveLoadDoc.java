@@ -77,8 +77,7 @@ public class saveLoadDoc {
 	}
 
 	private static JTable getNewRenderedTable(final JTable table) {
-		// change row color - Not played: red, In progress: yellow, Finish: blue, 100%
-		// Finished: green
+		// change row color - Not played: red, In progress: yellow, Finish: blue, 100% Finished: green
 		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
 			@Override
 			public Component getTableCellRendererComponent(JTable table,

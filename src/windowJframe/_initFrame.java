@@ -3,6 +3,7 @@ package windowJframe;
 import static java.lang.System.out;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,17 +22,99 @@ import xmlFolderHandle.saveLoadDoc;
 public class _initFrame extends JFrame implements ActionListener {
 	JMenuBar mb;
 
+	JMenu games;
 	JMenuItem addGame, removeGame, updateList;
 	JMenuItem refreshFromAPI, refreshEverything, saveFileToDifferent;
 
+	JMenu settings;
 	JCheckBoxMenuItem darkMode, autoFetchNews, autoUpdateGames;
+	JMenu show;
 	JCheckBoxMenuItem showID, showName, showDeveloper, showPlayedVersion, showLastTimePlayed, showRated, showNewestVersion, showDateOfLastUpdate, showPeopleRating, showhowFarUserPlayed, showDeletedFromPc;
 	JCheckBoxMenuItem showEngine, showOS, ShowSelfNote;
 
+	JMenu help;
 	JMenuItem dataToShow, faq, credits;
 
+	JMenuItem exit;
 	static JTable table;
+
+	Color bg = new Color(100, 100, 100);
+	Color fg = new Color(255, 255, 255);
+
+	boolean[] columnVisibility = settingsManager.loadSettings("showncolumns");
+	boolean[] otherSettings = settingsManager.loadSettings("othersettings");
+
+	public void WindowRefresh(){
+		otherSettings = settingsManager.loadSettings("othersettings");
+		if (otherSettings[0]) {
+			mb.setBackground(bg); mb.setForeground(fg);
+			games.setBackground(bg); games.setForeground(fg);
+			settings.setBackground(bg);	settings.setForeground(fg);
+			help.setBackground(bg);	help.setForeground(fg);
+			show.setBackground(bg); show.setForeground(fg); // TODO why no dark work?
+			addGame.setBackground(bg); addGame.setForeground(fg);
+			removeGame.setBackground(bg); removeGame.setForeground(fg);
+			updateList.setBackground(bg); updateList.setForeground(fg);
+			saveFileToDifferent.setBackground(bg); saveFileToDifferent.setForeground(fg);
+			refreshEverything.setBackground(bg); refreshEverything.setForeground(fg);
+			refreshFromAPI.setBackground(bg); refreshFromAPI.setForeground(fg);
+			showID.setBackground(bg); showID.setForeground(fg);
+			showName.setBackground(bg); showName.setForeground(fg);
+			showDeveloper.setBackground(bg); showDeveloper.setForeground(fg);
+			showPlayedVersion.setBackground(bg); showPlayedVersion.setForeground(fg);
+			showLastTimePlayed.setBackground(bg); showLastTimePlayed.setForeground(fg);
+			showRated.setBackground(bg); showRated.setForeground(fg);
+			showNewestVersion.setBackground(bg); showNewestVersion.setForeground(fg);
+			showDateOfLastUpdate.setBackground(bg); showDateOfLastUpdate.setForeground(fg);
+			showPeopleRating.setBackground(bg);	showPeopleRating.setForeground(fg);
+			showhowFarUserPlayed.setBackground(bg);	showhowFarUserPlayed.setForeground(fg);
+			showDeletedFromPc.setBackground(bg); showDeletedFromPc.setForeground(fg);
+			showEngine.setBackground(bg); showEngine.setForeground(fg);
+			showOS.setBackground(bg); showOS.setForeground(fg);
+			ShowSelfNote.setBackground(bg);	ShowSelfNote.setForeground(fg);
+			darkMode.setBackground(bg);	darkMode.setForeground(fg);
+			autoFetchNews.setBackground(bg); autoFetchNews.setForeground(fg);
+			autoUpdateGames.setBackground(bg); autoUpdateGames.setForeground(fg);
+			faq.setBackground(bg); faq.setForeground(fg);
+			credits.setBackground(bg); credits.setForeground(fg);
+			exit.setBackground(bg);	exit.setForeground(fg);
+		} else {
+			mb.setBackground(null); mb.setForeground(null);
+			games.setBackground(null); games.setForeground(null);
+			settings.setBackground(null);	settings.setForeground(null);
+			help.setBackground(null);	help.setForeground(null);
+			show.setBackground(null); show.setForeground(null); // TODO why no dark work?
+			addGame.setBackground(null); addGame.setForeground(null);
+			removeGame.setBackground(null); removeGame.setForeground(null);
+			updateList.setBackground(null); updateList.setForeground(null);
+			saveFileToDifferent.setBackground(null); saveFileToDifferent.setForeground(null);
+			refreshEverything.setBackground(null); refreshEverything.setForeground(null);
+			refreshFromAPI.setBackground(null); refreshFromAPI.setForeground(null);
+			showID.setBackground(null); showID.setForeground(null);
+			showName.setBackground(null); showName.setForeground(null);
+			showDeveloper.setBackground(null); showDeveloper.setForeground(null);
+			showPlayedVersion.setBackground(null); showPlayedVersion.setForeground(null);
+			showLastTimePlayed.setBackground(null); showLastTimePlayed.setForeground(null);
+			showRated.setBackground(null); showRated.setForeground(null);
+			showNewestVersion.setBackground(null); showNewestVersion.setForeground(null);
+			showDateOfLastUpdate.setBackground(null); showDateOfLastUpdate.setForeground(null);
+			showPeopleRating.setBackground(null);	showPeopleRating.setForeground(null);
+			showhowFarUserPlayed.setBackground(null);	showhowFarUserPlayed.setForeground(null);
+			showDeletedFromPc.setBackground(null); showDeletedFromPc.setForeground(null);
+			showEngine.setBackground(null); showEngine.setForeground(null);
+			showOS.setBackground(null); showOS.setForeground(null);
+			ShowSelfNote.setBackground(null);	ShowSelfNote.setForeground(null);
+			darkMode.setBackground(null);	darkMode.setForeground(null);
+			autoFetchNews.setBackground(null); autoFetchNews.setForeground(null);
+			autoUpdateGames.setBackground(null); autoUpdateGames.setForeground(null);
+			faq.setBackground(null); faq.setForeground(null);
+			credits.setBackground(null); credits.setForeground(null);
+			exit.setBackground(null);	exit.setForeground(null);
+		}
+		System.out.println("yes!");
+	}
 	public void WindowCreate(String[] columnNames, Object[][] dataFromXMLFile) {
+		
 		// TODO text size small on large display - https://bugs.openjdk.org/browse/JDK-8202973
 		setTitle("Hentai Game Database");
 		setSize(1500, 600);
@@ -39,7 +122,6 @@ public class _initFrame extends JFrame implements ActionListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setJMenuBar(mb = new JMenuBar());
 
-		JMenu games;
 		mb.add(games = new JMenu("Games"));
 		games.add(addGame = new JMenuItem("Add game"));
 		games.add(removeGame = new JMenuItem("Remove game"));
@@ -56,13 +138,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		refreshFromAPI.addActionListener(this);
 		refreshEverything.addActionListener(this);
 
-		boolean[] columnVisibility, otherSettings;
-		columnVisibility = settingsManager.loadSettings("showncolumns");
-		otherSettings = settingsManager.loadSettings("othersettings");
-
-		JMenu settings;
 		mb.add(settings = new JMenu("Settings"));
-		JMenu show;
 		settings.add(show = new JMenu("Shown informations"));
 		show.add(showID = new JCheckBoxMenuItem("ID", columnVisibility[0]));
 		show.add(showName = new JCheckBoxMenuItem("Name", columnVisibility[1]));
@@ -103,7 +179,6 @@ public class _initFrame extends JFrame implements ActionListener {
 		autoUpdateGames.addActionListener(this);
 		darkMode.addActionListener(this);
 
-		JMenu help;
 		mb.add(help = new JMenu("Other"));
 		help.add(faq = new JMenuItem("FAQ"));
 		help.add(credits = new JMenuItem("Credits"));
@@ -121,9 +196,46 @@ public class _initFrame extends JFrame implements ActionListener {
         JScrollPane pane = new JScrollPane(table);
         add(pane, BorderLayout.CENTER);
 
-		JMenuItem exit;
 		mb.add(exit = new JMenuItem("Exit"));
 		exit.addActionListener(this);
+
+		/*
+		if (otherSettings[0]) {
+			Color bg = new Color(100, 100, 100);
+			Color fg = new Color(255, 255, 255);
+
+			mb.setBackground(bg); mb.setForeground(fg);
+			games.setBackground(bg); games.setForeground(fg);
+			settings.setBackground(bg);	settings.setForeground(fg);
+			help.setBackground(bg);	help.setForeground(fg);
+			show.setBackground(bg); show.setForeground(fg); // TODO why no dark work?
+			addGame.setBackground(bg); addGame.setForeground(fg);
+			removeGame.setBackground(bg); removeGame.setForeground(fg);
+			updateList.setBackground(bg); updateList.setForeground(fg);
+			saveFileToDifferent.setBackground(bg); saveFileToDifferent.setForeground(fg);
+			refreshEverything.setBackground(bg); refreshEverything.setForeground(fg);
+			refreshFromAPI.setBackground(bg); refreshFromAPI.setForeground(fg);
+			showID.setBackground(bg); showID.setForeground(fg);
+			showName.setBackground(bg); showName.setForeground(fg);
+			showDeveloper.setBackground(bg); showDeveloper.setForeground(fg);
+			showPlayedVersion.setBackground(bg); showPlayedVersion.setForeground(fg);
+			showLastTimePlayed.setBackground(bg); showLastTimePlayed.setForeground(fg);
+			showRated.setBackground(bg); showRated.setForeground(fg);
+			showNewestVersion.setBackground(bg); showNewestVersion.setForeground(fg);
+			showDateOfLastUpdate.setBackground(bg); showDateOfLastUpdate.setForeground(fg);
+			showPeopleRating.setBackground(bg);	showPeopleRating.setForeground(fg);
+			showhowFarUserPlayed.setBackground(bg);	showhowFarUserPlayed.setForeground(fg);
+			showDeletedFromPc.setBackground(bg); showDeletedFromPc.setForeground(fg);
+			showEngine.setBackground(bg); showEngine.setForeground(fg);
+			showOS.setBackground(bg); showOS.setForeground(fg);
+			ShowSelfNote.setBackground(bg);	ShowSelfNote.setForeground(fg);
+			darkMode.setBackground(bg);	darkMode.setForeground(fg);
+			autoFetchNews.setBackground(bg); autoFetchNews.setForeground(fg);
+			autoUpdateGames.setBackground(bg); autoUpdateGames.setForeground(fg);
+			faq.setBackground(bg); faq.setForeground(fg);
+			credits.setBackground(bg); credits.setForeground(fg);
+			exit.setBackground(bg);	exit.setForeground(fg);
+		}*/
 
 		setVisible(true);
 	}
@@ -157,7 +269,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Engine": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "OS": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Personal Notes": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "Dark mode": settingsManager.xmlSettings("othersettings", gac); JOptionPane.showMessageDialog(null, "Not implemented yet.\nCome back later.", "Error", JOptionPane.ERROR_MESSAGE);break; // TODO darkmode
+			case "Dark mode": settingsManager.xmlSettings("othersettings", gac); WindowRefresh(); break; // TODO darkmode
 			case "Auto fetch game updates": settingsManager.xmlSettings("othersettings", gac);JOptionPane.showMessageDialog(null, "API is not implemented at all yet.\nCome back later.", "Error", JOptionPane.ERROR_MESSAGE); break; // TODO api1
 			case "Auto update games": settingsManager.xmlSettings("othersettings", gac);JOptionPane.showMessageDialog(null, "API is not implemented at all yet.\nCome back later.", "Error", JOptionPane.ERROR_MESSAGE); break; // TODO api2
 			case "FAQ": otherButtonsThingies.FACKQU(); break;

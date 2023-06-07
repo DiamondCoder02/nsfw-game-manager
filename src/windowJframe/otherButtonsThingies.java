@@ -36,11 +36,11 @@ public class otherButtonsThingies {
 		"You can also save a copy under \"Games\" => \"Save file copy\" button.\n\n"+
 		"Q: Features?\nA: -----*Currently:*-----\n"+
 		"- Add, store, update, remove game infos manually\n"+
+		"- DarkMode\n"+
+		"- Colorful table\n"+
 		"-----*Plans:*-----\n"+
 		"- F95zone, so only ID needed to add game\n"+
 		"- Dlsite so also only ID needed\n"+
-		"- DarkMode\n"+
-		"- Colorful table\n"+
 		"- (Far future) If I can, I will also add to download/detect what games are downloaded\n"+
 		"\n"+
 		"Q: Support?\nA: Patreon: https://www.patreon.com/DiamondCoder\n\n"+

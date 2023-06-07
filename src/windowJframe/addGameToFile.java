@@ -111,7 +111,7 @@ public class addGameToFile {
 			if (os_mac.isSelected()) { osValue += "Mac / "; }
 			if (os_and.isSelected()) { osValue += "Android / "; }
 			if (os_other.isSelected()) { osValue += "other"; }
-			if (osValue.endsWith(" - ")) { osValue = osValue.substring(0, osValue.length() - 3); }
+			if (osValue.endsWith(" / ")) { osValue = osValue.substring(0, osValue.length() - 3); }
 			String selfNoteValue = selfNote.getText();
 
 			if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "ID is required", "Error", JOptionPane.ERROR_MESSAGE); return; }

@@ -145,12 +145,12 @@ public class updateGameFromToFile {
 										String newstillOnPcValue = stillOnPc.getSelection().getActionCommand();
 										String newengineValue = engineGroup.getSelection().getActionCommand();
 										String newosValue = "";
-										if (os_win.isSelected()) { newosValue += "Windows - "; }
-										if (os_lin.isSelected()) { newosValue += "Linux - "; }
-										if (os_mac.isSelected()) { newosValue += "Mac - "; }
-										if (os_and.isSelected()) { newosValue += "Android - "; }
+										if (os_win.isSelected()) { newosValue += "Windows / "; }
+										if (os_lin.isSelected()) { newosValue += "Linux / "; }
+										if (os_mac.isSelected()) { newosValue += "Mac / "; }
+										if (os_and.isSelected()) { newosValue += "Android / "; }
 										if (os_other.isSelected()) { newosValue += "other"; }
-										if (newosValue.endsWith(" - ")) { newosValue = newosValue.substring(0, newosValue.length() - 3); }
+										if (newosValue.endsWith(" / ")) { newosValue = newosValue.substring(0, newosValue.length() - 3); }
 										String newselfNoteValue = newselfNote.getText();
 										if (newnameValue.equals("")) { newnameValue = oldname; }
 										if (newdeveloperValue.equals("")) { newdeveloperValue = olddeveloper; }

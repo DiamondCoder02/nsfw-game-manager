@@ -57,7 +57,7 @@ public class _initXml {
 								case "Name": allDataFromFile[counter][n] = e.getElementsByTagName("name").item(0).getTextContent().trim(); break;
 								case "Developer": allDataFromFile[counter][n] = e.getElementsByTagName("developer").item(0).getTextContent().trim(); break;
 								case "Played version": allDataFromFile[counter][n] = e.getElementsByTagName("played_version").item(0).getTextContent().trim(); break;
-								case "Last time played": allDataFromFile[counter][n] = e.getElementsByTagName("dateof_lastplayed").item(0).getTextContent().trim(); break;
+								case "Last time play": allDataFromFile[counter][n] = e.getElementsByTagName("dateof_lastplay").item(0).getTextContent().trim(); break;
 								case "Rated": allDataFromFile[counter][n] = e.getElementsByTagName("user_rating").item(0).getTextContent().trim(); break;
 								case "Newest version": { allDataFromFile[counter][n] = e.getElementsByTagName("newest_version").item(0).getTextContent().trim(); if (e.getAttribute("finished").trim().equals("true")){allDataFromFile[counter][n] += " (Last version)";} break;}
 								case "Date of last update": allDataFromFile[counter][n] = e.getElementsByTagName("dateof_lastupate").item(0).getTextContent().trim(); break;

@@ -49,7 +49,7 @@ public class updateGameFromToFile {
 									String oldname = e.getElementsByTagName("name").item(0).getTextContent().trim();
 									String olddeveloper = e.getElementsByTagName("developer").item(0).getTextContent().trim();
 									String oldplayed_version = e.getElementsByTagName("played_version").item(0).getTextContent().trim();
-									String olddateof_lastplayed = e.getElementsByTagName("dateof_lastplayed").item(0).getTextContent().trim();
+									String olddateof_lastplay = e.getElementsByTagName("dateof_lastplay").item(0).getTextContent().trim();
 									String olduser_rated = e.getElementsByTagName("user_rating").item(0).getTextContent().trim();
 									String oldnewest_version = e.getElementsByTagName("newest_version").item(0).getTextContent().trim();
 									String olddateof_lastupate = e.getElementsByTagName("dateof_lastupate").item(0).getTextContent().trim();
@@ -63,7 +63,7 @@ public class updateGameFromToFile {
 									JTextField newname = new JTextField();
 									JTextField newdeveloper = new JTextField();
 									JTextField newplayed_version = new JTextField();
-									JTextField newdateof_lastplayed = new JTextField();
+									JTextField newdateof_lastplay = new JTextField();
 									JTextField newuser_rated = new JTextField();
 									JTextField newnewest_version = new JTextField();
 									JTextField newdateof_lastupate = new JTextField();
@@ -110,8 +110,8 @@ public class updateGameFromToFile {
 									panel.add(developerlabel); panel.add(newdeveloper);
 									JLabel played_versionlabel = new JLabel("Played version:" + " (old: "+oldplayed_version+")");
 									panel.add(played_versionlabel); panel.add(newplayed_version);
-									JLabel dateof_lastplayedlabel = new JLabel("Last time played:" + " (old: "+olddateof_lastplayed+")");
-									panel.add(dateof_lastplayedlabel); panel.add(newdateof_lastplayed);
+									JLabel dateof_lastplaylabel = new JLabel("Last time play:" + " (old: "+olddateof_lastplay+")");
+									panel.add(dateof_lastplaylabel); panel.add(newdateof_lastplay);
 									JLabel user_ratedlabel = new JLabel("Rated:" + " (old: "+olduser_rated+")");
 									panel.add(user_ratedlabel); panel.add(newuser_rated);
 									JLabel newest_versionlabel = new JLabel("Newest version:" + " (old: "+oldnewest_version+")");
@@ -136,7 +136,7 @@ public class updateGameFromToFile {
 										String newnameValue = newname.getText();
 										String newdeveloperValue = newdeveloper.getText();
 										String newplayed_versionValue = newplayed_version.getText();
-										String newdateof_lastplayedValue = newdateof_lastplayed.getText();
+										String newdateof_lastplayValue = newdateof_lastplay.getText();
 										String newuser_ratedValue = newuser_rated.getText();
 										String newnewest_versionValue = newnewest_version.getText();
 										String newdateof_lastupateValue = newdateof_lastupate.getText();
@@ -155,7 +155,7 @@ public class updateGameFromToFile {
 										if (newnameValue.equals("")) { newnameValue = oldname; }
 										if (newdeveloperValue.equals("")) { newdeveloperValue = olddeveloper; }
 										if (newplayed_versionValue.equals("")) { newplayed_versionValue = oldplayed_version; }
-										if (newdateof_lastplayedValue.equals("")) { newdateof_lastplayedValue = olddateof_lastplayed; }
+										if (newdateof_lastplayValue.equals("")) { newdateof_lastplayValue = olddateof_lastplay; }
 										if (newuser_ratedValue.equals("")) { newuser_ratedValue = olduser_rated; }
 										if (newnewest_versionValue.equals("")) { newnewest_versionValue = oldnewest_version; }
 										if (newdateof_lastupateValue.equals("")) { newdateof_lastupateValue = olddateof_lastupate; }
@@ -168,7 +168,7 @@ public class updateGameFromToFile {
 										e.getElementsByTagName("name").item(0).setTextContent(newnameValue);
 										e.getElementsByTagName("developer").item(0).setTextContent(newdeveloperValue);
 										e.getElementsByTagName("played_version").item(0).setTextContent(newplayed_versionValue);
-										e.getElementsByTagName("dateof_lastplayed").item(0).setTextContent(newdateof_lastplayedValue);
+										e.getElementsByTagName("dateof_lastplay").item(0).setTextContent(newdateof_lastplayValue);
 										e.getElementsByTagName("user_rating").item(0).setTextContent(newuser_ratedValue);
 										e.getElementsByTagName("newest_version").item(0).setTextContent(newnewest_versionValue);
 										e.getElementsByTagName("dateof_lastupate").item(0).setTextContent(newdateof_lastupateValue);

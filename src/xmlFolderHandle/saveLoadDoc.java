@@ -165,7 +165,7 @@ public class saveLoadDoc {
 			Element showncolumns4 = doc.createElement("showncolumns"); showncolumns4.setAttribute("enabled", "true");
 			showncolumns4.appendChild(doc.createTextNode("Played version")); settings.appendChild(showncolumns4);
 			Element showncolumns41 = doc.createElement("showncolumns"); showncolumns41.setAttribute("enabled", "true");
-			showncolumns41.appendChild(doc.createTextNode("Last time played")); settings.appendChild(showncolumns41);
+			showncolumns41.appendChild(doc.createTextNode("Last time play")); settings.appendChild(showncolumns41);
 			Element showncolumns42 = doc.createElement("showncolumns"); showncolumns42.setAttribute("enabled", "true");
 			showncolumns42.appendChild(doc.createTextNode("Rated")); settings.appendChild(showncolumns42);
 			Element showncolumns43 = doc.createElement("showncolumns"); showncolumns43.setAttribute("enabled", "true");
@@ -193,7 +193,7 @@ public class saveLoadDoc {
 			Element newName = doc.createElement("name");
 			Element newDeveloper = doc.createElement("developer");
 			Element newPlayed_version = doc.createElement("played_version");
-			Element newDateof_lastplayed = doc.createElement("dateof_lastplayed");
+			Element newDateof_lastplay = doc.createElement("dateof_lastplay");
 			Element newUser_rating = doc.createElement("user_rating");
 			Element newNewest_version = doc.createElement("newest_version");
 			Element newDateof_lastupate = doc.createElement("dateof_lastupate");
@@ -207,7 +207,7 @@ public class saveLoadDoc {
 			newName.appendChild(doc.createTextNode("Example game"));
 			newDeveloper.appendChild(doc.createTextNode("Example developer"));
 			newPlayed_version.appendChild(doc.createTextNode("v0.0.0"));
-			newDateof_lastplayed.appendChild(doc.createTextNode("2020-01-01"));
+			newDateof_lastplay.appendChild(doc.createTextNode("2020-01-01"));
 			newUser_rating.appendChild(doc.createTextNode("10/10"));
 			newNewest_version.appendChild(doc.createTextNode("v1.0.0"));
 			// newNewest_version.setAttribute("finished", "true");
@@ -221,7 +221,7 @@ public class saveLoadDoc {
 			newGame.appendChild(newName);
 			newGame.appendChild(newDeveloper);
 			newGame.appendChild(newPlayed_version);
-			newGame.appendChild(newDateof_lastplayed);
+			newGame.appendChild(newDateof_lastplay);
 			newGame.appendChild(newUser_rating);
 			newGame.appendChild(newNewest_version);
 			newGame.appendChild(newDateof_lastupate);

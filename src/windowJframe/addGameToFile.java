@@ -27,7 +27,7 @@ public class addGameToFile {
 			JTextField name = new JTextField(40);
 			JTextField developer = new JTextField(20);
 			JTextField played_version = new JTextField(15);
-			JTextField dateof_lastplayed = new JTextField(20);
+			JTextField dateof_lastplay = new JTextField(20);
 			JTextField user_rating = new JTextField(20);
 			JTextField newest_version = new JTextField(12);
 			JTextField dateOfLastUpdate = new JTextField(12);
@@ -67,8 +67,8 @@ public class addGameToFile {
 			panel.add(developerlabel); panel.add(developer);
 			JLabel played_versionlabel = new JLabel("Last version you played:");
 			panel.add(played_versionlabel); panel.add(played_version);
-			JLabel dateof_lastplayedlabel = new JLabel("Last time you updated the game:");
-			panel.add(dateof_lastplayedlabel); panel.add(dateof_lastplayed);
+			JLabel dateof_lastplaylabel = new JLabel("Last time you updated the game:");
+			panel.add(dateof_lastplaylabel); panel.add(dateof_lastplay);
 			JLabel user_ratinglabel = new JLabel("Rating by you:");
 			panel.add(user_ratinglabel); panel.add(user_rating);
 			JLabel newest_versionlabel = new JLabel("Online newest version:");
@@ -97,7 +97,7 @@ public class addGameToFile {
 			String nameValue = name.getText();
 			String developerValue = developer.getText();
 			String played_versionValue = played_version.getText();
-			String dateof_lastplayedValue = dateof_lastplayed.getText();
+			String dateof_lastplayValue = dateof_lastplay.getText();
 			String user_ratingValue = user_rating.getText();
 			String newest_versionValue = newest_version.getText();
 			String dateOfLastUpdateValue = dateOfLastUpdate.getText();
@@ -129,7 +129,7 @@ public class addGameToFile {
 							Element newName = dom.createElement("name");
 							Element newDeveloper = dom.createElement("developer");
 							Element newPlayed_version = dom.createElement("played_version");
-							Element newDateof_lastplayed = dom.createElement("dateof_lastplayed");
+							Element newDateof_lastplay = dom.createElement("dateof_lastplay");
 							Element newUser_rating = dom.createElement("user_rating");
 							Element newNewest_version = dom.createElement("newest_version");
 							Element newDateof_lastupate = dom.createElement("dateof_lastupate");
@@ -143,7 +143,7 @@ public class addGameToFile {
 							newName.setTextContent(nameValue);
 							newDeveloper.setTextContent(developerValue);
 							newPlayed_version.setTextContent(played_versionValue);
-							newDateof_lastplayed.setTextContent(dateof_lastplayedValue);
+							newDateof_lastplay.setTextContent(dateof_lastplayValue);
 							newUser_rating.setTextContent(user_ratingValue);
 							newNewest_version.setTextContent(newest_versionValue);
 							newDateof_lastupate.setTextContent(dateOfLastUpdateValue);
@@ -156,7 +156,7 @@ public class addGameToFile {
 							newGame.appendChild(newName);
 							newGame.appendChild(newDeveloper);
 							newGame.appendChild(newPlayed_version);
-							newGame.appendChild(newDateof_lastplayed);
+							newGame.appendChild(newDateof_lastplay);
 							newGame.appendChild(newUser_rating);
 							newGame.appendChild(newNewest_version);
 							newGame.appendChild(newDateof_lastupate);

@@ -30,7 +30,7 @@ public class _initFrame extends JFrame implements ActionListener {
 	JMenu settings;
 	JCheckBoxMenuItem darkMode, autoFetchNews, autoUpdateGames;
 	JMenu show;
-	JCheckBoxMenuItem showID, showName, showDeveloper, showPlayedVersion, showLastTimePlayed, showRated, showNewestVersion, showDateOfLastUpdate, showPeopleRating, showhowFarUserPlayed, showDeletedFromPc;
+	JCheckBoxMenuItem showID, showName, showDeveloper, showPlayedVersion, showLastTimeplay, showRated, showNewestVersion, showDateOfLastUpdate, showPeopleRating, showhowFarUserPlayed, showDeletedFromPc;
 	JCheckBoxMenuItem showEngine, showOS, ShowSelfNote;
 
 	JMenu help;
@@ -79,7 +79,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			showName.setBackground(bg); showName.setForeground(fg);
 			showDeveloper.setBackground(bg); showDeveloper.setForeground(fg);
 			showPlayedVersion.setBackground(bg); showPlayedVersion.setForeground(fg);
-			showLastTimePlayed.setBackground(bg); showLastTimePlayed.setForeground(fg);
+			showLastTimeplay.setBackground(bg); showLastTimeplay.setForeground(fg);
 			showRated.setBackground(bg); showRated.setForeground(fg);
 			showNewestVersion.setBackground(bg); showNewestVersion.setForeground(fg);
 			showDateOfLastUpdate.setBackground(bg); showDateOfLastUpdate.setForeground(fg);
@@ -127,7 +127,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			showName.setBackground(null); showName.setForeground(null);
 			showDeveloper.setBackground(null); showDeveloper.setForeground(null);
 			showPlayedVersion.setBackground(null); showPlayedVersion.setForeground(null);
-			showLastTimePlayed.setBackground(null); showLastTimePlayed.setForeground(null);
+			showLastTimeplay.setBackground(null); showLastTimeplay.setForeground(null);
 			showRated.setBackground(null); showRated.setForeground(null);
 			showNewestVersion.setBackground(null); showNewestVersion.setForeground(null);
 			showDateOfLastUpdate.setBackground(null); showDateOfLastUpdate.setForeground(null);
@@ -176,7 +176,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		show.add(showName = new JCheckBoxMenuItem("Name", columnVisibility[1]));
 		show.add(showDeveloper = new JCheckBoxMenuItem("Developer", columnVisibility[2]));
 		show.add(showPlayedVersion = new JCheckBoxMenuItem("Played version", columnVisibility[3]));
-		show.add(showLastTimePlayed = new JCheckBoxMenuItem("Last time played", columnVisibility[4]));
+		show.add(showLastTimeplay = new JCheckBoxMenuItem("Last time play", columnVisibility[4]));
 		show.add(showRated = new JCheckBoxMenuItem("Rated", columnVisibility[5]));
 		show.add(showNewestVersion = new JCheckBoxMenuItem("Newest version", columnVisibility[6]));
 		show.add(showDateOfLastUpdate = new JCheckBoxMenuItem("Date of last update", columnVisibility[7]));
@@ -197,7 +197,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		showName.addActionListener(this);
 		showDeveloper.addActionListener(this);
 		showPlayedVersion.addActionListener(this);
-		showLastTimePlayed.addActionListener(this);
+		showLastTimeplay.addActionListener(this);
 		showRated.addActionListener(this);
 		showNewestVersion.addActionListener(this);
 		showDateOfLastUpdate.addActionListener(this);
@@ -262,7 +262,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Name": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Developer": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Played version": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "Last time played": settingsManager.xmlSettings("showncolumns", gac); break;
+			case "Last time play": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Rated": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Newest version": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Date of last update": settingsManager.xmlSettings("showncolumns", gac); break;

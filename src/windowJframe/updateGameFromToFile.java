@@ -32,7 +32,7 @@ public class updateGameFromToFile {
 		dialog.setVisible(true);
 		String idValue = id.getText();
 		if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "ID is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
-		if (isIDInDatabase.isInDatabase(idValue)) {
+		if (isIDInDatabase.isInDatabase(idValue, "man")) {
 			try{
 				Document dom = saveLoadDoc.loadDocument();
 				NodeList source = dom.getElementsByTagName("source");
@@ -195,7 +195,7 @@ public class updateGameFromToFile {
 				e.printStackTrace();
 			}
 		} else {
-			JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" doesn't exists", "Error", JOptionPane.ERROR_MESSAGE); return;
+			JOptionPane.showMessageDialog(null, "Game with *MANUAL* id: "+idValue+" doesn't exists", "Error", JOptionPane.ERROR_MESSAGE); return;
 		}
 	}
 }

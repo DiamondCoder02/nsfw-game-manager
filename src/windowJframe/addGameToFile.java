@@ -116,7 +116,9 @@ public class addGameToFile {
 
 			if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "ID is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
 			if (nameValue.equals("")) { JOptionPane.showMessageDialog(null, "name is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
-			if (isIDInDatabase.isInDatabase(idValue)) { return;
+			if (isIDInDatabase.isInDatabase(idValue, "man")) { 
+				JOptionPane.showMessageDialog(null, "The id you entered is already in the *MANUAL* database", "Error", JOptionPane.ERROR_MESSAGE);
+				return;
 			} else {
 				try{
 					Document dom = saveLoadDoc.loadDocument();

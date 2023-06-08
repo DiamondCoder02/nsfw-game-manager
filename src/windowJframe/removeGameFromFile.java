@@ -27,7 +27,7 @@ public class removeGameFromFile {
 			dialog.setVisible(true);
 			String idValue = id.getText();
 			if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "ID is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
-			if (isIDInDatabase.isInDatabase(idValue)) {
+			if (isIDInDatabase.isInDatabase(idValue, "man")) {
 				try{
 					Document dom = saveLoadDoc.loadDocument();
 					NodeList source = dom.getElementsByTagName("source");
@@ -59,7 +59,7 @@ public class removeGameFromFile {
 					e.printStackTrace();
 				}
 			} else {
-				JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" doesn't exists", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Game with *MANUAL* id: "+idValue+" doesn't exists", "Error", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 			int optionToRepeat = JOptionPane.showConfirmDialog(null, "Do you want to delete another game?", "Delete game", JOptionPane.YES_NO_OPTION);

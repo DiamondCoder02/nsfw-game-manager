@@ -53,14 +53,14 @@ public class saveLoadDoc {
 		}
 	}
 
-	public static void saveADocument(String path) {
+	public static void saveADocument(String pathOther) {
 		try {
 			Document dom = loadDocument();
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			// transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			DOMSource domsource = new DOMSource(dom);
-			StreamResult result = new StreamResult(path);
+			StreamResult result = new StreamResult(pathOther);
 			transformer.transform(domsource, result);
 		} catch (Exception e) {
 			e.printStackTrace();

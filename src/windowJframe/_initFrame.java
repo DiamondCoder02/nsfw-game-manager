@@ -18,19 +18,21 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 
+import f95WebsiteHandle.addFromSite;
 import xmlFolderHandle.saveLoadDoc;
 
 public class _initFrame extends JFrame implements ActionListener {
 	JMenuBar mb;
 
 	JMenu games;
-	JMenuItem addGame, removeGame, updateList;
-	JMenuItem refreshFromAPI, refreshEverything, saveFileToDifferent;
+	JMenuItem addGame, removeGame, updateList, refreshTable;
+	JMenuItem saveFileToDifferent;
+	JMenuItem addF95zone, refreshFromAPI;
 
 	JMenu settings;
 	JCheckBoxMenuItem darkMode, autoFetchNews, autoUpdateGames;
 	JMenu show;
-	JCheckBoxMenuItem showID, showName, showDeveloper, showPlayedVersion, showLastTimeplay, showRated, showNewestVersion, showDateOfLastUpdate, showPeopleRating, showhowFarUserPlayed, showDeletedFromPc;
+	JCheckBoxMenuItem showSite, showID, showName, showDeveloper, showPlayedVersion, showLastTimeplay, showRated, showNewestVersion, showDateOfLastUpdate, showPeopleRating, showhowFarUserPlayed, showDeletedFromPc;
 	JCheckBoxMenuItem showEngine, showOS, ShowSelfNote;
 
 	JMenu help;
@@ -73,8 +75,10 @@ public class _initFrame extends JFrame implements ActionListener {
 			removeGame.setBackground(bg); removeGame.setForeground(fg);
 			updateList.setBackground(bg); updateList.setForeground(fg);
 			saveFileToDifferent.setBackground(bg); saveFileToDifferent.setForeground(fg);
-			refreshEverything.setBackground(bg); refreshEverything.setForeground(fg);
+			refreshTable.setBackground(bg); refreshTable.setForeground(fg);
+			addF95zone.setBackground(bg); addF95zone.setForeground(fg);
 			refreshFromAPI.setBackground(bg); refreshFromAPI.setForeground(fg);
+			showSite.setBackground(bg); showSite.setForeground(fg);
 			showID.setBackground(bg); showID.setForeground(fg);
 			showName.setBackground(bg); showName.setForeground(fg);
 			showDeveloper.setBackground(bg); showDeveloper.setForeground(fg);
@@ -121,8 +125,10 @@ public class _initFrame extends JFrame implements ActionListener {
 			removeGame.setBackground(null); removeGame.setForeground(null);
 			updateList.setBackground(null); updateList.setForeground(null);
 			saveFileToDifferent.setBackground(null); saveFileToDifferent.setForeground(null);
-			refreshEverything.setBackground(null); refreshEverything.setForeground(null);
+			refreshTable.setBackground(null); refreshTable.setForeground(null);
+			addF95zone.setBackground(null); addF95zone.setForeground(null);
 			refreshFromAPI.setBackground(null); refreshFromAPI.setForeground(null);
+			showSite.setBackground(null); showSite.setForeground(null);
 			showID.setBackground(null); showID.setForeground(null);
 			showName.setBackground(null); showName.setForeground(null);
 			showDeveloper.setBackground(null); showDeveloper.setForeground(null);
@@ -160,32 +166,35 @@ public class _initFrame extends JFrame implements ActionListener {
 		games.add(updateList = new JMenuItem("Update game"));
 		games.addSeparator();
 		games.add(saveFileToDifferent = new JMenuItem("Save file copy"));
+		games.add(refreshTable = new JMenuItem("Refresh table"));
 		games.addSeparator();
-		games.add(refreshEverything = new JMenuItem("Refresh everything"));
+		games.add(addF95zone = new JMenuItem("Add from F95zone"));
 		games.add(refreshFromAPI = new JMenuItem("API refresh"));
 		addGame.addActionListener(this);
 		removeGame.addActionListener(this);
 		updateList.addActionListener(this);
 		saveFileToDifferent.addActionListener(this);
+		refreshTable.addActionListener(this);
+		addF95zone.addActionListener(this);
 		refreshFromAPI.addActionListener(this);
-		refreshEverything.addActionListener(this);
 
 		mb.add(settings = new JMenu("Settings"));
 		settings.add(show = new JMenu("Shown informations"));
-		show.add(showID = new JCheckBoxMenuItem("ID", columnVisibility[0]));
-		show.add(showName = new JCheckBoxMenuItem("Name", columnVisibility[1]));
-		show.add(showDeveloper = new JCheckBoxMenuItem("Developer", columnVisibility[2]));
-		show.add(showPlayedVersion = new JCheckBoxMenuItem("Played version", columnVisibility[3]));
-		show.add(showLastTimeplay = new JCheckBoxMenuItem("Last time play", columnVisibility[4]));
-		show.add(showRated = new JCheckBoxMenuItem("Rated", columnVisibility[5]));
-		show.add(showNewestVersion = new JCheckBoxMenuItem("Newest version", columnVisibility[6]));
-		show.add(showDateOfLastUpdate = new JCheckBoxMenuItem("Last update", columnVisibility[7]));
-		show.add(showPeopleRating = new JCheckBoxMenuItem("People rating", columnVisibility[8]));
-		show.add(showhowFarUserPlayed = new JCheckBoxMenuItem("Player progress", columnVisibility[9]));
-		show.add(showDeletedFromPc = new JCheckBoxMenuItem("Still on pc?", columnVisibility[10]));
-		show.add(showEngine = new JCheckBoxMenuItem("Engine", columnVisibility[11]));
-		show.add(showOS = new JCheckBoxMenuItem("OS", columnVisibility[12]));
-		show.add(ShowSelfNote = new JCheckBoxMenuItem("Personal Notes", columnVisibility[13]));
+		show.add(showSite = new JCheckBoxMenuItem("Site", columnVisibility[0]));
+		show.add(showID = new JCheckBoxMenuItem("ID", columnVisibility[1]));
+		show.add(showName = new JCheckBoxMenuItem("Name", columnVisibility[2]));
+		show.add(showDeveloper = new JCheckBoxMenuItem("Developer", columnVisibility[3]));
+		show.add(showPlayedVersion = new JCheckBoxMenuItem("Played version", columnVisibility[4]));
+		show.add(showLastTimeplay = new JCheckBoxMenuItem("Last time play", columnVisibility[5]));
+		show.add(showRated = new JCheckBoxMenuItem("Rated", columnVisibility[6]));
+		show.add(showNewestVersion = new JCheckBoxMenuItem("Newest version", columnVisibility[7]));
+		show.add(showDateOfLastUpdate = new JCheckBoxMenuItem("Last update", columnVisibility[8]));
+		show.add(showPeopleRating = new JCheckBoxMenuItem("People rating", columnVisibility[9]));
+		show.add(showhowFarUserPlayed = new JCheckBoxMenuItem("Player progress", columnVisibility[10]));
+		show.add(showDeletedFromPc = new JCheckBoxMenuItem("Still on pc?", columnVisibility[11]));
+		show.add(showEngine = new JCheckBoxMenuItem("Engine", columnVisibility[12]));
+		show.add(showOS = new JCheckBoxMenuItem("OS", columnVisibility[13]));
+		show.add(ShowSelfNote = new JCheckBoxMenuItem("Personal Notes", columnVisibility[14]));
 
 		settings.addSeparator();
 		settings.add(darkMode = new JCheckBoxMenuItem("Dark mode", otherSettings[0]));
@@ -193,6 +202,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		settings.add(autoFetchNews = new JCheckBoxMenuItem("Auto fetch game updates", otherSettings[1]));
 		settings.add(autoUpdateGames = new JCheckBoxMenuItem("Auto update games", otherSettings[2]));
 
+		showSite.addActionListener(this);
 		showID.addActionListener(this);
 		showName.addActionListener(this);
 		showDeveloper.addActionListener(this);
@@ -245,20 +255,21 @@ public class _initFrame extends JFrame implements ActionListener {
 	}
 
 	private void setColumns(){
-		table.getColumnModel().getColumn(0).setPreferredWidth(10); 	// ID
-		table.getColumnModel().getColumn(1).setPreferredWidth(250); 	// Name
-		table.getColumnModel().getColumn(2).setPreferredWidth(70); 	// Developer
-		table.getColumnModel().getColumn(3).setPreferredWidth(70); 	// Played version
-		table.getColumnModel().getColumn(4).setPreferredWidth(50); 	// Last time play
-		table.getColumnModel().getColumn(5).setPreferredWidth(60); 	// Rated
-		table.getColumnModel().getColumn(6).setPreferredWidth(70); 	// Newest version
-		table.getColumnModel().getColumn(7).setPreferredWidth(50); 	// Last update
-		table.getColumnModel().getColumn(8).setPreferredWidth(60); 	// People rating
-		table.getColumnModel().getColumn(9).setPreferredWidth(65); 	// Player progress
-		table.getColumnModel().getColumn(10).setPreferredWidth(35); 	// Still on pc?
-		table.getColumnModel().getColumn(11).setPreferredWidth(60); // Engine
-		table.getColumnModel().getColumn(12).setPreferredWidth(100); // OS
-		table.getColumnModel().getColumn(13).setPreferredWidth(100); // Personal Notes
+		table.getColumnModel().getColumn(0).setPreferredWidth(5); 	// dls - dlsite / f95 - f95zone / man - manually added
+		table.getColumnModel().getColumn(1).setPreferredWidth(15); 	// ID
+		table.getColumnModel().getColumn(2).setPreferredWidth(240); 	// Name
+		table.getColumnModel().getColumn(3).setPreferredWidth(70); 	// Developer
+		table.getColumnModel().getColumn(4).setPreferredWidth(70); 	// Played version
+		table.getColumnModel().getColumn(5).setPreferredWidth(50); 	// Last time play
+		table.getColumnModel().getColumn(6).setPreferredWidth(60); 	// Rated
+		table.getColumnModel().getColumn(7).setPreferredWidth(70); 	// Newest version
+		table.getColumnModel().getColumn(8).setPreferredWidth(50); 	// Last update
+		table.getColumnModel().getColumn(9).setPreferredWidth(60); 	// People rating
+		table.getColumnModel().getColumn(10).setPreferredWidth(65); 	// Player progress
+		table.getColumnModel().getColumn(11).setPreferredWidth(35); 	// Still on pc?
+		table.getColumnModel().getColumn(12).setPreferredWidth(60); // Engine
+		table.getColumnModel().getColumn(13).setPreferredWidth(100); // OS
+		table.getColumnModel().getColumn(14).setPreferredWidth(100); // Personal Notes
 	}
 
 	public static void refreshTable(){saveLoadDoc.reloadTable(table);}
@@ -270,12 +281,14 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Add game": addGameToFile.addOneGameToFile(); break;
 			case "Remove game": removeGameFromFile.removeOneGameFromFile(); break;
 			case "Update game": updateGameFromToFile.updateOneGameFromToFile(); break;
+			case "Refresh table": refreshTable(); setColumns(); break;
 			case "Save file copy": otherButtonsThingies.saveFileCopy();	break;
-			case "Refresh everything": refreshTable(); setColumns(); break;
+			case "Add from F95zone": addFromSite.addFromF95(); break;
 			case "API refresh":
 					JOptionPane.showMessageDialog(null, "API is not implemented at all yet.\nCome back later.", "Error", JOptionPane.ERROR_MESSAGE);
 					out.println("API refresh");
 					break;
+			case "Site": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "ID": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Name": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Developer": settingsManager.xmlSettings("showncolumns", gac); break;

@@ -6,6 +6,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class isIDInDatabase {
+	static String found;
 	public static boolean isInDatabase(String givenID){
 		try{
 			Document dom = saveLoadDoc.loadDocument();
@@ -20,7 +21,7 @@ public class isIDInDatabase {
 							Element e = (Element) gameNode;
 							String id = e.getAttribute("id").trim();
 							if (id.equals(givenID)) {
-								return true;
+								found += id + " found with " + e.getElementsByTagName("name").item(0).getTextContent().trim() + "\n";
 							}
 						}
 					}
@@ -28,6 +29,10 @@ public class isIDInDatabase {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		if (found != null) {
+			// JOptionPane.showMessageDialog(null, found, "ID found", JOptionPane.INFORMATION_MESSAGE);
+			return true;
 		}
 		return false;
 	}

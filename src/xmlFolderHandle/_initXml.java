@@ -53,6 +53,7 @@ public class _initXml {
 						Element e = (Element) gameNode;
 						for (int n = 0; n < columnNames.length; n++) {
 							switch (columnNames[n]) {
+								case "Site" : allDataFromFile[counter][n] = e.getAttribute("from").trim(); break;
 								case "ID": allDataFromFile[counter][n] = e.getAttribute("id").trim(); break;
 								case "Name": allDataFromFile[counter][n] = e.getElementsByTagName("name").item(0).getTextContent().trim(); break;
 								case "Developer": allDataFromFile[counter][n] = e.getElementsByTagName("developer").item(0).getTextContent().trim(); break;

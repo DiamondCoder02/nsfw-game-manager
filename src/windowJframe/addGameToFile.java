@@ -116,8 +116,7 @@ public class addGameToFile {
 
 			if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "ID is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
 			if (nameValue.equals("")) { JOptionPane.showMessageDialog(null, "name is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
-			if (isIDInDatabase.isInDatabase(idValue)) {
-				JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" already exists", "Error", JOptionPane.ERROR_MESSAGE); return;
+			if (isIDInDatabase.isInDatabase(idValue)) { return;
 			} else {
 				try{
 					Document dom = saveLoadDoc.loadDocument();
@@ -140,6 +139,7 @@ public class addGameToFile {
 							Element newOS = dom.createElement("os");
 							Element newSelfNote = dom.createElement("selfNote");
 							newGame.setAttribute("id", idValue);
+							newGame.setAttribute("from", "man");
 							newName.setTextContent(nameValue);
 							newDeveloper.setTextContent(developerValue);
 							newPlayed_version.setTextContent(played_versionValue);

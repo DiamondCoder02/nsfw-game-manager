@@ -181,7 +181,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		show.add(showNewestVersion = new JCheckBoxMenuItem("Newest version", columnVisibility[6]));
 		show.add(showDateOfLastUpdate = new JCheckBoxMenuItem("Date of last update", columnVisibility[7]));
 		show.add(showPeopleRating = new JCheckBoxMenuItem("People rating", columnVisibility[8]));
-		show.add(showhowFarUserPlayed = new JCheckBoxMenuItem("Player prograssion", columnVisibility[9]));
+		show.add(showhowFarUserPlayed = new JCheckBoxMenuItem("Player progress", columnVisibility[9]));
 		show.add(showDeletedFromPc = new JCheckBoxMenuItem("Still on pc?", columnVisibility[10]));
 		show.add(showEngine = new JCheckBoxMenuItem("Engine", columnVisibility[11]));
 		show.add(showOS = new JCheckBoxMenuItem("OS", columnVisibility[12]));
@@ -229,7 +229,6 @@ public class _initFrame extends JFrame implements ActionListener {
 			}
 		});
 		*/
-
 		setLayout(new BorderLayout());
 		add(table.getTableHeader(), BorderLayout.PAGE_START);
 		add(table, BorderLayout.CENTER);
@@ -268,7 +267,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Newest version": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Date of last update": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "People rating": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "Player prograssion": settingsManager.xmlSettings("showncolumns", gac); break;
+			case "Player progress": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Still on pc?": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Engine": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "OS": settingsManager.xmlSettings("showncolumns", gac); break;

@@ -120,7 +120,7 @@ public class updateGameFromToFile {
 									panel.add(dateOfLastUpdatelabel); panel.add(newdateof_lastupate);
 									JLabel people_ratedlabel = new JLabel("People rating:" + " (old: "+oldpeople_rated+")");
 									panel.add(people_ratedlabel); panel.add(newpeople_rated);
-									JLabel howFarUserPlayedlabel = new JLabel("Player prograssion:" + " (old: "+oldhowFarUserPlayed+")");
+									JLabel howFarUserPlayedlabel = new JLabel("Player progress:" + " (old: "+oldhowFarUserPlayed+")");
 									panel.add(howFarUserPlayedlabel); panel.add(howFarUserPlayedPanel);
 									JLabel stillOnPclabel = new JLabel("Deleted from pc:" + " (old: "+oldstillOnPc+")");
 									panel.add(stillOnPclabel); panel.add(stillOnPcPanel);

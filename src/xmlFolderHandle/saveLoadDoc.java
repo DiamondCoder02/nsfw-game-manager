@@ -150,7 +150,7 @@ public class saveLoadDoc {
 
 			Element settings = doc.createElement("settings");
 			rootElement.appendChild(settings);
-			Element otherSettings1 = doc.createElement("othersettings"); otherSettings1.setAttribute("enabled", "false");
+			Element otherSettings1 = doc.createElement("othersettings"); otherSettings1.setAttribute("enabled", "true");
 			otherSettings1.appendChild(doc.createTextNode("Dark mode")); settings.appendChild(otherSettings1);
 			Element otherSettings2 = doc.createElement("othersettings"); otherSettings2.setAttribute("enabled", "false");
 			otherSettings2.appendChild(doc.createTextNode("Auto fetch game updates")); settings.appendChild(otherSettings2);

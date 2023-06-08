@@ -93,12 +93,22 @@ public class saveLoadDoc {
 			ff = new Color(0, 255, 0);
 		}
 		*/
+
+		int column = 0;
+		for (int i = 0; i < table.getColumnCount(); i++) {
+			if (table.getColumnName(i).equals("Player progress")) {
+				column = i;
+				break;
+			}
+		}
+		final int column2 = column;
+
 		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
 			@Override
 			public Component getTableCellRendererComponent(JTable table,
 					Object value, boolean isSelected, boolean hasFocus, int row, int col) {
 				super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, col);
-				String status = (String) table.getModel().getValueAt(row, 9);
+				String status = (String) table.getModel().getValueAt(row, column2);
 				if ("Not played".equals(status)) { setBackground(np);
 				} else if ("In progress".equals(status)) { setBackground(ip);
 				} else if ("Finish".equals(status)) { setBackground(fi);

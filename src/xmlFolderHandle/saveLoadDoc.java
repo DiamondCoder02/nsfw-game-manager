@@ -171,7 +171,7 @@ public class saveLoadDoc {
 			Element showncolumns43 = doc.createElement("showncolumns"); showncolumns43.setAttribute("enabled", "true");
 			showncolumns43.appendChild(doc.createTextNode("Newest version")); settings.appendChild(showncolumns43);
 			Element showncolumns5 = doc.createElement("showncolumns"); showncolumns5.setAttribute("enabled", "true");
-			showncolumns5.appendChild(doc.createTextNode("Date of last update")); settings.appendChild(showncolumns5);
+			showncolumns5.appendChild(doc.createTextNode("Last update")); settings.appendChild(showncolumns5);
 			Element showncolumns51 = doc.createElement("showncolumns"); showncolumns51.setAttribute("enabled", "true");
 			showncolumns51.appendChild(doc.createTextNode("People rating")); settings.appendChild(showncolumns51);
 			Element showncolumns6 = doc.createElement("showncolumns"); showncolumns6.setAttribute("enabled", "true");

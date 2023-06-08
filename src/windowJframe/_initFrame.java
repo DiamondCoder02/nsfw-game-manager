@@ -46,7 +46,7 @@ public class _initFrame extends JFrame implements ActionListener {
 	boolean[] columnVisibility = settingsManager.loadSettings("showncolumns");
 	boolean[] otherSettings = settingsManager.loadSettings("othersettings");
 
-	public void WindowRefresh(){
+	private void WindowRefresh(){
 		otherSettings = settingsManager.loadSettings("othersettings");
 		if (otherSettings[0]) {
 			UIManager.put("OptionPane.background", bg);
@@ -179,7 +179,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		show.add(showLastTimeplay = new JCheckBoxMenuItem("Last time play", columnVisibility[4]));
 		show.add(showRated = new JCheckBoxMenuItem("Rated", columnVisibility[5]));
 		show.add(showNewestVersion = new JCheckBoxMenuItem("Newest version", columnVisibility[6]));
-		show.add(showDateOfLastUpdate = new JCheckBoxMenuItem("Date of last update", columnVisibility[7]));
+		show.add(showDateOfLastUpdate = new JCheckBoxMenuItem("Last update", columnVisibility[7]));
 		show.add(showPeopleRating = new JCheckBoxMenuItem("People rating", columnVisibility[8]));
 		show.add(showhowFarUserPlayed = new JCheckBoxMenuItem("Player progress", columnVisibility[9]));
 		show.add(showDeletedFromPc = new JCheckBoxMenuItem("Still on pc?", columnVisibility[10]));
@@ -220,6 +220,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		table = new JTable();
 		refreshTable();
 		table.setBounds(30, 40, 200, 300);
+		setColumns();
 		/*
 		table.setAutoCreateRowSorter(true);
 		table.getRowSorter().addRowSorterListener((RowSorterListener) new RowSorterListener() {
@@ -243,6 +244,23 @@ public class _initFrame extends JFrame implements ActionListener {
 		setVisible(true);
 	}
 
+	private void setColumns(){
+		table.getColumnModel().getColumn(0).setPreferredWidth(10); 	// ID
+		table.getColumnModel().getColumn(1).setPreferredWidth(250); 	// Name
+		table.getColumnModel().getColumn(2).setPreferredWidth(70); 	// Developer
+		table.getColumnModel().getColumn(3).setPreferredWidth(70); 	// Played version
+		table.getColumnModel().getColumn(4).setPreferredWidth(50); 	// Last time play
+		table.getColumnModel().getColumn(5).setPreferredWidth(60); 	// Rated
+		table.getColumnModel().getColumn(6).setPreferredWidth(70); 	// Newest version
+		table.getColumnModel().getColumn(7).setPreferredWidth(50); 	// Last update
+		table.getColumnModel().getColumn(8).setPreferredWidth(60); 	// People rating
+		table.getColumnModel().getColumn(9).setPreferredWidth(65); 	// Player progress
+		table.getColumnModel().getColumn(10).setPreferredWidth(35); 	// Still on pc?
+		table.getColumnModel().getColumn(11).setPreferredWidth(60); // Engine
+		table.getColumnModel().getColumn(12).setPreferredWidth(100); // OS
+		table.getColumnModel().getColumn(13).setPreferredWidth(100); // Personal Notes
+	}
+
 	public static void refreshTable(){saveLoadDoc.reloadTable(table);}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -253,7 +271,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Remove game": removeGameFromFile.removeOneGameFromFile(); break;
 			case "Update game": updateGameFromToFile.updateOneGameFromToFile(); break;
 			case "Save file copy": otherButtonsThingies.saveFileCopy();	break;
-			case "Refresh everything": refreshTable(); break;
+			case "Refresh everything": refreshTable(); setColumns(); break;
 			case "API refresh":
 					JOptionPane.showMessageDialog(null, "API is not implemented at all yet.\nCome back later.", "Error", JOptionPane.ERROR_MESSAGE);
 					out.println("API refresh");
@@ -265,7 +283,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Last time play": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Rated": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Newest version": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "Date of last update": settingsManager.xmlSettings("showncolumns", gac); break;
+			case "Last update": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "People rating": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Player progress": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Still on pc?": settingsManager.xmlSettings("showncolumns", gac); break;

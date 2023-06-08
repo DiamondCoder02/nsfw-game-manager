@@ -110,7 +110,7 @@ public class updateGameFromToFile {
 									panel.add(developerlabel); panel.add(newdeveloper);
 									JLabel played_versionlabel = new JLabel("Played version:" + " (old: "+oldplayed_version+")");
 									panel.add(played_versionlabel); panel.add(newplayed_version);
-									JLabel dateof_lastplaylabel = new JLabel("Last time play:" + " (old: "+olddateof_lastplay+")");
+									JLabel dateof_lastplaylabel = new JLabel("Date of last time play:" + " (old: "+olddateof_lastplay+")");
 									panel.add(dateof_lastplaylabel); panel.add(newdateof_lastplay);
 									JLabel user_ratedlabel = new JLabel("Rated:" + " (old: "+olduser_rated+")");
 									panel.add(user_ratedlabel); panel.add(newuser_rated);

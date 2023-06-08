@@ -16,6 +16,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.UIManager;
 
 import xmlFolderHandle.saveLoadDoc;
 
@@ -40,6 +41,7 @@ public class _initFrame extends JFrame implements ActionListener {
 
 	Color bg = new Color(100, 100, 100);
 	Color fg = new Color(255, 255, 255);
+	Color textdark = new Color(30, 30, 30);
 
 	boolean[] columnVisibility = settingsManager.loadSettings("showncolumns");
 	boolean[] otherSettings = settingsManager.loadSettings("othersettings");
@@ -47,6 +49,21 @@ public class _initFrame extends JFrame implements ActionListener {
 	public void WindowRefresh(){
 		otherSettings = settingsManager.loadSettings("othersettings");
 		if (otherSettings[0]) {
+			UIManager.put("OptionPane.background", bg);
+			UIManager.put("OptionPane.messageForeground", fg);
+			UIManager.put("Panel.background", bg);
+			UIManager.put("Panel.messageForeground", fg);
+			UIManager.put("Button.background", null);
+			UIManager.put("Button.foreground", null);
+			UIManager.put("Label.foreground", fg);
+			UIManager.put("Label.background", bg);
+			UIManager.put("RadioButton.background", bg);
+			UIManager.put("RadioButton.foreground", fg);
+			UIManager.put("CheckBox.background", bg);
+			UIManager.put("CheckBox.foreground", fg);
+			UIManager.put("TextField.background", textdark);
+			UIManager.put("TextField.foreground", fg);
+			
 			mb.setBackground(bg); mb.setForeground(fg);
 			games.setBackground(bg); games.setForeground(fg);
 			settings.setBackground(bg);	settings.setForeground(fg);
@@ -80,6 +97,21 @@ public class _initFrame extends JFrame implements ActionListener {
 			exit.setBackground(bg);	exit.setForeground(fg);
 			table.setBackground(bg);
 		} else {
+			UIManager.put("OptionPane.background", null);
+			UIManager.put("OptionPane.messageForeground", null);
+			UIManager.put("Panel.background", null);
+			UIManager.put("Panel.messageForeground", null);
+			UIManager.put("Button.background", bg);
+			UIManager.put("Button.foreground", fg);
+			UIManager.put("Label.foreground", null);
+			UIManager.put("Label.background", null);
+			UIManager.put("RadioButton.background", null);
+			UIManager.put("RadioButton.foreground", null);
+			UIManager.put("CheckBox.background", null);
+			UIManager.put("CheckBox.foreground", null);
+			UIManager.put("TextField.background", null);
+			UIManager.put("TextField.foreground", null);
+
 			mb.setBackground(null); mb.setForeground(null);
 			games.setBackground(null); games.setForeground(null);
 			settings.setBackground(null); settings.setForeground(null);
@@ -188,7 +220,16 @@ public class _initFrame extends JFrame implements ActionListener {
 		table = new JTable();
 		refreshTable();
 		table.setBounds(30, 40, 200, 300);
-		// table.setAutoCreateRowSorter(true);
+		/*
+		table.setAutoCreateRowSorter(true);
+		table.getRowSorter().addRowSorterListener((RowSorterListener) new RowSorterListener() {
+			@Override
+			public void sorterChanged(javax.swing.event.RowSorterEvent e) {
+				refreshTable();
+			}
+		});
+		*/
+
 		setLayout(new BorderLayout());
 		add(table.getTableHeader(), BorderLayout.PAGE_START);
 		add(table, BorderLayout.CENTER);

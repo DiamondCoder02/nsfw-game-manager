@@ -2,7 +2,6 @@ package f95WebsiteHandle;
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -22,12 +21,25 @@ public class addFromSite {
 	public static void addFromF95(){
 		boolean repeat = true;
 		while (repeat) {
-			String idValue = JOptionPane.showInputDialog(null, "Enter the id of the game you want to add", "Add game", JOptionPane.QUESTION_MESSAGE);
-			if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "You must enter an id", "Error", JOptionPane.ERROR_MESSAGE); break; }
-			
-			// TODO API NEEDED
-			// ID, Name, Developer, Newest version, Date of last update, People rating, Engine, OS
-/* 
+			String idValue = JOptionPane.showInputDialog(null, "Enter the id of the game you want to add", "Add game", JOptionPane.PLAIN_MESSAGE);
+			if (idValue == null) { JOptionPane.showMessageDialog(null, "You must enter an id", "Error", JOptionPane.ERROR_MESSAGE); break; }
+
+			if (isIDInDatabase.isInDatabase(idValue, "f95")) {
+				JOptionPane.showMessageDialog(null, "The id you entered is already in the F95zone database", "Error", JOptionPane.ERROR_MESSAGE);
+				break;
+			}
+
+			String[] output = loadSite.getUrlContents(idValue);
+			if (output == null) { break; }
+			// Name, Developer, Newest version, Date of last update, People rating, Engine, OS
+			String nameValue = output[0].toString();
+			String developerValue = output[1].toString();
+			String newest_versionValue = output[2].toString();
+			String dateOfLastUpdateValue = output[3].toString();
+			String people_ratingValue = output[4].toString();
+			String engineValue = output[5].toString();
+			String osValue = output[6].toString();
+
 			JPanel panel = new JPanel();
 			JTextField played_version = new JTextField(15);
 			JTextField dateof_lastplay = new JTextField(20);
@@ -132,7 +144,6 @@ public class addFromSite {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-*/
 		}
 	}
 }

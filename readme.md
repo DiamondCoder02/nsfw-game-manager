@@ -37,6 +37,7 @@ Other tab:
 Settings tab:
 
 - [x] ~~darkmode~~
+- [ ] show language of the game
 - [ ] autofetchnewgames
 - [ ] autoUpdateGames
 

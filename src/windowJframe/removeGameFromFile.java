@@ -27,7 +27,7 @@ public class removeGameFromFile {
 			dialog.setVisible(true);
 			String idValue = id.getText();
 			if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "ID is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
-			if (isIDInDatabase.isInDatabase(idValue, "man")) {
+			if (isIDInDatabase.isInDatabase(idValue)) {
 				try{
 					Document dom = saveLoadDoc.loadDocument();
 					NodeList source = dom.getElementsByTagName("source");
@@ -42,7 +42,7 @@ public class removeGameFromFile {
 									String ids = e.getAttribute("id").trim();
 									if ( ids.equals(idValue)) {
 										String name = e.getElementsByTagName("name").item(0).getTextContent().trim();
-										int option = JOptionPane.showConfirmDialog(null, "Game with id: "+ids+" and name: "+name+" will be removed. Are you sure?", "Remove game", JOptionPane.OK_CANCEL_OPTION);
+										int option = JOptionPane.showConfirmDialog(null, name + " with id: "+ids+" will be removed. Are you sure?", "Remove game", JOptionPane.OK_CANCEL_OPTION);
 										if (option == JOptionPane.OK_OPTION) {
 											sourceNode.removeChild(gameNode);
 											saveLoadDoc.saveDocument(dom);
@@ -59,7 +59,7 @@ public class removeGameFromFile {
 					e.printStackTrace();
 				}
 			} else {
-				JOptionPane.showMessageDialog(null, "Game with *MANUAL* id: "+idValue+" doesn't exists", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" doesn't exists", "Error", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 			int optionToRepeat = JOptionPane.showConfirmDialog(null, "Do you want to delete another game?", "Delete game", JOptionPane.YES_NO_OPTION);

@@ -18,7 +18,7 @@ import org.w3c.dom.NodeList;
 import xmlFolderHandle.isIDInDatabase;
 import xmlFolderHandle.saveLoadDoc;
 
-public class updateGameFromToFile {
+public class updateGameManually {
 	public static void updateOneGameFromToFile(){
 		JOptionPane optionPane = new JOptionPane();
 		JPanel panel = new JPanel();

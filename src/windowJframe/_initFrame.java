@@ -95,7 +95,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			ShowSelfNote.setBackground(bg);	ShowSelfNote.setForeground(fg);
 			darkMode.setBackground(bg);	darkMode.setForeground(fg);
 			autoFetchNews.setBackground(bg); autoFetchNews.setForeground(fg);
-			autoUpdateGames.setBackground(bg); autoUpdateGames.setForeground(fg);
+			// autoUpdateGames.setBackground(bg); autoUpdateGames.setForeground(fg);
 			faq.setBackground(bg); faq.setForeground(fg);
 			credits.setBackground(bg); credits.setForeground(fg);
 			exit.setBackground(bg);	exit.setForeground(fg);
@@ -145,7 +145,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			ShowSelfNote.setBackground(null); ShowSelfNote.setForeground(null);
 			darkMode.setBackground(null); darkMode.setForeground(null);
 			autoFetchNews.setBackground(null); autoFetchNews.setForeground(null);
-			autoUpdateGames.setBackground(null); autoUpdateGames.setForeground(null);
+			// autoUpdateGames.setBackground(null); autoUpdateGames.setForeground(null);
 			faq.setBackground(null); faq.setForeground(null);
 			credits.setBackground(null); credits.setForeground(null);
 			exit.setBackground(null); exit.setForeground(null);
@@ -162,13 +162,14 @@ public class _initFrame extends JFrame implements ActionListener {
 
 		mb.add(games = new JMenu("Games"));
 		games.add(addGame = new JMenuItem("Add game"));
-		games.add(removeGame = new JMenuItem("Remove game"));
+		games.add(addF95zone = new JMenuItem("Add from F95zone"));
+		games.addSeparator();
 		games.add(updateList = new JMenuItem("Update game"));
+		games.add(removeGame = new JMenuItem("Remove man game"));
 		games.addSeparator();
 		games.add(saveFileToDifferent = new JMenuItem("Save file copy"));
-		games.add(refreshTable = new JMenuItem("Refresh table"));
 		games.addSeparator();
-		games.add(addF95zone = new JMenuItem("Add from F95zone"));
+		games.add(refreshTable = new JMenuItem("Refresh table"));
 		games.add(refreshFromAPI = new JMenuItem("API refresh"));
 		addGame.addActionListener(this);
 		removeGame.addActionListener(this);
@@ -200,7 +201,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		settings.add(darkMode = new JCheckBoxMenuItem("Dark mode", otherSettings[0]));
 		settings.addSeparator();
 		settings.add(autoFetchNews = new JCheckBoxMenuItem("Auto fetch game updates", otherSettings[1]));
-		settings.add(autoUpdateGames = new JCheckBoxMenuItem("Auto update games", otherSettings[2]));
+		//settings.add(autoUpdateGames = new JCheckBoxMenuItem("Auto update games", otherSettings[2]));
 
 		showSite.addActionListener(this);
 		showID.addActionListener(this);
@@ -218,7 +219,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		showOS.addActionListener(this);
 		ShowSelfNote.addActionListener(this);
 		autoFetchNews.addActionListener(this);
-		autoUpdateGames.addActionListener(this);
+		//autoUpdateGames.addActionListener(this);
 		darkMode.addActionListener(this);
 
 		mb.add(help = new JMenu("Other"));
@@ -261,22 +262,27 @@ public class _initFrame extends JFrame implements ActionListener {
 		for (int i = 0; i < columnVisibility.length; i++) { ind[i] = -1; }
 		for (int i = 0; i < columnVisibility.length; i++) { if (columnVisibility[i]) {ind[i] = counter; counter++;} else {ind[i] = -1;} }
 
-		// dl - dlsite / f95 - f95zone / man - manually added
-		if (columnVisibility[0]) {table.getColumnModel().getColumn(ind[0]).setPreferredWidth(5);} 
-		if (columnVisibility[1]) {table.getColumnModel().getColumn(ind[1]).setPreferredWidth(20);} 		// id
-		if (columnVisibility[2]) {table.getColumnModel().getColumn(ind[2]).setPreferredWidth(240);}		// name
-		if (columnVisibility[3]) {table.getColumnModel().getColumn(ind[3]).setPreferredWidth(90);} 		// developer
-		if (columnVisibility[4]) {table.getColumnModel().getColumn(ind[4]).setPreferredWidth(65);} 		// played version
-		if (columnVisibility[5]) {table.getColumnModel().getColumn(ind[5]).setPreferredWidth(50);} 		// last time play
-		if (columnVisibility[6]) {table.getColumnModel().getColumn(ind[6]).setPreferredWidth(40);} 		// rated 
-		if (columnVisibility[7]) {table.getColumnModel().getColumn(ind[7]).setPreferredWidth(70);} 		// newest version
-		if (columnVisibility[8]) {table.getColumnModel().getColumn(ind[8]).setPreferredWidth(50);} 		// last update
-		if (columnVisibility[9]) {table.getColumnModel().getColumn(ind[9]).setPreferredWidth(60);} 		// people rating
-		if (columnVisibility[10]) {table.getColumnModel().getColumn(ind[10]).setPreferredWidth(65);} 	// player progress
-		if (columnVisibility[11]) {table.getColumnModel().getColumn(ind[11]).setPreferredWidth(35);} 	// still on pc? 
-		if (columnVisibility[12]) {table.getColumnModel().getColumn(ind[12]).setPreferredWidth(60);} 	// engine
-		if (columnVisibility[13]) {table.getColumnModel().getColumn(ind[13]).setPreferredWidth(100);} 	// os
-		if (columnVisibility[14]) {table.getColumnModel().getColumn(ind[14]).setPreferredWidth(100);} 	// personal notes
+		Integer[] ind2 = new Integer[]{
+			5,	// dl - dlsite / f95 - f95zone / man - manually added
+			20,	// id
+			240,// name
+			90,	// developer
+			65,	// played version
+			50,	// last time play
+			40,	// rated 
+			70,	// newest version
+			50,	// last update
+			60,	// people rating
+			65,	// player progress
+			35,	// still on pc? 
+			60,	// engine
+			100,// os
+			100	// personal notes
+		};
+
+		for (int i = 0; i < ind.length; i++) {
+			if (columnVisibility[i]) { table.getColumnModel().getColumn(ind[i]).setPreferredWidth(ind2[i]); }
+		}
 	}
 
 	public static void refreshTable(){saveLoadDoc.reloadTable(table);}
@@ -286,8 +292,8 @@ public class _initFrame extends JFrame implements ActionListener {
 		String gac = e.getActionCommand();
 		switch (gac) {
 			case "Add game": addGameToFile.addOneGameToFile(); break;
-			case "Remove game": removeGameFromFile.removeOneGameFromFile(); break;
-			case "Update game": updateGameFromToFile.updateOneGameFromToFile(); break;
+			case "Remove man game": removeGameFromFile.removeOneGameFromFile(); break;
+			case "Update game": updateGameManually.updateOneGameFromToFile(); break;
 			case "Refresh table": refreshTable(); setColumns(); break;
 			case "Save file copy": otherButtonsThingies.saveFileCopy();	break;
 			case "Add from F95zone": addFromSite.addFromF95(); break;

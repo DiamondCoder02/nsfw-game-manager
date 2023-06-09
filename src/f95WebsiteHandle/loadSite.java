@@ -25,19 +25,43 @@ public class loadSite {
 			bufferedReader.close();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Error while loading the site (f95_getUrlContents)", "Error", JOptionPane.ERROR_MESSAGE);
+			return null;
 		}
 
-		System.out.println(content.toString());
-		// TODO API NEEDED
 		// Name, Developer, Newest version, Date of last update, People rating, Engine, OS
-		allTheInfo[0] = content.substring(content.indexOf("<title>") + 7, content.indexOf("</title>"));
-
-
-
-		for (int i = 0; i < allTheInfo.length; i++) {
-			System.out.println(allTheInfo[i]);
+		String longTitle, asd, engi[] = new String[9];
+		longTitle = content.substring(content.indexOf("<title>") + 7, content.indexOf("</title>"));
+		
+		for (int i = 1; i < longTitle.split(" - ").length; i++) {
+			asd = longTitle.split(" - ")[i];
+			if (i == longTitle.split(" - ").length - 1) { allTheInfo[0] = asd.split(" \\[")[0]; }
 		}
-		allTheInfo = null;
+		try {
+			allTheInfo[1] = longTitle.split(" \\[")[2].split("]")[0];
+		} catch (Exception e) { allTheInfo[1] = "N/A"; }
+		try {
+			allTheInfo[2] = longTitle.split(" \\[")[1].split("]")[0];
+		} catch (Exception e) { allTheInfo[2] = "N/A"; }
+		try {
+			asd = content.substring(content.indexOf(">Release Date") +18);
+			allTheInfo[3] = asd.substring(0, asd.indexOf("<")).trim();
+			if (allTheInfo[3].equals("")) { allTheInfo[3] = "N/A"; }
+		} catch (Exception e) { allTheInfo[3] = "N/A"; }
+		try {
+			allTheInfo[4] = content.substring(content.indexOf(" star(s)<") - 4, content.indexOf(" star(s)<")).trim();
+		} catch (Exception e) { allTheInfo[4] = "N/A"; }
+		for (int i = 0; i < longTitle.split(" - ").length; i++) { engi[i] = longTitle.split(" - ")[i]; }
+		if (engi[0] == "Collection") {allTheInfo[5] = engi[0];} 
+		else { for (int i = 0; i < engi.length; i++) { if (engi[i] != "Collection" || engi[i] != "VN") { allTheInfo[5] = engi[i]; break; } } }
+		try {
+			Integer numId = Integer.parseInt(gameIds);
+			if (numId < 10) { asd = content.substring(content.indexOf(">Platform<") + 15); } 
+			else { asd = content.substring(content.indexOf(">OS") + 9); }
+			allTheInfo[6] = asd.substring(0, asd.indexOf("<")).trim();
+		} catch (Exception e) { allTheInfo[6] = "N/A"; }
+
+		if (allTheInfo[1] == "N/A") { allTheInfo[1] = allTheInfo[2]; allTheInfo[2] = "N/A"; }
+		// for (int i = 0; i < allTheInfo.length; i++) { System.out.println(allTheInfo[i]); }
 		return allTheInfo;
 	}
 }

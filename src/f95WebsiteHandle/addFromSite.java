@@ -105,6 +105,7 @@ public class addFromSite {
 						Element newEngine = dom.createElement("engine");
 						Element newOS = dom.createElement("os");
 						Element newSelfNote = dom.createElement("selfNote");
+						newGame.setAttribute("from", "f95");
 						newGame.setAttribute("id", idValue);
 						newName.setTextContent(nameValue);
 						newDeveloper.setTextContent(developerValue);

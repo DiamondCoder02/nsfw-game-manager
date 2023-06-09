@@ -103,7 +103,7 @@ public class addFromSite {
 						Element newHowFarUserPlayed = dom.createElement("howFarUserPlayed");
 						Element newstillOnPc = dom.createElement("stillOnPc");
 						Element newEngine = dom.createElement("engine");
-						Element newOS = dom.createElement("os");
+						Element newOS = dom.createElement("OS");
 						Element newSelfNote = dom.createElement("selfNote");
 						newGame.setAttribute("from", "f95");
 						newGame.setAttribute("id", idValue);

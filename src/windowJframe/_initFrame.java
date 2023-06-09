@@ -255,21 +255,28 @@ public class _initFrame extends JFrame implements ActionListener {
 	}
 
 	private void setColumns(){
-		table.getColumnModel().getColumn(0).setPreferredWidth(5); 	// dls - dlsite / f95 - f95zone / man - manually added
-		table.getColumnModel().getColumn(1).setPreferredWidth(15); 	// ID
-		table.getColumnModel().getColumn(2).setPreferredWidth(240); 	// Name
-		table.getColumnModel().getColumn(3).setPreferredWidth(70); 	// Developer
-		table.getColumnModel().getColumn(4).setPreferredWidth(70); 	// Played version
-		table.getColumnModel().getColumn(5).setPreferredWidth(50); 	// Last time play
-		table.getColumnModel().getColumn(6).setPreferredWidth(60); 	// Rated
-		table.getColumnModel().getColumn(7).setPreferredWidth(70); 	// Newest version
-		table.getColumnModel().getColumn(8).setPreferredWidth(50); 	// Last update
-		table.getColumnModel().getColumn(9).setPreferredWidth(60); 	// People rating
-		table.getColumnModel().getColumn(10).setPreferredWidth(65); 	// Player progress
-		table.getColumnModel().getColumn(11).setPreferredWidth(35); 	// Still on pc?
-		table.getColumnModel().getColumn(12).setPreferredWidth(60); // Engine
-		table.getColumnModel().getColumn(13).setPreferredWidth(100); // OS
-		table.getColumnModel().getColumn(14).setPreferredWidth(100); // Personal Notes
+		boolean[] columnVisibility = settingsManager.loadSettings("showncolumns");
+		Integer[] ind = new Integer[columnVisibility.length];
+		Integer counter = 0;
+		for (int i = 0; i < columnVisibility.length; i++) { ind[i] = -1; }
+		for (int i = 0; i < columnVisibility.length; i++) { if (columnVisibility[i]) {ind[i] = counter; counter++;} else {ind[i] = -1;} }
+
+		// dl - dlsite / f95 - f95zone / man - manually added
+		if (columnVisibility[0]) {table.getColumnModel().getColumn(ind[0]).setPreferredWidth(5);} 
+		if (columnVisibility[1]) {table.getColumnModel().getColumn(ind[1]).setPreferredWidth(20);} 		// id
+		if (columnVisibility[2]) {table.getColumnModel().getColumn(ind[2]).setPreferredWidth(240);}		// name
+		if (columnVisibility[3]) {table.getColumnModel().getColumn(ind[3]).setPreferredWidth(90);} 		// developer
+		if (columnVisibility[4]) {table.getColumnModel().getColumn(ind[4]).setPreferredWidth(65);} 		// played version
+		if (columnVisibility[5]) {table.getColumnModel().getColumn(ind[5]).setPreferredWidth(50);} 		// last time play
+		if (columnVisibility[6]) {table.getColumnModel().getColumn(ind[6]).setPreferredWidth(40);} 		// rated 
+		if (columnVisibility[7]) {table.getColumnModel().getColumn(ind[7]).setPreferredWidth(70);} 		// newest version
+		if (columnVisibility[8]) {table.getColumnModel().getColumn(ind[8]).setPreferredWidth(50);} 		// last update
+		if (columnVisibility[9]) {table.getColumnModel().getColumn(ind[9]).setPreferredWidth(60);} 		// people rating
+		if (columnVisibility[10]) {table.getColumnModel().getColumn(ind[10]).setPreferredWidth(65);} 	// player progress
+		if (columnVisibility[11]) {table.getColumnModel().getColumn(ind[11]).setPreferredWidth(35);} 	// still on pc? 
+		if (columnVisibility[12]) {table.getColumnModel().getColumn(ind[12]).setPreferredWidth(60);} 	// engine
+		if (columnVisibility[13]) {table.getColumnModel().getColumn(ind[13]).setPreferredWidth(100);} 	// os
+		if (columnVisibility[14]) {table.getColumnModel().getColumn(ind[14]).setPreferredWidth(100);} 	// personal notes
 	}
 
 	public static void refreshTable(){saveLoadDoc.reloadTable(table);}

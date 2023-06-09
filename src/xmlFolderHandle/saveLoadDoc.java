@@ -166,7 +166,7 @@ public class saveLoadDoc {
 			otherSettings2.appendChild(doc.createTextNode("Auto fetch game updates")); settings.appendChild(otherSettings2);
 			Element otherSettings3 = doc.createElement("othersettings"); otherSettings3.setAttribute("enabled", "false");
 			otherSettings3.appendChild(doc.createTextNode("Auto update games")); settings.appendChild(otherSettings3);
-			Element showncolumns0 = doc.createElement("showncolumns"); showncolumns0.setAttribute("enabled", "false");
+			Element showncolumns0 = doc.createElement("showncolumns"); showncolumns0.setAttribute("enabled", "true");
 			showncolumns0.appendChild(doc.createTextNode("Site")); settings.appendChild(showncolumns0);
 			Element showncolumns1 = doc.createElement("showncolumns"); showncolumns1.setAttribute("enabled", "true");
 			showncolumns1.appendChild(doc.createTextNode("ID")); settings.appendChild(showncolumns1);
@@ -193,7 +193,7 @@ public class saveLoadDoc {
 			Element showncolumns12 = doc.createElement("showncolumns"); showncolumns12.setAttribute("enabled", "true");
 			showncolumns12.appendChild(doc.createTextNode("Engine")); settings.appendChild(showncolumns12);
 			Element showncolumns13 = doc.createElement("showncolumns"); showncolumns13.setAttribute("enabled", "true");
-			showncolumns13.appendChild(doc.createTextNode("os")); settings.appendChild(showncolumns13);
+			showncolumns13.appendChild(doc.createTextNode("OS")); settings.appendChild(showncolumns13);
 			Element showncolumns14 = doc.createElement("showncolumns"); showncolumns14.setAttribute("enabled", "true");
 			showncolumns14.appendChild(doc.createTextNode("Personal Notes")); settings.appendChild(showncolumns14);
 

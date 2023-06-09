@@ -10,7 +10,8 @@ import java.net.URLConnection;
 public class test {
 	// allTheInfo[] = Name, Developer, Newest version, Date of last update, People rating, Engine, OS
 	static String[] allTheInfo = new String[7];
-	public static void main(String[] args) {
+	// public static void main(String[] args) {
+	public static void testing(String[] args) {
 		// 162918 162859 4153 106296 1
 		String id = "9";
 		String content = getUrlContents("https://f95zone.to/threads/" + id + "/");

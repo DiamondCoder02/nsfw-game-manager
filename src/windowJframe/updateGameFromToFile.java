@@ -57,7 +57,7 @@ public class updateGameFromToFile {
 									String oldhowFarUserPlayed = e.getElementsByTagName("howFarUserPlayed").item(0).getTextContent().trim();
 									String oldstillOnPc = e.getElementsByTagName("stillOnPc").item(0).getTextContent().trim();
 									String oldengine = e.getElementsByTagName("engine").item(0).getTextContent().trim();
-									String oldos = e.getElementsByTagName("os").item(0).getTextContent().trim();
+									String oldos = e.getElementsByTagName("OS").item(0).getTextContent().trim();
 									String oldselfNote = e.getElementsByTagName("selfNote").item(0).getTextContent().trim();
 
 									JTextField newname = new JTextField();
@@ -176,7 +176,7 @@ public class updateGameFromToFile {
 										e.getElementsByTagName("howFarUserPlayed").item(0).setTextContent(newhowFarUserPlayedValue);
 										e.getElementsByTagName("stillOnPc").item(0).setTextContent(newstillOnPcValue);
 										e.getElementsByTagName("engine").item(0).setTextContent(newengineValue);
-										e.getElementsByTagName("os").item(0).setTextContent(newosValue);
+										e.getElementsByTagName("OS").item(0).setTextContent(newosValue);
 										e.getElementsByTagName("selfNote").item(0).setTextContent(newselfNoteValue);
 										saveLoadDoc.saveDocument(dom);
 										_initFrame.refreshTable();

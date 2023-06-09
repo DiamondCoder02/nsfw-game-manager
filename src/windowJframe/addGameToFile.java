@@ -138,7 +138,7 @@ public class addGameToFile {
 							Element newHowFarUserPlayed = dom.createElement("howFarUserPlayed");
 							Element newstillOnPc = dom.createElement("stillOnPc");
 							Element newEngine = dom.createElement("engine");
-							Element newOS = dom.createElement("os");
+							Element newOS = dom.createElement("OS");
 							Element newSelfNote = dom.createElement("selfNote");
 							newGame.setAttribute("id", idValue);
 							newGame.setAttribute("from", "man");

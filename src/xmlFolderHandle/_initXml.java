@@ -66,7 +66,7 @@ public class _initXml {
 								case "Player progress": allDataFromFile[counter][n] = e.getElementsByTagName("howFarUserPlayed").item(0).getTextContent().trim(); break;
 								case "Still on pc?": allDataFromFile[counter][n] = e.getElementsByTagName("stillOnPc").item(0).getTextContent().trim(); break;
 								case "Engine": allDataFromFile[counter][n] = e.getElementsByTagName("engine").item(0).getTextContent().trim(); break;
-								case "OS": allDataFromFile[counter][n] = e.getElementsByTagName("os").item(0).getTextContent().trim(); break;
+								case "OS": allDataFromFile[counter][n] = e.getElementsByTagName("OS").item(0).getTextContent().trim(); break;
 								case "Personal Notes": allDataFromFile[counter][n] = e.getElementsByTagName("selfNote").item(0).getTextContent().trim(); break;
 								default: break;
 							}

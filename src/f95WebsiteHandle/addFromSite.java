@@ -1,5 +1,7 @@
 package f95WebsiteHandle;
 
+import java.awt.GridLayout;
+
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
@@ -40,7 +42,7 @@ public class addFromSite {
 			String engineValue = output[5].toString();
 			String osValue = output[6].toString();
 
-			JPanel panel = new JPanel();
+			JPanel panel = new JPanel(new GridLayout(6*2, 0));
 			JTextField played_version = new JTextField(15);
 			JTextField dateof_lastplay = new JTextField(20);
 			JTextField user_rating = new JTextField(20);
@@ -73,10 +75,6 @@ public class addFromSite {
 			panel.add(stillOnPclabel); panel.add(stillOnPcPanel);
 			JLabel selfNotelabel = new JLabel("Self note:");
 			panel.add(selfNotelabel); panel.add(selfNote);
-
-			// TODO move everything to the left
-			panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-			//panel.setLayout(new GridLayout(15, 1, 1, 1));
 			JOptionPane.showMessageDialog(null, panel, "Add game", JOptionPane.PLAIN_MESSAGE);
 
 			String played_versionValue = played_version.getText();

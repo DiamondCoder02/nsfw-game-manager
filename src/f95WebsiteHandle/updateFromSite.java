@@ -1,5 +1,7 @@
 package f95WebsiteHandle;
 
+import java.awt.GridLayout;
+
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
@@ -19,7 +21,7 @@ import xmlFolderHandle.saveLoadDoc;
 
 public class updateFromSite {
 	public static void updatef95game(){
-		JPanel panel = new JPanel();
+		JPanel panel = new JPanel(new GridLayout(10*2, 0));
 		String idValue = JOptionPane.showInputDialog(null, "Enter the id of the game you want to edit", "Edit game", JOptionPane.PLAIN_MESSAGE);
 		if (idValue == null) { JOptionPane.showMessageDialog(null, "You must enter an id", "Error", JOptionPane.ERROR_MESSAGE); return; }
 
@@ -83,6 +85,9 @@ public class updateFromSite {
 									}
 									JTextField newselfNote = new JTextField();
 
+									howFarUserPlayedPanel.setLayout(new BoxLayout(howFarUserPlayedPanel, BoxLayout.X_AXIS));
+									stillOnPcPanel.setLayout(new BoxLayout(stillOnPcPanel, BoxLayout.X_AXIS));
+
 									JLabel Namelabel, developerlabel, newest_versionlabel, dateOfLastUpdatelabel, people_ratedlabel, enginelabel, oslabel;
 									if (oldname.equals(newnameValue)) { Namelabel = new JLabel("Name: "+ newnameValue); } 
 									else { Namelabel = new JLabel("Name: " + oldname + " -> " + newnameValue); }
@@ -118,7 +123,6 @@ public class updateFromSite {
 									panel.add(oslabel);
 									JLabel selfNotelabel = new JLabel("Self note:" + " (old: "+oldselfNote+")");
 									panel.add(selfNotelabel); panel.add(newselfNote);
-									panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 									int option = JOptionPane.showConfirmDialog(null, panel, "Update game", JOptionPane.OK_CANCEL_OPTION);
 									if (option == JOptionPane.OK_OPTION) {
 										String newplayed_versionValue = newplayed_version.getText();

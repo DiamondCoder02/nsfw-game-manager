@@ -1,5 +1,8 @@
 package windowJframe;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
@@ -21,7 +24,7 @@ public class addGameToFile {
 	public static void addOneGameToFile(){
 		boolean repeat = true;
 		while (repeat) {
-			JPanel panel = new JPanel();
+			JPanel panel = new JPanel(new GridLayout(14*2, 0));
 
 			JTextField id = new JTextField(6);
 			JTextField name = new JTextField(40);
@@ -58,6 +61,7 @@ public class addGameToFile {
 			howFarUserPlayedPanel.setLayout(new BoxLayout(howFarUserPlayedPanel, BoxLayout.X_AXIS));
 			stillOnPcPanel.setLayout(new BoxLayout(stillOnPcPanel, BoxLayout.X_AXIS));
 			enginePanel.setLayout(new BoxLayout(enginePanel, BoxLayout.X_AXIS));
+			osPanel.setLayout(new BoxLayout(osPanel, BoxLayout.X_AXIS));
 
 			JLabel IDlabel = new JLabel("ID: (required)");
 			panel.add(IDlabel); panel.add(id);
@@ -86,11 +90,8 @@ public class addGameToFile {
 			JLabel oslabel = new JLabel("OS:");
 			panel.add(oslabel); panel.add(osPanel);
 			JLabel selfNotelabel = new JLabel("Self note:");
-			panel.add(selfNotelabel); panel.add(selfNote);
+			panel.add(selfNotelabel, BorderLayout.WEST); panel.add(selfNote);
 
-			// TODO move everything to the left
-			panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-			//panel.setLayout(new GridLayout(15, 1, 1, 1));
 			JOptionPane.showMessageDialog(null, panel, "Add game", JOptionPane.PLAIN_MESSAGE);
 
 			String idValue = id.getText();

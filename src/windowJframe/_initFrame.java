@@ -170,7 +170,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		games.add(updateList = new JMenuItem("Update game"));
 		games.add(updateF95 = new JMenuItem("Update F95zone"));
 		games.addSeparator();
-		games.add(removeGame = new JMenuItem("Remove man game"));
+		games.add(removeGame = new JMenuItem("Remove game"));
 		games.add(saveFileToDifferent = new JMenuItem("Save file copy"));
 		games.addSeparator();
 		games.add(refreshTable = new JMenuItem("Refresh table"));
@@ -297,7 +297,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		String gac = e.getActionCommand();
 		switch (gac) {
 			case "Add game": addGameToFile.addOneGameToFile(); break;
-			case "Remove man game": removeGameFromFile.removeOneGameFromFile(); break;
+			case "Remove game": removeGameFromFile.removeOneGameFromFile(); break;
 			case "Update game": updateGameManually.updateOneGameFromToFile(); break;
 			case "Update F95zone": updateFromSite.updatef95game(); break;
 			case "Refresh table": refreshTable(); setColumns(); break;

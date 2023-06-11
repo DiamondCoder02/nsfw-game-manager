@@ -1,5 +1,7 @@
 package windowJframe;
 
+import java.awt.GridLayout;
+
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
@@ -21,7 +23,7 @@ import xmlFolderHandle.saveLoadDoc;
 public class updateGameManually {
 	public static void updateOneGameFromToFile(){
 		JOptionPane optionPane = new JOptionPane();
-		JPanel panel = new JPanel();
+		JPanel panel = new JPanel(new GridLayout(14*2, 0));
 		JTextField id = new JTextField();
 		Object[] message = {
 			"ID of the game to update:", id
@@ -104,6 +106,11 @@ public class updateGameManually {
 
 									JTextField newselfNote = new JTextField();
 
+									howFarUserPlayedPanel.setLayout(new BoxLayout(howFarUserPlayedPanel, BoxLayout.X_AXIS));
+									stillOnPcPanel.setLayout(new BoxLayout(stillOnPcPanel, BoxLayout.X_AXIS));
+									enginePanel.setLayout(new BoxLayout(enginePanel, BoxLayout.X_AXIS));
+									osPanel.setLayout(new BoxLayout(osPanel, BoxLayout.X_AXIS));
+
 									JLabel Namelabel = new JLabel("Name: (required)" + " (old: "+oldname+")");
 									panel.add(Namelabel); panel.add(newname);
 									JLabel developerlabel = new JLabel("Developer:" + " (old: "+olddeveloper+")");
@@ -130,7 +137,6 @@ public class updateGameManually {
 									panel.add(oslabel); panel.add(osPanel);
 									JLabel selfNotelabel = new JLabel("Self note:" + " (old: "+oldselfNote+")");
 									panel.add(selfNotelabel); panel.add(newselfNote);
-									panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 									int option = JOptionPane.showConfirmDialog(null, panel, "Update game", JOptionPane.OK_CANCEL_OPTION);
 									if (option == JOptionPane.OK_OPTION) {
 										String newnameValue = newname.getText();

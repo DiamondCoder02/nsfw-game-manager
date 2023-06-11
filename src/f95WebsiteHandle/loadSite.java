@@ -32,10 +32,10 @@ public class loadSite {
 		String longTitle, asd, engi[] = new String[9];
 		longTitle = content.substring(content.indexOf("<title>") + 7, content.indexOf("</title>"));
 		
-		for (int i = 1; i < longTitle.split(" - ").length; i++) {
-			asd = longTitle.split(" - ")[i];
-			if (i == longTitle.split(" - ").length - 1) { allTheInfo[0] = asd.split(" \\[")[0]; }
-		}
+		try{
+			asd = longTitle.split(" \\[")[0];
+			allTheInfo[0] = asd.split(" - ")[asd.split(" - ").length - 1];
+		} catch (Exception e) { allTheInfo[0] = "N/A"; }
 		try {
 			allTheInfo[1] = longTitle.split(" \\[")[2].split("]")[0];
 		} catch (Exception e) { allTheInfo[1] = "N/A"; }

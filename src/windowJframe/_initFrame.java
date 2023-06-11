@@ -18,16 +18,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 
-import f95WebsiteHandle.addFromSite;
+import f95WebsiteHandle.*;
 import xmlFolderHandle.saveLoadDoc;
 
 public class _initFrame extends JFrame implements ActionListener {
 	JMenuBar mb;
 
 	JMenu games;
-	JMenuItem addGame, removeGame, updateList, refreshTable;
-	JMenuItem saveFileToDifferent;
-	JMenuItem addF95zone, refreshFromAPI;
+	JMenuItem addGame, addF95zone;
+	JMenuItem updateList, updateF95;
+	JMenuItem removeGame, saveFileToDifferent;
+	JMenuItem refreshTable, refreshFromAPI;
 
 	JMenu settings;
 	JCheckBoxMenuItem darkMode, autoFetchNews, autoUpdateGames;
@@ -74,6 +75,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			addGame.setBackground(bg); addGame.setForeground(fg);
 			removeGame.setBackground(bg); removeGame.setForeground(fg);
 			updateList.setBackground(bg); updateList.setForeground(fg);
+			updateF95.setBackground(bg); updateF95.setForeground(fg);
 			saveFileToDifferent.setBackground(bg); saveFileToDifferent.setForeground(fg);
 			refreshTable.setBackground(bg); refreshTable.setForeground(fg);
 			addF95zone.setBackground(bg); addF95zone.setForeground(fg);
@@ -124,6 +126,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			addGame.setBackground(null); addGame.setForeground(null);
 			removeGame.setBackground(null); removeGame.setForeground(null);
 			updateList.setBackground(null); updateList.setForeground(null);
+			updateF95.setBackground(null); updateF95.setForeground(null);
 			saveFileToDifferent.setBackground(null); saveFileToDifferent.setForeground(null);
 			refreshTable.setBackground(null); refreshTable.setForeground(null);
 			addF95zone.setBackground(null); addF95zone.setForeground(null);
@@ -165,8 +168,9 @@ public class _initFrame extends JFrame implements ActionListener {
 		games.add(addF95zone = new JMenuItem("Add from F95zone"));
 		games.addSeparator();
 		games.add(updateList = new JMenuItem("Update game"));
-		games.add(removeGame = new JMenuItem("Remove man game"));
+		games.add(updateF95 = new JMenuItem("Update F95zone"));
 		games.addSeparator();
+		games.add(removeGame = new JMenuItem("Remove man game"));
 		games.add(saveFileToDifferent = new JMenuItem("Save file copy"));
 		games.addSeparator();
 		games.add(refreshTable = new JMenuItem("Refresh table"));
@@ -174,6 +178,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		addGame.addActionListener(this);
 		removeGame.addActionListener(this);
 		updateList.addActionListener(this);
+		updateF95.addActionListener(this);
 		saveFileToDifferent.addActionListener(this);
 		refreshTable.addActionListener(this);
 		addF95zone.addActionListener(this);
@@ -294,6 +299,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Add game": addGameToFile.addOneGameToFile(); break;
 			case "Remove man game": removeGameFromFile.removeOneGameFromFile(); break;
 			case "Update game": updateGameManually.updateOneGameFromToFile(); break;
+			case "Update F95zone": updateFromSite.updatef95game(); break;
 			case "Refresh table": refreshTable(); setColumns(); break;
 			case "Save file copy": otherButtonsThingies.saveFileCopy();	break;
 			case "Add from F95zone": addFromSite.addFromF95(); break;

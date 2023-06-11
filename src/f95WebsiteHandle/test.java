@@ -10,10 +10,10 @@ import java.net.URLConnection;
 public class test {
 	// allTheInfo[] = Name, Developer, Newest version, Date of last update, People rating, Engine, OS
 	static String[] allTheInfo = new String[7];
-	// public static void main(String[] args) {
-	public static void testing(String[] args) {
-		// 162918 162859 4153 106296 1
-		String id = "9";
+	public static void main(String[] args) {
+	// public static void testing(String[] args) {
+		// 162918 162859 4153 106296 1 469
+		String id = "162918";
 		String content = getUrlContents("https://f95zone.to/threads/" + id + "/");
 		// System.out.println(output);
 		File file = new File("C:\\Users\\Diamond\\Desktop\\F95zone\\test.html");
@@ -24,13 +24,9 @@ public class test {
 			e.printStackTrace();
 		}
 
-		String longTitle, asd, engi[] = new String[9];
+		String longTitle, asd, engi[] = new String[9], longName;
 		longTitle = content.substring(content.indexOf("<title>") + 7, content.indexOf("</title>"));
 		
-		for (int i = 1; i < longTitle.split(" - ").length; i++) {
-			asd = longTitle.split(" - ")[i];
-			if (i == longTitle.split(" - ").length - 1) { allTheInfo[0] = asd.split(" \\[")[0]; }
-		}
 		try {
 			allTheInfo[1] = longTitle.split(" \\[")[2].split("]")[0];
 		} catch (Exception e) { allTheInfo[1] = "N/A"; }
@@ -54,6 +50,10 @@ public class test {
 			else { asd = content.substring(content.indexOf(">OS") + 9); }
 			allTheInfo[6] = asd.substring(0, asd.indexOf("<")).trim();
 		} catch (Exception e) { allTheInfo[6] = "N/A"; }
+		try{
+			longName = longTitle.split(" \\[")[0];
+			allTheInfo[0] = longName.split(" - ")[longName.split(" - ").length - 1];
+		} catch (Exception e) { allTheInfo[0] = "N/A"; }
 
 		if (allTheInfo[1] == "N/A") {
 			allTheInfo[1] = allTheInfo[2];

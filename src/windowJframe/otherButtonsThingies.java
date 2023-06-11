@@ -33,14 +33,14 @@ public class otherButtonsThingies {
 		"Q: What is this?\nA: A simple excel like hentai game manager.\n\n"+
 		"Q: Why this exist?\nA: Because I had enough managing my games in an excel table and wanted something better.\n\n"+
 		"Q: Where the data is stored?\nA: Everything is saved at: C:\\Users\\{name}\\AppData\\Roaming\\DiamondCoder\\nsfwGameManager\\hentai.xml\n"+
-		"You can also save a copy under \"Games\" => \"Save file copy\" button.\n\n"+
+		"You can also save a copy under \"Games\" => \"Save file copy\" button. (This does not change where it continues to save.)\n\n"+
 		"Q: Features?\nA: -----*Currently:*-----\n"+
 		"- Add, store, update, remove game infos manually\n"+
 		"- DarkMode\n"+
 		"- Colorful table\n"+
-		"-----*Plans:*-----\n"+
 		"- F95zone, so only ID needed to add game\n"+
-		"- Dlsite so also only ID needed\n"+
+		"-----*Plans:*-----\n"+
+		"- Dlsite so only ID needed\n"+
 		"- (Far future) If I can, I will also add to download/detect what games are downloaded\n"+
 		"\n"+
 		"Q: Support?\nA: Patreon: https://www.patreon.com/DiamondCoder\n\n"+

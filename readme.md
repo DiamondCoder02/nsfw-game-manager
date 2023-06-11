@@ -45,7 +45,7 @@ Settings tab:
 
 ### Ideas
 
-- [ ] F95zone.to support
+- [x] ~~F95zone.to support~~
 - [ ] dlsite.com support
 
 ---

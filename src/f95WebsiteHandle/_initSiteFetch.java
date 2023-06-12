@@ -22,10 +22,17 @@ public class _initSiteFetch {
 	static Document dom = saveLoadDoc.loadDocument();
 	static String[] columnNames = _initXml.allColumns(dom);
 	static Object[][] loadedGames = _initXml.loadGames(dom, columnNames);
+
+	public static void fetchInfoAskConfirm() {
+		int option = JOptionPane.showConfirmDialog(null, "This will go through all games and check if there is new update.\nAre you sure?", "Update", JOptionPane.OK_CANCEL_OPTION);
+		if (option == JOptionPane.OK_OPTION) {
+			fetchInfoThenUpdateTable();
+		}
+	}
+
 	public static void fetchInfoThenUpdateTable() {
 		boolean[] otherSettings = settingsManager.loadSettings("othersettings");
-		int option = JOptionPane.showConfirmDialog(null, "This will go through all games and check if there is new update.\nAre you sure?", "Update", JOptionPane.OK_CANCEL_OPTION);
-		if (otherSettings[1] && option == JOptionPane.OK_OPTION) {
+		if (otherSettings[1]) {
 			ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 			for (int i = 0; i < loadedGames.length; i++) {
 				String id = loadedGames[i][1].toString();
@@ -35,11 +42,10 @@ public class _initSiteFetch {
 					if (site.equals("f95")) {
 						executorService.scheduleAtFixedRate(myF95Task(id, i), 0, 1, TimeUnit.SECONDS);
 					}
-				} catch (Exception e) {
-					_initFrame.refreshTable();
-				}
+				} catch (Exception e) { /* /ᐠ｡ꞈ｡ᐟ\ */ }
 			}
 			JOptionPane.showMessageDialog(null, "All game infos got updated", "Update", JOptionPane.INFORMATION_MESSAGE);
+			_initFrame.refreshTable();
 		}
 	}
 /* 

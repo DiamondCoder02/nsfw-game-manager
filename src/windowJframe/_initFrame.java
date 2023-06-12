@@ -1,7 +1,5 @@
 package windowJframe;
 
-import static java.lang.System.out;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -18,7 +16,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 
-import f95WebsiteHandle.*;
+import f95WebsiteHandle.addFromSite;
+import f95WebsiteHandle.updateFromSite;
+import f95WebsiteHandle._initSiteFetch;
 import xmlFolderHandle.saveLoadDoc;
 
 public class _initFrame extends JFrame implements ActionListener {
@@ -205,7 +205,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		settings.addSeparator();
 		settings.add(darkMode = new JCheckBoxMenuItem("Dark mode", otherSettings[0]));
 		settings.addSeparator();
-		settings.add(autoFetchNews = new JCheckBoxMenuItem("Auto fetch game updates", otherSettings[1]));
+		settings.add(autoFetchNews = new JCheckBoxMenuItem("Auto fetch game info", otherSettings[1]));
 		//settings.add(autoUpdateGames = new JCheckBoxMenuItem("Auto update games", otherSettings[2]));
 
 		showSite.addActionListener(this);
@@ -290,6 +290,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		}
 	}
 
+	
 	public static void refreshTable(){saveLoadDoc.reloadTable(table);}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -303,10 +304,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Refresh table": refreshTable(); setColumns(); break;
 			case "Save file copy": otherButtonsThingies.saveFileCopy();	break;
 			case "Add from F95zone": addFromSite.addFromF95(); break;
-			case "API refresh":
-					JOptionPane.showMessageDialog(null, "API is not implemented at all yet.\nCome back later.", "Error", JOptionPane.ERROR_MESSAGE);
-					out.println("API refresh");
-					break;
+			case "API refresh":  _initSiteFetch.fetchInfoThenUpdateTable(); break;
 			case "Site": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "ID": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Name": settingsManager.xmlSettings("showncolumns", gac); break;
@@ -323,12 +321,12 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "OS": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Personal Notes": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Dark mode": settingsManager.xmlSettings("othersettings", gac); WindowRefresh(); refreshTable(); break;
-			case "Auto fetch game updates": settingsManager.xmlSettings("othersettings", gac);JOptionPane.showMessageDialog(null, "API is not implemented at all yet.\nCome back later.", "Error", JOptionPane.ERROR_MESSAGE); break; // TODO api1
+			case "Auto fetch game info": settingsManager.xmlSettings("othersettings", gac); _initSiteFetch.fetchInfoThenUpdateTable(); break;
 			// case "Auto update games": settingsManager.xmlSettings("othersettings", gac);JOptionPane.showMessageDialog(null, "API is not implemented at all yet.\nCome back later.", "Error", JOptionPane.ERROR_MESSAGE); break; // TODO api2
 			case "FAQ": otherButtonsThingies.FACKQU(); break;
 			case "Credits": otherButtonsThingies.money(); break;
 			case "Exit": otherButtonsThingies.sureAboutExit(); break;
-			default: JOptionPane.showMessageDialog(null, "Error, this should never happen!!!", "Error", JOptionPane.ERROR_MESSAGE); break;
+			default: JOptionPane.showMessageDialog(null, "Error, this should never happen!!! (_initFrame)", "Error", JOptionPane.ERROR_MESSAGE); break;
 		}
 	}
 }

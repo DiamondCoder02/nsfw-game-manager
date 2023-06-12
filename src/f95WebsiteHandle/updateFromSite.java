@@ -131,19 +131,19 @@ public class updateFromSite {
 										String newhowFarUserPlayedValue = howFarUserPlayed.getSelection().getActionCommand();
 										String newstillOnPcValue = stillOnPc.getSelection().getActionCommand();
 										String newselfNoteValue = newselfNote.getText();
-										if (newnameValue.equals("")) { newnameValue = oldname; }
-										if (newdeveloperValue.equals("")) { newdeveloperValue = olddeveloper; }
-										if (newplayed_versionValue.equals("")) { newplayed_versionValue = oldplayed_version; }
-										if (newdateof_lastplayValue.equals("")) { newdateof_lastplayValue = olddateof_lastplay; }
-										if (newuser_ratedValue.equals("")) { newuser_ratedValue = olduser_rated; }
-										if (newnewest_versionValue.equals("")) { newnewest_versionValue = oldnewest_version; }
-										if (newdateof_lastupateValue.equals("")) { newdateof_lastupateValue = olddateof_lastupate; }
-										if (newpeople_ratedValue.equals("")) { newpeople_ratedValue = oldpeople_rated; }
-										// if (newhowFarUserPlayedValue.equals("")) { newhowFarUserPlayedValue = oldhowFarUserPlayed; }
-										// if (newstillOnPcValue.equals("")) { newstillOnPcValue = oldstillOnPc; }
-										// if (newengineValue.equals("")) { newengineValue = oldengine; }
-										// if (newosValue.equals("")) { newosValue = oldos; }
-										if (newselfNoteValue.equals("")) { newselfNoteValue = oldselfNote; }
+										if (!newnameValue.equals(oldname)) { newnameValue = oldname; }
+										if (!newdeveloperValue.equals(olddeveloper)) { newdeveloperValue = olddeveloper; }
+										if (!newplayed_versionValue.equals(oldplayed_version)) { newplayed_versionValue = oldplayed_version; }
+										if (!newdateof_lastplayValue.equals(olddateof_lastplay)) { newdateof_lastplayValue = olddateof_lastplay; }
+										if (!newuser_ratedValue.equals(olduser_rated)) { newuser_ratedValue = olduser_rated; }
+										if (!newnewest_versionValue.equals(oldnewest_version)) { newnewest_versionValue = oldnewest_version; }
+										if (!newdateof_lastupateValue.equals(olddateof_lastupate)) { newdateof_lastupateValue = olddateof_lastupate; }
+										if (!newpeople_ratedValue.equals(oldpeople_rated)) { newpeople_ratedValue = oldpeople_rated; }
+										if (!newhowFarUserPlayedValue.equals(oldhowFarUserPlayed)) { newhowFarUserPlayedValue = oldhowFarUserPlayed; }
+										if (!newstillOnPcValue.equals(oldstillOnPc)) { newstillOnPcValue = oldstillOnPc; }
+										if (!newengineValue.equals(oldengine)) { newengineValue = oldengine; }
+										if (!newosValue.equals(oldos)) { newosValue = oldos; }
+										if (!newselfNoteValue.equals(oldselfNote)) { newselfNoteValue = oldselfNote; }
 										e.getElementsByTagName("name").item(0).setTextContent(newnameValue);
 										e.getElementsByTagName("developer").item(0).setTextContent(newdeveloperValue);
 										e.getElementsByTagName("played_version").item(0).setTextContent(newplayed_versionValue);

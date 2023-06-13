@@ -265,7 +265,14 @@ public class _initFrame extends JFrame implements ActionListener {
 		Integer[] ind = new Integer[columnVisibility.length];
 		Integer counter = 0;
 		for (int i = 0; i < columnVisibility.length; i++) { ind[i] = -1; }
-		for (int i = 0; i < columnVisibility.length; i++) { if (columnVisibility[i]) {ind[i] = counter; counter++;} else {ind[i] = -1;} }
+		for (int i = 0; i < columnVisibility.length; i++) { 
+			if (columnVisibility[i]) {
+				ind[i] = counter; 
+				counter++;
+			} else {
+				ind[i] = -1;
+			} 
+		}
 
 		Integer[] ind2 = new Integer[]{
 			5,	// dl - dlsite / f95 - f95zone / man - manually added
@@ -286,7 +293,9 @@ public class _initFrame extends JFrame implements ActionListener {
 		};
 
 		for (int i = 0; i < ind.length; i++) {
-			if (columnVisibility[i]) { table.getColumnModel().getColumn(ind[i]).setPreferredWidth(ind2[i]); }
+			if (columnVisibility[i]) { 
+				table.getColumnModel().getColumn(ind[i]).setPreferredWidth(ind2[i]); 
+			}
 		}
 	}
 

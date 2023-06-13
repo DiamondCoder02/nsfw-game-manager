@@ -53,7 +53,7 @@ public class updateFromSite {
 									String oldos = e.getElementsByTagName("OS").item(0).getTextContent().trim();
 									String oldselfNote = e.getElementsByTagName("selfNote").item(0).getTextContent().trim();
 
-									String[] output = loadSite.getUrlContents(idValue);
+									String[] output = loadSite.getf95UrlContents(idValue);
 									String newnameValue = output[0].toString();
 									String newdeveloperValue = output[1].toString();
 									String newnewest_versionValue = output[2].toString();

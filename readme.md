@@ -11,6 +11,7 @@ Because I'm lazy everything is handled with ids, mostly.
 
 - Database file: AppData\Roaming\DiamondCoder\nsfwGameManager\hentai.xml
 - For the online version, if the game is the final version, it gets a "✔" at the version column
+- For VisualNovels there will be a "VN" at the name column
 
 ---
 ---
@@ -27,7 +28,7 @@ Games tab:
 - [x] ~~remove game~~
 - [x] ~~update game~~
 - [ ] save file to different location
-- [ ] api and file refresh??? Is this needed?
+- [x] api and file refresh??? Is this needed?
 
 Other tab:
 
@@ -39,8 +40,8 @@ Settings tab:
 
 - [x] ~~darkmode~~
 - [ ] show language of the game
-- [ ] autofetchnewgames
-- [ ] autoUpdateGames
+- [x] auto fetch game info
+- [ ] ~~auto Update Games~~ NO
 
 ---
 

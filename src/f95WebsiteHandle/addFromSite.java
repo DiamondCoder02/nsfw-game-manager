@@ -31,7 +31,7 @@ public class addFromSite {
 				break;
 			}
 
-			String[] output = loadSite.getUrlContents(idValue);
+			String[] output = loadSite.getf95UrlContents(idValue);
 			if (output == null) { break; }
 			// Name, Developer, Newest version, Date of last update, People rating, Engine, OS
 			String nameValue = output[0].toString();

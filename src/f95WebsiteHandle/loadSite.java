@@ -8,8 +8,8 @@ import java.net.URLConnection;
 import javax.swing.JOptionPane;
 
 public class loadSite {
-	static String[] allTheInfo = new String[7];
-	public static String[] getUrlContents(String gameIds) {
+	public static String[] getf95UrlContents(String gameIds) {
+		String[] allTheInfo = new String[7];
 		StringBuilder content = new StringBuilder();
 		// Use try and catch to avoid the exceptions
 		try {
@@ -52,7 +52,13 @@ public class loadSite {
 		} catch (Exception e) { allTheInfo[4] = "N/A"; }
 		for (int i = 0; i < longTitle.split(" - ").length; i++) { engi[i] = longTitle.split(" - ")[i]; }
 		if (engi[0] == "Collection") {allTheInfo[5] = engi[0];} 
-		else { for (int i = 0; i < engi.length; i++) { if (engi[i] != "Collection" || engi[i] != "VN") { allTheInfo[5] = engi[i]; break; } } }
+		else { 
+			for (int i = 0; i < engi.length; i++) { if (engi[i].contains("Ren&#039;Py")) { engi[i] = "Ren'Py"; break;} }
+			for (int i = 0; i < engi.length; i++) { 
+				if (engi[i].contains("VN")) { allTheInfo[0] = "["+engi[i]+"] "+allTheInfo[0]; } 
+				if (engi[i].contains("Collection") || engi[i].contains("VN")){} else { allTheInfo[5] = engi[i]; break; } 
+			} 
+		}
 		try {
 			Integer numId = Integer.parseInt(gameIds);
 			if (numId < 10) { asd = content.substring(content.indexOf(">Platform<") + 15); } 
@@ -61,7 +67,10 @@ public class loadSite {
 		} catch (Exception e) { allTheInfo[6] = "N/A"; }
 
 		if (allTheInfo[1] == "N/A") { allTheInfo[1] = allTheInfo[2]; allTheInfo[2] = "N/A"; }
+
+		if (longTitle.contains("Completed")) { allTheInfo[2] = "✔ " + allTheInfo[2]; }
 		// for (int i = 0; i < allTheInfo.length; i++) { System.out.println(allTheInfo[i]); }
+
 		return allTheInfo;
 	}
 }

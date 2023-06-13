@@ -65,7 +65,7 @@ public class _initSiteFetch {
 14	case "Personal Notes": 
 */
 	private static Runnable myF95Task(String id, int LoadGamesLength) {
-		String[] gameInfo = loadSite.getUrlContents(id);
+		String[] gameInfo = loadSite.getf95UrlContents(id);
 		String dateOfLastUpdateValue = gameInfo[3].toString();
 		String olddateOfLastUpdateValue = loadedGames[LoadGamesLength][4].toString();
 		if (!olddateOfLastUpdateValue.equals(dateOfLastUpdateValue)) {

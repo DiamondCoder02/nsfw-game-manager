@@ -94,21 +94,20 @@ public class saveLoadDoc {
 		}
 		*/
 
-		int column = 0;
+		int playColumnCount = 0;
 		for (int i = 0; i < table.getColumnCount(); i++) {
 			if (table.getColumnName(i).equals("Player progress")) {
-				column = i;
+				playColumnCount = i;
 				break;
 			}
 		}
-		final int column2 = column;
-
+		final int playProgColumn = playColumnCount;
 		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
 			@Override
 			public Component getTableCellRendererComponent(JTable table,
 					Object value, boolean isSelected, boolean hasFocus, int row, int col) {
 				super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, col);
-				String status = (String) table.getModel().getValueAt(row, column2);
+				String status = (String) table.getModel().getValueAt(row, playProgColumn);
 				if ("Not played".equals(status)) { setBackground(np);
 				} else if ("In progress".equals(status)) { setBackground(ip);
 				} else if ("Finish".equals(status)) { setBackground(fi);

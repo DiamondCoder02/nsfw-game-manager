@@ -18,7 +18,6 @@ import xmlFolderHandle.isIDInDatabase;
 import xmlFolderHandle.saveLoadDoc;
 
 public class _initSiteFetch {
-	// TODO fetch info from website and update xml file then update table
 	static Document dom = saveLoadDoc.loadDocument();
 	static String[] columnNames = _initXml.allColumns(dom);
 	static Object[][] loadedGames = _initXml.loadGames(dom, columnNames);

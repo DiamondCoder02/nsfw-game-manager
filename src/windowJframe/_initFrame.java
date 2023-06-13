@@ -260,7 +260,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		setVisible(true);
 	}
 
-	private void setColumns(){
+	private static void setColumns(){
 		boolean[] columnVisibility = settingsManager.loadSettings("showncolumns");
 		Integer[] ind = new Integer[columnVisibility.length];
 		Integer counter = 0;
@@ -291,7 +291,7 @@ public class _initFrame extends JFrame implements ActionListener {
 	}
 
 	
-	public static void refreshTable(){saveLoadDoc.reloadTable(table);}
+	public static void refreshTable(){saveLoadDoc.reloadTable(table); setColumns();}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// out.println(e);
@@ -322,7 +322,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Personal Notes": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Dark mode": settingsManager.xmlSettings("othersettings", gac); WindowRefresh(); refreshTable(); break;
 			case "Auto fetch game info": settingsManager.xmlSettings("othersettings", gac); _initSiteFetch.fetchInfoAskConfirm(); break;
-			// case "Auto update games": settingsManager.xmlSettings("othersettings", gac);JOptionPane.showMessageDialog(null, "API is not implemented at all yet.\nCome back later.", "Error", JOptionPane.ERROR_MESSAGE); break; // TODO api2
+			// case "Auto update games": settingsManager.xmlSettings("othersettings", gac);JOptionPane.showMessageDialog(null, "API is not implemented at all yet.\nCome back later.", "Error", JOptionPane.ERROR_MESSAGE); break; // TODO No api2
 			case "FAQ": otherButtonsThingies.FACKQU(); break;
 			case "Credits": otherButtonsThingies.money(); break;
 			case "Exit": otherButtonsThingies.sureAboutExit(); break;

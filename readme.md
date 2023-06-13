@@ -10,6 +10,7 @@ Because I'm lazy everything is handled with ids, mostly.
 ## Important
 
 - Database file: AppData\Roaming\DiamondCoder\nsfwGameManager\hentai.xml
+- For the online version, if the game is the final version, it gets a "✔" at the version column
 
 ---
 ---

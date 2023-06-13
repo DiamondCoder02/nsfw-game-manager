@@ -20,6 +20,5 @@ public class mainInit {
 		if (otherSettings[1]) {
 			_initSiteFetch.fetchInfoThenUpdateTable();
 		}
-
 	}
 }

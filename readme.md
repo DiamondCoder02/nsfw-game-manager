@@ -22,23 +22,12 @@ and to torture myself
 
 Games tab:
 
-- [x] ~~add game~~
-- [x] ~~remove game~~
-- [x] ~~update game~~
 - [ ] save file to different location
-- [x] api and file refresh??? Is this needed?
-
-Other tab:
-
-- [x] ~~Show game info needs more options, but the first five is good~~
-- [x] ~~FAQ~~
-- [x] ~~Credits~~
+- [x] ~~api and file refresh??? Is this needed?~~
 
 Settings tab:
 
-- [x] ~~darkmode~~
 - [ ] show language of the game
-- [x] auto fetch game info
 - [ ] ~~auto Update Games~~ NO
 
 ---
@@ -47,13 +36,3 @@ Settings tab:
 
 - [x] ~~F95zone.to support~~
 - [ ] dlsite.com support
-
----
-
-### Limitations and bugs
-
-- [x] ~~You have to reastart the app to see edited columns~~ Not anymore
-- [x] ~~If there is not a single line it table unable to add new game~~ Fixed
-
----
----

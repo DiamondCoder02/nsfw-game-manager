@@ -1,10 +1,14 @@
 package f95WebsiteHandle;
 
+import java.awt.Dimension;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
+import javax.swing.JRootPane;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -17,7 +21,7 @@ import xmlFolderHandle._initXml;
 import xmlFolderHandle.isIDInDatabase;
 import xmlFolderHandle.saveLoadDoc;
 
-public class _initSiteFetch {
+public class _initSiteFetch extends JFrame {
 	static Document dom = saveLoadDoc.loadDocument();
 	static String[] columnNames = _initXml.allColumns(dom);
 	static Object[][] loadedGames = _initXml.loadGames(dom, columnNames);
@@ -30,6 +34,18 @@ public class _initSiteFetch {
 	}
 
 	public static void fetchInfoThenUpdateTable() {
+		JProgressBar pbar = new JProgressBar(0, loadedGames.length);
+		pbar.setStringPainted(true);
+		pbar.setPreferredSize( new Dimension ( 300, 20));
+		JFrame frame = new JFrame("Progress Bar Example");
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setContentPane(pbar);
+		frame.setUndecorated(true);
+		frame.getRootPane().setWindowDecorationStyle(JRootPane.INFORMATION_DIALOG);
+		frame.setLocation(550, 300);
+		frame.pack();
+		frame.setVisible(true);
+
 		boolean[] otherSettings = settingsManager.loadSettings("othersettings");
 		if (otherSettings[1]) {
 			ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
@@ -42,8 +58,11 @@ public class _initSiteFetch {
 						executorService.scheduleAtFixedRate(myF95Task(id, i), 0, 1, TimeUnit.SECONDS);
 					}
 				} catch (Exception e) { /* /ᐠ｡ꞈ｡ᐟ\ */ }
+				pbar.setValue(i);
 			}
+			pbar.setValue(loadedGames.length);
 			JOptionPane.showMessageDialog(null, "All game infos got updated", "Update", JOptionPane.INFORMATION_MESSAGE);
+			frame.dispose();
 			_initFrame.refreshTable();
 		}
 	}

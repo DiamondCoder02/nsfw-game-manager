@@ -5,8 +5,6 @@ Maybe good idea
 Now that this is independent from uni work... Time to make it better
 and to torture myself
 
-Because I'm lazy everything is handled with ids, mostly.
-
 ## Important
 
 - Database file: AppData\Roaming\DiamondCoder\nsfwGameManager\hentai.xml

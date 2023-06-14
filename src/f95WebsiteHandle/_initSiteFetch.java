@@ -26,10 +26,12 @@ public class _initSiteFetch extends JFrame {
 	static Document dom = saveLoadDoc.loadDocument();
 	static String[] columnNames = _initXml.allColumns(dom);
 	static Object[][] loadedGames = _initXml.loadGames(dom, columnNames);
+	static boolean manualButton = false;
 
 	public static void fetchInfoAskConfirm() {
 		int option = JOptionPane.showConfirmDialog(null, "This will go through all games and check if there is new update.\nAre you sure?", "Update", JOptionPane.OK_CANCEL_OPTION);
 		if (option == JOptionPane.OK_OPTION) {
+			manualButton = true;
 			fetchInfoThenUpdateTable();
 		}
 	}
@@ -49,7 +51,7 @@ public class _initSiteFetch extends JFrame {
 			frame.setVisible(true);
 
 			boolean[] otherSettings = settingsManager.loadSettings("othersettings");
-			if (otherSettings[1]) {
+			if (otherSettings[1] || manualButton) {
 				ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 				for (int i = 0; i < loadedGames.length; i++) {
 					String id = loadedGames[i][1].toString();
@@ -63,6 +65,7 @@ public class _initSiteFetch extends JFrame {
 					pbar.setValue(i);
 				}
 				pbar.setValue(loadedGames.length);
+				manualButton = false;
 				JOptionPane.showMessageDialog(null, "All game infos got updated", "Update", JOptionPane.INFORMATION_MESSAGE);
 				frame.dispose();
 				_initFrame.refreshTable();

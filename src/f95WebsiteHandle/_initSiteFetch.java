@@ -1,6 +1,7 @@
 package f95WebsiteHandle;
 
 import java.awt.Dimension;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -34,37 +35,39 @@ public class _initSiteFetch extends JFrame {
 	}
 
 	public static void fetchInfoThenUpdateTable() {
-		JProgressBar pbar = new JProgressBar(0, loadedGames.length);
-		pbar.setStringPainted(true);
-		pbar.setPreferredSize( new Dimension ( 300, 20));
-		JFrame frame = new JFrame("Progress Bar");
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.setContentPane(pbar);
-		frame.setUndecorated(true);
-		frame.getRootPane().setWindowDecorationStyle(JRootPane.INFORMATION_DIALOG);
-		frame.setLocation(550, 300);
-		frame.pack();
-		frame.setVisible(true);
+		CompletableFuture.runAsync(() -> {
+			JProgressBar pbar = new JProgressBar(0, loadedGames.length);
+			pbar.setStringPainted(true);
+			pbar.setPreferredSize( new Dimension ( 300, 20));
+			JFrame frame = new JFrame("Progress Bar");
+			frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			frame.setContentPane(pbar);
+			frame.setUndecorated(true);
+			frame.getRootPane().setWindowDecorationStyle(JRootPane.INFORMATION_DIALOG);
+			frame.setLocation(550, 300);
+			frame.pack();
+			frame.setVisible(true);
 
-		boolean[] otherSettings = settingsManager.loadSettings("othersettings");
-		if (otherSettings[1]) {
-			ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-			for (int i = 0; i < loadedGames.length; i++) {
-				String id = loadedGames[i][1].toString();
-				String site = loadedGames[i][0].toString();
-				try {
-					// System.out.println(site + " - " + id);
-					if (site.equals("f95")) {
-						executorService.scheduleAtFixedRate(myF95Task(id, i), 0, 1, TimeUnit.SECONDS);
-					}
-				} catch (Exception e) { /* /ᐠ｡ꞈ｡ᐟ\ */ }
-				pbar.setValue(i);
+			boolean[] otherSettings = settingsManager.loadSettings("othersettings");
+			if (otherSettings[1]) {
+				ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+				for (int i = 0; i < loadedGames.length; i++) {
+					String id = loadedGames[i][1].toString();
+					String site = loadedGames[i][0].toString();
+					try {
+						// System.out.println(site + " - " + id);
+						if (site.equals("f95")) {
+							executorService.scheduleAtFixedRate(myF95Task(id, i), 0, 1, TimeUnit.SECONDS);
+						}
+					} catch (Exception e) { /* /ᐠ｡ꞈ｡ᐟ\ */ }
+					pbar.setValue(i);
+				}
+				pbar.setValue(loadedGames.length);
+				JOptionPane.showMessageDialog(null, "All game infos got updated", "Update", JOptionPane.INFORMATION_MESSAGE);
+				frame.dispose();
+				_initFrame.refreshTable();
 			}
-			pbar.setValue(loadedGames.length);
-			JOptionPane.showMessageDialog(null, "All game infos got updated", "Update", JOptionPane.INFORMATION_MESSAGE);
-			frame.dispose();
-			_initFrame.refreshTable();
-		}
+		});
 	}
 /* 
 0	case "Site" :

@@ -37,7 +37,7 @@ public class _initSiteFetch extends JFrame {
 		JProgressBar pbar = new JProgressBar(0, loadedGames.length);
 		pbar.setStringPainted(true);
 		pbar.setPreferredSize( new Dimension ( 300, 20));
-		JFrame frame = new JFrame("Progress Bar Example");
+		JFrame frame = new JFrame("Progress Bar");
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setContentPane(pbar);
 		frame.setUndecorated(true);

@@ -38,8 +38,10 @@ public class otherButtonsThingies {
 		"- Add, store, update, remove game infos manually\n"+
 		"- DarkMode\n"+
 		"- Colorful table\n"+
-		"- F95zone, so only ID needed to add game\n"+
+		"- F95zone, so only ID needed to add, remove game\n"+
 		"-----*Plans:*-----\n"+
+		"- Search function\n"+
+		"- Sorting\n"+
 		"- Dlsite so only ID needed\n"+
 		"- (Far future) If I can, I will also add to download/detect what games are downloaded\n"+
 		"\n"+
@@ -59,7 +61,7 @@ public class otherButtonsThingies {
 		"Main focus is something dynamic and easy to use for hentai games.\n\n"+
 		"Thank you for using this program.\n\n"+
 		"Full open source: https://github.com/DiamondPRO02/nsfw-game-manager\n"+
-		"Support me on Patreon: https://www.patreon.com/DiamondCoder",
+		"Support me on Github or on Patreon: https://www.patreon.com/DiamondCoder",
 		"Credit", 
 		JOptionPane.INFORMATION_MESSAGE);
 	}

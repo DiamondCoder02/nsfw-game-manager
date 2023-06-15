@@ -1,5 +1,7 @@
 package xmlFolderHandle;
 
+import javax.swing.JOptionPane;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -68,7 +70,7 @@ public class _initXml {
 								case "Engine": allDataFromFile[counter][n] = e.getElementsByTagName("engine").item(0).getTextContent().trim(); break;
 								case "OS": allDataFromFile[counter][n] = e.getElementsByTagName("OS").item(0).getTextContent().trim(); break;
 								case "Personal Notes": allDataFromFile[counter][n] = e.getElementsByTagName("selfNote").item(0).getTextContent().trim(); break;
-								default: break;
+								default: JOptionPane.showMessageDialog(null, "Error, this should never happen!!! (_initFrame)", "Error", JOptionPane.ERROR_MESSAGE); break;
 							}
 						}
 						counter++;

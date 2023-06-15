@@ -30,6 +30,9 @@ public class _initFrame extends JFrame implements ActionListener {
 	JMenuItem removeGame, saveFileToDifferent;
 	JMenuItem refreshTable, refreshFromAPI;
 
+	JMenu search;
+	JMenuItem searchById, searchByName, searchByDeveloper;
+
 	JMenu settings;
 	JCheckBoxMenuItem darkMode, autoFetchNews, autoUpdateGames;
 	JMenu show;
@@ -80,6 +83,10 @@ public class _initFrame extends JFrame implements ActionListener {
 			refreshTable.setBackground(bg); refreshTable.setForeground(fg);
 			addF95zone.setBackground(bg); addF95zone.setForeground(fg);
 			refreshFromAPI.setBackground(bg); refreshFromAPI.setForeground(fg);
+			search.setBackground(bg); search.setForeground(fg);
+			searchById.setBackground(bg); searchById.setForeground(fg);
+			searchByName.setBackground(bg); searchByName.setForeground(fg);
+			searchByDeveloper.setBackground(bg); searchByDeveloper.setForeground(fg);
 			showSite.setBackground(bg); showSite.setForeground(fg);
 			showID.setBackground(bg); showID.setForeground(fg);
 			showName.setBackground(bg); showName.setForeground(fg);
@@ -131,6 +138,10 @@ public class _initFrame extends JFrame implements ActionListener {
 			refreshTable.setBackground(null); refreshTable.setForeground(null);
 			addF95zone.setBackground(null); addF95zone.setForeground(null);
 			refreshFromAPI.setBackground(null); refreshFromAPI.setForeground(null);
+			search.setBackground(null); search.setForeground(null);
+			searchById.setBackground(null); searchById.setForeground(null);
+			searchByName.setBackground(null); searchByName.setForeground(null);
+			searchByDeveloper.setBackground(null); searchByDeveloper.setForeground(null);
 			showSite.setBackground(null); showSite.setForeground(null);
 			showID.setBackground(null); showID.setForeground(null);
 			showName.setBackground(null); showName.setForeground(null);
@@ -183,6 +194,14 @@ public class _initFrame extends JFrame implements ActionListener {
 		refreshTable.addActionListener(this);
 		addF95zone.addActionListener(this);
 		refreshFromAPI.addActionListener(this);
+
+		mb.add(search = new JMenu("Search"));
+		search.add(searchById = new JMenuItem("Search by ID"));
+		search.add(searchByName = new JMenuItem("Search by name"));
+		search.add(searchByDeveloper = new JMenuItem("Search by developer"));
+		searchById.addActionListener(this);
+		searchByName.addActionListener(this);
+		searchByDeveloper.addActionListener(this);
 
 		mb.add(settings = new JMenu("Settings"));
 		settings.add(show = new JMenu("Shown informations"));
@@ -314,6 +333,9 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Save file copy": otherButtonsThingies.saveFileCopy();	break;
 			case "Add from F95zone": addFromSite.addFromF95(); break;
 			case "API refresh":  _initSiteFetch.fetchInfoAskConfirm(); break;
+			case "Search by ID": searchButton.searchById(); break;
+			case "Search by name": searchButton.searchByName(); break;
+			case "Search by developer": searchButton.searchByDeveloper(); break;
 			case "Site": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "ID": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Name": settingsManager.xmlSettings("showncolumns", gac); break;

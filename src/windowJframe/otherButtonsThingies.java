@@ -56,7 +56,8 @@ public class otherButtonsThingies {
 	}
 
 	public static void money(){
-		ImageIcon icon = new ImageIcon("src\\icons\\creditLogo.png");
+		String icons = (System.getenv("APPDATA") + "\\DiamondCoder\\nsfwGameManager\\pics\\creditLogo.png");
+		ImageIcon icon = new ImageIcon(icons);
 		// make image smaller
 		Image img = icon.getImage();
 		Image newimg = img.getScaledInstance(43*4, 120*4,  java.awt.Image.SCALE_SMOOTH);

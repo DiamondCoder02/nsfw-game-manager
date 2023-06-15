@@ -10,7 +10,7 @@ import windowJframe.settingsManager;
 
 public class mainInit {
 	public static void main(String[] args) {
-		_initChecksFile.checkPics();
+		checksFile.checkPics();
 		Document dom = saveLoadDoc.loadDocument();
 		String[] columnNames = _initXml.allColumns(dom);
 		Object[][] data = _initXml.loadGames(dom, columnNames);

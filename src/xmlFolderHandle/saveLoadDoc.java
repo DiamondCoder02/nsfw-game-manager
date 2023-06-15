@@ -16,7 +16,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 
-import main._initChecksFile;
+import main.checksFile;
 
 public class saveLoadDoc {
 	static String path = System.getenv("APPDATA") + "\\DiamondCoder\\nsfwGameManager\\hentai.xml";
@@ -25,7 +25,7 @@ public class saveLoadDoc {
 		// find file
 		File file = new File(path);
 		if (!file.exists()) {
-			_initChecksFile.createFile(path);
+			checksFile.createFile(path);
 		}
 		try {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();

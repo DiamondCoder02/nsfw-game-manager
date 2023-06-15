@@ -1,5 +1,8 @@
 package windowJframe;
 
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -53,6 +56,11 @@ public class otherButtonsThingies {
 	}
 
 	public static void money(){
+		ImageIcon icon = new ImageIcon("src\\icons\\creditLogo.png");
+		// make image smaller
+		Image img = icon.getImage();
+		Image newimg = img.getScaledInstance(43*4, 120*4,  java.awt.Image.SCALE_SMOOTH);
+		icon = new ImageIcon(newimg);
 		JOptionPane.showMessageDialog(null, 
 		"Credits\n\n"+
 		"Hi, I'm Diamond.\n"+
@@ -61,9 +69,9 @@ public class otherButtonsThingies {
 		"Main focus is something dynamic and easy to use for hentai games.\n\n"+
 		"Thank you for using this program.\n\n"+
 		"Full open source: https://github.com/DiamondPRO02/nsfw-game-manager\n"+
-		"Support me on Github or on Patreon: https://www.patreon.com/DiamondCoder",
+		"Support me on Github or on Patreon: https://www.patreon.com/DiamondCoder\n",
 		"Credit", 
-		JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.INFORMATION_MESSAGE, icon);
 	}
 
 	public static void sureAboutExit(){

@@ -16,15 +16,6 @@ and to torture myself
 
 ## TODO
 
----
-
-### All the things that has button but no fucntionality
-
-Games tab:
-
-- [ ] save file to different location
-- [x] ~~api and file refresh??? Is this needed?~~
-
 Settings tab:
 
 - [ ] show language of the game

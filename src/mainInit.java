@@ -14,6 +14,7 @@ public class mainInit {
 		Object[][] data = _initXml.loadGames(dom, columnNames);
 
 		_initFrame frame = new _initFrame();
+		frame.setIconImage(frame.getToolkit().getImage("src/icons/icon.png"));
 		frame.WindowCreate(columnNames, data);
 
 		boolean[] otherSettings = settingsManager.loadSettings("othersettings");

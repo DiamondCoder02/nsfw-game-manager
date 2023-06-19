@@ -4,7 +4,7 @@ import org.w3c.dom.Document;
 
 import xmlFolderHandle.loadGamesFromXml;
 import xmlFolderHandle.loadSettingsFromXml;
-
+import xmlFolderHandle.saveLoadDoc;
 import f95WebsiteHandle._initSiteFetch;
 
 import windowJframe._initFrame;
@@ -17,7 +17,7 @@ public class mainInit {
 	public static Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 	public static String[] strColumnNames = loadSettingsFromXml.loadStringSettings("showncolumns");
 	public static void main(String[] args) {
-		Document domGame = loadGamesFromXml.loadDocsFromString(databasePath);
+		Document domGame = saveLoadDoc.loadDocument(databasePath);
 
 		checksFile.checks();
 

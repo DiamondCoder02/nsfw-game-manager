@@ -1,10 +1,6 @@
 package xmlFolderHandle;
 
-import java.io.File;
-
 import javax.swing.JOptionPane;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -12,21 +8,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class loadGamesFromXml {
-	public static Document loadDocsFromString(String path) {
-		File file = new File(path);
-		try {
-			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-			DocumentBuilder db = dbf.newDocumentBuilder();
-			Document dom = db.parse(file);
-			dom.normalize();
-			return dom;
-		} catch (Exception e) {
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error loading database file (loadGamesFromXml.loadDocsFromString)", "Error", JOptionPane.ERROR_MESSAGE);
-		}
-		return null;
-	}
-
 	public static Object[][] loadGames(Document dom, String[] columnNames) {
 		Object[][] allDataFromFile = null;
 		Integer counter = 0;

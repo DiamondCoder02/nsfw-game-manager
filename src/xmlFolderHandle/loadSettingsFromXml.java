@@ -10,7 +10,7 @@ import org.w3c.dom.NodeList;
 public class loadSettingsFromXml {
 	public static Document loadSettingXml() {
 		String path = main.mainInit.settingsPath;
-		Document dom = loadGamesFromXml.loadDocsFromString(path);
+		Document dom = saveLoadDoc.loadDocument(path);
 		return dom;
 	}
 

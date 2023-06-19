@@ -25,9 +25,10 @@ import xmlFolderHandle.loadSettingsFromXml;
 import xmlFolderHandle.saveLoadDoc;
 
 public class _initSiteFetch extends JFrame {
-	static Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
+	static Document dom = saveLoadDoc.loadDocument(mainInit.settingsPath);
 	static String[] columnNames = _initXml.allColumns(dom);
-	static Object[][] loadedGames = loadGamesFromXml.loadGames(dom, columnNames);
+	static Document domGame = saveLoadDoc.loadDocument(mainInit.databasePath);
+	static Object[][] loadedGames = loadGamesFromXml.loadGames(domGame, columnNames);
 	static boolean manualButton = false;
 
 	public static void fetchInfoAskConfirm() {

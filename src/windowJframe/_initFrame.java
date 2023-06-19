@@ -53,13 +53,11 @@ public class _initFrame extends JFrame implements ActionListener {
 	Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 	Boolean[] boolColumns = loadSettingsFromXml.loadBooleanSettings("showncolumns");
 
-	private void WindowRefresh(){
+	private void WindowRefresh(){ // TODO make background also dark
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 		if (boolSettings[0]) {
 			UIManager.put("OptionPane.background", bg);
 			UIManager.put("OptionPane.messageForeground", fg);
-			UIManager.put("Panel.background", bg);
-			UIManager.put("Panel.messageForeground", fg);
 			UIManager.put("Button.background", null);
 			UIManager.put("Button.foreground", null);
 			UIManager.put("Label.foreground", fg);
@@ -70,7 +68,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			UIManager.put("CheckBox.foreground", fg);
 			UIManager.put("TextField.background", textdark);
 			UIManager.put("TextField.foreground", fg);
-			
+			getContentPane().setBackground(bg);
 			mb.setBackground(bg); mb.setForeground(fg);
 			games.setBackground(bg); games.setForeground(fg);
 			settings.setBackground(bg);	settings.setForeground(fg);
@@ -125,7 +123,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			UIManager.put("CheckBox.foreground", null);
 			UIManager.put("TextField.background", null);
 			UIManager.put("TextField.foreground", null);
-
+			getContentPane().setBackground(null);
 			mb.setBackground(null); mb.setForeground(null);
 			games.setBackground(null); games.setForeground(null);
 			settings.setBackground(null); settings.setForeground(null);
@@ -330,7 +328,9 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Update game": updateGameManually.updateOneGameFromToFile(); break;
 			case "Update F95zone": updateFromSite.updatef95game(); break;
 			case "Refresh table": refreshTable(); setColumns(); break;
+			// TODO does this work?
 			case "Save file copy": otherButtonsThingies.saveFileCopy();	break;
+			// TODO fix this:
 			case "Add from F95zone": addFromSite.addFromF95(); break;
 			case "API refresh":  _initSiteFetch.fetchInfoAskConfirm(); break;
 			case "Search by ID": searchButton.searchById(); break;

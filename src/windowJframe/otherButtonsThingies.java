@@ -18,8 +18,10 @@ public class otherButtonsThingies {
 		chooser.setAcceptAllFileFilterUsed(false);
 		
 		if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
+			/*
 			System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
 			System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
+			*/
 
 			String path = chooser.getSelectedFile().toString();
 			if (!path.endsWith(".xml")) { path = path+".xml"; }
@@ -31,7 +33,7 @@ public class otherButtonsThingies {
 		}
 	}
 
-
+// TODO add clickeable links
 	public static void FACKQU(){ // TODO faq
 		JOptionPane.showMessageDialog(null, "FAQ\n\n"+
 		"Q: What is this?\nA: A simple excel like hentai game manager.\n\n"+

@@ -43,9 +43,7 @@ public class otherButtonsThingies {
 	public static void FACKQU(){ // TODO faq
 		JEditorPane ep = new JEditorPane();
 		ep.setContentType("text/html");
-		// Font font = new Font("Arial", Font.BOLD, 20);
-		ep.setFont(new Font("Arial", Font.PLAIN, 20));
-		ep.setText("<span style=\"color:white\">FAQ"+br+br+
+		ep.setText("<p style=\"font-family: Arial\"><span style=\"color:white\">FAQ"+br+br+
 		"Q: What is this?"+br+"A: A simple excel like hentai game manager."+br+br+
 		"Q: Why this exist?"+br+"A: Because I had enough managing my games in an excel table and wanted something better."+br+br+
 		"Q: Where the data is stored?"+br+"A: Everything is saved at: C:\\Users\\{name}\\AppData\\Roaming\\DiamondCoder\\nsfwGameManager\\hentai.xml"+br+
@@ -63,7 +61,7 @@ public class otherButtonsThingies {
 		"Q: Support the project?"+br+"A: Patreon: <font color = 64AFFF><a href=\"https://www.patreon.com/DiamondCoder\">https://www.patreon.com/DiamondCoder</a></font>"+br+
 		"or on Github: <font color = 64AFFF><a href=\"https://github.com/sponsors/DiamondPRO02\">https://github.com/sponsors/DiamondPRO02</a></font>"+br+br+
 		"Q: Can I help code / Error in the program?"+br+"A: All isssue and help is accepted on github: <font color = 64AFFF><a href=\"https://github.com/DiamondPRO02/nsfw-game-manager\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font>"+br+br+
-		"Q: placeholder?"+br+"A: placeholder!</span>");
+		"Q: placeholder?"+br+"A: placeholder!</span></p>");
 		ep.addHyperlinkListener(new HyperlinkListener() {
 			@Override
 			public void hyperlinkUpdate(HyperlinkEvent e) {
@@ -93,14 +91,14 @@ public class otherButtonsThingies {
 		ep.setContentType("text/html");
 		Font font = new Font("Arial", Font.PLAIN, 20);
 		ep.setFont(font);
-		ep.setText("<span style=\"color:white\">Credits"+br+br+
+		ep.setText("<p style=\"font-family: Arial\"><span style=\"color:white\">Credits"+br+br+
 		"Hi, I'm Diamond."+br+
 		"This is a small project after learning Java in university."+br+
 		"The main of this was to convert my old excel file into something more readeble."+br+
 		"Main focus is something dynamic and easy to use for hentai games."+br+br+
 		"Thank you for using this program."+br+br+
 		"Full open source: <font color = 64AFFF><a href=\\\"https://github.com/DiamondPRO02/nsfw-game-manager\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font>"+br+
-		"Support me on Github or on Patreon: <font color = 64AFFF><a href=\\\"https://www.patreon.com/DiamondCoder\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font></span>"+br);
+		"Support me on Github or on Patreon: <font color = 64AFFF><a href=\\\"https://www.patreon.com/DiamondCoder\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font></span></p>"+br);
 		ep.addHyperlinkListener(new HyperlinkListener() {
 			@Override
 			public void hyperlinkUpdate(HyperlinkEvent e) {

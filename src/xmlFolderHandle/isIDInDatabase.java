@@ -5,10 +5,12 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import main.mainInit;
+
 public class isIDInDatabase {
 	public static boolean isInDatabase(String givenID, String sourceFrom){
 		try{
-			Document dom = saveLoadDoc.loadDocument();
+			Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
 			NodeList source = dom.getElementsByTagName("source");
 			for (int i = 0; i < source.getLength(); i++) {
 				Node sourceNode = source.item(i);
@@ -34,7 +36,7 @@ public class isIDInDatabase {
 	}
 	public static boolean isInDatabase(String givenID){
 		try{
-			Document dom = saveLoadDoc.loadDocument();
+			Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
 			NodeList source = dom.getElementsByTagName("source");
 			for (int i = 0; i < source.getLength(); i++) {
 				Node sourceNode = source.item(i);

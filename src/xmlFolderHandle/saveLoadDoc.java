@@ -16,17 +16,13 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 
-import main.checksFile;
+import main.mainInit;
 
 public class saveLoadDoc {
-	static String path = System.getenv("APPDATA") + "\\DiamondCoder\\nsfwGameManager\\hentai.xml";
-
-	public static Document loadDocument() {
+	public static Document loadDocument(String path) {
 		// find file
-		File file = new File(path);
-		if (!file.exists()) {
-			checksFile.createFile(path);
-		}
+		String fileFrom = path;
+		File file = new File(fileFrom);
 		try {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
@@ -46,7 +42,7 @@ public class saveLoadDoc {
 			Transformer transformer = transformerFactory.newTransformer();
 			// transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			DOMSource domsource = new DOMSource(dom);
-			StreamResult result = new StreamResult(path);
+			StreamResult result = new StreamResult(mainInit.databasePath);
 			transformer.transform(domsource, result);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -56,7 +52,7 @@ public class saveLoadDoc {
 
 	public static void saveADocument(String pathOther) {
 		try {
-			Document dom = loadDocument();
+			Document dom = loadDocument(mainInit.databasePath);
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			// transformer.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -70,9 +66,10 @@ public class saveLoadDoc {
 	}
 
 	public static void reloadTable(JTable table) {
-		Document dom = saveLoadDoc.loadDocument();
-		String[] columnNames = _initXml.allColumns(dom);
-		Object[][] data = _initXml.loadGames(dom, columnNames);
+		Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
+		Document domSettings = saveLoadDoc.loadDocument(mainInit.settingsPath);
+		String[] columnNames = _initXml.allColumns(domSettings);
+		Object[][] data = loadGamesFromXml.loadGames(dom, columnNames);
 		table.setModel(new JTable(data, columnNames).getModel());
 		getNewRenderedTable(table);
 	}

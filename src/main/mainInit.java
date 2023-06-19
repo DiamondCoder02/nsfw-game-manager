@@ -1,26 +1,34 @@
 package main;
+
 import org.w3c.dom.Document;
 
+import xmlFolderHandle.loadGamesFromXml;
+import xmlFolderHandle.loadSettingsFromXml;
+
 import f95WebsiteHandle._initSiteFetch;
-import xmlFolderHandle._initXml;
-import xmlFolderHandle.saveLoadDoc;
 
 import windowJframe._initFrame;
-import windowJframe.settingsManager;
 
 public class mainInit {
+	public static String settingsPath = checksFile.mainPath + "settings.xml";
+	public static String databasePath = checksFile.mainPath + "hentai.xml";
+	public static String language = loadSettingsFromXml.loadStringSettings("language")[0];
+
+	public static Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
+	public static String[] strColumnNames = loadSettingsFromXml.loadStringSettings("showncolumns");
 	public static void main(String[] args) {
-		checksFile.checkPics();
-		Document dom = saveLoadDoc.loadDocument();
-		String[] columnNames = _initXml.allColumns(dom);
-		Object[][] data = _initXml.loadGames(dom, columnNames);
+		Document domGame = loadGamesFromXml.loadDocsFromString(databasePath);
+
+		checksFile.checks();
 
 		_initFrame frame = new _initFrame();
 		frame.setIconImage(frame.getToolkit().getImage(System.getenv("APPDATA") + "\\DiamondCoder\\nsfwGameManager\\pics\\nyaaa.png"));
-		frame.WindowCreate(columnNames, data);
+		
+		Object[][] data = loadGamesFromXml.loadGames(domGame, strColumnNames);
 
-		boolean[] otherSettings = settingsManager.loadSettings("othersettings");
-		if (otherSettings[1]) {
+		frame.WindowCreate(data);
+
+		if (boolSettings[1]) {
 			_initSiteFetch.fetchInfoThenUpdateTable();
 		}
 	}

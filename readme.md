@@ -7,6 +7,7 @@ and to torture myself
 
 ## Important
 
+- Currently java 8
 - Database file: AppData\Roaming\DiamondCoder\nsfwGameManager\hentai.xml
 - For the online version, if the game is the final version, it gets a "✔" at the version column
 - For VisualNovels there will be a "VN" at the name column

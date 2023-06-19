@@ -15,6 +15,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import main.mainInit;
 import windowJframe._initFrame;
 import xmlFolderHandle.isIDInDatabase;
 import xmlFolderHandle.saveLoadDoc;
@@ -27,7 +28,7 @@ public class updateFromSite {
 
 		if (isIDInDatabase.isInDatabase(idValue, "f95")) {
 			try{
-				Document dom = saveLoadDoc.loadDocument();
+				Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
 				NodeList source = dom.getElementsByTagName("source");
 				for (int i = 0; i < source.getLength(); i++) {
 					Node sourceNode = source.item(i);
@@ -131,7 +132,7 @@ public class updateFromSite {
 										String newhowFarUserPlayedValue = howFarUserPlayed.getSelection().getActionCommand();
 										String newstillOnPcValue = stillOnPc.getSelection().getActionCommand();
 										String newselfNoteValue = newselfNote.getText();
-										if (!newnameValue.equals(oldname)) { newnameValue = oldname; }
+										/*if (!newnameValue.equals(oldname)) { newnameValue = oldname; }
 										if (!newdeveloperValue.equals(olddeveloper)) { newdeveloperValue = olddeveloper; }
 										if (!newplayed_versionValue.equals(oldplayed_version)) { newplayed_versionValue = oldplayed_version; }
 										if (!newdateof_lastplayValue.equals(olddateof_lastplay)) { newdateof_lastplayValue = olddateof_lastplay; }
@@ -143,7 +144,7 @@ public class updateFromSite {
 										if (!newstillOnPcValue.equals(oldstillOnPc)) { newstillOnPcValue = oldstillOnPc; }
 										if (!newengineValue.equals(oldengine)) { newengineValue = oldengine; }
 										if (!newosValue.equals(oldos)) { newosValue = oldos; }
-										if (!newselfNoteValue.equals(oldselfNote)) { newselfNoteValue = oldselfNote; }
+										if (!newselfNoteValue.equals(oldselfNote)) { newselfNoteValue = oldselfNote; }*/
 										e.getElementsByTagName("name").item(0).setTextContent(newnameValue);
 										e.getElementsByTagName("developer").item(0).setTextContent(newdeveloperValue);
 										e.getElementsByTagName("played_version").item(0).setTextContent(newplayed_versionValue);
@@ -157,7 +158,7 @@ public class updateFromSite {
 										e.getElementsByTagName("engine").item(0).setTextContent(newengineValue);
 										e.getElementsByTagName("OS").item(0).setTextContent(newosValue);
 										e.getElementsByTagName("selfNote").item(0).setTextContent(newselfNoteValue);
-										saveLoadDoc.saveDocument(dom);
+										saveLoadDoc.saveDocument(dom, mainInit.databasePath);
 										_initFrame.refreshTable();
 										JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" has been updated", "Success", JOptionPane.INFORMATION_MESSAGE);
 										break;

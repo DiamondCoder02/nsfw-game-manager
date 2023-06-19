@@ -8,13 +8,16 @@ import javax.swing.JPanel;
 
 import org.w3c.dom.Document;
 
+import main.mainInit;
 import xmlFolderHandle._initXml;
+import xmlFolderHandle.loadGamesFromXml;
 import xmlFolderHandle.saveLoadDoc;
 
 public class searchButton {
-	static Document dom = saveLoadDoc.loadDocument();
+	static Document dom = saveLoadDoc.loadDocument(mainInit.settingsPath);
 	static String[] columnNames = _initXml.allColumns(dom);
-	static Object[][] data = _initXml.loadGames(dom, columnNames);
+	static Document domGame = saveLoadDoc.loadDocument(mainInit.databasePath);
+	static Object[][] data = loadGamesFromXml.loadGames(domGame, columnNames);
 	static Object[][] foundData = new Object[data.length][6];
 	static boolean found = false;
 	static Integer foundNum;

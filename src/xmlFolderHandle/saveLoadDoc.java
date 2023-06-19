@@ -16,17 +16,11 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 
-import main.checksFile;
+import main.mainInit;
 
 public class saveLoadDoc {
-	static String path = System.getenv("APPDATA") + "\\DiamondCoder\\nsfwGameManager\\hentai.xml";
-
-	public static Document loadDocument() {
-		// find file
+	public static Document loadDocument(String path) {
 		File file = new File(path);
-		if (!file.exists()) {
-			checksFile.createFile(path);
-		}
 		try {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
@@ -35,44 +29,28 @@ public class saveLoadDoc {
 			return dom;
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error loading database file (loadDocument)", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error loading database file (saveLoadDoc.loadDocument)", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		return null;
 	}
 
-	public static void saveDocument(Document dom) {
+	public static void saveDocument(Document dom, String path) {
 		try {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			// transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-			DOMSource domsource = new DOMSource(dom);
-			StreamResult result = new StreamResult(path);
-			transformer.transform(domsource, result);
+			transformer.transform(new DOMSource(dom), new StreamResult(path));
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error saving database file (saveDocument)", "Error", JOptionPane.ERROR_MESSAGE);
-		}
-	}
-
-	public static void saveADocument(String pathOther) {
-		try {
-			Document dom = loadDocument();
-			TransformerFactory transformerFactory = TransformerFactory.newInstance();
-			Transformer transformer = transformerFactory.newTransformer();
-			// transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-			DOMSource domsource = new DOMSource(dom);
-			StreamResult result = new StreamResult(pathOther);
-			transformer.transform(domsource, result);
-		} catch (Exception e) {
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error saving database file (saveADocument)", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error saving database file (saveLoadDoc.saveDocument)", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
 	public static void reloadTable(JTable table) {
-		Document dom = saveLoadDoc.loadDocument();
-		String[] columnNames = _initXml.allColumns(dom);
-		Object[][] data = _initXml.loadGames(dom, columnNames);
+		Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
+		Document domSettings = saveLoadDoc.loadDocument(mainInit.settingsPath);
+		String[] columnNames = _initXml.allColumns(domSettings);
+		Object[][] data = loadGamesFromXml.loadGames(dom, columnNames);
 		table.setModel(new JTable(data, columnNames).getModel());
 		getNewRenderedTable(table);
 	}

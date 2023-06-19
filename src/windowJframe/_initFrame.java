@@ -68,7 +68,6 @@ public class _initFrame extends JFrame implements ActionListener {
 			UIManager.put("CheckBox.foreground", fg);
 			UIManager.put("TextField.background", textdark);
 			UIManager.put("TextField.foreground", fg);
-			getContentPane().setBackground(bg);
 			mb.setBackground(bg); mb.setForeground(fg);
 			games.setBackground(bg); games.setForeground(fg);
 			settings.setBackground(bg);	settings.setForeground(fg);
@@ -123,7 +122,6 @@ public class _initFrame extends JFrame implements ActionListener {
 			UIManager.put("CheckBox.foreground", null);
 			UIManager.put("TextField.background", null);
 			UIManager.put("TextField.foreground", null);
-			getContentPane().setBackground(null);
 			mb.setBackground(null); mb.setForeground(null);
 			games.setBackground(null); games.setForeground(null);
 			settings.setBackground(null); settings.setForeground(null);

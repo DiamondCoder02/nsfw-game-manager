@@ -325,7 +325,6 @@ public class _initFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		//System.out.println(e);
 		String gac = e.getActionCommand();
-		System.out.println(gac);
 		switch (gac) {
 			case "Add game": addGameToFile.addOneGameToFile(); break;
 			case "Remove game": removeGameFromFile.removeOneGameFromFile(); break;

@@ -50,7 +50,7 @@ public class _initSiteFetch extends JFrame {
 			frame.pack();
 			frame.setVisible(true);
 
-			boolean[] otherSettings = settingsManager.loadSettings("othersettings");
+			boolean[] otherSettings = settingsManager.loadSettings("othersettings"); // loadBooleanSettings
 			if (otherSettings[1] || manualButton) {
 				ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 				for (int i = 0; i < loadedGames.length; i++) {

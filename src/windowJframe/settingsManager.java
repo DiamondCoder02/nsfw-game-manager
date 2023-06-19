@@ -5,13 +5,14 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import main.mainInit;
 import xmlFolderHandle.saveLoadDoc;
 
 public class settingsManager {
 	public static void xmlSettings(String TagName, String options){
 		System.out.println(options);
 		try{
-			Document dom = saveLoadDoc.loadDocument();
+			Document dom = saveLoadDoc.loadDocument(mainInit.settingsPath);
 			NodeList settingsNode = dom.getElementsByTagName("settings");
 			Node settingsNodeElement = settingsNode.item(0);
 			if (settingsNodeElement.getNodeType() == Node.ELEMENT_NODE) {
@@ -29,7 +30,7 @@ public class settingsManager {
 							} else {
 								e2.setAttribute("enabled", "true");
 							}
-							saveLoadDoc.saveDocument(dom);
+							saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
 							_initFrame.refreshTable();
 						}
 					}
@@ -38,32 +39,5 @@ public class settingsManager {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	public static boolean[] loadSettings(String tagName) {
-		boolean[] settings;
-		Document dom = saveLoadDoc.loadDocument();
-		NodeList settingsNode = dom.getElementsByTagName("settings");
-		Node settingsNodeElement = settingsNode.item(0);
-		if (settingsNodeElement.getNodeType() == Node.ELEMENT_NODE) {
-			Element e = (Element) settingsNodeElement;
-			NodeList showncolumns = e.getElementsByTagName(tagName);
-			settings = new boolean[showncolumns.getLength()];
-			for (int i = 0; i < showncolumns.getLength(); i++) {
-				Node showncolumnsNode = showncolumns.item(i);
-				if (showncolumnsNode.getNodeType() == Node.ELEMENT_NODE) {
-					Element e2 = (Element) showncolumnsNode;
-					String enabled = e2.getAttribute("enabled").trim();
-					if (enabled.equals("true")) {
-						settings[i] = true;
-					} else {
-						settings[i] = false;
-					}
-				}
-			}
-		} else {
-			settings = new boolean[30];
-		}
-		return settings;
 	}
 }

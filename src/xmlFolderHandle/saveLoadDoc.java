@@ -20,9 +20,7 @@ import main.mainInit;
 
 public class saveLoadDoc {
 	public static Document loadDocument(String path) {
-		// find file
-		String fileFrom = path;
-		File file = new File(fileFrom);
+		File file = new File(path);
 		try {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
@@ -31,37 +29,20 @@ public class saveLoadDoc {
 			return dom;
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error loading database file (loadDocument)", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error loading database file (saveLoadDoc.loadDocument)", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		return null;
 	}
 
-	public static void saveDocument(Document dom) {
+	public static void saveDocument(Document dom, String path) {
 		try {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			// transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-			DOMSource domsource = new DOMSource(dom);
-			StreamResult result = new StreamResult(mainInit.databasePath);
-			transformer.transform(domsource, result);
+			transformer.transform(new DOMSource(dom), new StreamResult(path));
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error saving database file (saveDocument)", "Error", JOptionPane.ERROR_MESSAGE);
-		}
-	}
-
-	public static void saveADocument(String pathOther) {
-		try {
-			Document dom = loadDocument(mainInit.databasePath);
-			TransformerFactory transformerFactory = TransformerFactory.newInstance();
-			Transformer transformer = transformerFactory.newTransformer();
-			// transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-			DOMSource domsource = new DOMSource(dom);
-			StreamResult result = new StreamResult(pathOther);
-			transformer.transform(domsource, result);
-		} catch (Exception e) {
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error saving database file (saveADocument)", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error saving database file (saveLoadDoc.saveDocument)", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 

@@ -29,8 +29,11 @@ public class loadSettingsFromXml {
 					if (showncolumnsNode.getNodeType() == Node.ELEMENT_NODE) {
 						Element e2 = (Element) showncolumnsNode;
 						String enabled = e2.getAttribute("enabled").trim();
-						if (enabled.equals("true")) { columnNames[counter] = true;
-						} else { columnNames[counter] = false; }
+						if (enabled.equals("true")) { 
+							columnNames[counter] = true;
+						} else { 
+							columnNames[counter] = false; 
+						}
 						counter++;
 					}
 				}

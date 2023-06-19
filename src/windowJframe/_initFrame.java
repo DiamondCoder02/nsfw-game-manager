@@ -319,7 +319,6 @@ public class _initFrame extends JFrame implements ActionListener {
 		}
 	}
 
-	
 	public static void refreshTable(){saveLoadDoc.reloadTable(table); setColumns();}
 	@Override
 	public void actionPerformed(ActionEvent e) {

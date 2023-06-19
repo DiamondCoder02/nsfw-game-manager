@@ -12,14 +12,14 @@ import windowJframe._initFrame;
 public class mainInit {
 	public static String settingsPath = checksFile.mainPath + "settings.xml";
 	public static String databasePath = checksFile.mainPath + "hentai.xml";
-	public static String language = loadSettingsFromXml.loadStringSettings("language")[0];
-
-	public static Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
-	public static String[] strColumnNames = loadSettingsFromXml.loadStringSettings("showncolumns");
 	public static void main(String[] args) {
-		Document domGame = saveLoadDoc.loadDocument(databasePath);
-
 		checksFile.checks();
+
+		// String language = loadSettingsFromXml.loadStringSettings("language")[0];
+		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
+		String[] strColumnNames = loadSettingsFromXml.loadStringSettings("showncolumns");
+
+		Document domGame = saveLoadDoc.loadDocument(databasePath);
 
 		_initFrame frame = new _initFrame();
 		frame.setIconImage(frame.getToolkit().getImage(System.getenv("APPDATA") + "\\DiamondCoder\\nsfwGameManager\\pics\\nyaaa.png"));

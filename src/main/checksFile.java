@@ -2,6 +2,8 @@ package main;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
@@ -14,7 +16,7 @@ public class checksFile {
 			new File(System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager").mkdirs();
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error creating database folders", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error creating folders", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		checkSettingsFolder();
 		checkMissingDatabase();
@@ -68,8 +70,15 @@ public class checksFile {
 		File file = new File(mainPath);
 		try{
 			URL url = new URL("https://raw.githubusercontent.com/DiamondPRO02/nsfw-game-manager/master/languages_doNotTouch/languages.csv");
-			BufferedImage csv= ImageIO.read(url);
-			ImageIO.write(csv, "csv", file);
+			InputStream in = url.openStream();
+			FileOutputStream fos = new FileOutputStream(file + "/languages.csv");
+			byte[] buffer = new byte[4096];
+			int length;
+			while ((length = in.read(buffer)) > 0) {
+				fos.write(buffer, 0, length);
+			}
+			in.close();
+			fos.close();
 		} catch (Exception e) {
 			// e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Unable to download the language files", "Error", JOptionPane.ERROR_MESSAGE);

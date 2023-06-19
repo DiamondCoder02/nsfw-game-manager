@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
 public class checksFile {
-	static String mainPath = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager/";
+	public static String mainPath = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager/";
 	public static void checks() {
 		try {
 			new File(System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager").mkdirs();

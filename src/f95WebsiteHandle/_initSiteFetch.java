@@ -16,16 +16,18 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import main.mainInit;
 import windowJframe._initFrame;
-import windowJframe.settingsManager;
 import xmlFolderHandle._initXml;
 import xmlFolderHandle.isIDInDatabase;
+import xmlFolderHandle.loadGamesFromXml;
+import xmlFolderHandle.loadSettingsFromXml;
 import xmlFolderHandle.saveLoadDoc;
 
 public class _initSiteFetch extends JFrame {
-	static Document dom = saveLoadDoc.loadDocument();
+	static Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
 	static String[] columnNames = _initXml.allColumns(dom);
-	static Object[][] loadedGames = _initXml.loadGames(dom, columnNames);
+	static Object[][] loadedGames = loadGamesFromXml.loadGames(dom, columnNames);
 	static boolean manualButton = false;
 
 	public static void fetchInfoAskConfirm() {
@@ -50,7 +52,7 @@ public class _initSiteFetch extends JFrame {
 			frame.pack();
 			frame.setVisible(true);
 
-			boolean[] otherSettings = settingsManager.loadSettings("othersettings"); // loadBooleanSettings
+			Boolean[] otherSettings = loadSettingsFromXml.loadBooleanSettings("othersettings"); // loadBooleanSettings
 			if (otherSettings[1] || manualButton) {
 				ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 				for (int i = 0; i < loadedGames.length; i++) {
@@ -118,7 +120,7 @@ public class _initSiteFetch extends JFrame {
 
 			if (isIDInDatabase.isInDatabase(id, "f95")) {
 				try{
-					Document dom = saveLoadDoc.loadDocument();
+					Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
 					NodeList source = dom.getElementsByTagName("source");
 					for (int i = 0; i < source.getLength(); i++) {
 						Node sourceNode = source.item(i);
@@ -136,7 +138,7 @@ public class _initSiteFetch extends JFrame {
 										e.getElementsByTagName("people_rating").item(0).setTextContent(newpeople_ratedValue);
 										e.getElementsByTagName("engine").item(0).setTextContent(newengineValue);
 										e.getElementsByTagName("OS").item(0).setTextContent(newosValue);
-										saveLoadDoc.saveDocument(dom);
+										saveLoadDoc.saveDocument(dom, mainInit.databasePath);
 									}
 								}
 							}

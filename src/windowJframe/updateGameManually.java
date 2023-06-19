@@ -17,6 +17,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import main.mainInit;
 import xmlFolderHandle.isIDInDatabase;
 import xmlFolderHandle.saveLoadDoc;
 
@@ -36,7 +37,7 @@ public class updateGameManually {
 		if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "ID is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
 		if (isIDInDatabase.isInDatabase(idValue, "man")) {
 			try{
-				Document dom = saveLoadDoc.loadDocument();
+				Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
 				NodeList source = dom.getElementsByTagName("source");
 				for (int i = 0; i < source.getLength(); i++) {
 					Node sourceNode = source.item(i);
@@ -184,7 +185,7 @@ public class updateGameManually {
 										e.getElementsByTagName("engine").item(0).setTextContent(newengineValue);
 										e.getElementsByTagName("OS").item(0).setTextContent(newosValue);
 										e.getElementsByTagName("selfNote").item(0).setTextContent(newselfNoteValue);
-										saveLoadDoc.saveDocument(dom);
+										saveLoadDoc.saveDocument(dom, mainInit.databasePath);
 										_initFrame.refreshTable();
 										JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" has been updated", "Success", JOptionPane.INFORMATION_MESSAGE);
 										break;

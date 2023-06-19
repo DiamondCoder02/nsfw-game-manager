@@ -17,6 +17,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import main.mainInit;
 import xmlFolderHandle.isIDInDatabase;
 import xmlFolderHandle.saveLoadDoc;
 
@@ -122,7 +123,7 @@ public class addGameToFile {
 				return;
 			} else {
 				try{
-					Document dom = saveLoadDoc.loadDocument();
+					Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
 					NodeList source = dom.getElementsByTagName("source");
 					for (int i = 0; i < source.getLength(); i++) {
 						Node sourceNode = source.item(i);
@@ -170,7 +171,7 @@ public class addGameToFile {
 							newGame.appendChild(newOS);
 							newGame.appendChild(newSelfNote);
 							sourceNode.appendChild(newGame);
-							saveLoadDoc.saveDocument(dom);
+							saveLoadDoc.saveDocument(dom, mainInit.databasePath);
 							_initFrame.refreshTable();
 							JOptionPane.showMessageDialog(null, nameValue+" with id: "+idValue+" has been added", "Success", JOptionPane.INFORMATION_MESSAGE);
 

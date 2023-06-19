@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+import main.mainInit;
 import xmlFolderHandle.saveLoadDoc;
 
 public class otherButtonsThingies {
@@ -22,7 +23,7 @@ public class otherButtonsThingies {
 
 			String path = chooser.getSelectedFile().toString();
 			if (!path.endsWith(".xml")) { path = path+".xml"; }
-			saveLoadDoc.saveADocument(path);
+			saveLoadDoc.saveDocument(saveLoadDoc.loadDocument(mainInit.databasePath), path);
 		}
 		else {
 			System.out.println("No Selection ");
@@ -58,7 +59,6 @@ public class otherButtonsThingies {
 	public static void money(){
 		String icons = (System.getenv("APPDATA") + "\\DiamondCoder\\nsfwGameManager\\pics\\creditLogo.png");
 		ImageIcon icon = new ImageIcon(icons);
-		// make image smaller
 		Image img = icon.getImage();
 		Image newimg = img.getScaledInstance(43*4, 120*4,  java.awt.Image.SCALE_SMOOTH);
 		icon = new ImageIcon(newimg);

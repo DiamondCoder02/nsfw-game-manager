@@ -329,6 +329,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		main.checksFile.checkMissingDatabase();
 		main.checksFile.checkSettingsFolder();
 		switch (gac) {
+			// TODO language file
 			case "Add game": addGameToFile.addOneGameToFile(); break;
 			case "Remove game": removeGameFromFile.removeOneGameFromFile(); break;
 			case "Update game": updateGameManually.updateOneGameFromToFile(); break;

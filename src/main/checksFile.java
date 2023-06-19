@@ -23,7 +23,7 @@ public class checksFile {
 		checkPics();
 	}
 
-	private static void checkMissingDatabase() {
+	public static void checkMissingDatabase() {
 		String path = mainPath + "hentai.xml";
 		File file = new File(path);
 		if (!file.exists()) {
@@ -31,7 +31,7 @@ public class checksFile {
 		}
 	}
 
-	private static void checkSettingsFolder(){
+	public static void checkSettingsFolder(){
 		String path = mainPath + "settings.xml";
 		File file = new File(path);
 		if (!file.exists()) {

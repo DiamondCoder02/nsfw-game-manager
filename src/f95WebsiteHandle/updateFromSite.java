@@ -132,7 +132,7 @@ public class updateFromSite {
 										String newhowFarUserPlayedValue = howFarUserPlayed.getSelection().getActionCommand();
 										String newstillOnPcValue = stillOnPc.getSelection().getActionCommand();
 										String newselfNoteValue = newselfNote.getText();
-										if (!newnameValue.equals(oldname)) { newnameValue = oldname; }
+										/*if (!newnameValue.equals(oldname)) { newnameValue = oldname; }
 										if (!newdeveloperValue.equals(olddeveloper)) { newdeveloperValue = olddeveloper; }
 										if (!newplayed_versionValue.equals(oldplayed_version)) { newplayed_versionValue = oldplayed_version; }
 										if (!newdateof_lastplayValue.equals(olddateof_lastplay)) { newdateof_lastplayValue = olddateof_lastplay; }
@@ -144,7 +144,7 @@ public class updateFromSite {
 										if (!newstillOnPcValue.equals(oldstillOnPc)) { newstillOnPcValue = oldstillOnPc; }
 										if (!newengineValue.equals(oldengine)) { newengineValue = oldengine; }
 										if (!newosValue.equals(oldos)) { newosValue = oldos; }
-										if (!newselfNoteValue.equals(oldselfNote)) { newselfNoteValue = oldselfNote; }
+										if (!newselfNoteValue.equals(oldselfNote)) { newselfNoteValue = oldselfNote; }*/
 										e.getElementsByTagName("name").item(0).setTextContent(newnameValue);
 										e.getElementsByTagName("developer").item(0).setTextContent(newdeveloperValue);
 										e.getElementsByTagName("played_version").item(0).setTextContent(newplayed_versionValue);

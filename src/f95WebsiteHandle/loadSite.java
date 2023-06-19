@@ -53,7 +53,7 @@ public class loadSite {
 		for (int i = 0; i < longTitle.split(" - ").length; i++) { engi[i] = longTitle.split(" - ")[i]; }
 		if (engi[0] == "Collection") {allTheInfo[5] = engi[0];} 
 		else { 
-			for (int i = 0; i < engi.length; i++) { if (engi[i].contains("Ren&#039;Py")) { engi[i] = "Ren'Py"; break;} }
+			// for (int i = 0; i < engi.length; i++) { if (engi[i].contains("Ren&#039;Py")) { engi[i] = "Ren'Py"; break;} }
 			for (int i = 0; i < engi.length; i++) { 
 				if (engi[i].contains("VN")) { allTheInfo[0] = "["+engi[i]+"] "+allTheInfo[0]; } 
 				if (engi[i].contains("Collection") || engi[i].contains("VN")){} else { allTheInfo[5] = engi[i]; break; } 

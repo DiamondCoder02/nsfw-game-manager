@@ -14,9 +14,10 @@ import xmlFolderHandle.loadGamesFromXml;
 import xmlFolderHandle.saveLoadDoc;
 
 public class searchButton {
-	static Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
+	static Document dom = saveLoadDoc.loadDocument(mainInit.settingsPath);
 	static String[] columnNames = _initXml.allColumns(dom);
-	static Object[][] data = loadGamesFromXml.loadGames(dom, columnNames);
+	static Document domGame = saveLoadDoc.loadDocument(mainInit.databasePath);
+	static Object[][] data = loadGamesFromXml.loadGames(domGame, columnNames);
 	static Object[][] foundData = new Object[data.length][6];
 	static boolean found = false;
 	static Integer foundNum;

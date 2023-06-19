@@ -1,15 +1,21 @@
 package windowJframe;
 
+import java.awt.Desktop;
+import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
+import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
 
 import main.mainInit;
 import xmlFolderHandle.saveLoadDoc;
 
 public class otherButtonsThingies {
+	private static String br = "<br>";
 	public static void saveFileCopy(){
 		JFileChooser chooser = new JFileChooser(); 
 		chooser.setCurrentDirectory(new java.io.File("."));
@@ -33,29 +39,47 @@ public class otherButtonsThingies {
 		}
 	}
 
-// TODO add clickeable links
+	// TODO Change font
 	public static void FACKQU(){ // TODO faq
-		JOptionPane.showMessageDialog(null, "FAQ\n\n"+
-		"Q: What is this?\nA: A simple excel like hentai game manager.\n\n"+
-		"Q: Why this exist?\nA: Because I had enough managing my games in an excel table and wanted something better.\n\n"+
-		"Q: Where the data is stored?\nA: Everything is saved at: C:\\Users\\{name}\\AppData\\Roaming\\DiamondCoder\\nsfwGameManager\\hentai.xml\n"+
-		"You can also save a copy under \"Games\" => \"Save file copy\" button. (This does not change where it continues to save.)\n\n"+
-		"Q: Features?\nA: -----*Currently:*-----\n"+
-		"- Add, store, update, remove game infos manually\n"+
-		"- DarkMode\n"+
-		"- Colorful table\n"+
-		"- F95zone, so only ID needed to add, remove game\n"+
-		"-----*Plans:*-----\n"+
-		"- Search function\n"+
-		"- Sorting\n"+
-		"- Dlsite so only ID needed\n"+
-		"- (Far future) If I can, I will also add to download/detect what games are downloaded\n"+
-		"\n"+
-		"Q: Support?\nA: Patreon: https://www.patreon.com/DiamondCoder\n\n"+
-		"Q: Can I help code / Error in the program?\nA: All isssue and help is accepted on github: https://github.com/DiamondPRO02/nsfw-game-manager\n\n"+
-		"Q: placeholder?\nA: placeholder!\n\n",
-		"Frequently Asked Questions", 
-		JOptionPane.INFORMATION_MESSAGE);
+		JEditorPane ep = new JEditorPane();
+		ep.setContentType("text/html");
+		// Font font = new Font("Arial", Font.BOLD, 20);
+		ep.setFont(new Font("Arial", Font.PLAIN, 20));
+		ep.setText("<span style=\"color:white\">FAQ"+br+br+
+		"Q: What is this?"+br+"A: A simple excel like hentai game manager."+br+br+
+		"Q: Why this exist?"+br+"A: Because I had enough managing my games in an excel table and wanted something better."+br+br+
+		"Q: Where the data is stored?"+br+"A: Everything is saved at: C:\\Users\\{name}\\AppData\\Roaming\\DiamondCoder\\nsfwGameManager\\hentai.xml"+br+
+		"You can also save a copy under \"Games\" => \"Save file copy\" button. (This does not change where it continues to save.)"+br+br+
+		"Q: Features?"+br+"A: -----*Currently:*-----"+br+
+		"- Add, store, update, remove game infos manually"+br+
+		"- DarkMode"+br+
+		"- Colorful table"+br+
+		"- F95zone, so only ID needed to add, remove game"+br+
+		"-----*Plans:*-----"+br+
+		"- Search function"+br+
+		"- Sorting"+br+
+		"- Dlsite so only ID needed"+br+
+		"- (Far future) If I can, I will also add to download/detect what games are downloaded"+br+br+
+		"Q: Support the project?"+br+"A: Patreon: <font color = 64AFFF><a href=\"https://www.patreon.com/DiamondCoder\">https://www.patreon.com/DiamondCoder</a></font>"+br+
+		"or on Github: <font color = 64AFFF><a href=\"https://github.com/sponsors/DiamondPRO02\">https://github.com/sponsors/DiamondPRO02</a></font>"+br+br+
+		"Q: Can I help code / Error in the program?"+br+"A: All isssue and help is accepted on github: <font color = 64AFFF><a href=\"https://github.com/DiamondPRO02/nsfw-game-manager\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font>"+br+br+
+		"Q: placeholder?"+br+"A: placeholder!</span>");
+		ep.addHyperlinkListener(new HyperlinkListener() {
+			@Override
+			public void hyperlinkUpdate(HyperlinkEvent e) {
+				Desktop desktop = Desktop.getDesktop();
+				if (e.getEventType().equals(HyperlinkEvent.EventType.ACTIVATED)){
+					try {
+						desktop.browse(e.getURL().toURI());
+					} catch (Exception ex) {
+						ex.printStackTrace();
+					}
+				}
+			}
+		});
+		ep.setEditable(false);
+		ep.setOpaque(false);
+		JOptionPane.showMessageDialog(null, ep, "Frequently Asked Questions", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public static void money(){
@@ -64,17 +88,35 @@ public class otherButtonsThingies {
 		Image img = icon.getImage();
 		Image newimg = img.getScaledInstance(43*4, 120*4,  java.awt.Image.SCALE_SMOOTH);
 		icon = new ImageIcon(newimg);
-		JOptionPane.showMessageDialog(null, 
-		"Credits\n\n"+
-		"Hi, I'm Diamond.\n"+
-		"This is a small project after learning Java in university.\n"+
-		"The main of this was to convert my old excel file into something more readeble.\n"+
-		"Main focus is something dynamic and easy to use for hentai games.\n\n"+
-		"Thank you for using this program.\n\n"+
-		"Full open source: https://github.com/DiamondPRO02/nsfw-game-manager\n"+
-		"Support me on Github or on Patreon: https://www.patreon.com/DiamondCoder\n",
-		"Credit", 
-		JOptionPane.INFORMATION_MESSAGE, icon);
+
+		JEditorPane ep = new JEditorPane();
+		ep.setContentType("text/html");
+		Font font = new Font("Arial", Font.PLAIN, 20);
+		ep.setFont(font);
+		ep.setText("<span style=\"color:white\">Credits"+br+br+
+		"Hi, I'm Diamond."+br+
+		"This is a small project after learning Java in university."+br+
+		"The main of this was to convert my old excel file into something more readeble."+br+
+		"Main focus is something dynamic and easy to use for hentai games."+br+br+
+		"Thank you for using this program."+br+br+
+		"Full open source: <font color = 64AFFF><a href=\\\"https://github.com/DiamondPRO02/nsfw-game-manager\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font>"+br+
+		"Support me on Github or on Patreon: <font color = 64AFFF><a href=\\\"https://www.patreon.com/DiamondCoder\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font></span>"+br);
+		ep.addHyperlinkListener(new HyperlinkListener() {
+			@Override
+			public void hyperlinkUpdate(HyperlinkEvent e) {
+				Desktop desktop = Desktop.getDesktop();
+				if (e.getEventType().equals(HyperlinkEvent.EventType.ACTIVATED)){
+					try {
+						desktop.browse(e.getURL().toURI());
+					} catch (Exception ex) {
+						ex.printStackTrace();
+					}
+				}
+			}
+		});
+		ep.setEditable(false);
+		ep.setOpaque(false);
+		JOptionPane.showMessageDialog(null, ep, "Credit", JOptionPane.INFORMATION_MESSAGE, icon);
 	}
 
 	public static void sureAboutExit(){

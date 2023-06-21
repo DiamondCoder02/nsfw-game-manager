@@ -38,12 +38,14 @@ public class otherButtonsThingies {
 			return;
 		}
 	}
-
-	// TODO Change font
+	
 	public static void FACKQU(){ // TODO faq
+		Boolean[] boolSettings = xmlFolderHandle.loadSettingsFromXml.loadBooleanSettings("othersettings");
+		String color;
+		if (boolSettings[0]) { color = "white"; } else { color = "black"; }
 		JEditorPane ep = new JEditorPane();
 		ep.setContentType("text/html");
-		ep.setText("<p style=\"font-family: Arial\"><span style=\"color:white\">FAQ"+br+br+
+		ep.setText("<p style=\"font-family: Arial\"><span style=\"color:"+color+"\">FAQ"+br+br+
 		"Q: What is this?"+br+"A: A simple excel like hentai game manager."+br+br+
 		"Q: Why this exist?"+br+"A: Because I had enough managing my games in an excel table and wanted something better."+br+br+
 		"Q: Where the data is stored?"+br+"A: Everything is saved at: C:\\Users\\{name}\\AppData\\Roaming\\DiamondCoder\\nsfwGameManager\\hentai.xml"+br+
@@ -61,7 +63,8 @@ public class otherButtonsThingies {
 		"Q: Support the project?"+br+"A: Patreon: <font color = 64AFFF><a href=\"https://www.patreon.com/DiamondCoder\">https://www.patreon.com/DiamondCoder</a></font>"+br+
 		"or on Github: <font color = 64AFFF><a href=\"https://github.com/sponsors/DiamondPRO02\">https://github.com/sponsors/DiamondPRO02</a></font>"+br+br+
 		"Q: Can I help code / Error in the program?"+br+"A: All isssue and help is accepted on github: <font color = 64AFFF><a href=\"https://github.com/DiamondPRO02/nsfw-game-manager\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font>"+br+br+
-		"Q: placeholder?"+br+"A: placeholder!</span></p>");
+		"Q: placeholder?"+br+"A: placeholder!"+
+		"</span></p>");
 		ep.addHyperlinkListener(new HyperlinkListener() {
 			@Override
 			public void hyperlinkUpdate(HyperlinkEvent e) {
@@ -76,7 +79,7 @@ public class otherButtonsThingies {
 			}
 		});
 		ep.setEditable(false);
-		ep.setOpaque(false);
+		ep.setOpaque(boolSettings[0] ? false : true);
 		JOptionPane.showMessageDialog(null, ep, "Frequently Asked Questions", JOptionPane.INFORMATION_MESSAGE);
 	}
 
@@ -87,11 +90,15 @@ public class otherButtonsThingies {
 		Image newimg = img.getScaledInstance(43*4, 120*4,  java.awt.Image.SCALE_SMOOTH);
 		icon = new ImageIcon(newimg);
 
+		Boolean[] boolSettings = xmlFolderHandle.loadSettingsFromXml.loadBooleanSettings("othersettings");
+		String color;
+		if (boolSettings[0]) { color = "white"; } else { color = "black"; }
+
 		JEditorPane ep = new JEditorPane();
 		ep.setContentType("text/html");
 		Font font = new Font("Arial", Font.PLAIN, 20);
 		ep.setFont(font);
-		ep.setText("<p style=\"font-family: Arial\"><span style=\"color:white\">Credits"+br+br+
+		ep.setText("<p style=\"font-family: Arial\"><span style=\"color:"+color+"\">Credits"+br+br+
 		"Hi, I'm Diamond."+br+
 		"This is a small project after learning Java in university."+br+
 		"The main of this was to convert my old excel file into something more readeble."+br+
@@ -113,7 +120,7 @@ public class otherButtonsThingies {
 			}
 		});
 		ep.setEditable(false);
-		ep.setOpaque(false);
+		ep.setOpaque(boolSettings[0] ? false : true);
 		JOptionPane.showMessageDialog(null, ep, "Credit", JOptionPane.INFORMATION_MESSAGE, icon);
 	}
 

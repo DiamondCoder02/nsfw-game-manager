@@ -18,9 +18,8 @@ public class checksFile {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Error creating folders", "Error", JOptionPane.ERROR_MESSAGE);
 		}
-		checkSettingsFolder();
+		if (checkSettingsFolder()) {checkMissingSetting.checkSettings();}
 		checkMissingDatabase();
-		checkMissingSetting.checkSettings();
 		checkLanguage();
 		checkPics();
 	}
@@ -33,12 +32,14 @@ public class checksFile {
 		}
 	}
 
-	public static void checkSettingsFolder(){
+	public static Boolean checkSettingsFolder(){
 		String path = mainPath + "settings.xml";
 		File file = new File(path);
 		if (!file.exists()) {
 			createMissingSettings.createFile(path);
+			return false;
 		}
+		return true;
 	}
 
 	private static void checkPics() {

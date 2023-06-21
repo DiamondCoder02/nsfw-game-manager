@@ -75,7 +75,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			games.setBackground(bg); games.setForeground(fg);
 			settings.setBackground(bg);	settings.setForeground(fg);
 			help.setBackground(bg);	help.setForeground(fg);
-			show.setBackground(bg); show.setForeground(fg); // TODO why no dark work?
+			//show.setBackground(bg); show.setForeground(fg); // TODO why no dark work?
 			addGame.setBackground(bg); addGame.setForeground(fg);
 			removeGame.setBackground(bg); removeGame.setForeground(fg);
 			updateList.setBackground(bg); updateList.setForeground(fg);

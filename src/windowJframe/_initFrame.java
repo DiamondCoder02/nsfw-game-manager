@@ -45,6 +45,7 @@ public class _initFrame extends JFrame implements ActionListener {
 
 	JMenuItem exit;
 	static JTable table;
+	JScrollPane pane;
 
 	Color bg = new Color(100, 100, 100);
 	Color fg = new Color(255, 255, 255);
@@ -53,9 +54,10 @@ public class _initFrame extends JFrame implements ActionListener {
 	Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 	Boolean[] boolColumns = loadSettingsFromXml.loadBooleanSettings("showncolumns");
 
-	private void WindowRefresh(){ // TODO make background also dark
+	private void WindowRefresh(){
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 		if (boolSettings[0]) {
+			pane.getViewport().setBackground(bg);
 			UIManager.put("OptionPane.background", bg);
 			UIManager.put("OptionPane.messageForeground", fg);
 			UIManager.put("Button.background", null);
@@ -111,6 +113,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			exit.setBackground(bg);	exit.setForeground(fg);
 			table.setBackground(bg);
 		} else {
+			pane.getViewport().setBackground(null);
 			UIManager.put("OptionPane.background", null);
 			UIManager.put("OptionPane.messageForeground", null);
 			UIManager.put("Panel.background", null);
@@ -272,7 +275,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		add(table.getTableHeader(), BorderLayout.PAGE_START);
 		add(table, BorderLayout.CENTER);
 
-        JScrollPane pane = new JScrollPane(table);
+		pane = new JScrollPane(table);
         add(pane, BorderLayout.CENTER);
 
 		mb.add(exit = new JMenuItem("Exit"));

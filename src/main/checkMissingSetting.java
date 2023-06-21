@@ -23,6 +23,7 @@ public class checkMissingSetting {
 			"Still on pc?", "Engine", "OS", "Personal Notes"
 		};
 		try{
+			Boolean otSe, laSe, shCo;
 			Document dom = xmlFolderHandle.saveLoadDoc.loadDocument(mainInit.settingsPath);
 			if (dom == null) {
 				createMissingSettings.createFile(mainInit.settingsPath);
@@ -37,9 +38,9 @@ public class checkMissingSetting {
 							NodeList setting = e.getElementsByTagName(settings[i]);
 							System.out.println("Checking " + settings[i] + "...");
 							switch (settings[i]) {
-								case "othersettings": checkings(setting, othersettings); break;
-								case "language": checkings(setting, language); break;
-								case "showncolumns": checkings(setting, showncolumns); break;
+								case "othersettings": otSe = checkings(setting, othersettings); break;
+								case "language": laSe = checkings(setting, language); break;
+								case "showncolumns": shCo = checkings(setting, showncolumns); break;
 								default: JOptionPane.showMessageDialog(null, "Should be impossible checkMissingSetting", "Error", JOptionPane.ERROR_MESSAGE); break;
 							}
 						}
@@ -49,6 +50,7 @@ public class checkMissingSetting {
 					JOptionPane.showMessageDialog(null, "Error checking settings. (checkMissingSetting.checkSettings_2)", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
+			// TODO show update dialog
 			System.out.println("Done checking settings.");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,7 +69,8 @@ public class checkMissingSetting {
 		}
 	}
 
-	private static void checkings(NodeList setting, String[] somethingSettings){
+	private static Boolean checkings(NodeList setting, String[] somethingSettings){
+		Boolean settingsGotUpdated = false;
 		for (int j = 0; j < somethingSettings.length; j++) {
 			String[] toCheckWith = new String[somethingSettings.length];
 			for (int k = 0; k < setting.getLength(); k++) { toCheckWith[k] = setting.item(k).getTextContent(); }
@@ -79,5 +82,6 @@ public class checkMissingSetting {
 				System.out.println("? " + somethingSettings[j]);
 			}
 		}
+		return settingsGotUpdated;
 	}
 }

@@ -23,8 +23,8 @@ public class createMissingSettings {
 			otherSettings1.appendChild(doc.createTextNode("Dark mode")); settings.appendChild(otherSettings1);
 			Element otherSettings2 = doc.createElement("othersettings"); otherSettings2.setAttribute("enabled", "false");
 			otherSettings2.appendChild(doc.createTextNode("Auto fetch game info")); settings.appendChild(otherSettings2);
-			Element otherSettings3 = doc.createElement("language");
-			otherSettings3.appendChild(doc.createTextNode("english")); settings.appendChild(otherSettings3);
+			Element language = doc.createElement("language");
+			language.appendChild(doc.createTextNode("english")); settings.appendChild(language);
 			//Element otherSettings3 = doc.createElement("othersettings"); otherSettings3.setAttribute("enabled", "false");
 			//otherSettings3.appendChild(doc.createTextNode("Auto update games")); settings.appendChild(otherSettings3);
 			Element showncolumns0 = doc.createElement("showncolumns"); showncolumns0.setAttribute("enabled", "true");

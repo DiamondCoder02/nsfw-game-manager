@@ -203,14 +203,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		games.add(saveFileToDifferent = new JMenuItem("Save file copy"));
 		games.add(refreshTable = new JMenuItem("Refresh table"));
 		games.add(refreshFromAPI = new JMenuItem("API refresh"));
-		addGame.addActionListener(this);
-		removeGame.addActionListener(this);
-		updateList.addActionListener(this);
-		updateF95.addActionListener(this);
-		saveFileToDifferent.addActionListener(this);
-		refreshTable.addActionListener(this);
-		addF95zone.addActionListener(this);
-		refreshFromAPI.addActionListener(this);
+		
 
 		mb.add(search = new JMenu("Search"));
 		search.add(searchById = new JMenuItem("Search by ID"));
@@ -243,29 +236,30 @@ public class _initFrame extends JFrame implements ActionListener {
 		settings.addSeparator();
 		settings.add(autoFetchNews = new JCheckBoxMenuItem("Auto fetch game info", boolSettings[1]));
 
-		showSite.addActionListener(this);
-		showID.addActionListener(this);
-		showName.addActionListener(this);
-		showDeveloper.addActionListener(this);
-		showPlayedVersion.addActionListener(this);
-		showLastTimeplay.addActionListener(this);
-		showRated.addActionListener(this);
-		showNewestVersion.addActionListener(this);
-		showDateOfLastUpdate.addActionListener(this);
-		showPeopleRating.addActionListener(this);
-		showhowFarUserPlayed.addActionListener(this);
-		showDeletedFromPc.addActionListener(this);
-		showEngine.addActionListener(this);
-		showOS.addActionListener(this);
-		ShowSelfNote.addActionListener(this);
-		autoFetchNews.addActionListener(this);
-		darkMode.addActionListener(this);
-
 		mb.add(help = new JMenu("Other"));
 		help.add(faq = new JMenuItem("FAQ"));
 		help.add(credits = new JMenuItem("Credits"));
-		faq.addActionListener(this);
-		credits.addActionListener(this);
+		mb.add(exit = new JMenuItem("Exit"));
+
+		addGame.addActionListener(this); updateList.addActionListener(this);
+		removeGame.addActionListener(this); addF95zone.addActionListener(this);
+		updateF95.addActionListener(this); removeF95.addActionListener(this);
+		saveFileToDifferent.addActionListener(this); refreshTable.addActionListener(this);
+		refreshFromAPI.addActionListener(this);
+
+		showSite.addActionListener(this); showID.addActionListener(this);
+		showName.addActionListener(this); showDeveloper.addActionListener(this);
+		showPlayedVersion.addActionListener(this); showLastTimeplay.addActionListener(this);
+		showRated.addActionListener(this); showNewestVersion.addActionListener(this);
+		showDateOfLastUpdate.addActionListener(this); showPeopleRating.addActionListener(this);
+		showhowFarUserPlayed.addActionListener(this); showDeletedFromPc.addActionListener(this);
+		showEngine.addActionListener(this); showOS.addActionListener(this);
+		ShowSelfNote.addActionListener(this); 
+
+		darkMode.addActionListener(this); autoFetchNews.addActionListener(this);
+
+		faq.addActionListener(this); credits.addActionListener(this);
+		exit.addActionListener(this);
 
 		table = new JTable();
 		refreshTable();
@@ -286,9 +280,6 @@ public class _initFrame extends JFrame implements ActionListener {
 
 		pane = new JScrollPane(table);
         add(pane, BorderLayout.CENTER);
-
-		mb.add(exit = new JMenuItem("Exit"));
-		exit.addActionListener(this);
 
 		WindowRefresh();
 		setVisible(true);

@@ -26,22 +26,21 @@ public class _initFrame extends JFrame implements ActionListener {
 	JMenuBar mb;
 
 	JMenu games;
-	JMenuItem addGame, addF95zone;
-	JMenuItem updateList, updateF95;
-	JMenuItem removeGame, saveFileToDifferent;
-	JMenuItem refreshTable, refreshFromAPI;
+	JMenuItem addGame, updateList, removeGame;
+	JMenuItem addF95zone, updateF95, removeF95;
+	JMenuItem saveFileToDifferent, refreshTable, refreshFromAPI;
 
 	JMenu search;
 	JMenuItem searchById, searchByName, searchByDeveloper;
 
 	JMenu settings;
-	JCheckBoxMenuItem darkMode, autoFetchNews, autoUpdateGames;
+	JCheckBoxMenuItem darkMode, autoFetchNews;
 	JMenu show;
-	JCheckBoxMenuItem showSite, showID, showName, showDeveloper, showPlayedVersion, showLastTimeplay, showRated, showNewestVersion, showDateOfLastUpdate, showPeopleRating, showhowFarUserPlayed, showDeletedFromPc;
-	JCheckBoxMenuItem showEngine, showOS, ShowSelfNote;
+	JCheckBoxMenuItem showSite, showID, showName, showDeveloper, showPlayedVersion, showLastTimeplay, showRated, showNewestVersion;
+	JCheckBoxMenuItem showDateOfLastUpdate, showPeopleRating, showhowFarUserPlayed, showDeletedFromPc, showEngine, showOS, ShowSelfNote;
 
 	JMenu help;
-	JMenuItem dataToShow, faq, credits;
+	JMenuItem faq, credits;
 
 	JMenuItem exit;
 	static JTable table;
@@ -58,6 +57,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 		if (boolSettings[0]) {
 			pane.getViewport().setBackground(bg);
+			table.setBackground(bg);
 			UIManager.put("OptionPane.background", bg);
 			UIManager.put("OptionPane.messageForeground", fg);
 			UIManager.put("Button.background", null);
@@ -75,21 +75,28 @@ public class _initFrame extends JFrame implements ActionListener {
 			getContentPane().setBackground(bg);
 			mb.setBackground(bg); mb.setForeground(fg);
 			games.setBackground(bg); games.setForeground(fg);
-			settings.setBackground(bg);	settings.setForeground(fg);
-			help.setBackground(bg);	help.setForeground(fg);
-			show.setBackground(bg); show.setForeground(fg);	show.setOpaque(true);
 			addGame.setBackground(bg); addGame.setForeground(fg);
-			removeGame.setBackground(bg); removeGame.setForeground(fg);
 			updateList.setBackground(bg); updateList.setForeground(fg);
+			removeGame.setBackground(bg); removeGame.setForeground(fg);
+
+			addF95zone.setBackground(bg); addF95zone.setForeground(fg);
 			updateF95.setBackground(bg); updateF95.setForeground(fg);
+			removeF95.setBackground(bg); removeF95.setForeground(fg);
+
 			saveFileToDifferent.setBackground(bg); saveFileToDifferent.setForeground(fg);
 			refreshTable.setBackground(bg); refreshTable.setForeground(fg);
-			addF95zone.setBackground(bg); addF95zone.setForeground(fg);
 			refreshFromAPI.setBackground(bg); refreshFromAPI.setForeground(fg);
+
 			search.setBackground(bg); search.setForeground(fg);
 			searchById.setBackground(bg); searchById.setForeground(fg);
 			searchByName.setBackground(bg); searchByName.setForeground(fg);
 			searchByDeveloper.setBackground(bg); searchByDeveloper.setForeground(fg);
+
+			settings.setBackground(bg);	settings.setForeground(fg);
+			darkMode.setBackground(bg);	darkMode.setForeground(fg);
+			autoFetchNews.setBackground(bg); autoFetchNews.setForeground(fg);
+
+			show.setBackground(bg); show.setForeground(fg);	show.setOpaque(true);
 			showSite.setBackground(bg); showSite.setForeground(fg);
 			showID.setBackground(bg); showID.setForeground(fg);
 			showName.setBackground(bg); showName.setForeground(fg);
@@ -105,14 +112,14 @@ public class _initFrame extends JFrame implements ActionListener {
 			showEngine.setBackground(bg); showEngine.setForeground(fg);
 			showOS.setBackground(bg); showOS.setForeground(fg);
 			ShowSelfNote.setBackground(bg);	ShowSelfNote.setForeground(fg);
-			darkMode.setBackground(bg);	darkMode.setForeground(fg);
-			autoFetchNews.setBackground(bg); autoFetchNews.setForeground(fg);
+
+			help.setBackground(bg);	help.setForeground(fg);
 			faq.setBackground(bg); faq.setForeground(fg);
 			credits.setBackground(bg); credits.setForeground(fg);
 			exit.setBackground(bg);	exit.setForeground(fg);
-			table.setBackground(bg);
 		} else {
 			pane.getViewport().setBackground(null);
+			table.setBackground(null);
 			UIManager.put("OptionPane.background", null);
 			UIManager.put("OptionPane.messageForeground", null);
 			UIManager.put("Panel.background", null);
@@ -132,21 +139,28 @@ public class _initFrame extends JFrame implements ActionListener {
 			getContentPane().setBackground(null);
 			mb.setBackground(null); mb.setForeground(null);
 			games.setBackground(null); games.setForeground(null);
-			settings.setBackground(null); settings.setForeground(null);
-			help.setBackground(null); help.setForeground(null);
-			show.setBackground(null); show.setForeground(null); show.setOpaque(false);
 			addGame.setBackground(null); addGame.setForeground(null);
-			removeGame.setBackground(null); removeGame.setForeground(null);
 			updateList.setBackground(null); updateList.setForeground(null);
+			removeGame.setBackground(null); removeGame.setForeground(null);
+
+			addF95zone.setBackground(null); addF95zone.setForeground(null);
 			updateF95.setBackground(null); updateF95.setForeground(null);
+			removeF95.setBackground(null); removeF95.setForeground(null);
+
 			saveFileToDifferent.setBackground(null); saveFileToDifferent.setForeground(null);
 			refreshTable.setBackground(null); refreshTable.setForeground(null);
-			addF95zone.setBackground(null); addF95zone.setForeground(null);
 			refreshFromAPI.setBackground(null); refreshFromAPI.setForeground(null);
+
 			search.setBackground(null); search.setForeground(null);
 			searchById.setBackground(null); searchById.setForeground(null);
 			searchByName.setBackground(null); searchByName.setForeground(null);
 			searchByDeveloper.setBackground(null); searchByDeveloper.setForeground(null);
+
+			settings.setBackground(null);	settings.setForeground(null);
+			darkMode.setBackground(null);	darkMode.setForeground(null);
+			autoFetchNews.setBackground(null); autoFetchNews.setForeground(null);
+
+			show.setBackground(null); show.setForeground(null);	show.setOpaque(false);
 			showSite.setBackground(null); showSite.setForeground(null);
 			showID.setBackground(null); showID.setForeground(null);
 			showName.setBackground(null); showName.setForeground(null);
@@ -156,18 +170,17 @@ public class _initFrame extends JFrame implements ActionListener {
 			showRated.setBackground(null); showRated.setForeground(null);
 			showNewestVersion.setBackground(null); showNewestVersion.setForeground(null);
 			showDateOfLastUpdate.setBackground(null); showDateOfLastUpdate.setForeground(null);
-			showPeopleRating.setBackground(null); showPeopleRating.setForeground(null);
-			showhowFarUserPlayed.setBackground(null); showhowFarUserPlayed.setForeground(null);
+			showPeopleRating.setBackground(null);	showPeopleRating.setForeground(null);
+			showhowFarUserPlayed.setBackground(null);	showhowFarUserPlayed.setForeground(null);
 			showDeletedFromPc.setBackground(null); showDeletedFromPc.setForeground(null);
 			showEngine.setBackground(null); showEngine.setForeground(null);
 			showOS.setBackground(null); showOS.setForeground(null);
-			ShowSelfNote.setBackground(null); ShowSelfNote.setForeground(null);
-			darkMode.setBackground(null); darkMode.setForeground(null);
-			autoFetchNews.setBackground(null); autoFetchNews.setForeground(null);
+			ShowSelfNote.setBackground(null);	ShowSelfNote.setForeground(null);
+
+			help.setBackground(null);	help.setForeground(null);
 			faq.setBackground(null); faq.setForeground(null);
 			credits.setBackground(null); credits.setForeground(null);
-			exit.setBackground(null); exit.setForeground(null);
-			table.setBackground(null);
+			exit.setBackground(null);	exit.setForeground(null);
 		}
 	}
 	public void WindowCreate(Object[][] dataFromXMLFile) {
@@ -180,14 +193,14 @@ public class _initFrame extends JFrame implements ActionListener {
 
 		mb.add(games = new JMenu("Games"));
 		games.add(addGame = new JMenuItem("Add game"));
-		games.add(addF95zone = new JMenuItem("Add from F95zone"));
-		games.addSeparator();
 		games.add(updateList = new JMenuItem("Update game"));
-		games.add(updateF95 = new JMenuItem("Update F95zone"));
-		games.addSeparator();
 		games.add(removeGame = new JMenuItem("Remove game"));
-		games.add(saveFileToDifferent = new JMenuItem("Save file copy"));
 		games.addSeparator();
+		games.add(addF95zone = new JMenuItem("Add from F95zone"));
+		games.add(updateF95 = new JMenuItem("Update F95zone"));
+		games.add(removeF95 = new JMenuItem("Remove F95zone"));
+		games.addSeparator();
+		games.add(saveFileToDifferent = new JMenuItem("Save file copy"));
 		games.add(refreshTable = new JMenuItem("Refresh table"));
 		games.add(refreshFromAPI = new JMenuItem("API refresh"));
 		addGame.addActionListener(this);
@@ -330,16 +343,20 @@ public class _initFrame extends JFrame implements ActionListener {
 		switch (gac) {
 			// TODO language file
 			case "Add game": addGameToFile.addOneGameToFile(); break;
-			case "Remove game": removeGameFromFile.removeOneGameFromFile(); break;
 			case "Update game": updateGameManually.updateOneGameFromToFile(); break;
-			case "Update F95zone": updateFromSite.updatef95game(); break;
-			case "Refresh table": refreshTable(); setColumns(); break;
-			case "Save file copy": otherButtonsThingies.saveFileCopy();	break;
+			case "Remove game": removeGameFromFile.removeOneGameFromFile("man"); break;
 			case "Add from F95zone": addFromSite.addFromF95(); break;
+			case "Update F95zone": updateFromSite.updatef95game(); break;
+			case "Remove F95zone": removeGameFromFile.removeOneGameFromFile("f95"); break;
+
+			case "Save file copy": otherButtonsThingies.saveFileCopy();	break;
+			case "Refresh table": refreshTable(); setColumns(); break;
 			case "API refresh":  _initSiteFetch.fetchInfoAskConfirm(); break;
+
 			case "Search by ID": searchButton.searchById(); break;
 			case "Search by name": searchButton.searchByName(); break;
 			case "Search by developer": searchButton.searchByDeveloper(); break;
+
 			case "Site": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "ID": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Name": settingsManager.xmlSettings("showncolumns", gac); break;
@@ -355,8 +372,10 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Engine": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "OS": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Personal Notes": settingsManager.xmlSettings("showncolumns", gac); break;
+
 			case "Dark mode": settingsManager.xmlSettings("othersettings", gac); WindowRefresh(); refreshTable(); break;
 			case "Auto fetch game info": settingsManager.xmlSettings("othersettings", gac); break;
+
 			case "FAQ": otherButtonsThingies.FACKQU(); break;
 			case "Credits": otherButtonsThingies.money(); break;
 			case "Exit": otherButtonsThingies.sureAboutExit(); break;

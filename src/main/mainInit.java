@@ -10,6 +10,7 @@ import f95WebsiteHandle._initSiteFetch;
 import windowJframe._initFrame;
 
 public class mainInit {
+	// TODO test databese with my 600 line excel sheet
 	public static String settingsPath = checksFile.mainPath + "settings.xml";
 	public static String databasePath = checksFile.mainPath + "hentai.xml";
 	public static void main(String[] args) {

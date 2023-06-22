@@ -56,6 +56,7 @@ public class searchButton {
 		panel.setLayout(new GridLayout(8, foundNum+1));
 		JOptionPane.showMessageDialog(null, panel, "Search by ID", JOptionPane.INFORMATION_MESSAGE);
 	}
+
 	public static void searchByName() {
 		found = false; foundNum = 0;
 		String name = JOptionPane.showInputDialog(null, "Name of the game to search:", "Search by Name", JOptionPane.QUESTION_MESSAGE);
@@ -91,6 +92,7 @@ public class searchButton {
 		panel.setLayout(new GridLayout(8, foundNum+1));
 		JOptionPane.showMessageDialog(null, panel, "Search by Name", JOptionPane.INFORMATION_MESSAGE);
 	}
+
 	public static void searchByDeveloper() {
 		found = false; foundNum = 0;
 		String dev = JOptionPane.showInputDialog(null, "Developer of the game to search:", "Search by Developer", JOptionPane.QUESTION_MESSAGE);

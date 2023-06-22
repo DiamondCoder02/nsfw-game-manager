@@ -14,7 +14,7 @@ import xmlFolderHandle.isIDInDatabase;
 import xmlFolderHandle.saveLoadDoc;
 
 public class removeGameFromFile {
-	public static void removeOneGameFromFile(){
+	public static void removeOneGameFromFile(String fromValue){
 		boolean repeat = true;
 		while (repeat) {
 			JOptionPane optionPane = new JOptionPane();
@@ -28,7 +28,7 @@ public class removeGameFromFile {
 			dialog.setVisible(true);
 			String idValue = id.getText();
 			if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "ID is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
-			if (isIDInDatabase.isInDatabase(idValue)) {
+			if (isIDInDatabase.isInDatabase(idValue, fromValue)) {
 				try{
 					Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
 					NodeList source = dom.getElementsByTagName("source");
@@ -41,7 +41,8 @@ public class removeGameFromFile {
 								if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
 									Element e = (Element) gameNode;
 									String ids = e.getAttribute("id").trim();
-									if ( ids.equals(idValue)) {
+									String from = e.getAttribute("from").trim();
+									if ( ids.equals(idValue) && from.equals(fromValue)) {
 										String name = e.getElementsByTagName("name").item(0).getTextContent().trim();
 										int option = JOptionPane.showConfirmDialog(null, name + " with id: "+ids+" will be removed. Are you sure?", "Remove game", JOptionPane.OK_CANCEL_OPTION);
 										if (option == JOptionPane.OK_OPTION) {
@@ -60,7 +61,7 @@ public class removeGameFromFile {
 					e.printStackTrace();
 				}
 			} else {
-				JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" doesn't exists", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" doesn't exists in " + fromValue, "Error", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 			int optionToRepeat = JOptionPane.showConfirmDialog(null, "Do you want to delete another game?", "Delete game", JOptionPane.YES_NO_OPTION);

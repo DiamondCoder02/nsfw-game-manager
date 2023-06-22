@@ -99,8 +99,8 @@ public class otherButtonsThingies {
 		"The main of this was to convert my old excel file into something more readeble."+br+
 		"Main focus is something dynamic and easy to use for hentai games."+br+br+
 		"Thank you for using this program."+br+br+
-		"Full open source: <font color = 64AFFF><a href=\\\"https://github.com/DiamondPRO02/nsfw-game-manager\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font>"+br+
-		"Support me on Github or on Patreon: <font color = 64AFFF><a href=\\\"https://www.patreon.com/DiamondCoder\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font></span></p>"+br);
+		"Full open source: <font color = 64AFFF><a href=\"https://github.com/DiamondPRO02/nsfw-game-manager\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font>"+br+
+		"Support me on Github or on Patreon: <font color = 64AFFF><a href=\"https://www.patreon.com/DiamondCoder\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font></span></p>"+br);
 		ep.addHyperlinkListener(new HyperlinkListener() {
 			@Override
 			public void hyperlinkUpdate(HyperlinkEvent e) {

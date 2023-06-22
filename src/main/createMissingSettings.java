@@ -25,8 +25,6 @@ public class createMissingSettings {
 			otherSettings2.appendChild(doc.createTextNode("Auto fetch game info")); settings.appendChild(otherSettings2);
 			Element language = doc.createElement("language");
 			language.appendChild(doc.createTextNode("english")); settings.appendChild(language);
-			//Element otherSettings3 = doc.createElement("othersettings"); otherSettings3.setAttribute("enabled", "false");
-			//otherSettings3.appendChild(doc.createTextNode("Auto update games")); settings.appendChild(otherSettings3);
 			Element showncolumns0 = doc.createElement("showncolumns"); showncolumns0.setAttribute("enabled", "true");
 			showncolumns0.appendChild(doc.createTextNode("Site")); settings.appendChild(showncolumns0);
 			Element showncolumns1 = doc.createElement("showncolumns"); showncolumns1.setAttribute("enabled", "true");
@@ -61,7 +59,6 @@ public class createMissingSettings {
 			doc.appendChild(settings);
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
-			// transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			DOMSource domsource = new DOMSource(doc);
 			StreamResult result = new StreamResult(path);
 			transformer.transform(domsource, result);

@@ -24,11 +24,6 @@ public class otherButtonsThingies {
 		chooser.setAcceptAllFileFilterUsed(false);
 		
 		if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
-			/*
-			System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
-			System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
-			*/
-
 			String path = chooser.getSelectedFile().toString();
 			if (!path.endsWith(".xml")) { path = path+".xml"; }
 			saveLoadDoc.saveDocument(saveLoadDoc.loadDocument(mainInit.databasePath), path);

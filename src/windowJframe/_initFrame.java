@@ -107,7 +107,6 @@ public class _initFrame extends JFrame implements ActionListener {
 			ShowSelfNote.setBackground(bg);	ShowSelfNote.setForeground(fg);
 			darkMode.setBackground(bg);	darkMode.setForeground(fg);
 			autoFetchNews.setBackground(bg); autoFetchNews.setForeground(fg);
-			// autoUpdateGames.setBackground(bg); autoUpdateGames.setForeground(fg);
 			faq.setBackground(bg); faq.setForeground(fg);
 			credits.setBackground(bg); credits.setForeground(fg);
 			exit.setBackground(bg);	exit.setForeground(fg);
@@ -165,7 +164,6 @@ public class _initFrame extends JFrame implements ActionListener {
 			ShowSelfNote.setBackground(null); ShowSelfNote.setForeground(null);
 			darkMode.setBackground(null); darkMode.setForeground(null);
 			autoFetchNews.setBackground(null); autoFetchNews.setForeground(null);
-			// autoUpdateGames.setBackground(null); autoUpdateGames.setForeground(null);
 			faq.setBackground(null); faq.setForeground(null);
 			credits.setBackground(null); credits.setForeground(null);
 			exit.setBackground(null); exit.setForeground(null);
@@ -231,7 +229,6 @@ public class _initFrame extends JFrame implements ActionListener {
 		settings.add(darkMode = new JCheckBoxMenuItem("Dark mode", boolSettings[0]));
 		settings.addSeparator();
 		settings.add(autoFetchNews = new JCheckBoxMenuItem("Auto fetch game info", boolSettings[1]));
-		//settings.add(autoUpdateGames = new JCheckBoxMenuItem("Auto update games", boolSettings[2]));
 
 		showSite.addActionListener(this);
 		showID.addActionListener(this);
@@ -249,7 +246,6 @@ public class _initFrame extends JFrame implements ActionListener {
 		showOS.addActionListener(this);
 		ShowSelfNote.addActionListener(this);
 		autoFetchNews.addActionListener(this);
-		//autoUpdateGames.addActionListener(this);
 		darkMode.addActionListener(this);
 
 		mb.add(help = new JMenu("Other"));
@@ -361,7 +357,6 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Personal Notes": settingsManager.xmlSettings("showncolumns", gac); break;
 			case "Dark mode": settingsManager.xmlSettings("othersettings", gac); WindowRefresh(); refreshTable(); break;
 			case "Auto fetch game info": settingsManager.xmlSettings("othersettings", gac); break;
-			// case "Auto update games": settingsManager.xmlSettings("othersettings", gac);JOptionPane.showMessageDialog(null, "API is not implemented at all yet.\nCome back later.", "Error", JOptionPane.ERROR_MESSAGE); break; // TODO No api2
 			case "FAQ": otherButtonsThingies.FACKQU(); break;
 			case "Credits": otherButtonsThingies.money(); break;
 			case "Exit": otherButtonsThingies.sureAboutExit(); break;

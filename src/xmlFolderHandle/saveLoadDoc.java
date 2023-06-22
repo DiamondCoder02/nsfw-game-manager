@@ -38,7 +38,6 @@ public class saveLoadDoc {
 		try {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
-			// transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			transformer.transform(new DOMSource(dom), new StreamResult(path));
 		} catch (Exception e) {
 			e.printStackTrace();

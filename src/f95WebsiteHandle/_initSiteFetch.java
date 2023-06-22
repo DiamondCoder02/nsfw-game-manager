@@ -60,7 +60,6 @@ public class _initSiteFetch extends JFrame {
 					String id = loadedGames[i][1].toString();
 					String site = loadedGames[i][0].toString();
 					try {
-						// System.out.println(site + " - " + id);
 						if (site.equals("f95")) {
 							executorService.scheduleAtFixedRate(myF95Task(id, i), 0, 1, TimeUnit.SECONDS);
 						}

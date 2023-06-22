@@ -167,10 +167,6 @@ public class updateGameManually {
 										if (newnewest_versionValue.equals("")) { newnewest_versionValue = oldnewest_version; }
 										if (newdateof_lastupateValue.equals("")) { newdateof_lastupateValue = olddateof_lastupate; }
 										if (newpeople_ratedValue.equals("")) { newpeople_ratedValue = oldpeople_rated; }
-										// if (newhowFarUserPlayedValue.equals("")) { newhowFarUserPlayedValue = oldhowFarUserPlayed; }
-										// if (newstillOnPcValue.equals("")) { newstillOnPcValue = oldstillOnPc; }
-										// if (newengineValue.equals("")) { newengineValue = oldengine; }
-										// if (newosValue.equals("")) { newosValue = oldos; }
 										if (newselfNoteValue.equals("")) { newselfNoteValue = oldselfNote; }
 										e.getElementsByTagName("name").item(0).setTextContent(newnameValue);
 										e.getElementsByTagName("developer").item(0).setTextContent(newdeveloperValue);

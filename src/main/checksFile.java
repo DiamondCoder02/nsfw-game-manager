@@ -57,7 +57,6 @@ public class checksFile {
 					BufferedImage img = ImageIO.read(url);
 					ImageIO.write(img, "png", file2);
 				} catch (Exception e) {
-					// e.printStackTrace();
 					unableToDownload = unableToDownload+"\nUnable to download: " + picturesThatGets[i];
 				}
 			}
@@ -81,7 +80,6 @@ public class checksFile {
 			in.close();
 			fos.close();
 		} catch (Exception e) {
-			// e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Unable to download the language files", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}

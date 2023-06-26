@@ -3,33 +3,89 @@
 	<!-- 
 		<english> => this is language
 			<base>Some basic small text here</base>
-			<f95Fol f="0" p="0">***Fol => the folder it's in</f95Fol>
-			<winFol f="0" p="0">f => file it's in</winFol>
-			<xmlFol f="0" p="0">p => Just a part counter</xmlFol>
-			<mainFol f="0" p="0">This here is the text to translate</mainFol>
+			<f95Fol>***Fol => the folder it's in</f95Fol>
+			<xmlFol>This here is the text to translate</xmlFol>
 		</english>
 
 		IF TEXT IS TO LONG, PUT \n TO MAKE IT GO TO NEXT LINE
 	-->
 	<english>
-		<base>Update</base>
-		<base>Error</base>
 		<base>Success</base>
-		<f95Fol f="0" p="0">This will go through all games and check if there is new update.\nAre you sure?</f95Fol>
-		<f95Fol f="0" p="1">Test f952</f95Fol>
-		<winFol f="0" p="0">Test win</winFol>
-		<winFol f="0" p="1">Test win2</winFol>
-		<xmlFol f="0" p="0">Test xml</xmlFol>
-		<xmlFol f="0" p="1">Test xml2</xmlFol>
-		<mainFol f="0" p="0">Should be impossible checkMissingSetting</mainFol>
-		<mainFol f="0" p="1">Error checking settings. (checkMissingSetting.checkSettings)</mainFol>
-		<mainFol f="0" p="2">Settings got updated.</mainFol>
-		<mainFol f="0" p="3">Please restart the program to make sure everything is correct.</mainFol>
+		<base>Error</base>
+		<base>Add game</base>
+		<base>Update game</base>
+		<base>Remove game</base>
+
+		<basic>You must enter an id.</basic>
+		<basic>doesn't exists.</basic> <!-- {ID} doesn't exists.-->
+
+		<basic>has been added.</basic> <!-- {game} hase been added.-->
+		<basic>Do you want to add another game?</basic>
+
+		<basic>has been updated.</basic> <!-- {game} hase been updated.-->
+		<basic>was not updated.</basic>
+		<basic>Enter the id of the game you want to update.</basic>
+
+		<!-- f95WebsiteHandle folder-->
+		<f95Fol>This will go through all games and check if there is new update. \nAre you sure?</f95Fol>
+		<f95Fol>Checking games...</f95Fol>
+		<f95Fol>All game infos got updated!</f95Fol>
+
+		<f95Fol>Enter the id of the game you want to add, from f95zone website.</f95Fol>
+		<f95Fol>The id you entered is already in the F95zone database.</f95Fol>
+
+		<f95Fol>Error while loading the site.</f95Fol>
+
+
+
+		<!-- main folder-->
+		<mainFol>Should be impossible</mainFol>
+		<mainFol>Error checking settings.</mainFol>
+		<mainFol>Settings got updated.</mainFol>
+		<mainFol>Please restart the program to make sure everything is correct.</mainFol>
+		<!-- windowJframe folder-->
+		<winFol>Test win</winFol>
+		<winFol>Test win2</winFol>
+		<!-- xmlFolderHandle folder-->
+		<xmlFol>Test xml</xmlFol>
+		<xmlFol>Test xml2</xmlFol>
 	</english>
 	<hungarian>
-		<mainFol f="0" p="0">Lehetetlen (checkMissingSetting)</mainFol>
-		<mainFol f="0" p="1">Hiba fájl ellenőrzéskor. (checkMissingSetting.checkSettings)</mainFol>
-		<mainFol f="0" p="2">Beállítások frissítve lettek.</mainFol>
-		<mainFol f="0" p="3">Kérlek indítsad újra a programot, hogy biztos minden rendben legyen.</mainFol>
+		<base>Siker</base>
+		<base>Hiba</base>
+		<base>Játék hozzáadás</base>
+		<base>Játék frissítés</base>
+		<base>Játék törlése</base>
+
+		<basic>Meg kell adnod egy id-t.</basic>
+		<basic>nem létezik.</basic> <!-- {ID} doesn't exists.-->
+
+		<basic>hozzá lett adva.</basic> <!-- {game} hase been added.-->
+		<basic>Szeretnél még egy játékot hozzá adni?</basic>
+
+		<basic>információ frissítve.</basic> <!-- {game} hase been updated.-->
+		<basic>nem lett frissítve.</basic>
+		<basic>Írd be a játék id-jét amit frissíteni szeretnél.</basic>
+
+		<!-- f95WebsiteHandle folder-->
+		<f95Fol>Ez végigmegy az összes játékon, és ellenőrzi, hogy van-e új frissítés.\nBiztos vagy benne?</f95Fol>
+		<f95Fol>Játékok ellenőrzése...</f95Fol>
+		<f95Fol>Minden játék információ frissítve lett!</f95Fol>
+
+		<f95Fol>Írd be a játék id-jét amit hozzá szeretnél adni, a f95zone oldaláról.</f95Fol>
+		<f95Fol>Az ID ami meg lett adva már benne van az adatbázisban.</f95Fol>
+
+		<f95Fol>Hiba az oldal töltése közben.</f95Fol>
+		<!-- main folder-->
+		<mainFol>Lehetetlen. Ezt hogy?</mainFol>
+		<mainFol>Hiba beállítások ellenőrzéskor.</mainFol>
+		<mainFol>Beállítások frissítve lettek.</mainFol>
+		<mainFol>Kérlek indítsad újra a programot, hogy biztos minden rendben legyen.</mainFol>
+		<!-- windowJframe folder-->
+		<winFol>Test win</winFol>
+		<winFol>Test win2</winFol>
+		<!-- xmlFolderHandle folder-->
+		<xmlFol>Test xml</xmlFol>
+		<xmlFol>Test xml2</xmlFol>
 	</hungarian>
 </lang>

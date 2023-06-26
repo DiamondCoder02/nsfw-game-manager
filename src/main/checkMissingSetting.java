@@ -38,13 +38,13 @@ public class checkMissingSetting {
 							case "othersettings": otSe = checkings(setting, othersettings, dom, "othersettings"); break;
 							case "language": laSe = checkings(setting, language, dom, "language"); break;
 							case "showncolumns": shCo = checkings(setting, showncolumns, dom, "showncolumns"); break;
-							default: JOptionPane.showMessageDialog(null, "Should be impossible checkMissingSetting", "Error", JOptionPane.ERROR_MESSAGE); break;
+							default: JOptionPane.showMessageDialog(null, "Should be impossible" + "checkMissingSetting", "Error", JOptionPane.ERROR_MESSAGE); break;
 						}
 					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				JOptionPane.showMessageDialog(null, "Error checking settings. (checkMissingSetting.checkSettings)", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Error checking settings." + "(checkMissingSetting.checkSettings)", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		if (otSe || laSe || shCo) {

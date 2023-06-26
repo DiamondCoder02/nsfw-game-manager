@@ -7,7 +7,10 @@ import java.net.URLConnection;
 
 import javax.swing.JOptionPane;
 
+import main.langLoad;
+
 public class loadSite {
+	static String[] lf = langLoad.f95Fol, bs = langLoad.base;
 	public static String[] getf95UrlContents(String gameIds) {
 		String[] allTheInfo = new String[7];
 		StringBuilder content = new StringBuilder();
@@ -22,7 +25,7 @@ public class loadSite {
 			}
 			bufferedReader.close();
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Error while loading the site (f95_getUrlContents)", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null,  lf[5]!=null?lf[5]:"Error while loading the site" + " (f95_getUrlContents)", bs[1]==null?"Error":bs[1], JOptionPane.ERROR_MESSAGE);
 			return null;
 		}
 

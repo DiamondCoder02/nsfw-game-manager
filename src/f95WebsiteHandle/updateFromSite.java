@@ -15,16 +15,18 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import main.langLoad;
 import main.mainInit;
 import windowJframe._initFrame;
 import xmlFolderHandle.isIDInDatabase;
 import xmlFolderHandle.saveLoadDoc;
 
 public class updateFromSite {
+	static String[] lf = langLoad.f95Fol, bc = langLoad.basic, bs = langLoad.base;
 	public static void updatef95game(){
 		JPanel panel = new JPanel(new GridLayout(10*2, 0));
-		String idValue = JOptionPane.showInputDialog(null, "Enter the id of the game you want to edit", "Edit game", JOptionPane.PLAIN_MESSAGE);
-		if (idValue == null) { JOptionPane.showMessageDialog(null, "You must enter an id", "Error", JOptionPane.ERROR_MESSAGE); return; }
+		String idValue = JOptionPane.showInputDialog(null, bc[6]!=null?bc[6]:"Enter the id of the game you want to update", bs[3]!=null?bs[3]:"Update game", JOptionPane.PLAIN_MESSAGE);
+		if (idValue == null) { JOptionPane.showMessageDialog(null, bc[0]!=null?bc[0]:"You must enter an id", bs[1]!=null?bs[1]:"Error", JOptionPane.ERROR_MESSAGE); return; }
 
 		if (isIDInDatabase.isInDatabase(idValue, "f95")) {
 			try{
@@ -124,7 +126,7 @@ public class updateFromSite {
 									panel.add(oslabel);
 									JLabel selfNotelabel = new JLabel("Self note:" + " (old: "+oldselfNote+")");
 									panel.add(selfNotelabel); panel.add(newselfNote);
-									int option = JOptionPane.showConfirmDialog(null, panel, "Update game", JOptionPane.OK_CANCEL_OPTION);
+									int option = JOptionPane.showConfirmDialog(null, panel, bs[3]!=null?bs[3]:"Update game", JOptionPane.OK_CANCEL_OPTION);
 									if (option == JOptionPane.OK_OPTION) {
 										String newplayed_versionValue = newplayed_version.getText();
 										String newdateof_lastplayValue = newdateof_lastplay.getText();
@@ -147,10 +149,10 @@ public class updateFromSite {
 										e.getElementsByTagName("selfNote").item(0).setTextContent(newselfNoteValue);
 										saveLoadDoc.saveDocument(dom, mainInit.databasePath);
 										_initFrame.refreshTable();
-										JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" has been updated", "Success", JOptionPane.INFORMATION_MESSAGE);
+										JOptionPane.showMessageDialog(null, newnameValue+", \nId: "+idValue+" "+bc[4]!=null?bc[4]:"has been updated", bs[0]!=null?bs[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
 										break;
 									} else {
-										JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" has not been updated", "Success", JOptionPane.INFORMATION_MESSAGE);
+										JOptionPane.showMessageDialog(null, newnameValue+", \nId: "+idValue+" "+bc[5]!=null?bc[5]:"was not been updated", bs[0]!=null?bs[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
 										break;
 									}
 								}
@@ -162,7 +164,7 @@ public class updateFromSite {
 				e.printStackTrace();
 			}
 		} else {
-			JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" doesn't exists", "Error", JOptionPane.ERROR_MESSAGE); return;
+			JOptionPane.showMessageDialog(null, "Id: "+idValue+" "+bc[1]!=null?bc[1]:"doesn't exists", bs[1]!=null?bs[1]:"Error", JOptionPane.ERROR_MESSAGE); return;
 		}
 	}
 }

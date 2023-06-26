@@ -13,15 +13,13 @@ import xmlFolderHandle.saveLoadDoc;
 public class langLoad {
 	static String path = checksFile.mainPath + "languages.xml";
 	static String language = loadSettingsFromXml.loadStringSettings("language")[0];
-	public static String[][] tempf95Fol = new String[10][50], tempmainFol = new String[10][50], tempwinFol = new String[10][50], tempxmlFol = new String[10][50];
-	public static String[][] f95Fol, mainFol, winFol, xmlFol;
-	private static String[] tempBase = new String[10], fol = {"base", "f95Fol", "mainFol", "winFol", "xmlFol"};
-	public static String[] base;
+	private static String[] fol = {"base", "basic", "f95Fol", "mainFol", "winFol", "xmlFol"};
+	public static String[] tempBase = new String[20], tempBasic = new String[20], tempf95Fol = new String[20], tempmainFol = new String[20], tempwinFol = new String[20], tempxmlFol = new String[20] ;
+	public static String[] base, basic, f95Fol, mainFol, winFol, xmlFol;
 
 	public static void loadLanguages(){
 		Document dom = saveLoadDoc.loadDocument(path);
 		try {
-			Integer fC = 0, pC = 0;
 			NodeList langSource = dom.getElementsByTagName("lang");
 			Node langSourceNode = langSource.item(0);
 			if (langSourceNode.getNodeType() == Node.ELEMENT_NODE) {
@@ -31,45 +29,33 @@ public class langLoad {
 				if (langNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element langElement = (Element) langNode;
 					for (int i = 0; i < fol.length; i++) {
-						if (fol[i].equals("base")){
-							String[] tempAr = new String[10];
-							NodeList baseList = langElement.getElementsByTagName(fol[i]);
-							for (int j = 0; j < baseList.getLength(); j++) {
-								Node baseNode = baseList.item(j);
-								if (baseNode.getNodeType() == Node.ELEMENT_NODE) {
-									Element baseElement = (Element) baseNode;
-									tempAr[j] = baseElement.getTextContent();
+						String[] tempAr = new String[20];
+						NodeList folList = langElement.getElementsByTagName(fol[i]);
+						System.out.println("------------"+fol[i]);
+						for (int j = 0; j < folList.getLength(); j++) {
+							Node folNode = folList.item(j);
+							if (folNode.getNodeType() == Node.ELEMENT_NODE) {
+								Element folElement = (Element) folNode;
+								tempAr[j] = folElement.getTextContent();
+								if (tempAr[j].contains("\\n")) {
+									tempAr[j] = tempAr[j].replace("\\n", "\n");
 								}
+								System.out.println(tempAr[j]);
 							}
-							tempBase = tempAr;
-						} else {
-							fC = 0; pC = 0;
-							NodeList folList = langElement.getElementsByTagName(fol[i]);
-							String[][] tempArray = new String[10][50];
-							for (int j = 0; j < folList.getLength(); j++) {
-								Node folNode = folList.item(j);
-								if (folNode.getNodeType() == Node.ELEMENT_NODE) {
-									Element folElement = (Element) folNode;
-									fC = Integer.parseInt(folElement.getAttribute("f"));
-									pC = Integer.parseInt(folElement.getAttribute("p"));
-									tempArray[fC][pC] = folElement.getTextContent();
-									if (tempArray[fC][pC].contains("\\n")) {
-										tempArray[fC][pC] = tempArray[fC][pC].replace("\\n", "\n");
-									}
-									// System.out.println(fol[i] + " " + fC + " " + pC + " " + tempArray[fC][pC]);
-								}
-							}
-							switch (fol[i]) {
-								case "f95Fol": tempf95Fol = tempArray; break;
-								case "mainFol": tempmainFol = tempArray; break;
-								case "winFol": tempwinFol = tempArray; break;
-								case "xmlFol": tempxmlFol = tempArray; break;
-							}
+						}
+						switch (fol[i]) {
+							case "base": tempBase = tempAr; break;
+							case "basic": tempBasic = tempAr; break;
+							case "f95Fol": tempf95Fol = tempAr; break;
+							case "mainFol": tempmainFol = tempAr; break;
+							case "winFol": tempwinFol = tempAr; break;
+							case "xmlFol": tempxmlFol = tempAr; break;
 						}
 					}
 				}
 			}
 			base = tempBase;
+			basic = tempBasic;
 			f95Fol = tempf95Fol;
 			mainFol = tempmainFol;
 			winFol = tempwinFol;

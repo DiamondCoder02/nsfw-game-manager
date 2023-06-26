@@ -16,6 +16,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import main.langLoad;
 import main.mainInit;
 import windowJframe._initFrame;
 import xmlFolderHandle._initXml;
@@ -30,10 +31,11 @@ public class _initSiteFetch extends JFrame {
 	static Document domGame = saveLoadDoc.loadDocument(mainInit.databasePath);
 	static Object[][] loadedGames = loadGamesFromXml.loadGames(domGame, columnNames);
 	static boolean manualButton = false;
-	static String[] l = main.langLoad.tempf95Fol[0], b = main.langLoad.base;
+	static String[] lf = langLoad.f95Fol, bs = langLoad.base;
 
 	public static void fetchInfoAskConfirm() {
-		int option = JOptionPane.showConfirmDialog(null, (l[0]==null?"This will go through all games and check if there is new update.\nAre you sure?":l[0]), (b[0]==null?"Update":b[0]), JOptionPane.OK_CANCEL_OPTION);
+		String text = lf[0]==null?"This will go through all games and check if there is new update.\nAre you sure?":lf[0];
+		int option = JOptionPane.showConfirmDialog(null, text, bs[3]==null?"Update":bs[3], JOptionPane.OK_CANCEL_OPTION);
 		if (option == JOptionPane.OK_OPTION) {
 			manualButton = true;
 			fetchInfoThenUpdateTable();
@@ -45,7 +47,7 @@ public class _initSiteFetch extends JFrame {
 			JProgressBar pbar = new JProgressBar(0, loadedGames.length);
 			pbar.setStringPainted(true);
 			pbar.setPreferredSize( new Dimension ( 300, 20));
-			JFrame frame = new JFrame("Progress Bar");
+			JFrame frame = new JFrame(lf[1]==null?"Checking games...":lf[1]);
 			frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			frame.setContentPane(pbar);
 			frame.setUndecorated(true);
@@ -69,7 +71,7 @@ public class _initSiteFetch extends JFrame {
 				}
 				pbar.setValue(loadedGames.length);
 				manualButton = false;
-				JOptionPane.showMessageDialog(null, "All game infos got updated", "Update", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, lf[2]==null?"All game infos got updated":lf[2], bs[3]==null?"Update":bs[3], JOptionPane.INFORMATION_MESSAGE);
 				frame.dispose();
 				_initFrame.refreshTable();
 			}

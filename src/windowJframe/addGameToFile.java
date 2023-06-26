@@ -173,7 +173,7 @@ public class addGameToFile {
 							sourceNode.appendChild(newGame);
 							saveLoadDoc.saveDocument(dom, mainInit.databasePath);
 							_initFrame.refreshTable();
-							JOptionPane.showMessageDialog(null, nameValue+" with id: "+idValue+" has been added", "Success", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, nameValue+", \nId: "+idValue+" has been added", "Success", JOptionPane.INFORMATION_MESSAGE);
 
 							int option = JOptionPane.showConfirmDialog(null, "Do you want to add another game?", "Add game", JOptionPane.YES_NO_OPTION);
 							if (option == JOptionPane.NO_OPTION) { repeat = false; break; } else { break; }

@@ -15,20 +15,23 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import main.langLoad;
 import main.mainInit;
 import windowJframe._initFrame;
 import xmlFolderHandle.isIDInDatabase;
 import xmlFolderHandle.saveLoadDoc;
 
 public class addFromSite {
+	static String[] lf = langLoad.f95Fol, bc = langLoad.basic, bs = langLoad.base;
 	public static void addFromF95(){
 		boolean repeat = true;
 		while (repeat) {
-			String idValue = JOptionPane.showInputDialog(null, "Enter the id of the game you want to add", "Add game", JOptionPane.PLAIN_MESSAGE);
-			if (idValue == null) { JOptionPane.showMessageDialog(null, "You must enter an id", "Error", JOptionPane.ERROR_MESSAGE); break; }
+			String text = lf[3]==null?"Enter the id of the game you want to add, from f95zone website.":lf[3];
+			String idValue = JOptionPane.showInputDialog(null, text, bs[2]==null?"Add game":bs[2], JOptionPane.PLAIN_MESSAGE);
+			if (idValue == null) { JOptionPane.showMessageDialog(null, bc[0]==null?"You must enter an id":bc[0], bs[1]==null?"Error":bs[1], JOptionPane.ERROR_MESSAGE); break; }
 
 			if (isIDInDatabase.isInDatabase(idValue, "f95")) {
-				JOptionPane.showMessageDialog(null, "The id you entered is already in the F95zone database", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, lf[4]==null?"The id you entered is already in the F95zone database":lf[4], bs[1]==null?"Error":bs[1], JOptionPane.ERROR_MESSAGE);
 				break;
 			}
 
@@ -76,7 +79,7 @@ public class addFromSite {
 			panel.add(stillOnPclabel); panel.add(stillOnPcPanel);
 			JLabel selfNotelabel = new JLabel("Self note:");
 			panel.add(selfNotelabel); panel.add(selfNote);
-			JOptionPane.showMessageDialog(null, panel, "Add game", JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(null, panel, bs[2]==null?"Add game":bs[2], JOptionPane.PLAIN_MESSAGE);
 
 			String played_versionValue = played_version.getText();
 			String dateof_lastplayValue = dateof_lastplay.getText();
@@ -135,9 +138,9 @@ public class addFromSite {
 						sourceNode.appendChild(newGame);
 						saveLoadDoc.saveDocument(dom, mainInit.databasePath);
 						_initFrame.refreshTable();
-						JOptionPane.showMessageDialog(null, nameValue+" with id: "+idValue+" has been added", "Success", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, nameValue+", \nId: "+idValue+" "+bc[2]==null?"has been added":bs[2], bs[0]==null?"Success":bs[0], JOptionPane.INFORMATION_MESSAGE);
 
-						int option = JOptionPane.showConfirmDialog(null, "Do you want to add another game?", "Add game", JOptionPane.YES_NO_OPTION);
+						int option = JOptionPane.showConfirmDialog(null, bc[3]==null?"Do you want to add another game?":bc[3], bs[2]==null?"Add game":bs[2], JOptionPane.YES_NO_OPTION);
 						if (option == JOptionPane.NO_OPTION) { repeat = false; break; } else { break; }
 					}
 				}

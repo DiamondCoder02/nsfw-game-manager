@@ -8,7 +8,7 @@ and to torture myself
 ## Important
 
 - Currently java 8
-- Database file: AppData\Roaming\DiamondCoder\nsfwGameManager\hentai.xml
+- Files: AppData\Roaming\DiamondCoder\nsfwGameManager\
 - For the online version, if the game is the final version, it gets a "✔" at the version column
 - For VisualNovels there will be a "VN" at the name column
 
@@ -19,7 +19,7 @@ and to torture myself
 
 Settings tab:
 
-- [ ] show language of the game
+- [ ] show language of the game?
 - [ ] ~~auto Update Games~~ NO
 
 ---

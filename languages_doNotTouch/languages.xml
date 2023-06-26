@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<lang>
+	<!-- 
+		<english> => this is language
+			<base>Some basic small text here</base>
+			<f95Fol f="0" p="0">***Fol => the folder it's in</f95Fol>
+			<winFol f="0" p="0">f => file it's in</winFol>
+			<xmlFol f="0" p="0">p => Just a part counter</xmlFol>
+			<mainFol f="0" p="0">This here is the text to translate</mainFol>
+		</english>
+
+		IF TEXT IS TO LONG, PUT \n TO MAKE IT GO TO NEXT LINE
+	-->
+	<english>
+		<base>Update</base>
+		<base>Error</base>
+		<base>Success</base>
+		<f95Fol f="0" p="0">This will go through all games and check if there is new update.\nAre you sure?</f95Fol>
+		<f95Fol f="0" p="1">Test f952</f95Fol>
+		<winFol f="0" p="0">Test win</winFol>
+		<winFol f="0" p="1">Test win2</winFol>
+		<xmlFol f="0" p="0">Test xml</xmlFol>
+		<xmlFol f="0" p="1">Test xml2</xmlFol>
+		<mainFol f="0" p="0">Should be impossible checkMissingSetting</mainFol>
+		<mainFol f="0" p="1">Error checking settings. (checkMissingSetting.checkSettings)</mainFol>
+		<mainFol f="0" p="2">Settings got updated.</mainFol>
+		<mainFol f="0" p="3">Please restart the program to make sure everything is correct.</mainFol>
+	</english>
+	<hungarian>
+		<mainFol f="0" p="0">Lehetetlen (checkMissingSetting)</mainFol>
+		<mainFol f="0" p="1">Hiba fájl ellenőrzéskor. (checkMissingSetting.checkSettings)</mainFol>
+		<mainFol f="0" p="2">Beállítások frissítve lettek.</mainFol>
+		<mainFol f="0" p="3">Kérlek indítsad újra a programot, hogy biztos minden rendben legyen.</mainFol>
+	</hungarian>
+</lang>

@@ -30,9 +30,10 @@ public class _initSiteFetch extends JFrame {
 	static Document domGame = saveLoadDoc.loadDocument(mainInit.databasePath);
 	static Object[][] loadedGames = loadGamesFromXml.loadGames(domGame, columnNames);
 	static boolean manualButton = false;
+	static String[] l = main.langLoad.tempf95Fol[0], b = main.langLoad.base;
 
 	public static void fetchInfoAskConfirm() {
-		int option = JOptionPane.showConfirmDialog(null, "This will go through all games and check if there is new update.\nAre you sure?", "Update", JOptionPane.OK_CANCEL_OPTION);
+		int option = JOptionPane.showConfirmDialog(null, (l[0]==null?"This will go through all games and check if there is new update.\nAre you sure?":l[0]), (b[0]==null?"Update":b[0]), JOptionPane.OK_CANCEL_OPTION);
 		if (option == JOptionPane.OK_OPTION) {
 			manualButton = true;
 			fetchInfoThenUpdateTable();

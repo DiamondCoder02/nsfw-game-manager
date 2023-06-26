@@ -16,11 +16,11 @@ public class checksFile {
 			new File(System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager").mkdirs();
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error creating folders", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error creating main folder(s)!", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		if (checkSettingsFolder()) {checkMissingSetting.checkSettings();}
-		checkMissingDatabase();
 		checkLanguage();
+		checkMissingDatabase();
 		checkPics();
 	}
 
@@ -69,9 +69,9 @@ public class checksFile {
 	private static void checkLanguage(){
 		File file = new File(mainPath);
 		try{
-			URL url = new URL("https://raw.githubusercontent.com/DiamondPRO02/nsfw-game-manager/master/languages_doNotTouch/languages.csv");
+			URL url = new URL("https://raw.githubusercontent.com/DiamondPRO02/nsfw-game-manager/master/languages_doNotTouch/languages.xml");
 			InputStream in = url.openStream();
-			FileOutputStream fos = new FileOutputStream(file + "/languages.csv");
+			FileOutputStream fos = new FileOutputStream(file + "/languages.xml");
 			byte[] buffer = new byte[4096];
 			int length;
 			while ((length = in.read(buffer)) > 0) {

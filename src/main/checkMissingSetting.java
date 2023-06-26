@@ -70,9 +70,12 @@ public class checkMissingSetting {
 			for (int k = 0; k < setting.getLength(); k++) { toCheckWith[k] = setting.item(k).getTextContent(); }
 			for (int k = 0; k < toCheckWith.length; k++) { if (toCheckWith[k] == null) { toCheckWith[k] = "-"; } }
 			if (!toCheckWith[j].contains(somethingSettings[j])) {
+				if (settingName == "language") {
+					break;
+				}
 				Element newSetting = dom.createElement(settingName);
-				if (somethingSettings[j] == "Auto fetch game info") { newSetting.setAttribute("enabled", "false");
-				} else { newSetting.setAttribute("enabled", "true"); }
+				if (somethingSettings[j] == "Auto fetch game info") { newSetting.setAttribute("enabled", "false"); } 
+				else { newSetting.setAttribute("enabled", "true"); }
 				newSetting.appendChild(dom.createTextNode(somethingSettings[j]));
 				dom.getElementsByTagName("settings").item(0).appendChild(newSetting);
 				settingsGotUpdated = true;

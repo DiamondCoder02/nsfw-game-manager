@@ -13,9 +13,9 @@ import xmlFolderHandle.saveLoadDoc;
 public class langLoad {
 	static String path = checksFile.mainPath + "languages.xml";
 	static String language = loadSettingsFromXml.loadStringSettings("language")[0];
-	private static String[] fol = {"base", "basic", "tablec", "f95Fol", "mainFol", "winFol", "buttons", "xmlFol"};
-	private static String[] tempBase = new String[30], tempBasic = new String[30], tempTabl = new String[30], tempf95Fol = new String[30], tempmainFol = new String[30], tempwinFol = new String[30], tempbuton = new String[30], tempxmlFol = new String[30] ;
-	public static String[] base, basic, tabl, f95Fol, mainFol, winFol, buton, xmlFol;
+	private static String[] fol = {"base", "basic", "tablec", "buttons", "folders"};
+	private static String[] tempBase = new String[30], tempBasic = new String[30], tempTabl = new String[30], tempbuton = new String[30], tempFold = new String[30];
+	public static String[] base, basic, tabl, buton, folder;
 
 	public static void loadLanguages(){
 		Document dom = saveLoadDoc.loadDocument(path);
@@ -40,18 +40,15 @@ public class langLoad {
 								if (tempAr[j].contains("\\n")) {
 									tempAr[j] = tempAr[j].replace("\\n", "\n");
 								}
-								//System.out.println(tempAr[j]);
+								// System.out.println(tempAr[j]);
 							}
 						}
 						switch (fol[i]) {
 							case "base": tempBase = tempAr; break;
 							case "basic": tempBasic = tempAr; break;
 							case "tablec": tempTabl = tempAr; break;
-							case "f95Fol": tempf95Fol = tempAr; break;
-							case "mainFol": tempmainFol = tempAr; break;
-							case "winFol": tempwinFol = tempAr; break;
 							case "buttons": tempbuton = tempAr; break;
-							case "xmlFol": tempxmlFol = tempAr; break;
+							case "folders": tempFold = tempAr; break;
 						}
 					}
 				}
@@ -59,11 +56,8 @@ public class langLoad {
 			base = tempBase;
 			basic = tempBasic;
 			tabl = tempTabl;
-			f95Fol = tempf95Fol;
-			mainFol = tempmainFol;
-			winFol = tempwinFol;
 			buton = tempbuton;
-			xmlFol = tempxmlFol;
+			folder = tempFold;
 		} catch (Exception e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Error loading settings file (loadOther)", "Error", JOptionPane.ERROR_MESSAGE);

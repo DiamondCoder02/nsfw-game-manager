@@ -31,7 +31,7 @@ public class _initSiteFetch extends JFrame {
 	static Document domGame = saveLoadDoc.loadDocument(mainInit.databasePath);
 	static Object[][] loadedGames = loadGamesFromXml.loadGames(domGame, columnNames);
 	static boolean manualButton = false;
-	static String[] lf = langLoad.f95Fol, bs = langLoad.base;
+	static String[] lf = langLoad.folder, bs = langLoad.base;
 
 	public static void fetchInfoAskConfirm() {
 		String text = lf[0]==null?"This will go through all games and check if there is new update.\nAre you sure?":lf[0];

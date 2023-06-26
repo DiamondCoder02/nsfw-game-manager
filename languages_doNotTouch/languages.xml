@@ -3,8 +3,8 @@
 	<!-- 
 		<english> => this is language
 			<base>Some basic small text here</base>
-			<f95Fol>***Fol => the folder it's in</f95Fol>
-			<xmlFol>This here is the text to translate</xmlFol>
+			<folders>***Fol => the folder it's in</folders>
+			<folders>This here is the text to translate</folders>
 		</english>
 
 		IF TEXT IS TO LONG, PUT \n TO MAKE IT GO TO NEXT LINE
@@ -41,21 +41,7 @@
 		<tablec>OS</tablec>
 		<tablec>Personal Notes</tablec> <!-- 14 -->
 
-		<!-- f95WebsiteHandle folder-->
-		<f95Fol>This will go through all games and check if there is new update. \nAre you sure?</f95Fol>
-		<f95Fol>Checking games...</f95Fol>
-		<f95Fol>All game infos got updated!</f95Fol>
-		<f95Fol>Enter the id of the game you want to add, from f95zone website.</f95Fol>
-		<f95Fol>The id you entered is already in the F95zone database.</f95Fol>
-		<f95Fol>Error while loading the site.</f95Fol>
-
-		<!-- main folder-->
-		<mainFol>Error checking settings.</mainFol>
-		<mainFol>Settings got updated. \nPlease restart the program to make sure everything is correct.</mainFol>
-		<mainFol>Settings updated</mainFol>
-
-
-		<!-- windowJframe folder-->
+		<!-- windowJframe._initFrame -->
 		<buttons>Games</buttons> <!-- 0 -->
 		<buttons>Search</buttons>
 		<buttons>Settings</buttons>
@@ -77,16 +63,22 @@
 		<buttons>Dark mode</buttons>
 		<buttons>Auto fetch game info</buttons> <!-- 19 -->
 
-		<winFol>Hentai Game Database</winFol>
-
-
-
-
-
-
-		<!-- xmlFolderHandle folder-->
-		<xmlFol>Test xml</xmlFol>
-		<xmlFol>Test xml2</xmlFol>
+		<!-- folders-->
+		<folders>This will go through all games and check if there is new update. \nAre you sure?</folders>
+		<folders>Checking games...</folders>
+		<folders>All game infos got updated!</folders>
+		<folders>Enter the id of the game you want to add, from f95zone website.</folders>
+		<folders>The id you entered is already in the F95zone database.</folders>
+		<folders>Error while loading the site.</folders>
+		<!-- main folder-->
+		<folders>Error checking settings.</folders>
+		<folders>Settings got updated. \nPlease restart the program to make sure everything is correct.</folders>
+		<folders>Settings updated</folders>
+		<!-- windowJframe folder-->
+		<folders>Hentai Game Database</folders>
+		<!-- foldersderHandle folder-->
+		<folders>Error loading settings file</folders>
+		<folders>Error loading database file</folders>
 	</english>
 	<hungarian>
 		<base>Siker</base>
@@ -94,6 +86,15 @@
 		<base>Játék hozzáadás</base>
 		<base>Játék frissítés</base>
 		<base>Játék törlése</base>
+
+		<basic>Meg kell adnod egy id-t.</basic>
+		<basic>nem létezik.</basic> <!-- {ID} doesn't exists.-->
+		<basic>hozzá lett adva.</basic> <!-- {game} hase been added.-->
+		<basic>Szeretnél még egy játékot hozzá adni?</basic>
+		<basic>információ frissítve.</basic> <!-- {game} hase been updated.-->
+		<basic>nem lett frissítve.</basic>
+		<basic>Írd be a játék id-jét amit frissíteni szeretnél.</basic>
+		<basic>Hiba! Lehetetlen kéne hogy ez legyen.</basic>
 
 		<tablec>Oldal</tablec>
 		<tablec>ID</tablec>
@@ -111,29 +112,7 @@
 		<tablec>OS</tablec>
 		<tablec>Jegyzetek</tablec>
 
-		<basic>Meg kell adnod egy id-t.</basic>
-		<basic>nem létezik.</basic> <!-- {ID} doesn't exists.-->
-		<basic>hozzá lett adva.</basic> <!-- {game} hase been added.-->
-		<basic>Szeretnél még egy játékot hozzá adni?</basic>
-		<basic>információ frissítve.</basic> <!-- {game} hase been updated.-->
-		<basic>nem lett frissítve.</basic>
-		<basic>Írd be a játék id-jét amit frissíteni szeretnél.</basic>
-		<basic>Hiba! Lehetetlen kéne hogy ez legyen.</basic>
-
-		<!-- f95WebsiteHandle folder-->
-		<f95Fol>Ez végigmegy az összes játékon, és ellenőrzi, hogy van-e új frissítés.\nBiztos vagy benne?</f95Fol>
-		<f95Fol>Játékok ellenőrzése...</f95Fol>
-		<f95Fol>Minden játék információ frissítve lett!</f95Fol>
-		<f95Fol>Írd be a játék id-jét amit hozzá szeretnél adni, a f95zone oldaláról.</f95Fol>
-		<f95Fol>Az ID ami meg lett adva már benne van az adatbázisban.</f95Fol>
-		<f95Fol>Hiba az oldal töltése közben.</f95Fol>
-
-		<!-- main folder-->
-		<mainFol>Hiba beállítások ellenőrzéskor.</mainFol>
-		<mainFol>Beállítások frissítve lettek. \nKérlek indítsad újra a programot, hogy biztos minden rendben legyen.</mainFol>
-		<mainFol>Beállítások frissítése</mainFol>
-
-		<!-- windowJframe folder-->
+		<!-- windowJframe._initFrame -->
 		<buttons>Játékok</buttons> <!-- 1 -->
 		<buttons>Keresés</buttons>
 		<buttons>Beállítások</buttons>
@@ -155,14 +134,21 @@
 		<buttons>Sötét mód</buttons>
 		<buttons>Auto játék infó frissítés</buttons> <!-- 20 -->
 
-		<winFol>Felnőtt játék menedzser</winFol>
-
-
-
-
-
-		<!-- xmlFolderHandle folder-->
-		<xmlFol>Test xml</xmlFol>
-		<xmlFol>Test xml2</xmlFol>
+		<!-- f95WebsiteHandle folder-->
+		<folders>Ez végigmegy az összes játékon, és ellenőrzi, hogy van-e új frissítés.\nBiztos vagy benne?</folders>
+		<folders>Játékok ellenőrzése...</folders>
+		<folders>Minden játék információ frissítve lett!</folders>
+		<folders>Írd be a játék id-jét amit hozzá szeretnél adni, a f95zone oldaláról.</folders>
+		<folders>Az ID ami meg lett adva már benne van az adatbázisban.</folders>
+		<folders>Hiba az oldal töltése közben.</folders>
+		<!-- main folder-->
+		<folders>Hiba beállítások ellenőrzéskor.</folders>
+		<folders>Beállítások frissítve lettek. \nKérlek indítsad újra a programot, hogy biztos minden rendben legyen.</folders>
+		<folders>Beállítások frissítése</folders>
+		<!-- windowJframe folder-->
+		<folders>Hentai játék menedzser</folders>
+		<!-- foldersderHandle folder-->
+		<folders>Hiba beállítások betöltésekor</folders>
+		<folders>Hiba adatbázis betöltésekor</folders>
 	</hungarian>
 </lang>

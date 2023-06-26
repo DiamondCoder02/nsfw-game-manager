@@ -7,7 +7,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import main.langLoad;
+
 public class loadSettingsFromXml {
+	static String[] xf = langLoad.folder, bs = langLoad.base;
 	public static Document loadSettingXml() {
 		String path = main.mainInit.settingsPath;
 		Document dom = saveLoadDoc.loadDocument(path);
@@ -40,7 +43,7 @@ public class loadSettingsFromXml {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error loading settings file (loadOther)", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, xf[10]!=null?xf[10]:"Error loading settings file"+" (loadOther)", bs[1]!=null?bs[1]:"Error", JOptionPane.ERROR_MESSAGE);
 		}
 		Boolean[] columnNames2 = new Boolean[counter];
 		for (int i = 0; i < counter; i++) {
@@ -83,7 +86,7 @@ public class loadSettingsFromXml {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error loading settings file (loadOther)", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, xf[10]!=null?xf[10]:"Error loading settings file" + " (loadOther)", bs[1]!=null?bs[1]:"Error", JOptionPane.ERROR_MESSAGE);
 		}
 		String[] columnNames2 = new String[counter];
 		for (int i = 0; i < counter; i++) {

@@ -17,8 +17,10 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 
 import main.mainInit;
+import main.langLoad;
 
 public class saveLoadDoc {
+	static String[] xf = langLoad.folder, bs = langLoad.base;
 	public static Document loadDocument(String path) {
 		File file = new File(path);
 		try {
@@ -29,7 +31,7 @@ public class saveLoadDoc {
 			return dom;
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error loading database file (saveLoadDoc.loadDocument)", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, xf[11]!=null?xf[11]:"Error loading database file" + " (saveLoadDoc.loadDocument)", bs[1]!=null?bs[1]:"Error", JOptionPane.ERROR_MESSAGE);
 		}
 		return null;
 	}
@@ -41,7 +43,7 @@ public class saveLoadDoc {
 			transformer.transform(new DOMSource(dom), new StreamResult(path));
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error saving database file (saveLoadDoc.saveDocument)", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, xf[11]!=null?xf[11]:"Error saving database file" + " (saveLoadDoc.saveDocument)", bs[1]!=null?bs[1]:"Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -50,11 +52,33 @@ public class saveLoadDoc {
 		Document domSettings = saveLoadDoc.loadDocument(mainInit.settingsPath);
 		String[] columnNames = _initXml.allColumns(domSettings);
 		Object[][] data = loadGamesFromXml.loadGames(dom, columnNames);
+		String[] tbl = langLoad.tabl;
+		for (int i = 0; i < columnNames.length; i++) {
+			System.out.println(columnNames[i]);
+			System.out.println(tbl[i]);
+			switch (columnNames[i]) {
+				case "Site": columnNames[i] = tbl[0]!=null?tbl[0]:"Site"; break;
+				case "ID": columnNames[i] = tbl[1]!=null?tbl[1]:"ID"; break;
+				case "Name": columnNames[i] = tbl[2]!=null?tbl[2]:"Name"; break;
+				case "Developer": columnNames[i] = tbl[3]!=null?tbl[3]:"Developer"; break;
+				case "Played version": columnNames[i] = tbl[4]!=null?tbl[4]:"Played version"; break;
+				case "Last time play": columnNames[i] = tbl[5]!=null?tbl[5]:"Last time play"; break;
+				case "Rated": columnNames[i] = tbl[6]!=null?tbl[6]:"Rated"; break;
+				case "Newest version": columnNames[i] = tbl[7]!=null?tbl[7]:"Newest version"; break;
+				case "Last update": columnNames[i] = tbl[8]!=null?tbl[8]:"Last update"; break;
+				case "People rating": columnNames[i] = tbl[9]!=null?tbl[9]:"People rating"; break;
+				case "Player progress": columnNames[i] = tbl[10]!=null?tbl[10]:"Player progress"; break;
+				case "Still on pc?": columnNames[i] = tbl[11]!=null?tbl[11]:"Still on pc?"; break;
+				case "Engine": columnNames[i] = tbl[12]!=null?tbl[12]:"Engine"; break;
+				case "OS": columnNames[i] = tbl[13]!=null?tbl[13]:"OS"; break;
+				case "Personal Notes": columnNames[i] = tbl[14]!=null?tbl[14]:"Personal Notes"; break;
+			}
+		}
 		table.setModel(new JTable(data, columnNames).getModel());
-		getNewRenderedTable(table);
+		getNewRenderedTable(table, tbl[10]);
 	}
 
-	private static JTable getNewRenderedTable(final JTable table) {
+	private static JTable getNewRenderedTable(final JTable table, String playProgColName) {
 		// change row color - Not played: red, In progress: yellow, Finish: blue, 100% Finished: green
 		// boolean[] otherSettings = settingsManager.loadSettings("othersettings");
 		Color np, ip, fi, ff;
@@ -74,7 +98,7 @@ public class saveLoadDoc {
 
 		int playColumnCount = 0;
 		for (int i = 0; i < table.getColumnCount(); i++) {
-			if (table.getColumnName(i).equals("Player progress")) {
+			if (table.getColumnName(i).equals(playProgColName)) {
 				playColumnCount = i;
 				break;
 			}

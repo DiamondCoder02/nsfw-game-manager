@@ -54,11 +54,11 @@ public class _initFrame extends JFrame implements ActionListener {
 	Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 	Boolean[] boolColumns = loadSettingsFromXml.loadBooleanSettings("showncolumns");
 
-	static String[] wfl = langLoad.winFol, bu = langLoad.buton, tlc = langLoad.tabl, bc = langLoad.basic, bs = langLoad.base;
+	static String[] wfl = langLoad.folder, bu = langLoad.buton, tlc = langLoad.tabl, bc = langLoad.basic, bs = langLoad.base;
 
 	public void WindowCreate(Object[][] dataFromXMLFile) {
 		// TODO text size small on large display - https://bugs.openjdk.org/browse/JDK-8202973
-		setTitle(wfl[0]!=null?wfl[0]:"Hentai Game Database");
+		setTitle(wfl[9]!=null?wfl[9]:"Hentai Game Database");
 		setSize(1500, 600);
 		setMinimumSize(new Dimension(500, 500));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

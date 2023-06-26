@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import org.w3c.dom.Document;
 
 public class checkMissingSetting {
-	static String[] mf = langLoad.mainFol, bc = langLoad.basic, bs = langLoad.base;
+	static String[] mf = langLoad.folder, bc = langLoad.basic, bs = langLoad.base;
 	public static void checkSettings() {
 		String[] settings = {"othersettings", "language", "showncolumns"};
 		String[] othersettings = {"Dark mode", "Auto fetch game info"};
@@ -45,12 +45,12 @@ public class checkMissingSetting {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				JOptionPane.showMessageDialog(null, mf[0]!=null?mf[0]:"Error checking settings." + "(checkMissingSetting.checkSettings)", bs[1]!=null?bs[1]:"Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, mf[6]!=null?mf[6]:"Error checking settings." + "(checkMissingSetting.checkSettings)", bs[1]!=null?bs[1]:"Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		if (otSe || laSe || shCo) {
-			String text = mf[1]!=null?mf[1]:"Settings got updated. \nPlease restart the program to make sure everything is correct.";
-			JOptionPane.showMessageDialog(null, text, mf[2]!=null?mf[2]:"Settings updated", JOptionPane.INFORMATION_MESSAGE);
+			String text = mf[7]!=null?mf[7]:"Settings got updated. \nPlease restart the program to make sure everything is correct.";
+			JOptionPane.showMessageDialog(null, text, mf[8]!=null?mf[8]:"Settings updated", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 

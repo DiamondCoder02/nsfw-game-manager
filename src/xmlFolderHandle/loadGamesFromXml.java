@@ -7,7 +7,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import main.langLoad;
+
 public class loadGamesFromXml {
+	static String[] bac = langLoad.basic;
 	public static Object[][] loadGames(Document dom, String[] columnNames) {
 		Object[][] allDataFromFile = null;
 		Integer counter = 0;
@@ -38,7 +41,7 @@ public class loadGamesFromXml {
 								case "Engine": allDataFromFile[counter][n] = e.getElementsByTagName("engine").item(0).getTextContent().trim(); break;
 								case "OS": allDataFromFile[counter][n] = e.getElementsByTagName("OS").item(0).getTextContent().trim(); break;
 								case "Personal Notes": allDataFromFile[counter][n] = e.getElementsByTagName("selfNote").item(0).getTextContent().trim(); break;
-								default: JOptionPane.showMessageDialog(null, "Error, this should never happen!!! (loadGamesFromXml.loadGames)", "Error", JOptionPane.ERROR_MESSAGE); break;
+								default: JOptionPane.showMessageDialog(null, bac[7]!=null?bac[7]:"Error, this should never happen!!!" + " (loadGamesFromXml.loadGames)", "Error", JOptionPane.ERROR_MESSAGE); break;
 							}
 						}
 						counter++;

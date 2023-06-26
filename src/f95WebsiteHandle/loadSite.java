@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 import main.langLoad;
 
 public class loadSite {
-	static String[] lf = langLoad.f95Fol, bs = langLoad.base;
+	static String[] lf = langLoad.folder, bs = langLoad.base;
 	public static String[] getf95UrlContents(String gameIds) {
 		String[] allTheInfo = new String[7];
 		StringBuilder content = new StringBuilder();

@@ -22,7 +22,7 @@ import xmlFolderHandle.isIDInDatabase;
 import xmlFolderHandle.saveLoadDoc;
 
 public class addFromSite {
-	static String[] lf = langLoad.f95Fol, bc = langLoad.basic, bs = langLoad.base;
+	static String[] lf = langLoad.folder, bc = langLoad.basic, bs = langLoad.base;
 	public static void addFromF95(){
 		boolean repeat = true;
 		while (repeat) {

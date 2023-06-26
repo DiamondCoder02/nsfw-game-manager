@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 
+import main.langLoad;
 import f95WebsiteHandle.addFromSite;
 import f95WebsiteHandle.updateFromSite;
 import f95WebsiteHandle._initSiteFetch;
@@ -52,6 +53,199 @@ public class _initFrame extends JFrame implements ActionListener {
 
 	Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 	Boolean[] boolColumns = loadSettingsFromXml.loadBooleanSettings("showncolumns");
+
+	static String[] wfl = langLoad.winFol, bu = langLoad.buton, tlc = langLoad.tabl, bc = langLoad.basic, bs = langLoad.base;
+
+	public void WindowCreate(Object[][] dataFromXMLFile) {
+		// TODO text size small on large display - https://bugs.openjdk.org/browse/JDK-8202973
+		setTitle(wfl[0]!=null?wfl[0]:"Hentai Game Database");
+		setSize(1500, 600);
+		setMinimumSize(new Dimension(500, 500));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setJMenuBar(mb = new JMenuBar());
+
+		mb.add(games = new JMenu(bu[0]!=null?bu[0]:"Games")); 
+		games.add(addGame = new JMenuItem(bu[2]!=null?bu[2]:"Add games")); addGame.setActionCommand("Add game");
+		games.add(updateList = new JMenuItem(bu[3]!=null?bu[3]:"Update games")); updateList.setActionCommand("Update game");
+		games.add(removeGame = new JMenuItem(bu[4]!=null?bu[4]:"Remove games")); removeGame.setActionCommand("Remove game");
+		games.addSeparator();
+		games.add(addF95zone = new JMenuItem(bu[9]!=null?bu[9]:"Add from F95zone")); addF95zone.setActionCommand("Add F95zone");
+		games.add(updateF95 = new JMenuItem(bu[10]!=null?bu[10]:"Update F95zone")); updateF95.setActionCommand("Update F95zone");
+		games.add(removeF95 = new JMenuItem(bu[11]!=null?bu[11]:"Remove F95zone")); removeF95.setActionCommand("Remove F95zone");
+		games.addSeparator(); 
+		games.add(saveFileToDifferent = new JMenuItem(bu[12]!=null?bu[12]:"Save file copy")); saveFileToDifferent.setActionCommand("Save file copy");
+		games.add(refreshTable = new JMenuItem(bu[13]!=null?bu[13]:"Refresh table")); refreshTable.setActionCommand("Refresh table");
+		games.add(refreshFromAPI = new JMenuItem(bu[14]!=null?bu[14]:"API refresh")); refreshFromAPI.setActionCommand("API refresh");
+		
+
+		mb.add(search = new JMenu(bu[1]!=null?bu[1]:"Search"));
+		search.add(searchById = new JMenuItem(bu[15]!=null?bu[15]:"Search by ID")); searchById.setActionCommand("Search by ID");
+		search.add(searchByName = new JMenuItem(bu[16]!=null?bu[16]:"Search by name")); searchByName.setActionCommand("Search by name");
+		search.add(searchByDeveloper = new JMenuItem(bu[17]!=null?bu[17]:"Search by developer")); searchByDeveloper.setActionCommand("Search by developer");
+		searchById.addActionListener(this);
+		searchByName.addActionListener(this);
+		searchByDeveloper.addActionListener(this);
+
+		mb.add(settings = new JMenu(bu[2]!=null?bu[2]:"Settings"));
+		settings.add(show = new JMenu(bu[3]!=null?bu[3]:"Shown informations"));
+		show.add(showSite = new JCheckBoxMenuItem(tlc[0]!=null?tlc[0]:"Site", boolColumns[0])); showSite.setActionCommand("Site");
+		show.add(showID = new JCheckBoxMenuItem(tlc[1]!=null?tlc[1]:"ID", boolColumns[1])); showID.setActionCommand("ID");
+		show.add(showName = new JCheckBoxMenuItem(tlc[2]!=null?tlc[2]:"Name", boolColumns[2])); showName.setActionCommand("Name");
+		show.add(showDeveloper = new JCheckBoxMenuItem(tlc[3]!=null?tlc[3]:"Developer", boolColumns[3])); showDeveloper.setActionCommand("Developer");
+		show.add(showPlayedVersion = new JCheckBoxMenuItem(tlc[4]!=null?tlc[4]:"Played version", boolColumns[4])); showPlayedVersion.setActionCommand("Played version");
+		show.add(showLastTimeplay = new JCheckBoxMenuItem(tlc[5]!=null?tlc[5]:"Last time play", boolColumns[5])); showLastTimeplay.setActionCommand("Last time play");
+		show.add(showRated = new JCheckBoxMenuItem(tlc[6]!=null?tlc[6]:"Rated", boolColumns[6])); showRated.setActionCommand("Rated");
+		show.add(showNewestVersion = new JCheckBoxMenuItem(tlc[7]!=null?tlc[7]:"Newest version", boolColumns[7])); showNewestVersion.setActionCommand("Newest version");
+		show.add(showDateOfLastUpdate = new JCheckBoxMenuItem(tlc[8]!=null?tlc[8]:"Last update", boolColumns[8])); showDateOfLastUpdate.setActionCommand("Last update");
+		show.add(showPeopleRating = new JCheckBoxMenuItem(tlc[9]!=null?tlc[9]:"People rating", boolColumns[9])); showPeopleRating.setActionCommand("People rating");
+		show.add(showhowFarUserPlayed = new JCheckBoxMenuItem(tlc[10]!=null?tlc[10]:"Player progress", boolColumns[10])); showhowFarUserPlayed.setActionCommand("Player progress");
+		show.add(showDeletedFromPc = new JCheckBoxMenuItem(tlc[11]!=null?tlc[11]:"Still on pc?", boolColumns[11])); showDeletedFromPc.setActionCommand("Still on pc?");
+		show.add(showEngine = new JCheckBoxMenuItem(tlc[12]!=null?tlc[12]:"Engine", boolColumns[12])); showEngine.setActionCommand("Engine");
+		show.add(showOS = new JCheckBoxMenuItem(tlc[13]!=null?tlc[13]:"OS", boolColumns[13])); showOS.setActionCommand("OS");
+		show.add(ShowSelfNote = new JCheckBoxMenuItem(tlc[14]!=null?tlc[14]:"Personal Notes", boolColumns[14])); ShowSelfNote.setActionCommand("Personal Notes");
+
+		settings.addSeparator();
+		settings.add(darkMode = new JCheckBoxMenuItem(bu[18]!=null?bu[18]:"Dark mode", boolSettings[0])); darkMode.setActionCommand("Dark mode");
+		settings.addSeparator();
+		settings.add(autoFetchNews = new JCheckBoxMenuItem(bu[19]!=null?bu[19]:"Auto fetch game info", boolSettings[1])); autoFetchNews.setActionCommand("Auto fetch game info");
+
+		mb.add(help = new JMenu(bu[5]!=null?bu[5]:"Other")); 
+		help.add(faq = new JMenuItem(bu[6]!=null?bu[6]:"FAQ")); faq.setActionCommand("FAQ");
+		help.add(credits = new JMenuItem(bu[7]!=null?bu[7]:"Credits")); credits.setActionCommand("Credits");
+		mb.add(exit = new JMenuItem(bu[8]!=null?bu[8]:"Exit")); exit.setActionCommand("Exit");
+
+		addGame.addActionListener(this); updateList.addActionListener(this);
+		removeGame.addActionListener(this); addF95zone.addActionListener(this);
+		updateF95.addActionListener(this); removeF95.addActionListener(this);
+		saveFileToDifferent.addActionListener(this); refreshTable.addActionListener(this);
+		refreshFromAPI.addActionListener(this);
+
+		showSite.addActionListener(this); showID.addActionListener(this);
+		showName.addActionListener(this); showDeveloper.addActionListener(this);
+		showPlayedVersion.addActionListener(this); showLastTimeplay.addActionListener(this);
+		showRated.addActionListener(this); showNewestVersion.addActionListener(this);
+		showDateOfLastUpdate.addActionListener(this); showPeopleRating.addActionListener(this);
+		showhowFarUserPlayed.addActionListener(this); showDeletedFromPc.addActionListener(this);
+		showEngine.addActionListener(this); showOS.addActionListener(this);
+		ShowSelfNote.addActionListener(this); 
+
+		darkMode.addActionListener(this); autoFetchNews.addActionListener(this);
+
+		faq.addActionListener(this); credits.addActionListener(this);
+		exit.addActionListener(this);
+
+		table = new JTable();
+		refreshTable();
+		table.setBounds(30, 40, 200, 300);
+		setColumns();
+		/*
+		table.setAutoCreateRowSorter(true);
+		table.getRowSorter().addRowSorterListener((RowSorterListener) new RowSorterListener() {
+			@Override
+			public void sorterChanged(javax.swing.event.RowSorterEvent e) {
+				refreshTable();
+			}
+		});
+		*/
+		setLayout(new BorderLayout());
+		add(table.getTableHeader(), BorderLayout.PAGE_START);
+		add(table, BorderLayout.CENTER);
+
+		pane = new JScrollPane(table);
+        add(pane, BorderLayout.CENTER);
+
+		WindowRefresh();
+		setVisible(true);
+	}
+
+	private static void setColumns(){
+		Boolean[] boolColumns = loadSettingsFromXml.loadBooleanSettings("showncolumns");
+		Integer[] ind = new Integer[boolColumns.length];
+		Integer counter = 0;
+		for (int i = 0; i < boolColumns.length; i++) { ind[i] = -1; }
+		for (int i = 0; i < boolColumns.length; i++) { 
+			if (boolColumns[i]) {
+				ind[i] = counter; 
+				counter++;
+			} else {
+				ind[i] = -1;
+			} 
+		}
+
+		Integer[] ind2 = new Integer[]{
+			5,	// dl - dlsite / f95 - f95zone / man - manually added
+			20,	// id
+			240,// name
+			90,	// developer
+			65,	// played version
+			50,	// last time play
+			40,	// rated 
+			70,	// newest version
+			50,	// last update
+			60,	// people rating
+			65,	// player progress
+			35,	// still on pc? 
+			60,	// engine
+			100,// os
+			100	// personal notes
+		};
+
+		for (int i = 0; i < ind.length; i++) {
+			if (boolColumns[i]) { 
+				table.getColumnModel().getColumn(ind[i]).setPreferredWidth(ind2[i]); 
+			}
+		}
+	}
+
+	public static void refreshTable(){saveLoadDoc.reloadTable(table); setColumns();}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		//System.out.println(e);
+		String gac = e.getActionCommand();
+		main.checksFile.checkMissingDatabase();
+		main.checksFile.checkSettingsFolder();
+		switch (gac) {
+			// TODO language file
+			case "Add game": addGameToFile.addOneGameToFile(); break;
+			case "Update game": updateGameManually.updateOneGameFromToFile(); break;
+			case "Remove game": removeGameFromFile.removeOneGameFromFile("man"); break;
+			case "Add F95zone": addFromSite.addFromF95(); break;
+			case "Update F95zone": updateFromSite.updatef95game(); break;
+			case "Remove F95zone": removeGameFromFile.removeOneGameFromFile("f95"); break;
+
+			case "Save file copy": otherButtonsThingies.saveFileCopy();	break;
+			case "Refresh table": refreshTable(); setColumns(); break;
+			case "API refresh":  _initSiteFetch.fetchInfoAskConfirm(); break;
+
+			case "Search by ID": searchButton.searchById(); break;
+			case "Search by name": searchButton.searchByName(); break;
+			case "Search by developer": searchButton.searchByDeveloper(); break;
+
+			case "Site": settingsManager.xmlSettings("showncolumns", "Site"); break;
+			case "ID": settingsManager.xmlSettings("showncolumns", "ID"); break;
+			case "Name": settingsManager.xmlSettings("showncolumns", "Name"); break;
+			case "Developer": settingsManager.xmlSettings("showncolumns", "Developer"); break;
+			case "Played version": settingsManager.xmlSettings("showncolumns", "Played version"); break;
+			case "Last time play": settingsManager.xmlSettings("showncolumns", "Last time play"); break;
+			case "Rated": settingsManager.xmlSettings("showncolumns", "Rated"); break;
+			case "Newest version": settingsManager.xmlSettings("showncolumns", "Newest version"); break;
+			case "Last update": settingsManager.xmlSettings("showncolumns", "Last update"); break;
+			case "People rating": settingsManager.xmlSettings("showncolumns", "People rating"); break;
+			case "Player progress": settingsManager.xmlSettings("showncolumns", "Player progress"); break;
+			case "Still on pc?": settingsManager.xmlSettings("showncolumns", "Still on pc?"); break;
+			case "Engine": settingsManager.xmlSettings("showncolumns", "Engine"); break;
+			case "OS": settingsManager.xmlSettings("showncolumns", "OS"); break;
+			case "Personal Notes": settingsManager.xmlSettings("showncolumns", "Personal Notes"); break;
+
+			case "Dark mode": settingsManager.xmlSettings("othersettings", "Dark mode"); WindowRefresh(); refreshTable(); break;
+			case "Auto fetch game info": settingsManager.xmlSettings("othersettings", "Auto fetch game info"); break;
+
+			case "FAQ": otherButtonsThingies.FACKQU(); break;
+			case "Credits": otherButtonsThingies.money(); break;
+			case "Exit": otherButtonsThingies.sureAboutExit(); break;
+			default: JOptionPane.showMessageDialog(null, bc[7]!=null?bc[7]:"Error, this should never happen!!!" + " (_initFrame)", "Error", JOptionPane.ERROR_MESSAGE); break;
+		}
+	}
 
 	private void WindowRefresh(){
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
@@ -181,196 +375,6 @@ public class _initFrame extends JFrame implements ActionListener {
 			faq.setBackground(null); faq.setForeground(null);
 			credits.setBackground(null); credits.setForeground(null);
 			exit.setBackground(null);	exit.setForeground(null);
-		}
-	}
-	public void WindowCreate(Object[][] dataFromXMLFile) {
-		// TODO text size small on large display - https://bugs.openjdk.org/browse/JDK-8202973
-		setTitle("Hentai Game Database");
-		setSize(1500, 600);
-		setMinimumSize(new Dimension(500, 500));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setJMenuBar(mb = new JMenuBar());
-
-		mb.add(games = new JMenu("Games"));
-		games.add(addGame = new JMenuItem("Add game"));
-		games.add(updateList = new JMenuItem("Update game"));
-		games.add(removeGame = new JMenuItem("Remove game"));
-		games.addSeparator();
-		games.add(addF95zone = new JMenuItem("Add from F95zone"));
-		games.add(updateF95 = new JMenuItem("Update F95zone"));
-		games.add(removeF95 = new JMenuItem("Remove F95zone"));
-		games.addSeparator();
-		games.add(saveFileToDifferent = new JMenuItem("Save file copy"));
-		games.add(refreshTable = new JMenuItem("Refresh table"));
-		games.add(refreshFromAPI = new JMenuItem("API refresh"));
-		
-
-		mb.add(search = new JMenu("Search"));
-		search.add(searchById = new JMenuItem("Search by ID"));
-		search.add(searchByName = new JMenuItem("Search by name"));
-		search.add(searchByDeveloper = new JMenuItem("Search by developer"));
-		searchById.addActionListener(this);
-		searchByName.addActionListener(this);
-		searchByDeveloper.addActionListener(this);
-
-		mb.add(settings = new JMenu("Settings"));
-		settings.add(show = new JMenu("Shown informations"));
-		show.add(showSite = new JCheckBoxMenuItem("Site", boolColumns[0]));
-		show.add(showID = new JCheckBoxMenuItem("ID", boolColumns[1]));
-		show.add(showName = new JCheckBoxMenuItem("Name", boolColumns[2]));
-		show.add(showDeveloper = new JCheckBoxMenuItem("Developer", boolColumns[3]));
-		show.add(showPlayedVersion = new JCheckBoxMenuItem("Played version", boolColumns[4]));
-		show.add(showLastTimeplay = new JCheckBoxMenuItem("Last time play", boolColumns[5]));
-		show.add(showRated = new JCheckBoxMenuItem("Rated", boolColumns[6]));
-		show.add(showNewestVersion = new JCheckBoxMenuItem("Newest version", boolColumns[7]));
-		show.add(showDateOfLastUpdate = new JCheckBoxMenuItem("Last update", boolColumns[8]));
-		show.add(showPeopleRating = new JCheckBoxMenuItem("People rating", boolColumns[9]));
-		show.add(showhowFarUserPlayed = new JCheckBoxMenuItem("Player progress", boolColumns[10]));
-		show.add(showDeletedFromPc = new JCheckBoxMenuItem("Still on pc?", boolColumns[11]));
-		show.add(showEngine = new JCheckBoxMenuItem("Engine", boolColumns[12]));
-		show.add(showOS = new JCheckBoxMenuItem("OS", boolColumns[13]));
-		show.add(ShowSelfNote = new JCheckBoxMenuItem("Personal Notes", boolColumns[14]));
-
-		settings.addSeparator();
-		settings.add(darkMode = new JCheckBoxMenuItem("Dark mode", boolSettings[0]));
-		settings.addSeparator();
-		settings.add(autoFetchNews = new JCheckBoxMenuItem("Auto fetch game info", boolSettings[1]));
-
-		mb.add(help = new JMenu("Other"));
-		help.add(faq = new JMenuItem("FAQ"));
-		help.add(credits = new JMenuItem("Credits"));
-		mb.add(exit = new JMenuItem("Exit"));
-
-		addGame.addActionListener(this); updateList.addActionListener(this);
-		removeGame.addActionListener(this); addF95zone.addActionListener(this);
-		updateF95.addActionListener(this); removeF95.addActionListener(this);
-		saveFileToDifferent.addActionListener(this); refreshTable.addActionListener(this);
-		refreshFromAPI.addActionListener(this);
-
-		showSite.addActionListener(this); showID.addActionListener(this);
-		showName.addActionListener(this); showDeveloper.addActionListener(this);
-		showPlayedVersion.addActionListener(this); showLastTimeplay.addActionListener(this);
-		showRated.addActionListener(this); showNewestVersion.addActionListener(this);
-		showDateOfLastUpdate.addActionListener(this); showPeopleRating.addActionListener(this);
-		showhowFarUserPlayed.addActionListener(this); showDeletedFromPc.addActionListener(this);
-		showEngine.addActionListener(this); showOS.addActionListener(this);
-		ShowSelfNote.addActionListener(this); 
-
-		darkMode.addActionListener(this); autoFetchNews.addActionListener(this);
-
-		faq.addActionListener(this); credits.addActionListener(this);
-		exit.addActionListener(this);
-
-		table = new JTable();
-		refreshTable();
-		table.setBounds(30, 40, 200, 300);
-		setColumns();
-		/*
-		table.setAutoCreateRowSorter(true);
-		table.getRowSorter().addRowSorterListener((RowSorterListener) new RowSorterListener() {
-			@Override
-			public void sorterChanged(javax.swing.event.RowSorterEvent e) {
-				refreshTable();
-			}
-		});
-		*/
-		setLayout(new BorderLayout());
-		add(table.getTableHeader(), BorderLayout.PAGE_START);
-		add(table, BorderLayout.CENTER);
-
-		pane = new JScrollPane(table);
-        add(pane, BorderLayout.CENTER);
-
-		WindowRefresh();
-		setVisible(true);
-	}
-
-	private static void setColumns(){
-		Boolean[] boolColumns = loadSettingsFromXml.loadBooleanSettings("showncolumns");
-		Integer[] ind = new Integer[boolColumns.length];
-		Integer counter = 0;
-		for (int i = 0; i < boolColumns.length; i++) { ind[i] = -1; }
-		for (int i = 0; i < boolColumns.length; i++) { 
-			if (boolColumns[i]) {
-				ind[i] = counter; 
-				counter++;
-			} else {
-				ind[i] = -1;
-			} 
-		}
-
-		Integer[] ind2 = new Integer[]{
-			5,	// dl - dlsite / f95 - f95zone / man - manually added
-			20,	// id
-			240,// name
-			90,	// developer
-			65,	// played version
-			50,	// last time play
-			40,	// rated 
-			70,	// newest version
-			50,	// last update
-			60,	// people rating
-			65,	// player progress
-			35,	// still on pc? 
-			60,	// engine
-			100,// os
-			100	// personal notes
-		};
-
-		for (int i = 0; i < ind.length; i++) {
-			if (boolColumns[i]) { 
-				table.getColumnModel().getColumn(ind[i]).setPreferredWidth(ind2[i]); 
-			}
-		}
-	}
-
-	public static void refreshTable(){saveLoadDoc.reloadTable(table); setColumns();}
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		//System.out.println(e);
-		String gac = e.getActionCommand();
-		main.checksFile.checkMissingDatabase();
-		main.checksFile.checkSettingsFolder();
-		switch (gac) {
-			// TODO language file
-			case "Add game": addGameToFile.addOneGameToFile(); break;
-			case "Update game": updateGameManually.updateOneGameFromToFile(); break;
-			case "Remove game": removeGameFromFile.removeOneGameFromFile("man"); break;
-			case "Add from F95zone": addFromSite.addFromF95(); break;
-			case "Update F95zone": updateFromSite.updatef95game(); break;
-			case "Remove F95zone": removeGameFromFile.removeOneGameFromFile("f95"); break;
-
-			case "Save file copy": otherButtonsThingies.saveFileCopy();	break;
-			case "Refresh table": refreshTable(); setColumns(); break;
-			case "API refresh":  _initSiteFetch.fetchInfoAskConfirm(); break;
-
-			case "Search by ID": searchButton.searchById(); break;
-			case "Search by name": searchButton.searchByName(); break;
-			case "Search by developer": searchButton.searchByDeveloper(); break;
-
-			case "Site": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "ID": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "Name": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "Developer": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "Played version": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "Last time play": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "Rated": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "Newest version": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "Last update": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "People rating": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "Player progress": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "Still on pc?": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "Engine": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "OS": settingsManager.xmlSettings("showncolumns", gac); break;
-			case "Personal Notes": settingsManager.xmlSettings("showncolumns", gac); break;
-
-			case "Dark mode": settingsManager.xmlSettings("othersettings", gac); WindowRefresh(); refreshTable(); break;
-			case "Auto fetch game info": settingsManager.xmlSettings("othersettings", gac); break;
-
-			case "FAQ": otherButtonsThingies.FACKQU(); break;
-			case "Credits": otherButtonsThingies.money(); break;
-			case "Exit": otherButtonsThingies.sureAboutExit(); break;
-			default: JOptionPane.showMessageDialog(null, "Error, this should never happen!!! (_initFrame)", "Error", JOptionPane.ERROR_MESSAGE); break;
 		}
 	}
 }

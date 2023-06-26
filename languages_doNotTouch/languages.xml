@@ -23,7 +23,23 @@
 		<basic>has been updated.</basic> <!-- {game} hase been updated.-->
 		<basic>was not updated.</basic>
 		<basic>Enter the id of the game you want to update.</basic>
-		<basic>Should be impossible.</basic>
+		<basic>Error! This should be impossible!!!</basic>
+
+		<tablec>Site</tablec> <!-- 0 -->
+		<tablec>ID</tablec>
+		<tablec>Name</tablec>
+		<tablec>Developer</tablec>
+		<tablec>Played version</tablec>
+		<tablec>Last time play</tablec>
+		<tablec>Rated</tablec>
+		<tablec>Newest version</tablec>
+		<tablec>Last update</tablec>
+		<tablec>People rating</tablec>
+		<tablec>Player progress</tablec>
+		<tablec>Still on pc?</tablec>
+		<tablec>Engine</tablec>
+		<tablec>OS</tablec>
+		<tablec>Personal Notes</tablec> <!-- 14 -->
 
 		<!-- f95WebsiteHandle folder-->
 		<f95Fol>This will go through all games and check if there is new update. \nAre you sure?</f95Fol>
@@ -39,11 +55,35 @@
 		<mainFol>Settings updated</mainFol>
 
 
-
-
 		<!-- windowJframe folder-->
-		<winFol>Test win</winFol>
-		<winFol>Test win2</winFol>
+		<buttons>Games</buttons> <!-- 0 -->
+		<buttons>Search</buttons>
+		<buttons>Settings</buttons>
+		<buttons>Shown informations</buttons>
+		<buttons>Language</buttons> <!-- TO IMPLEMENT -->
+		<buttons>Other</buttons>
+		<buttons>FAQ</buttons>
+		<buttons>Credits</buttons>
+		<buttons>Exit</buttons> <!-- 8 -->
+		<buttons>Add F95zone</buttons>
+		<buttons>Update F95zone</buttons>
+		<buttons>Remove F95zone</buttons>
+		<buttons>Save file copy</buttons>
+		<buttons>Refresh table</buttons>
+		<buttons>API refresh</buttons>
+		<buttons>Search by ID</buttons>
+		<buttons>Search by name</buttons>
+		<buttons>Search by developer</buttons> 
+		<buttons>Dark mode</buttons>
+		<buttons>Auto fetch game info</buttons> <!-- 19 -->
+
+		<winFol>Hentai Game Database</winFol>
+
+
+
+
+
+
 		<!-- xmlFolderHandle folder-->
 		<xmlFol>Test xml</xmlFol>
 		<xmlFol>Test xml2</xmlFol>
@@ -55,6 +95,22 @@
 		<base>Játék frissítés</base>
 		<base>Játék törlése</base>
 
+		<tablec>Oldal</tablec>
+		<tablec>ID</tablec>
+		<tablec>Név</tablec>
+		<tablec>Fejlesztő</tablec>
+		<tablec>Játszott verzió</tablec>
+		<tablec>Utoljára játszott</tablec>
+		<tablec>Értékelés</tablec>
+		<tablec>Legújabb verzió</tablec>
+		<tablec>Utolsó fejlesztés</tablec>
+		<tablec>Publik értékelés</tablec>
+		<tablec>Haladás</tablec>
+		<tablec>Még mindig PCn?</tablec>
+		<tablec>Motor</tablec>
+		<tablec>OS</tablec>
+		<tablec>Jegyzetek</tablec>
+
 		<basic>Meg kell adnod egy id-t.</basic>
 		<basic>nem létezik.</basic> <!-- {ID} doesn't exists.-->
 		<basic>hozzá lett adva.</basic> <!-- {game} hase been added.-->
@@ -62,7 +118,7 @@
 		<basic>információ frissítve.</basic> <!-- {game} hase been updated.-->
 		<basic>nem lett frissítve.</basic>
 		<basic>Írd be a játék id-jét amit frissíteni szeretnél.</basic>
-		<basic>Lehetetlen. Ezt hogy?</basic>
+		<basic>Hiba! Lehetetlen kéne hogy ez legyen.</basic>
 
 		<!-- f95WebsiteHandle folder-->
 		<f95Fol>Ez végigmegy az összes játékon, és ellenőrzi, hogy van-e új frissítés.\nBiztos vagy benne?</f95Fol>
@@ -77,12 +133,34 @@
 		<mainFol>Beállítások frissítve lettek. \nKérlek indítsad újra a programot, hogy biztos minden rendben legyen.</mainFol>
 		<mainFol>Beállítások frissítése</mainFol>
 
-
-
-
 		<!-- windowJframe folder-->
-		<winFol>Test win</winFol>
-		<winFol>Test win2</winFol>
+		<buttons>Játékok</buttons> <!-- 1 -->
+		<buttons>Keresés</buttons>
+		<buttons>Beállítások</buttons>
+		<buttons>Mutatandó infó</buttons>
+		<buttons>Nyelv</buttons> <!-- TO IMPLEMENT -->
+		<buttons>Egyébb</buttons>
+		<buttons>GYAK</buttons>
+		<buttons>Kredit</buttons>
+		<buttons>Kilép</buttons> <!-- 9 -->
+		<buttons>Hozzáad F95zone</buttons>
+		<buttons>Frissít F95zone</buttons>
+		<buttons>Töröl F95zone</buttons>
+		<buttons>Másolat mentés</buttons>
+		<buttons>Tábla frissítés</buttons>
+		<buttons>API frissít</buttons>
+		<buttons>ID keresés</buttons>
+		<buttons>Név keresés</buttons>
+		<buttons>Fejlesztő keresés</buttons> 
+		<buttons>Sötét mód</buttons>
+		<buttons>Auto játék infó frissítés</buttons> <!-- 20 -->
+
+		<winFol>Felnőtt játék menedzser</winFol>
+
+
+
+
+
 		<!-- xmlFolderHandle folder-->
 		<xmlFol>Test xml</xmlFol>
 		<xmlFol>Test xml2</xmlFol>

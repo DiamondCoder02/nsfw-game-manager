@@ -22,7 +22,7 @@ import xmlFolderHandle.isIDInDatabase;
 import xmlFolderHandle.saveLoadDoc;
 
 public class updateFromSite {
-	static String[] lf = langLoad.f95Fol, bc = langLoad.basic, bs = langLoad.base;
+	static String[] bc = langLoad.basic, bs = langLoad.base;
 	public static void updatef95game(){
 		JPanel panel = new JPanel(new GridLayout(10*2, 0));
 		String idValue = JOptionPane.showInputDialog(null, bc[6]!=null?bc[6]:"Enter the id of the game you want to update", bs[3]!=null?bs[3]:"Update game", JOptionPane.PLAIN_MESSAGE);

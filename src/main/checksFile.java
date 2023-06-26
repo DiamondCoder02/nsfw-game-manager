@@ -16,10 +16,11 @@ public class checksFile {
 			new File(System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager").mkdirs();
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error creating main folder(s)!", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error creating main folder(s)! (checksFile.checks)", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		if (checkSettingsFolder()) {checkMissingSetting.checkSettings();}
 		// TODO checkLanguage();
+		langLoad.loadLanguages();
 		checkMissingDatabase();
 		checkPics();
 	}
@@ -62,7 +63,7 @@ public class checksFile {
 			}
 		}
 		if (!unableToDownload.equals("")) {
-			JOptionPane.showMessageDialog(null, "Error downloading image(s):\n" + unableToDownload, "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error downloading image(s):\n" + unableToDownload + "\n>.< (checksFile.checkPics)", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -80,7 +81,7 @@ public class checksFile {
 			in.close();
 			fos.close();
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Unable to download the language files", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Unable to download the language files (checksFile.checkLanguage)", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

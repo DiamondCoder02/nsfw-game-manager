@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import org.w3c.dom.Document;
 
 public class checkMissingSetting {
+	static String[] mf = langLoad.mainFol, bc = langLoad.basic, bs = langLoad.base;
 	public static void checkSettings() {
 		String[] settings = {"othersettings", "language", "showncolumns"};
 		String[] othersettings = {"Dark mode", "Auto fetch game info"};
@@ -38,17 +39,18 @@ public class checkMissingSetting {
 							case "othersettings": otSe = checkings(setting, othersettings, dom, "othersettings"); break;
 							case "language": laSe = checkings(setting, language, dom, "language"); break;
 							case "showncolumns": shCo = checkings(setting, showncolumns, dom, "showncolumns"); break;
-							default: JOptionPane.showMessageDialog(null, "Should be impossible" + "checkMissingSetting", "Error", JOptionPane.ERROR_MESSAGE); break;
+							default: JOptionPane.showMessageDialog(null, bc[7]!=null?bc[7]:"Should be impossible" + "checkMissingSetting", bs[1]!=null?bs[1]:"Error", JOptionPane.ERROR_MESSAGE); break;
 						}
 					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				JOptionPane.showMessageDialog(null, "Error checking settings." + "(checkMissingSetting.checkSettings)", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, mf[0]!=null?mf[0]:"Error checking settings." + "(checkMissingSetting.checkSettings)", bs[1]!=null?bs[1]:"Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		if (otSe || laSe || shCo) {
-			JOptionPane.showMessageDialog(null, "Settings got updated. \nPlease restart the program to make sure everything is correct.", "Settings updated", JOptionPane.INFORMATION_MESSAGE);
+			String text = mf[1]!=null?mf[1]:"Settings got updated. \nPlease restart the program to make sure everything is correct.";
+			JOptionPane.showMessageDialog(null, text, mf[2]!=null?mf[2]:"Settings updated", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 

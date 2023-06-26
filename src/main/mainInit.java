@@ -15,7 +15,6 @@ public class mainInit {
 	public static String databasePath = checksFile.mainPath + "hentai.xml";
 	public static void main(String[] args) {
 		checksFile.checks();
-		langLoad.loadLanguages();
 
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 		String[] strColumnNames = loadSettingsFromXml.loadStringSettings("showncolumns");

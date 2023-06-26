@@ -18,31 +18,29 @@
 
 		<basic>You must enter an id.</basic>
 		<basic>doesn't exists.</basic> <!-- {ID} doesn't exists.-->
-
 		<basic>has been added.</basic> <!-- {game} hase been added.-->
 		<basic>Do you want to add another game?</basic>
-
 		<basic>has been updated.</basic> <!-- {game} hase been updated.-->
 		<basic>was not updated.</basic>
 		<basic>Enter the id of the game you want to update.</basic>
+		<basic>Should be impossible.</basic>
 
 		<!-- f95WebsiteHandle folder-->
 		<f95Fol>This will go through all games and check if there is new update. \nAre you sure?</f95Fol>
 		<f95Fol>Checking games...</f95Fol>
 		<f95Fol>All game infos got updated!</f95Fol>
-
 		<f95Fol>Enter the id of the game you want to add, from f95zone website.</f95Fol>
 		<f95Fol>The id you entered is already in the F95zone database.</f95Fol>
-
 		<f95Fol>Error while loading the site.</f95Fol>
 
-
-
 		<!-- main folder-->
-		<mainFol>Should be impossible</mainFol>
 		<mainFol>Error checking settings.</mainFol>
-		<mainFol>Settings got updated.</mainFol>
-		<mainFol>Please restart the program to make sure everything is correct.</mainFol>
+		<mainFol>Settings got updated. \nPlease restart the program to make sure everything is correct.</mainFol>
+		<mainFol>Settings updated</mainFol>
+
+
+
+
 		<!-- windowJframe folder-->
 		<winFol>Test win</winFol>
 		<winFol>Test win2</winFol>
@@ -59,28 +57,29 @@
 
 		<basic>Meg kell adnod egy id-t.</basic>
 		<basic>nem létezik.</basic> <!-- {ID} doesn't exists.-->
-
 		<basic>hozzá lett adva.</basic> <!-- {game} hase been added.-->
 		<basic>Szeretnél még egy játékot hozzá adni?</basic>
-
 		<basic>információ frissítve.</basic> <!-- {game} hase been updated.-->
 		<basic>nem lett frissítve.</basic>
 		<basic>Írd be a játék id-jét amit frissíteni szeretnél.</basic>
+		<basic>Lehetetlen. Ezt hogy?</basic>
 
 		<!-- f95WebsiteHandle folder-->
 		<f95Fol>Ez végigmegy az összes játékon, és ellenőrzi, hogy van-e új frissítés.\nBiztos vagy benne?</f95Fol>
 		<f95Fol>Játékok ellenőrzése...</f95Fol>
 		<f95Fol>Minden játék információ frissítve lett!</f95Fol>
-
 		<f95Fol>Írd be a játék id-jét amit hozzá szeretnél adni, a f95zone oldaláról.</f95Fol>
 		<f95Fol>Az ID ami meg lett adva már benne van az adatbázisban.</f95Fol>
-
 		<f95Fol>Hiba az oldal töltése közben.</f95Fol>
+
 		<!-- main folder-->
-		<mainFol>Lehetetlen. Ezt hogy?</mainFol>
 		<mainFol>Hiba beállítások ellenőrzéskor.</mainFol>
-		<mainFol>Beállítások frissítve lettek.</mainFol>
-		<mainFol>Kérlek indítsad újra a programot, hogy biztos minden rendben legyen.</mainFol>
+		<mainFol>Beállítások frissítve lettek. \nKérlek indítsad újra a programot, hogy biztos minden rendben legyen.</mainFol>
+		<mainFol>Beállítások frissítése</mainFol>
+
+
+
+
 		<!-- windowJframe folder-->
 		<winFol>Test win</winFol>
 		<winFol>Test win2</winFol>

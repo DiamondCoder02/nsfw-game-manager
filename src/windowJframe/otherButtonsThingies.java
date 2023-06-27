@@ -11,15 +11,17 @@ import javax.swing.JOptionPane;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 
+import main.langLoad;
 import main.mainInit;
 import xmlFolderHandle.saveLoadDoc;
 
 public class otherButtonsThingies {
 	private static String br = "<br>";
+	static String[] btn = langLoad.buton, fld = langLoad.folder;
 	public static void saveFileCopy(){
 		JFileChooser chooser = new JFileChooser(); 
 		chooser.setCurrentDirectory(new java.io.File("."));
-		chooser.setDialogTitle("Save file copy");
+		chooser.setDialogTitle(fld[18]!=null?fld[18]:"Save file copy");
 		chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		chooser.setAcceptAllFileFilterUsed(false);
 		
@@ -29,7 +31,7 @@ public class otherButtonsThingies {
 			saveLoadDoc.saveDocument(saveLoadDoc.loadDocument(mainInit.databasePath), path);
 		}
 		else {
-			System.out.println("No Selection ");
+			System.out.println("No Selection.");
 			return;
 		}
 	}
@@ -40,10 +42,10 @@ public class otherButtonsThingies {
 		if (boolSettings[0]) { color = "white"; } else { color = "black"; }
 		JEditorPane ep = new JEditorPane();
 		ep.setContentType("text/html");
-		ep.setText("<p style=\"font-family: Arial\"><span style=\"color:"+color+"\">FAQ"+br+br+
+		ep.setText("<p style=\"font-family: Arial\"><span style=\"color:"+color+"\">"+fld[19]!=null?fld[19]:"FAQ"+br+br+
 		"Q: What is this?"+br+"A: A simple excel like hentai game manager."+br+br+
 		"Q: Why this exist?"+br+"A: Because I had enough managing my games in an excel table and wanted something better."+br+br+
-		"Q: Where the data is stored?"+br+"A: Everything is saved at: C:\\Users\\{name}\\AppData\\Roaming\\DiamondCoder\\nsfwGameManager\\hentai.xml"+br+
+		"Q: Where the data is stored?"+br+"A: Everything is saved at:"+" C:\\Users\\{name}\\AppData\\Roaming\\DiamondCoder\\nsfwGameManager\\hentai.xml"+br+
 		"You can also save a copy under \"Games\" => \"Save file copy\" button. (This does not change where it continues to save.)"+br+br+
 		"Q: Features?"+br+"A: -----*Currently:*-----"+br+
 		"- Add, store, update, remove game infos manually"+br+
@@ -55,9 +57,9 @@ public class otherButtonsThingies {
 		"- Sorting"+br+
 		"- Dlsite so only ID needed"+br+
 		"- (Far future) If I can, I will also add to download/detect what games are downloaded"+br+br+
-		"Q: Support the project?"+br+"A: Patreon: <font color = 64AFFF><a href=\"https://www.patreon.com/DiamondCoder\">https://www.patreon.com/DiamondCoder</a></font>"+br+
-		"or on Github: <font color = 64AFFF><a href=\"https://github.com/sponsors/DiamondPRO02\">https://github.com/sponsors/DiamondPRO02</a></font>"+br+br+
-		"Q: Can I help code / Error in the program?"+br+"A: All isssue and help is accepted on github: <font color = 64AFFF><a href=\"https://github.com/DiamondPRO02/nsfw-game-manager\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font>"+br+br+
+		"Q: Support the project?"+br+"A: Patreon:"+" <font color = 64AFFF><a href=\"https://www.patreon.com/DiamondCoder\">https://www.patreon.com/DiamondCoder</a></font>"+br+
+		"or on Github:"+" <font color = 64AFFF><a href=\"https://github.com/sponsors/DiamondPRO02\">https://github.com/sponsors/DiamondPRO02</a></font>"+br+br+
+		"Q: Can I help code / Error in the program?"+br+"A: All isssue and help is accepted on github:"+" <font color = 64AFFF><a href=\"https://github.com/DiamondPRO02/nsfw-game-manager\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font>"+br+br+
 		"Q: placeholder?"+br+"A: placeholder!"+
 		"</span></p>");
 		ep.addHyperlinkListener(new HyperlinkListener() {
@@ -75,7 +77,7 @@ public class otherButtonsThingies {
 		});
 		ep.setEditable(false);
 		ep.setOpaque(boolSettings[0] ? false : true);
-		JOptionPane.showMessageDialog(null, ep, "Frequently Asked Questions", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, ep, fld[19]!=null?fld[19]:"Frequently Asked Questions", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public static void money(){
@@ -93,14 +95,14 @@ public class otherButtonsThingies {
 		ep.setContentType("text/html");
 		Font font = new Font("Arial", Font.PLAIN, 20);
 		ep.setFont(font);
-		ep.setText("<p style=\"font-family: Arial\"><span style=\"color:"+color+"\">Credits"+br+br+
+		ep.setText("<p style=\"font-family: Arial\"><span style=\"color:"+color+"\">"+btn[7]!=null?btn[7]:"Credits"+br+br+
 		"Hi, I'm Diamond."+br+
 		"This is a small project after learning Java in university."+br+
 		"The main of this was to convert my old excel file into something more readeble."+br+
 		"Main focus is something dynamic and easy to use for hentai games."+br+br+
 		"Thank you for using this program."+br+br+
-		"Full open source: <font color = 64AFFF><a href=\"https://github.com/DiamondPRO02/nsfw-game-manager\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font>"+br+
-		"Support me on Github or on Patreon: <font color = 64AFFF><a href=\"https://www.patreon.com/DiamondCoder\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font></span></p>"+br);
+		"Full open source:"+" <font color = 64AFFF><a href=\"https://github.com/DiamondPRO02/nsfw-game-manager\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font>"+br+
+		"Support me on Github or on Patreon:"+" <font color = 64AFFF><a href=\"https://www.patreon.com/DiamondCoder\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font></span></p>"+br);
 		ep.addHyperlinkListener(new HyperlinkListener() {
 			@Override
 			public void hyperlinkUpdate(HyperlinkEvent e) {
@@ -116,11 +118,11 @@ public class otherButtonsThingies {
 		});
 		ep.setEditable(false);
 		ep.setOpaque(boolSettings[0] ? false : true);
-		JOptionPane.showMessageDialog(null, ep, "Credit", JOptionPane.INFORMATION_MESSAGE, icon);
+		JOptionPane.showMessageDialog(null, ep, btn[7]!=null?btn[7]:"Credit", JOptionPane.INFORMATION_MESSAGE, icon);
 	}
 
 	public static void sureAboutExit(){
-		int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit?", "Exit", JOptionPane.OK_CANCEL_OPTION);
+		int option = JOptionPane.showConfirmDialog(null, fld[20]!=null?fld[20]:"Are you sure you want to exit?", btn[8]!=null?btn[8]:"Exit", JOptionPane.OK_CANCEL_OPTION);
 		if (option == JOptionPane.OK_OPTION) {
 			System.exit(0);
 		}

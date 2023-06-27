@@ -109,6 +109,9 @@
 		<folders>has been removed.</folders>
 		<folders>Cancelled deleting.</folders>
 		<folders>Do you want to delete another game?</folders> <!-- 17 -->
+		<folders>Save copy of the file</folders>
+		<folders>Frequently Asked Questions</folders>
+		<folders>Are you sure you want to exit?</folders>
 
 		<!-- Search -->
 		<search>Search by ID</search> <!-- 0 -->
@@ -225,6 +228,9 @@
 		<folders>törölve lett.</folders>
 		<folders>Vissza vonva.</folders>
 		<folders>Szeretne másik játékot törölni?</folders> <!-- 17 -->
+		<folders>Fájl másolat mentése</folders>
+		<folders>Gyakran Ismételt Kérdések</folders>
+		<folders>Biztos ki akarsz lépni?</folders>
 
 		<!-- Search -->
 		<search>Keresés ID alapján</search> <!-- 0 -->

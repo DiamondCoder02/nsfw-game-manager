@@ -13,10 +13,11 @@ import xmlFolderHandle.saveLoadDoc;
 public class langLoad {
 	static String path = checksFile.mainPath + "languages.xml";
 	static String language = loadSettingsFromXml.loadStringSettings("language")[0];
-	private static String[] fol = {"base", "basic", "tablec", "JLabPan", "JRadBut", "buttons", "folders"};
+	private static String[] fol = {"base", "basic", "tablec", "JLabPan", "JRadBut", "buttons", "folders", "search"};
 	private static String[] tempBase = new String[30], tempBasic = new String[30], tempTabl = new String[30], 
-	tempjLaPa = new String[30], tempjRaBu = new String[30], tempbuton = new String[30], tempFold = new String[30];
-	public static String[] base, basic, tabl, jlapa, jrabu, buton, folder;
+	tempjLaPa = new String[30], tempjRaBu = new String[30], tempbuton = new String[30], tempFold = new String[30],
+	tempSear = new String[30];
+	public static String[] base, basic, tabl, jlapa, jrabu, buton, folder, serc;
 
 	public static void loadLanguages(){
 		Document dom = saveLoadDoc.loadDocument(path);
@@ -52,6 +53,7 @@ public class langLoad {
 							case "JRadBut": tempjRaBu = tempAr; break;
 							case "buttons": tempbuton = tempAr; break;
 							case "folders": tempFold = tempAr; break;
+							case "search": tempSear = tempAr; break;
 						}
 					}
 				}
@@ -63,6 +65,7 @@ public class langLoad {
 			jrabu = tempjRaBu;
 			buton = tempbuton;
 			folder = tempFold;
+			serc = tempSear;
 		} catch (Exception e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Error loading settings file (loadOther)", "Error", JOptionPane.ERROR_MESSAGE);

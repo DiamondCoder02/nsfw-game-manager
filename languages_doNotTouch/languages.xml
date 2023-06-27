@@ -109,6 +109,20 @@
 		<folders>has been removed.</folders>
 		<folders>Cancelled deleting.</folders>
 		<folders>Do you want to delete another game?</folders> <!-- 17 -->
+
+		<!-- Search -->
+		<search>Search by ID</search> <!-- 0 -->
+		<search>Search by Name</search>
+		<search>Search by Developer</search>
+		<search>ID of the game to search:</search>
+		<search>Name of the game to search:</search>
+		<search>Developer of the game to search:</search>
+		<search>Name is required:</search>
+		<search>Developer is required:</search> <!-- 7 -->
+		<search>Game was not found!!!</search>
+		<search>Maybe try searching by other ways?</search>
+		<search>You can search by ID, name and developer too!</search>
+		<search>Found game(s):</search> <!-- 11 -->
 	</english>
 	<hungarian>
 		<base>Siker</base>
@@ -201,7 +215,7 @@
 		<folders>Beállítások frissítve lettek. \nKérlek indítsad újra a programot, hogy biztos minden rendben legyen.</folders>
 		<folders>Beállítások frissítése</folders>
 		<!-- windowJframe folder -->
-		<folders>Hentai játék menedzser</folders> <!-- Felnőt játék menedzser -->
+		<folders>Hentai játék adatbázis</folders> <!-- Felnőt játék menedzser / Hentai játék adatbázis -->
 		<!-- foldersderHandle folder-->
 		<folders>Hiba beállítások betöltésekor</folders>
 		<folders>Hiba adatbázis betöltésekor</folders>
@@ -210,6 +224,20 @@
 		<folders>törölve lesz. Biztos benne?</folders>
 		<folders>törölve lett.</folders>
 		<folders>Vissza vonva.</folders>
-		<folders>Szeretne másik játékot törölni?</folders>
+		<folders>Szeretne másik játékot törölni?</folders> <!-- 17 -->
+
+		<!-- Search -->
+		<search>Keresés ID alapján</search> <!-- 0 -->
+		<search>Keresés név alapján</search>
+		<search>Keresés fejlesztő alapján</search>
+		<search>ID-je a keresett játéknak:</search>
+		<search>Neve a keresett játéknak:</search>
+		<search>Fejlesztője a keresett játéknak:</search>
+		<search>Név kötelező:</search>
+		<search>Fejlesztő kötelező:</search> <!-- 7 -->
+		<search>Nem talált ilyen játék!!!</search>
+		<search>Talán másképpen megvan a játék?</search>
+		<search>Lehet keresni ID, név és fejlesztő alapján is!</search>
+		<search>Talált játék(ok):</search> <!-- 11 -->
 	</hungarian>
 </lang>

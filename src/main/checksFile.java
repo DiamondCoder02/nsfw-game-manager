@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 public class checksFile {
 	public static String mainPath = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager/";
 	public static void checks() {
+		try{langLoad.loadLanguages();} catch (Exception e) { System.out.println("Error loading languages! (checksFile.checks)"); }
 		try {
 			new File(System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager").mkdirs();
 		} catch (Exception e) {

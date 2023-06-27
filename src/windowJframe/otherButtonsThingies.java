@@ -42,7 +42,7 @@ public class otherButtonsThingies {
 		if (boolSettings[0]) { color = "white"; } else { color = "black"; }
 		JEditorPane ep = new JEditorPane();
 		ep.setContentType("text/html");
-		ep.setText("<p style=\"font-family: Arial\"><span style=\"color:"+color+"\">"+fld[19]!=null?fld[19]:"FAQ"+br+br+
+		ep.setText("<p style=\"font-family: Arial\"><span style=\"color:"+color+"\">"+(fld[19]!=null?fld[19]:"FAQ")+br+br+
 		"Q: What is this?"+br+"A: A simple excel like hentai game manager."+br+br+
 		"Q: Why this exist?"+br+"A: Because I had enough managing my games in an excel table and wanted something better."+br+br+
 		"Q: Where the data is stored?"+br+"A: Everything is saved at:"+" C:\\Users\\{name}\\AppData\\Roaming\\DiamondCoder\\nsfwGameManager\\hentai.xml"+br+
@@ -95,7 +95,7 @@ public class otherButtonsThingies {
 		ep.setContentType("text/html");
 		Font font = new Font("Arial", Font.PLAIN, 20);
 		ep.setFont(font);
-		ep.setText("<p style=\"font-family: Arial\"><span style=\"color:"+color+"\">"+btn[7]!=null?btn[7]:"Credits"+br+br+
+		ep.setText("<p style=\"font-family: Arial\"><span style=\"color:"+color+"\">"+(btn[7]!=null?btn[7]:"Credits")+br+br+
 		"Hi, I'm Diamond."+br+
 		"This is a small project after learning Java in university."+br+
 		"The main of this was to convert my old excel file into something more readeble."+br+

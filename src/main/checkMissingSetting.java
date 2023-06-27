@@ -49,8 +49,7 @@ public class checkMissingSetting {
 			}
 		}
 		if (otSe || laSe || shCo) {
-			String text = mf[7]!=null?mf[7]:"Settings got updated. \nPlease restart the program to make sure everything is correct.";
-			JOptionPane.showMessageDialog(null, text, mf[8]!=null?mf[8]:"Settings updated", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, mf[7]!=null?mf[7]:"Settings got updated. \nPlease restart the program to make sure everything is correct.", mf[8]!=null?mf[8]:"Settings updated", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 
@@ -67,20 +66,37 @@ public class checkMissingSetting {
 
 	private static Boolean checkings(NodeList setting, String[] somethingSettings, Document dom, String settingName){
 		Boolean settingsGotUpdated = false;
+
+		// Check if the setting is missing
 		for (int j = 0; j < somethingSettings.length; j++) {
-			String[] toCheckWith = new String[somethingSettings.length];
-			for (int k = 0; k < setting.getLength(); k++) { toCheckWith[k] = setting.item(k).getTextContent(); }
-			for (int k = 0; k < toCheckWith.length; k++) { if (toCheckWith[k] == null) { toCheckWith[k] = "-"; } }
-			if (!toCheckWith[j].contains(somethingSettings[j])) {
-				if (settingName == "language") {
-					break;
+			for (int k = 0; k < setting.getLength(); k++) {
+				if (setting.item(k).getTextContent() != null) {
+					if (setting.item(k).getTextContent().contains(somethingSettings[j])) {
+						break;
+					} else if (k == setting.getLength() - 1) {
+						if (settingName == "language") {
+							break;
+						}
+						Element newSetting = dom.createElement(settingName);
+						if (somethingSettings[j] == "Auto fetch game info") { newSetting.setAttribute("enabled", "false"); } 
+						else { newSetting.setAttribute("enabled", "true"); }
+						newSetting.appendChild(dom.createTextNode(somethingSettings[j]));
+						dom.getElementsByTagName("settings").item(0).appendChild(newSetting);
+						settingsGotUpdated = true;
+					}
+				} else { 
+					if (k == setting.getLength() - 1) {
+						if (settingName == "language") {
+							break;
+						}
+						Element newSetting = dom.createElement(settingName);
+						if (somethingSettings[j] == "Auto fetch game info") { newSetting.setAttribute("enabled", "false"); } 
+						else { newSetting.setAttribute("enabled", "true"); }
+						newSetting.appendChild(dom.createTextNode(somethingSettings[j]));
+						dom.getElementsByTagName("settings").item(0).appendChild(newSetting);
+						settingsGotUpdated = true;
+					}
 				}
-				Element newSetting = dom.createElement(settingName);
-				if (somethingSettings[j] == "Auto fetch game info") { newSetting.setAttribute("enabled", "false"); } 
-				else { newSetting.setAttribute("enabled", "true"); }
-				newSetting.appendChild(dom.createTextNode(somethingSettings[j]));
-				dom.getElementsByTagName("settings").item(0).appendChild(newSetting);
-				settingsGotUpdated = true;
 			}
 		}
 		xmlFolderHandle.saveLoadDoc.saveDocument(dom, mainInit.settingsPath);

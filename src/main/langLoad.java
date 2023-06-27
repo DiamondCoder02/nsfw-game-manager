@@ -12,7 +12,6 @@ import xmlFolderHandle.saveLoadDoc;
 
 public class langLoad {
 	static String path = checksFile.mainPath + "languages.xml";
-	static String language = loadSettingsFromXml.loadStringSettings("language")[0];
 	private static String[] fol = {"base", "basic", "tablec", "JLabPan", "JRadBut", "buttons", "folders", "search"};
 	private static String[] tempBase = new String[30], tempBasic = new String[30], tempTabl = new String[30], 
 	tempjLaPa = new String[30], tempjRaBu = new String[30], tempbuton = new String[30], tempFold = new String[30],
@@ -20,6 +19,28 @@ public class langLoad {
 	public static String[] base, basic, tabl, jlapa, jrabu, buton, folder, serc;
 
 	public static void loadLanguages(){
+		String language;
+		try{language = loadSettingsFromXml.loadStringSettings("language")[0];} catch (Exception e) {
+			for (int i = 0; i < 30; i++) {
+				tempBase[i] = null;
+				tempBasic[i] = null;
+				tempTabl[i] = null;
+				tempjLaPa[i] = null;
+				tempjRaBu[i] = null;
+				tempbuton[i] = null;
+				tempFold[i] = null;
+				tempSear[i] = null;
+			}
+			base = tempBase;
+			basic = tempBasic;
+			tabl = tempTabl;
+			jlapa = tempjLaPa;
+			jrabu = tempjRaBu;
+			buton = tempbuton;
+			folder = tempFold;
+			serc = tempSear;
+			return;
+		}
 		Document dom = saveLoadDoc.loadDocument(path);
 		try {
 			NodeList langSource = dom.getElementsByTagName("lang");
@@ -33,7 +54,7 @@ public class langLoad {
 					for (int i = 0; i < fol.length; i++) {
 						String[] tempAr = new String[30];
 						NodeList folList = langElement.getElementsByTagName(fol[i]);
-						System.out.println("------------"+fol[i]);
+						// System.out.println("------------"+fol[i]);
 						for (int j = 0; j < folList.getLength(); j++) {
 							Node folNode = folList.item(j);
 							if (folNode.getNodeType() == Node.ELEMENT_NODE) {
@@ -42,7 +63,7 @@ public class langLoad {
 								if (tempAr[j].contains("\\n")) {
 									tempAr[j] = tempAr[j].replace("\\n", "\n");
 								}
-								System.out.println(tempAr[j]);
+								// System.out.println(tempAr[j]);
 							}
 						}
 						switch (fol[i]) {

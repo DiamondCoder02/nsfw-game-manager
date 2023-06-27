@@ -73,7 +73,7 @@ public class saveLoadDoc {
 			}
 		}
 		table.setModel(new JTable(data, columnNames).getModel());
-		getNewRenderedTable(table, tbl[10]);
+		getNewRenderedTable(table, (tbl[10]!=null?tbl[10]:"Player progress"));
 	}
 
 	private static JTable getNewRenderedTable(final JTable table, String playProgColName) {

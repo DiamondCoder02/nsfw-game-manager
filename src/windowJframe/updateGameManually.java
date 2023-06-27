@@ -17,24 +17,26 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import main.langLoad;
 import main.mainInit;
 import xmlFolderHandle.isIDInDatabase;
 import xmlFolderHandle.saveLoadDoc;
 
 public class updateGameManually {
+	static String[] base = langLoad.base, basic = langLoad.basic, jla = langLoad.jlapa, folder = langLoad.folder, jrb = langLoad.jrabu;
 	public static void updateOneGameFromToFile(){
 		JOptionPane optionPane = new JOptionPane();
 		JPanel panel = new JPanel(new GridLayout(14*2, 0));
 		JTextField id = new JTextField();
 		Object[] message = {
-			"ID of the game to update:", id
+			jla[0]!=null?jla[0]:"ID of the game to update:", id
 		};
 		optionPane.setMessage(message);
 		optionPane.setMessageType(JOptionPane.PLAIN_MESSAGE);
-		JDialog dialog = optionPane.createDialog(null, "Update game");
+		JDialog dialog = optionPane.createDialog(null, base[3]!=null?base[3]:"Update game");
 		dialog.setVisible(true);
 		String idValue = id.getText();
-		if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "ID is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
+		if (idValue.equals("")) { JOptionPane.showMessageDialog(null, basic[0]!=null?basic[0]:"ID is required", base[1]!=null?base[1]:"Error", JOptionPane.ERROR_MESSAGE); return; }
 		if (isIDInDatabase.isInDatabase(idValue, "man")) {
 			try{
 				Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
@@ -73,7 +75,7 @@ public class updateGameManually {
 									JTextField newpeople_rated = new JTextField();
 
 									// Not played, In progress, Finish, 100% Finished
-									JRadioButton howFarUserPlayed_NotPlayed = new JRadioButton("Not played"), howFarUserPlayed_Playing = new JRadioButton("In progress"), howFarUserPlayed_Finished = new JRadioButton("Finish"), howFarUserPlayed_100Percent = new JRadioButton("100% Finished");
+									JRadioButton howFarUserPlayed_NotPlayed = new JRadioButton(jrb[0]!=null?jrb[0]:"Not played", true), howFarUserPlayed_Playing = new JRadioButton(jrb[1]!=null?jrb[1]:"In progress", false), howFarUserPlayed_Finished = new JRadioButton(jrb[2]!=null?jrb[2]:"Finish", false), howFarUserPlayed_100Percent = new JRadioButton(jrb[3]!=null?jrb[3]:"100% Finished", false);
 									howFarUserPlayed_NotPlayed.setActionCommand("Not played"); howFarUserPlayed_Playing.setActionCommand("In progress"); howFarUserPlayed_Finished.setActionCommand("Finish"); howFarUserPlayed_100Percent.setActionCommand("100% Finished");
 									ButtonGroup howFarUserPlayed = new ButtonGroup(); howFarUserPlayed.add(howFarUserPlayed_NotPlayed); howFarUserPlayed.add(howFarUserPlayed_Playing); howFarUserPlayed.add(howFarUserPlayed_Finished); howFarUserPlayed.add(howFarUserPlayed_100Percent);
 									JPanel howFarUserPlayedPanel = new JPanel(); howFarUserPlayedPanel.add(howFarUserPlayed_NotPlayed); howFarUserPlayedPanel.add(howFarUserPlayed_Playing); howFarUserPlayedPanel.add(howFarUserPlayed_Finished); howFarUserPlayedPanel.add(howFarUserPlayed_100Percent);
@@ -82,7 +84,7 @@ public class updateGameManually {
 										if (r.getActionCommand().equals(oldhowFarUserPlayed)) { r.setSelected(true); }
 									}
 									// Yes, No, Unknown
-									JRadioButton stillOnPc_yes = new JRadioButton("Yes"), stillOnPc_no = new JRadioButton("No"), stillOnPc_unknown = new JRadioButton("Unknown");
+									JRadioButton stillOnPc_yes = new JRadioButton(jrb[4]!=null?jrb[4]:"Yes", true), stillOnPc_no = new JRadioButton(jrb[5]!=null?jrb[5]:"No", false), stillOnPc_unknown = new JRadioButton(jrb[6]!=null?jrb[6]:"Unknown", false);
 									stillOnPc_yes.setActionCommand("yes"); stillOnPc_no.setActionCommand("no"); stillOnPc_unknown.setActionCommand("unknown");
 									ButtonGroup stillOnPc = new ButtonGroup(); stillOnPc.add(stillOnPc_yes); stillOnPc.add(stillOnPc_no); stillOnPc.add(stillOnPc_unknown);
 									JPanel stillOnPcPanel = new JPanel(); stillOnPcPanel.add(stillOnPc_yes); stillOnPcPanel.add(stillOnPc_no); stillOnPcPanel.add(stillOnPc_unknown);						
@@ -91,7 +93,7 @@ public class updateGameManually {
 										if (r.getActionCommand().equals(oldstillOnPc)) { r.setSelected(true); }
 									}
 									// Flash, HTML, Java, QSP, RenPy, RPGmaker, Unity, Unreal, WinGit, WolfRPG, other/unknown
-									JRadioButton engine_Flash = new JRadioButton("Flash"), engine_HTML = new JRadioButton("HTML"), engine_Java = new JRadioButton("Java"), engine_QSP = new JRadioButton("QSP"), engine_RenPy = new JRadioButton("RenPy"), engine_RPGmaker = new JRadioButton("RPGmaker"), engine_Unity = new JRadioButton("Unity"), engine_Unreal = new JRadioButton("Unreal"), engine_WinGit = new JRadioButton("WinGit"), engine_WolfRPG = new JRadioButton("WolfRPG"), engine_other = new JRadioButton("other/unknown", true);
+									JRadioButton engine_Flash = new JRadioButton("Flash"), engine_HTML = new JRadioButton("HTML"), engine_Java = new JRadioButton("Java"), engine_QSP = new JRadioButton("QSP"), engine_RenPy = new JRadioButton("RenPy"), engine_RPGmaker = new JRadioButton("RPGmaker"), engine_Unity = new JRadioButton("Unity"), engine_Unreal = new JRadioButton("Unreal"), engine_WinGit = new JRadioButton("WinGit"), engine_WolfRPG = new JRadioButton("WolfRPG"), engine_other = new JRadioButton(jrb[7]!=null?jrb[7]:"other/unknown", true);
 									engine_Flash.setActionCommand("Flash"); engine_HTML.setActionCommand("HTML"); engine_Java.setActionCommand("Java"); engine_QSP.setActionCommand("QSP"); engine_RenPy.setActionCommand("RenPy"); engine_RPGmaker.setActionCommand("RPGmaker"); engine_Unity.setActionCommand("Unity"); engine_Unreal.setActionCommand("Unreal"); engine_WinGit.setActionCommand("WinGit"); engine_WolfRPG.setActionCommand("WolfRPG"); engine_other.setActionCommand("other/unknown");
 									ButtonGroup engineGroup = new ButtonGroup(); engineGroup.add(engine_Flash); engineGroup.add(engine_HTML); engineGroup.add(engine_Java); engineGroup.add(engine_QSP); engineGroup.add(engine_RenPy); engineGroup.add(engine_RPGmaker); engineGroup.add(engine_Unity); engineGroup.add(engine_Unreal); engineGroup.add(engine_WinGit); engineGroup.add(engine_WolfRPG); engineGroup.add(engine_other);
 									JPanel enginePanel = new JPanel(); enginePanel.add(engine_Flash); enginePanel.add(engine_HTML); enginePanel.add(engine_Java); enginePanel.add(engine_QSP); enginePanel.add(engine_RenPy); enginePanel.add(engine_RPGmaker); enginePanel.add(engine_Unity); enginePanel.add(engine_Unreal); enginePanel.add(engine_WinGit); enginePanel.add(engine_WolfRPG); enginePanel.add(engine_other);
@@ -100,7 +102,7 @@ public class updateGameManually {
 										if (r.getActionCommand().equals(oldengine)) { r.setSelected(true); }
 									}
 									// Windows, Linux, Mac, Android, other
-									JCheckBox os_win = new JCheckBox("Windows"), os_lin = new JCheckBox("Linux"), os_mac = new JCheckBox("Mac"), os_and = new JCheckBox("Android"), os_other = new JCheckBox("other");
+									JCheckBox os_win = new JCheckBox("Windows"), os_lin = new JCheckBox("Linux"), os_mac = new JCheckBox("Mac"), os_and = new JCheckBox("Android"), os_other = new JCheckBox(jrb[7]!=null?jrb[7]:"other");
 									os_win.setActionCommand("windows"); os_lin.setActionCommand("linux"); os_mac.setActionCommand("mac"); os_and.setActionCommand("android"); os_other.setActionCommand("other");
 									JPanel osPanel = new JPanel(); osPanel.add(os_win); osPanel.add(os_lin); osPanel.add(os_mac); osPanel.add(os_and); osPanel.add(os_other);
 									if (oldos.contains("Windows")) { os_win.setSelected(true); } if (oldos.contains("Linux")) { os_lin.setSelected(true); } if (oldos.contains("Mac")) { os_mac.setSelected(true); } if (oldos.contains("Android")) { os_and.setSelected(true); } if (oldos.contains("other")) { os_other.setSelected(true); }
@@ -112,33 +114,33 @@ public class updateGameManually {
 									enginePanel.setLayout(new BoxLayout(enginePanel, BoxLayout.X_AXIS));
 									osPanel.setLayout(new BoxLayout(osPanel, BoxLayout.X_AXIS));
 
-									JLabel Namelabel = new JLabel("Name: (required)" + " (old: "+oldname+")");
+									JLabel Namelabel = new JLabel(jla[1]!=null?jla[1]:"Name:" + " ("+base[5]!=null?base[5]:"old:"+" "+oldname+")");
 									panel.add(Namelabel); panel.add(newname);
-									JLabel developerlabel = new JLabel("Developer:" + " (old: "+olddeveloper+")");
+									JLabel developerlabel = new JLabel(jla[2]!=null?jla[2]:"Developer:" + " ("+base[5]!=null?base[5]:"old:"+" "+olddeveloper+")");
 									panel.add(developerlabel); panel.add(newdeveloper);
-									JLabel played_versionlabel = new JLabel("Played version:" + " (old: "+oldplayed_version+")");
+									JLabel played_versionlabel = new JLabel(jla[3]!=null?jla[3]:"Played version:" + " ("+base[5]!=null?base[5]:"old:"+" "+oldplayed_version+")");
 									panel.add(played_versionlabel); panel.add(newplayed_version);
-									JLabel dateof_lastplaylabel = new JLabel("Date of last time play:" + " (old: "+olddateof_lastplay+")");
+									JLabel dateof_lastplaylabel = new JLabel(jla[4]!=null?jla[4]:"Date of last time play:" + " ("+base[5]!=null?base[5]:"old:"+" "+olddateof_lastplay+")");
 									panel.add(dateof_lastplaylabel); panel.add(newdateof_lastplay);
-									JLabel user_ratedlabel = new JLabel("Rated:" + " (old: "+olduser_rated+")");
+									JLabel user_ratedlabel = new JLabel(jla[5]!=null?jla[5]:"Rated:" + " ("+base[5]!=null?base[5]:"old:"+" "+olduser_rated+")");
 									panel.add(user_ratedlabel); panel.add(newuser_rated);
-									JLabel newest_versionlabel = new JLabel("Newest version:" + " (old: "+oldnewest_version+")");
+									JLabel newest_versionlabel = new JLabel(jla[6]!=null?jla[6]:"Newest version:" + " ("+base[5]!=null?base[5]:"old:"+" "+oldnewest_version+")");
 									panel.add(newest_versionlabel); panel.add(newnewest_version);
-									JLabel dateOfLastUpdatelabel = new JLabel("Date of last update:" + " (old: "+olddateof_lastupate+")");
+									JLabel dateOfLastUpdatelabel = new JLabel(jla[7]!=null?jla[7]:"Date of last update:" + " ("+base[5]!=null?base[5]:"old:"+" "+olddateof_lastupate+")");
 									panel.add(dateOfLastUpdatelabel); panel.add(newdateof_lastupate);
-									JLabel people_ratedlabel = new JLabel("People rating:" + " (old: "+oldpeople_rated+")");
+									JLabel people_ratedlabel = new JLabel(jla[8]!=null?jla[8]:"People rating:" + " ("+base[5]!=null?base[5]:"old:"+" "+oldpeople_rated+")");
 									panel.add(people_ratedlabel); panel.add(newpeople_rated);
-									JLabel howFarUserPlayedlabel = new JLabel("Player progress:");
+									JLabel howFarUserPlayedlabel = new JLabel(jla[9]!=null?jla[9]:"Player progress:");
 									panel.add(howFarUserPlayedlabel); panel.add(howFarUserPlayedPanel);
-									JLabel stillOnPclabel = new JLabel("Deleted from pc:");
+									JLabel stillOnPclabel = new JLabel(jla[10]!=null?jla[10]:"Deleted from pc:");
 									panel.add(stillOnPclabel); panel.add(stillOnPcPanel);
-									JLabel enginelabel = new JLabel("Engine:");
+									JLabel enginelabel = new JLabel(jla[11]!=null?jla[11]:"Engine:");
 									panel.add(enginelabel); panel.add(enginePanel);
-									JLabel oslabel = new JLabel("OS:");
+									JLabel oslabel = new JLabel(jla[12]!=null?jla[12]:"OS:");
 									panel.add(oslabel); panel.add(osPanel);
-									JLabel selfNotelabel = new JLabel("Self note:" + " (old: "+oldselfNote+")");
+									JLabel selfNotelabel = new JLabel(jla[13]!=null?jla[13]:"Self note:" + " ("+base[5]!=null?base[5]:"old:"+" "+oldselfNote+")");
 									panel.add(selfNotelabel); panel.add(newselfNote);
-									int option = JOptionPane.showConfirmDialog(null, panel, "Update game", JOptionPane.OK_CANCEL_OPTION);
+									int option = JOptionPane.showConfirmDialog(null, panel, base[3]!=null?base[3]:"Update game", JOptionPane.OK_CANCEL_OPTION);
 									if (option == JOptionPane.OK_OPTION) {
 										String newnameValue = newname.getText();
 										String newdeveloperValue = newdeveloper.getText();
@@ -183,10 +185,10 @@ public class updateGameManually {
 										e.getElementsByTagName("selfNote").item(0).setTextContent(newselfNoteValue);
 										saveLoadDoc.saveDocument(dom, mainInit.databasePath);
 										_initFrame.refreshTable();
-										JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" has been updated", "Success", JOptionPane.INFORMATION_MESSAGE);
+										JOptionPane.showMessageDialog(null, newnameValue+", \nId: "+idValue +" "+ basic[4]!=null?basic[4]:"has been updated", base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
 										break;
 									} else {
-										JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" has not been updated", "Success", JOptionPane.INFORMATION_MESSAGE);
+										JOptionPane.showMessageDialog(null, oldname+", \nId: "+idValue +" "+ "was not updated.", base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
 										break;
 									}
 								}
@@ -198,7 +200,7 @@ public class updateGameManually {
 				e.printStackTrace();
 			}
 		} else {
-			JOptionPane.showMessageDialog(null, "Game with *MANUAL* id: "+idValue+" doesn't exists", "Error", JOptionPane.ERROR_MESSAGE); return;
+			JOptionPane.showMessageDialog(null, idValue+" "+folder[13]!=null?folder[13]:"ID is not found between the manually given games", base[1]!=null?base[1]:"Error", JOptionPane.ERROR_MESSAGE); return;
 		}
 	}
 }

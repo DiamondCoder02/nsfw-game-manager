@@ -13,9 +13,10 @@ import xmlFolderHandle.saveLoadDoc;
 public class langLoad {
 	static String path = checksFile.mainPath + "languages.xml";
 	static String language = loadSettingsFromXml.loadStringSettings("language")[0];
-	private static String[] fol = {"base", "basic", "tablec", "buttons", "folders"};
-	private static String[] tempBase = new String[30], tempBasic = new String[30], tempTabl = new String[30], tempbuton = new String[30], tempFold = new String[30];
-	public static String[] base, basic, tabl, buton, folder;
+	private static String[] fol = {"base", "basic", "tablec", "JLabPan", "JRadBut", "buttons", "folders"};
+	private static String[] tempBase = new String[30], tempBasic = new String[30], tempTabl = new String[30], 
+	tempjLaPa = new String[30], tempjRaBu = new String[30], tempbuton = new String[30], tempFold = new String[30];
+	public static String[] base, basic, tabl, jlapa, jrabu, buton, folder;
 
 	public static void loadLanguages(){
 		Document dom = saveLoadDoc.loadDocument(path);
@@ -40,13 +41,15 @@ public class langLoad {
 								if (tempAr[j].contains("\\n")) {
 									tempAr[j] = tempAr[j].replace("\\n", "\n");
 								}
-								// System.out.println(tempAr[j]);
+								System.out.println(tempAr[j]);
 							}
 						}
 						switch (fol[i]) {
 							case "base": tempBase = tempAr; break;
 							case "basic": tempBasic = tempAr; break;
 							case "tablec": tempTabl = tempAr; break;
+							case "JLabPan": tempjLaPa = tempAr; break;
+							case "JRadBut": tempjRaBu = tempAr; break;
 							case "buttons": tempbuton = tempAr; break;
 							case "folders": tempFold = tempAr; break;
 						}
@@ -56,6 +59,8 @@ public class langLoad {
 			base = tempBase;
 			basic = tempBasic;
 			tabl = tempTabl;
+			jlapa = tempjLaPa;
+			jrabu = tempjRaBu;
 			buton = tempbuton;
 			folder = tempFold;
 		} catch (Exception e) {

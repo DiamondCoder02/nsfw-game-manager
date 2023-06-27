@@ -9,25 +9,27 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import main.langLoad;
 import main.mainInit;
 import xmlFolderHandle.isIDInDatabase;
 import xmlFolderHandle.saveLoadDoc;
 
 public class removeGameFromFile {
+	static String[] base = langLoad.base, basic = langLoad.basic, jla = langLoad.jlapa, folder = langLoad.folder, jrb = langLoad.jrabu;
 	public static void removeOneGameFromFile(String fromValue){
 		boolean repeat = true;
 		while (repeat) {
 			JOptionPane optionPane = new JOptionPane();
 			JTextField id = new JTextField();
 			Object[] message = {
-				"ID of the game to remove:", id
+				jla[0]!=null?jla[0]:"ID of the game to remove:", id
 			};
 			optionPane.setMessage(message);
 			optionPane.setMessageType(JOptionPane.PLAIN_MESSAGE);
-			JDialog dialog = optionPane.createDialog(null, "Remove game");
+			JDialog dialog = optionPane.createDialog(null, base[4]!=null?base[4]:"Remove game");
 			dialog.setVisible(true);
 			String idValue = id.getText();
-			if (idValue.equals("")) { JOptionPane.showMessageDialog(null, "ID is required", "Error", JOptionPane.ERROR_MESSAGE); return; }
+			if (idValue.equals("")) { JOptionPane.showMessageDialog(null, basic[0]!=null?basic[0]:"ID is required", base[1]!=null?base[1]:"Error", JOptionPane.ERROR_MESSAGE); return; }
 			if (isIDInDatabase.isInDatabase(idValue, fromValue)) {
 				try{
 					Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
@@ -44,13 +46,13 @@ public class removeGameFromFile {
 									String from = e.getAttribute("from").trim();
 									if ( ids.equals(idValue) && from.equals(fromValue)) {
 										String name = e.getElementsByTagName("name").item(0).getTextContent().trim();
-										int option = JOptionPane.showConfirmDialog(null, name + " with id: "+ids+" will be removed. Are you sure?", "Remove game", JOptionPane.OK_CANCEL_OPTION);
+										int option = JOptionPane.showConfirmDialog(null, name + ", \nId: "+ids+" "+folder[14]!=null?folder[14]:"will be removed. Are you sure?", base[4]!=null?base[4]:"Remove game", JOptionPane.OK_CANCEL_OPTION);
 										if (option == JOptionPane.OK_OPTION) {
 											sourceNode.removeChild(gameNode);
 											saveLoadDoc.saveDocument(dom, mainInit.databasePath);
 											_initFrame.refreshTable();
-											JOptionPane.showMessageDialog(null, "Game with id: "+ids+" and name: "+name+" has been removed", "Success", JOptionPane.INFORMATION_MESSAGE);
-										} else { JOptionPane.showMessageDialog(null, "Cancelled", "Success", JOptionPane.INFORMATION_MESSAGE); }
+											JOptionPane.showMessageDialog(null, name + ", \nId: "+ids+" "+folder[15]!=null?folder[15]:"has been removed.", base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
+										} else { JOptionPane.showMessageDialog(null, folder[16]!=null?folder[16]:"Cancelled", base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE); }
 										break;
 									}
 								}
@@ -61,10 +63,10 @@ public class removeGameFromFile {
 					e.printStackTrace();
 				}
 			} else {
-				JOptionPane.showMessageDialog(null, "Game with id: "+idValue+" doesn't exists in " + fromValue, "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Id: "+idValue+" "+basic[1]!=null?basic[1]:"doesn't exists", base[1]!=null?base[1]:"Error", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			int optionToRepeat = JOptionPane.showConfirmDialog(null, "Do you want to delete another game?", "Delete game", JOptionPane.YES_NO_OPTION);
+			int optionToRepeat = JOptionPane.showConfirmDialog(null, folder[17]!=null?folder[17]:"Do you want to delete another game?", base[4]!=null?base[4]:"Delete game", JOptionPane.YES_NO_OPTION);
 			if (optionToRepeat != JOptionPane.OK_OPTION) { repeat = false; }
 		}
 	}

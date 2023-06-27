@@ -3,7 +3,6 @@
 	<!-- 
 		<english> => this is language
 			<base>Some basic small text here</base>
-			<folders>***Fol => the folder it's in</folders>
 			<folders>This here is the text to translate</folders>
 		</english>
 
@@ -15,6 +14,7 @@
 		<base>Add game</base>
 		<base>Update game</base>
 		<base>Remove game</base>
+		<base>Previous:</base>
 
 		<basic>You must enter an id.</basic>
 		<basic>doesn't exists.</basic> <!-- {ID} doesn't exists.-->
@@ -31,7 +31,7 @@
 		<tablec>Developer</tablec>
 		<tablec>Played version</tablec>
 		<tablec>Last time play</tablec>
-		<tablec>Rated</tablec>
+		<tablec>Rated</tablec> <!-- 6 -->
 		<tablec>Newest version</tablec>
 		<tablec>Last update</tablec>
 		<tablec>People rating</tablec>
@@ -40,6 +40,30 @@
 		<tablec>Engine</tablec>
 		<tablec>OS</tablec>
 		<tablec>Personal Notes</tablec> <!-- 14 -->
+
+		<JLabPan>ID: (required)</JLabPan> <!-- 0 -->
+		<JLabPan>Name:</JLabPan>
+		<JLabPan>Developer:</JLabPan>
+		<JLabPan>Last version you played:</JLabPan>
+		<JLabPan>Last time you updated the game:</JLabPan>
+		<JLabPan>Rating by you:</JLabPan> <!-- 5 -->
+		<JLabPan>Online newest version:</JLabPan>
+		<JLabPan>Online date of last update:</JLabPan>
+		<JLabPan>Rating by online people:</JLabPan>
+		<JLabPan>How far you progressed in the game:</JLabPan>
+		<JLabPan>Is the game still on pc?</JLabPan>
+		<JLabPan>Engine:</JLabPan>
+		<JLabPan>OS:</JLabPan>
+		<JLabPan>Self note for the game:</JLabPan> <!-- 13 -->
+
+		<JRadBut>Not played</JRadBut>
+		<JRadBut>In progress</JRadBut>
+		<JRadBut>Finish</JRadBut>
+		<JRadBut>100% Finished</JRadBut>
+		<JRadBut>Yes</JRadBut>
+		<JRadBut>No</JRadBut>
+		<JRadBut>Unknown</JRadBut>
+		<JRadBut>Other/Unknown</JRadBut>
 
 		<!-- windowJframe._initFrame -->
 		<buttons>Games</buttons> <!-- 0 -->
@@ -63,7 +87,7 @@
 		<buttons>Dark mode</buttons>
 		<buttons>Auto fetch game info</buttons> <!-- 19 -->
 
-		<!-- folders-->
+		<!-- folders --> <!-- 0 -->
 		<folders>This will go through all games and check if there is new update. \nAre you sure?</folders>
 		<folders>Checking games...</folders>
 		<folders>All game infos got updated!</folders>
@@ -79,6 +103,12 @@
 		<!-- foldersderHandle folder-->
 		<folders>Error loading settings file</folders>
 		<folders>Error loading database file</folders>
+		<folders>The id you entered is already in the *MANUAL* database</folders> <!-- 12 -->
+		<folders>ID is not found between the manually given games</folders>
+		<folders>will be removed. Are you sure?</folders>
+		<folders>has been removed.</folders>
+		<folders>Cancelled deleting.</folders>
+		<folders>Do you want to delete another game?</folders> <!-- 17 -->
 	</english>
 	<hungarian>
 		<base>Siker</base>
@@ -86,6 +116,7 @@
 		<base>Játék hozzáadás</base>
 		<base>Játék frissítés</base>
 		<base>Játék törlése</base>
+		<base>Előző:</base>
 
 		<basic>Meg kell adnod egy id-t.</basic>
 		<basic>nem létezik.</basic> <!-- {ID} doesn't exists.-->
@@ -112,6 +143,30 @@
 		<tablec>OS</tablec>
 		<tablec>Jegyzetek</tablec>
 
+		<JLabPan>ID: (Kötelező)</JLabPan>
+		<JLabPan>Név:</JLabPan>
+		<JLabPan>Fejlesztő:</JLabPan>
+		<JLabPan>Utolsó verzió amivel játszott:</JLabPan>
+		<JLabPan>Utolsó idő amikor játszott:</JLabPan>
+		<JLabPan>Értékelésed:</JLabPan>
+		<JLabPan>Legújabb online verzió:</JLabPan>
+		<JLabPan>Legútolsó verzió időpontja:</JLabPan>
+		<JLabPan>Online értékelés másoktól:</JLabPan>
+		<JLabPan>Mennyit haladt a játékkal:</JLabPan>
+		<JLabPan>Még mindig le van töltve a játék?</JLabPan>
+		<JLabPan>Motor:</JLabPan>
+		<JLabPan>OS:</JLabPan>
+		<JLabPan>Saját jegyzetek játékhoz:</JLabPan>
+
+		<JRadBut>Nem játszott</JRadBut>
+		<JRadBut>Be nem fejezett</JRadBut>
+		<JRadBut>Kész</JRadBut>
+		<JRadBut>100% Befejezve</JRadBut>
+		<JRadBut>Igen</JRadBut>
+		<JRadBut>Nem</JRadBut>
+		<JRadBut>Ismeretlen</JRadBut>
+		<JRadBut>Egyébb/Ismeretlen</JRadBut>
+
 		<!-- windowJframe._initFrame -->
 		<buttons>Játékok</buttons> <!-- 1 -->
 		<buttons>Keresés</buttons>
@@ -134,7 +189,7 @@
 		<buttons>Sötét mód</buttons>
 		<buttons>Auto játék infó frissítés</buttons> <!-- 20 -->
 
-		<!-- f95WebsiteHandle folder-->
+		<!-- f95WebsiteHandle folder--> <!-- 0 -->
 		<folders>Ez végigmegy az összes játékon, és ellenőrzi, hogy van-e új frissítés.\nBiztos vagy benne?</folders>
 		<folders>Játékok ellenőrzése...</folders>
 		<folders>Minden játék információ frissítve lett!</folders>
@@ -145,10 +200,16 @@
 		<folders>Hiba beállítások ellenőrzéskor.</folders>
 		<folders>Beállítások frissítve lettek. \nKérlek indítsad újra a programot, hogy biztos minden rendben legyen.</folders>
 		<folders>Beállítások frissítése</folders>
-		<!-- windowJframe folder-->
-		<folders>Hentai játék menedzser</folders>
+		<!-- windowJframe folder -->
+		<folders>Hentai játék menedzser</folders> <!-- Felnőt játék menedzser -->
 		<!-- foldersderHandle folder-->
 		<folders>Hiba beállítások betöltésekor</folders>
 		<folders>Hiba adatbázis betöltésekor</folders>
+		<folders>Az ID ami meg lett adva már benne van az adatbázisban.</folders> <!-- 12 -->
+		<folders>Az ID nem található a játékok között</folders>
+		<folders>törölve lesz. Biztos benne?</folders>
+		<folders>törölve lett.</folders>
+		<folders>Vissza vonva.</folders>
+		<folders>Szeretne másik játékot törölni?</folders>
 	</hungarian>
 </lang>

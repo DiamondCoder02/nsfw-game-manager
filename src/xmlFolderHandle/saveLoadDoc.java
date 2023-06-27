@@ -54,8 +54,6 @@ public class saveLoadDoc {
 		Object[][] data = loadGamesFromXml.loadGames(dom, columnNames);
 		String[] tbl = langLoad.tabl;
 		for (int i = 0; i < columnNames.length; i++) {
-			System.out.println(columnNames[i]);
-			System.out.println(tbl[i]);
 			switch (columnNames[i]) {
 				case "Site": columnNames[i] = tbl[0]!=null?tbl[0]:"Site"; break;
 				case "ID": columnNames[i] = tbl[1]!=null?tbl[1]:"ID"; break;

@@ -65,9 +65,9 @@ public class _initFrame extends JFrame implements ActionListener {
 		setJMenuBar(mb = new JMenuBar());
 
 		mb.add(games = new JMenu(bu[0]!=null?bu[0]:"Games")); 
-		games.add(addGame = new JMenuItem(bu[2]!=null?bu[2]:"Add games")); addGame.setActionCommand("Add game");
-		games.add(updateList = new JMenuItem(bu[3]!=null?bu[3]:"Update games")); updateList.setActionCommand("Update game");
-		games.add(removeGame = new JMenuItem(bu[4]!=null?bu[4]:"Remove games")); removeGame.setActionCommand("Remove game");
+		games.add(addGame = new JMenuItem(bs[2]!=null?bs[2]:"Add games")); addGame.setActionCommand("Add game");
+		games.add(updateList = new JMenuItem(bs[3]!=null?bs[3]:"Update games")); updateList.setActionCommand("Update game");
+		games.add(removeGame = new JMenuItem(bs[4]!=null?bs[4]:"Remove games")); removeGame.setActionCommand("Remove game");
 		games.addSeparator();
 		games.add(addF95zone = new JMenuItem(bu[9]!=null?bu[9]:"Add from F95zone")); addF95zone.setActionCommand("Add F95zone");
 		games.add(updateF95 = new JMenuItem(bu[10]!=null?bu[10]:"Update F95zone")); updateF95.setActionCommand("Update F95zone");

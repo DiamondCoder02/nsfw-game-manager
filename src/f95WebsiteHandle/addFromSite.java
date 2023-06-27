@@ -22,12 +22,12 @@ import xmlFolderHandle.isIDInDatabase;
 import xmlFolderHandle.saveLoadDoc;
 
 public class addFromSite {
-	static String[] lf = langLoad.folder, bc = langLoad.basic, bs = langLoad.base;
+	static String[] bs = langLoad.base, bc = langLoad.basic, jla = langLoad.jlapa, lf = langLoad.folder, jrb = langLoad.jrabu;
 	public static void addFromF95(){
 		boolean repeat = true;
 		while (repeat) {
 			String text = lf[3]==null?"Enter the id of the game you want to add, from f95zone website.":lf[3];
-			String idValue = JOptionPane.showInputDialog(null, text, bs[2]==null?"Add game":bs[2], JOptionPane.PLAIN_MESSAGE);
+			String idValue = JOptionPane.showInputDialog(null, text, bs[2]!=null?bs[2]:"Add game", JOptionPane.PLAIN_MESSAGE);
 			if (idValue == null) { JOptionPane.showMessageDialog(null, bc[0]==null?"You must enter an id":bc[0], bs[1]==null?"Error":bs[1], JOptionPane.ERROR_MESSAGE); break; }
 
 			if (isIDInDatabase.isInDatabase(idValue, "f95")) {
@@ -52,12 +52,12 @@ public class addFromSite {
 			JTextField user_rating = new JTextField(20);
 			
 			// Not played, In progress, Finish, 100% Finished
-			JRadioButton howFarUserPlayed_NotPlayed = new JRadioButton("Not played", true), howFarUserPlayed_Playing = new JRadioButton("In progress", false), howFarUserPlayed_Finished = new JRadioButton("Finish", false), howFarUserPlayed_100Percent = new JRadioButton("100% Finished", false);
+			JRadioButton howFarUserPlayed_NotPlayed = new JRadioButton(jrb[0]!=null?jrb[0]:"Not played", true), howFarUserPlayed_Playing = new JRadioButton(jrb[1]!=null?jrb[1]:"In progress", false), howFarUserPlayed_Finished = new JRadioButton(jrb[2]!=null?jrb[2]:"Finish", false), howFarUserPlayed_100Percent = new JRadioButton(jrb[3]!=null?jrb[3]:"100% Finished", false);
 			howFarUserPlayed_NotPlayed.setActionCommand("Not played"); howFarUserPlayed_Playing.setActionCommand("In progress"); howFarUserPlayed_Finished.setActionCommand("Finish"); howFarUserPlayed_100Percent.setActionCommand("100% Finished");
 			ButtonGroup howFarUserPlayed = new ButtonGroup(); howFarUserPlayed.add(howFarUserPlayed_NotPlayed); howFarUserPlayed.add(howFarUserPlayed_Playing); howFarUserPlayed.add(howFarUserPlayed_Finished); howFarUserPlayed.add(howFarUserPlayed_100Percent);
 			JPanel howFarUserPlayedPanel = new JPanel(); howFarUserPlayedPanel.add(howFarUserPlayed_NotPlayed); howFarUserPlayedPanel.add(howFarUserPlayed_Playing); howFarUserPlayedPanel.add(howFarUserPlayed_Finished); howFarUserPlayedPanel.add(howFarUserPlayed_100Percent);
 			// Yes, No, Unknown
-			JRadioButton stillOnPc_yes = new JRadioButton("Yes", true), stillOnPc_no = new JRadioButton("No", false), stillOnPc_unknown = new JRadioButton("Unknown", false);
+			JRadioButton stillOnPc_yes = new JRadioButton(jrb[4]!=null?jrb[4]:"Yes", true), stillOnPc_no = new JRadioButton(jrb[5]!=null?jrb[5]:"No", false), stillOnPc_unknown = new JRadioButton(jrb[6]!=null?jrb[6]:"Unknown", false);
 			stillOnPc_yes.setActionCommand("yes"); stillOnPc_no.setActionCommand("no"); stillOnPc_unknown.setActionCommand("unknown");
 			ButtonGroup stillOnPc = new ButtonGroup(); stillOnPc.add(stillOnPc_yes); stillOnPc.add(stillOnPc_no); stillOnPc.add(stillOnPc_unknown);
 			JPanel stillOnPcPanel = new JPanel(); stillOnPcPanel.add(stillOnPc_yes); stillOnPcPanel.add(stillOnPc_no); stillOnPcPanel.add(stillOnPc_unknown);
@@ -67,17 +67,17 @@ public class addFromSite {
 			howFarUserPlayedPanel.setLayout(new BoxLayout(howFarUserPlayedPanel, BoxLayout.X_AXIS));
 			stillOnPcPanel.setLayout(new BoxLayout(stillOnPcPanel, BoxLayout.X_AXIS));
 
-			JLabel played_versionlabel = new JLabel("Last version you played:");
+			JLabel played_versionlabel = new JLabel(jla[3]!=null?jla[3]:"Last version you played:");
 			panel.add(played_versionlabel); panel.add(played_version);
-			JLabel dateof_lastplaylabel = new JLabel("Last time you updated the game:");
+			JLabel dateof_lastplaylabel = new JLabel(jla[4]!=null?jla[4]:"Last time you updated the game:");
 			panel.add(dateof_lastplaylabel); panel.add(dateof_lastplay);
-			JLabel user_ratinglabel = new JLabel("Rating by you:");
+			JLabel user_ratinglabel = new JLabel(jla[5]!=null?jla[5]:"Rating by you:");
 			panel.add(user_ratinglabel); panel.add(user_rating);
-			JLabel howFarUserPlayedlabel = new JLabel("How far you progressed in the game:");
+			JLabel howFarUserPlayedlabel = new JLabel(jla[9]!=null?jla[9]:"How far you progressed in the game:");
 			panel.add(howFarUserPlayedlabel); panel.add(howFarUserPlayedPanel);
-			JLabel stillOnPclabel = new JLabel("Is the game still on pc?");
+			JLabel stillOnPclabel = new JLabel(jla[10]!=null?jla[10]:"Is the game still on pc?");
 			panel.add(stillOnPclabel); panel.add(stillOnPcPanel);
-			JLabel selfNotelabel = new JLabel("Self note:");
+			JLabel selfNotelabel = new JLabel(jla[13]!=null?jla[13]:"Self note:");
 			panel.add(selfNotelabel); panel.add(selfNote);
 			JOptionPane.showMessageDialog(null, panel, bs[2]==null?"Add game":bs[2], JOptionPane.PLAIN_MESSAGE);
 

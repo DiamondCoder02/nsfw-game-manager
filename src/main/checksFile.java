@@ -19,7 +19,7 @@ public class checksFile {
 			JOptionPane.showMessageDialog(null, "Error creating main folder(s)! (checksFile.checks)", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		if (checkSettingsFolder()) {checkMissingSetting.checkSettings();}
-		// TODO checkLanguage();
+		checkLanguage();
 		langLoad.loadLanguages();
 		checkMissingDatabase();
 		checkPics();

@@ -25,7 +25,7 @@ public class loadSite {
 			}
 			bufferedReader.close();
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null,  lf[5]!=null?lf[5]:"Error while loading the site" + " (f95_getUrlContents)", bs[1]==null?"Error":bs[1], JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null,  (lf[5]!=null?lf[5]:"Error while loading the site") + " (f95_getUrlContents)", bs[1]==null?"Error":bs[1], JOptionPane.ERROR_MESSAGE);
 			return null;
 		}
 

@@ -35,6 +35,7 @@ public class _initFrame extends JFrame implements ActionListener {
 	JMenuItem searchById, searchByName, searchByDeveloper;
 
 	JMenu settings;
+	JMenuItem changeLanguage;
 	JCheckBoxMenuItem darkMode, autoFetchNews;
 	JMenu show;
 	JCheckBoxMenuItem showSite, showID, showName, showDeveloper, showPlayedVersion, showLastTimeplay, showRated, showNewestVersion;
@@ -88,22 +89,22 @@ public class _initFrame extends JFrame implements ActionListener {
 
 		mb.add(settings = new JMenu(bu[2]!=null?bu[2]:"Settings"));
 		settings.add(show = new JMenu(bu[3]!=null?bu[3]:"Shown informations"));
-		show.add(showSite = new JCheckBoxMenuItem(tlc[0]!=null?tlc[0]:"Site", boolColumns[0])); showSite.setActionCommand("Site");
-		show.add(showID = new JCheckBoxMenuItem(tlc[1]!=null?tlc[1]:"ID", boolColumns[1])); showID.setActionCommand("ID");
-		show.add(showName = new JCheckBoxMenuItem(tlc[2]!=null?tlc[2]:"Name", boolColumns[2])); showName.setActionCommand("Name");
-		show.add(showDeveloper = new JCheckBoxMenuItem(tlc[3]!=null?tlc[3]:"Developer", boolColumns[3])); showDeveloper.setActionCommand("Developer");
-		show.add(showPlayedVersion = new JCheckBoxMenuItem(tlc[4]!=null?tlc[4]:"Played version", boolColumns[4])); showPlayedVersion.setActionCommand("Played version");
-		show.add(showLastTimeplay = new JCheckBoxMenuItem(tlc[5]!=null?tlc[5]:"Last time play", boolColumns[5])); showLastTimeplay.setActionCommand("Last time play");
-		show.add(showRated = new JCheckBoxMenuItem(tlc[6]!=null?tlc[6]:"Rated", boolColumns[6])); showRated.setActionCommand("Rated");
-		show.add(showNewestVersion = new JCheckBoxMenuItem(tlc[7]!=null?tlc[7]:"Newest version", boolColumns[7])); showNewestVersion.setActionCommand("Newest version");
-		show.add(showDateOfLastUpdate = new JCheckBoxMenuItem(tlc[8]!=null?tlc[8]:"Last update", boolColumns[8])); showDateOfLastUpdate.setActionCommand("Last update");
-		show.add(showPeopleRating = new JCheckBoxMenuItem(tlc[9]!=null?tlc[9]:"People rating", boolColumns[9])); showPeopleRating.setActionCommand("People rating");
-		show.add(showhowFarUserPlayed = new JCheckBoxMenuItem(tlc[10]!=null?tlc[10]:"Player progress", boolColumns[10])); showhowFarUserPlayed.setActionCommand("Player progress");
-		show.add(showDeletedFromPc = new JCheckBoxMenuItem(tlc[11]!=null?tlc[11]:"Still on pc?", boolColumns[11])); showDeletedFromPc.setActionCommand("Still on pc?");
-		show.add(showEngine = new JCheckBoxMenuItem(tlc[12]!=null?tlc[12]:"Engine", boolColumns[12])); showEngine.setActionCommand("Engine");
-		show.add(showOS = new JCheckBoxMenuItem(tlc[13]!=null?tlc[13]:"OS", boolColumns[13])); showOS.setActionCommand("OS");
-		show.add(ShowSelfNote = new JCheckBoxMenuItem(tlc[14]!=null?tlc[14]:"Personal Notes", boolColumns[14])); ShowSelfNote.setActionCommand("Personal Notes");
-
+			show.add(showSite = new JCheckBoxMenuItem(tlc[0]!=null?tlc[0]:"Site", boolColumns[0])); showSite.setActionCommand("Site");
+			show.add(showID = new JCheckBoxMenuItem(tlc[1]!=null?tlc[1]:"ID", boolColumns[1])); showID.setActionCommand("ID");
+			show.add(showName = new JCheckBoxMenuItem(tlc[2]!=null?tlc[2]:"Name", boolColumns[2])); showName.setActionCommand("Name");
+			show.add(showDeveloper = new JCheckBoxMenuItem(tlc[3]!=null?tlc[3]:"Developer", boolColumns[3])); showDeveloper.setActionCommand("Developer");
+			show.add(showPlayedVersion = new JCheckBoxMenuItem(tlc[4]!=null?tlc[4]:"Played version", boolColumns[4])); showPlayedVersion.setActionCommand("Played version");
+			show.add(showLastTimeplay = new JCheckBoxMenuItem(tlc[5]!=null?tlc[5]:"Last time play", boolColumns[5])); showLastTimeplay.setActionCommand("Last time play");
+			show.add(showRated = new JCheckBoxMenuItem(tlc[6]!=null?tlc[6]:"Rated", boolColumns[6])); showRated.setActionCommand("Rated");
+			show.add(showNewestVersion = new JCheckBoxMenuItem(tlc[7]!=null?tlc[7]:"Newest version", boolColumns[7])); showNewestVersion.setActionCommand("Newest version");
+			show.add(showDateOfLastUpdate = new JCheckBoxMenuItem(tlc[8]!=null?tlc[8]:"Last update", boolColumns[8])); showDateOfLastUpdate.setActionCommand("Last update");
+			show.add(showPeopleRating = new JCheckBoxMenuItem(tlc[9]!=null?tlc[9]:"People rating", boolColumns[9])); showPeopleRating.setActionCommand("People rating");
+			show.add(showhowFarUserPlayed = new JCheckBoxMenuItem(tlc[10]!=null?tlc[10]:"Player progress", boolColumns[10])); showhowFarUserPlayed.setActionCommand("Player progress");
+			show.add(showDeletedFromPc = new JCheckBoxMenuItem(tlc[11]!=null?tlc[11]:"Still on pc?", boolColumns[11])); showDeletedFromPc.setActionCommand("Still on pc?");
+			show.add(showEngine = new JCheckBoxMenuItem(tlc[12]!=null?tlc[12]:"Engine", boolColumns[12])); showEngine.setActionCommand("Engine");
+			show.add(showOS = new JCheckBoxMenuItem(tlc[13]!=null?tlc[13]:"OS", boolColumns[13])); showOS.setActionCommand("OS");
+			show.add(ShowSelfNote = new JCheckBoxMenuItem(tlc[14]!=null?tlc[14]:"Personal Notes", boolColumns[14])); ShowSelfNote.setActionCommand("Personal Notes");
+		settings.add(changeLanguage  = new JMenuItem("🌐 "+(bu[4]!=null?bu[4]:"Language"))); changeLanguage.setActionCommand("chanLan");
 		settings.addSeparator();
 		settings.add(darkMode = new JCheckBoxMenuItem(bu[18]!=null?bu[18]:"Dark mode", boolSettings[0])); darkMode.setActionCommand("Dark mode");
 		settings.addSeparator();
@@ -129,6 +130,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		showEngine.addActionListener(this); showOS.addActionListener(this);
 		ShowSelfNote.addActionListener(this); 
 
+		changeLanguage.addActionListener(this);
 		darkMode.addActionListener(this); autoFetchNews.addActionListener(this);
 
 		faq.addActionListener(this); credits.addActionListener(this);
@@ -200,12 +202,11 @@ public class _initFrame extends JFrame implements ActionListener {
 	public static void refreshTable(){saveLoadDoc.reloadTable(table); setColumns();}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//System.out.println(e);
 		String gac = e.getActionCommand();
 		main.checksFile.checkMissingDatabase();
 		main.checksFile.checkSettingsFolder();
+		// System.out.println(e); System.out.println(gac);
 		switch (gac) {
-			// TODO language file
 			case "Add game": addGameToFile.addOneGameToFile(); break;
 			case "Update game": updateGameManually.updateOneGameFromToFile(); break;
 			case "Remove game": removeGameFromFile.removeOneGameFromFile("man"); break;
@@ -237,13 +238,14 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "OS": settingsManager.xmlSettings("showncolumns", "OS"); break;
 			case "Personal Notes": settingsManager.xmlSettings("showncolumns", "Personal Notes"); break;
 
+			case "chanLan": settingsManager.xmlSettings("language", "lang"); break;
 			case "Dark mode": settingsManager.xmlSettings("othersettings", "Dark mode"); WindowRefresh(); refreshTable(); break;
 			case "Auto fetch game info": settingsManager.xmlSettings("othersettings", "Auto fetch game info"); break;
 
 			case "FAQ": otherButtonsThingies.FACKQU(); break;
 			case "Credits": otherButtonsThingies.money(); break;
 			case "Exit": otherButtonsThingies.sureAboutExit(); break;
-			default: JOptionPane.showMessageDialog(null, bc[7]!=null?bc[7]:"Error, this should never happen!!!" + " (_initFrame)", "Error", JOptionPane.ERROR_MESSAGE); break;
+			default: JOptionPane.showMessageDialog(null, (bc[7]!=null?bc[7]:"Error, this should never happen!!!") + " (_initFrame)", "Error", JOptionPane.ERROR_MESSAGE); break;
 		}
 	}
 
@@ -287,6 +289,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			searchByDeveloper.setBackground(bg); searchByDeveloper.setForeground(fg);
 
 			settings.setBackground(bg);	settings.setForeground(fg);
+			changeLanguage.setBackground(bg); changeLanguage.setForeground(fg);
 			darkMode.setBackground(bg);	darkMode.setForeground(fg);
 			autoFetchNews.setBackground(bg); autoFetchNews.setForeground(fg);
 
@@ -351,6 +354,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			searchByDeveloper.setBackground(null); searchByDeveloper.setForeground(null);
 
 			settings.setBackground(null);	settings.setForeground(null);
+			changeLanguage.setBackground(null); changeLanguage.setForeground(null);
 			darkMode.setBackground(null);	darkMode.setForeground(null);
 			autoFetchNews.setBackground(null); autoFetchNews.setForeground(null);
 

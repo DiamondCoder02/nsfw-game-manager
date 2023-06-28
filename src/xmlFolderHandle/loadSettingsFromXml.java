@@ -86,7 +86,7 @@ public class loadSettingsFromXml {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, xf[10]!=null?xf[10]:"Error loading settings file" + " (loadOther)", bs[1]!=null?bs[1]:"Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, (xf[10]!=null?xf[10]:"Error loading settings file") + " (loadOther)", bs[1]!=null?bs[1]:"Error", JOptionPane.ERROR_MESSAGE);
 		}
 		String[] columnNames2 = new String[counter];
 		for (int i = 0; i < counter; i++) {

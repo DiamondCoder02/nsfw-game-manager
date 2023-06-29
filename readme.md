@@ -9,7 +9,11 @@ and to torture myself
 
 - Currently java 8
 - Files: AppData\Roaming\DiamondCoder\nsfwGameManager\
-- For the online version, if the game is the final version, it gets a "✔" at the version column
+- (For now )2+1 languages: English(, Engwish UwU), Hungarian
+
+If you put games from website:
+
+- If the game is the final version, it gets a "✔" at the version column
 - For VisualNovels there will be a "VN" at the name column
 
 ---
@@ -17,10 +21,10 @@ and to torture myself
 
 ## TODO
 
-Settings tab:
-
 - [ ] show language of the game?
 - [ ] ~~auto Update Games~~ NO
+- [ ] Auto backup if something goes wrong
+- [ ] FAQ
 
 ---
 

@@ -92,28 +92,28 @@ public class updateFromSite {
 									stillOnPcPanel.setLayout(new BoxLayout(stillOnPcPanel, BoxLayout.X_AXIS));
 
 									JLabel Namelabel, developerlabel, newest_versionlabel, dateOfLastUpdatelabel, people_ratedlabel, enginelabel, oslabel;
-									if (oldname.equals(newnameValue)) { Namelabel = new JLabel(jla[1]!=null?jla[1]:"Name: "+ newnameValue); } 
-									else { Namelabel = new JLabel(jla[1]!=null?jla[1]:"Name: " + oldname + " -> " + newnameValue); }
-									if (olddeveloper.equals(newdeveloperValue)) { developerlabel = new JLabel(jla[2]!=null?jla[2]:"Developer: " + newdeveloperValue); } 
-									else { developerlabel = new JLabel(jla[2]!=null?jla[2]:"Developer: " + olddeveloper + " -> " + newdeveloperValue); }
-									if (oldnewest_version.equals(newnewest_versionValue)) { newest_versionlabel = new JLabel(jla[6]!=null?jla[6]:"Newest version: " + newnewest_versionValue); } 
-									else { newest_versionlabel = new JLabel(jla[6]!=null?jla[6]:"Newest version: " + oldnewest_version + " -> " + newnewest_versionValue); }
-									if (olddateof_lastupate.equals(newdateof_lastupateValue)) { dateOfLastUpdatelabel = new JLabel(jla[7]!=null?jla[7]:"Date of last update: " + newdateof_lastupateValue); } 
-									else { dateOfLastUpdatelabel = new JLabel(jla[7]!=null?jla[7]:"Date of last update: " + olddateof_lastupate + " -> " + newdateof_lastupateValue); }
-									if (oldpeople_rated.equals(newpeople_ratedValue)) { people_ratedlabel = new JLabel(jla[8]!=null?jla[8]:"People rated: " + newpeople_ratedValue); }
-									else { people_ratedlabel = new JLabel(jla[8]!=null?jla[8]:"People rated: " + oldpeople_rated + " -> " + newpeople_ratedValue); }
-									if (oldengine.equals(newengineValue)) { enginelabel = new JLabel(jla[11]!=null?jla[11]:"Engine: " + newengineValue); } 
-									else { enginelabel = new JLabel(jla[11]!=null?jla[11]:"Engine: " + oldengine + " -> " + newengineValue); }
-									if (oldos.equals(newosValue)) { oslabel = new JLabel(jla[12]!=null?jla[12]:"OS: " + newosValue); } 
-									else { oslabel = new JLabel(jla[12]!=null?jla[12]:"OS: " + oldos + " -> " + newosValue); }
+									if (oldname.equals(newnameValue)) { Namelabel = new JLabel((jla[1]!=null?jla[1]:"Name: ")+ newnameValue); } 
+									else { Namelabel = new JLabel((jla[1]!=null?jla[1]:"Name: ") + oldname + " -> " + newnameValue); }
+									if (olddeveloper.equals(newdeveloperValue)) { developerlabel = new JLabel((jla[2]!=null?jla[2]:"Developer: ") + newdeveloperValue); } 
+									else { developerlabel = new JLabel((jla[2]!=null?jla[2]:"Developer: ") + olddeveloper + " -> " + newdeveloperValue); }
+									if (oldnewest_version.equals(newnewest_versionValue)) { newest_versionlabel = new JLabel((jla[6]!=null?jla[6]:"Newest version: ") + newnewest_versionValue); } 
+									else { newest_versionlabel = new JLabel((jla[6]!=null?jla[6]:"Newest version: ") + oldnewest_version + " -> " + newnewest_versionValue); }
+									if (olddateof_lastupate.equals(newdateof_lastupateValue)) { dateOfLastUpdatelabel = new JLabel((jla[7]!=null?jla[7]:"Date of last update: ") + newdateof_lastupateValue); } 
+									else { dateOfLastUpdatelabel = new JLabel((jla[7]!=null?jla[7]:"Date of last update: ") + olddateof_lastupate + " -> " + newdateof_lastupateValue); }
+									if (oldpeople_rated.equals(newpeople_ratedValue)) { people_ratedlabel = new JLabel((jla[8]!=null?jla[8]:"People rated: ") + newpeople_ratedValue); }
+									else { people_ratedlabel = new JLabel((jla[8]!=null?jla[8]:"People rated: ") + oldpeople_rated + " -> " + newpeople_ratedValue); }
+									if (oldengine.equals(newengineValue)) { enginelabel = new JLabel((jla[11]!=null?jla[11]:"Engine: ") + newengineValue); } 
+									else { enginelabel = new JLabel((jla[11]!=null?jla[11]:"Engine: ") + oldengine + " -> " + newengineValue); }
+									if (oldos.equals(newosValue)) { oslabel = new JLabel((jla[12]!=null?jla[12]:"OS: ") + newosValue); } 
+									else { oslabel = new JLabel((jla[12]!=null?jla[12]:"OS: ") + oldos + " -> " + newosValue); }
 
 									panel.add(Namelabel);
 									panel.add(developerlabel);
-									JLabel played_versionlabel = new JLabel(jla[3]!=null?jla[3]:"Played version:" + " ("+bs[5]!=null?bs[5]:"old:"+" "+oldplayed_version+")");
+									JLabel played_versionlabel = new JLabel(jla[3]!=null?jla[3]:"Played version:" + " ("+(bs[5]!=null?bs[5]:"old:")+" "+oldplayed_version+")");
 									panel.add(played_versionlabel); panel.add(newplayed_version);
-									JLabel dateof_lastplaylabel = new JLabel(jla[4]!=null?jla[4]:"Date of last time play:" + " ("+bs[5]!=null?bs[5]:"old:"+" "+olddateof_lastplay+")");
+									JLabel dateof_lastplaylabel = new JLabel(jla[4]!=null?jla[4]:"Date of last time play:" + " ("+(bs[5]!=null?bs[5]:"old:")+" "+olddateof_lastplay+")");
 									panel.add(dateof_lastplaylabel); panel.add(newdateof_lastplay);
-									JLabel user_ratedlabel = new JLabel(jla[5]!=null?jla[5]:"Rated:" + " ("+bs[5]!=null?bs[5]:"old:"+" "+olduser_rated+")");
+									JLabel user_ratedlabel = new JLabel(jla[5]!=null?jla[5]:"Rated:" + " ("+(bs[5]!=null?bs[5]:"old:")+" "+olduser_rated+")");
 									panel.add(user_ratedlabel); panel.add(newuser_rated);
 									panel.add(newest_versionlabel);
 									panel.add(dateOfLastUpdatelabel);
@@ -124,7 +124,7 @@ public class updateFromSite {
 									panel.add(stillOnPclabel); panel.add(stillOnPcPanel);
 									panel.add(enginelabel);
 									panel.add(oslabel);
-									JLabel selfNotelabel = new JLabel(jla[13]!=null?jla[13]:"Self note:" + " ("+bs[5]!=null?bs[5]:"old:"+" "+oldselfNote+")");
+									JLabel selfNotelabel = new JLabel(jla[13]!=null?jla[13]:"Self note:" + " ("+(bs[5]!=null?bs[5]:"old:")+" "+oldselfNote+")");
 									panel.add(selfNotelabel); panel.add(newselfNote);
 									int option = JOptionPane.showConfirmDialog(null, panel, bs[3]!=null?bs[3]:"Update game", JOptionPane.OK_CANCEL_OPTION);
 									if (option == JOptionPane.OK_OPTION) {

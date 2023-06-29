@@ -114,21 +114,21 @@ public class updateGameManually {
 									enginePanel.setLayout(new BoxLayout(enginePanel, BoxLayout.X_AXIS));
 									osPanel.setLayout(new BoxLayout(osPanel, BoxLayout.X_AXIS));
 
-									JLabel Namelabel = new JLabel(jla[1]!=null?jla[1]:"Name:" + " ("+base[5]!=null?base[5]:"old:"+" "+oldname+")");
+									JLabel Namelabel = new JLabel(jla[1]!=null?jla[1]:"Name:" + " ("+(base[5]!=null?base[5]:"old:")+" "+oldname+")");
 									panel.add(Namelabel); panel.add(newname);
-									JLabel developerlabel = new JLabel(jla[2]!=null?jla[2]:"Developer:" + " ("+base[5]!=null?base[5]:"old:"+" "+olddeveloper+")");
+									JLabel developerlabel = new JLabel(jla[2]!=null?jla[2]:"Developer:" + " ("+(base[5]!=null?base[5]:"old:")+" "+olddeveloper+")");
 									panel.add(developerlabel); panel.add(newdeveloper);
-									JLabel played_versionlabel = new JLabel(jla[3]!=null?jla[3]:"Played version:" + " ("+base[5]!=null?base[5]:"old:"+" "+oldplayed_version+")");
+									JLabel played_versionlabel = new JLabel(jla[3]!=null?jla[3]:"Played version:" + " ("+(base[5]!=null?base[5]:"old:")+" "+oldplayed_version+")");
 									panel.add(played_versionlabel); panel.add(newplayed_version);
-									JLabel dateof_lastplaylabel = new JLabel(jla[4]!=null?jla[4]:"Date of last time play:" + " ("+base[5]!=null?base[5]:"old:"+" "+olddateof_lastplay+")");
+									JLabel dateof_lastplaylabel = new JLabel(jla[4]!=null?jla[4]:"Date of last time play:" + " ("+(base[5]!=null?base[5]:"old:")+" "+olddateof_lastplay+")");
 									panel.add(dateof_lastplaylabel); panel.add(newdateof_lastplay);
-									JLabel user_ratedlabel = new JLabel(jla[5]!=null?jla[5]:"Rated:" + " ("+base[5]!=null?base[5]:"old:"+" "+olduser_rated+")");
+									JLabel user_ratedlabel = new JLabel(jla[5]!=null?jla[5]:"Rated:" + " ("+(base[5]!=null?base[5]:"old:")+" "+olduser_rated+")");
 									panel.add(user_ratedlabel); panel.add(newuser_rated);
-									JLabel newest_versionlabel = new JLabel(jla[6]!=null?jla[6]:"Newest version:" + " ("+base[5]!=null?base[5]:"old:"+" "+oldnewest_version+")");
+									JLabel newest_versionlabel = new JLabel(jla[6]!=null?jla[6]:"Newest version:" + " ("+(base[5]!=null?base[5]:"old:")+" "+oldnewest_version+")");
 									panel.add(newest_versionlabel); panel.add(newnewest_version);
-									JLabel dateOfLastUpdatelabel = new JLabel(jla[7]!=null?jla[7]:"Date of last update:" + " ("+base[5]!=null?base[5]:"old:"+" "+olddateof_lastupate+")");
+									JLabel dateOfLastUpdatelabel = new JLabel(jla[7]!=null?jla[7]:"Date of last update:" + " ("+(base[5]!=null?base[5]:"old:")+" "+olddateof_lastupate+")");
 									panel.add(dateOfLastUpdatelabel); panel.add(newdateof_lastupate);
-									JLabel people_ratedlabel = new JLabel(jla[8]!=null?jla[8]:"People rating:" + " ("+base[5]!=null?base[5]:"old:"+" "+oldpeople_rated+")");
+									JLabel people_ratedlabel = new JLabel(jla[8]!=null?jla[8]:"People rating:" + " ("+(base[5]!=null?base[5]:"old:")+" "+oldpeople_rated+")");
 									panel.add(people_ratedlabel); panel.add(newpeople_rated);
 									JLabel howFarUserPlayedlabel = new JLabel(jla[9]!=null?jla[9]:"Player progress:");
 									panel.add(howFarUserPlayedlabel); panel.add(howFarUserPlayedPanel);
@@ -138,7 +138,7 @@ public class updateGameManually {
 									panel.add(enginelabel); panel.add(enginePanel);
 									JLabel oslabel = new JLabel(jla[12]!=null?jla[12]:"OS:");
 									panel.add(oslabel); panel.add(osPanel);
-									JLabel selfNotelabel = new JLabel(jla[13]!=null?jla[13]:"Self note:" + " ("+base[5]!=null?base[5]:"old:"+" "+oldselfNote+")");
+									JLabel selfNotelabel = new JLabel(jla[13]!=null?jla[13]:"Self note:" + " ("+(base[5]!=null?base[5]:"old:")+" "+oldselfNote+")");
 									panel.add(selfNotelabel); panel.add(newselfNote);
 									int option = JOptionPane.showConfirmDialog(null, panel, base[3]!=null?base[3]:"Update game", JOptionPane.OK_CANCEL_OPTION);
 									if (option == JOptionPane.OK_OPTION) {

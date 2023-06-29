@@ -54,8 +54,8 @@ public class settingsManager {
 
 	// TODO https://stackoverflow.com/questions/1881714/how-to-start-stop-restart-a-thread-in-java
 	private static void langChoose(Document dom) {
-		String[] langButtons = {"english", "hungarian"};
-		String[] langMeaining = {"English", "Hungarian / Magyar"};
+		String[] langButtons = {"english", "engwishUwU", "hungarian"};
+		String[] langMeaining = {"English", "Nyaaa~~ UwU", "Hungarian / Magyar"};
 		JPanel panel = new JPanel();
 		JRadioButton[] buttons = new JRadioButton[langButtons.length];
 		panel.setLayout(new GridLayout(2, 1));

@@ -54,7 +54,6 @@ public class loadSite {
 		for (int i = 0; i < longTitle.split(" - ").length; i++) { engi[i] = longTitle.split(" - ")[i]; }
 		if (engi[0] == "Collection") {allTheInfo[5] = engi[0];} 
 		else { 
-			for (int i = 0; i < engi.length; i++) { if (engi[i].contains("Ren&#039;Py")) { engi[i] = "Ren'Py"; break;} }
 			for (int i = 0; i < engi.length; i++) { 
 				if (engi[i].contains("VN")) { allTheInfo[0] = "["+engi[i]+"] "+allTheInfo[0]; } 
 				if (engi[i].contains("Collection") || engi[i].contains("VN")){} else { allTheInfo[5] = engi[i]; break; } 
@@ -70,6 +69,15 @@ public class loadSite {
 		if (allTheInfo[1] == "N/A") { allTheInfo[1] = allTheInfo[2]; allTheInfo[2] = "N/A"; }
 
 		if (longTitle.contains("Completed")) { allTheInfo[2] = "✔ " + allTheInfo[2]; }
+		
+		for (int i = 0; i < allTheInfo.length; i++) {
+			if (allTheInfo[i] != null) {
+				String temp = allTheInfo[i].toString();
+				if (temp.contains("&#039;")) { temp = temp.replace("&#039;", "'"); }
+				allTheInfo[i] = temp;
+			}
+		}
+
 		// for (int i = 0; i < allTheInfo.length; i++) { System.out.println(allTheInfo[i]); }
 
 		return allTheInfo;

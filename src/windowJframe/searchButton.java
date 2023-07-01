@@ -44,14 +44,14 @@ public class searchButton {
 			panel.add(new JLabel(serc[9]!=null?serc[9]:"Maybe try searching by other ways?"));
 			panel.add(new JLabel(serc[10]!=null?serc[10]:"You can search by ID, name and developer too!"));
 		} else {
-			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+tabl[1]!=null?tabl[1]:"ID:"+" " + foundData[i][1].toString())); }
+			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+(tabl[1]!=null?tabl[1]:"ID:")+" " + foundData[i][1].toString())); }
 			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("--------------------")); }
-			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+tabl[0]!=null?tabl[0]:"Site:"+" " + foundData[i][0].toString())); }
-			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+tabl[2]!=null?tabl[2]:"Name:"+" " + foundData[i][2].toString())); }
-			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+tabl[3]!=null?tabl[3]:"Developer:"+" " + foundData[i][3].toString())); }
-			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+tabl[4]!=null?tabl[4]:"Played version:"+" " + foundData[i][4].toString())); }
-			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+tabl[5]!=null?tabl[5]:"Last time playing:"+" " + foundData[i][5].toString())); }
-			panel.add(new JLabel("---------- "+serc[11]!=null?serc[11]:"Found game(s):"+" " + (foundNum) + "----------"));
+			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+(tabl[0]!=null?tabl[0]:"Site:")+" " + foundData[i][0].toString())); }
+			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+(tabl[2]!=null?tabl[2]:"Name:")+" " + foundData[i][2].toString())); }
+			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+(tabl[3]!=null?tabl[3]:"Developer:")+" " + foundData[i][3].toString())); }
+			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+(tabl[4]!=null?tabl[4]:"Played version:")+" " + foundData[i][4].toString())); }
+			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+(tabl[5]!=null?tabl[5]:"Last time playing:")+" " + foundData[i][5].toString())); }
+			panel.add(new JLabel("---------- "+(serc[11]!=null?serc[11]:"Found game(s):")+" " + (foundNum) + "----------"));
 		}
 		panel.setLayout(new GridLayout(8, foundNum+1));
 		JOptionPane.showMessageDialog(null, panel, serc[0]!=null?serc[0]:"Search by ID", JOptionPane.INFORMATION_MESSAGE);
@@ -78,14 +78,14 @@ public class searchButton {
 			panel.add(new JLabel(serc[9]!=null?serc[9]:"Maybe try searching by other ways?"));
 			panel.add(new JLabel(serc[10]!=null?serc[10]:"You can search by ID, name and developer too!"));
 		} else {
-			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+tabl[2]!=null?tabl[2]:"Name:"+" " + foundData[i][2].toString())); }
+			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+(tabl[2]!=null?tabl[2]:"Name:")+" " + foundData[i][2].toString())); }
 			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("--------------------")); }
-			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+tabl[0]!=null?tabl[0]:"Site:"+" " + foundData[i][0].toString())); }
-			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+tabl[1]!=null?tabl[1]:"ID:"+" " + foundData[i][1].toString())); }
-			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+tabl[3]!=null?tabl[3]:"Developer:"+" " + foundData[i][3].toString())); }
-			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+tabl[4]!=null?tabl[4]:"Played version:"+" " + foundData[i][4].toString())); }
-			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+tabl[5]!=null?tabl[5]:"Last time playing:"+" " + foundData[i][5].toString())); }
-			panel.add(new JLabel("---------- "+serc[11]!=null?serc[11]:"Found game(s):"+" " + (foundNum) + "----------"));
+			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+(tabl[0]!=null?tabl[0]:"Site:")+" " + foundData[i][0].toString())); }
+			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+(tabl[1]!=null?tabl[1]:"ID:")+" " + foundData[i][1].toString())); }
+			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+(tabl[3]!=null?tabl[3]:"Developer:")+" " + foundData[i][3].toString())); }
+			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+(tabl[4]!=null?tabl[4]:"Played version:")+" " + foundData[i][4].toString())); }
+			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+(tabl[5]!=null?tabl[5]:"Last time playing:")+" " + foundData[i][5].toString())); }
+			panel.add(new JLabel("---------- "+(serc[11]!=null?serc[11]:"Found game(s):")+" " + (foundNum) + "----------"));
 		}
 		panel.setLayout(new GridLayout(8, foundNum+1));
 		JOptionPane.showMessageDialog(null, panel, serc[1]!=null?serc[1]:"Search by Name", JOptionPane.INFORMATION_MESSAGE);
@@ -112,14 +112,14 @@ public class searchButton {
 			panel.add(new JLabel(serc[9]!=null?serc[9]:"Maybe try searching by other ways?"));
 			panel.add(new JLabel(serc[10]!=null?serc[10]:"You can search by ID, name and developer too!"));
 		} else {
-			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+tabl[3]!=null?tabl[3]:"Developer:"+" " + foundData[i][3].toString())); }
+			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+(tabl[3]!=null?tabl[3]:"Developer:")+" " + foundData[i][3].toString())); }
 			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("--------------------")); }
-			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+tabl[0]!=null?tabl[0]:"Site:"+" " + foundData[i][0].toString())); }
-			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+tabl[1]!=null?tabl[1]:"ID:"+" " + foundData[i][1].toString())); }
-			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+tabl[2]!=null?tabl[2]:"Name:"+" " + foundData[i][2].toString())); }
-			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+tabl[4]!=null?tabl[4]:"Played version:"+" " + foundData[i][4].toString())); }
-			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+tabl[5]!=null?tabl[5]:"Last time playing:"+" " + foundData[i][5].toString())); }
-			panel.add(new JLabel("---------- "+serc[11]!=null?serc[11]:"Found game(s):"+" " + (foundNum) + "----------"));
+			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+(tabl[0]!=null?tabl[0]:"Site:")+" " + foundData[i][0].toString())); }
+			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+(tabl[1]!=null?tabl[1]:"ID:")+" " + foundData[i][1].toString())); }
+			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+(tabl[2]!=null?tabl[2]:"Name:")+" " + foundData[i][2].toString())); }
+			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+(tabl[4]!=null?tabl[4]:"Played version:")+" " + foundData[i][4].toString())); }
+			for (int i = 0; i < foundNum; i++) { panel.add(new JLabel("|| "+(tabl[5]!=null?tabl[5]:"Last time playing:")+" " + foundData[i][5].toString())); }
+			panel.add(new JLabel("---------- "+(serc[11]!=null?serc[11]:"Found game(s):")+" " + (foundNum) + "----------"));
 		}
 		panel.setLayout(new GridLayout(8, foundNum+1));
 		JOptionPane.showMessageDialog(null, panel, serc[2]!=null?serc[2]:"Search by Developer", JOptionPane.INFORMATION_MESSAGE);

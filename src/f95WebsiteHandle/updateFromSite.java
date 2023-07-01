@@ -109,11 +109,11 @@ public class updateFromSite {
 
 									panel.add(Namelabel);
 									panel.add(developerlabel);
-									JLabel played_versionlabel = new JLabel(jla[3]!=null?jla[3]:"Played version:" + " ("+(bs[5]!=null?bs[5]:"old:")+" "+oldplayed_version+")");
+									JLabel played_versionlabel = new JLabel((jla[3]!=null?jla[3]:"Played version:") + " ("+(bs[5]!=null?bs[5]:"old:")+" "+oldplayed_version+")");
 									panel.add(played_versionlabel); panel.add(newplayed_version);
-									JLabel dateof_lastplaylabel = new JLabel(jla[4]!=null?jla[4]:"Date of last time play:" + " ("+(bs[5]!=null?bs[5]:"old:")+" "+olddateof_lastplay+")");
+									JLabel dateof_lastplaylabel = new JLabel((jla[4]!=null?jla[4]:"Date of last time play:") + " ("+(bs[5]!=null?bs[5]:"old:")+" "+olddateof_lastplay+")");
 									panel.add(dateof_lastplaylabel); panel.add(newdateof_lastplay);
-									JLabel user_ratedlabel = new JLabel(jla[5]!=null?jla[5]:"Rated:" + " ("+(bs[5]!=null?bs[5]:"old:")+" "+olduser_rated+")");
+									JLabel user_ratedlabel = new JLabel((jla[5]!=null?jla[5]:"Rated:") + " ("+(bs[5]!=null?bs[5]:"old:")+" "+olduser_rated+")");
 									panel.add(user_ratedlabel); panel.add(newuser_rated);
 									panel.add(newest_versionlabel);
 									panel.add(dateOfLastUpdatelabel);
@@ -149,10 +149,10 @@ public class updateFromSite {
 										e.getElementsByTagName("selfNote").item(0).setTextContent(newselfNoteValue);
 										saveLoadDoc.saveDocument(dom, mainInit.databasePath);
 										_initFrame.refreshTable();
-										JOptionPane.showMessageDialog(null, newnameValue+", \nId: "+idValue+" "+bc[4]!=null?bc[4]:"has been updated", bs[0]!=null?bs[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
+										JOptionPane.showMessageDialog(null, newnameValue+", \nId: "+idValue+" "+(bc[4]!=null?bc[4]:"has been updated"), bs[0]!=null?bs[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
 										break;
 									} else {
-										JOptionPane.showMessageDialog(null, newnameValue+", \nId: "+idValue+" "+bc[5]!=null?bc[5]:"was not been updated", bs[0]!=null?bs[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
+										JOptionPane.showMessageDialog(null, newnameValue+", \nId: "+idValue+" "+(bc[5]!=null?bc[5]:"was not been updated"), bs[0]!=null?bs[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
 										break;
 									}
 								}

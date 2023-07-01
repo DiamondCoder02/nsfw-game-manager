@@ -46,7 +46,7 @@ public class removeGameFromFile {
 									String from = e.getAttribute("from").trim();
 									if ( ids.equals(idValue) && from.equals(fromValue)) {
 										String name = e.getElementsByTagName("name").item(0).getTextContent().trim();
-										int option = JOptionPane.showConfirmDialog(null, name + ", \nId: "+ids+" "+folder[14]!=null?folder[14]:"will be removed. Are you sure?", base[4]!=null?base[4]:"Remove game", JOptionPane.OK_CANCEL_OPTION);
+										int option = JOptionPane.showConfirmDialog(null, name + ", \nId: "+ids+" "+(folder[14]!=null?folder[14]:"will be removed. Are you sure?"), base[4]!=null?base[4]:"Remove game", JOptionPane.OK_CANCEL_OPTION);
 										if (option == JOptionPane.OK_OPTION) {
 											sourceNode.removeChild(gameNode);
 											saveLoadDoc.saveDocument(dom, mainInit.databasePath);

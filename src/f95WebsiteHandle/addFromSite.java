@@ -138,7 +138,7 @@ public class addFromSite {
 						sourceNode.appendChild(newGame);
 						saveLoadDoc.saveDocument(dom, mainInit.databasePath);
 						_initFrame.refreshTable();
-						JOptionPane.showMessageDialog(null, nameValue+", \nId: "+idValue+" "+bc[2]==null?"has been added":bs[2], bs[0]==null?"Success":bs[0], JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, nameValue+", \nId: "+idValue+" "+(bc[2]==null?"has been added":bc[2]), bs[0]==null?"Success":bs[0], JOptionPane.INFORMATION_MESSAGE);
 
 						int option = JOptionPane.showConfirmDialog(null, bc[3]==null?"Do you want to add another game?":bc[3], bs[2]==null?"Add game":bs[2], JOptionPane.YES_NO_OPTION);
 						if (option == JOptionPane.NO_OPTION) { repeat = false; break; } else { break; }

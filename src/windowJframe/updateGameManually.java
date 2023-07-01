@@ -185,7 +185,7 @@ public class updateGameManually {
 										e.getElementsByTagName("selfNote").item(0).setTextContent(newselfNoteValue);
 										saveLoadDoc.saveDocument(dom, mainInit.databasePath);
 										_initFrame.refreshTable();
-										JOptionPane.showMessageDialog(null, newnameValue+", \nId: "+idValue +" "+ basic[4]!=null?basic[4]:"has been updated", base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
+										JOptionPane.showMessageDialog(null, newnameValue+", \nId: "+idValue +" "+ (basic[4]!=null?basic[4]:"has been updated"), base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
 										break;
 									} else {
 										JOptionPane.showMessageDialog(null, oldname+", \nId: "+idValue +" "+ (basic[5]!=null?basic[5]:"was not updated."), base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);

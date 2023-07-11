@@ -1,7 +1,5 @@
 package xmlFolderHandle;
 
-import javax.swing.JOptionPane;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -41,7 +39,7 @@ public class loadGamesFromXml {
 								case "Engine": allDataFromFile[counter][n] = e.getElementsByTagName("engine").item(0).getTextContent().trim(); break;
 								case "OS": allDataFromFile[counter][n] = e.getElementsByTagName("OS").item(0).getTextContent().trim(); break;
 								case "Personal Notes": allDataFromFile[counter][n] = e.getElementsByTagName("selfNote").item(0).getTextContent().trim(); break;
-								default: JOptionPane.showMessageDialog(null, bac[7]!=null?bac[7]:"Error, this should never happen!!!" + " (loadGamesFromXml.loadGames)", "Error", JOptionPane.ERROR_MESSAGE); break;
+								default:  allDataFromFile[counter][n] = "N/A???"; System.out.println("allDataFromFile: N/A");break;
 							}
 						}
 						counter++;

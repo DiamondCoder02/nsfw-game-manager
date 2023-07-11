@@ -218,9 +218,9 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Refresh table": refreshTable(); setColumns(); break;
 			case "API refresh":  _initSiteFetch.fetchInfoAskConfirm(); break;
 
-			case "Search by ID": searchButton.searchById(); break;
-			case "Search by name": searchButton.searchByName(); break;
-			case "Search by developer": searchButton.searchByDeveloper(); break;
+			case "Search by ID": searchButton.search("id"); break;
+			case "Search by name": searchButton.search("name"); break;
+			case "Search by developer": searchButton.search("dev"); break;
 
 			case "Site": settingsManager.xmlSettings("showncolumns", "Site"); break;
 			case "ID": settingsManager.xmlSettings("showncolumns", "ID"); break;

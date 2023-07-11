@@ -11,7 +11,7 @@ import xmlFolderHandle.loadSettingsFromXml;
 import xmlFolderHandle.saveLoadDoc;
 
 public class langLoad {
-	static String path = checksFile.mainPath + "languages.xml";
+	static String path = checksFile.mainPath;
 	private static String[] fol = {"base", "basic", "tablec", "JLabPan", "JRadBut", "buttons", "folders", "search"};
 	private static String[] tempBase = new String[30], tempBasic = new String[30], tempTabl = new String[30], 
 	tempjLaPa = new String[30], tempjRaBu = new String[30], tempbuton = new String[30], tempFold = new String[30],
@@ -41,7 +41,7 @@ public class langLoad {
 			serc = tempSear;
 			return;
 		}
-		Document dom = saveLoadDoc.loadDocument(path);
+		Document dom = saveLoadDoc.loadDocument(path+"languages/"+language+".xml");
 		try {
 			NodeList langSource = dom.getElementsByTagName("lang");
 			Node langSourceNode = langSource.item(0);

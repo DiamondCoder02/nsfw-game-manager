@@ -70,19 +70,29 @@ public class checksFile {
 
 	private static void checkLanguage(){
 		File file = new File(mainPath);
-		try{
-			URL url = new URL("https://raw.githubusercontent.com/DiamondPRO02/nsfw-game-manager/master/languages_doNotTouch/languages.xml");
-			InputStream in = url.openStream();
-			FileOutputStream fos = new FileOutputStream(file + "/languages.xml");
-			byte[] buffer = new byte[4096];
-			int length;
-			while ((length = in.read(buffer)) > 0) {
-				fos.write(buffer, 0, length);
+		String[] languages = {"english", "engwishUwU", "hungarian"};
+		String unableToDownload = "";
+		for (int i = 0; i < languages.length; i++) {
+			File file2 = new File(mainPath + "languages/" + languages[i] + ".xml");
+			if (!file2.exists()) {
+				try{
+					URL url = new URL("https://raw.githubusercontent.com/DiamondPRO02/nsfw-game-manager/master/languages_doNotTouch/");
+					InputStream in = url.openStream();
+					FileOutputStream fos = new FileOutputStream(file + "/languages.xml");
+					byte[] buffer = new byte[4096];
+					int length;
+					while ((length = in.read(buffer)) > 0) {
+						fos.write(buffer, 0, length);
+					}
+					in.close();
+					fos.close();
+				} catch (Exception e) {
+					unableToDownload = unableToDownload+"\nUnable to download: " + languages[i];
+				}
 			}
-			in.close();
-			fos.close();
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Unable to download the language files (checksFile.checkLanguage)", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+		if (!unableToDownload.equals("")) {
+			JOptionPane.showMessageDialog(null, "Error downloading language(s):\n" + unableToDownload + "\n>.< (checksFile.checkLanguage)", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

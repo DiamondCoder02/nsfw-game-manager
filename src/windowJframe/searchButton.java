@@ -17,13 +17,23 @@ import xmlFolderHandle.saveLoadDoc;
 public class searchButton {
 	static Document dom = saveLoadDoc.loadDocument(mainInit.settingsPath);
 	static String[] columnNames = _initXml.allColumns(dom);
-	static Document domGame = saveLoadDoc.loadDocument(mainInit.databasePath);
-	static Object[][] data = loadGamesFromXml.loadGames(domGame, columnNames);
-	static Object[][] foundData = new Object[data.length][6];
+	Document domGame = saveLoadDoc.loadDocument(mainInit.databasePath);
+	Object[][] data = loadGamesFromXml.loadGames(domGame, columnNames);
+	Object[][] foundData = new Object[data.length][6];
 	static boolean found = false;
 	static Integer foundNum;
 	static String[] base = langLoad.base, basic = langLoad.basic, tabl = langLoad.tabl, serc = langLoad.serc;
-	public static void searchById() {
+
+	public static void search(String todoTheAsd){
+		switch (todoTheAsd) {
+			case "id": new searchButton().searchById(); break;
+			case "dev": new searchButton().searchByDeveloper(); break;
+			case "name": new searchButton().searchByName(); break;
+			default: break;
+		}
+	}
+
+	private void searchById() {
 		found = false; foundNum = 0;
 		String id = JOptionPane.showInputDialog(null, serc[3]!=null?serc[3]:"ID of the game to search:", serc[0]!=null?serc[0]:"Search by ID", JOptionPane.QUESTION_MESSAGE);
 		if (id == null || id.equals("")) { JOptionPane.showMessageDialog(null, basic[0]!=null?basic[0]:"ID is required", base[1]!=null?base[1]:"Error", JOptionPane.ERROR_MESSAGE); return; }
@@ -57,7 +67,7 @@ public class searchButton {
 		JOptionPane.showMessageDialog(null, panel, serc[0]!=null?serc[0]:"Search by ID", JOptionPane.INFORMATION_MESSAGE);
 	}
 
-	public static void searchByName() {
+	private void searchByName() {
 		found = false; foundNum = 0;
 		String name = JOptionPane.showInputDialog(null, serc[4]!=null?serc[4]:"Name of the game to search:", serc[1]!=null?serc[1]:"Search by Name", JOptionPane.QUESTION_MESSAGE);
 		if (name == null || name.equals("")) { JOptionPane.showMessageDialog(null, serc[6]!=null?serc[6]:"Name is required", base[1]!=null?base[1]:"Error", JOptionPane.ERROR_MESSAGE); return; }
@@ -91,7 +101,7 @@ public class searchButton {
 		JOptionPane.showMessageDialog(null, panel, serc[1]!=null?serc[1]:"Search by Name", JOptionPane.INFORMATION_MESSAGE);
 	}
 
-	public static void searchByDeveloper() {
+	private void searchByDeveloper() {
 		found = false; foundNum = 0;
 		String dev = JOptionPane.showInputDialog(null, serc[5]!=null?serc[5]:"Developer of the game to search:", serc[2]!=null?serc[2]:"Search by Developer", JOptionPane.QUESTION_MESSAGE);
 		if (dev == null || dev.equals("")) { JOptionPane.showMessageDialog(null, serc[7]!=null?serc[7]:"Developer is required", base[1]!=null?base[1]:"Error", JOptionPane.ERROR_MESSAGE); return; }

@@ -76,9 +76,10 @@ public class checksFile {
 			File file2 = new File(mainPath + "languages/" + languages[i] + ".xml");
 			if (!file2.exists()) {
 				try{
-					URL url = new URL("https://raw.githubusercontent.com/DiamondPRO02/nsfw-game-manager/master/languages_doNotTouch/");
+					URL url = new URL("https://raw.githubusercontent.com/DiamondPRO02/nsfw-game-manager/master/languages_doNotTouch/"+languages[i]+".xml");
+					System.out.println(url);
 					InputStream in = url.openStream();
-					FileOutputStream fos = new FileOutputStream(file + "/languages.xml");
+					FileOutputStream fos = new FileOutputStream(file + "/languages/" + languages[i] + ".xml");
 					byte[] buffer = new byte[4096];
 					int length;
 					while ((length = in.read(buffer)) > 0) {

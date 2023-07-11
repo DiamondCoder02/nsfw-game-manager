@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<lang>
+	<!-- 
+		<english> => this is language
+			<base>Some basic small text here</base>
+			<folders>This here is the text to translate</folders>
+		</english>
+
+		IF TEXT IS TO LONG, PUT \n TO MAKE IT GO TO NEXT LINE
+	-->
+	<english>
+		<base>Success</base>
+		<base>Error</base>
+		<base>Add game</base>
+		<base>Update game</base>
+		<base>Remove game</base>
+		<base>Previous:</base>
+
+		<basic>You must enter an id.</basic>
+		<basic>doesn't exists.</basic> <!-- {ID} doesn't exists.-->
+		<basic>has been added.</basic> <!-- {game} hase been added.-->
+		<basic>Do you want to add another game?</basic>
+		<basic>has been updated.</basic> <!-- {game} hase been updated.-->
+		<basic>was not updated.</basic>
+		<basic>Enter the id of the game you want to update.</basic>
+		<basic>Error! This should be impossible!!!</basic>
+
+		<tablec>Site</tablec> <!-- 0 -->
+		<tablec>ID</tablec>
+		<tablec>Name</tablec>
+		<tablec>Developer</tablec>
+		<tablec>Played version</tablec>
+		<tablec>Last time play</tablec>
+		<tablec>Rated</tablec> <!-- 6 -->
+		<tablec>Newest version</tablec>
+		<tablec>Last update</tablec>
+		<tablec>People rating</tablec>
+		<tablec>Player progress</tablec>
+		<tablec>Still on pc?</tablec>
+		<tablec>Engine</tablec>
+		<tablec>OS</tablec>
+		<tablec>Personal Notes</tablec> <!-- 14 -->
+
+		<JLabPan>ID: (required)</JLabPan> <!-- 0 -->
+		<JLabPan>Name:</JLabPan>
+		<JLabPan>Developer:</JLabPan>
+		<JLabPan>Last version you played:</JLabPan>
+		<JLabPan>Last time you updated the game:</JLabPan>
+		<JLabPan>Rating by you:</JLabPan> <!-- 5 -->
+		<JLabPan>Online newest version:</JLabPan>
+		<JLabPan>Online date of last update:</JLabPan>
+		<JLabPan>Rating by online people:</JLabPan>
+		<JLabPan>How far you progressed in the game:</JLabPan>
+		<JLabPan>Is the game still on pc?</JLabPan>
+		<JLabPan>Engine:</JLabPan>
+		<JLabPan>OS:</JLabPan>
+		<JLabPan>Self note for the game:</JLabPan> <!-- 13 -->
+
+		<JRadBut>Not played</JRadBut>
+		<JRadBut>In progress</JRadBut>
+		<JRadBut>Finished</JRadBut>
+		<JRadBut>100% Finished</JRadBut>
+		<JRadBut>Yes</JRadBut>
+		<JRadBut>No</JRadBut>
+		<JRadBut>Unknown</JRadBut>
+		<JRadBut>Other/Unknown</JRadBut>
+
+		<!-- windowJframe._initFrame -->
+		<buttons>Games</buttons> <!-- 0 -->
+		<buttons>Search</buttons>
+		<buttons>Settings</buttons>
+		<buttons>Shown informations</buttons>
+		<buttons>Language</buttons> <!-- TO IMPLEMENT -->
+		<buttons>Other</buttons>
+		<buttons>FAQ</buttons>
+		<buttons>Credits</buttons>
+		<buttons>Exit</buttons> <!-- 8 -->
+		<buttons>Add F95zone</buttons>
+		<buttons>Update F95zone</buttons>
+		<buttons>Remove F95zone</buttons>
+		<buttons>Save file copy</buttons>
+		<buttons>Refresh table</buttons>
+		<buttons>API refresh</buttons>
+		<buttons>Search by ID</buttons>
+		<buttons>Search by name</buttons>
+		<buttons>Search by developer</buttons> 
+		<buttons>Dark mode</buttons>
+		<buttons>Auto fetch game info</buttons> <!-- 19 -->
+
+		<!-- folders --> <!-- 0 -->
+		<folders>This will go through all games and check if there is new update. \nAre you sure?</folders>
+		<folders>Checking games...</folders>
+		<folders>All game infos got updated!</folders>
+		<folders>Enter the id of the game you want to add, from f95zone website.</folders>
+		<folders>The id you entered is already in the F95zone database.</folders>
+		<folders>Error while loading the site.</folders>
+		<!-- main folder-->
+		<folders>Error checking settings.</folders>
+		<folders>Settings got updated. \nPlease restart the program to make sure everything is correct.</folders>
+		<folders>Settings updated</folders>
+		<!-- windowJframe folder-->
+		<folders>Hentai Game Database</folders>
+		<!-- foldersderHandle folder-->
+		<folders>Error loading settings file</folders>
+		<folders>Error loading database file</folders>
+		<folders>The id you entered is already in the *MANUAL* database</folders> <!-- 12 -->
+		<folders>ID is not found between the manually given games</folders>
+		<folders>will be removed. Are you sure?</folders>
+		<folders>has been removed.</folders>
+		<folders>Cancelled deleting.</folders>
+		<folders>Do you want to delete another game?</folders> <!-- 17 -->
+		<folders>Save copy of the file</folders>
+		<folders>Frequently Asked Questions</folders>
+		<folders>Are you sure you want to exit?</folders>
+
+		<!-- Search -->
+		<search>Search by ID</search> <!-- 0 -->
+		<search>Search by Name</search>
+		<search>Search by Developer</search>
+		<search>ID of the game to search:</search>
+		<search>Name of the game to search:</search>
+		<search>Developer of the game to search:</search>
+		<search>Name is required:</search>
+		<search>Developer is required:</search> <!-- 7 -->
+		<search>Game was not found!!!</search>
+		<search>Maybe try searching by other ways?</search>
+		<search>You can search by ID, name and developer too!</search>
+		<search>Found game(s):</search> <!-- 11 -->
+	</english>
+</lang>

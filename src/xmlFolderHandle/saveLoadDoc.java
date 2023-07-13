@@ -31,7 +31,7 @@ public class saveLoadDoc {
 			return dom;
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, (xf[11]!=null?xf[11]:"Error loading database file") + " (saveLoadDoc.loadDocument)", bs[1]!=null?bs[1]:"Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, ("Error loading file:\n"+path) + " (saveLoadDoc.loadDocument)", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		return null;
 	}

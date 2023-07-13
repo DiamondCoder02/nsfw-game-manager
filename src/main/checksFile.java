@@ -69,17 +69,20 @@ public class checksFile {
 	}
 
 	private static void checkLanguage(){
-		File file = new File(mainPath);
+		File file = new File(mainPath + "languages/");
 		String[] languages = {"english", "engwishUwU", "hungarian"};
 		String unableToDownload = "";
+		if (!file.exists()) {
+			file.mkdirs();
+		}
 		for (int i = 0; i < languages.length; i++) {
-			File file2 = new File(mainPath + "languages/" + languages[i] + ".xml");
+			File file2 = new File(file+"/" + languages[i] + ".xml");
 			if (!file2.exists()) {
 				try{
 					URL url = new URL("https://raw.githubusercontent.com/DiamondPRO02/nsfw-game-manager/master/languages_doNotTouch/"+languages[i]+".xml");
 					System.out.println(url);
 					InputStream in = url.openStream();
-					FileOutputStream fos = new FileOutputStream(file + "/languages/" + languages[i] + ".xml");
+					FileOutputStream fos = new FileOutputStream(file+"/" + languages[i] + ".xml");
 					byte[] buffer = new byte[4096];
 					int length;
 					while ((length = in.read(buffer)) > 0) {

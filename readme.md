@@ -5,11 +5,14 @@ Maybe good idea
 Now that this is independent from uni work... Time to make it better
 and to torture myself
 
+I have tested this with my 4-500 games. Still small bugs, but it handles it without problem.
+
 ## Important
 
 - Currently java 8
 - Files: AppData\Roaming\DiamondCoder\nsfwGameManager\
 - (For now )2+1 languages: English(, Engwish UwU), Hungarian
+- The app creates a backup of the database every time it starts(, only saves the last 10)
 
 If you put games from website:
 
@@ -22,7 +25,7 @@ If you put games from website:
 ## TODO
 
 - [x] ~~show language of the game?~~
-- [ ] Auto backup if something goes wrong
+- [x] ~~Auto backup if something goes wrong~~
 - [ ] FAQ
 
 ---

@@ -66,7 +66,11 @@ public class _initSiteFetch extends JFrame {
 						if (site.equals("f95")) {
 							executorService.scheduleAtFixedRate(myF95Task(id, i), 0, 1, TimeUnit.SECONDS);
 						}
-					} catch (Exception e) { /* /ᐠ｡ꞈ｡ᐟ\ */ }
+					} catch (Exception e) { 
+						//System.out.println(e);
+						//System.out.println("(¬_¬ )"); 
+						// /* /ᐠ｡ꞈ｡ᐟ\ */ 
+					}
 					pbar.setValue(i);
 				}
 				pbar.setValue(loadedGames.length);
@@ -92,7 +96,8 @@ public class _initSiteFetch extends JFrame {
 11	case "Still on pc?":
 12	case "Engine": 
 13	case "OS": 
-14	case "Personal Notes": 
+14	case "Language":
+15	case "Personal Notes": 
 */
 	private static Runnable myF95Task(String id, int LoadGamesLength) {
 		String[] gameInfo = loadSite.getf95UrlContents(id);
@@ -106,6 +111,7 @@ public class _initSiteFetch extends JFrame {
 			String oldpeople_rated = loadedGames[LoadGamesLength][7].toString();
 			String oldengine = loadedGames[LoadGamesLength][8].toString();
 			String oldos = loadedGames[LoadGamesLength][9].toString();
+			String oldlanguage = loadedGames[LoadGamesLength][10].toString();
 			String newnameValue = gameInfo[0].toString();
 			String newdeveloperValue = gameInfo[1].toString();
 			String newnewest_versionValue = gameInfo[2].toString();
@@ -113,6 +119,7 @@ public class _initSiteFetch extends JFrame {
 			String newpeople_ratedValue = gameInfo[4].toString();
 			String newengineValue = gameInfo[5].toString();
 			String newosValue = gameInfo[6].toString();
+			String newlanguageValue = gameInfo[7].toString();
 			if (!oldname.equals(newnameValue)) { loadedGames[LoadGamesLength][2] = newnameValue; }
 			if (!olddeveloper.equals(newdeveloperValue)) { loadedGames[LoadGamesLength][3] = newdeveloperValue; }
 			if (!oldnewest_version.equals(newnewest_versionValue)) { loadedGames[LoadGamesLength][5] = newnewest_versionValue; }
@@ -120,6 +127,7 @@ public class _initSiteFetch extends JFrame {
 			if (!oldpeople_rated.equals(newpeople_ratedValue)) { loadedGames[LoadGamesLength][7] = newpeople_ratedValue; }
 			if (!oldengine.equals(newengineValue)) { loadedGames[LoadGamesLength][8] = newengineValue; }
 			if (!oldos.equals(newosValue)) { loadedGames[LoadGamesLength][9] = newosValue; }
+			if (!oldlanguage.equals(newlanguageValue)) { loadedGames[LoadGamesLength][10] = newlanguageValue; }
 
 			if (isIDInDatabase.isInDatabase(id, "f95")) {
 				try{
@@ -141,6 +149,12 @@ public class _initSiteFetch extends JFrame {
 										e.getElementsByTagName("people_rating").item(0).setTextContent(newpeople_ratedValue);
 										e.getElementsByTagName("engine").item(0).setTextContent(newengineValue);
 										e.getElementsByTagName("OS").item(0).setTextContent(newosValue);
+										try {e.getElementsByTagName("language").item(0).setTextContent(newlanguageValue);} 
+										catch (Exception e2) {
+											Element language = dom.createElement("language");
+											language.appendChild(dom.createTextNode(newlanguageValue));
+											e.appendChild(language);
+										}
 										saveLoadDoc.saveDocument(dom, mainInit.databasePath);
 									}
 								}

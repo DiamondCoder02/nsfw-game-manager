@@ -54,6 +54,7 @@ public class createMissingDatabase {
 			Element newstillOnPc = doc.createElement("stillOnPc");
 			Element newEngine = doc.createElement("engine");
 			Element newOS = doc.createElement("OS");
+			Element newLanguage = doc.createElement("language");
 			Element newSelfNote = doc.createElement("selfNote");
 			newGame.setAttribute("from", "man");
 			newGame.setAttribute("id", "000000");
@@ -69,6 +70,7 @@ public class createMissingDatabase {
 			newstillOnPc.appendChild(doc.createTextNode("No"));
 			newEngine.appendChild(doc.createTextNode("HTML"));
 			newOS.appendChild(doc.createTextNode("Linux"));
+			newLanguage.appendChild(doc.createTextNode("English"));
 			newSelfNote.appendChild(doc.createTextNode("-"));
 			newGame.appendChild(newName);
 			newGame.appendChild(newDeveloper);
@@ -82,6 +84,7 @@ public class createMissingDatabase {
 			newGame.appendChild(newstillOnPc);
 			newGame.appendChild(newEngine);
 			newGame.appendChild(newOS);
+			newGame.appendChild(newLanguage);
 			newGame.appendChild(newSelfNote);
 			rootElement.appendChild(newGame);
 

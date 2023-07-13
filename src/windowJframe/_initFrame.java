@@ -39,7 +39,7 @@ public class _initFrame extends JFrame implements ActionListener {
 	JCheckBoxMenuItem darkMode, autoFetchNews;
 	JMenu show;
 	JCheckBoxMenuItem showSite, showID, showName, showDeveloper, showPlayedVersion, showLastTimeplay, showRated, showNewestVersion;
-	JCheckBoxMenuItem showDateOfLastUpdate, showPeopleRating, showhowFarUserPlayed, showDeletedFromPc, showEngine, showOS, ShowSelfNote;
+	JCheckBoxMenuItem showDateOfLastUpdate, showPeopleRating, showhowFarUserPlayed, showDeletedFromPc, showEngine, showOS, showLanguage, ShowSelfNote;
 
 	JMenu help;
 	JMenuItem faq, credits;
@@ -103,7 +103,8 @@ public class _initFrame extends JFrame implements ActionListener {
 			show.add(showDeletedFromPc = new JCheckBoxMenuItem(tlc[11]!=null?tlc[11]:"Still on pc?", boolColumns[11])); showDeletedFromPc.setActionCommand("Still on pc?");
 			show.add(showEngine = new JCheckBoxMenuItem(tlc[12]!=null?tlc[12]:"Engine", boolColumns[12])); showEngine.setActionCommand("Engine");
 			show.add(showOS = new JCheckBoxMenuItem(tlc[13]!=null?tlc[13]:"OS", boolColumns[13])); showOS.setActionCommand("OS");
-			show.add(ShowSelfNote = new JCheckBoxMenuItem(tlc[14]!=null?tlc[14]:"Personal Notes", boolColumns[14])); ShowSelfNote.setActionCommand("Personal Notes");
+			show.add(showLanguage = new JCheckBoxMenuItem(tlc[15]!=null?tlc[15]:"Language", boolColumns[14])); showLanguage.setActionCommand("Language");
+			show.add(ShowSelfNote = new JCheckBoxMenuItem(tlc[14]!=null?tlc[14]:"Personal Notes", boolColumns[15])); ShowSelfNote.setActionCommand("Personal Notes");
 		settings.add(changeLanguage  = new JMenuItem("🌐 "+(bu[4]!=null?bu[4]:"Language"))); changeLanguage.setActionCommand("chanLan");
 		settings.addSeparator();
 		settings.add(darkMode = new JCheckBoxMenuItem(bu[18]!=null?bu[18]:"Dark mode", boolSettings[0])); darkMode.setActionCommand("Dark mode");
@@ -128,7 +129,7 @@ public class _initFrame extends JFrame implements ActionListener {
 		showDateOfLastUpdate.addActionListener(this); showPeopleRating.addActionListener(this);
 		showhowFarUserPlayed.addActionListener(this); showDeletedFromPc.addActionListener(this);
 		showEngine.addActionListener(this); showOS.addActionListener(this);
-		ShowSelfNote.addActionListener(this); 
+		showLanguage.addActionListener(this);; ShowSelfNote.addActionListener(this); 
 
 		changeLanguage.addActionListener(this);
 		darkMode.addActionListener(this); autoFetchNews.addActionListener(this);
@@ -188,8 +189,9 @@ public class _initFrame extends JFrame implements ActionListener {
 			65,	// player progress
 			35,	// still on pc? 
 			60,	// engine
-			100,// os
-			100	// personal notes
+			80,// os
+			40,	// language
+			80	// personal notes
 		};
 
 		for (int i = 0; i < ind.length; i++) {
@@ -236,6 +238,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Still on pc?": settingsManager.xmlSettings("showncolumns", "Still on pc?"); break;
 			case "Engine": settingsManager.xmlSettings("showncolumns", "Engine"); break;
 			case "OS": settingsManager.xmlSettings("showncolumns", "OS"); break;
+			case "Language": settingsManager.xmlSettings("showncolumns", "Language"); break;
 			case "Personal Notes": settingsManager.xmlSettings("showncolumns", "Personal Notes"); break;
 
 			case "chanLan": settingsManager.xmlSettings("language", "lang"); break;
@@ -308,6 +311,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			showDeletedFromPc.setBackground(bg); showDeletedFromPc.setForeground(fg);
 			showEngine.setBackground(bg); showEngine.setForeground(fg);
 			showOS.setBackground(bg); showOS.setForeground(fg);
+			showLanguage.setBackground(bg); showLanguage.setForeground(fg);
 			ShowSelfNote.setBackground(bg);	ShowSelfNote.setForeground(fg);
 
 			help.setBackground(bg);	help.setForeground(fg);
@@ -373,6 +377,7 @@ public class _initFrame extends JFrame implements ActionListener {
 			showDeletedFromPc.setBackground(null); showDeletedFromPc.setForeground(null);
 			showEngine.setBackground(null); showEngine.setForeground(null);
 			showOS.setBackground(null); showOS.setForeground(null);
+			showLanguage.setBackground(null); showLanguage.setForeground(null);
 			ShowSelfNote.setBackground(null);	ShowSelfNote.setForeground(null);
 
 			help.setBackground(null);	help.setForeground(null);

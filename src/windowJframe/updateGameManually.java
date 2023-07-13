@@ -63,6 +63,7 @@ public class updateGameManually {
 									String oldstillOnPc = e.getElementsByTagName("stillOnPc").item(0).getTextContent().trim();
 									String oldengine = e.getElementsByTagName("engine").item(0).getTextContent().trim();
 									String oldos = e.getElementsByTagName("OS").item(0).getTextContent().trim();
+									String oldlanguage = e.getElementsByTagName("language").item(0).getTextContent().trim();
 									String oldselfNote = e.getElementsByTagName("selfNote").item(0).getTextContent().trim();
 
 									JTextField newname = new JTextField();
@@ -106,7 +107,8 @@ public class updateGameManually {
 									os_win.setActionCommand("windows"); os_lin.setActionCommand("linux"); os_mac.setActionCommand("mac"); os_and.setActionCommand("android"); os_other.setActionCommand("other");
 									JPanel osPanel = new JPanel(); osPanel.add(os_win); osPanel.add(os_lin); osPanel.add(os_mac); osPanel.add(os_and); osPanel.add(os_other);
 									if (oldos.contains("Windows")) { os_win.setSelected(true); } if (oldos.contains("Linux")) { os_lin.setSelected(true); } if (oldos.contains("Mac")) { os_mac.setSelected(true); } if (oldos.contains("Android")) { os_and.setSelected(true); } if (oldos.contains("other")) { os_other.setSelected(true); }
-
+									
+									JTextField newlanguage = new JTextField();
 									JTextField newselfNote = new JTextField();
 
 									howFarUserPlayedPanel.setLayout(new BoxLayout(howFarUserPlayedPanel, BoxLayout.X_AXIS));
@@ -138,6 +140,8 @@ public class updateGameManually {
 									panel.add(enginelabel); panel.add(enginePanel);
 									JLabel oslabel = new JLabel(jla[12]!=null?jla[12]:"OS:");
 									panel.add(oslabel); panel.add(osPanel);
+									JLabel languagelabel = new JLabel(jla[14]!=null?jla[14]:"Language:" + " ("+(base[5]!=null?base[5]:"old:")+" "+oldlanguage+")");
+									panel.add(languagelabel); panel.add(newlanguage);
 									JLabel selfNotelabel = new JLabel(jla[13]!=null?jla[13]:"Self note:" + " ("+(base[5]!=null?base[5]:"old:")+" "+oldselfNote+")");
 									panel.add(selfNotelabel); panel.add(newselfNote);
 									int option = JOptionPane.showConfirmDialog(null, panel, base[3]!=null?base[3]:"Update game", JOptionPane.OK_CANCEL_OPTION);
@@ -160,6 +164,7 @@ public class updateGameManually {
 										if (os_and.isSelected()) { newosValue += "Android / "; }
 										if (os_other.isSelected()) { newosValue += "other"; }
 										if (newosValue.endsWith(" / ")) { newosValue = newosValue.substring(0, newosValue.length() - 3); }
+										String newlanguageValue = newlanguage.getText();
 										String newselfNoteValue = newselfNote.getText();
 										if (newnameValue.equals("")) { newnameValue = oldname; }
 										if (newdeveloperValue.equals("")) { newdeveloperValue = olddeveloper; }
@@ -169,6 +174,7 @@ public class updateGameManually {
 										if (newnewest_versionValue.equals("")) { newnewest_versionValue = oldnewest_version; }
 										if (newdateof_lastupateValue.equals("")) { newdateof_lastupateValue = olddateof_lastupate; }
 										if (newpeople_ratedValue.equals("")) { newpeople_ratedValue = oldpeople_rated; }
+										if (newlanguageValue.equals("")) { newlanguageValue = oldlanguage; }
 										if (newselfNoteValue.equals("")) { newselfNoteValue = oldselfNote; }
 										e.getElementsByTagName("name").item(0).setTextContent(newnameValue);
 										e.getElementsByTagName("developer").item(0).setTextContent(newdeveloperValue);
@@ -182,6 +188,7 @@ public class updateGameManually {
 										e.getElementsByTagName("stillOnPc").item(0).setTextContent(newstillOnPcValue);
 										e.getElementsByTagName("engine").item(0).setTextContent(newengineValue);
 										e.getElementsByTagName("OS").item(0).setTextContent(newosValue);
+										e.getElementsByTagName("language").item(0).setTextContent(newlanguageValue);
 										e.getElementsByTagName("selfNote").item(0).setTextContent(newselfNoteValue);
 										saveLoadDoc.saveDocument(dom, mainInit.databasePath);
 										_initFrame.refreshTable();

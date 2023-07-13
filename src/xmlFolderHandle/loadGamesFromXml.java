@@ -23,23 +23,29 @@ public class loadGamesFromXml {
 					if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
 						Element e = (Element) gameNode;
 						for (int n = 0; n < columnNames.length; n++) {
-							switch (columnNames[n]) {
-								case "Site": allDataFromFile[counter][n] = e.getAttribute("from").trim(); break;
-								case "ID": allDataFromFile[counter][n] = e.getAttribute("id").trim(); break;
-								case "Name": allDataFromFile[counter][n] = e.getElementsByTagName("name").item(0).getTextContent().trim(); break;
-								case "Developer": allDataFromFile[counter][n] = e.getElementsByTagName("developer").item(0).getTextContent().trim(); break;
-								case "Played version": allDataFromFile[counter][n] = e.getElementsByTagName("played_version").item(0).getTextContent().trim(); break;
-								case "Last time play": allDataFromFile[counter][n] = e.getElementsByTagName("dateof_lastplay").item(0).getTextContent().trim(); break;
-								case "Rated": allDataFromFile[counter][n] = e.getElementsByTagName("user_rating").item(0).getTextContent().trim(); break;
-								case "Newest version": { allDataFromFile[counter][n] = e.getElementsByTagName("newest_version").item(0).getTextContent().trim(); if (e.getAttribute("finished").trim().equals("true")){allDataFromFile[counter][n] += " (Last version)";} break;}
-								case "Last update": allDataFromFile[counter][n] = e.getElementsByTagName("dateof_lastupate").item(0).getTextContent().trim(); break;
-								case "People rating": allDataFromFile[counter][n] = e.getElementsByTagName("people_rating").item(0).getTextContent().trim(); break;
-								case "Player progress": allDataFromFile[counter][n] = e.getElementsByTagName("howFarUserPlayed").item(0).getTextContent().trim(); break;
-								case "Still on pc?": allDataFromFile[counter][n] = e.getElementsByTagName("stillOnPc").item(0).getTextContent().trim(); break;
-								case "Engine": allDataFromFile[counter][n] = e.getElementsByTagName("engine").item(0).getTextContent().trim(); break;
-								case "OS": allDataFromFile[counter][n] = e.getElementsByTagName("OS").item(0).getTextContent().trim(); break;
-								case "Personal Notes": allDataFromFile[counter][n] = e.getElementsByTagName("selfNote").item(0).getTextContent().trim(); break;
-								default:  allDataFromFile[counter][n] = "N/A???"; System.out.println("allDataFromFile: N/A");break;
+							try{
+								switch (columnNames[n]) {
+									case "Site": allDataFromFile[counter][n] = e.getAttribute("from").trim(); break;
+									case "ID": allDataFromFile[counter][n] = e.getAttribute("id").trim(); break;
+									case "Name": allDataFromFile[counter][n] = e.getElementsByTagName("name").item(0).getTextContent().trim(); break;
+									case "Developer": allDataFromFile[counter][n] = e.getElementsByTagName("developer").item(0).getTextContent().trim(); break;
+									case "Played version": allDataFromFile[counter][n] = e.getElementsByTagName("played_version").item(0).getTextContent().trim(); break;
+									case "Last time play": allDataFromFile[counter][n] = e.getElementsByTagName("dateof_lastplay").item(0).getTextContent().trim(); break;
+									case "Rated": allDataFromFile[counter][n] = e.getElementsByTagName("user_rating").item(0).getTextContent().trim(); break;
+									case "Newest version": { allDataFromFile[counter][n] = e.getElementsByTagName("newest_version").item(0).getTextContent().trim(); if (e.getAttribute("finished").trim().equals("true")){allDataFromFile[counter][n] += " (Last version)";} break;}
+									case "Last update": allDataFromFile[counter][n] = e.getElementsByTagName("dateof_lastupate").item(0).getTextContent().trim(); break;
+									case "People rating": allDataFromFile[counter][n] = e.getElementsByTagName("people_rating").item(0).getTextContent().trim(); break;
+									case "Player progress": allDataFromFile[counter][n] = e.getElementsByTagName("howFarUserPlayed").item(0).getTextContent().trim(); break;
+									case "Still on pc?": allDataFromFile[counter][n] = e.getElementsByTagName("stillOnPc").item(0).getTextContent().trim(); break;
+									case "Engine": allDataFromFile[counter][n] = e.getElementsByTagName("engine").item(0).getTextContent().trim(); break;
+									case "OS": allDataFromFile[counter][n] = e.getElementsByTagName("OS").item(0).getTextContent().trim(); break;
+									case "Language": allDataFromFile[counter][n] = e.getElementsByTagName("language").item(0).getTextContent().trim(); break;
+									case "Personal Notes": allDataFromFile[counter][n] = e.getElementsByTagName("selfNote").item(0).getTextContent().trim(); break;
+									default:  allDataFromFile[counter][n] = "N/A???"; System.out.println("allDataFromFile: N/A");break;
+								}
+							} catch (Exception e2) {
+								// allDataFromFile[counter][n] = "???N/A";
+								// System.out.println("allDataFromFile: N/A");
 							}
 						}
 						counter++;

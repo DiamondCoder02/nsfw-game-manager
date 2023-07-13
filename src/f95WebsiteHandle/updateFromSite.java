@@ -54,6 +54,7 @@ public class updateFromSite {
 									String oldstillOnPc = e.getElementsByTagName("stillOnPc").item(0).getTextContent().trim();
 									String oldengine = e.getElementsByTagName("engine").item(0).getTextContent().trim();
 									String oldos = e.getElementsByTagName("OS").item(0).getTextContent().trim();
+									String oldlanguage = e.getElementsByTagName("language").item(0).getTextContent().trim();
 									String oldselfNote = e.getElementsByTagName("selfNote").item(0).getTextContent().trim();
 
 									String[] output = loadSite.getf95UrlContents(idValue);
@@ -64,6 +65,7 @@ public class updateFromSite {
 									String newpeople_ratedValue = output[4].toString();
 									String newengineValue = output[5].toString();
 									String newosValue = output[6].toString();
+									String newlanguageValue = output[7].toString();
 
 									JTextField newplayed_version = new JTextField();
 									JTextField newdateof_lastplay = new JTextField();
@@ -91,7 +93,7 @@ public class updateFromSite {
 									howFarUserPlayedPanel.setLayout(new BoxLayout(howFarUserPlayedPanel, BoxLayout.X_AXIS));
 									stillOnPcPanel.setLayout(new BoxLayout(stillOnPcPanel, BoxLayout.X_AXIS));
 
-									JLabel Namelabel, developerlabel, newest_versionlabel, dateOfLastUpdatelabel, people_ratedlabel, enginelabel, oslabel;
+									JLabel Namelabel, developerlabel, newest_versionlabel, dateOfLastUpdatelabel, people_ratedlabel, enginelabel, oslabel, languageLabel;
 									if (oldname.equals(newnameValue)) { Namelabel = new JLabel((jla[1]!=null?jla[1]:"Name: ")+ newnameValue); } 
 									else { Namelabel = new JLabel((jla[1]!=null?jla[1]:"Name: ") + oldname + " -> " + newnameValue); }
 									if (olddeveloper.equals(newdeveloperValue)) { developerlabel = new JLabel((jla[2]!=null?jla[2]:"Developer: ") + newdeveloperValue); } 
@@ -106,6 +108,8 @@ public class updateFromSite {
 									else { enginelabel = new JLabel((jla[11]!=null?jla[11]:"Engine: ") + oldengine + " -> " + newengineValue); }
 									if (oldos.equals(newosValue)) { oslabel = new JLabel((jla[12]!=null?jla[12]:"OS: ") + newosValue); } 
 									else { oslabel = new JLabel((jla[12]!=null?jla[12]:"OS: ") + oldos + " -> " + newosValue); }
+									if (oldlanguage.equals(newlanguageValue)) { languageLabel = new JLabel((jla[14]!=null?jla[14]:"Language: ") + newlanguageValue); } 
+									else { languageLabel = new JLabel((jla[14]!=null?jla[14]:"Language: ") + oldlanguage + " -> " + newlanguageValue); }
 
 									panel.add(Namelabel);
 									panel.add(developerlabel);
@@ -124,6 +128,7 @@ public class updateFromSite {
 									panel.add(stillOnPclabel); panel.add(stillOnPcPanel);
 									panel.add(enginelabel);
 									panel.add(oslabel);
+									panel.add(languageLabel);
 									JLabel selfNotelabel = new JLabel(jla[13]!=null?jla[13]:"Self note:" + " ("+(bs[5]!=null?bs[5]:"old:")+" "+oldselfNote+")");
 									panel.add(selfNotelabel); panel.add(newselfNote);
 									int option = JOptionPane.showConfirmDialog(null, panel, bs[3]!=null?bs[3]:"Update game", JOptionPane.OK_CANCEL_OPTION);
@@ -146,6 +151,7 @@ public class updateFromSite {
 										e.getElementsByTagName("stillOnPc").item(0).setTextContent(newstillOnPcValue);
 										e.getElementsByTagName("engine").item(0).setTextContent(newengineValue);
 										e.getElementsByTagName("OS").item(0).setTextContent(newosValue);
+										e.getElementsByTagName("language").item(0).setTextContent(newlanguageValue);
 										e.getElementsByTagName("selfNote").item(0).setTextContent(newselfNoteValue);
 										saveLoadDoc.saveDocument(dom, mainInit.databasePath);
 										_initFrame.refreshTable();

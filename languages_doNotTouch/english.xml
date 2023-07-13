@@ -40,6 +40,7 @@
 		<tablec>Engine</tablec>
 		<tablec>OS</tablec>
 		<tablec>Personal Notes</tablec> <!-- 14 -->
+		<tablec>Language</tablec>
 
 		<JLabPan>ID: (required)</JLabPan> <!-- 0 -->
 		<JLabPan>Name:</JLabPan>
@@ -55,6 +56,7 @@
 		<JLabPan>Engine:</JLabPan>
 		<JLabPan>OS:</JLabPan>
 		<JLabPan>Self note for the game:</JLabPan> <!-- 13 -->
+		<JLabPan>Languages you can play it in:</JLabPan> <!-- 14 -->
 
 		<JRadBut>Not played</JRadBut>
 		<JRadBut>In progress</JRadBut>

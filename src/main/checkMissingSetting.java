@@ -20,7 +20,8 @@ public class checkMissingSetting {
 			"Site", "ID", "Name", "Developer", "Played version", 
 			"Last time play", "Rated", "Newest version", 
 			"Last update", "People rating", "Player progress", 
-			"Still on pc?", "Engine", "OS", "Personal Notes"
+			"Still on pc?", "Engine", "OS", "Language", 
+			"Personal Notes"
 		};
 		Boolean otSe = false, laSe = false, shCo = false;
 		Document dom = xmlFolderHandle.saveLoadDoc.loadDocument(mainInit.settingsPath);

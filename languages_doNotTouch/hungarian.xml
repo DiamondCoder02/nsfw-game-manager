@@ -40,6 +40,7 @@
 		<tablec>Motor</tablec>
 		<tablec>OS</tablec>
 		<tablec>Jegyzetek</tablec>
+		<tablec>Nyelv</tablec> <!-- 15 -->
 
 		<JLabPan>ID: (Kötelező)</JLabPan>
 		<JLabPan>Név:</JLabPan>
@@ -55,6 +56,7 @@
 		<JLabPan>Motor:</JLabPan>
 		<JLabPan>OS:</JLabPan>
 		<JLabPan>Saját jegyzetek játékhoz:</JLabPan>
+		<JLabPan>Elérhető nyelvek:</JLabPan> <!-- 14 -->
 
 		<JRadBut>Nem játszott</JRadBut>
 		<JRadBut>Be nem fejezett</JRadBut>

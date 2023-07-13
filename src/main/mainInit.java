@@ -31,5 +31,6 @@ public class mainInit {
 		if (boolSettings[1]) {
 			_initSiteFetch.fetchInfoThenUpdateTable();
 		}
+		backup.doBackup();
 	}
 }

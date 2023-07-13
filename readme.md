@@ -21,8 +21,7 @@ If you put games from website:
 
 ## TODO
 
-- [ ] show language of the game?
-- [ ] ~~auto Update Games~~ NO
+- [x] ~~show language of the game?~~
 - [ ] Auto backup if something goes wrong
 - [ ] FAQ
 
@@ -32,10 +31,3 @@ If you put games from website:
 
 - [x] ~~F95zone.to support~~
 - [ ] dlsite.com support
-
-From Discord:
-Hentai game manager: make backup of the XML file
-Why...?
-How about ask if they want and where to store backup. Maybe replace the save a copy button?
-Simple program doesn't need complicated backup
-At first start if the backup location missing ask if they want to have a backup somewhere -> handle errors with wondows and ask and fix any problem

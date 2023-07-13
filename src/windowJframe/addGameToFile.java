@@ -59,6 +59,7 @@ public class addGameToFile {
 			os_win.setActionCommand("windows"); os_lin.setActionCommand("linux"); os_mac.setActionCommand("mac"); os_and.setActionCommand("android"); os_other.setActionCommand("other");
 			JPanel osPanel = new JPanel(); osPanel.add(os_win); osPanel.add(os_lin); osPanel.add(os_mac); osPanel.add(os_and); osPanel.add(os_other);
 
+			JTextField language = new JTextField(20);
 			JTextField selfNote = new JTextField(50);
 
 			howFarUserPlayedPanel.setLayout(new BoxLayout(howFarUserPlayedPanel, BoxLayout.X_AXIS));
@@ -92,6 +93,8 @@ public class addGameToFile {
 			panel.add(enginelabel); panel.add(enginePanel);
 			JLabel oslabel = new JLabel(jla[12]!=null?jla[12]:"OS:");
 			panel.add(oslabel); panel.add(osPanel);
+			JLabel languagelabel = new JLabel(jla[14]!=null?jla[14]:"Language:");
+			panel.add(languagelabel); panel.add(language);
 			JLabel selfNotelabel = new JLabel(jla[13]!=null?jla[13]:"Self note:");
 			panel.add(selfNotelabel, BorderLayout.WEST); panel.add(selfNote);
 
@@ -116,6 +119,7 @@ public class addGameToFile {
 			if (os_and.isSelected()) { osValue += "Android / "; }
 			if (os_other.isSelected()) { osValue += "other"; }
 			if (osValue.endsWith(" / ")) { osValue = osValue.substring(0, osValue.length() - 3); }
+			String languageValue = language.getText();
 			String selfNoteValue = selfNote.getText();
 
 			if (idValue.equals("")) { JOptionPane.showMessageDialog(null, basic[0]!=null?basic[0]:"ID is required", base[1]!=null?base[1]:"Error", JOptionPane.ERROR_MESSAGE); return; }
@@ -142,6 +146,7 @@ public class addGameToFile {
 							Element newstillOnPc = dom.createElement("stillOnPc");
 							Element newEngine = dom.createElement("engine");
 							Element newOS = dom.createElement("OS");
+							Element newLanguage = dom.createElement("language");
 							Element newSelfNote = dom.createElement("selfNote");
 							newGame.setAttribute("id", idValue);
 							newGame.setAttribute("from", "man");
@@ -157,6 +162,7 @@ public class addGameToFile {
 							newstillOnPc.setTextContent(stillOnPcValue);
 							newEngine.setTextContent(engineValue);
 							newOS.setTextContent(osValue);
+							newLanguage.setTextContent(languageValue);
 							newSelfNote.setTextContent(selfNoteValue);
 							newGame.appendChild(newName);
 							newGame.appendChild(newDeveloper);
@@ -170,6 +176,7 @@ public class addGameToFile {
 							newGame.appendChild(newstillOnPc);
 							newGame.appendChild(newEngine);
 							newGame.appendChild(newOS);
+							newGame.appendChild(newLanguage);
 							newGame.appendChild(newSelfNote);
 							sourceNode.appendChild(newGame);
 							saveLoadDoc.saveDocument(dom, mainInit.databasePath);

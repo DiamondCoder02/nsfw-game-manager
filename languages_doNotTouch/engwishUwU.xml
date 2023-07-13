@@ -40,6 +40,7 @@
 		<tablec>Engine</tablec>
 		<tablec>OS</tablec>
 		<tablec>Pewsonaw notes</tablec> <!-- 14 -->
+		<tablec>Lawnguage</tablec>
 
 		<JLabPan>ID: (wequiwed)</JLabPan> <!-- 0 -->
 		<JLabPan>Name:</JLabPan>
@@ -55,6 +56,7 @@
 		<JLabPan>Engine:</JLabPan>
 		<JLabPan>OS:</JLabPan>
 		<JLabPan>Sewf note fow the game:</JLabPan> <!-- 13 -->
+		<JLabPan>Lawnguagews yyou cawn pwayy it iwn:</JLabPan> <!-- 14 -->
 
 		<JRadBut>Not pwayed</JRadBut>
 		<JRadBut>In pwogwess</JRadBut>

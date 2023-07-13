@@ -69,6 +69,7 @@ public class saveLoadDoc {
 				case "Still on pc?": columnNames[i] = tbl[11]!=null?tbl[11]:"Still on pc?"; break;
 				case "Engine": columnNames[i] = tbl[12]!=null?tbl[12]:"Engine"; break;
 				case "OS": columnNames[i] = tbl[13]!=null?tbl[13]:"OS"; break;
+				case "Language": columnNames[i] = tbl[15]!=null?tbl[15]:"Language"; break;
 				case "Personal Notes": columnNames[i] = tbl[14]!=null?tbl[14]:"Personal Notes"; break;
 			}
 		}

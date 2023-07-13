@@ -53,6 +53,8 @@ public class createMissingSettings {
 			showncolumns12.appendChild(doc.createTextNode("Engine")); settings.appendChild(showncolumns12);
 			Element showncolumns13 = doc.createElement("showncolumns"); showncolumns13.setAttribute("enabled", "true");
 			showncolumns13.appendChild(doc.createTextNode("OS")); settings.appendChild(showncolumns13);
+			Element showncolumns15 = doc.createElement("showncolumns"); showncolumns15.setAttribute("enabled", "true");
+			showncolumns15.appendChild(doc.createTextNode("Language")); settings.appendChild(showncolumns15);
 			Element showncolumns14 = doc.createElement("showncolumns"); showncolumns14.setAttribute("enabled", "true");
 			showncolumns14.appendChild(doc.createTextNode("Personal Notes")); settings.appendChild(showncolumns14);
 

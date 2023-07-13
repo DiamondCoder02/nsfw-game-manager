@@ -45,6 +45,7 @@ public class addFromSite {
 			String people_ratingValue = output[4].toString();
 			String engineValue = output[5].toString();
 			String osValue = output[6].toString();
+			String languageValue = output[7].toString();
 
 			JPanel panel = new JPanel(new GridLayout(6*2, 0));
 			JTextField played_version = new JTextField(15);
@@ -106,6 +107,7 @@ public class addFromSite {
 						Element newstillOnPc = dom.createElement("stillOnPc");
 						Element newEngine = dom.createElement("engine");
 						Element newOS = dom.createElement("OS");
+						Element newLanguage = dom.createElement("language");
 						Element newSelfNote = dom.createElement("selfNote");
 						newGame.setAttribute("from", "f95");
 						newGame.setAttribute("id", idValue);
@@ -121,6 +123,7 @@ public class addFromSite {
 						newstillOnPc.setTextContent(stillOnPcValue);
 						newEngine.setTextContent(engineValue);
 						newOS.setTextContent(osValue);
+						newLanguage.setTextContent(languageValue);
 						newSelfNote.setTextContent(selfNoteValue);
 						newGame.appendChild(newName);
 						newGame.appendChild(newDeveloper);
@@ -134,6 +137,7 @@ public class addFromSite {
 						newGame.appendChild(newstillOnPc);
 						newGame.appendChild(newEngine);
 						newGame.appendChild(newOS);
+						newGame.appendChild(newLanguage);
 						newGame.appendChild(newSelfNote);
 						sourceNode.appendChild(newGame);
 						saveLoadDoc.saveDocument(dom, mainInit.databasePath);

@@ -12,7 +12,7 @@ import main.langLoad;
 public class loadSite {
 	static String[] lf = langLoad.folder, bs = langLoad.base;
 	public static String[] getf95UrlContents(String gameIds) {
-		String[] allTheInfo = new String[7];
+		String[] allTheInfo = new String[8];
 		StringBuilder content = new StringBuilder();
 		// Use try and catch to avoid the exceptions
 		try {
@@ -77,6 +77,11 @@ public class loadSite {
 				allTheInfo[i] = temp;
 			}
 		}
+
+		try{
+			asd = content.substring(content.indexOf("<b>Language</b>:") + 16);
+			allTheInfo[7] = asd.substring(0, asd.indexOf("<")).trim();
+		} catch (Exception e) { allTheInfo[7] = "N/A"; }
 
 		// for (int i = 0; i < allTheInfo.length; i++) { System.out.println(allTheInfo[i]); }
 

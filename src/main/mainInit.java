@@ -34,7 +34,8 @@ public class mainInit {
 	}
 }
 
-// TODO Problems: 1
-/* - If the internet is really slow or no internet and cannot download stuff, it takes a long time for it to load
-	Also will probably fail. It just gives error, then quits
+// TODO Problems: 2
+/* 
+- OS or Engine column can bug and show "> HTML" of something
+- If name has dash (-) in it, it's not showing the full name
 */

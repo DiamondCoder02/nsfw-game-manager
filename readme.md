@@ -5,7 +5,7 @@ Maybe good idea
 Now that this is independent from uni work... Time to make it better
 and to torture myself
 
-I have tested this with my 4-500 games. Still small bugs, but it handles it without problem.
+I have tested this with my 4-500 games. Still small bugs, but it handles it without *much* problem.
 
 ## Important
 
@@ -24,8 +24,6 @@ If you put games from website:
 
 ## TODO
 
-- [x] ~~show language of the game?~~
-- [x] ~~Auto backup if something goes wrong~~
 - [ ] FAQ
 
 ---

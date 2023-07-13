@@ -19,11 +19,7 @@ import org.w3c.dom.NodeList;
 import main.langLoad;
 import main.mainInit;
 import windowJframe._initFrame;
-import xmlFolderHandle._initXml;
-import xmlFolderHandle.isIDInDatabase;
-import xmlFolderHandle.loadGamesFromXml;
-import xmlFolderHandle.loadSettingsFromXml;
-import xmlFolderHandle.saveLoadDoc;
+import xmlFolderHandle.*;
 
 public class _initSiteFetch extends JFrame {
 	static Document dom = saveLoadDoc.loadDocument(mainInit.settingsPath);

@@ -12,14 +12,16 @@ import javax.swing.JOptionPane;
 public class checksFile {
 	public static String mainPath = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager/";
 	public static void checks() {
-		try{langLoad.loadLanguages();} catch (Exception e) { System.out.println("Error loading languages! (checksFile.checks)"); }
-		try {
-			new File(System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager").mkdirs();
-		} catch (Exception e) {
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error creating main folder(s)! (checksFile.checks)", "Error", JOptionPane.ERROR_MESSAGE);
+		File mainDirectory = new File(System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager");
+		if (!mainDirectory.exists()){
+			try {
+				mainDirectory.mkdirs();
+			} catch (Exception e) {
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Error creating main folder(s)! (checksFile.checks)", "Error", JOptionPane.ERROR_MESSAGE);
+			}
 		}
-		if (checkSettingsFolder()) {checkMissingSetting.checkSettings();}
+		checkSettingsFolder();
 		checkLanguage();
 		langLoad.loadLanguages();
 		checkMissingDatabase();
@@ -34,14 +36,14 @@ public class checksFile {
 		}
 	}
 
-	public static Boolean checkSettingsFolder(){
+	public static void checkSettingsFolder(){
 		String path = mainPath + "settings.xml";
 		File file = new File(path);
 		if (!file.exists()) {
 			createMissingSettings.createFile(path);
-			return false;
+		} else {
+			checkMissingSetting.checkSettings();
 		}
-		return true;
 	}
 
 	private static void checkPics() {
@@ -80,7 +82,7 @@ public class checksFile {
 			if (!file2.exists()) {
 				try{
 					URL url = new URL("https://raw.githubusercontent.com/DiamondPRO02/nsfw-game-manager/master/languages_doNotTouch/"+languages[i]+".xml");
-					System.out.println(url);
+					// System.out.println(url);
 					InputStream in = url.openStream();
 					FileOutputStream fos = new FileOutputStream(file+"/" + languages[i] + ".xml");
 					byte[] buffer = new byte[4096];

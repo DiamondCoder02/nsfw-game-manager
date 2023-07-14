@@ -14,7 +14,6 @@ public class loadSite {
 	public static String[] getf95UrlContents(String gameIds) {
 		String[] allTheInfo = new String[8];
 		StringBuilder content = new StringBuilder();
-		// Use try and catch to avoid the exceptions
 		try {
 			URL url = new URL("https://f95zone.to/threads/"+gameIds+"/");
 			URLConnection urlConnection = url.openConnection();
@@ -29,20 +28,33 @@ public class loadSite {
 			return null;
 		}
 
-		// Name, Developer, Newest version, Date of last update, People rating, Engine, OS
+		// Name, Developer, Newest version, Date of last update, People rating, Engine, Language, OS
+		// <title>RPGM - Completed - EMPTY-66822 [v9] [Lonery-Moon] | F95zone</title>
+		// <title>Unity - Slave Lord - Realms of Bondage [v0.2.9] [Pink Tea Games] | F95zone</title>
 		String longTitle, asd, engi[] = new String[9];
 		longTitle = content.substring(content.indexOf("<title>") + 7, content.indexOf("</title>"));
 		
-		try{
-			asd = longTitle.split(" \\[")[0];
-			allTheInfo[0] = asd.split(" - ")[asd.split(" - ").length - 1];
-		} catch (Exception e) { allTheInfo[0] = "N/A"; }
 		try {
 			allTheInfo[1] = longTitle.split(" \\[")[2].split("]")[0];
 		} catch (Exception e) { allTheInfo[1] = "N/A"; }
 		try {
 			allTheInfo[2] = longTitle.split(" \\[")[1].split("]")[0];
 		} catch (Exception e) { allTheInfo[2] = "N/A"; }
+
+		if (allTheInfo[1] == "N/A") { allTheInfo[1] = allTheInfo[2]; allTheInfo[2] = "N/A"; }
+		if (longTitle.contains("Completed")) { allTheInfo[2] = "✔ " + allTheInfo[2]; }
+		if (longTitle.contains("Abandoned")) { allTheInfo[2] = "✖ " + allTheInfo[2]; }
+
+		try {
+			asd = longTitle.split(" \\[")[0];
+			asd = asd.substring(asd.indexOf(" - ")).trim();
+			if (asd.startsWith("- Completed") || asd.startsWith("- Abandoned")) {
+				allTheInfo[0] = asd.substring(asd.indexOf(" - ")).trim();
+				allTheInfo[0] = allTheInfo[0].substring(2);
+				System.out.println(allTheInfo[0]);
+			}
+		} catch (Exception e) { allTheInfo[0] = "N/A"; }
+
 		try {
 			asd = content.substring(content.indexOf(">Release Date") +18);
 			allTheInfo[3] = asd.substring(0, asd.indexOf("<")).trim();
@@ -52,6 +64,7 @@ public class loadSite {
 			allTheInfo[4] = content.substring(content.indexOf(" star(s)<") - 4, content.indexOf(" star(s)<")).trim();
 		} catch (Exception e) { allTheInfo[4] = "N/A"; }
 		for (int i = 0; i < longTitle.split(" - ").length; i++) { engi[i] = longTitle.split(" - ")[i]; }
+
 		if (engi[0] == "Collection") {allTheInfo[5] = engi[0];} 
 		else { 
 			for (int i = 0; i < engi.length; i++) { 
@@ -66,10 +79,6 @@ public class loadSite {
 			allTheInfo[6] = asd.substring(0, asd.indexOf("<")).trim();
 		} catch (Exception e) { allTheInfo[6] = "N/A"; }
 
-		if (allTheInfo[1] == "N/A") { allTheInfo[1] = allTheInfo[2]; allTheInfo[2] = "N/A"; }
-
-		if (longTitle.contains("Completed")) { allTheInfo[2] = "✔ " + allTheInfo[2]; }
-		
 		for (int i = 0; i < allTheInfo.length; i++) {
 			if (allTheInfo[i] != null) {
 				String temp = allTheInfo[i].toString();
@@ -84,7 +93,6 @@ public class loadSite {
 		} catch (Exception e) { allTheInfo[7] = "N/A"; }
 
 		// for (int i = 0; i < allTheInfo.length; i++) { System.out.println(allTheInfo[i]); }
-
 		return allTheInfo;
 	}
 }

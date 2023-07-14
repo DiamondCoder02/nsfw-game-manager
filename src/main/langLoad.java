@@ -19,29 +19,21 @@ public class langLoad {
 	public static String[] base, basic, tabl, jlapa, jrabu, buton, folder, serc;
 
 	public static void loadLanguages(){
-		String language;
-		try{language = loadSettingsFromXml.loadStringSettings("language")[0];} catch (Exception e) {
-			for (int i = 0; i < 30; i++) {
-				tempBase[i] = null;
-				tempBasic[i] = null;
-				tempTabl[i] = null;
-				tempjLaPa[i] = null;
-				tempjRaBu[i] = null;
-				tempbuton[i] = null;
-				tempFold[i] = null;
-				tempSear[i] = null;
-			}
-			base = tempBase;
-			basic = tempBasic;
-			tabl = tempTabl;
-			jlapa = tempjLaPa;
-			jrabu = tempjRaBu;
-			buton = tempbuton;
-			folder = tempFold;
-			serc = tempSear;
-			return;
+		String language = "";
+		for (int i = 0; i < 30; i++) {
+			tempBase[i] = null; tempBasic[i] = null;
+			tempTabl[i] = null; tempjLaPa[i] = null;
+			tempjRaBu[i] = null; tempbuton[i] = null;
+			tempFold[i] = null; tempSear[i] = null;
 		}
+		base = tempBase; basic = tempBasic;
+		tabl = tempTabl; jlapa = tempjLaPa;
+		jrabu = tempjRaBu; buton = tempbuton;
+		folder = tempFold; serc = tempSear;
+
+		language = loadSettingsFromXml.loadStringSettings("language")[0];
 		Document dom = saveLoadDoc.loadDocument(path+"languages/"+language+".xml");
+		if (language == null || dom == null) { return; }
 		try {
 			NodeList langSource = dom.getElementsByTagName("lang");
 			Node langSourceNode = langSource.item(0);
@@ -79,14 +71,11 @@ public class langLoad {
 					}
 				}
 			}
-			base = tempBase;
-			basic = tempBasic;
-			tabl = tempTabl;
-			jlapa = tempjLaPa;
-			jrabu = tempjRaBu;
-			buton = tempbuton;
-			folder = tempFold;
-			serc = tempSear;
+			base = tempBase; basic = tempBasic;
+			tabl = tempTabl; jlapa = tempjLaPa;
+			jrabu = tempjRaBu; buton = tempbuton;
+			folder = tempFold; serc = tempSear;
+			return;
 		} catch (Exception e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Error loading settings file (loadOther)", "Error", JOptionPane.ERROR_MESSAGE);

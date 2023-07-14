@@ -17,6 +17,7 @@ I have tested this with my 4-500 games. Still small bugs, but it handles it with
 If you put games from website:
 
 - If the game is the final version, it gets a "✔" at the version column
+- If game is abandoned, it gets a "✖" at the version column
 - For VisualNovels there will be a "VN" at the name column
 
 ---

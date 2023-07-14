@@ -34,12 +34,11 @@ public class mainInit {
 	}
 }
 
-// TODO Problems: 6
+// TODO Problems: 5
 /* 
 - OS or Engine column can bug and show "> HTML" of something
-- If name has dash (-) in it, it's not showing the full name
-- Add something to show if game is VR and/or abondoned for f95
+- Add something to show if game is VR for f95
 - Text size small on large display - https://bugs.openjdk.org/browse/JDK-8202973
+- if name has & it will show &amp; due to xml
 - Find ways to optimize
-!!! - Offline not fixed !!!
 */

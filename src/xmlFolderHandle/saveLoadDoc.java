@@ -30,10 +30,10 @@ public class saveLoadDoc {
 			dom.normalize();
 			return dom;
 		} catch (Exception e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 			JOptionPane.showMessageDialog(null, ("Error loading file:\n"+path) + " (saveLoadDoc.loadDocument)", "Error", JOptionPane.ERROR_MESSAGE);
+			return null;
 		}
-		return null;
 	}
 
 	public static void saveDocument(Document dom, String path) {

@@ -13,6 +13,7 @@ public class mainInit {
 	public static String settingsPath = checksFile.mainPath + "settings.xml";
 	public static String databasePath = checksFile.mainPath + "hentai.xml";
 	public static void main(String[] args) {
+		// TODO Text size small on large display - https://bugs.openjdk.org/browse/JDK-8202973
 		checksFile.checks();
 
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
@@ -33,9 +34,3 @@ public class mainInit {
 		backup.doBackup();
 	}
 }
-
-// TODO Problems: 2
-/* 
-- Find ways to optimize
-- Text size small on large display - https://bugs.openjdk.org/browse/JDK-8202973
-*/

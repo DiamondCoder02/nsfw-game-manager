@@ -14,7 +14,7 @@ I have tested this with my 4-500 games. Still small bugs, but it handles it with
 - (For now )2+1 languages: English(, Engwish UwU), Hungarian
 - The app creates a backup of the database every time it starts(, only saves the last 10)
 
-If you put games from website:
+## If you put games from F95zone website
 
 - If the game is the final version, it gets a "✔" at the version column
 - If game is abandoned, it gets a "✖" at the version column
@@ -27,6 +27,7 @@ If you put games from website:
 ## TODO
 
 - [ ] FAQ
+- [ ] Optimizations
 - [ ] Text size small on large display - [Bug here](<https://bugs.openjdk.org/browse/JDK-8202973>)
 
 ---

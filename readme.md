@@ -1,4 +1,4 @@
-# F95zone game manager
+# Hentai game manager
 
 Maybe good idea
 

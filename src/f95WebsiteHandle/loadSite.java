@@ -28,56 +28,69 @@ public class loadSite {
 			return null;
 		}
 
-		// Name, Developer, Newest version, Date of last update, People rating, Engine, Language, OS
-		// <title>RPGM - Completed - EMPTY-66822 [v9] [Lonery-Moon] | F95zone</title>
-		// <title>Unity - Slave Lord - Realms of Bondage [v0.2.9] [Pink Tea Games] | F95zone</title>
+		// Name, Developer, Newest version, Date of last update, People rating, Engine, OS, Language
 		String longTitle, asd, engi[] = new String[9];
 		longTitle = content.substring(content.indexOf("<title>") + 7, content.indexOf("</title>"));
 		
-		try {
+		try { // Developer
 			allTheInfo[1] = longTitle.split(" \\[")[2].split("]")[0];
 		} catch (Exception e) { allTheInfo[1] = "N/A"; }
-		try {
+		try { // Newest version
 			allTheInfo[2] = longTitle.split(" \\[")[1].split("]")[0];
 		} catch (Exception e) { allTheInfo[2] = "N/A"; }
 
 		if (allTheInfo[1] == "N/A") { allTheInfo[1] = allTheInfo[2]; allTheInfo[2] = "N/A"; }
-		if (longTitle.contains("Completed")) { allTheInfo[2] = "✔ " + allTheInfo[2]; }
-		if (longTitle.contains("Abandoned")) { allTheInfo[2] = "✖ " + allTheInfo[2]; }
+		if (longTitle.contains("Completed - ")) { allTheInfo[2] = "✔ " + allTheInfo[2]; }
+		if (longTitle.contains("Abandoned - ")) { allTheInfo[2] = "✖ " + allTheInfo[2]; }
 
-		try {
+		try { // Name
 			asd = longTitle.split(" \\[")[0];
-			asd = asd.substring(asd.indexOf(" - ")).trim();
-			if (asd.startsWith("- Completed") || asd.startsWith("- Abandoned")) {
-				allTheInfo[0] = asd.substring(asd.indexOf(" - ")).trim();
+			allTheInfo[0] = asd.substring(asd.indexOf(" - ")).trim();
+			if (allTheInfo[0].contains("- Completed") || allTheInfo[0].contains("- Abandoned")) {
+				allTheInfo[0] = allTheInfo[0].substring(allTheInfo[0].indexOf(" - ")).trim();
 				allTheInfo[0] = allTheInfo[0].substring(2);
-				System.out.println(allTheInfo[0]);
 			}
+			if (allTheInfo[0].contains("Completed - ") || allTheInfo[0].contains("Abandoned - ")) {
+				allTheInfo[0] = allTheInfo[0].substring(allTheInfo[0].indexOf(" - ")).trim();
+				allTheInfo[0] = allTheInfo[0].substring(2);
+			}
+			if (allTheInfo[0].startsWith("- ")) { allTheInfo[0] = allTheInfo[0].substring(2); }
 		} catch (Exception e) { allTheInfo[0] = "N/A"; }
 
-		try {
+		try { // Date of last update
 			asd = content.substring(content.indexOf(">Release Date") +18);
 			allTheInfo[3] = asd.substring(0, asd.indexOf("<")).trim();
 			if (allTheInfo[3].equals("")) { allTheInfo[3] = "N/A"; }
+			if (allTheInfo[3].startsWith(">")) { allTheInfo[3] = allTheInfo[3].substring(1); }
 		} catch (Exception e) { allTheInfo[3] = "N/A"; }
-		try {
+		try { // People rating
 			allTheInfo[4] = content.substring(content.indexOf(" star(s)<") - 4, content.indexOf(" star(s)<")).trim();
 		} catch (Exception e) { allTheInfo[4] = "N/A"; }
 		for (int i = 0; i < longTitle.split(" - ").length; i++) { engi[i] = longTitle.split(" - ")[i]; }
 
-		if (engi[0] == "Collection") {allTheInfo[5] = engi[0];} 
-		else { 
-			for (int i = 0; i < engi.length; i++) { 
+		// Engine
+		if (engi[0] == "Collection") {allTheInfo[5] = engi[0];}
+		else {
+			for (int i = 0; i < engi.length; i++) {
 				if (engi[i].contains("VN")) { allTheInfo[0] = "["+engi[i]+"] "+allTheInfo[0]; } 
 				if (engi[i].contains("Collection") || engi[i].contains("VN")){} else { allTheInfo[5] = engi[i]; break; } 
-			} 
+			}
 		}
-		try {
-			Integer numId = Integer.parseInt(gameIds);
-			if (numId < 10) { asd = content.substring(content.indexOf(">Platform<") + 15); } 
+		try { // OS
+			if (content.toString().contains(">Platform<")) { asd = content.substring(content.indexOf(">Platform<") + 15); } 
 			else { asd = content.substring(content.indexOf(">OS") + 9); }
 			allTheInfo[6] = asd.substring(0, asd.indexOf("<")).trim();
+			if (allTheInfo[6].contains("html>")) { allTheInfo[6] = "N/A"; }
 		} catch (Exception e) { allTheInfo[6] = "N/A"; }
+
+		try{ // Language
+			asd = content.substring(content.indexOf("<b>Language</b>:") + 16);
+			allTheInfo[7] = asd.substring(0, asd.indexOf("<")).trim();
+		} catch (Exception e) { allTheInfo[7] = "N/A"; }
+
+		if (content.toString().contains("/tags/virtual-reality/")) {
+			allTheInfo[5] = "[VR] "+allTheInfo[5];
+		}
 
 		for (int i = 0; i < allTheInfo.length; i++) {
 			if (allTheInfo[i] != null) {
@@ -86,11 +99,6 @@ public class loadSite {
 				allTheInfo[i] = temp;
 			}
 		}
-
-		try{
-			asd = content.substring(content.indexOf("<b>Language</b>:") + 16);
-			allTheInfo[7] = asd.substring(0, asd.indexOf("<")).trim();
-		} catch (Exception e) { allTheInfo[7] = "N/A"; }
 
 		// for (int i = 0; i < allTheInfo.length; i++) { System.out.println(allTheInfo[i]); }
 		return allTheInfo;

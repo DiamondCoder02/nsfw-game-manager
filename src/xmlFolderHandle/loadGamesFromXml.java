@@ -58,6 +58,9 @@ public class loadGamesFromXml {
 			for (int j = 0; j < allDataFromFile[i].length; j++) {
 				if (allDataFromFile[i][j] != null) {
 					allDataFromFile2[i][j] = allDataFromFile[i][j];
+					if (allDataFromFile2[i][j].toString().contains("&amp;")) {
+						allDataFromFile2[i][j] = allDataFromFile2[i][j].toString().replace("&amp;", "&");
+					}
 				}
 			}
 		}

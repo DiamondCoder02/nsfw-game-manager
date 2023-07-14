@@ -67,6 +67,7 @@ public class _initSiteFetch extends JFrame {
 						//System.out.println("(¬_¬ )"); 
 						// /* /ᐠ｡ꞈ｡ᐟ\ */ 
 					}
+					// System.out.println(id + " " + loadedGames[i][2].toString());
 					pbar.setValue(i);
 				}
 				pbar.setValue(loadedGames.length);

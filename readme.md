@@ -18,7 +18,8 @@ If you put games from website:
 
 - If the game is the final version, it gets a "✔" at the version column
 - If game is abandoned, it gets a "✖" at the version column
-- For VisualNovels there will be a "VN" at the name column
+- For VisualNovels there will be a "[VN]" at the name column
+- If a game has VR tag, it will have "[VR]" at the engine column
 
 ---
 ---
@@ -26,6 +27,7 @@ If you put games from website:
 ## TODO
 
 - [ ] FAQ
+- [ ] Text size small on large display - [Bug here](<https://bugs.openjdk.org/browse/JDK-8202973>)
 
 ---
 

@@ -114,23 +114,6 @@ public class saveLoadDoc {
 				int row, 
 				int col
 			) {
-				/*
-				TableModel model = table.getModel();
-				int modelRow = table.getRowSorter().convertRowIndexToModel(row);
-				String statusColumnValue = (String) model.getValueAt(modelRow, playProgColumn);
-
-				if (statusColumnValue.equals("ACTIVE")) {
-					if (isSelected) {
-						setBackground(Color.green);
-					} else {
-						setBackground(Color.yellow);
-					}
-				}
-
-				setText(value != null ? value.toString() : "");
-				return this;
-				 */
-				// super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, col);
 				TableModel model = table.getModel();
 				int modelRow = table.getRowSorter().convertRowIndexToModel(row);
 				String status = (String) model.getValueAt(modelRow, playProgColumn);

@@ -140,8 +140,8 @@ public class _initFrame extends JFrame implements ActionListener {
 		refreshTable();
 		table.setBounds(30, 40, 200, 300);
 		setColumns();
-		/*
 		table.setAutoCreateRowSorter(true);
+		/*
 		table.getRowSorter().addRowSorterListener((RowSorterListener) new RowSorterListener() {
 			@Override
 			public void sorterChanged(javax.swing.event.RowSorterEvent e) {

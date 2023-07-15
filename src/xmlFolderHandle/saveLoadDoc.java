@@ -7,6 +7,7 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -105,18 +106,45 @@ public class saveLoadDoc {
 		final int playProgColumn = playColumnCount;
 		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
 			@Override
-			public Component getTableCellRendererComponent(JTable table,
-					Object value, boolean isSelected, boolean hasFocus, int row, int col) {
-				super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, col);
-				String status = (String) table.getModel().getValueAt(row, playProgColumn);
-				if ("Not played".equals(status)) { setBackground(np);
-				} else if ("In progress".equals(status)) { setBackground(ip);
-				} else if ("Finish".equals(status)) { setBackground(fi);
-				} else if ("100% Finished".equals(status)) { setBackground(ff);
+			public Component getTableCellRendererComponent(
+				JTable table,
+				Object value, 
+				boolean isSelected, 
+				boolean hasFocus, 
+				int row, 
+				int col
+			) {
+				/*
+				TableModel model = table.getModel();
+				int modelRow = table.getRowSorter().convertRowIndexToModel(row);
+				String statusColumnValue = (String) model.getValueAt(modelRow, playProgColumn);
+
+				if (statusColumnValue.equals("ACTIVE")) {
+					if (isSelected) {
+						setBackground(Color.green);
+					} else {
+						setBackground(Color.yellow);
+					}
+				}
+
+				setText(value != null ? value.toString() : "");
+				return this;
+				 */
+				// super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, col);
+				TableModel model = table.getModel();
+				int modelRow = table.getRowSorter().convertRowIndexToModel(row);
+				String status = (String) model.getValueAt(modelRow, playProgColumn);
+				String[] sta = new String[] {"Not played", "In progress", "Finish", "100% Finished"};
+
+				if (status.equals(sta[0])) { setBackground(np);
+				} else if (status.equals(sta[1])) { setBackground(ip);
+				} else if (status.equals(sta[2])) { setBackground(fi);
+				} else if (status.equals(sta[3])) { setBackground(ff);
 				} else {
 					setBackground(table.getBackground());
 					setForeground(table.getForeground());
 				}
+				setText(value != null ? value.toString() : "");
 				return this;
 			}
 		});

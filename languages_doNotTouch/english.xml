@@ -88,6 +88,8 @@
 		<buttons>Search by developer</buttons> 
 		<buttons>Dark mode</buttons>
 		<buttons>Auto fetch game info</buttons> <!-- 19 -->
+		<buttons>Auto fetch folders</buttons> <!-- 20 -->
+		<buttons>Change folder location</buttons> <!-- 21 -->
 
 		<!-- folders --> <!-- 0 -->
 		<folders>This will go through all games and check if there is new update. \nAre you sure?</folders>

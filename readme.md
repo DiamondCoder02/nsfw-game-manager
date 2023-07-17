@@ -42,7 +42,10 @@ I have tested this with my 4-500 games. Still small bugs, but it handles it with
 Idea: User can choose a folder and the programm will search through it. But due to lazyness the format should be like this:
 
 ``` text
-f95-000000_{gameName}-{gameVersion}-{gameDev}
+man-000000_{gameName}_{gameVersion} {anythingElseYouWant}
+f95-696969_Good Game, try me_v12.31 DeveloperAndStuffMaybeNotes
 ```
+
+If it doesn't begin with f95 or man ~~or dls(soon?)~~ it will be ignored.
 
 This I can use to check last downloaded version, and last time the folder has changed. Also auto update if game is still on pc.

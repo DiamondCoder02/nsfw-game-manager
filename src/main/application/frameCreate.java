@@ -39,8 +39,8 @@ public class frameCreate extends JFrame implements ActionListener {
 	JMenuItem searchById, searchByName, searchByDeveloper;
 
 	JMenu settings;
-	JMenuItem changeLanguage;
-	JCheckBoxMenuItem darkMode, autoFetchNews;
+	JMenuItem changeLanguage, changeFolderLocation;
+	JCheckBoxMenuItem darkMode, autoFetchNews, autoFetchFolders;
 	JMenu show;
 	JCheckBoxMenuItem showSite, showID, showName, showDeveloper, showPlayedVersion, showLastTimeplay, showRated, showNewestVersion;
 	JCheckBoxMenuItem showDateOfLastUpdate, showPeopleRating, showhowFarUserPlayed, showDeletedFromPc, showEngine, showOS, showLanguage, ShowSelfNote;
@@ -109,10 +109,12 @@ public class frameCreate extends JFrame implements ActionListener {
 			show.add(showLanguage = new JCheckBoxMenuItem(tlc[15]!=null?tlc[15]:"Language", boolColumns[14])); showLanguage.setActionCommand("Language");
 			show.add(ShowSelfNote = new JCheckBoxMenuItem(tlc[14]!=null?tlc[14]:"Personal Notes", boolColumns[15])); ShowSelfNote.setActionCommand("Personal Notes");
 		settings.add(changeLanguage  = new JMenuItem("🌐 "+(bu[4]!=null?bu[4]:"Language"))); changeLanguage.setActionCommand("chanLan");
+		settings.add(changeFolderLocation = new JMenuItem("📁 "+(bu[21]!=null?bu[21]:"Change folder location"))); changeFolderLocation.setActionCommand("ChanFolLoc");
 		settings.addSeparator();
 		settings.add(darkMode = new JCheckBoxMenuItem(bu[18]!=null?bu[18]:"Dark mode", boolSettings[0])); darkMode.setActionCommand("Dark mode");
 		settings.addSeparator();
 		settings.add(autoFetchNews = new JCheckBoxMenuItem(bu[19]!=null?bu[19]:"Auto fetch game info", boolSettings[1])); autoFetchNews.setActionCommand("Auto fetch game info");
+		settings.add(autoFetchFolders = new JCheckBoxMenuItem(bu[20]!=null?bu[20]:"Auto fetch folders", boolSettings[2])); autoFetchFolders.setActionCommand("Auto fetch folders");
 
 		mb.add(help = new JMenu(bu[5]!=null?bu[5]:"Other")); 
 		help.add(faq = new JMenuItem(bu[6]!=null?bu[6]:"FAQ")); faq.setActionCommand("FAQ");
@@ -134,8 +136,9 @@ public class frameCreate extends JFrame implements ActionListener {
 		showEngine.addActionListener(this); showOS.addActionListener(this);
 		showLanguage.addActionListener(this);; ShowSelfNote.addActionListener(this); 
 
-		changeLanguage.addActionListener(this);
+		changeLanguage.addActionListener(this); changeFolderLocation.addActionListener(this);
 		darkMode.addActionListener(this); autoFetchNews.addActionListener(this);
+		autoFetchFolders.addActionListener(this);
 
 		faq.addActionListener(this); credits.addActionListener(this);
 		exit.addActionListener(this);
@@ -245,8 +248,10 @@ public class frameCreate extends JFrame implements ActionListener {
 			case "Personal Notes": settingsManager.xmlSettings("showncolumns", "Personal Notes"); break;
 
 			case "chanLan": settingsManager.xmlSettings("language", "lang"); break;
+			case "ChanFolLoc": settingsManager.xmlSettings("folderLocation", "gameInfoFolLoc"); break;
 			case "Dark mode": settingsManager.xmlSettings("othersettings", "Dark mode"); WindowRefresh(); refreshTable(); break;
 			case "Auto fetch game info": settingsManager.xmlSettings("othersettings", "Auto fetch game info"); break;
+			case "Auto fetch folders": settingsManager.xmlSettings("othersettings", "Auto fetch folders"); break;
 
 			case "FAQ": otherButtons.FACKQU(); break;
 			case "Credits": otherButtons.money(); break;
@@ -296,8 +301,10 @@ public class frameCreate extends JFrame implements ActionListener {
 
 			settings.setBackground(bg);	settings.setForeground(fg);
 			changeLanguage.setBackground(bg); changeLanguage.setForeground(fg);
+			changeFolderLocation.setBackground(bg); changeFolderLocation.setForeground(fg);
 			darkMode.setBackground(bg);	darkMode.setForeground(fg);
 			autoFetchNews.setBackground(bg); autoFetchNews.setForeground(fg);
+			autoFetchFolders.setBackground(bg); autoFetchFolders.setForeground(fg);
 
 			show.setBackground(bg); show.setForeground(fg);	show.setOpaque(true);
 			showSite.setBackground(bg); showSite.setForeground(fg);
@@ -362,8 +369,10 @@ public class frameCreate extends JFrame implements ActionListener {
 
 			settings.setBackground(null);	settings.setForeground(null);
 			changeLanguage.setBackground(null); changeLanguage.setForeground(null);
+			changeFolderLocation.setBackground(null); changeFolderLocation.setForeground(null);
 			darkMode.setBackground(null);	darkMode.setForeground(null);
 			autoFetchNews.setBackground(null); autoFetchNews.setForeground(null);
+			autoFetchFolders.setBackground(null); autoFetchFolders.setForeground(null);
 
 			show.setBackground(null); show.setForeground(null);	show.setOpaque(false);
 			showSite.setBackground(null); showSite.setForeground(null);

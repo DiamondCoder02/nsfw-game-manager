@@ -88,6 +88,8 @@
 		<buttons>seawch by devewopew</buttons> 
 		<buttons>dawk mode</buttons>
 		<buttons>auto fetch game info</buttons>  <!-- 19 -->
+		<buttons>auto fwetch fwoldews</buttons> <!-- 20 -->
+		<buttons>cwange fowdew wocation</buttons> <!-- 21 -->
 
 		<!-- folders --> <!-- 0 -->
 		<folders>This wiww go thwough aww games and check if thewe is new update. \nAwe you suwe?</folders>

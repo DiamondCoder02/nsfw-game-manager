@@ -18,9 +18,10 @@ import org.w3c.dom.Document;
 public class checkMissingSetting {
 	static String[] mf = langLoad.folder, bc = langLoad.basic, bs = langLoad.base;
 	public static void checkSettings() {
-		String[] settings = {"othersettings", "language", "showncolumns"};
-		String[] othersettings = {"Dark mode", "Auto fetch game info"};
-		String[] language = {"english"};
+		String[] settings = {"othersettings", "folderLocation", "language", "showncolumns"};
+		String[] othersettings = {"Dark mode", "Auto fetch game info", "Auto fetch folders"};
+		String folderLocation = "null";
+		String language = "english";
 		String[] showncolumns = {
 			"Site", "ID", "Name", "Developer", "Played version", 
 			"Last time play", "Rated", "Newest version", 
@@ -28,7 +29,7 @@ public class checkMissingSetting {
 			"Still on pc?", "Engine", "OS", "Language", 
 			"Personal Notes"
 		};
-		Boolean otSe = false, laSe = false, shCo = false;
+		Boolean otSe = false, foSe = false, laSe = false, shCo = false;
 		Document dom = folderHandle.loadSaveGamesSettings.saveLoadDoc.loadDocument(mainInit.settingsPath);
 		if (dom == null) {
 			createMissingSettings.createFile(mainInit.settingsPath);
@@ -43,19 +44,20 @@ public class checkMissingSetting {
 						NodeList setting = e.getElementsByTagName(settings[i]);
 						switch (settings[i]) {
 							case "othersettings": otSe = checkings(setting, othersettings, dom, "othersettings"); break;
-							case "language": laSe = checkings(setting, language, dom, "language"); break;
+							case "folderLocation": foSe = singleChecks(setting, folderLocation, dom, "folderLocation"); break;
+							case "language": laSe = singleChecks(setting, language, dom, "language"); break;
 							case "showncolumns": shCo = checkings(setting, showncolumns, dom, "showncolumns"); break;
-							default: JOptionPane.showMessageDialog(null, (bc[7]!=null?bc[7]:"Should be impossible") + "checkMissingSetting", bs[1]!=null?bs[1]:"Error", JOptionPane.ERROR_MESSAGE); break;
+							default: JOptionPane.showMessageDialog(null, ("Should be impossible") + "checkMissingSetting", "Error", JOptionPane.ERROR_MESSAGE); break;
 						}
 					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				JOptionPane.showMessageDialog(null, (mf[6]!=null?mf[6]:"Error checking settings.") + "(checkMissingSetting.checkSettings)", bs[1]!=null?bs[1]:"Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, ("Error checking settings.") + "(checkMissingSetting.checkSettings)", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
-		if (otSe || laSe || shCo) {
-			JOptionPane.showMessageDialog(null, mf[7]!=null?mf[7]:"Settings got updated. \nPlease restart the program to make sure everything is correct.", mf[8]!=null?mf[8]:"Settings updated", JOptionPane.INFORMATION_MESSAGE);
+		if (otSe || foSe || laSe || shCo) {
+			JOptionPane.showMessageDialog(null, "Settings got updated. \nPlease restart the program to make sure everything is correct.", "Settings updated", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 
@@ -72,7 +74,6 @@ public class checkMissingSetting {
 
 	private static Boolean checkings(NodeList setting, String[] somethingSettings, Document dom, String settingName){
 		Boolean settingsGotUpdated = false;
-
 		// Check if the setting is missing
 		for (int j = 0; j < somethingSettings.length; j++) {
 			for (int k = 0; k < setting.getLength(); k++) {
@@ -80,11 +81,8 @@ public class checkMissingSetting {
 					if (setting.item(k).getTextContent().contains(somethingSettings[j])) {
 						break;
 					} else if (k == setting.getLength() - 1) {
-						if (settingName == "language") {
-							break;
-						}
 						Element newSetting = dom.createElement(settingName);
-						if (somethingSettings[j] == "Auto fetch game info") { newSetting.setAttribute("enabled", "false"); } 
+						if (somethingSettings[j] == "Auto fetch game info" || somethingSettings[j] == "Auto fetch folders") { newSetting.setAttribute("enabled", "false"); } 
 						else { newSetting.setAttribute("enabled", "true"); }
 						newSetting.appendChild(dom.createTextNode(somethingSettings[j]));
 						dom.getElementsByTagName("settings").item(0).appendChild(newSetting);
@@ -92,11 +90,8 @@ public class checkMissingSetting {
 					}
 				} else { 
 					if (k == setting.getLength() - 1) {
-						if (settingName == "language") {
-							break;
-						}
 						Element newSetting = dom.createElement(settingName);
-						if (somethingSettings[j] == "Auto fetch game info") { newSetting.setAttribute("enabled", "false"); } 
+						if (somethingSettings[j] == "Auto fetch game info" || somethingSettings[j] == "Auto fetch folders") { newSetting.setAttribute("enabled", "false"); } 
 						else { newSetting.setAttribute("enabled", "true"); }
 						newSetting.appendChild(dom.createTextNode(somethingSettings[j]));
 						dom.getElementsByTagName("settings").item(0).appendChild(newSetting);
@@ -105,6 +100,18 @@ public class checkMissingSetting {
 				}
 			}
 		}
+		folderHandle.loadSaveGamesSettings.saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
+		return settingsGotUpdated;
+	}
+
+	private static Boolean singleChecks(NodeList setting, String somethingSettings, Document dom, String settingName){
+		Boolean settingsGotUpdated = false;
+		// Check if the setting is missing
+		if (setting.item(0) != null) {return false;}
+		Element newSetting = dom.createElement(settingName);
+		newSetting.appendChild(dom.createTextNode(somethingSettings));
+		dom.getElementsByTagName("settings").item(0).appendChild(newSetting);
+		settingsGotUpdated = true;
 		folderHandle.loadSaveGamesSettings.saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
 		return settingsGotUpdated;
 	}

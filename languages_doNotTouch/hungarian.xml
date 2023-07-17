@@ -68,7 +68,7 @@
 		<JRadBut>Egyébb/Ismeretlen</JRadBut>
 
 		<!-- windowJframe._initFrame -->
-		<buttons>Játékok</buttons> <!-- 1 -->
+		<buttons>Játékok</buttons> <!-- 0 -->
 		<buttons>Keresés</buttons>
 		<buttons>Beállítások</buttons>
 		<buttons>Mutatandó infó</buttons>
@@ -76,7 +76,7 @@
 		<buttons>Egyébb</buttons>
 		<buttons>GYIK</buttons>
 		<buttons>Kredit</buttons>
-		<buttons>Kilép</buttons> <!-- 9 -->
+		<buttons>Kilép</buttons> <!-- 8 -->
 		<buttons>Hozzáad F95zone</buttons>
 		<buttons>Frissít F95zone</buttons>
 		<buttons>Töröl F95zone</buttons>
@@ -87,7 +87,9 @@
 		<buttons>Név keresés</buttons>
 		<buttons>Fejlesztő keresés</buttons> 
 		<buttons>Sötét mód</buttons>
-		<buttons>Auto játék infó frissítés</buttons> <!-- 20 -->
+		<buttons>Auto játék infó frissítés</buttons> <!-- 19 -->
+		<buttons>Automatikus fájlok ellenörzése</buttons> <!-- 20 -->
+		<buttons>Játék fájlok helyének változtatása</buttons> <!-- 21 -->
 
 		<!-- f95WebsiteHandle folder--> <!-- 0 -->
 		<folders>Ez végigmegy az összes játékon, és ellenőrzi, hogy van-e új frissítés.\nBiztos vagy benne?</folders>

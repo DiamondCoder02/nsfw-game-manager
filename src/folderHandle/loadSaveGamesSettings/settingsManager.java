@@ -1,17 +1,11 @@
 package folderHandle.loadSaveGamesSettings;
 
-import java.awt.GridLayout;
-
-import javax.swing.ButtonGroup;
-import javax.swing.JPanel;
-import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import folderHandle.loadSaveGamesSettings.choices.*;
 import main.langLoad;
 import main.mainInit;
 import main.application.frameCreate;
@@ -32,7 +26,11 @@ public class settingsManager {
 					if (otherSettingsNode.getNodeType() == Node.ELEMENT_NODE) {
 						Element e2 = (Element) otherSettingsNode;
 						String option = e2.getTextContent().trim();
-						if (option.equals(options)) {
+						if (options.equals("lang")) {
+							languageChoices.langChoose(dom);
+						} else if (options.equals("gameInfoFolLoc")) {
+							gamesLocationChoice.gamesLocationChoose(dom);
+						} else if (option.equals(options)) {
 							String enabled = e2.getAttribute("enabled").trim();
 							if (enabled.equals("true")) {
 								e2.setAttribute("enabled", "false");
@@ -41,53 +39,12 @@ public class settingsManager {
 							}
 							saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
 							frameCreate.refreshTable();
-						} else if (options.equals("lang")) {
-							langChoose(dom);
 						}
 					}
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-	}
-
-	// TODO https://stackoverflow.com/questions/1881714/how-to-start-stop-restart-a-thread-in-java
-	private static void langChoose(Document dom) {
-		String[] langButtons = {"english", "engwishUwU", "hungarian"};
-		String[] langMeaining = {"English", "Nyaaa~~ UwU", "Hungarian / Magyar"};
-		JPanel panel = new JPanel();
-		JRadioButton[] buttons = new JRadioButton[langButtons.length];
-		panel.setLayout(new GridLayout(2, 1));
-		ButtonGroup allTheLanguage = new ButtonGroup();
-		for (int i = 0; i < langButtons.length; i++) {
-			buttons[i] = new JRadioButton(langMeaining[i]);
-			buttons[i].setActionCommand(langButtons[i]);
-			allTheLanguage.add(buttons[i]);
-			panel.add(buttons[i]);
-		}
-		buttons[0].setSelected(true);
-		int result = JOptionPane.showConfirmDialog(null, panel, "Language", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-		if (result == JOptionPane.OK_OPTION) {
-			for (int i = 0; i < buttons.length; i++) {
-				if (buttons[i].isSelected()) {
-					NodeList settingsNode = dom.getElementsByTagName("settings");
-					Node settingsNodeElement = settingsNode.item(0);
-					if (settingsNodeElement.getNodeType() == Node.ELEMENT_NODE) {
-						Element e = (Element) settingsNodeElement;
-						NodeList allSettings = e.getElementsByTagName("language");
-						for (int j = 0; j < allSettings.getLength(); j++) {
-							Node otherSettingsNode = allSettings.item(j);
-							if (otherSettingsNode.getNodeType() == Node.ELEMENT_NODE) {
-								Element e2 = (Element) otherSettingsNode;
-								e2.setTextContent(buttons[i].getActionCommand());
-								saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
-								JOptionPane.showMessageDialog(null, folder[7]!=null?folder[7]:"Please restart the program to apply the changes!", butt[2]!=null?butt[2]:"Restart", JOptionPane.INFORMATION_MESSAGE);
-							}
-						}
-					}
-				}
-			}
 		}
 	}
 }

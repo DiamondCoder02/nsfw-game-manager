@@ -42,5 +42,7 @@ I have tested this with my 4-500 games. Still small bugs, but it handles it with
 Idea: User can choose a folder and the programm will search through it. But due to lazyness the format should be like this:
 
 ``` text
-f95-000000_{gameName}_{gameVersion}_{gameDev}
+f95-000000_{gameName}-{gameVersion}-{gameDev}
 ```
+
+This I can use to check last downloaded version, and last time the folder has changed. Also auto update if game is still on pc.

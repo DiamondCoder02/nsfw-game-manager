@@ -14,7 +14,7 @@ I have tested this with my 4-500 games. Still small bugs, but it handles it with
 - (For now )2+1 languages: English(, Engwish UwU), Hungarian
 - The app creates a backup of the database every time it starts(, only saves the last 10)
 
-## If you put games from F95zone website
+### If you put games from F95zone website
 
 - If the game is the final version, it gets a "✔" at the version column
 - If game is abandoned, it gets a "✖" at the version column
@@ -36,3 +36,11 @@ I have tested this with my 4-500 games. Still small bugs, but it handles it with
 
 - [x] ~~F95zone.to support~~
 - [ ] dlsite.com support
+
+### Notes
+
+Idea: User can choose a folder and the programm will search through it. But due to lazyness the format should be like this:
+
+``` text
+f95-000000_{gameName}_{gameVersion}_{gameDev}
+```

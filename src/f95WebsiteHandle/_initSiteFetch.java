@@ -68,6 +68,7 @@ public class _initSiteFetch extends JFrame {
 						// /* /ᐠ｡ꞈ｡ᐟ\ */ 
 					}
 					// System.out.println(id + " " + loadedGames[i][2].toString());
+					frame.setTitle((lf[1]!=null?lf[1]:"Checking games...") +" "+ site + ":" + id);
 					pbar.setValue(i);
 				}
 				pbar.setValue(loadedGames.length);

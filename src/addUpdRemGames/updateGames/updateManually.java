@@ -1,4 +1,4 @@
-package windowJframe;
+package addUpdRemGames.updateGames;
 
 import java.awt.GridLayout;
 
@@ -17,12 +17,13 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import folderHandle.isIDInDatabase;
+import folderHandle.loadSaveGamesSettings.saveLoadDoc;
 import main.langLoad;
 import main.mainInit;
-import xmlFolderHandle.isIDInDatabase;
-import xmlFolderHandle.saveLoadDoc;
+import main.application.frameCreate;
 
-public class updateGameManually {
+public class updateManually {
 	static String[] base = langLoad.base, basic = langLoad.basic, jla = langLoad.jlapa, folder = langLoad.folder, jrb = langLoad.jrabu;
 	public static void updateOneGameFromToFile(){
 		JOptionPane optionPane = new JOptionPane();
@@ -191,7 +192,7 @@ public class updateGameManually {
 										e.getElementsByTagName("language").item(0).setTextContent(newlanguageValue);
 										e.getElementsByTagName("selfNote").item(0).setTextContent(newselfNoteValue);
 										saveLoadDoc.saveDocument(dom, mainInit.databasePath);
-										_initFrame.refreshTable();
+										frameCreate.refreshTable();
 										JOptionPane.showMessageDialog(null, newnameValue+", \nId: "+idValue +" "+ (basic[4]!=null?basic[4]:"has been updated"), base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
 										break;
 									} else {

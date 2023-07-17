@@ -1,4 +1,4 @@
-package f95WebsiteHandle;
+package addUpdRemGames.updateGames;
 
 import java.awt.GridLayout;
 
@@ -15,13 +15,14 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import WebsiteHandle.loadF95site;
+import folderHandle.isIDInDatabase;
+import folderHandle.loadSaveGamesSettings.saveLoadDoc;
 import main.langLoad;
 import main.mainInit;
-import windowJframe._initFrame;
-import xmlFolderHandle.isIDInDatabase;
-import xmlFolderHandle.saveLoadDoc;
+import main.application.frameCreate;
 
-public class updateFromSite {
+public class updateFromF95site {
 	static String[] bc = langLoad.basic, bs = langLoad.base, jla = langLoad.jlapa, folder = langLoad.folder, jrb = langLoad.jrabu;
 	public static void updatef95game(){
 		JPanel panel = new JPanel(new GridLayout(10*2, 0));
@@ -57,7 +58,7 @@ public class updateFromSite {
 									String oldlanguage = e.getElementsByTagName("language").item(0).getTextContent().trim();
 									String oldselfNote = e.getElementsByTagName("selfNote").item(0).getTextContent().trim();
 
-									String[] output = loadSite.getf95UrlContents(idValue);
+									String[] output = loadF95site.getf95UrlContents(idValue);
 									String newnameValue = output[0].toString();
 									String newdeveloperValue = output[1].toString();
 									String newnewest_versionValue = output[2].toString();
@@ -154,7 +155,7 @@ public class updateFromSite {
 										e.getElementsByTagName("language").item(0).setTextContent(newlanguageValue);
 										e.getElementsByTagName("selfNote").item(0).setTextContent(newselfNoteValue);
 										saveLoadDoc.saveDocument(dom, mainInit.databasePath);
-										_initFrame.refreshTable();
+										frameCreate.refreshTable();
 										JOptionPane.showMessageDialog(null, newnameValue+", \nId: "+idValue+" "+(bc[4]!=null?bc[4]:"has been updated"), bs[0]!=null?bs[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
 										break;
 									} else {

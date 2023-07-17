@@ -1,4 +1,4 @@
-package main;
+package folderHandle.checkAndBackup;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -9,7 +9,11 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
-public class checksFile {
+import folderHandle.createMissing.createMissingDatabase;
+import folderHandle.createMissing.createMissingSettings;
+import main.langLoad;
+
+public class checksFiles {
 	public static String mainPath = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager/";
 	public static void checks() {
 		File mainDirectory = new File(System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager");

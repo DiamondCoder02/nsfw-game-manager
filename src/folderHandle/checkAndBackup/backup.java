@@ -1,4 +1,4 @@
-package main;
+package folderHandle.checkAndBackup;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -7,10 +7,12 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
 
+import main.mainInit;
+
 public class backup {
 	public static void doBackup() {
 		String mainDataPath = mainInit.databasePath;
-		String backupPath = checksFile.mainPath+"backup";
+		String backupPath = checksFiles.mainPath+"backup";
 		// check backup folder
 		if (!new File(backupPath).exists()) {
 			new File(backupPath).mkdirs();

@@ -1,4 +1,4 @@
-package windowJframe;
+package main.application;
 
 import java.awt.Desktop;
 import java.awt.Font;
@@ -11,11 +11,11 @@ import javax.swing.JOptionPane;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 
+import folderHandle.loadSaveGamesSettings.saveLoadDoc;
 import main.langLoad;
 import main.mainInit;
-import xmlFolderHandle.saveLoadDoc;
 
-public class otherButtonsThingies {
+public class otherButtons {
 	private static String br = "<br>";
 	static String[] btn = langLoad.buton, fld = langLoad.folder;
 	public static void saveFileCopy(){
@@ -37,7 +37,7 @@ public class otherButtonsThingies {
 	}
 	
 	public static void FACKQU(){ // TODO faq
-		Boolean[] boolSettings = xmlFolderHandle.loadSettingsFromXml.loadBooleanSettings("othersettings");
+		Boolean[] boolSettings = folderHandle.loadSaveGamesSettings.loadSettingsFromXml.loadBooleanSettings("othersettings");
 		String color;
 		if (boolSettings[0]) { color = "white"; } else { color = "black"; }
 		JEditorPane ep = new JEditorPane();
@@ -87,7 +87,7 @@ public class otherButtonsThingies {
 		Image newimg = img.getScaledInstance(43*4, 120*4,  java.awt.Image.SCALE_SMOOTH);
 		icon = new ImageIcon(newimg);
 
-		Boolean[] boolSettings = xmlFolderHandle.loadSettingsFromXml.loadBooleanSettings("othersettings");
+		Boolean[] boolSettings = folderHandle.loadSaveGamesSettings.loadSettingsFromXml.loadBooleanSettings("othersettings");
 		String color;
 		if (boolSettings[0]) { color = "white"; } else { color = "black"; }
 

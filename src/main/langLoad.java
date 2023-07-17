@@ -7,11 +7,12 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import xmlFolderHandle.loadSettingsFromXml;
-import xmlFolderHandle.saveLoadDoc;
+import folderHandle.checkAndBackup.checksFiles;
+import folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
+import folderHandle.loadSaveGamesSettings.saveLoadDoc;
 
 public class langLoad {
-	static String path = checksFile.mainPath;
+	static String path = checksFiles.mainPath;
 	private static String[] fol = {"base", "basic", "tablec", "JLabPan", "JRadBut", "buttons", "folders", "search"};
 	private static String[] tempBase = new String[30], tempBasic = new String[30], tempTabl = new String[30], 
 	tempjLaPa = new String[30], tempjRaBu = new String[30], tempbuton = new String[30], tempFold = new String[30],

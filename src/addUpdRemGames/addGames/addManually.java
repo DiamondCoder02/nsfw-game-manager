@@ -1,4 +1,4 @@
-package windowJframe;
+package addUpdRemGames.addGames;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -17,12 +17,13 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import folderHandle.isIDInDatabase;
+import folderHandle.loadSaveGamesSettings.saveLoadDoc;
 import main.langLoad;
 import main.mainInit;
-import xmlFolderHandle.isIDInDatabase;
-import xmlFolderHandle.saveLoadDoc;
+import main.application.frameCreate;
 
-public class addGameToFile {
+public class addManually {
 	static String[] base = langLoad.base, basic = langLoad.basic, jla = langLoad.jlapa, folder = langLoad.folder, jrb = langLoad.jrabu;
 	public static void addOneGameToFile(){
 		boolean repeat = true;
@@ -180,7 +181,7 @@ public class addGameToFile {
 							newGame.appendChild(newSelfNote);
 							sourceNode.appendChild(newGame);
 							saveLoadDoc.saveDocument(dom, mainInit.databasePath);
-							_initFrame.refreshTable();
+							frameCreate.refreshTable();
 							JOptionPane.showMessageDialog(null, nameValue+", \nId: "+idValue+" "+(basic[2]!=null?basic[2]:"has been added"), base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
 
 							int option = JOptionPane.showConfirmDialog(null, basic[3]!=null?basic[3]:"Do you want to add another game?", base[2]!=null?base[2]:"Add game", JOptionPane.YES_NO_OPTION);

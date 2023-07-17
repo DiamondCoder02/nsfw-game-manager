@@ -1,4 +1,4 @@
-package windowJframe;
+package main.application;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -16,14 +16,18 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 
+import WebsiteHandle.autoSiteFetching;
+import addUpdRemGames.removeAnyGame;
+import addUpdRemGames.addGames.addFromF95site;
+import addUpdRemGames.addGames.addManually;
+import addUpdRemGames.updateGames.updateFromF95site;
+import addUpdRemGames.updateGames.updateManually;
+import folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
+import folderHandle.loadSaveGamesSettings.saveLoadDoc;
+import folderHandle.loadSaveGamesSettings.settingsManager;
 import main.langLoad;
-import f95WebsiteHandle.addFromSite;
-import f95WebsiteHandle.updateFromSite;
-import f95WebsiteHandle._initSiteFetch;
-import xmlFolderHandle.loadSettingsFromXml;
-import xmlFolderHandle.saveLoadDoc;
 
-public class _initFrame extends JFrame implements ActionListener {
+public class frameCreate extends JFrame implements ActionListener {
 	JMenuBar mb;
 
 	JMenu games;
@@ -204,20 +208,20 @@ public class _initFrame extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String gac = e.getActionCommand();
-		main.checksFile.checkMissingDatabase();
-		main.checksFile.checkSettingsFolder();
+		folderHandle.checkAndBackup.checksFiles.checkMissingDatabase();
+		folderHandle.checkAndBackup.checksFiles.checkSettingsFolder();
 		// System.out.println(e); System.out.println(gac);
 		switch (gac) {
-			case "Add game": addGameToFile.addOneGameToFile(); break;
-			case "Update game": updateGameManually.updateOneGameFromToFile(); break;
-			case "Remove game": removeGameFromFile.removeOneGameFromFile("man"); break;
-			case "Add F95zone": addFromSite.addFromF95(); break;
-			case "Update F95zone": updateFromSite.updatef95game(); break;
-			case "Remove F95zone": removeGameFromFile.removeOneGameFromFile("f95"); break;
+			case "Add game": addManually.addOneGameToFile(); break;
+			case "Update game": updateManually.updateOneGameFromToFile(); break;
+			case "Remove game": removeAnyGame.removeOneGameFromFile("man"); break;
+			case "Add F95zone": addFromF95site.addFromF95(); break;
+			case "Update F95zone": updateFromF95site.updatef95game(); break;
+			case "Remove F95zone": removeAnyGame.removeOneGameFromFile("f95"); break;
 
-			case "Save file copy": otherButtonsThingies.saveFileCopy();	break;
+			case "Save file copy": otherButtons.saveFileCopy();	break;
 			case "Refresh table": refreshTable(); setColumns(); break;
-			case "API refresh":  _initSiteFetch.fetchInfoAskConfirm(); break;
+			case "API refresh":  autoSiteFetching.fetchInfoAskConfirm(); break;
 
 			case "Search by ID": searchButton.search("id"); break;
 			case "Search by name": searchButton.search("name"); break;
@@ -244,9 +248,9 @@ public class _initFrame extends JFrame implements ActionListener {
 			case "Dark mode": settingsManager.xmlSettings("othersettings", "Dark mode"); WindowRefresh(); refreshTable(); break;
 			case "Auto fetch game info": settingsManager.xmlSettings("othersettings", "Auto fetch game info"); break;
 
-			case "FAQ": otherButtonsThingies.FACKQU(); break;
-			case "Credits": otherButtonsThingies.money(); break;
-			case "Exit": otherButtonsThingies.sureAboutExit(); break;
+			case "FAQ": otherButtons.FACKQU(); break;
+			case "Credits": otherButtons.money(); break;
+			case "Exit": otherButtons.sureAboutExit(); break;
 			default: JOptionPane.showMessageDialog(null, (bc[7]!=null?bc[7]:"Error, this should never happen!!!") + " (_initFrame)", "Error", JOptionPane.ERROR_MESSAGE); break;
 		}
 	}

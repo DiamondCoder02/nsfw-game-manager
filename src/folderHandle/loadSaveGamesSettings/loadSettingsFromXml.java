@@ -1,4 +1,4 @@
-package xmlFolderHandle;
+package folderHandle.loadSaveGamesSettings;
 
 import javax.swing.JOptionPane;
 

@@ -1,4 +1,4 @@
-package windowJframe;
+package addUpdRemGames;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -9,12 +9,13 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import folderHandle.isIDInDatabase;
+import folderHandle.loadSaveGamesSettings.saveLoadDoc;
 import main.langLoad;
 import main.mainInit;
-import xmlFolderHandle.isIDInDatabase;
-import xmlFolderHandle.saveLoadDoc;
+import main.application.frameCreate;
 
-public class removeGameFromFile {
+public class removeAnyGame {
 	static String[] base = langLoad.base, basic = langLoad.basic, jla = langLoad.jlapa, folder = langLoad.folder, jrb = langLoad.jrabu;
 	public static void removeOneGameFromFile(String fromValue){
 		boolean repeat = true;
@@ -50,7 +51,7 @@ public class removeGameFromFile {
 										if (option == JOptionPane.OK_OPTION) {
 											sourceNode.removeChild(gameNode);
 											saveLoadDoc.saveDocument(dom, mainInit.databasePath);
-											_initFrame.refreshTable();
+											frameCreate.refreshTable();
 											JOptionPane.showMessageDialog(null, name + ", \nId: "+ids+" "+(folder[15]!=null?folder[15]:"has been removed."), base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
 										} else { JOptionPane.showMessageDialog(null, folder[16]!=null?folder[16]:"Cancelled", base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE); }
 										break;

@@ -1,4 +1,4 @@
-package f95WebsiteHandle;
+package WebsiteHandle;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 import main.langLoad;
 
-public class loadSite {
+public class loadF95site {
 	static String[] lf = langLoad.folder, bs = langLoad.base;
 	public static String[] getf95UrlContents(String gameIds) {
 		String[] allTheInfo = new String[8];

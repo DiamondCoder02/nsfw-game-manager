@@ -1,7 +1,12 @@
-package main;
+package folderHandle.checkAndBackup;
 
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import folderHandle.createMissing.createMissingSettings;
+import main.langLoad;
+import main.mainInit;
+
 import org.w3c.dom.Element;
 
 import java.io.File;
@@ -24,7 +29,7 @@ public class checkMissingSetting {
 			"Personal Notes"
 		};
 		Boolean otSe = false, laSe = false, shCo = false;
-		Document dom = xmlFolderHandle.saveLoadDoc.loadDocument(mainInit.settingsPath);
+		Document dom = folderHandle.loadSaveGamesSettings.saveLoadDoc.loadDocument(mainInit.settingsPath);
 		if (dom == null) {
 			createMissingSettings.createFile(mainInit.settingsPath);
 		} else {
@@ -100,7 +105,7 @@ public class checkMissingSetting {
 				}
 			}
 		}
-		xmlFolderHandle.saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
+		folderHandle.loadSaveGamesSettings.saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
 		return settingsGotUpdated;
 	}
 }

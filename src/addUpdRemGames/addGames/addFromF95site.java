@@ -1,4 +1,4 @@
-package f95WebsiteHandle;
+package addUpdRemGames.addGames;
 
 import java.awt.GridLayout;
 
@@ -15,13 +15,14 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import WebsiteHandle.loadF95site;
+import folderHandle.isIDInDatabase;
+import folderHandle.loadSaveGamesSettings.saveLoadDoc;
 import main.langLoad;
 import main.mainInit;
-import windowJframe._initFrame;
-import xmlFolderHandle.isIDInDatabase;
-import xmlFolderHandle.saveLoadDoc;
+import main.application.frameCreate;
 
-public class addFromSite {
+public class addFromF95site {
 	static String[] bs = langLoad.base, bc = langLoad.basic, jla = langLoad.jlapa, lf = langLoad.folder, jrb = langLoad.jrabu;
 	public static void addFromF95(){
 		boolean repeat = true;
@@ -35,7 +36,7 @@ public class addFromSite {
 				break;
 			}
 
-			String[] output = loadSite.getf95UrlContents(idValue);
+			String[] output = loadF95site.getf95UrlContents(idValue);
 			if (output == null) { break; }
 			// Name, Developer, Newest version, Date of last update, People rating, Engine, OS
 			String nameValue = output[0].toString();
@@ -141,7 +142,7 @@ public class addFromSite {
 						newGame.appendChild(newSelfNote);
 						sourceNode.appendChild(newGame);
 						saveLoadDoc.saveDocument(dom, mainInit.databasePath);
-						_initFrame.refreshTable();
+						frameCreate.refreshTable();
 						JOptionPane.showMessageDialog(null, nameValue+", \nId: "+idValue+" "+(bc[2]==null?"has been added":bc[2]), bs[0]==null?"Success":bs[0], JOptionPane.INFORMATION_MESSAGE);
 
 						int option = JOptionPane.showConfirmDialog(null, bc[3]==null?"Do you want to add another game?":bc[3], bs[2]==null?"Add game":bs[2], JOptionPane.YES_NO_OPTION);

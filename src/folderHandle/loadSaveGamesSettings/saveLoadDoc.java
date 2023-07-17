@@ -1,4 +1,4 @@
-package xmlFolderHandle;
+package folderHandle.loadSaveGamesSettings;
 
 import java.io.File;
 import java.awt.Color;
@@ -17,6 +17,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 
+import folderHandle.xmlLoader;
 import main.mainInit;
 import main.langLoad;
 
@@ -51,7 +52,7 @@ public class saveLoadDoc {
 	public static void reloadTable(JTable table) {
 		Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
 		Document domSettings = saveLoadDoc.loadDocument(mainInit.settingsPath);
-		String[] columnNames = _initXml.allColumns(domSettings);
+		String[] columnNames = xmlLoader.allColumns(domSettings);
 		Object[][] data = loadGamesFromXml.loadGames(dom, columnNames);
 		String[] tbl = langLoad.tabl;
 		for (int i = 0; i < columnNames.length; i++) {

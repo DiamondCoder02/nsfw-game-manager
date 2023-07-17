@@ -1,4 +1,4 @@
-package windowJframe;
+package folderHandle.loadSaveGamesSettings;
 
 import java.awt.GridLayout;
 
@@ -14,7 +14,7 @@ import org.w3c.dom.NodeList;
 
 import main.langLoad;
 import main.mainInit;
-import xmlFolderHandle.saveLoadDoc;
+import main.application.frameCreate;
 
 public class settingsManager {
 	static String[] folder = langLoad.folder, butt = langLoad.buton;
@@ -40,7 +40,7 @@ public class settingsManager {
 								e2.setAttribute("enabled", "true");
 							}
 							saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
-							_initFrame.refreshTable();
+							frameCreate.refreshTable();
 						} else if (options.equals("lang")) {
 							langChoose(dom);
 						}

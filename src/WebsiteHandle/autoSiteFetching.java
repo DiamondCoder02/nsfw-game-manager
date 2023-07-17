@@ -1,4 +1,4 @@
-package f95WebsiteHandle;
+package WebsiteHandle;
 
 import java.awt.Dimension;
 import java.util.concurrent.CompletableFuture;
@@ -16,14 +16,18 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import folderHandle.isIDInDatabase;
+import folderHandle.xmlLoader;
+import folderHandle.loadSaveGamesSettings.loadGamesFromXml;
+import folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
+import folderHandle.loadSaveGamesSettings.saveLoadDoc;
 import main.langLoad;
 import main.mainInit;
-import windowJframe._initFrame;
-import xmlFolderHandle.*;
+import main.application.frameCreate;
 
-public class _initSiteFetch extends JFrame {
+public class autoSiteFetching extends JFrame {
 	static Document dom = saveLoadDoc.loadDocument(mainInit.settingsPath);
-	static String[] columnNames = _initXml.allColumns(dom);
+	static String[] columnNames = xmlLoader.allColumns(dom);
 	static Document domGame = saveLoadDoc.loadDocument(mainInit.databasePath);
 	static Object[][] loadedGames = loadGamesFromXml.loadGames(domGame, columnNames);
 	static boolean manualButton = false;
@@ -67,7 +71,6 @@ public class _initSiteFetch extends JFrame {
 						//System.out.println("(¬_¬ )"); 
 						// /* /ᐠ｡ꞈ｡ᐟ\ */ 
 					}
-					// System.out.println(id + " " + loadedGames[i][2].toString());
 					frame.setTitle((lf[1]!=null?lf[1]:"Checking games...") +" "+ site + ":" + id);
 					pbar.setValue(i);
 				}
@@ -75,7 +78,7 @@ public class _initSiteFetch extends JFrame {
 				manualButton = false;
 				JOptionPane.showMessageDialog(null, lf[2]==null?"All game infos got updated":lf[2], bs[3]==null?"Update":bs[3], JOptionPane.INFORMATION_MESSAGE);
 				frame.dispose();
-				_initFrame.refreshTable();
+				frameCreate.refreshTable();
 			}
 		});
 	}
@@ -98,7 +101,7 @@ public class _initSiteFetch extends JFrame {
 15	case "Personal Notes": 
 */
 	private static Runnable myF95Task(String id, int LoadGamesLength) {
-		String[] gameInfo = loadSite.getf95UrlContents(id);
+		String[] gameInfo = loadF95site.getf95UrlContents(id);
 		String dateOfLastUpdateValue = gameInfo[3].toString();
 		String olddateOfLastUpdateValue = loadedGames[LoadGamesLength][4].toString();
 		if (!olddateOfLastUpdateValue.equals(dateOfLastUpdateValue)) {

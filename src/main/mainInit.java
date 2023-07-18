@@ -2,7 +2,8 @@ package main;
 
 import org.w3c.dom.Document;
 
-import WebsiteHandle.autoSiteFetching;
+import folderHandle.autoFetchChecks.autoFolderChecks;
+import folderHandle.autoFetchChecks.autoSiteFetching;
 import folderHandle.checkAndBackup.backup;
 import folderHandle.checkAndBackup.checksFiles;
 import folderHandle.loadSaveGamesSettings.loadGamesFromXml;
@@ -29,9 +30,8 @@ public class mainInit {
 
 		frame.WindowCreate(data);
 
-		if (boolSettings[1]) {
-			autoSiteFetching.fetchInfoThenUpdateTable();
-		}
+		if (boolSettings[1]) { autoSiteFetching.fetchInfoThenUpdateTable(); }
+		if (boolSettings[2]) { autoFolderChecks.fetchFoldersForTable(); }
 		backup.doBackup();
 	}
 }

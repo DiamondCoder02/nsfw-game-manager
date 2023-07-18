@@ -16,12 +16,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 
-import WebsiteHandle.autoSiteFetching;
 import addUpdRemGames.removeAnyGame;
 import addUpdRemGames.addGames.addFromF95site;
 import addUpdRemGames.addGames.addManually;
 import addUpdRemGames.updateGames.updateFromF95site;
 import addUpdRemGames.updateGames.updateManually;
+import folderHandle.autoFetchChecks.autoFolderChecks;
+import folderHandle.autoFetchChecks.autoSiteFetching;
 import folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
 import folderHandle.loadSaveGamesSettings.saveLoadDoc;
 import folderHandle.loadSaveGamesSettings.settingsManager;
@@ -223,7 +224,7 @@ public class frameCreate extends JFrame implements ActionListener {
 			case "Remove F95zone": removeAnyGame.removeOneGameFromFile("f95"); break;
 
 			case "Save file copy": otherButtons.saveFileCopy();	break;
-			case "Refresh table": refreshTable(); setColumns(); break;
+			case "Refresh table": autoFolderChecks.fetchFoldersForTable(); refreshTable(); setColumns(); break;
 			case "API refresh":  autoSiteFetching.fetchInfoAskConfirm(); break;
 
 			case "Search by ID": searchButton.search("id"); break;

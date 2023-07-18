@@ -62,25 +62,13 @@ public class loadSettingsFromXml {
 			if (settingsNodeElement.getNodeType() == Node.ELEMENT_NODE) {
 				Element e = (Element) settingsNodeElement;
 				NodeList showncolumns = e.getElementsByTagName(setting);
-				if (setting.equals("language")){
-					for (int i = 0; i < showncolumns.getLength(); i++) {
-						Node showncolumnsNode = showncolumns.item(i);
-						if (showncolumnsNode.getNodeType() == Node.ELEMENT_NODE) {
-							Element e2 = (Element) showncolumnsNode;
-							String column = e2.getTextContent().trim();
-							columnNames[counter] = column;
-							counter++;
-						}
-					}
-				} else {
-					for (int i = 0; i < showncolumns.getLength(); i++) {
-						Node showncolumnsNode = showncolumns.item(i);
-						if (showncolumnsNode.getNodeType() == Node.ELEMENT_NODE) {
-							Element e2 = (Element) showncolumnsNode;
-							String column = e2.getTextContent().trim();
-							columnNames[counter] = column;
-							counter++;
-						}
+				for (int i = 0; i < showncolumns.getLength(); i++) {
+					Node showncolumnsNode = showncolumns.item(i);
+					if (showncolumnsNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element e2 = (Element) showncolumnsNode;
+						String column = e2.getTextContent().trim();
+						columnNames[counter] = column;
+						counter++;
 					}
 				}
 			}

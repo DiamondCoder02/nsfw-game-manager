@@ -1,4 +1,4 @@
-package WebsiteHandle;
+package folderHandle.autoFetchChecks;
 
 import java.awt.Dimension;
 import java.util.concurrent.CompletableFuture;
@@ -16,6 +16,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import WebsiteHandle.loadF95site;
 import folderHandle.isIDInDatabase;
 import folderHandle.xmlLoader;
 import folderHandle.loadSaveGamesSettings.loadGamesFromXml;

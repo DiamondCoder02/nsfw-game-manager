@@ -21,17 +21,18 @@ public class mainInit {
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 		String[] strColumnNames = loadSettingsFromXml.loadStringSettings("showncolumns");
 
+		if (boolSettings[2]) { autoFolderChecks.fetchFoldersForTable(); }
+
 		Document domGame = saveLoadDoc.loadDocument(databasePath);
 
 		frameCreate frame = new frameCreate();
 		frame.setIconImage(frame.getToolkit().getImage(System.getenv("APPDATA") + "\\DiamondCoder\\nsfwGameManager\\pics\\nyaaa.png"));
-		
+
 		Object[][] data = loadGamesFromXml.loadGames(domGame, strColumnNames);
 
 		frame.WindowCreate(data);
 
 		if (boolSettings[1]) { autoSiteFetching.fetchInfoThenUpdateTable(); }
-		if (boolSettings[2]) { autoFolderChecks.fetchFoldersForTable(); }
 		backup.doBackup();
 	}
 }

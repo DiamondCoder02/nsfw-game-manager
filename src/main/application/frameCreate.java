@@ -194,8 +194,8 @@ public class frameCreate extends JFrame implements ActionListener {
 			50,	// last update
 			60,	// people rating
 			65,	// player progress
-			35,	// still on pc? 
-			60,	// engine
+			40,	// still on pc? 
+			55,	// engine
 			80,// os
 			40,	// language
 			80	// personal notes
@@ -224,7 +224,7 @@ public class frameCreate extends JFrame implements ActionListener {
 			case "Remove F95zone": removeAnyGame.removeOneGameFromFile("f95"); break;
 
 			case "Save file copy": otherButtons.saveFileCopy();	break;
-			case "Refresh table": autoFolderChecks.fetchFoldersForTable(); refreshTable(); setColumns(); break;
+			case "Refresh table": autoFolderChecks.fetchFoldersForTable(); break;
 			case "API refresh":  autoSiteFetching.fetchInfoAskConfirm(); break;
 
 			case "Search by ID": searchButton.search("id"); break;

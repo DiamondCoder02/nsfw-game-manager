@@ -64,8 +64,8 @@ public class autoFolderChecks {
 									if (lastModified.equals(currentTime.toString())) { return; }
 									frame.setTitle((lf[1]!=null?lf[1]:"Checking games...") +" "+ site + ":" + id);
 									pbar.setValue(pbar.getValue()+1);
-									Document gameDatabase = saveLoadDoc.loadDocument(mainInit.databasePath);
-									checkAllGameAndUpdate(gameDatabase, site, id, name, version, lastModified);
+									
+									checkAllGameAndUpdate(site, id, name, version, lastModified);
 								} catch (IOException e) { JOptionPane.showMessageDialog(null, "Error reading folder directory! (folderHandle.autoFetchChecks)", "Error", JOptionPane.ERROR_MESSAGE); return; }
 							} catch (Exception e) { JOptionPane.showMessageDialog(null, file.toString() + "\n file doesn't have the correct name!\n" + "man-000000_{gameName}_{gameVersion} {anythingElseYouWant}", "Error", JOptionPane.ERROR_MESSAGE); return; }
 						}
@@ -81,12 +81,12 @@ public class autoFolderChecks {
 		});
 	}
 
-	private static void checkAllGameAndUpdate(
-		Document docToWorkWith, String siteToWorkWith, String idToWorkWith, 
+	private static void checkAllGameAndUpdate( String siteToWorkWith, String idToWorkWith, 
 		String nameToWorkWith, String versionToWorkWith, String lastModifiedToWorkWith
 	) {
 		//System.out.println(siteToWorkWith+" "+idToWorkWith+" "+nameToWorkWith+" "+versionToWorkWith+" "+lastModifiedToWorkWith); 
-		NodeList source = docToWorkWith.getElementsByTagName("source");
+		Document gameDatabase = saveLoadDoc.loadDocument(mainInit.databasePath);
+		NodeList source = gameDatabase.getElementsByTagName("source");
 		for (int i = 0; i < source.getLength(); i++) {
 			Node sourceNode = source.item(i);
 			if (sourceNode.getNodeType() == Node.ELEMENT_NODE) {
@@ -107,6 +107,6 @@ public class autoFolderChecks {
 				}
 			}
 		}
-		saveLoadDoc.saveDocument(docToWorkWith, mainInit.databasePath);
+		saveLoadDoc.saveDocument(gameDatabase, mainInit.databasePath);
 	}
 }

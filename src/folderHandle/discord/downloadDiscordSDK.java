@@ -12,7 +12,10 @@ import folderHandle.checkAndBackup.checksFiles;
 
 public class downloadDiscordSDK {
 	public static File downloadDiscordLibrary(String name, String suffix, String arch) throws IOException {
-		// Find out which name Discord's library has (.dll for Windows, .so for Linux)
+		File discordDir = new File(checksFiles.mainPath + "discord");
+		if (!discordDir.exists()) { discordDir.mkdir(); }
+		File temp = new File(discordDir, name + suffix);
+		if (temp.exists()) { return temp; }
 
 		// Path of Discord's library inside the ZIP
 		String zipPath = "lib/" + arch + "/" + name + suffix;
@@ -24,14 +27,8 @@ public class downloadDiscordSDK {
 
 		// Search for the right file inside the ZIP
 		ZipEntry entry;
-		File discordDir = new File(checksFiles.mainPath + "discord");
-		if (!discordDir.exists()) { discordDir.mkdir(); }
 		while ((entry = zin.getNextEntry()) != null) {
 			if (entry.getName().equals(zipPath)) {
-				// Create a temporary file inside our directory (with a "normal" name)
-				File temp = new File(discordDir, name + suffix);
-				if (temp.exists()) { temp.delete(); }
-
 				// Copy the file in the ZIP to our temporary file
 				Files.copy(zin, temp.toPath());
 				zin.close();

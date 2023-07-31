@@ -51,6 +51,7 @@ public class discord {
 				try (Core core = new Core(params)) {
 					// Run callbacks forever
 					while (true) {
+						if (!boolSettings[3]) { break; }
 						try{ 
 							if (doNotRunAlways == (20*1)) { 
 								boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");

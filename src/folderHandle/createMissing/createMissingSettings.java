@@ -25,6 +25,8 @@ public class createMissingSettings {
 			otherSettings2.appendChild(doc.createTextNode("Auto fetch game info")); settings.appendChild(otherSettings2);
 			Element otherSettings3 = doc.createElement("othersettings"); otherSettings3.setAttribute("enabled", "false");
 			otherSettings3.appendChild(doc.createTextNode("Auto fetch folders")); settings.appendChild(otherSettings3);
+			Element otherSettings4 = doc.createElement("othersettings"); otherSettings4.setAttribute("enabled", "false");
+			otherSettings4.appendChild(doc.createTextNode("DiscordRPC")); settings.appendChild(otherSettings4);
 			Element language = doc.createElement("language");
 			language.appendChild(doc.createTextNode("english")); settings.appendChild(language);
 			Element folderLoc = doc.createElement("folderLocation");

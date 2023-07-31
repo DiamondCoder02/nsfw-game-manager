@@ -1,5 +1,7 @@
 package main;
 
+import java.io.IOException;
+
 import org.w3c.dom.Document;
 
 import folderHandle.autoFetchChecks.autoFolderChecks;
@@ -9,6 +11,7 @@ import folderHandle.checkAndBackup.checksFiles;
 import folderHandle.loadSaveGamesSettings.loadGamesFromXml;
 import folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
 import folderHandle.loadSaveGamesSettings.saveLoadDoc;
+import main.application.discord;
 import main.application.frameCreate;
 
 public class mainInit {
@@ -34,5 +37,7 @@ public class mainInit {
 
 		if (boolSettings[1]) { autoSiteFetching.fetchInfoThenUpdateTable(); }
 		backup.doBackup();
+
+		if (boolSettings[3]) { try { discord.discordFirstInit(); } catch (IOException e) { e.printStackTrace(); } }
 	}
 }

@@ -7,6 +7,8 @@ and to torture myself
 
 I have tested this with my 4-500 games. Still small bugs, but it handles it without *much* problem.
 
+Also, discord integration, because why not
+
 ## Important
 
 - Currently java 8
@@ -29,6 +31,7 @@ I have tested this with my 4-500 games. Still small bugs, but it handles it with
 - [ ] FAQ
 - [ ] Optimizations
 - [ ] Text size small on large display - [Bug here](<https://bugs.openjdk.org/browse/JDK-8202973>)
+- [ ] Random game choose if you are bored (Maybe with filter)
 
 ---
 

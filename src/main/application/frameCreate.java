@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
@@ -41,7 +42,7 @@ public class frameCreate extends JFrame implements ActionListener {
 
 	JMenu settings;
 	JMenuItem changeLanguage, changeFolderLocation;
-	JCheckBoxMenuItem darkMode, autoFetchNews, autoFetchFolders;
+	JCheckBoxMenuItem darkMode, discordrpc, autoFetchNews, autoFetchFolders;
 	JMenu show;
 	JCheckBoxMenuItem showSite, showID, showName, showDeveloper, showPlayedVersion, showLastTimeplay, showRated, showNewestVersion;
 	JCheckBoxMenuItem showDateOfLastUpdate, showPeopleRating, showhowFarUserPlayed, showDeletedFromPc, showEngine, showOS, showLanguage, ShowSelfNote;
@@ -113,6 +114,7 @@ public class frameCreate extends JFrame implements ActionListener {
 		settings.add(changeFolderLocation = new JMenuItem("📁 "+(bu[21]!=null?bu[21]:"Change folder location"))); changeFolderLocation.setActionCommand("ChanFolLoc");
 		settings.addSeparator();
 		settings.add(darkMode = new JCheckBoxMenuItem(bu[18]!=null?bu[18]:"Dark mode", boolSettings[0])); darkMode.setActionCommand("Dark mode");
+		settings.add(discordrpc = new JCheckBoxMenuItem("DiscordRPC", boolSettings[3])); discordrpc.setActionCommand("DiscordRPC");
 		settings.addSeparator();
 		settings.add(autoFetchNews = new JCheckBoxMenuItem(bu[19]!=null?bu[19]:"Auto fetch game info", boolSettings[1])); autoFetchNews.setActionCommand("Auto fetch game info");
 		settings.add(autoFetchFolders = new JCheckBoxMenuItem(bu[20]!=null?bu[20]:"Auto fetch folders", boolSettings[2])); autoFetchFolders.setActionCommand("Auto fetch folders");
@@ -138,8 +140,8 @@ public class frameCreate extends JFrame implements ActionListener {
 		showLanguage.addActionListener(this);; ShowSelfNote.addActionListener(this); 
 
 		changeLanguage.addActionListener(this); changeFolderLocation.addActionListener(this);
-		darkMode.addActionListener(this); autoFetchNews.addActionListener(this);
-		autoFetchFolders.addActionListener(this);
+		darkMode.addActionListener(this); discordrpc.addActionListener(this);
+		autoFetchNews.addActionListener(this); autoFetchFolders.addActionListener(this);
 
 		faq.addActionListener(this); credits.addActionListener(this);
 		exit.addActionListener(this);
@@ -251,6 +253,7 @@ public class frameCreate extends JFrame implements ActionListener {
 			case "chanLan": settingsManager.xmlSettings("language", "lang"); break;
 			case "ChanFolLoc": settingsManager.xmlSettings("folderLocation", "gameInfoFolLoc"); break;
 			case "Dark mode": settingsManager.xmlSettings("othersettings", "Dark mode"); WindowRefresh(); refreshTable(); break;
+			case "DiscordRPC": settingsManager.xmlSettings("othersettings", "DiscordRPC"); try {discord.discordFirstInit();} catch (IOException e1) {e1.printStackTrace();} break;
 			case "Auto fetch game info": settingsManager.xmlSettings("othersettings", "Auto fetch game info"); break;
 			case "Auto fetch folders": settingsManager.xmlSettings("othersettings", "Auto fetch folders"); break;
 
@@ -304,6 +307,7 @@ public class frameCreate extends JFrame implements ActionListener {
 			changeLanguage.setBackground(bg); changeLanguage.setForeground(fg);
 			changeFolderLocation.setBackground(bg); changeFolderLocation.setForeground(fg);
 			darkMode.setBackground(bg);	darkMode.setForeground(fg);
+			discordrpc.setBackground(bg); discordrpc.setForeground(fg);
 			autoFetchNews.setBackground(bg); autoFetchNews.setForeground(fg);
 			autoFetchFolders.setBackground(bg); autoFetchFolders.setForeground(fg);
 
@@ -372,6 +376,7 @@ public class frameCreate extends JFrame implements ActionListener {
 			changeLanguage.setBackground(null); changeLanguage.setForeground(null);
 			changeFolderLocation.setBackground(null); changeFolderLocation.setForeground(null);
 			darkMode.setBackground(null);	darkMode.setForeground(null);
+			discordrpc.setBackground(null); discordrpc.setForeground(null);
 			autoFetchNews.setBackground(null); autoFetchNews.setForeground(null);
 			autoFetchFolders.setBackground(null); autoFetchFolders.setForeground(null);
 

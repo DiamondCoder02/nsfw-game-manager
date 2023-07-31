@@ -19,7 +19,7 @@ public class checkMissingSetting {
 	static String[] mf = langLoad.folder, bc = langLoad.basic, bs = langLoad.base;
 	public static void checkSettings() {
 		String[] settings = {"othersettings", "folderLocation", "language", "showncolumns"};
-		String[] othersettings = {"Dark mode", "Auto fetch game info", "Auto fetch folders"};
+		String[] othersettings = {"Dark mode", "Auto fetch game info", "Auto fetch folders", "DiscordRPC"};
 		String folderLocation = "null";
 		String language = "english";
 		String[] showncolumns = {
@@ -82,8 +82,8 @@ public class checkMissingSetting {
 						break;
 					} else if (k == setting.getLength() - 1) {
 						Element newSetting = dom.createElement(settingName);
-						if (somethingSettings[j] == "Auto fetch game info" || somethingSettings[j] == "Auto fetch folders") { newSetting.setAttribute("enabled", "false"); } 
-						else { newSetting.setAttribute("enabled", "true"); }
+						if (somethingSettings[j] == "Dark mode") { newSetting.setAttribute("enabled", "true"); }
+						else { newSetting.setAttribute("enabled", "false"); }
 						newSetting.appendChild(dom.createTextNode(somethingSettings[j]));
 						dom.getElementsByTagName("settings").item(0).appendChild(newSetting);
 						settingsGotUpdated = true;
@@ -91,8 +91,8 @@ public class checkMissingSetting {
 				} else { 
 					if (k == setting.getLength() - 1) {
 						Element newSetting = dom.createElement(settingName);
-						if (somethingSettings[j] == "Auto fetch game info" || somethingSettings[j] == "Auto fetch folders") { newSetting.setAttribute("enabled", "false"); } 
-						else { newSetting.setAttribute("enabled", "true"); }
+						if (somethingSettings[j] == "Dark mode") { newSetting.setAttribute("enabled", "true"); }
+						else { newSetting.setAttribute("enabled", "false"); }
 						newSetting.appendChild(dom.createTextNode(somethingSettings[j]));
 						dom.getElementsByTagName("settings").item(0).appendChild(newSetting);
 						settingsGotUpdated = true;

@@ -72,7 +72,7 @@
 		<buttons>Search</buttons>
 		<buttons>Settings</buttons>
 		<buttons>Shown informations</buttons>
-		<buttons>Language</buttons> <!-- TO IMPLEMENT -->
+		<buttons>Language</buttons>
 		<buttons>Other</buttons>
 		<buttons>FAQ</buttons>
 		<buttons>Credits</buttons>

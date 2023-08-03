@@ -114,7 +114,7 @@ public class frameCreate extends JFrame implements ActionListener {
 		settings.add(changeFolderLocation = new JMenuItem("📁 "+(bu[21]!=null?bu[21]:"Change folder location"))); changeFolderLocation.setActionCommand("ChanFolLoc");
 		settings.addSeparator();
 		settings.add(darkMode = new JCheckBoxMenuItem(bu[18]!=null?bu[18]:"Dark mode", boolSettings[0])); darkMode.setActionCommand("Dark mode");
-		settings.add(discordrpc = new JCheckBoxMenuItem("DiscordRPC", boolSettings[3])); discordrpc.setActionCommand("DiscordRPC");
+		settings.add(discordrpc = new JCheckBoxMenuItem("Discord RPC", boolSettings[3])); discordrpc.setActionCommand("Discord RPC");
 		settings.addSeparator();
 		settings.add(autoFetchNews = new JCheckBoxMenuItem(bu[19]!=null?bu[19]:"Auto fetch game info", boolSettings[1])); autoFetchNews.setActionCommand("Auto fetch game info");
 		settings.add(autoFetchFolders = new JCheckBoxMenuItem(bu[20]!=null?bu[20]:"Auto fetch folders", boolSettings[2])); autoFetchFolders.setActionCommand("Auto fetch folders");
@@ -137,7 +137,7 @@ public class frameCreate extends JFrame implements ActionListener {
 		showDateOfLastUpdate.addActionListener(this); showPeopleRating.addActionListener(this);
 		showhowFarUserPlayed.addActionListener(this); showDeletedFromPc.addActionListener(this);
 		showEngine.addActionListener(this); showOS.addActionListener(this);
-		showLanguage.addActionListener(this);; ShowSelfNote.addActionListener(this); 
+		showLanguage.addActionListener(this); ShowSelfNote.addActionListener(this); 
 
 		changeLanguage.addActionListener(this); changeFolderLocation.addActionListener(this);
 		darkMode.addActionListener(this); discordrpc.addActionListener(this);
@@ -151,14 +151,7 @@ public class frameCreate extends JFrame implements ActionListener {
 		table.setBounds(30, 40, 200, 300);
 		setColumns();
 		table.setAutoCreateRowSorter(true);
-		/*
-		table.getRowSorter().addRowSorterListener((RowSorterListener) new RowSorterListener() {
-			@Override
-			public void sorterChanged(javax.swing.event.RowSorterEvent e) {
-				refreshTable();
-			}
-		});
-		*/
+
 		setLayout(new BorderLayout());
 		add(table.getTableHeader(), BorderLayout.PAGE_START);
 		add(table, BorderLayout.CENTER);
@@ -253,7 +246,7 @@ public class frameCreate extends JFrame implements ActionListener {
 			case "chanLan": settingsManager.xmlSettings("language", "lang"); break;
 			case "ChanFolLoc": settingsManager.xmlSettings("folderLocation", "gameInfoFolLoc"); break;
 			case "Dark mode": settingsManager.xmlSettings("othersettings", "Dark mode"); WindowRefresh(); refreshTable(); break;
-			case "DiscordRPC": settingsManager.xmlSettings("othersettings", "DiscordRPC"); try {discord.discordFirstInit();} catch (IOException e1) {e1.printStackTrace();} break;
+			case "Discord RPC": settingsManager.xmlSettings("othersettings", "DiscordRPC"); try {discord.discordFirstInit();} catch (IOException e1) {e1.printStackTrace();} break;
 			case "Auto fetch game info": settingsManager.xmlSettings("othersettings", "Auto fetch game info"); break;
 			case "Auto fetch folders": settingsManager.xmlSettings("othersettings", "Auto fetch folders"); break;
 

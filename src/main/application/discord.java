@@ -23,8 +23,7 @@ public class discord {
 	static Document domGame = saveLoadDoc.loadDocument(mainInit.databasePath);
 	static Integer allGames= domGame.getElementsByTagName("game").getLength();
 	public static void discordFirstInit() throws IOException {
-		String name = "discord_game_sdk";
-		String suffix;
+		String name = "discord_game_sdk"; String suffix;
 		String osName = System.getProperty("os.name").toLowerCase(Locale.ROOT);
 		String arch = System.getProperty("os.arch").toLowerCase(Locale.ROOT);
 		String image = "https://cdn.discordapp.com/app-assets/1135539276692607086/1135541050702831778.png";
@@ -51,12 +50,13 @@ public class discord {
 				try (Core core = new Core(params)) {
 					// Run callbacks forever
 					while (true) {
-						if (!boolSettings[3]) { break; }
+						boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
+						if (!boolSettings[3]) { params.close(); core.close(); break; }
 						try{ 
 							if (doNotRunAlways == (20*1)) { 
 								boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 								domGame = saveLoadDoc.loadDocument(mainInit.databasePath);
-								allGames= domGame.getElementsByTagName("game").getLength(); 
+								if (domGame == null) { allGames = 0; } else { allGames= domGame.getElementsByTagName("game").getLength(); }
 								// Create the Activity
 								try (Activity activity = new Activity()) {
 									activity.setDetails("Managing my hentai games");
@@ -65,7 +65,7 @@ public class discord {
 									activity.timestamps().setStart(time);
 									// Make a "cool" image show up
 									activity.assets().setLargeImage(image);
-									activity.assets().setLargeText("nyaaa~");
+									activity.assets().setLargeText("https://github.com/DiamondPRO02/nsfw-game-manager");
 									// Finally, update the current activity to our activity
 									core.activityManager().updateActivity(activity);
 								}

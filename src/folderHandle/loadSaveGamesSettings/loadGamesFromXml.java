@@ -5,11 +5,24 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import folderHandle.xmlLoader;
 import main.langLoad;
+import main.mainInit;
 
 public class loadGamesFromXml {
 	static String[] bac = langLoad.basic;
 	public static Object[][] loadGames(Document dom, String[] columnNames) {
+		return load(dom, columnNames);
+	}
+
+	public static Object[][] loadGames() {
+		Document domSetting = saveLoadDoc.loadDocument(mainInit.settingsPath);
+		String[] columnNames = xmlLoader.allColumns(domSetting);
+		Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
+		return load(dom, columnNames);
+	}
+
+	private static Object[][] load(Document dom, String[] columnNames){
 		Object[][] allDataFromFile = null;
 		Integer counter = 0;
 		NodeList source = dom.getElementsByTagName("source");

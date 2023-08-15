@@ -37,6 +37,9 @@ public class frameCreate extends JFrame implements ActionListener {
 	JMenuItem addF95zone, updateF95, removeF95;
 	JMenuItem saveFileToDifferent, refreshTable, refreshFromAPI;
 
+	JMenu random;
+	JMenuItem fullRandom, randomDev, randomEngine, randomSite;
+
 	JMenu search;
 	JMenuItem searchById, searchByName, searchByDeveloper;
 
@@ -66,7 +69,7 @@ public class frameCreate extends JFrame implements ActionListener {
 	public void WindowCreate(Object[][] dataFromXMLFile) {
 		setTitle(wfl[9]!=null?wfl[9]:"Hentai Game Database");
 		setSize(1500, 600);
-		setMinimumSize(new Dimension(500, 500));
+		setMinimumSize(new Dimension(500, 200));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setJMenuBar(mb = new JMenuBar());
 
@@ -82,15 +85,18 @@ public class frameCreate extends JFrame implements ActionListener {
 		games.add(saveFileToDifferent = new JMenuItem(bu[12]!=null?bu[12]:"Save file copy")); saveFileToDifferent.setActionCommand("Save file copy");
 		games.add(refreshTable = new JMenuItem(bu[13]!=null?bu[13]:"Refresh table")); refreshTable.setActionCommand("Refresh table");
 		games.add(refreshFromAPI = new JMenuItem(bu[14]!=null?bu[14]:"API refresh")); refreshFromAPI.setActionCommand("API refresh");
-		
+
+		// TODO add language for random
+		mb.add(random = new JMenu("Random"));
+		random.add(fullRandom = new JMenuItem("Fully random game")); fullRandom.setActionCommand("RandomFully");
+		random.add(randomDev = new JMenuItem("Random game from a developer")); randomDev.setActionCommand("RandomDev");
+		random.add(randomEngine = new JMenuItem("Random with specific engine")); randomEngine.setActionCommand("RandomEngine");
+		random.add(randomSite = new JMenuItem("Random from specific site")); randomSite.setActionCommand("RandomSite");
 
 		mb.add(search = new JMenu(bu[1]!=null?bu[1]:"Search"));
 		search.add(searchById = new JMenuItem(bu[15]!=null?bu[15]:"Search by ID")); searchById.setActionCommand("Search by ID");
 		search.add(searchByName = new JMenuItem(bu[16]!=null?bu[16]:"Search by name")); searchByName.setActionCommand("Search by name");
 		search.add(searchByDeveloper = new JMenuItem(bu[17]!=null?bu[17]:"Search by developer")); searchByDeveloper.setActionCommand("Search by developer");
-		searchById.addActionListener(this);
-		searchByName.addActionListener(this);
-		searchByDeveloper.addActionListener(this);
 
 		mb.add(settings = new JMenu(bu[2]!=null?bu[2]:"Settings"));
 		settings.add(show = new JMenu(bu[3]!=null?bu[3]:"Shown informations"));
@@ -129,6 +135,12 @@ public class frameCreate extends JFrame implements ActionListener {
 		updateF95.addActionListener(this); removeF95.addActionListener(this);
 		saveFileToDifferent.addActionListener(this); refreshTable.addActionListener(this);
 		refreshFromAPI.addActionListener(this);
+
+		fullRandom.addActionListener(this); randomDev.addActionListener(this);
+		randomEngine.addActionListener(this); randomSite.addActionListener(this);
+
+		searchById.addActionListener(this);searchByName.addActionListener(this);
+		searchByDeveloper.addActionListener(this);
 
 		showSite.addActionListener(this); showID.addActionListener(this);
 		showName.addActionListener(this); showDeveloper.addActionListener(this);
@@ -222,6 +234,11 @@ public class frameCreate extends JFrame implements ActionListener {
 			case "Refresh table": autoFolderChecks.fetchFoldersForTable(); break;
 			case "API refresh":  autoSiteFetching.fetchInfoAskConfirm(); break;
 
+			case "RandomFully": randomGame.fullyRandom(); break;
+			case "RandomDev": randomGame.randomFromDeveloper(); break;
+			case "RandomEngine": randomGame.randomWithEngine(); break;
+			case "RandomSite": randomGame.randomFromSite(); break;
+
 			case "Search by ID": searchButton.search("id"); break;
 			case "Search by name": searchButton.search("name"); break;
 			case "Search by developer": searchButton.search("dev"); break;
@@ -291,6 +308,12 @@ public class frameCreate extends JFrame implements ActionListener {
 			refreshTable.setBackground(bg); refreshTable.setForeground(fg);
 			refreshFromAPI.setBackground(bg); refreshFromAPI.setForeground(fg);
 
+			random.setBackground(bg); random.setForeground(fg);
+			fullRandom.setBackground(bg); fullRandom.setForeground(fg);
+			randomDev.setBackground(bg); randomDev.setForeground(fg);
+			randomEngine.setBackground(bg); randomEngine.setForeground(fg);
+			randomSite.setBackground(bg); randomSite.setForeground(fg);
+
 			search.setBackground(bg); search.setForeground(fg);
 			searchById.setBackground(bg); searchById.setForeground(fg);
 			searchByName.setBackground(bg); searchByName.setForeground(fg);
@@ -359,6 +382,12 @@ public class frameCreate extends JFrame implements ActionListener {
 			saveFileToDifferent.setBackground(null); saveFileToDifferent.setForeground(null);
 			refreshTable.setBackground(null); refreshTable.setForeground(null);
 			refreshFromAPI.setBackground(null); refreshFromAPI.setForeground(null);
+
+			random.setBackground(null); random.setForeground(null);
+			fullRandom.setBackground(null); fullRandom.setForeground(null);
+			randomDev.setBackground(null); randomDev.setForeground(null);
+			randomEngine.setBackground(null); randomEngine.setForeground(null);
+			randomSite.setBackground(null); randomSite.setForeground(null);
 
 			search.setBackground(null); search.setForeground(null);
 			searchById.setBackground(null); searchById.setForeground(null);

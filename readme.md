@@ -52,3 +52,22 @@ f95-696969_Good Game, try me_v12.31 DeveloperAndStuffMaybeNotes
 If it doesn't begin with f95 or man ~~or dls(soon?)~~ it will be ignored.
 
 This I can use to check last downloaded version, and last time the folder has changed. Also auto update if game is still on pc.
+
+## aaaaaaa
+
+0 - Site
+1 - ID
+2 - Name
+3 - Developer
+4 - Played version
+5 - Last time play
+6 - Rated
+7 - Newest version
+8 - Last update
+9 - People rating
+10 - Player progress
+11 - Still on pc?
+12 - Engine
+13 - OS
+14 - Language
+15 - Personal notes

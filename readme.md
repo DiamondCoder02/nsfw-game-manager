@@ -31,7 +31,7 @@ Also, discord integration, because why not
 - [ ] FAQ
 - [ ] Optimizations
 - [ ] Text size small on large display - [Bug here](<https://bugs.openjdk.org/browse/JDK-8202973>)
-- [ ] Random game choose if you are bored (Maybe with filter)
+- [x] Random game choose if you are bored (Maybe with filter)
 
 ---
 

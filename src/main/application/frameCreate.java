@@ -38,7 +38,7 @@ public class frameCreate extends JFrame implements ActionListener {
 	JMenuItem saveFileToDifferent, refreshTable, refreshFromAPI;
 
 	JMenu random;
-	JMenuItem fullRandom, randomDev, randomEngine, randomSite;
+	JMenuItem fullRandom, randomDev, randomProgress, randomEngine, randomSite;
 
 	JMenu search;
 	JMenuItem searchById, searchByName, searchByDeveloper;
@@ -89,9 +89,10 @@ public class frameCreate extends JFrame implements ActionListener {
 		// TODO add language for random
 		mb.add(random = new JMenu("Random"));
 		random.add(fullRandom = new JMenuItem("Fully random game")); fullRandom.setActionCommand("RandomFully");
-		random.add(randomDev = new JMenuItem("Random game from a developer")); randomDev.setActionCommand("RandomDev");
-		random.add(randomEngine = new JMenuItem("Random with specific engine")); randomEngine.setActionCommand("RandomEngine");
-		random.add(randomSite = new JMenuItem("Random from specific site")); randomSite.setActionCommand("RandomSite");
+		random.add(randomDev = new JMenuItem("Random game by developer")); randomDev.setActionCommand("RandomDev");
+		random.add(randomProgress = new JMenuItem("Random by player progress")); randomProgress.setActionCommand("RandomProgress");
+		random.add(randomEngine = new JMenuItem("Random by engine")); randomEngine.setActionCommand("RandomEngine");
+		random.add(randomSite = new JMenuItem("Random by site")); randomSite.setActionCommand("RandomSite");
 
 		mb.add(search = new JMenu(bu[1]!=null?bu[1]:"Search"));
 		search.add(searchById = new JMenuItem(bu[15]!=null?bu[15]:"Search by ID")); searchById.setActionCommand("Search by ID");
@@ -137,7 +138,8 @@ public class frameCreate extends JFrame implements ActionListener {
 		refreshFromAPI.addActionListener(this);
 
 		fullRandom.addActionListener(this); randomDev.addActionListener(this);
-		randomEngine.addActionListener(this); randomSite.addActionListener(this);
+		randomProgress.addActionListener(this); randomEngine.addActionListener(this); 
+		randomSite.addActionListener(this);
 
 		searchById.addActionListener(this);searchByName.addActionListener(this);
 		searchByDeveloper.addActionListener(this);
@@ -236,6 +238,7 @@ public class frameCreate extends JFrame implements ActionListener {
 
 			case "RandomFully": randomGame.fullyRandom(); break;
 			case "RandomDev": randomGame.randomFromDeveloper(); break;
+			case "RandomProgress": randomGame.randomFromProgress(); break;
 			case "RandomEngine": randomGame.randomWithEngine(); break;
 			case "RandomSite": randomGame.randomFromSite(); break;
 
@@ -311,6 +314,7 @@ public class frameCreate extends JFrame implements ActionListener {
 			random.setBackground(bg); random.setForeground(fg);
 			fullRandom.setBackground(bg); fullRandom.setForeground(fg);
 			randomDev.setBackground(bg); randomDev.setForeground(fg);
+			randomProgress.setBackground(bg); randomProgress.setForeground(fg);
 			randomEngine.setBackground(bg); randomEngine.setForeground(fg);
 			randomSite.setBackground(bg); randomSite.setForeground(fg);
 
@@ -386,6 +390,7 @@ public class frameCreate extends JFrame implements ActionListener {
 			random.setBackground(null); random.setForeground(null);
 			fullRandom.setBackground(null); fullRandom.setForeground(null);
 			randomDev.setBackground(null); randomDev.setForeground(null);
+			randomProgress.setBackground(null); randomProgress.setForeground(null);
 			randomEngine.setBackground(null); randomEngine.setForeground(null);
 			randomSite.setBackground(null); randomSite.setForeground(null);
 

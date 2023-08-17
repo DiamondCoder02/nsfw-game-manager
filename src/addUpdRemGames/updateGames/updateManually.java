@@ -27,7 +27,7 @@ public class updateManually {
 	static String[] base = langLoad.base, basic = langLoad.basic, jla = langLoad.jlapa, folder = langLoad.folder, jrb = langLoad.jrabu;
 	public static void updateOneGameFromToFile(){
 		JOptionPane optionPane = new JOptionPane();
-		JPanel panel = new JPanel(new GridLayout(14*2, 0));
+		JPanel panel = new JPanel(new GridLayout(8*2, 2));
 		JTextField id = new JTextField();
 		Object[] message = {
 			jla[0]!=null?jla[0]:"ID of the game to update:", id

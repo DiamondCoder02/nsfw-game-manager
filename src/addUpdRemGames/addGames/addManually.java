@@ -28,7 +28,7 @@ public class addManually {
 	public static void addOneGameToFile(){
 		boolean repeat = true;
 		while (repeat) {
-			JPanel panel = new JPanel(new GridLayout(14*2, 0));
+			JPanel panel = new JPanel(new GridLayout(8*2, 2));
 
 			JTextField id = new JTextField(6);
 			JTextField name = new JTextField(40);

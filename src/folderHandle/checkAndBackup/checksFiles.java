@@ -75,34 +75,23 @@ public class checksFiles {
 	}
 
 	private static void checkLanguage(){
-		File file = new File(mainPath + "languages/");
-		String[] languages = {"english", "engwishUwU", "hungarian"};
-		String unableToDownload = "";
+		File file = new File(mainPath + "language.csv");
 		if (!file.exists()) {
-			file.mkdirs();
-		}
-		for (int i = 0; i < languages.length; i++) {
-			File file2 = new File(file+"/" + languages[i] + ".xml");
-			if (!file2.exists()) {
-				try{
-					URL url = new URL("https://raw.githubusercontent.com/DiamondPRO02/nsfw-game-manager/master/languages_doNotTouch/"+languages[i]+".xml");
-					// System.out.println(url);
-					InputStream in = url.openStream();
-					FileOutputStream fos = new FileOutputStream(file+"/" + languages[i] + ".xml");
-					byte[] buffer = new byte[4096];
-					int length;
-					while ((length = in.read(buffer)) > 0) {
-						fos.write(buffer, 0, length);
-					}
-					in.close();
-					fos.close();
-				} catch (Exception e) {
-					unableToDownload = unableToDownload+"\nUnable to download: " + languages[i];
+			try{
+				URL url = new URL("https://raw.githubusercontent.com/DiamondPRO02/nsfw-game-manager/master/doNotTouch/language.csv");
+				// System.out.println(url);
+				InputStream in = url.openStream();
+				FileOutputStream fos = new FileOutputStream(file);
+				byte[] buffer = new byte[4096];
+				int length;
+				while ((length = in.read(buffer)) > 0) {
+					fos.write(buffer, 0, length);
 				}
+				in.close();
+				fos.close();
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "Error downloading language file.\n>.< (checksFile.checkLanguage)", "Error", JOptionPane.ERROR_MESSAGE);
 			}
-		}
-		if (!unableToDownload.equals("")) {
-			JOptionPane.showMessageDialog(null, "Error downloading language(s):\n" + unableToDownload + "\n>.< (checksFile.checkLanguage)", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

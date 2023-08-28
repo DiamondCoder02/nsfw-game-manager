@@ -1,4 +1,5 @@
 ﻿lang;english;engwishUwU;hungarian
+lanMea;English;Nyaaa~~ UwU;Magyar / Hungarian
 base;Success;Success OwO;Siker
 base;Error;Ewwow;Hiba
 base;Add game;Awd game;Játék hozzáadás
@@ -107,4 +108,20 @@ search;Game was not found!!!;Game was not found!!! owo';Nem talált ilyen játé
 search;Maybe try searching by other ways?;Maybe twy seawching by othew ways?;Talán másképpen megvan a játék?
 search;You can search by ID, name and developer too!;You can seawch by id, name and devewopew too!;Lehet keresni ID, név és fejlesztő alapján is!
 search;Found game(s):;OWO Fwound game(s):;Talált játék(ok):
-end;;;
+random;Random;Wandom;Random
+random;Fully random game;Fuwwy wandom game;Teljesen véletlen játék
+random;Random game by developer;Wandom game by devewopew;Véletlen fejlesztő alapján
+random;Random by player progress;Wandom by pwayew pwogwess;Véletlen haladás alapján
+random;Random by engine;Wandom by engine;Véletlen motor alapján
+random;Random by site;Wandom by swite;Véletlen oldal alapján
+random;Enter developer name you wish to search for:;Entew devewopew name you wish to seawch fow:;Írd be a fejlesztő nevét amit keresel:
+random;from developer;fwom devewopew;fejlesztőtől
+random;from progress;fwom pwogwess;haladástól
+random;Select engine to search for:;Sewect engine to seawch fow:;Válaszd ki a motort amit keresel:
+random;with engine;with engwine;motorral
+random;Select site to search from:;Sewect swite to seawch fwom:;Válaszd ki az oldalt amit keresel:
+random;from site;fwom swite;oldaltól
+random;No games found;No gwames found;Nincs találat
+random;Update here if needed;Upwate liwnk hewe if needed;Frissítési link ha szükséges itt
+random;No link available;No wink avaiwabwe;Nincs elérhető link
+random;Found a game!;Fwound a game!;Talált játék!

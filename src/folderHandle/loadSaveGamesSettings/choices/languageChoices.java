@@ -18,10 +18,11 @@ import main.mainInit;
 
 public class languageChoices {
 	static String[] folder = langLoad.folder, butt = langLoad.buton;
+	static String[] langs = langLoad.langChoices, langMeanings = langLoad.lanMeans;
 	// TODO https://stackoverflow.com/questions/1881714/how-to-start-stop-restart-a-thread-in-java
 	public static void langChoose(Document dom) {
-		String[] langButtons = {"english", "engwishUwU", "hungarian"};
-		String[] langMeaining = {"English", "Nyaaa~~ UwU", "Hungarian / Magyar"};
+		String[] langButtons = langs;
+		String[] langMeaining = langMeanings;
 		JPanel panel = new JPanel();
 		JRadioButton[] buttons = new JRadioButton[langButtons.length];
 		panel.setLayout(new GridLayout(2, 1));
@@ -33,7 +34,7 @@ public class languageChoices {
 			panel.add(buttons[i]);
 		}
 		buttons[0].setSelected(true);
-		int result = JOptionPane.showConfirmDialog(null, panel, "Language", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+		int result = JOptionPane.showConfirmDialog(null, panel, "🌐 "+(butt[4]!=null?butt[4]:"Language"), JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 		if (result == JOptionPane.OK_OPTION) {
 			for (int i = 0; i < buttons.length; i++) {
 				if (buttons[i].isSelected()) {

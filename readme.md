@@ -7,7 +7,7 @@ Mostly designed for f95zone ~~and dlsite (soon?) and Steam(if I can)~~. You can 
 ## Some nice features
 
 - I am a Discord nerd, so it has activity feature for it (Default off).
-- (For now )2+1 languages: English(, Engwish UwU), Hungarian
+- 2+1 languages: English(, Engwish UwU), Hungarian (for now, more on this later)
 - The program creates a backup of the games database every time it starts(, only saves the last 10)
 - Java 8, nut sure if it's nice, but it's something
 
@@ -19,6 +19,12 @@ If it's limited to some site, it will be in brackets ()
 - If game is abandoned, it gets a "✖" at the version column
 - For VisualNovels there will be a "[VN]" at the name column
 - If a game has VR tag, it will have "[VR]" at the engine column
+
+### Language support
+
+Languages work like an excel. Top row is the language in English(, in lowercase). The first column is for the program, **second** column is to be translated from the englsih column. I hope the small example shows it.
+
+Currently supported languages: English( +EngwishUwU ), Hungarian
 
 ### How the program handles games folder
 
@@ -41,3 +47,4 @@ If it doesn't begin with man, f95 ~~or dls(soon?)~~ it will be ignored. (man mea
 - [ ] Optimizations
 - [ ] Text size small on large display
 - [ ] dlsite.com support
+- [ ] Auto updater

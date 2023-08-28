@@ -16,16 +16,17 @@ public class langLoad {
 	static String path = checksFiles.mainPath;
 	private static String[] tempBase = new String[30], tempBasic = new String[30], tempTabl = new String[30], 
 	tempjLaPa = new String[30], tempjRaBu = new String[30], tempbuton = new String[30], tempFold = new String[30],
-	tempSear = new String[30];
-	public static String[] base, basic, tabl, jlapa, jrabu, buton, folder, serc;
-	public static CSVReader reader = null;
+	tempSear = new String[30], tempRand = new String[30];
+	public static String[] base, basic, tabl, jlapa, jrabu, buton, folder, serc, rand;
+	private static CSVReader reader = null; 
+	public static String[] langChoices, lanMeans;
 
 	public static void loadLanguages() {
 		for (int i = 0; i < 30; i++) {
 			tempBase[i] = null; tempBasic[i] = null; tempTabl[i] = null; tempjLaPa[i] = null;
 			tempjRaBu[i] = null; tempbuton[i] = null; tempFold[i] = null; tempSear[i] = null;
+			tempRand[i] = null;
 		}
-
 		String language = loadSettingsFromXml.loadStringSettings("language")[0];
 		try {
 			// parsing a CSV file into CSVReader class constructor
@@ -40,12 +41,15 @@ public class langLoad {
 		if (language == null || reader == null) { return; }
 		try {
 			String[] nextLine = reader.readNext();
+			langChoices = new String[nextLine.length-1];
+			lanMeans = new String[nextLine.length-1];
 			// first line is the language names
 			int langindex = 0;
-			for (int i = 0; i < nextLine.length; i++) {
-				if (nextLine[i].equals(language)) { langindex = i; break; }
-			}
+			for (int i = 0; i < nextLine.length; i++) { if (nextLine[i].equals(language)) { langindex = i; break; } }
 			if (langindex == 0) { langindex = 1; }
+			for (int i = 0; i < (nextLine.length-1); i++) { langChoices[i] = nextLine[i+1]; }
+			nextLine = reader.readNext();
+			for (int i = 0; i < (nextLine.length-1); i++) { lanMeans[i] = nextLine[i+1]; }
 			// System.out.println("Currently has " +(nextLine.length-1)+ " languages, choosen: "+nextLine[langindex]);
 			Integer temp = 0; String lastLang = "";
 			String[] tempAr = new String[30];
@@ -67,11 +71,13 @@ public class langLoad {
 					case "buttons": tempbuton[temp] = tempAr[temp]; break;
 					case "folders": tempFold[temp] = tempAr[temp]; break;
 					case "search": tempSear[temp] = tempAr[temp]; break;
+					case "random": tempRand[temp] = tempAr[temp]; break;
 				}
 				temp++;
 			}
 			base = tempBase; basic = tempBasic; tabl = tempTabl; jlapa = tempjLaPa;
 			jrabu = tempjRaBu; buton = tempbuton; folder = tempFold; serc = tempSear;
+			rand = tempRand;
 			return;
 		} catch (Exception e) {
 			e.printStackTrace();

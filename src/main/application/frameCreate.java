@@ -64,7 +64,8 @@ public class frameCreate extends JFrame implements ActionListener {
 	Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 	Boolean[] boolColumns = loadSettingsFromXml.loadBooleanSettings("showncolumns");
 
-	static String[] wfl = langLoad.folder, bu = langLoad.buton, tlc = langLoad.tabl, bc = langLoad.basic, bs = langLoad.base;
+	static String[] wfl = langLoad.folder, bu = langLoad.buton, tlc = langLoad.tabl, 
+		bc = langLoad.basic, bs = langLoad.base, ran= langLoad.rand;
 
 	public void WindowCreate(Object[][] dataFromXMLFile) {
 		setTitle(wfl[9]!=null?wfl[9]:"Hentai Game Database");
@@ -86,13 +87,12 @@ public class frameCreate extends JFrame implements ActionListener {
 		games.add(refreshTable = new JMenuItem(bu[13]!=null?bu[13]:"Refresh table")); refreshTable.setActionCommand("Refresh table");
 		games.add(refreshFromAPI = new JMenuItem(bu[14]!=null?bu[14]:"API refresh")); refreshFromAPI.setActionCommand("API refresh");
 
-		// TODO add language for random
-		mb.add(random = new JMenu("Random"));
-		random.add(fullRandom = new JMenuItem("Fully random game")); fullRandom.setActionCommand("RandomFully");
-		random.add(randomDev = new JMenuItem("Random game by developer")); randomDev.setActionCommand("RandomDev");
-		random.add(randomProgress = new JMenuItem("Random by player progress")); randomProgress.setActionCommand("RandomProgress");
-		random.add(randomEngine = new JMenuItem("Random by engine")); randomEngine.setActionCommand("RandomEngine");
-		random.add(randomSite = new JMenuItem("Random by site")); randomSite.setActionCommand("RandomSite");
+		mb.add(random = new JMenu(ran[0]!=null?ran[0]:"Random"));
+		random.add(fullRandom = new JMenuItem(ran[1]!=null?ran[1]:"Fully random game")); fullRandom.setActionCommand("RandomFully");
+		random.add(randomDev = new JMenuItem(ran[2]!=null?ran[2]:"Random game by developer")); randomDev.setActionCommand("RandomDev");
+		random.add(randomProgress = new JMenuItem(ran[3]!=null?ran[3]:"Random by player progress")); randomProgress.setActionCommand("RandomProgress");
+		random.add(randomEngine = new JMenuItem(ran[4]!=null?ran[4]:"Random by engine")); randomEngine.setActionCommand("RandomEngine");
+		random.add(randomSite = new JMenuItem(ran[5]!=null?ran[5]:"Random by site")); randomSite.setActionCommand("RandomSite");
 
 		mb.add(search = new JMenu(bu[1]!=null?bu[1]:"Search"));
 		search.add(searchById = new JMenuItem(bu[15]!=null?bu[15]:"Search by ID")); searchById.setActionCommand("Search by ID");

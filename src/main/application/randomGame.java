@@ -11,13 +11,14 @@ import javax.swing.JRadioButton;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 
-import folderHandle.loadSaveGamesSettings.loadGamesFromXml;
 import main.langLoad;
 
+import folderHandle.loadSaveGamesSettings.loadGamesFromXml;
+
 public class randomGame {
+	static String[] jrb = langLoad.jrabu;
 	private static String br = "<br>";
 	static Object[][] allGames = loadGamesFromXml.loadGames();
-	static String[] fld = langLoad.folder;
 	public static void fullyRandom() {
 		Integer amount = allGames.length;
 		Integer random = (int) (Math.random() * amount);
@@ -33,7 +34,7 @@ public class randomGame {
 	}
 
 	public static void randomFromProgress(){
-		JRadioButton howFarUserPlayed_NotPlayed = new JRadioButton("Not played", true), howFarUserPlayed_Playing = new JRadioButton("In progress", false), howFarUserPlayed_Finished = new JRadioButton("Finish", false), howFarUserPlayed_100Percent = new JRadioButton("100% Finished", false);
+		JRadioButton howFarUserPlayed_NotPlayed = new JRadioButton(jrb[0]!=null?jrb[0]:"Not played", true), howFarUserPlayed_Playing = new JRadioButton(jrb[1]!=null?jrb[1]:"In progress", false), howFarUserPlayed_Finished = new JRadioButton(jrb[2]!=null?jrb[2]:"Finish", false), howFarUserPlayed_100Percent = new JRadioButton(jrb[3]!=null?jrb[3]:"100% Finished", false);
 			howFarUserPlayed_NotPlayed.setActionCommand("Not played"); howFarUserPlayed_Playing.setActionCommand("In progress"); howFarUserPlayed_Finished.setActionCommand("Finish"); howFarUserPlayed_100Percent.setActionCommand("100% Finished");
 			ButtonGroup progressGroup = new ButtonGroup(); progressGroup.add(howFarUserPlayed_NotPlayed); progressGroup.add(howFarUserPlayed_Playing); progressGroup.add(howFarUserPlayed_Finished); progressGroup.add(howFarUserPlayed_100Percent);
 			JPanel progressPanel = new JPanel(); progressPanel.add(howFarUserPlayed_NotPlayed); progressPanel.add(howFarUserPlayed_Playing); progressPanel.add(howFarUserPlayed_Finished); progressPanel.add(howFarUserPlayed_100Percent);
@@ -43,7 +44,7 @@ public class randomGame {
 	}
 
 	public static void randomWithEngine() {
-		JRadioButton engine_Flash = new JRadioButton("Flash"), engine_HTML = new JRadioButton("HTML"), engine_Java = new JRadioButton("Java"), engine_QSP = new JRadioButton("QSP"), engine_RenPy = new JRadioButton("RenPy"), engine_RPGmaker = new JRadioButton("RPGmaker"), engine_Unity = new JRadioButton("Unity"), engine_Unreal = new JRadioButton("Unreal"), engine_WinGit = new JRadioButton("WinGit"), engine_WolfRPG = new JRadioButton("WolfRPG"), engine_other = new JRadioButton("other/unknown", true);
+		JRadioButton engine_Flash = new JRadioButton("Flash"), engine_HTML = new JRadioButton("HTML"), engine_Java = new JRadioButton("Java"), engine_QSP = new JRadioButton("QSP"), engine_RenPy = new JRadioButton("RenPy"), engine_RPGmaker = new JRadioButton("RPGmaker"), engine_Unity = new JRadioButton("Unity"), engine_Unreal = new JRadioButton("Unreal"), engine_WinGit = new JRadioButton("WinGit"), engine_WolfRPG = new JRadioButton("WolfRPG"), engine_other = new JRadioButton(jrb[7]!=null?jrb[7]:"other/unknown", true);
 			engine_Flash.setActionCommand("Flash"); engine_HTML.setActionCommand("HTML"); engine_Java.setActionCommand("Java"); engine_QSP.setActionCommand("QSP"); engine_RenPy.setActionCommand("Ren'Py"); engine_RPGmaker.setActionCommand("RPGM"); engine_Unity.setActionCommand("Unity"); engine_Unreal.setActionCommand("Unreal Engine"); engine_WinGit.setActionCommand("WinGit"); engine_WolfRPG.setActionCommand("WolfRPG"); engine_other.setActionCommand("other/unknown");
 			ButtonGroup engineGroup = new ButtonGroup(); engineGroup.add(engine_Flash); engineGroup.add(engine_HTML); engineGroup.add(engine_Java); engineGroup.add(engine_QSP); engineGroup.add(engine_RenPy); engineGroup.add(engine_RPGmaker); engineGroup.add(engine_Unity); engineGroup.add(engine_Unreal); engineGroup.add(engine_WinGit); engineGroup.add(engine_WolfRPG); engineGroup.add(engine_other);
 			JLabel engineLabel = new JLabel("Select engine to search for:");
@@ -54,7 +55,7 @@ public class randomGame {
 	}
 
 	public static void randomFromSite() {
-		JRadioButton site_F95 = new JRadioButton("F95zone"), site_man = new JRadioButton("Manual", true);
+		JRadioButton site_F95 = new JRadioButton("F95zone"), site_man = new JRadioButton("man", true);
 			site_F95.setActionCommand("f95"); site_man.setActionCommand("man");
 			ButtonGroup sitesGroup = new ButtonGroup(); sitesGroup.add(site_F95); sitesGroup.add(site_man);
 			JLabel siteLabel = new JLabel("Select site to search from:");

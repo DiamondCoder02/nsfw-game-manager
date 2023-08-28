@@ -1,73 +1,43 @@
 # Hentai game manager
 
-Maybe good idea
+This is a *hentai* game manager. The idea was simple, an easy to use manager that shows usefull information and the newest infos about the stored games. Although it only shows what you have added already yourself. If you have a game folder it can read that too, but later on that.
 
-Now that this is independent from uni work... Time to make it better
-and to torture myself
+Mostly designed for f95zone ~~and dlsite (soon?) and Steam(if I can)~~. You can also add your own manually if the program don't support the site.
 
-I have tested this with my 4-500 games. Still small bugs, but it handles it without *much* problem.
+## Some nice features
 
-Also, discord integration, because why not
-
-## Important
-
-- Currently java 8
-- Files: AppData\Roaming\DiamondCoder\nsfwGameManager\
+- I am a Discord nerd, so it has activity feature for it (Default off).
 - (For now )2+1 languages: English(, Engwish UwU), Hungarian
-- The app creates a backup of the database every time it starts(, only saves the last 10)
+- The program creates a backup of the games database every time it starts(, only saves the last 10)
+- Java 8, nut sure if it's nice, but it's something
 
-### If you put games from F95zone website
+## Features if you add game from a site
+
+If it's limited to some site, it will be in brackets ()
 
 - If the game is the final version, it gets a "✔" at the version column
 - If game is abandoned, it gets a "✖" at the version column
 - For VisualNovels there will be a "[VN]" at the name column
 - If a game has VR tag, it will have "[VR]" at the engine column
 
----
----
+### How the program handles games folder
 
-## TODO
+- Every settings and language is saved: C:\Users\\{youUser}\AppData\Roaming\DiamondCoder\nsfwGameManager
+- I have tested the program with my ~500 games, it works fine...
 
-- [ ] FAQ
-- [ ] Optimizations
-- [ ] Text size small on large display - [Bug here](<https://bugs.openjdk.org/browse/JDK-8202973>)
-- [x] Random game choose if you are bored (Maybe with filter)
-
----
-
-### Ideas
-
-- [x] ~~F95zone.to support~~
-- [ ] dlsite.com support
-
-### Notes
-
-Idea: User can choose a folder and the programm will search through it. But due to lazyness the format should be like this:
+- If you add the game folder, you have to save your games in a specific format. It is unfortunate, but it works. Because I'm stupid and a programmer, currently the program only supports this format:
 
 ``` text
 man-000000_{gameName}_{gameVersion} {anythingElseYouWant}
+
 f95-696969_Good Game, try me_v12.31 DeveloperAndStuffMaybeNotes
 ```
 
-If it doesn't begin with f95 or man ~~or dls(soon?)~~ it will be ignored.
+If it doesn't begin with man, f95 ~~or dls(soon?)~~ it will be ignored. (man means manually added game, so it's not connected to any site, you can give any ID you want it to have, but make it unique)
 
-This I can use to check last downloaded version, and last time the folder has changed. Also auto update if game is still on pc.
+## TODO / Ideas
 
-## aaaaaaa
-
-0 - Site
-1 - ID
-2 - Name
-3 - Developer
-4 - Played version
-5 - Last time play
-6 - Rated
-7 - Newest version
-8 - Last update
-9 - People rating
-10 - Player progress
-11 - Still on pc?
-12 - Engine
-13 - OS
-14 - Language
-15 - Personal notes
+- [ ] FAQ rewrite
+- [ ] Optimizations
+- [ ] Text size small on large display
+- [ ] dlsite.com support

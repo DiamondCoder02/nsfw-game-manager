@@ -22,15 +22,9 @@ public class langLoad {
 
 	public static void loadLanguages() {
 		for (int i = 0; i < 30; i++) {
-			tempBase[i] = null; tempBasic[i] = null;
-			tempTabl[i] = null; tempjLaPa[i] = null;
-			tempjRaBu[i] = null; tempbuton[i] = null;
-			tempFold[i] = null; tempSear[i] = null;
+			tempBase[i] = null; tempBasic[i] = null; tempTabl[i] = null; tempjLaPa[i] = null;
+			tempjRaBu[i] = null; tempbuton[i] = null; tempFold[i] = null; tempSear[i] = null;
 		}
-		base = tempBase; basic = tempBasic;
-		tabl = tempTabl; jlapa = tempjLaPa;
-		jrabu = tempjRaBu; buton = tempbuton;
-		folder = tempFold; serc = tempSear;
 
 		String language = loadSettingsFromXml.loadStringSettings("language")[0];
 		try {
@@ -52,6 +46,7 @@ public class langLoad {
 				if (nextLine[i].equals(language)) { langindex = i; break; }
 			}
 			if (langindex == 0) { langindex = 1; }
+			// System.out.println("Currently has " +(nextLine.length-1)+ " languages, choosen: "+nextLine[langindex]);
 			Integer temp = 0; String lastLang = "";
 			String[] tempAr = new String[30];
 			while ((nextLine = reader.readNext()) != null) {
@@ -75,10 +70,8 @@ public class langLoad {
 				}
 				temp++;
 			}
-			base = tempBase; basic = tempBasic;
-			tabl = tempTabl; jlapa = tempjLaPa;
-			jrabu = tempjRaBu; buton = tempbuton;
-			folder = tempFold; serc = tempSear;
+			base = tempBase; basic = tempBasic; tabl = tempTabl; jlapa = tempjLaPa;
+			jrabu = tempjRaBu; buton = tempbuton; folder = tempFold; serc = tempSear;
 			return;
 		} catch (Exception e) {
 			e.printStackTrace();

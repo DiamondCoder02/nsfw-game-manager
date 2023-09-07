@@ -19,7 +19,6 @@ import main.mainInit;
 public class languageChoices {
 	static String[] folder = langLoad.folder, butt = langLoad.buton;
 	static String[] langs = langLoad.langChoices, langMeanings = langLoad.lanMeans;
-	// TODO https://stackoverflow.com/questions/1881714/how-to-start-stop-restart-a-thread-in-java
 	public static void langChoose(Document dom) {
 		String[] langButtons = langs;
 		String[] langMeaining = langMeanings;

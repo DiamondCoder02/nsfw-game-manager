@@ -2,11 +2,13 @@
 
 This is a *hentai* game manager. The idea was simple, an easy to use manager that shows usefull information and the newest infos about the stored games. Although it only shows what you have added already yourself. If you have a game folder it can read that too, but later on that.
 
-Mostly designed for f95zone ~~and dlsite (soon?) and Steam(if I can)~~. You can also add your own manually if the program don't support the site.
+Mostly designed for f95zone ~~and dlsite (soon?) and Steam(if I can)~~. You can also add your own manually if the program don't support the site although of course it won't get updated if a new version is on the web.
+
+Warning: I have only tested the program on windows, I have no idea if it works on other OS.
 
 ## Some nice features
 
-- Easy to read, excel table like design
+- Easy to read table, excel like design
 - Small and lightweight program
 - I am a Discord nerd, so it has activity feature for it (Default off)
 - Multi language support( more on that later)
@@ -26,11 +28,10 @@ If it's limited to some site, it will be in brackets ()
 
 Currently supported languages: English( +EngwishUwU ), Hungarian
 
-Languages work like an excel. Top row is the language in English(, in lowercase). The first column is for the program, **second** column is to be translated from the English column. I hope the small example shows it.
+Languages work like an excel. Top row is the language in English(, in lowercase). The first column is for the program, **second** column is to be translated from. I hope the small example shows it.
 
 ### How the program handles games folder
 
-- (I have tested this on windows only at the moment...)
 - Every settings and language is saved:
   - (Windows) C:\Users\\{youUser}\AppData\Roaming\DiamondCoder\nsfwGameManager
 - I have tested the program with my ~500 games, it works fine...

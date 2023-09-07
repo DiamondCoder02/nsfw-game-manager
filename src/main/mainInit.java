@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.w3c.dom.Document;
 
+import WebsiteHandle.autoUpdateCheck;
 import folderHandle.autoFetchChecks.autoFolderChecks;
 import folderHandle.autoFetchChecks.autoSiteFetching;
 import folderHandle.checkAndBackup.backup;
@@ -38,6 +39,9 @@ public class mainInit {
 		backup.doBackup();
 
 		if (boolSettings[3]) { try { discord.discordFirstInit(); } catch (IOException e) { e.printStackTrace(); } }
+
+		// TODO delete:
+		autoUpdateCheck.test();
 	}
 }
 

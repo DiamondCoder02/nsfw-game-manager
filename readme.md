@@ -4,7 +4,7 @@ This is a *hentai* game manager. The idea was simple, an easy to use manager tha
 
 Mostly designed for f95zone ~~and dlsite (soon?) and Steam(if I can)~~. You can also add your own manually if the program don't support the site although of course it won't get updated if a new version is on the web.
 
-Warning: I have only tested the program on windows, I have no idea if it works on other OS.
+**Warning: I have only tested the program on windows, I have no idea if it works on other OS.**
 
 ## Some nice features
 

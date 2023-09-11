@@ -19,6 +19,9 @@ public class mainInit {
 	public static String settingsPath = checksFiles.mainPath + "settings.xml";
 	public static String databasePath = checksFiles.mainPath + "hentai.xml";
 	public static void main(String[] args) {
+		// TODO Update autoCheck:
+		autoUpdateCheck.test();
+
 		checksFiles.checks();
 
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
@@ -39,9 +42,6 @@ public class mainInit {
 		backup.doBackup();
 
 		if (boolSettings[3]) { try { discord.discordFirstInit(); } catch (IOException e) { e.printStackTrace(); } }
-
-		// TODO delete:
-		autoUpdateCheck.test();
 	}
 }
 

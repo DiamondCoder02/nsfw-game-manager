@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 public class autoUpdateCheck {
 	// TODO https://github.com/DiamondPRO02/nsfw-game-manager/releases/latest
 	public static void test() {
+		System.out.println("test");
 		try{
 			String url = "https://github.com/DiamondPRO02/nsfw-game-manager/releases/latest";
 			HttpURLConnection con = (HttpURLConnection) (new URL(url).openConnection());
@@ -26,11 +27,10 @@ public class autoUpdateCheck {
 			String path = null;
 			// check if application is jar or exe
 			// path = System.getProperty("java.class.path");
-			// path = autoUpdateCheck.class.getProtectionDomain().getCodeSource().getLocation().toURI().toString();
-			
+			path = autoUpdateCheck.class.getProtectionDomain().getCodeSource().getLocation().toURI().toString();
 
 			System.out.println(path);
-			// JOptionPane.showMessageDialog(null, path, "Yes?", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, path, "Yes?", JOptionPane.ERROR_MESSAGE);
 
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "(New problem)", "Error", JOptionPane.ERROR_MESSAGE);

@@ -2,8 +2,6 @@ package main;
 
 import java.io.IOException;
 
-import org.w3c.dom.Document;
-
 import WebsiteHandle.autoUpdateCheck;
 import folderHandle.autoFetchChecks.autoFolderChecks;
 import folderHandle.autoFetchChecks.autoSiteFetching;
@@ -11,7 +9,6 @@ import folderHandle.checkAndBackup.backup;
 import folderHandle.checkAndBackup.checksFiles;
 import folderHandle.loadSaveGamesSettings.loadGamesFromXml;
 import folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
-import folderHandle.loadSaveGamesSettings.saveLoadDoc;
 import main.application.discord;
 import main.application.frameCreate;
 
@@ -25,16 +22,13 @@ public class mainInit {
 		checksFiles.checks();
 
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
-		String[] strColumnNames = loadSettingsFromXml.loadStringSettings("showncolumns");
 
 		if (boolSettings[2]) { autoFolderChecks.fetchFoldersForTable(); }
-
-		Document domGame = saveLoadDoc.loadDocument(databasePath);
 
 		frameCreate frame = new frameCreate();
 		frame.setIconImage(frame.getToolkit().getImage(System.getenv("APPDATA") + "\\DiamondCoder\\nsfwGameManager\\pics\\nyaaa.png"));
 
-		Object[][] data = loadGamesFromXml.loadGames(domGame, strColumnNames);
+		Object[][] data = loadGamesFromXml.loadGames();
 
 		frame.WindowCreate(data);
 

@@ -11,10 +11,6 @@ import main.mainInit;
 
 public class loadGamesFromXml {
 	static String[] bac = langLoad.basic;
-	public static Object[][] loadGames(Document dom, String[] columnNames) {
-		return load(dom, columnNames);
-	}
-
 	public static Object[][] loadGames() {
 		Document domSetting = saveLoadDoc.loadDocument(mainInit.settingsPath);
 		String[] columnNames = xmlLoader.allColumns(domSetting);

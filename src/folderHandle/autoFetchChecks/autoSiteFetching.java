@@ -18,7 +18,6 @@ import org.w3c.dom.NodeList;
 
 import WebsiteHandle.loadF95site;
 import folderHandle.isIDInDatabase;
-import folderHandle.xmlLoader;
 import folderHandle.loadSaveGamesSettings.loadGamesFromXml;
 import folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
 import folderHandle.loadSaveGamesSettings.saveLoadDoc;
@@ -27,10 +26,7 @@ import main.mainInit;
 import main.application.frameCreate;
 
 public class autoSiteFetching extends JFrame {
-	static Document dom = saveLoadDoc.loadDocument(mainInit.settingsPath);
-	static String[] columnNames = xmlLoader.allColumns(dom);
-	static Document domGame = saveLoadDoc.loadDocument(mainInit.databasePath);
-	static Object[][] loadedGames = loadGamesFromXml.loadGames(domGame, columnNames);
+	static Object[][] loadedGames = loadGamesFromXml.loadGames();
 	static boolean manualButton = false;
 	static String[] lf = langLoad.folder, bs = langLoad.base;
 

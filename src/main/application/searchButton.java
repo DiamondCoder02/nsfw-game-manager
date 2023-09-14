@@ -6,19 +6,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import org.w3c.dom.Document;
-
-import folderHandle.xmlLoader;
 import folderHandle.loadSaveGamesSettings.loadGamesFromXml;
-import folderHandle.loadSaveGamesSettings.saveLoadDoc;
 import main.langLoad;
-import main.mainInit;
 
 public class searchButton {
-	static Document dom = saveLoadDoc.loadDocument(mainInit.settingsPath);
-	static String[] columnNames = xmlLoader.allColumns(dom);
-	Document domGame = saveLoadDoc.loadDocument(mainInit.databasePath);
-	Object[][] data = loadGamesFromXml.loadGames(domGame, columnNames);
+	Object[][] data = loadGamesFromXml.loadGames();
 	Object[][] foundData = new Object[data.length][6];
 	static boolean found = false;
 	static Integer foundNum;

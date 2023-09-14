@@ -50,10 +50,9 @@ public class saveLoadDoc {
 	}
 
 	public static void reloadTable(JTable table) {
-		Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
 		Document domSettings = saveLoadDoc.loadDocument(mainInit.settingsPath);
 		String[] columnNames = xmlLoader.allColumns(domSettings);
-		Object[][] data = loadGamesFromXml.loadGames(dom, columnNames);
+		Object[][] data = loadGamesFromXml.loadGames();
 		String[] tbl = langLoad.tabl;
 		for (int i = 0; i < columnNames.length; i++) {
 			switch (columnNames[i]) {

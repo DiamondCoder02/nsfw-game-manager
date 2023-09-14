@@ -36,46 +36,43 @@ public class discord {
 		if (arch.equals("amd64")) { arch = "x86_64"; }
 
 		File discordLibrary = downloadDiscordSDK.downloadDiscordLibrary(name, suffix, arch);
-		if (discordLibrary == null) {
-			System.err.println("Error downloading Discord SDK.");
-		} else {
-			// Initialize the Core
-			File discordLibLibs = new File(checksFiles.mainPath + "discord/" + name + suffix);
-			Core.init(discordLibLibs);
-			// Set parameters for the Core
-			try (CreateParams params = new CreateParams()) {
-				params.setClientID(1135539276692607086L);
-				// params.setFlags(CreateParams.getDefaultFlags());
-				// Create the Core
-				try (Core core = new Core(params)) {
-					// Run callbacks forever
-					domGame = saveLoadDoc.loadDocument(mainInit.databasePath);
-					if (domGame == null) { allGames = 0; } else { allGames= domGame.getElementsByTagName("game").getLength(); }
-					// Create the Activity
-					try (Activity activity = new Activity()) {
-						activity.setDetails("Managing my hentai games");
-						activity.setState("Currently have " + allGames + " games");
-						// Setting a start time causes an "elapsed" field to appear
-						activity.timestamps().setStart(time);
-						// Make a "cool" image show up
-						activity.assets().setLargeImage(image);
-						activity.assets().setLargeText("https://github.com/DiamondPRO02/nsfw-game-manager");
-						// Finally, update the current activity to our activity
-						core.activityManager().updateActivity(activity);
-					} catch (Exception e) { 
-						System.out.println(">.>"); e.printStackTrace(); 
+		if (discordLibrary == null) { System.err.println("Error downloading Discord SDK."); return;}
+		// Initialize the Core
+		File discordLibLibs = new File(checksFiles.mainPath + "discord/" + name + suffix);
+		Core.init(discordLibLibs);
+		// Set parameters for the Core
+		try (CreateParams params = new CreateParams()) {
+			params.setClientID(1135539276692607086L);
+			params.setFlags(CreateParams.getDefaultFlags());
+			// Create the Core
+			try (Core core = new Core(params)) {
+				// Run callbacks forever
+				domGame = saveLoadDoc.loadDocument(mainInit.databasePath);
+				if (domGame == null) { allGames = 0; } else { allGames= domGame.getElementsByTagName("game").getLength(); }
+				// Create the Activity
+				try (Activity activity = new Activity()) {
+					activity.setDetails("Managing my hentai games");
+					activity.setState("Currently have " + allGames + " games");
+					// Setting a start time causes an "elapsed" field to appear
+					activity.timestamps().setStart(time);
+					// Make a "cool" image show up
+					activity.assets().setLargeImage(image);
+					activity.assets().setLargeText("https://github.com/DiamondPRO02/nsfw-game-manager");
+					// Finally, update the current activity to our activity
+					core.activityManager().updateActivity(activity);
+				} catch (Exception e) { 
+					System.out.println(">.>"); e.printStackTrace(); 
+				}
+				while(true){
+					boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
+					if (!boolSettings[3]) { core.close(); break; }
+					core.runCallbacks();
+					try {
+						Thread.sleep(100); // Sleep a bit to save CPU
 					}
-					while(true){
-						boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
-						if (!boolSettings[3]) { core.close(); break; }
-						core.runCallbacks();
-						try {
-							Thread.sleep(100); // Sleep a bit to save CPU
-						}
-						catch(InterruptedException e) {
-							System.out.println("<.<");
-							e.printStackTrace();
-						}
+					catch(InterruptedException e) {
+						System.out.println("<.<");
+						e.printStackTrace();
 					}
 				}
 			}

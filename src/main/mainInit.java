@@ -17,9 +17,10 @@ public class mainInit {
 	public static String databasePath = checksFiles.mainPath + "hentai.xml";
 	public static void main(String[] args) {
 		// TODO Update autoCheck:
-		autoUpdateCheck.test();
 
 		checksFiles.checks();
+
+		autoUpdateCheck.test();
 
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 

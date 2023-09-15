@@ -38,7 +38,7 @@ public class autoUpdateCheck {
 
 			System.out.println(path);
 			System.out.println(onlineLocation);
-			JOptionPane.showMessageDialog(null, path, "Yes?", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, path + "\n" + onlineLocation, "Yes?", JOptionPane.ERROR_MESSAGE);
 		} catch (Exception e) {
 			String error;
 			error = "Github: " + responseCode + 

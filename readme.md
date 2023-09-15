@@ -1,6 +1,6 @@
 # Hentai game manager
 
-This is a *hentai* game manager. The idea was simple, an easy to use manager that shows usefull information and the newest infos about the stored games. Although it only shows what you have added already yourself. If you have a game folder it can read that too, but later on that.
+This is a *hentai* game manager. The idea was simple, an easy to use manager that shows useful information and the newest infos about the stored games. Although it only shows what you have added already yourself. If you have a game folder it can read that too, but later on that.
 
 Mostly designed for f95zone ~~and dlsite (soon?) and Steam(if I can)~~. You can also add your own manually if the program don't support the site although of course it won't get updated if a new version is on the web.
 

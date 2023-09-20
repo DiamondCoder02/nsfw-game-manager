@@ -42,6 +42,7 @@ public class autoUpdateCheck {
 			System.out.println(onlineLocation);
 
 
+			// TODO Broken autoUpdate:
 			try{
 				URL gotUrl = new URL(onlineLocation);
 				// System.out.println(gotUrl);

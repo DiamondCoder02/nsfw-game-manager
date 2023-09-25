@@ -100,6 +100,16 @@ public class loadF95site {
 			}
 		}
 
+		/* All the infos:
+		 * 0. Name
+		 * 1. Developer
+		 * 2. Newest version
+		 * 3. Date of last update
+		 * 4. People rating
+		 * 5. Engine
+		 * 6. OS
+		 * 7. Language
+		 */
 		// for (int i = 0; i < allTheInfo.length; i++) { System.out.println(allTheInfo[i]); }
 		return allTheInfo;
 	}

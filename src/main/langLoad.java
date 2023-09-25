@@ -9,11 +9,10 @@ import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 
-import folderHandle.checkAndBackup.checksFiles;
 import folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
 
 public class langLoad {
-	static String path = checksFiles.mainPath;
+	static String path = mainInit.mainPath;
 	private static String[] tempBase = new String[30], tempBasic = new String[30], tempTabl = new String[30], 
 	tempjLaPa = new String[30], tempjRaBu = new String[30], tempbuton = new String[30], tempFold = new String[30],
 	tempSear = new String[30], tempRand = new String[30];

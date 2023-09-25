@@ -12,9 +12,10 @@ import javax.swing.JOptionPane;
 import folderHandle.createMissing.createMissingDatabase;
 import folderHandle.createMissing.createMissingSettings;
 import main.langLoad;
+import main.mainInit;
 
 public class checksFiles {
-	public static String mainPath = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager/";
+	private static String mainPath = mainInit.mainPath;
 	public static void checks() {
 		File mainDirectory = new File(System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager");
 		if (!mainDirectory.exists()){

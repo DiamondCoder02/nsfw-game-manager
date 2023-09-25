@@ -12,8 +12,9 @@ import main.application.discord;
 import main.application.frameCreate;
 
 public class mainInit {
-	public static String settingsPath = checksFiles.mainPath + "settings.xml";
-	public static String databasePath = checksFiles.mainPath + "hentai.xml";
+	public static String mainPath = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager/";
+	public static String settingsPath = mainPath + "settings.xml";
+	public static String databasePath = mainPath + "hentai.xml";
 	public static void main(String[] args) {
 		checksFiles.checks();
 
@@ -22,7 +23,7 @@ public class mainInit {
 		if (boolSettings[2]) { autoFolderChecks.fetchFoldersForTable(); }
 
 		frameCreate frame = new frameCreate();
-		frame.setIconImage(frame.getToolkit().getImage(System.getenv("APPDATA") + "\\DiamondCoder\\nsfwGameManager\\pics\\nyaaa.png"));
+		frame.setIconImage(frame.getToolkit().getImage(mainPath + "pics\\nyaaa.png"));
 
 		Object[][] data = loadGamesFromXml.loadGames();
 

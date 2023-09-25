@@ -11,7 +11,6 @@ import java.util.Locale;
 
 import org.w3c.dom.Document;
 
-import folderHandle.checkAndBackup.checksFiles;
 import folderHandle.discord.downloadDiscordSDK;
 import folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
 import folderHandle.loadSaveGamesSettings.saveLoadDoc;
@@ -38,7 +37,7 @@ public class discord {
 		File discordLibrary = downloadDiscordSDK.downloadDiscordLibrary(name, suffix, arch);
 		if (discordLibrary == null) { System.err.println("Error downloading Discord SDK."); return;}
 		// Initialize the Core
-		File discordLibLibs = new File(checksFiles.mainPath + "discord/" + name + suffix);
+		File discordLibLibs = new File(mainInit.mainPath + "discord/" + name + suffix);
 		Core.init(discordLibLibs);
 		// Set parameters for the Core
 		try (CreateParams params = new CreateParams()) {

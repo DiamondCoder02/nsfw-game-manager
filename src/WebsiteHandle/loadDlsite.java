@@ -35,7 +35,6 @@ public class loadDlsite {
 				content.append(line + "\n");
 			}
 			bufferedReader.close();
-			System.out.println(content);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,  "("+gameIds+")" + (lf[5]!=null?lf[5]:"Error while loading the site") + " (loadDlsite.getDlsUrlContents)", bs[1]==null?"Error":bs[1], JOptionPane.ERROR_MESSAGE);
 			return null;

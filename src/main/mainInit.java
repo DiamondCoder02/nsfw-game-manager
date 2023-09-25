@@ -36,11 +36,19 @@ public class mainInit {
 	}
 }
 
-// TODO Links (3):
+// TODO Link(s) (3):
 /*
  * https://stackoverflow.com/questions/232347/how-should-i-implement-an-auto-updater
- * https://stackoverflow.com/questions/1881714/how-to-start-stop-restart-a-thread-in-java
- * Text size small on large display - https://bugs.openjdk.org/browse/JDK-8202973
+ * Text size small on large display - (Check Discord) https://bugs.openjdk.org/browse/JDK-8202973
+ */
+
+// TODO ERROR(s) (1):
+/*
+ * Discord:
+ * [ERROR] ResponseError { code: InvalidPermissions, message: "Not authenticated or invalid scope" }
+ * [ERROR] ResponseError { code: UnknownError, message: "Request has been terminated\nPossible causes: the network is offline, Origin is not allowed by Access-Control-Allow-Origin, the page is being unloaded, etc." }  
+ * [ERROR] Failed to configure networking: ResponseError { code: UnknownError, message: "Request has been terminated\nPossible causes: the network is offline, Origin is not allowed by Access-Control-Allow-Origin, the page is being unloaded, etc." }
+
  */
 
 /* TODO order of storage:

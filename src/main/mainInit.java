@@ -2,7 +2,6 @@ package main;
 
 import java.io.IOException;
 
-import WebsiteHandle.autoUpdateCheck;
 import folderHandle.autoFetchChecks.autoFolderChecks;
 import folderHandle.autoFetchChecks.autoSiteFetching;
 import folderHandle.checkAndBackup.backup;
@@ -16,11 +15,7 @@ public class mainInit {
 	public static String settingsPath = checksFiles.mainPath + "settings.xml";
 	public static String databasePath = checksFiles.mainPath + "hentai.xml";
 	public static void main(String[] args) {
-		// TODO Update autoCheck:
-
 		checksFiles.checks();
-
-		autoUpdateCheck.test();
 
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 

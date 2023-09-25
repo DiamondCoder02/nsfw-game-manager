@@ -1,6 +1,7 @@
 package WebsiteHandle;
 
 import java.io.BufferedReader;
+import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
@@ -41,10 +42,10 @@ public class loadDlsite {
 		}
 
 		// Name, Developer, Newest version, Date of last update, People rating, Engine, OS, Language
-		String longTitle = content.substring(content.indexOf("<title>") + 7, content.indexOf("</title>"));
+		// String longTitle = content.substring(content.indexOf("<title>") + 7, content.indexOf("</title>"));
 
 
-
+		System.out.println("yay");
 
 		for (int i = 0; i < allTheInfo.length; i++) {
 			if (allTheInfo[i] != null) {

@@ -33,10 +33,11 @@ public class mainInit {
 		if (boolSettings[1]) { autoSiteFetching.fetchInfoThenUpdateTable(); }
 		backup.doBackup();
 
-		if (boolSettings[3]) { try { discord.discordFirstInit(); } catch (IOException e) { e.printStackTrace(); } }
-
 		System.out.println("DLSITE TEST:");
-		loadDlsite.getDlsUrlContents("014920");
+		loadDlsite.getDlsUrlContents("01000716");
+
+		// TODO Fix this shit
+		if (boolSettings[3]) { try { discord.discordFirstInit(); } catch (IOException e) { e.printStackTrace(); } }
 	}
 }
 

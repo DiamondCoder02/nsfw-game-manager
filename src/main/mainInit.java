@@ -2,6 +2,7 @@ package main;
 
 import java.io.IOException;
 
+import WebsiteHandle.loadDlsite;
 import folderHandle.autoFetchChecks.autoFolderChecks;
 import folderHandle.autoFetchChecks.autoSiteFetching;
 import folderHandle.checkAndBackup.backup;
@@ -31,6 +32,9 @@ public class mainInit {
 		backup.doBackup();
 
 		if (boolSettings[3]) { try { discord.loopDiscord(); } catch (IOException e) { e.printStackTrace(); } }
+
+		System.out.println("DLSITE TEST:");
+		loadDlsite.getDlsUrlContents("014920");
 	}
 }
 

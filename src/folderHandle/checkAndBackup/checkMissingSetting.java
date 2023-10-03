@@ -16,9 +16,15 @@ import javax.swing.JOptionPane;
 public class checkMissingSetting {
 	static String[] mf = langLoad.folder, bc = langLoad.basic, bs = langLoad.base;
 	public static void checkSettings() {
+<<<<<<< HEAD
 		String[] settings = { "othersettings", "folderLocation", "language", "showncolumns" };
 		String[] othersettings = { "Dark mode", "Auto fetch game info", "Auto fetch folders", "DiscordRPC" };
 		String folderLocation = "null", language = "english";
+=======
+		String[] settings = {"othersettings", "folderLocation", "language", "appVersion", "showncolumns"};
+		String[] othersettings = {"Dark mode", "Auto fetch game info", "Auto fetch folders", "DiscordRPC"};
+		String folderLocation = "null", language = "english", appVersion = "0.1.1.3";
+>>>>>>> e5b7719 (Why the fuck won't you work)
 		String[] showncolumns = {
 			"Site", "ID", "Name", "Developer", "Played version",
 			"Last time play", "Rated", "Newest version",

@@ -16,6 +16,12 @@ public class mainInit {
 	public static String settingsPath = mainPath + "settings.xml";
 	public static String databasePath = mainPath + "hentai.xml";
 	public static void main(String[] args) {
+<<<<<<< HEAD
+=======
+		// TODO Update autoCheck:
+		autoUpdateCheck.test();
+
+>>>>>>> e5b7719 (Why the fuck won't you work)
 		checksFiles.checks();
 
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");

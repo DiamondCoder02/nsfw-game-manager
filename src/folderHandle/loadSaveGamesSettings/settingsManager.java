@@ -27,23 +27,28 @@ public class settingsManager {
 					if (otherSettingsNode.getNodeType() == Node.ELEMENT_NODE) {
 						Element e2 = (Element) otherSettingsNode;
 						String option = e2.getTextContent().trim();
-						if (options.equals("lang")) {
-							languageChoices.langChoose(dom);
-						} else if (options.equals("gameInfoFolLoc")) {
-							gamesLocationChoice.gamesLocationChoose(dom);
-						} else if (options.equals("appVer")) {
-							String update = autoUpdateCheck.onlineVersion;
-							dom.getElementsByTagName("appVersion").item(0).setTextContent(update);
-							saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
-						} else if (option.equals(options)) {
-							String enabled = e2.getAttribute("enabled").trim();
-							if (enabled.equals("true")) {
-								e2.setAttribute("enabled", "false");
-							} else {
-								e2.setAttribute("enabled", "true");
+						switch (options) {
+							case "lang": languageChoices.langChoose(dom); break;
+							case "gameInfoFolLoc": gamesLocationChoice.gamesLocationChoose(dom); break;
+							case "appVer": {
+								String update = autoUpdateCheck.onlineVersion;
+								dom.getElementsByTagName("appVersion").item(0).setTextContent(update);
+								saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
+								break;
 							}
-							saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
-							frameCreate.refreshTable();
+							default: {
+								if (option.equals(options)) {
+									String enabled = e2.getAttribute("enabled").trim();
+									if (enabled.equals("true")) {
+										e2.setAttribute("enabled", "false");
+									} else {
+										e2.setAttribute("enabled", "true");
+									}
+									saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
+									frameCreate.refreshTable();
+								}
+								break;
+							}
 						}
 					}
 				}

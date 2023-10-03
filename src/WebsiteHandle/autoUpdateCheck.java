@@ -15,8 +15,13 @@ public class autoUpdateCheck {
 	public static String onlineVersion = null;
 	public static void test() {
 		int responseCode = 999;
+		String currentVersion;
 		String onlineLocation = null, path, ext;
-		String currentVersion = loadSettingsFromXml.loadStringSettings("appVersion")[0];
+		try {
+			currentVersion = loadSettingsFromXml.loadStringSettings("appVersion")[0];
+		} catch (Exception e) {
+			currentVersion = null;
+		}
 		Boolean success = false;
 		try{
 			String url = "https://github.com/DiamondPRO02/nsfw-game-manager/releases/latest";
@@ -64,9 +69,11 @@ public class autoUpdateCheck {
 				JOptionPane.showMessageDialog(null, "Error downloading update >.< (autoUpdateCheck)", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 
-			if (success){ settingsManager.xmlSettings("appVersion", "appVer"); }
+			if (success){ 
+				settingsManager.xmlSettings("appVersion", "appVer");
+			}
 
-			JOptionPane.showMessageDialog(null, path + "\n" + onlineLocation, "Yes?", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "path + onlineLocation", "The game got updated!", JOptionPane.ERROR_MESSAGE);
 		} catch (Exception e) {
 			String error;
 			error = "Github: " + responseCode + 

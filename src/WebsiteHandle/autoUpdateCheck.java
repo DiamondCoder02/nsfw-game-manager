@@ -13,7 +13,7 @@ import folderHandle.loadSaveGamesSettings.settingsManager;
 public class autoUpdateCheck {
 	// TODO https://github.com/DiamondPRO02/nsfw-game-manager/releases/latest
 	public static String onlineVersion = null;
-	public static void test() {
+	public static Boolean test() {
 		int responseCode = 999;
 		String currentVersion;
 		String onlineLocation = null, path, ext;
@@ -34,7 +34,7 @@ public class autoUpdateCheck {
 			onlineVersion = onlineVersion.substring(0, onlineVersion.lastIndexOf("-"));
 			System.out.println(onlineVersion);
 			System.out.println(currentVersion);
-			if (onlineVersion.equals(currentVersion)) { System.out.println("Update not needed"); return; }
+			if (onlineVersion.equals(currentVersion)) { System.out.println("Update not needed"); return false; }
 
 			path = autoUpdateCheck.class.getProtectionDomain().getCodeSource().getLocation().toURI().toString();
 			path = path.replace("file:/", "");
@@ -70,15 +70,18 @@ public class autoUpdateCheck {
 			}
 
 			if (success){ 
+				JOptionPane.showMessageDialog(null, "test", "Success", JOptionPane.ERROR_MESSAGE);
 				settingsManager.xmlSettings("appVersion", "appVer");
+				return true;
+			} else { 
+				return false;
 			}
-
-			JOptionPane.showMessageDialog(null, "path + onlineLocation", "The game got updated!", JOptionPane.ERROR_MESSAGE);
 		} catch (Exception e) {
 			String error;
 			error = "Github: " + responseCode + 
 			"\nOnline: " + onlineLocation;
 			JOptionPane.showMessageDialog(null, error, "Error", JOptionPane.ERROR_MESSAGE);
+			return false;
 		}
 
 // <a href="/DiamondPRO02/nsfw-game-manager/releases/download/0.1.1.2-lang2/HentaiGameManager.exe"

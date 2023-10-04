@@ -15,11 +15,11 @@ import main.application.frameCreate;
 public class mainInit {
 	public static String settingsPath = checksFiles.mainPath + "settings.xml";
 	public static String databasePath = checksFiles.mainPath + "hentai.xml";
-	public static void main(String[] args) {
+	public static void mainStart() {
 		// TODO Update autoCheck:
-		autoUpdateCheck.test();
-
 		checksFiles.checks();
+
+		if (autoUpdateCheck.test()) { return; }
 
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 

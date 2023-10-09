@@ -12,7 +12,7 @@ import main.mainInit;
 public class backup {
 	public static void doBackup() {
 		String mainDataPath = mainInit.databasePath;
-		String backupPath = checksFiles.mainPath+"backup";
+		String backupPath = mainInit.mainPath+"backup";
 		// check backup folder
 		if (!new File(backupPath).exists()) {
 			new File(backupPath).mkdirs();

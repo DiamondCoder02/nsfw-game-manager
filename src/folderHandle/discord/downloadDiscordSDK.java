@@ -8,11 +8,11 @@ import java.nio.file.Files;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import folderHandle.checkAndBackup.checksFiles;
+import main.mainInit;
 
 public class downloadDiscordSDK {
 	public static File downloadDiscordLibrary(String name, String suffix, String arch) throws IOException {
-		File discordDir = new File(checksFiles.mainPath + "discord");
+		File discordDir = new File(mainInit.mainPath + "discord");
 		if (!discordDir.exists()) { discordDir.mkdir(); }
 		File temp = new File(discordDir, name + suffix);
 		if (temp.exists()) { return temp; }

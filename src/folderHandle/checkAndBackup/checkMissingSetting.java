@@ -1,5 +1,7 @@
 package folderHandle.checkAndBackup;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -7,25 +9,21 @@ import folderHandle.createMissing.createMissingSettings;
 import main.langLoad;
 import main.mainInit;
 
-import org.w3c.dom.Element;
-
 import java.io.File;
 
 import javax.swing.JOptionPane;
 
-import org.w3c.dom.Document;
-
 public class checkMissingSetting {
 	static String[] mf = langLoad.folder, bc = langLoad.basic, bs = langLoad.base;
 	public static void checkSettings() {
-		String[] settings = {"othersettings", "folderLocation", "language", "appVersion", "showncolumns"};
-		String[] othersettings = {"Dark mode", "Auto fetch game info", "Auto fetch folders", "DiscordRPC"};
-		String folderLocation = "null", language = "english", appVersion = "0.1.1.1";
+		String[] settings = { "othersettings", "folderLocation", "language", "showncolumns" };
+		String[] othersettings = { "Dark mode", "Auto fetch game info", "Auto fetch folders", "DiscordRPC" };
+		String folderLocation = "null", language = "english";
 		String[] showncolumns = {
-			"Site", "ID", "Name", "Developer", "Played version", 
-			"Last time play", "Rated", "Newest version", 
-			"Last update", "People rating", "Player progress", 
-			"Still on pc?", "Engine", "OS", "Language", 
+			"Site", "ID", "Name", "Developer", "Played version",
+			"Last time play", "Rated", "Newest version",
+			"Last update", "People rating", "Player progress",
+			"Still on pc?", "Engine", "OS", "Language",
 			"Personal Notes"
 		};
 		Boolean otSe = false, foSe = false, laSe = false, shCo = false;
@@ -33,9 +31,11 @@ public class checkMissingSetting {
 		if (dom == null) {
 			createMissingSettings.createFile(mainInit.settingsPath);
 		} else {
-			try{
+			try {
 				NodeList settingSource = dom.getElementsByTagName("settings");
-				if (settingSource.getLength() == 0) { deleteThenCreateBroken(); }
+				if (settingSource.getLength() == 0) {
+					deleteThenCreateBroken();
+				}
 				Node settingNode = settingSource.item(0);
 				if (settingNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element e = (Element) settingNode;
@@ -45,7 +45,6 @@ public class checkMissingSetting {
 							case "othersettings": otSe = checkings(setting, othersettings, dom, "othersettings"); break;
 							case "folderLocation": foSe = singleChecks(setting, folderLocation, dom, "folderLocation"); break;
 							case "language": laSe = singleChecks(setting, language, dom, "language"); break;
-							case "appVersion": shCo = singleChecks(setting, appVersion, dom, "appVersion"); break;
 							case "showncolumns": shCo = checkings(setting, showncolumns, dom, "showncolumns"); break;
 							default: JOptionPane.showMessageDialog(null, ("Should be impossible") + "checkMissingSetting", "Error", JOptionPane.ERROR_MESSAGE); break;
 						}
@@ -61,10 +60,10 @@ public class checkMissingSetting {
 		}
 	}
 
-	private static void deleteThenCreateBroken(){
+	private static void deleteThenCreateBroken() {
 		String path = mainInit.settingsPath;
 		File file = new File(path);
-		if(file.exists()){
+		if (file.exists()) {
 			file.delete();
 			createMissingSettings.createFile(path);
 		} else {
@@ -72,7 +71,7 @@ public class checkMissingSetting {
 		}
 	}
 
-	private static Boolean checkings(NodeList setting, String[] somethingSettings, Document dom, String settingName){
+	private static Boolean checkings(NodeList setting, String[] somethingSettings, Document dom, String settingName) {
 		Boolean settingsGotUpdated = false;
 		// Check if the setting is missing
 		for (int j = 0; j < somethingSettings.length; j++) {
@@ -82,17 +81,23 @@ public class checkMissingSetting {
 						break;
 					} else if (k == setting.getLength() - 1) {
 						Element newSetting = dom.createElement(settingName);
-						if (somethingSettings[j] == "Dark mode") { newSetting.setAttribute("enabled", "true"); }
-						else { newSetting.setAttribute("enabled", "false"); }
+						if (somethingSettings[j] == "Dark mode") {
+							newSetting.setAttribute("enabled", "true");
+						} else {
+							newSetting.setAttribute("enabled", "false");
+						}
 						newSetting.appendChild(dom.createTextNode(somethingSettings[j]));
 						dom.getElementsByTagName("settings").item(0).appendChild(newSetting);
 						settingsGotUpdated = true;
 					}
-				} else { 
+				} else {
 					if (k == setting.getLength() - 1) {
 						Element newSetting = dom.createElement(settingName);
-						if (somethingSettings[j] == "Dark mode") { newSetting.setAttribute("enabled", "true"); }
-						else { newSetting.setAttribute("enabled", "false"); }
+						if (somethingSettings[j] == "Dark mode") {
+							newSetting.setAttribute("enabled", "true");
+						} else {
+							newSetting.setAttribute("enabled", "false");
+						}
 						newSetting.appendChild(dom.createTextNode(somethingSettings[j]));
 						dom.getElementsByTagName("settings").item(0).appendChild(newSetting);
 						settingsGotUpdated = true;
@@ -104,10 +109,12 @@ public class checkMissingSetting {
 		return settingsGotUpdated;
 	}
 
-	private static Boolean singleChecks(NodeList setting, String somethingSettings, Document dom, String settingName){
+	private static Boolean singleChecks(NodeList setting, String somethingSettings, Document dom, String settingName) {
 		Boolean settingsGotUpdated = false;
 		// Check if the setting is missing
-		if (setting.item(0) != null) {return false;}
+		if (setting.item(0) != null) {
+			return false;
+		}
 		Element newSetting = dom.createElement(settingName);
 		newSetting.appendChild(dom.createTextNode(somethingSettings));
 		dom.getElementsByTagName("settings").item(0).appendChild(newSetting);

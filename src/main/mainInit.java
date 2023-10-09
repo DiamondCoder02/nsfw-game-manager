@@ -2,7 +2,6 @@ package main;
 
 import java.io.IOException;
 
-import WebsiteHandle.autoUpdateCheck;
 import folderHandle.autoFetchChecks.autoFolderChecks;
 import folderHandle.autoFetchChecks.autoSiteFetching;
 import folderHandle.checkAndBackup.backup;
@@ -13,21 +12,18 @@ import main.application.discord;
 import main.application.frameCreate;
 
 public class mainInit {
-	public static String settingsPath = checksFiles.mainPath + "settings.xml";
-	public static String databasePath = checksFiles.mainPath + "hentai.xml";
+	public static String mainPath = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager/";
+	public static String settingsPath = mainPath + "settings.xml";
+	public static String databasePath = mainPath + "hentai.xml";
 	public static void main(String[] args) {
-		// TODO Update autoCheck:
-
 		checksFiles.checks();
-
-		autoUpdateCheck.test();
 
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 
 		if (boolSettings[2]) { autoFolderChecks.fetchFoldersForTable(); }
 
 		frameCreate frame = new frameCreate();
-		frame.setIconImage(frame.getToolkit().getImage(System.getenv("APPDATA") + "\\DiamondCoder\\nsfwGameManager\\pics\\nyaaa.png"));
+		frame.setIconImage(frame.getToolkit().getImage(mainPath + "pics\\nyaaa.png"));
 
 		Object[][] data = loadGamesFromXml.loadGames();
 
@@ -40,11 +36,19 @@ public class mainInit {
 	}
 }
 
-// TODO Links (3):
+// TODO Link(s) (3):
 /*
  * https://stackoverflow.com/questions/232347/how-should-i-implement-an-auto-updater
- * https://stackoverflow.com/questions/1881714/how-to-start-stop-restart-a-thread-in-java
- * Text size small on large display - https://bugs.openjdk.org/browse/JDK-8202973
+ * Text size small on large display - (Check Discord) https://bugs.openjdk.org/browse/JDK-8202973
+ */
+
+// TODO ERROR(s) (1):
+/*
+ * Discord:
+ * [ERROR] ResponseError { code: InvalidPermissions, message: "Not authenticated or invalid scope" }
+ * [ERROR] ResponseError { code: UnknownError, message: "Request has been terminated\nPossible causes: the network is offline, Origin is not allowed by Access-Control-Allow-Origin, the page is being unloaded, etc." }  
+ * [ERROR] Failed to configure networking: ResponseError { code: UnknownError, message: "Request has been terminated\nPossible causes: the network is offline, Origin is not allowed by Access-Control-Allow-Origin, the page is being unloaded, etc." }
+
  */
 
 /* TODO order of storage:

@@ -5,7 +5,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import WebsiteHandle.autoUpdateCheck;
 import folderHandle.loadSaveGamesSettings.choices.*;
 import main.langLoad;
 import main.mainInit;
@@ -31,10 +30,6 @@ public class settingsManager {
 							languageChoices.langChoose(dom);
 						} else if (options.equals("gameInfoFolLoc")) {
 							gamesLocationChoice.gamesLocationChoose(dom);
-						} else if (options.equals("appVer")) {
-							String update = autoUpdateCheck.onlineVersion;
-							dom.getElementsByTagName("appVersion").item(0).setTextContent(update);
-							saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
 						} else if (option.equals(options)) {
 							String enabled = e2.getAttribute("enabled").trim();
 							if (enabled.equals("true")) {

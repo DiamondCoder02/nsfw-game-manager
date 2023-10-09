@@ -43,31 +43,28 @@ public class discord {
 			params.setFlags(CreateParams.getDefaultFlags());
 			// Create the Core
 			try (Core core = new Core(params)) {
-				// Run callbacks forever
-				allGames = saveLoadDoc.allGames;
-				// Create the Activity
 				try (Activity activity = new Activity()) {
+					allGames = saveLoadDoc.allGames;
 					activity.setDetails("Managing my hentai games");
 					activity.setState("Currently have " + allGames + " games");
 					// Setting a start time causes an "elapsed" field to appear
 					activity.timestamps().setStart(time);
 					// Make a "cool" image show up
 					activity.assets().setLargeImage(image);
-					// activity.assets().setLargeText("https://github.com/DiamondPRO02/nsfw-game-manager");
+					activity.assets().setLargeText("Horny :3");
+					// Custom button
 					activity.addButton(button);
 					activity.setActivityButtonsMode(ActivityButtonsMode.BUTTONS);
-
 					// Finally, update the current activity to our activity
 					core.activityManager().updateActivity(activity);
 				} catch (Exception e) { 
 					System.out.println(">.>"); e.printStackTrace(); 
 				}
 				while(true){
-					boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
-					if (!boolSettings[3]) { core.close(); break; }
-					// core.runCallbacks();
 					try {
-						Thread.sleep(100); // Sleep a bit to save CPU
+						Thread.sleep(500); // Sleep a bit to save CPU
+						boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
+						if (!boolSettings[3]) { core.close(); break; }
 					}
 					catch(InterruptedException e) {
 						System.out.println("<.<");

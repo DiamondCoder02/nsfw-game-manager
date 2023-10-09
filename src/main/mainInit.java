@@ -31,8 +31,6 @@ public class mainInit {
 >>>>>>> c0120d7 (meow)
 		checksFiles.checks();
 
-		if (autoUpdateCheck.test()) { return; }
-
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 
 		if (boolSettings[2]) { autoFolderChecks.fetchFoldersForTable(); }

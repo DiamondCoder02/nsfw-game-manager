@@ -54,4 +54,4 @@ If it doesn't begin with man, f95 ~~or dls(soon?)~~ it will be ignored. (man mea
 - [ ] dlsite.com support
 - [ ] Steam support
 - [ ] Auto updater
-- [ ] Discord is buggy, when you turn it on, it get's stuck and you have to restart the program
+- [ ] Discord is buggy, when you turn it **on or off**, it get's stuck and you have to restart the program. (Kill it with task manager)

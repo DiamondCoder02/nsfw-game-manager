@@ -2,7 +2,6 @@ package main;
 
 import java.io.IOException;
 
-import WebsiteHandle.autoUpdateCheck;
 import folderHandle.autoFetchChecks.autoFolderChecks;
 import folderHandle.autoFetchChecks.autoSiteFetching;
 import folderHandle.checkAndBackup.backup;
@@ -18,8 +17,6 @@ public class mainInit {
 	public static void mainStart() {
 		// TODO Update autoCheck:
 		checksFiles.checks();
-
-		if (autoUpdateCheck.test()) { return; }
 
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 

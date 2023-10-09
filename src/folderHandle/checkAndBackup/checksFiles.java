@@ -9,8 +9,10 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
+import WebsiteHandle.autoUpdateCheck;
 import folderHandle.createMissing.createMissingDatabase;
 import folderHandle.createMissing.createMissingSettings;
+import folderHandle.loadSaveGamesSettings.settingsManager;
 import main.langLoad;
 
 public class checksFiles {
@@ -25,11 +27,18 @@ public class checksFiles {
 				JOptionPane.showMessageDialog(null, "Error creating main folder(s)! (checksFile.checks)", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
-		checkSettingsFolder();
-		checkLanguage();
-		langLoad.loadLanguages();
-		checkMissingDatabase();
-		checkPics();
+		if (autoUpdateCheck.test()) { 
+			System.out.println("Update needed");
+			settingsManager.xmlSettings("appVersion", "appVer");
+			System.exit(0); 
+		} else {
+			System.out.println("Update not needed");
+			checkSettingsFolder();
+			checkLanguage();
+			langLoad.loadLanguages();
+			checkMissingDatabase();
+			checkPics();
+		}
 	}
 
 	public static void checkMissingDatabase() {

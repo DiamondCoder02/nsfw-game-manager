@@ -8,7 +8,6 @@ import java.net.URL;
 import javax.swing.JOptionPane;
 
 import folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
-import folderHandle.loadSaveGamesSettings.settingsManager;
 
 public class autoUpdateCheck {
 	// TODO https://github.com/DiamondPRO02/nsfw-game-manager/releases/latest
@@ -34,7 +33,7 @@ public class autoUpdateCheck {
 			onlineVersion = onlineVersion.substring(0, onlineVersion.lastIndexOf("-"));
 			System.out.println(onlineVersion);
 			System.out.println(currentVersion);
-			if (onlineVersion.equals(currentVersion)) { System.out.println("Update not needed"); return false; }
+			if (onlineVersion.equals(currentVersion)) { return success; }
 
 			path = autoUpdateCheck.class.getProtectionDomain().getCodeSource().getLocation().toURI().toString();
 			path = path.replace("file:/", "");
@@ -43,39 +42,19 @@ public class autoUpdateCheck {
 			// ext = "exe";
 			onlineLocation = onlineLocation.replace("tag", "download").concat("/HentaiGameManager." + ext);
 
+			try{ path.replace("_"+currentVersion+".", "_"+onlineVersion+"."); } 
+			catch (Exception e) { path = path.replace("."+ext, "_"+onlineVersion+"."+ext); }
+
 			System.out.println(path);
 			System.out.println(onlineLocation);
-
-
-			// TODO Broken autoUpdate:
 			try{
-				URL gotUrl = new URL(onlineLocation);
-				// System.out.println(gotUrl);
-				InputStream in = gotUrl.openStream();
-
-				try{ path.replace("_"+currentVersion+".", "_"+onlineVersion+"."); } 
-				catch (Exception e) { path = path.replace("."+ext, "_"+onlineVersion+"."+ext); }
-
-				FileOutputStream fos = new FileOutputStream(path);
-				byte[] buffer = new byte[4096];
-				int length;
-				while ((length = in.read(buffer)) > 0) {
-					fos.write(buffer, 0, length);
-				}
-				in.close();
-				fos.close();
-				success = true;
-			} catch (Exception e) {
-				JOptionPane.showMessageDialog(null, "Error downloading update >.< (autoUpdateCheck)", "Error", JOptionPane.ERROR_MESSAGE);
-			}
-
-			if (success){ 
+				success = downloadFile(onlineLocation, path);
 				JOptionPane.showMessageDialog(null, "test", "Success", JOptionPane.ERROR_MESSAGE);
-				settingsManager.xmlSettings("appVersion", "appVer");
-				return true;
-			} else { 
-				return false;
+			} catch (Exception e) {
+				success = false;
+				JOptionPane.showMessageDialog(null, "Error downloading from github (autoUpdateCheck)", "Error", JOptionPane.ERROR_MESSAGE);
 			}
+			return success;
 		} catch (Exception e) {
 			String error;
 			error = "Github: " + responseCode + 
@@ -86,5 +65,20 @@ public class autoUpdateCheck {
 
 // <a href="/DiamondPRO02/nsfw-game-manager/releases/download/0.1.1.2-lang2/HentaiGameManager.exe"
 // <a href="/DiamondPRO02/nsfw-game-manager/releases/download/0.1.1.2-lang2/HentaiGameManager.jar"
+	}
+
+	private static Boolean downloadFile(String url, String path) throws Exception {
+		URL gotUrl = new URL(url);
+		// System.out.println(gotUrl);
+		InputStream in = gotUrl.openStream();
+		FileOutputStream fos = new FileOutputStream(path);
+		byte[] buffer = new byte[4096];
+		int length;
+		while ((length = in.read(buffer)) > 0) {
+			fos.write(buffer, 0, length);
+		}
+		in.close();
+		fos.close();
+		return true;
 	}
 }

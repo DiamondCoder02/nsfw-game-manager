@@ -1,26 +1,24 @@
 package main.application;
 
+// thank you <3 ; https://github.com/JnCrMx/discord-game-sdk4j
 import de.jcm.discordgamesdk.Core;
 import de.jcm.discordgamesdk.CreateParams;
 import de.jcm.discordgamesdk.activity.Activity;
+import de.jcm.discordgamesdk.activity.ActivityButton;
+import de.jcm.discordgamesdk.activity.ActivityButtonsMode;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.Locale;
 
-import org.w3c.dom.Document;
-
 import folderHandle.discord.downloadDiscordSDK;
 import folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
 import folderHandle.loadSaveGamesSettings.saveLoadDoc;
-import main.mainInit;
 
 public class discord {
-	static Integer doNotRunAlways = 20*1;
 	static Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
-	static Document domGame = saveLoadDoc.loadDocument(mainInit.databasePath);
-	static Integer allGames= domGame.getElementsByTagName("game").getLength();
+	static Integer allGames = saveLoadDoc.allGames;
 	public static void discordFirstInit() throws IOException {
 		String name = "discord_game_sdk"; String suffix;
 		String osName = System.getProperty("os.name").toLowerCase(Locale.ROOT);
@@ -36,9 +34,9 @@ public class discord {
 
 		File discordLibrary = downloadDiscordSDK.downloadDiscordLibrary(name, suffix, arch);
 		if (discordLibrary == null) { System.err.println("Error downloading Discord SDK."); return;}
+		ActivityButton button = new ActivityButton("Github", "https://github.com/DiamondPRO02/nsfw-game-manager");
 		// Initialize the Core
-		File discordLibLibs = new File(mainInit.mainPath + "discord/" + name + suffix);
-		Core.init(discordLibLibs);
+		// File discordLibLibs = new File(mainInit.mainPath + "discord/" + name + suffix);
 		// Set parameters for the Core
 		try (CreateParams params = new CreateParams()) {
 			params.setClientID(1135539276692607086L);
@@ -46,8 +44,7 @@ public class discord {
 			// Create the Core
 			try (Core core = new Core(params)) {
 				// Run callbacks forever
-				domGame = saveLoadDoc.loadDocument(mainInit.databasePath);
-				if (domGame == null) { allGames = 0; } else { allGames= domGame.getElementsByTagName("game").getLength(); }
+				allGames = saveLoadDoc.allGames;
 				// Create the Activity
 				try (Activity activity = new Activity()) {
 					activity.setDetails("Managing my hentai games");
@@ -56,7 +53,10 @@ public class discord {
 					activity.timestamps().setStart(time);
 					// Make a "cool" image show up
 					activity.assets().setLargeImage(image);
-					activity.assets().setLargeText("https://github.com/DiamondPRO02/nsfw-game-manager");
+					// activity.assets().setLargeText("https://github.com/DiamondPRO02/nsfw-game-manager");
+					activity.addButton(button);
+					activity.setActivityButtonsMode(ActivityButtonsMode.BUTTONS);
+
 					// Finally, update the current activity to our activity
 					core.activityManager().updateActivity(activity);
 				} catch (Exception e) { 
@@ -65,7 +65,7 @@ public class discord {
 				while(true){
 					boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 					if (!boolSettings[3]) { core.close(); break; }
-					core.runCallbacks();
+					// core.runCallbacks();
 					try {
 						Thread.sleep(100); // Sleep a bit to save CPU
 					}

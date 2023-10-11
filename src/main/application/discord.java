@@ -17,7 +17,6 @@ import folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
 import folderHandle.loadSaveGamesSettings.saveLoadDoc;
 
 public class discord {
-	static Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 	static Integer allGames = saveLoadDoc.allGames;
 	public static void discordFirstInit() throws IOException {
 		String name = "discord_game_sdk"; String suffix;
@@ -25,6 +24,9 @@ public class discord {
 		String arch = System.getProperty("os.arch").toLowerCase(Locale.ROOT);
 		String image = "https://cdn.discordapp.com/app-assets/1135539276692607086/1135541050702831778.png";
 		Instant time = Instant.now();
+
+		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
+		if (!boolSettings[3]) { return;}
 
 		if (osName.contains("windows")) { suffix = ".dll";
 		} else if (osName.contains("linux")) { suffix = ".so";
@@ -60,16 +62,19 @@ public class discord {
 				} catch (Exception e) { 
 					System.out.println(">.>"); e.printStackTrace(); 
 				}
+				// because of this, you cannot change setting without freezing
+				// And without this, discord does not start
+				// so just change setting and need manual restart
 				while(true){
 					try {
 						Thread.sleep(500); // Sleep a bit to save CPU
 						boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
-						if (!boolSettings[3]) { core.close(); break; }
 					}
 					catch(InterruptedException e) {
 						System.out.println("<.<");
 						e.printStackTrace();
 					}
+					if (!boolSettings[3]) { core.close(); return;}
 				}
 			}
 		}

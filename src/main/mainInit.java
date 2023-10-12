@@ -32,7 +32,7 @@ public class mainInit {
 		if (boolSettings[1]) { autoSiteFetching.fetchInfoThenUpdateTable(); }
 		backup.doBackup();
 
-		if (boolSettings[3]) { try { discord.discordFirstInit(); } catch (IOException e) { e.printStackTrace(); } }
+		if (boolSettings[3]) { try { discord.loopDiscord(); } catch (IOException e) { e.printStackTrace(); } }
 	}
 }
 

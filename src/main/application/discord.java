@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.Locale;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import folderHandle.discord.downloadDiscordSDK;
 import folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
@@ -18,10 +20,13 @@ import folderHandle.loadSaveGamesSettings.saveLoadDoc;
 
 public class discord {
 	static Integer allGames = saveLoadDoc.allGames;
-	
+	static String image = "https://i.imgur.com/lJEl4eK.png";
+	static ActivityButton button = new ActivityButton("Github", "https://github.com/DiamondPRO02/nsfw-game-manager");
+
 	public static void loopDiscord() throws IOException {
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 		if (!boolSettings[3]) { return;}
+
 		String name = "discord_game_sdk"; String suffix;
 		String osName = System.getProperty("os.name").toLowerCase(Locale.ROOT);
 		String arch = System.getProperty("os.arch").toLowerCase(Locale.ROOT);
@@ -35,58 +40,45 @@ public class discord {
 		if (discordLibrary == null) { System.err.println("Error downloading Discord SDK."); return;}
 
 		// Initialize the Core / Set parameters for the Core
+		Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> { discordRPC(boolSettings); }, 0, 1, TimeUnit.SECONDS);
+	}
+
+	private static Runnable discordRPC(Boolean[] boolSettings) {
+		Instant time = Instant.now();
 		try (CreateParams params = new CreateParams()) {
 			params.setClientID(1135539276692607086L);
 			params.setFlags(CreateParams.getDefaultFlags());
 			// Create the Core
 			try (Core core = new Core(params)) {
-				// because of this, you cannot change setting without freezing
-				// And without this, discord does not start
-				// so just change setting and need manual restart
-				System.out.println("test1");
-				discordFirstInit(core);
-				/*while(true){
-					try {
-						System.out.println("test2");
-						Thread.sleep(1000); // Sleep a bit to save CPU
-						System.out.println("test3");
-						boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
-						System.out.println("test4");
-						if (!boolSettings[3]) { core.close(); break;}
-						System.out.println("test5");
-						discordFirstInit(core);
-						System.out.println("test6");
+				try (Activity activity = new Activity()) {
+					allGames = saveLoadDoc.allGames;
+					activity.setDetails("Managing my hentai games");
+					activity.setState("Currently have " + allGames + " games");
+					// Setting a start time causes an "elapsed" field to appear
+					activity.timestamps().setStart(time);
+					// Make a "cool" image show up
+					activity.assets().setLargeImage(image);
+					activity.assets().setLargeText("Horny :3");
+					// Custom button
+					activity.setActivityButtonsMode(ActivityButtonsMode.BUTTONS);
+					activity.addButton(button);
+					// Finally, update the current activity to our activity
+					core.activityManager().updateActivity(activity);
+					while(boolSettings[3]){
+						if (!boolSettings[3]) { core.close(); return null;}
+						try {
+							boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
+							Thread.sleep(1000); // Sleep a bit to save CPU
+						}
+						catch(InterruptedException e) {
+							System.out.println("<.<"); e.printStackTrace();
+						}
 					}
-					catch(InterruptedException e) {
-						System.out.println("<.<");
-						e.printStackTrace();
-					}
-				}*/
+				} catch (Exception e) { 
+					System.out.println(">.>"); e.printStackTrace(); 
+				}
 			}
 		}
-	}
-	public static void discordFirstInit(Core core) throws IOException {
-		System.out.println("test404");
-		String image = "https://cdn.discordapp.com/app-assets/1135539276692607086/1153541050702831778.png";
-		Instant time = Instant.now();
-		ActivityButton button = new ActivityButton("Github", "https://github.com/DiamondPRO02/nsfw-game-manager");
-
-		try (Activity activity = new Activity()) {
-			allGames = saveLoadDoc.allGames;
-			activity.setDetails("Managing my hentai games");
-			activity.setState("Currently have " + allGames + " games");
-			// Setting a start time causes an "elapsed" field to appear
-			activity.timestamps().setStart(time);
-			// Make a "cool" image show up
-			activity.assets().setLargeImage(image);
-			activity.assets().setLargeText("Horny :3");
-			// Custom button
-			activity.setActivityButtonsMode(ActivityButtonsMode.BUTTONS);
-			activity.addButton(button);
-			// Finally, update the current activity to our activity
-			core.activityManager().updateActivity(activity);
-		} catch (Exception e) { 
-			System.out.println(">.>"); e.printStackTrace(); 
-		}
+		return null;
 	}
 }

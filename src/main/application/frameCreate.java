@@ -266,7 +266,7 @@ public class frameCreate extends JFrame implements ActionListener {
 			case "chanLan": settingsManager.xmlSettings("language", "lang"); break;
 			case "ChanFolLoc": settingsManager.xmlSettings("folderLocation", "gameInfoFolLoc"); break;
 			case "Dark mode": settingsManager.xmlSettings("othersettings", "Dark mode"); WindowRefresh(); refreshTable(); break;
-			case "Discord RPC": settingsManager.xmlSettings("othersettings", "DiscordRPC"); try {discord.loopDiscord();} catch (IOException e1) {e1.printStackTrace();}; JOptionPane.showMessageDialog(null, "Discord RPC setting has changed, please restart the program", "Warning", JOptionPane.INFORMATION_MESSAGE); break;
+			case "Discord RPC": settingsManager.xmlSettings("othersettings", "DiscordRPC"); try {discord.loopDiscord();} catch (IOException e1) {e1.printStackTrace();}; break;
 			case "Auto fetch game info": settingsManager.xmlSettings("othersettings", "Auto fetch game info"); break;
 			case "Auto fetch folders": settingsManager.xmlSettings("othersettings", "Auto fetch folders"); break;
 

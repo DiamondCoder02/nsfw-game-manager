@@ -36,19 +36,15 @@ public class mainInit {
 	}
 }
 
-// TODO Link(s) (3):
+// TODO Link(s) (2):
 /*
  * https://stackoverflow.com/questions/232347/how-should-i-implement-an-auto-updater
  * Text size small on large display - (Check Discord) https://bugs.openjdk.org/browse/JDK-8202973
  */
 
-// TODO ERROR(s) (1):
+// TODO ERROR(s) (0):
 /*
- * Discord:
- * [ERROR] ResponseError { code: InvalidPermissions, message: "Not authenticated or invalid scope" }
- * [ERROR] ResponseError { code: UnknownError, message: "Request has been terminated\nPossible causes: the network is offline, Origin is not allowed by Access-Control-Allow-Origin, the page is being unloaded, etc." }  
- * [ERROR] Failed to configure networking: ResponseError { code: UnknownError, message: "Request has been terminated\nPossible causes: the network is offline, Origin is not allowed by Access-Control-Allow-Origin, the page is being unloaded, etc." }
-
+ * 1. -
  */
 
 /* TODO order of storage:

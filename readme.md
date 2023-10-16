@@ -50,7 +50,6 @@ If it doesn't begin with man, f95 ~~or dls(soon?)~~ it will be ignored. (man mea
 
 - [ ] FAQ rewrite
 - [ ] Optimizations
-- [ ] Text size small on large display
 - [ ] dlsite.com support
 - [ ] Steam support
 - [ ] Auto updater

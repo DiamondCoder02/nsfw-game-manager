@@ -28,7 +28,7 @@ public class checksFiles {
 				JOptionPane.showMessageDialog(null, "Error creating main folder(s)! (checksFile.checks)", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
-		if (autoUpdateCheck.test()) { 
+		if (autoUpdateCheck.checkUpdate()) { 
 			System.out.println("Update needed");
 			settingsManager.xmlSettings("appVersion", "appVer");
 			System.exit(0); 

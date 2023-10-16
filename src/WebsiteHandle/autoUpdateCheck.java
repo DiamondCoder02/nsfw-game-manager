@@ -12,7 +12,7 @@ import folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
 public class autoUpdateCheck {
 	// TODO https://github.com/DiamondPRO02/nsfw-game-manager/releases/latest
 	public static String onlineVersion = null;
-	public static Boolean test() {
+	public static Boolean checkUpdate() {
 		int responseCode = 999;
 		String currentVersion;
 		String onlineLocation = null, path, ext;

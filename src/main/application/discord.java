@@ -44,7 +44,6 @@ public class discord {
 
 	static Instant time;
 	private static Runnable discordRPC() {
-		System.out.println("test1");
 		time = Instant.now();
 		try (CreateParams params = new CreateParams()) {
 			params.setClientID(1135539276692607086L);

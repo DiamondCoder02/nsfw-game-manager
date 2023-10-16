@@ -12,26 +12,11 @@ import main.application.discord;
 import main.application.frameCreate;
 
 public class mainInit {
-<<<<<<< HEAD
 	public static String mainPath = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager/";
 	public static String settingsPath = mainPath + "settings.xml";
 	public static String databasePath = mainPath + "hentai.xml";
-	public static void main(String[] args) {
-<<<<<<< HEAD
-=======
-		// TODO Update autoCheck:
-		autoUpdateCheck.test();
-
->>>>>>> e5b7719 (Why the fuck won't you work)
-=======
-	public static String settingsPath = checksFiles.mainPath + "settings.xml";
-	public static String databasePath = checksFiles.mainPath + "hentai.xml";
 	public static void mainStart() {
 		// TODO Update autoCheck:
-<<<<<<< HEAD
->>>>>>> c0120d7 (meow)
-=======
->>>>>>> 922070941adf547b5911040ccda364716f564670
 		checksFiles.checks();
 
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");

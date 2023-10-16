@@ -16,18 +16,9 @@ import javax.swing.JOptionPane;
 public class checkMissingSetting {
 	static String[] mf = langLoad.folder, bc = langLoad.basic, bs = langLoad.base;
 	public static void checkSettings() {
-<<<<<<< HEAD
-		String[] settings = { "othersettings", "folderLocation", "language", "showncolumns" };
-		String[] othersettings = { "Dark mode", "Auto fetch game info", "Auto fetch folders", "DiscordRPC" };
-		String folderLocation = "null", language = "english";
-=======
 		String[] settings = {"othersettings", "folderLocation", "language", "appVersion", "showncolumns"};
 		String[] othersettings = {"Dark mode", "Auto fetch game info", "Auto fetch folders", "DiscordRPC"};
 		String folderLocation = "null", language = "english", appVersion = "0.1.1.3";
-<<<<<<< HEAD
->>>>>>> e5b7719 (Why the fuck won't you work)
-=======
->>>>>>> 922070941adf547b5911040ccda364716f564670
 		String[] showncolumns = {
 			"Site", "ID", "Name", "Developer", "Played version",
 			"Last time play", "Rated", "Newest version",
@@ -54,6 +45,7 @@ public class checkMissingSetting {
 							case "othersettings": otSe = checkings(setting, othersettings, dom, "othersettings"); break;
 							case "folderLocation": foSe = singleChecks(setting, folderLocation, dom, "folderLocation"); break;
 							case "language": laSe = singleChecks(setting, language, dom, "language"); break;
+							case "appVersion": shCo = singleChecks(setting, appVersion, dom, "appVersion"); break;
 							case "showncolumns": shCo = checkings(setting, showncolumns, dom, "showncolumns"); break;
 							default: JOptionPane.showMessageDialog(null, ("Should be impossible") + "checkMissingSetting", "Error", JOptionPane.ERROR_MESSAGE); break;
 						}

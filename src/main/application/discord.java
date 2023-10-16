@@ -5,7 +5,6 @@ import de.jcm.discordgamesdk.Core;
 import de.jcm.discordgamesdk.CreateParams;
 import de.jcm.discordgamesdk.activity.Activity;
 import de.jcm.discordgamesdk.activity.ActivityButton;
-import de.jcm.discordgamesdk.activity.ActivityButtonsMode;
 
 import java.io.File;
 import java.io.IOException;
@@ -62,7 +61,6 @@ public class discord {
 					activity.assets().setLargeImage(image);
 					activity.assets().setLargeText("Horny :3");
 					// Custom button
-					activity.setActivityButtonsMode(ActivityButtonsMode.BUTTONS);
 					activity.addButton(button);
 					// Finally, update the current activity to our activity
 					core.activityManager().updateActivity(activity);

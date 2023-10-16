@@ -66,7 +66,7 @@ public class discord {
 					core.activityManager().updateActivity(activity);
 					while(boolSettings[3]){
 						boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
-						if (!boolSettings[3]) { activity.close(); core.close(); return null;}
+						if (!boolSettings[3]) { core.activityManager().clearActivity(); activity.close(); core.close(); return null;}
 						try {
 							Thread.sleep(1000); // Sleep a bit to save CPU
 						}

@@ -24,7 +24,10 @@ public class checkMissingSetting {
 		String[] settings = {"othersettings", "folderLocation", "language", "appVersion", "showncolumns"};
 		String[] othersettings = {"Dark mode", "Auto fetch game info", "Auto fetch folders", "DiscordRPC"};
 		String folderLocation = "null", language = "english", appVersion = "0.1.1.3";
+<<<<<<< HEAD
 >>>>>>> e5b7719 (Why the fuck won't you work)
+=======
+>>>>>>> 922070941adf547b5911040ccda364716f564670
 		String[] showncolumns = {
 			"Site", "ID", "Name", "Developer", "Played version",
 			"Last time play", "Rated", "Newest version",

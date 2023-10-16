@@ -28,7 +28,10 @@ public class mainInit {
 	public static String databasePath = checksFiles.mainPath + "hentai.xml";
 	public static void mainStart() {
 		// TODO Update autoCheck:
+<<<<<<< HEAD
 >>>>>>> c0120d7 (meow)
+=======
+>>>>>>> 922070941adf547b5911040ccda364716f564670
 		checksFiles.checks();
 
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");

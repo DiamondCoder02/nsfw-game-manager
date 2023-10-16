@@ -27,6 +27,7 @@ public class settingsManager {
 						Element e2 = (Element) otherSettingsNode;
 						String option = e2.getTextContent().trim();
 <<<<<<< HEAD
+<<<<<<< HEAD
 						if (options.equals("lang")) {
 							languageChoices.langChoose(dom);
 						} else if (options.equals("gameInfoFolLoc")) {
@@ -38,6 +39,8 @@ public class settingsManager {
 							} else {
 								e2.setAttribute("enabled", "true");
 =======
+=======
+>>>>>>> 922070941adf547b5911040ccda364716f564670
 						switch (options) {
 							case "lang": languageChoices.langChoose(dom); break;
 							case "gameInfoFolLoc": gamesLocationChoice.gamesLocationChoose(dom); break;
@@ -59,7 +62,10 @@ public class settingsManager {
 									frameCreate.refreshTable();
 								}
 								break;
+<<<<<<< HEAD
 >>>>>>> e5b7719 (Why the fuck won't you work)
+=======
+>>>>>>> 922070941adf547b5911040ccda364716f564670
 							}
 						}
 					}

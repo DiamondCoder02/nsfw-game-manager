@@ -22,9 +22,10 @@ public class discord {
 	static Integer allGames = saveLoadDoc.allGames;
 	static String image = "https://i.imgur.com/lJEl4eK.png";
 	static ActivityButton button = new ActivityButton("Github", "https://github.com/DiamondPRO02/nsfw-game-manager");
+	static Boolean[] boolSettings;
 
 	public static void loopDiscord() throws IOException {
-		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
+		boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 		if (!boolSettings[3]) { return;}
 
 		String name = "discord_game_sdk"; String suffix;
@@ -39,12 +40,13 @@ public class discord {
 		File discordLibrary = downloadDiscordSDK.downloadDiscordLibrary(name, suffix, arch);
 		if (discordLibrary == null) { System.err.println("Error downloading Discord SDK."); return;}
 
-		// Initialize the Core / Set parameters for the Core
-		Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> { discordRPC(boolSettings); }, 0, 1, TimeUnit.SECONDS);
+		Executors.newSingleThreadScheduledExecutor().schedule(() -> { discordRPC(); }, 0, TimeUnit.SECONDS);
 	}
 
-	private static Runnable discordRPC(Boolean[] boolSettings) {
-		Instant time = Instant.now();
+	static Instant time;
+	private static Runnable discordRPC() {
+		System.out.println("test1");
+		time = Instant.now();
 		try (CreateParams params = new CreateParams()) {
 			params.setClientID(1135539276692607086L);
 			params.setFlags(CreateParams.getDefaultFlags());
@@ -65,9 +67,11 @@ public class discord {
 					// Finally, update the current activity to our activity
 					core.activityManager().updateActivity(activity);
 					while(boolSettings[3]){
-						if (!boolSettings[3]) { core.close(); return null;}
+						System.out.println("test4");
+						boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
+						if (!boolSettings[3]) { activity.close(); core.close(); return null;}
+						System.out.println("test5");
 						try {
-							boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 							Thread.sleep(1000); // Sleep a bit to save CPU
 						}
 						catch(InterruptedException e) {

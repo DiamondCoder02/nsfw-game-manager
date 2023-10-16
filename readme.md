@@ -13,7 +13,7 @@ Mostly designed for f95zone ~~and dlsite (soon?) and Steam(if I can)~~. You can 
 - I am a Discord nerd, so it has activity feature for it (Default off)
 - Multi language support( more on that later)
 - The program creates a backup of the games database every time it starts(, only saves the last 10)
-- Java 8, nut sure if it's nice, but it's something
+- JDK 17, nut sure if it's nice, but it's something
 
 ## Features if you add game from a site
 
@@ -52,4 +52,10 @@ If it doesn't begin with man, f95 ~~or dls(soon?)~~ it will be ignored. (man mea
 - [ ] Optimizations
 - [ ] Text size small on large display
 - [ ] dlsite.com support
+- [ ] Steam support
 - [ ] Auto updater
+- [ ] Check language selection
+
+## Needs restart
+
+- [ ] ~~If you change the language, you have to restart the program.~~ Fixed by asking user to restart the program again...

@@ -28,7 +28,6 @@ public class backup {
 		int count = files.length - 9;
 		if (count<0) { count = 0; }
 		for (int i=0; i<count; i++) {
-			System.out.println("Deleted: " + files[i].getName());
 			files[i].delete();
 		}
 

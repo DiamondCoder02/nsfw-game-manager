@@ -33,7 +33,7 @@ public class settingsManager {
 							case "gameInfoFolLoc": gamesLocationChoice.gamesLocationChoose(dom); break;
 							case "appVer": {
 								String update = autoUpdateCheck.onlineVersion;
-								dom.getElementsByTagName("appVersion").item(0).setTextContent(update);
+								e.getElementsByTagName("appVersion").item(0).setTextContent(update);
 								saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
 								break;
 							}

@@ -5,7 +5,6 @@ import java.io.IOException;
 import folderHandle.autoFetchChecks.autoFolderChecks;
 import folderHandle.autoFetchChecks.autoSiteFetching;
 import folderHandle.checkAndBackup.backup;
-import folderHandle.checkAndBackup.checksFiles;
 import folderHandle.loadSaveGamesSettings.loadGamesFromXml;
 import folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
 import main.application.discord;
@@ -15,10 +14,8 @@ public class mainInit {
 	public static String mainPath = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager/";
 	public static String settingsPath = mainPath + "settings.xml";
 	public static String databasePath = mainPath + "hentai.xml";
+	public static String appVersion = "1.1.1.3";
 	public static void mainStart() {
-		// TODO Update autoCheck:
-		checksFiles.checks();
-
 		Boolean[] boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 
 		if (boolSettings[2]) { autoFolderChecks.fetchFoldersForTable(); }

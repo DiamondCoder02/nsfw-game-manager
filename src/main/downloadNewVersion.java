@@ -22,9 +22,8 @@ public class downloadNewVersion {
 			JOptionPane.showMessageDialog(null, "Error getting path (getNewestGithubVersion)", "Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
+		path = "C:\\Users\\ShitFucker\\Desktop\\HentaiGameManager\\builds\\HentaiGameManager.exe";
 		ext = path.substring(path.lastIndexOf(".") + 1, path.length());
-		// path = "C:\\Users\\Diamond\\Desktop";
-		// ext = "exe";
 		onlineLocation = onlineLocation.replace("tag", "download").concat("/HentaiGameManager." + ext);
 
 		try{ path.replace("_"+mainInit.appVersion+".", "_"+onlineVersion+"."); } 

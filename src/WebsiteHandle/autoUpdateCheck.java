@@ -9,7 +9,6 @@ import folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
 import main.mainInit;
 
 public class autoUpdateCheck {
-	// TODO https://github.com/DiamondPRO02/nsfw-game-manager/releases/latest
 	public static String onlineVersion = null;
 	public static String onlineLocation = null;
 	public static Boolean checkUpdate() {
@@ -32,8 +31,6 @@ public class autoUpdateCheck {
 		System.out.println("Update is needed: "+updateNeeded);
 		return updateNeeded;
 	}
-// <a href="/DiamondPRO02/nsfw-game-manager/releases/download/0.1.1.2-lang2/HentaiGameManager.exe"
-// <a href="/DiamondPRO02/nsfw-game-manager/releases/download/0.1.1.2-lang2/HentaiGameManager.jar"
 
 	private static String getOnlineLocation(String url) {
 		String onlineLocation = null;

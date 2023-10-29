@@ -33,7 +33,7 @@ public class createMissingSettings {
 			language.appendChild(doc.createTextNode("english")); settings.appendChild(language);
 			Element folderLoc = doc.createElement("folderLocation");
 			folderLoc.appendChild(doc.createTextNode("null")); settings.appendChild(folderLoc);
-			Element appVersion = doc.createElement("appVersion");
+			Element appVersion = doc.createElement("appVersion"); appVersion.setAttribute("enabled", "true");
 			appVersion.appendChild(doc.createTextNode(mainInit.appVersion)); settings.appendChild(appVersion);
 			Element showncolumns0 = doc.createElement("showncolumns"); showncolumns0.setAttribute("enabled", "true");
 			showncolumns0.appendChild(doc.createTextNode("Site")); settings.appendChild(showncolumns0);

@@ -117,6 +117,7 @@ public class checkMissingSetting {
 			return false;
 		}
 		Element newSetting = dom.createElement(settingName);
+		if (settingName == "appVersion") { newSetting.setAttribute("enabled", "true"); }
 		newSetting.appendChild(dom.createTextNode(somethingSettings));
 		dom.getElementsByTagName("settings").item(0).appendChild(newSetting);
 		settingsGotUpdated = true;

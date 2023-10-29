@@ -11,6 +11,8 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import main.mainInit;
+
 public class createMissingSettings {
 	public static void createFile(String path){
 		try{
@@ -32,7 +34,7 @@ public class createMissingSettings {
 			Element folderLoc = doc.createElement("folderLocation");
 			folderLoc.appendChild(doc.createTextNode("null")); settings.appendChild(folderLoc);
 			Element appVersion = doc.createElement("appVersion");
-			appVersion.appendChild(doc.createTextNode("0.1.1.1")); settings.appendChild(appVersion);
+			appVersion.appendChild(doc.createTextNode(mainInit.appVersion)); settings.appendChild(appVersion);
 			Element showncolumns0 = doc.createElement("showncolumns"); showncolumns0.setAttribute("enabled", "true");
 			showncolumns0.appendChild(doc.createTextNode("Site")); settings.appendChild(showncolumns0);
 			Element showncolumns1 = doc.createElement("showncolumns"); showncolumns1.setAttribute("enabled", "true");

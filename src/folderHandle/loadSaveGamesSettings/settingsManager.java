@@ -10,6 +10,8 @@ import main.langLoad;
 import main.mainInit;
 import main.application.frameCreate;
 
+import WebsiteHandle.autoUpdateCheck;
+
 public class settingsManager {
 	static String[] folder = langLoad.folder, butt = langLoad.buton;
 	public static void xmlSettings(String TagName, String options){
@@ -26,19 +28,28 @@ public class settingsManager {
 					if (otherSettingsNode.getNodeType() == Node.ELEMENT_NODE) {
 						Element e2 = (Element) otherSettingsNode;
 						String option = e2.getTextContent().trim();
-						if (options.equals("lang")) {
-							languageChoices.langChoose(dom);
-						} else if (options.equals("gameInfoFolLoc")) {
-							gamesLocationChoice.gamesLocationChoose(dom);
-						} else if (option.equals(options)) {
-							String enabled = e2.getAttribute("enabled").trim();
-							if (enabled.equals("true")) {
-								e2.setAttribute("enabled", "false");
-							} else {
-								e2.setAttribute("enabled", "true");
+						switch (options) {
+							case "lang": languageChoices.langChoose(dom); break;
+							case "gameInfoFolLoc": gamesLocationChoice.gamesLocationChoose(dom); break;
+							case "appVer": {
+								String update = autoUpdateCheck.onlineVersion;
+								e.getElementsByTagName("appVersion").item(0).setTextContent(update);
+								saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
+								break;
 							}
-							saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
-							frameCreate.refreshTable();
+							default: {
+								if (option.equals(options)) {
+									String enabled = e2.getAttribute("enabled").trim();
+									if (enabled.equals("true")) {
+										e2.setAttribute("enabled", "false");
+									} else {
+										e2.setAttribute("enabled", "true");
+									}
+									saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
+									frameCreate.refreshTable();
+								}
+								break;
+							}
 						}
 					}
 				}

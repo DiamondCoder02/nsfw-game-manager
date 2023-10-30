@@ -17,7 +17,7 @@ public class loadSettingsFromXml {
 		return dom;
 	}
 
-	public static Boolean loadAppBVersion() {
+	public static Boolean loadVersionBoolean() {
 		Document dom = loadSettingXml();
 		try {
 			NodeList settingsNode = dom.getElementsByTagName("settings");

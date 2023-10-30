@@ -6,12 +6,8 @@ import main.mainInit;
 
 public class mainApp {
 	public static void main(String[] args) {
-		Boolean updateNeeded = false;
-		updateNeeded = autoUpdateCheck.checkUpdate();
 		checksFiles.checkSettingsFolder();
-		Boolean wantsUpdate = loadSettingsFromXml.loadBooleanSettings("appVersion")[0];
-		System.out.println("wantsUpdate: " + wantsUpdate);
-		if (updateNeeded) { 
+		if (autoUpdateCheck.checkUpdate() && loadSettingsFromXml.loadVersionBoolean()) { 
 			downloadNewVersion.getNewestGithubVersion();
 		} else { 
 			checksFiles.checks();

@@ -37,6 +37,16 @@ public class settingsManager {
 								saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
 								break;
 							}
+							case "appVer2": {
+								String enabled = e2.getAttribute("enabled").trim();
+								if (enabled.equals("true")) {
+									e2.setAttribute("enabled", "false");
+								} else {
+									e2.setAttribute("enabled", "true");
+								}
+								saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
+								break;
+							}
 							default: {
 								if (option.equals(options)) {
 									String enabled = e2.getAttribute("enabled").trim();

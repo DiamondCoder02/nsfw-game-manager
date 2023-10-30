@@ -17,6 +17,34 @@ public class loadSettingsFromXml {
 		return dom;
 	}
 
+	public static Boolean loadAppBVersion() {
+		Document dom = loadSettingXml();
+		try {
+			NodeList settingsNode = dom.getElementsByTagName("settings");
+			Node settingsNodeElement = settingsNode.item(0);
+			if (settingsNodeElement.getNodeType() == Node.ELEMENT_NODE) {
+				Element e = (Element) settingsNodeElement;
+				NodeList showncolumns = e.getElementsByTagName("appVersion");
+				for (int i = 0; i < showncolumns.getLength(); i++) {
+					Node showncolumnsNode = showncolumns.item(i);
+					if (showncolumnsNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element e2 = (Element) showncolumnsNode;
+						String enabled = e2.getAttribute("enabled").trim();
+						if (enabled.equals("true")) { 
+							return true;
+						} else { 
+							return false; 
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, xf[10]!=null?xf[10]:"Error loading settings file"+" (loadOther)", bs[1]!=null?bs[1]:"Error", JOptionPane.ERROR_MESSAGE);
+		}
+		return null;
+	}
+
 	public static Boolean[] loadBooleanSettings(String setting){
 		Boolean[] columnNames = new Boolean[30];
 		Integer counter = 0;

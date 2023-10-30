@@ -45,7 +45,7 @@ public class frameCreate extends JFrame implements ActionListener {
 
 	JMenu settings;
 	JMenuItem changeLanguage, changeFolderLocation;
-	JCheckBoxMenuItem darkMode, discordrpc, autoFetchNews, autoFetchFolders;
+	JCheckBoxMenuItem darkMode, discordrpc, autoFetchNews, autoFetchFolders, autoUpdateWanted;
 	JMenu show;
 	JCheckBoxMenuItem showSite, showID, showName, showDeveloper, showPlayedVersion, showLastTimeplay, showRated, showNewestVersion;
 	JCheckBoxMenuItem showDateOfLastUpdate, showPeopleRating, showhowFarUserPlayed, showDeletedFromPc, showEngine, showOS, showLanguage, ShowSelfNote;
@@ -120,6 +120,8 @@ public class frameCreate extends JFrame implements ActionListener {
 		settings.add(changeLanguage  = new JMenuItem("🌐 "+(bu[4]!=null?bu[4]:"Language"))); changeLanguage.setActionCommand("chanLan");
 		settings.add(changeFolderLocation = new JMenuItem("📁 "+(bu[21]!=null?bu[21]:"Change folder location"))); changeFolderLocation.setActionCommand("ChanFolLoc");
 		settings.addSeparator();
+		// TODO add language too
+		settings.add(autoUpdateWanted = new JCheckBoxMenuItem("🔁 "+"Auto update wanted", loadSettingsFromXml.loadAppBVersion())); autoUpdateWanted.setActionCommand("autoUpdateWanted");
 		settings.add(darkMode = new JCheckBoxMenuItem(bu[18]!=null?bu[18]:"Dark mode", boolSettings[0])); darkMode.setActionCommand("Dark mode");
 		settings.add(discordrpc = new JCheckBoxMenuItem("Discord RPC", boolSettings[3])); discordrpc.setActionCommand("Discord RPC");
 		settings.addSeparator();
@@ -153,6 +155,7 @@ public class frameCreate extends JFrame implements ActionListener {
 		showEngine.addActionListener(this); showOS.addActionListener(this);
 		showLanguage.addActionListener(this); ShowSelfNote.addActionListener(this); 
 
+		autoUpdateWanted.addActionListener(this);
 		changeLanguage.addActionListener(this); changeFolderLocation.addActionListener(this);
 		darkMode.addActionListener(this); discordrpc.addActionListener(this);
 		autoFetchNews.addActionListener(this); autoFetchFolders.addActionListener(this);
@@ -263,6 +266,7 @@ public class frameCreate extends JFrame implements ActionListener {
 			case "Language": settingsManager.xmlSettings("showncolumns", "Language"); break;
 			case "Personal Notes": settingsManager.xmlSettings("showncolumns", "Personal Notes"); break;
 
+			case "autoUpdateWanted": settingsManager.xmlSettings("appVersion", "appVer2"); break;
 			case "chanLan": settingsManager.xmlSettings("language", "lang"); break;
 			case "ChanFolLoc": settingsManager.xmlSettings("folderLocation", "gameInfoFolLoc"); break;
 			case "Dark mode": settingsManager.xmlSettings("othersettings", "Dark mode"); WindowRefresh(); refreshTable(); break;
@@ -324,6 +328,7 @@ public class frameCreate extends JFrame implements ActionListener {
 			searchByDeveloper.setBackground(bg); searchByDeveloper.setForeground(fg);
 
 			settings.setBackground(bg);	settings.setForeground(fg);
+			autoUpdateWanted.setBackground(bg); autoUpdateWanted.setForeground(fg);
 			changeLanguage.setBackground(bg); changeLanguage.setForeground(fg);
 			changeFolderLocation.setBackground(bg); changeFolderLocation.setForeground(fg);
 			darkMode.setBackground(bg);	darkMode.setForeground(fg);
@@ -400,6 +405,7 @@ public class frameCreate extends JFrame implements ActionListener {
 			searchByDeveloper.setBackground(null); searchByDeveloper.setForeground(null);
 
 			settings.setBackground(null);	settings.setForeground(null);
+			autoUpdateWanted.setBackground(null); autoUpdateWanted.setForeground(null);
 			changeLanguage.setBackground(null); changeLanguage.setForeground(null);
 			changeFolderLocation.setBackground(null); changeFolderLocation.setForeground(null);
 			darkMode.setBackground(null);	darkMode.setForeground(null);

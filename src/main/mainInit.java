@@ -34,11 +34,10 @@ public class mainInit {
 	}
 }
 
-// TODO Link(s) (2):
+// TODO Link(s) (0):
 /*
- * https://stackoverflow.com/questions/232347/how-should-i-implement-an-auto-updater
- * Text size small on large display - (Check Discord) https://bugs.openjdk.org/browse/JDK-8202973
- */
+ * 
+*/
 
 // TODO ERROR(s) (0):
 /*

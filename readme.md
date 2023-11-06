@@ -52,8 +52,6 @@ If it doesn't begin with man, f95 ~~or dls(soon?)~~ it will be ignored. (man mea
 - [ ] Optimizations
 - [ ] dlsite.com support
 - [ ] Steam support
-- [x] Auto updater (0.1.1.3)
-- [x] Check language selection (fixed?)
 
 ## Needs restart
 

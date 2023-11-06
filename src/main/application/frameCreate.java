@@ -120,8 +120,7 @@ public class frameCreate extends JFrame implements ActionListener {
 		settings.add(changeLanguage  = new JMenuItem("🌐 "+(bu[4]!=null?bu[4]:"Language"))); changeLanguage.setActionCommand("chanLan");
 		settings.add(changeFolderLocation = new JMenuItem("📁 "+(bu[21]!=null?bu[21]:"Change folder location"))); changeFolderLocation.setActionCommand("ChanFolLoc");
 		settings.addSeparator();
-		// TODO add language too
-		settings.add(autoUpdateWanted = new JCheckBoxMenuItem("🔁 "+"Auto update wanted", loadSettingsFromXml.loadVersionBoolean())); autoUpdateWanted.setActionCommand("autoUpdateWanted");
+		settings.add(autoUpdateWanted = new JCheckBoxMenuItem("🔁 "+"Auto update", loadSettingsFromXml.loadVersionBoolean())); autoUpdateWanted.setActionCommand("autoUpdateWanted");
 		settings.add(darkMode = new JCheckBoxMenuItem(bu[18]!=null?bu[18]:"Dark mode", boolSettings[0])); darkMode.setActionCommand("Dark mode");
 		settings.add(discordrpc = new JCheckBoxMenuItem("Discord RPC", boolSettings[3])); discordrpc.setActionCommand("Discord RPC");
 		settings.addSeparator();

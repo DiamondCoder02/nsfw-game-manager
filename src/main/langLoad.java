@@ -1,13 +1,9 @@
 package main;
 
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 import javax.swing.JOptionPane;
-
-import com.opencsv.CSVParserBuilder;
-import com.opencsv.CSVReader;
-import com.opencsv.CSVReaderBuilder;
 
 import folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
 
@@ -17,7 +13,6 @@ public class langLoad {
 	tempjLaPa = new String[30], tempjRaBu = new String[30], tempbuton = new String[30], tempFold = new String[30],
 	tempSear = new String[30], tempRand = new String[30];
 	public static String[] base, basic, tabl, jlapa, jrabu, buton, folder, serc, rand;
-	private static CSVReader reader = null; 
 	public static String[] langChoices, lanMeans;
 
 	public static void loadLanguages() {
@@ -26,33 +21,31 @@ public class langLoad {
 			tempjRaBu[i] = null; tempbuton[i] = null; tempFold[i] = null; tempSear[i] = null;
 			tempRand[i] = null;
 		}
-		String language = loadSettingsFromXml.loadStringSettings("language")[0];
+		Integer temp = 0; String lastLang = "";
+		String[] tempAr = new String[30];
+
+		String line = "";
 		try {
-			// parsing a CSV file into CSVReader class constructor
-			reader = new CSVReaderBuilder( 
-			new InputStreamReader( new FileInputStream(path+"language.csv"), "utf-8")
-			).withCSVParser( new CSVParserBuilder().withSeparator(';').build()).build();
-		} catch (Exception e) {
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error loading language csv (loadLanguages)", "Error", JOptionPane.ERROR_MESSAGE);
-			return;
-		}
-		if (language == null || reader == null) { return; }
-		try {
-			String[] nextLine = reader.readNext();
-			langChoices = new String[nextLine.length-1];
-			lanMeans = new String[nextLine.length-1];
+			// parsing a CSV file into BufferedReader class constructor
+			BufferedReader br = new BufferedReader(new FileReader(path+"language.csv"));
+
+			String language = loadSettingsFromXml.loadStringSettings("language")[0];
+			System.out.println(language);
+			String[] languages = br.readLine().split(";");
+
 			// first line is the language names
 			int langindex = 0;
-			for (int i = 0; i < nextLine.length; i++) { if (nextLine[i].equals(language)) { langindex = i; break; } }
+			lanMeans = new String[languages.length-1];
+			langChoices = new String[languages.length-1];
+			for (int i = 0; i < languages.length; i++) { if (languages[i].equals(language)) { langindex = i; break; } }
 			if (langindex == 0) { langindex = 1; }
-			for (int i = 0; i < (nextLine.length-1); i++) { langChoices[i] = nextLine[i+1]; }
-			nextLine = reader.readNext();
-			for (int i = 0; i < (nextLine.length-1); i++) { lanMeans[i] = nextLine[i+1]; }
-			// System.out.println("Currently has " +(nextLine.length-1)+ " languages, choosen: "+nextLine[langindex]);
-			Integer temp = 0; String lastLang = "";
-			String[] tempAr = new String[30];
-			while ((nextLine = reader.readNext()) != null) {
+			for (int i = 0; i < (languages.length-1); i++) { langChoices[i] = languages[i+1]; }
+			// Second line is language in own language
+			languages = br.readLine().split(";");
+			for (int i = 0; i < (languages.length-1); i++) { lanMeans[i] = languages[i+1]; }
+
+			while ((line = br.readLine()) != null) { // returns a Boolean value
+				String[] nextLine = line.split(";"); // use comma as separator
 				if (!lastLang.equals(nextLine[0])) {
 					lastLang = nextLine[0];
 					temp = 0;
@@ -77,6 +70,7 @@ public class langLoad {
 			base = tempBase; basic = tempBasic; tabl = tempTabl; jlapa = tempjLaPa;
 			jrabu = tempjRaBu; buton = tempbuton; folder = tempFold; serc = tempSear;
 			rand = tempRand;
+			br.close();
 			return;
 		} catch (Exception e) {
 			e.printStackTrace();

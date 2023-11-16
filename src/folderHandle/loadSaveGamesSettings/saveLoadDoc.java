@@ -23,6 +23,7 @@ import main.langLoad;
 
 public class saveLoadDoc {
 	static String[] xf = langLoad.folder, bs = langLoad.base;
+	public static Integer allGames = 0;
 	public static Document loadDocument(String path) {
 		File file = new File(path);
 		try {
@@ -104,6 +105,7 @@ public class saveLoadDoc {
 			}
 		}
 		final int playProgColumn = playColumnCount;
+		allGames = table.getRowCount();
 		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
 			@Override
 			public Component getTableCellRendererComponent(

@@ -16,36 +16,34 @@ public class langLoad {
 	public static String[] langChoices, lanMeans;
 
 	public static void loadLanguages() {
-		for (int i = 0; i < 30; i++) {
-			tempBase[i] = null; tempBasic[i] = null; tempTabl[i] = null; tempjLaPa[i] = null;
-			tempjRaBu[i] = null; tempbuton[i] = null; tempFold[i] = null; tempSear[i] = null;
-			tempRand[i] = null;
-		}
-		Integer temp = 0; String lastLang = "";
+		Integer temp = 0; 
+		String lastLang = "", split = ";", langFromConfig = "english";
 		String[] tempAr = new String[30];
+		int langindex = 0;
+		BufferedReader br = null;
 
-		String line = "";
 		try {
 			// parsing a CSV file into BufferedReader class constructor
-			BufferedReader br = new BufferedReader(new FileReader(path+"language.csv"));
-
-			String language = loadSettingsFromXml.loadStringSettings("language")[0];
-			System.out.println(language);
-			String[] languages = br.readLine().split(";");
-
-			// first line is the language names
-			int langindex = 0;
+			br = new BufferedReader(new FileReader(path+"language.csv"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Error language file (loadLanguages)", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+		if (br == null) { return; }
+		try{
+			langFromConfig = loadSettingsFromXml.loadStringSettings("language")[0];	
+			String[] languages = br.readLine().split(split);// first line is the language names
 			lanMeans = new String[languages.length-1];
 			langChoices = new String[languages.length-1];
-			for (int i = 0; i < languages.length; i++) { if (languages[i].equals(language)) { langindex = i; break; } }
+			for (int i = 0; i < languages.length; i++) { if (languages[i].equals(langFromConfig)) { langindex = i; break; } }
 			if (langindex == 0) { langindex = 1; }
 			for (int i = 0; i < (languages.length-1); i++) { langChoices[i] = languages[i+1]; }
-			// Second line is language in own language
-			languages = br.readLine().split(";");
+			languages = br.readLine().split(split); // Second line is language in own language
 			for (int i = 0; i < (languages.length-1); i++) { lanMeans[i] = languages[i+1]; }
 
+			String line = "";
 			while ((line = br.readLine()) != null) { // returns a Boolean value
-				String[] nextLine = line.split(";"); // use comma as separator
+				String[] nextLine = line.split(split); // use comma as separator
 				if (!lastLang.equals(nextLine[0])) {
 					lastLang = nextLine[0];
 					temp = 0;

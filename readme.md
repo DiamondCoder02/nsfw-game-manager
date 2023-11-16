@@ -50,7 +50,7 @@ If it doesn't begin with man, f95 ~~or dls(soon?)~~ it will be ignored. (man mea
 
 - [ ] FAQ rewrite
 - [ ] Optimizations
-- [ ] dlsite.com support
+- [ ] dlsite.com support (English currently)
 - [ ] Steam support
 
 ## Needs restart

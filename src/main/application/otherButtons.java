@@ -60,8 +60,8 @@ public class otherButtons {
 		"- Dlsite so only ID needed"+br+
 		"- (Far future) If I can, I will also add to download / autoupdate games"+br+br+
 		"Q: Support the project?"+br+"A: Patreon:"+" <font color = 64AFFF><a href=\"https://www.patreon.com/DiamondCoder\">https://www.patreon.com/DiamondCoder</a></font>"+br+
-		"or on Github:"+" <font color = 64AFFF><a href=\"https://github.com/sponsors/DiamondPRO02\">https://github.com/sponsors/DiamondPRO02</a></font>"+br+br+
-		"Q: Can I help code / Error in the program?"+br+"A: All isssue and help is accepted on GitHub:"+" <font color = 64AFFF><a href=\"https://github.com/DiamondPRO02/nsfw-game-manager\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font>"+br+br+
+		"or on Github:"+" <font color = 64AFFF><a href=\"https://github.com/sponsors/DiamondCoder02\">https://github.com/sponsors/DiamondCoder02</a></font>"+br+br+
+		"Q: Can I help code / Error in the program?"+br+"A: All isssue and help is accepted on GitHub:"+" <font color = 64AFFF><a href=\"https://github.com/DiamondCoder02/nsfw-game-manager\">https://github.com/DiamondCoder02/nsfw-game-manager</a></font>"+br+br+
 		"Q: placeholder?"+br+"A: placeholder!"+
 		"</span></p>");
 		ep.addHyperlinkListener(new HyperlinkListener() {
@@ -103,7 +103,7 @@ public class otherButtons {
 		"The main reason for this was to convert my old excel file into something more readeble and more usefull."+br+
 		"Main focus is something dynamic and easy to use for hentai games."+br+br+
 		"Thank you for using this program, it gives me smile I can make something good."+br+br+
-		"Full open source:"+" <font color = 64AFFF><a href=\"https://github.com/DiamondPRO02/nsfw-game-manager\">https://github.com/DiamondPRO02/nsfw-game-manager</a></font>"+br+
+		"Full open source:"+" <font color = 64AFFF><a href=\"https://github.com/DiamondCoder02/nsfw-game-manager\">https://github.com/DiamondCoder02/nsfw-game-manager</a></font>"+br+
 		"Support me on Github or on Patreon:"+" <font color = 64AFFF><a href=\"https://www.patreon.com/DiamondCoder\">https://www.patreon.com/DiamondCoder</a></font></span></p>"+br);
 		ep.addHyperlinkListener(new HyperlinkListener() {
 			@Override

@@ -19,14 +19,13 @@ public class autoUpdateCheck {
 			if (currentVersion == null) {currentVersion = mainInit.appVersion;}
 			else {JOptionPane.showMessageDialog(null, "Error getting version (checkUpdate)", "Error", JOptionPane.ERROR_MESSAGE);}
 		}
-		String url = "https://github.com/DiamondPRO02/nsfw-game-manager/releases/latest";
+		String url = "https://github.com/DiamondCoder02/nsfw-game-manager/releases/latest";
 
 		Boolean updateNeeded = false;
 		onlineLocation = getOnlineLocation(url); if (onlineLocation == null) { return updateNeeded; }
 		onlineVersion = onlineLocation.substring(onlineLocation.lastIndexOf("/") + 1, onlineLocation.length());
 		onlineVersion = onlineVersion.substring(0, onlineVersion.lastIndexOf("-"));
-		System.out.println(onlineVersion);
-		System.out.println(currentVersion);
+		System.out.println(onlineVersion + " -> " + currentVersion);
 		if (!onlineVersion.equals(currentVersion)) { updateNeeded = true; }
 		System.out.println("Update is needed: "+updateNeeded);
 		return updateNeeded;

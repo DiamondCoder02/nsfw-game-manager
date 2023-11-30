@@ -34,7 +34,7 @@ public class downloadNewVersion {
 		try{
 			boolean succ = downloadFile(onlineLocation, path);
 			if (succ) { settingsManager.xmlSettings("appVersion", "appVer"); }
-			JOptionPane.showMessageDialog(null, "Succesfully updated! ("+onlineVersion+")", "Success", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Succesfully updated! ("+onlineVersion+")", "Success", JOptionPane.OK_OPTION);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Error downloading from github (getNewestGithubVersion) \nGet newest from github.", "Error", JOptionPane.ERROR_MESSAGE);
 		}

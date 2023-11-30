@@ -62,7 +62,7 @@ public class checksFiles {
 			File file2 = new File(mainPath + "pics/" + picturesThatGets[i]);
 			if (!file2.exists()) {
 				try{
-					URL url = new URL("https://raw.githubusercontent.com/DiamondPRO02/nsfw-game-manager/master/icons_doNotTouch/" + picturesThatGets[i]);
+					URL url = new URL("https://raw.githubusercontent.com/DiamondCoder02/nsfw-game-manager/master/icons_doNotTouch/" + picturesThatGets[i]);
 					BufferedImage img = ImageIO.read(url);
 					ImageIO.write(img, "png", file2);
 				} catch (Exception e) {
@@ -79,7 +79,7 @@ public class checksFiles {
 		File file = new File(mainPath + "language.csv");
 		if (!file.exists()) {
 			try{
-				URL url = new URL("https://raw.githubusercontent.com/DiamondPRO02/nsfw-game-manager/master/doNotTouch/language.csv");
+				URL url = new URL("https://raw.githubusercontent.com/DiamondCoder02/nsfw-game-manager/master/doNotTouch/language.csv");
 				// System.out.println(url);
 				InputStream in = url.openStream();
 				FileOutputStream fos = new FileOutputStream(file);

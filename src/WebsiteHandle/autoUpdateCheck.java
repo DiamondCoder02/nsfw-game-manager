@@ -42,6 +42,7 @@ public class autoUpdateCheck {
 			onlineLocation = con.getHeaderField("Location");
 			con.disconnect();
 		} catch (Exception e) {
+			if (responseCode == 999) {JOptionPane.showMessageDialog(null, "Error getting to github, you might be offline?", "Error", JOptionPane.ERROR_MESSAGE);}
 			String error = "Github: " + responseCode + "\nOnline: " + onlineLocation;
 			JOptionPane.showMessageDialog(null, error, "Error", JOptionPane.ERROR_MESSAGE);
 			return null;

@@ -52,8 +52,8 @@ public class discord {
 			try (Core core = new Core(params)) {
 				try (Activity activity = new Activity()) {
 					allGames = saveLoadDoc.allGames;
-					activity.setDetails("Managing my hentai games");
-					activity.setState("Currently have " + allGames + " games");
+					// activity.setDetails("Managing my hentai games");
+					activity.setState("Currently managing " + allGames + " games");
 					// Setting a start time causes an "elapsed" field to appear
 					activity.timestamps().setStart(time);
 					// Make a "cool" image show up

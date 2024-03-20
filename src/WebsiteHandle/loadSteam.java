@@ -8,7 +8,6 @@ import java.net.URL;
 import javax.swing.JOptionPane;
 
 import org.json.*;
-
 import main.langLoad;
 
 public class loadSteam {
@@ -60,7 +59,11 @@ public class loadSteam {
 		}
 		allTheInfo[3] = allTheInfo[3].substring(0, allTheInfo[3].length() - 2);
 		// Remove <strong> tags
-		allTheInfo[4] = gameData.getString("supported_languages").replaceAll("<strong>", "").replaceAll("</strong>", "");
+		allTheInfo[4] = gameData.getString("supported_languages")
+			.replaceAll("<strong>", "")
+			.replaceAll("</strong>", "")
+			.replaceAll("\\*", "");
+		allTheInfo[4] = allTheInfo[4].split("<br>")[0];
 
 		if (gameData.getJSONObject("release_date").getBoolean("coming_soon")) {
 			allTheInfo[5] = "Unavailable til release";

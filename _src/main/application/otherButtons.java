@@ -36,7 +36,7 @@ public class otherButtons {
 		}
 	}
 	
-	public static void FACKQU(){
+	public static void FACKQU(){ // TODO faq
 		Boolean[] boolSettings = folderHandle.loadSaveGamesSettings.loadSettingsFromXml.loadBooleanSettings("othersettings");
 		String color;
 		if (boolSettings[0]) { color = "white"; } else { color = "black"; }

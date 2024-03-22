@@ -17,7 +17,15 @@ import main.mainInit;
 public class checksFiles {
 	private static String mainPath = mainInit.mainPath;
 	public static void checks() {
-		
+		File mainDirectory = new File(System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager");
+		if (!mainDirectory.exists()){
+			try {
+				mainDirectory.mkdirs();
+			} catch (Exception e) {
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Error creating main folder(s)! (checksFile.checks)", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+		}
 		checkSettingsFolder();
 		checkLanguage();
 		langLoad.loadLanguages();

@@ -24,6 +24,18 @@ If it's limited to some site, it will be in brackets ()
 - For VisualNovels there will be a "[VN]" at the name column
 - If a game has VR tag, it will have "[VR]" at the engine column
 
+## TODO / Ideas
+
+- [ ] FAQ rewrite
+- [ ] Optimizations ( Low priority )
+- [ ] dlsite.com support
+- [ ] Steam support
+- [ ] Make it LINUX compatible
+- [ ] Reqrite folder handling so it's not a pain in the ass to handle a hentai game folder
+- [ ] Rewrite ReadMe
+- [ ] Rewrite Languages
+- [ ] Rewrite the whole program
+
 ### Language support
 
 Currently supported languages: English( +EngwishUwU ), Hungarian
@@ -45,13 +57,6 @@ f95-696969_Good Game, try me_v12.31 DeveloperAndStuffMaybeNotes
 ```
 
 If it doesn't begin with man, f95 ~~or dls(soon?)~~ it will be ignored. (man means manually added game, so it's not connected to any site, you can give any ID you want it to have, but make it unique)
-
-## TODO / Ideas
-
-- [ ] FAQ rewrite
-- [ ] Optimizations
-- [ ] dlsite.com support
-- [ ] Steam support
 
 ## Needs restart
 

@@ -5,11 +5,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import folderHandle.createMissing.createMissingSettings;
 import main.langLoad;
 import main.mainInit;
-
-import java.io.File;
 
 import javax.swing.JOptionPane;
 
@@ -29,13 +26,9 @@ public class checkMissingSetting {
 		Boolean otSe = false, foSe = false, laSe = false, shCo = false;
 		Document dom = folderHandle.loadSaveGamesSettings.saveLoadDoc.loadDocument(mainInit.settingsPath);
 		if (dom == null) {
-			createMissingSettings.createFile(mainInit.settingsPath);
 		} else {
 			try {
 				NodeList settingSource = dom.getElementsByTagName("settings");
-				if (settingSource.getLength() == 0) {
-					deleteThenCreateBroken();
-				}
 				Node settingNode = settingSource.item(0);
 				if (settingNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element e = (Element) settingNode;
@@ -58,17 +51,6 @@ public class checkMissingSetting {
 		}
 		if (otSe || foSe || laSe || shCo) {
 			JOptionPane.showMessageDialog(null, "Settings got updated. \nPlease restart the program to make sure everything is correct.", "Settings updated", JOptionPane.INFORMATION_MESSAGE);
-		}
-	}
-
-	private static void deleteThenCreateBroken() {
-		String path = mainInit.settingsPath;
-		File file = new File(path);
-		if (file.exists()) {
-			file.delete();
-			createMissingSettings.createFile(path);
-		} else {
-			createMissingSettings.createFile(path);
 		}
 	}
 

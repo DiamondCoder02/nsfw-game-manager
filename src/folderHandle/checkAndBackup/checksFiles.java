@@ -9,8 +9,6 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
-import folderHandle.createMissing.createMissingDatabase;
-import folderHandle.createMissing.createMissingSettings;
 import main.langLoad;
 import main.mainInit;
 
@@ -18,29 +16,9 @@ public class checksFiles {
 	private static String mainPath = mainInit.mainPath;
 	public static void checks() {
 		
-		checkSettingsFolder();
 		checkLanguage();
 		langLoad.loadLanguages();
-		checkMissingDatabase();
 		checkPics();
-	}
-
-	public static void checkMissingDatabase() {
-		String path = mainPath + "hentai.xml";
-		File file = new File(path);
-		if (!file.exists()) {
-			createMissingDatabase.createFile(path);
-		}
-	}
-
-	public static void checkSettingsFolder(){
-		String path = mainPath + "settings.xml";
-		File file = new File(path);
-		if (!file.exists()) {
-			createMissingSettings.createFile(path);
-		} else {
-			checkMissingSetting.checkSettings();
-		}
 	}
 
 	private static void checkPics() {

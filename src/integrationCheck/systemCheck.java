@@ -33,10 +33,9 @@ public class systemCheck {
 
 	// Check if the folders exist
 	private static boolean foldersCheck() {
-		File backup = new File(mainDirectory + "/backup");
 		File discord = new File(mainDirectory + "/discord");
 		File pics = new File(mainDirectory + "/pics");
-		if (!backup.exists()) { try { backup.mkdirs(); } catch (Exception e) { return false; } }
+		if (!new File(mainDirectory + "/backup").exists()) { try { new File(mainDirectory + "/backup").mkdirs(); } catch (Exception e) { return false; } }
 		if (!discord.exists()) { try { discord.mkdirs(); } catch (Exception e) { return false; } }
 		if (!pics.exists()) { try { pics.mkdirs(); } catch (Exception e) { return false; } }
 		return true;

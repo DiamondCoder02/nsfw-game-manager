@@ -11,32 +11,43 @@ public class fileChecker {
 		{"language.csv", "https://raw.githubusercontent.com/DiamondCoder02/nsfw-game-manager/master/language.csv"},
 		{"pics/creditLogo.png", "https://raw.githubusercontent.com/DiamondCoder02/nsfw-game-manager/master/icons_doNotTouch/creditLogo.png"},
 		{"pics/nyaaa.png", "https://raw.githubusercontent.com/DiamondCoder02/nsfw-game-manager/master/icons_doNotTouch/nyaaa.png"},
-		{"discord_game_sdk.dll", "https://dl-game-sdk.discordapp.net/3.2.1/discord_game_sdk.zip"}
+		{"discord/discord_game_sdk.dll", "https://dl-game-sdk.discordapp.net/3.2.1/discord_game_sdk.zip"}
 	};
 	private static boolean success = false;
 
 	public static boolean fileCheckingHandler(File mainDirectory) {
-		for (String file : filesNeeded) { checkFile(mainDirectory, file); }
-		for (String[] file : onlineFilesNeeded) { checkFile(mainDirectory, file); }
-		return success;
+		for (String file : filesNeeded) { 
+			System.out.println("Checking for file: " + file + "...");
+			success = checkFile(mainDirectory, file); 
+			if (!success) { return false; }
+		}
+		for (String[] file : onlineFilesNeeded) { 
+			System.out.println("Checking for file: " + file[0] + "...");
+			success = checkFile(mainDirectory, file); 
+			if (!success) { return false; }
+		}
+		System.out.println("*** All files are present! ***");
+		return true;
 	}
 
-	private static void checkFile(File mainDirectory, String fileName) {
+	private static boolean checkFile(File mainDirectory, String fileName) {
+		boolean doneWith = false;
 		if (!new File(mainDirectory + "/" + fileName).exists()) {
 			// TODO - This is stupid...
 			switch (fileName) {
-				case "settings.xml":
-					success = fileCreator.settingsCreate();
-					break;
-				case "hentai.xml":
-					success = fileCreator.databaseCreate();
-					break;
+				case "settings.xml": doneWith = fileCreator.settingsCreate(mainDirectory); break;
+				case "hentai.xml": doneWith = fileCreator.databaseCreate(mainDirectory); break;
 			}
+			return doneWith;
+		} else {
+			return true;
 		}
 	}
 
-	private static void checkFile(File mainDirectory, String[] fileName) {
-		if (!new File(mainDirectory + "/" + fileName[0]).exists()) {
+	private static boolean checkFile(File mainDirectory, String[] fileName) {
+		// TODO - This need fix
+		
+		/*if (!new File(mainDirectory + "/" + fileName[0]).exists()) {
 			try {
 				URL url = new URL(fileName[1]);
 				BufferedImage img = ImageIO.read(url);
@@ -44,6 +55,8 @@ public class fileChecker {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
+		} 
+		*/
+		return true;
 	}
 }

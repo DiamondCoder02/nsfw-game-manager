@@ -4,7 +4,8 @@ import integrationCheck.systemCheck;
 public class mainApp {
 	public static void main(String[] args) {
 		if (!systemCheck.programSystemCheck()) { return; }
-		mainInit.mainStart();
+		System.out.println("--- System check passed! ---");
+		// mainInit.mainStart();
 	}
 }
 

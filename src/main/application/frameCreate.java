@@ -223,8 +223,6 @@ public class frameCreate extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String gac = e.getActionCommand();
-		folderHandle.checkAndBackup.checksFiles.checkMissingDatabase();
-		folderHandle.checkAndBackup.checksFiles.checkSettingsFolder();
 		// System.out.println(e); System.out.println(gac);
 		switch (gac) {
 			case "Add game": addManually.addOneGameToFile(); break;

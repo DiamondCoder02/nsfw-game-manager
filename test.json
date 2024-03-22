@@ -5,27 +5,12 @@
 			"type": "game",
 			"name": "Blade and Sorcery",
 			"steam_appid": 629730,
-			"required_age": 0,
 			"is_free": false,
 			"detailed_description": "The era of the VR weightless, wiggle-sword combat is over. Blade &amp; Sorcery is a medieval fantasy sandbox like no other, focusing on melee, ranged and magic combat that fully utilizes a unique and realistic physics driven interaction and combat system.<br><br>Built exclusively for VR, collisions are dictated by fine hitboxes, objects have weight and follow the laws of physics, creatures have full body physics and presence, and blades can be used to penetrate soft materials or deflect magic.<br><br><img src=\"https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/extras\/decals_steam.gif?t=1679575283\" \/><img src=\"https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/extras\/fire_stab_steam.gif?t=1679575283\" \/><br><br>In Blade &amp; Sorcery, the combat is limited only by your own creativity. Choose your weapon, choose your stance, choose your fighting style; Be the powerful warrior, ranger or sorcerer you always dreamed of becoming!",
-			"about_the_game": "The era of the VR weightless, wiggle-sword combat is over. Blade &amp; Sorcery is a medieval fantasy sandbox like no other, focusing on melee, ranged and magic combat that fully utilizes a unique and realistic physics driven interaction and combat system.<br><br>Built exclusively for VR, collisions are dictated by fine hitboxes, objects have weight and follow the laws of physics, creatures have full body physics and presence, and blades can be used to penetrate soft materials or deflect magic.<br><br><img src=\"https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/extras\/decals_steam.gif?t=1679575283\" \/><img src=\"https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/extras\/fire_stab_steam.gif?t=1679575283\" \/><br><br>In Blade &amp; Sorcery, the combat is limited only by your own creativity. Choose your weapon, choose your stance, choose your fighting style; Be the powerful warrior, ranger or sorcerer you always dreamed of becoming!",
 			"short_description": "Blade &amp; Sorcery is a built-for-VR medieval fantasy sandbox with full physics driven melee, ranged and magic combat. Become a powerful warrior, ranger or sorcerer and devastate your enemies.",
 			"supported_languages": "English",
-			"header_image": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/header.jpg?t=1679575283",
-			"capsule_image": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/capsule_231x87.jpg?t=1679575283",
-			"capsule_imagev5": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/capsule_184x69.jpg?t=1679575283",
 			"website": "https:\/\/warpfrog.com\/",
-			"pc_requirements": {
-				"minimum": "<strong>Minimum:<\/strong><br><ul class=\"bb_ul\"><li><strong>OS:<\/strong> Windows 10<br><\/li><li><strong>Processor:<\/strong> Quad Core 3GHz<br><\/li><li><strong>Memory:<\/strong> 8 GB RAM<br><\/li><li><strong>Graphics:<\/strong> NVIDIA GTX 1070<br><\/li><li><strong>VR Support:<\/strong> SteamVR or Oculus PCVR. Standing or Room Scale<br><\/li><li><strong>Additional Notes:<\/strong> Minimum 72Hz VR support<\/li><\/ul>",
-				"recommended": "<strong>Recommended:<\/strong><br><ul class=\"bb_ul\"><li><strong>OS:<\/strong> Windows 10<br><\/li><li><strong>Processor:<\/strong> 8-16 Core 4GHz<br><\/li><li><strong>Memory:<\/strong> 16 GB RAM<br><\/li><li><strong>Graphics:<\/strong> NVIDIA RTX 2070<br><\/li><li><strong>VR Support:<\/strong> SteamVR or Oculus PCVR. Standing or Room Scale<br><\/li><li><strong>Additional Notes:<\/strong> Recommended VR 90Hz support<\/li><\/ul>"
-			},
-			"mac_requirements": [],
-			"linux_requirements": [],
-			"legal_notice": "Please view our Privacy Policy information here: https:\/\/warpfrog.com\/privacy-policy<br \/>\r\n<br \/>\r\n© 2021 Blade & Sorcery",
 			"developers": [
-				"WarpFrog"
-			],
-			"publishers": [
 				"WarpFrog"
 			],
 			"price_overview": {
@@ -39,224 +24,17 @@
 			"packages": [
 				171225
 			],
-			"package_groups": [
-				{
-					"name": "default",
-					"title": "Buy Blade and Sorcery",
-					"description": "",
-					"selection_text": "Select a purchase option",
-					"save_text": "",
-					"display_type": 0,
-					"is_recurring_subscription": "false",
-					"subs": [
-						{
-							"packageid": 171225,
-							"percent_savings_text": " ",
-							"percent_savings": 0,
-							"option_text": "Blade & Sorcery - 19,99€",
-							"option_description": "",
-							"can_get_free_license": "0",
-							"is_free_license": false,
-							"price_in_cents_with_discount": 1999
-						}
-					]
-				}
-			],
 			"platforms": {
 				"windows": true,
 				"mac": false,
 				"linux": false
 			},
-			"categories": [
-				{
-					"id": 2,
-					"description": "Single-player"
-				},
-				{
-					"id": 52,
-					"description": "Tracked Controller Support"
-				},
-				{
-					"id": 54,
-					"description": "VR Only"
-				}
-			],
-			"genres": [
-				{
-					"id": "1",
-					"description": "Action"
-				},
-				{
-					"id": "25",
-					"description": "Adventure"
-				},
-				{
-					"id": "23",
-					"description": "Indie"
-				},
-				{
-					"id": "3",
-					"description": "RPG"
-				},
-				{
-					"id": "28",
-					"description": "Simulation"
-				},
-				{
-					"id": "70",
-					"description": "Early Access"
-				}
-			],
-			"screenshots": [
-				{
-					"id": 0,
-					"path_thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_1fab2d23d93d5b6e30a097b15d1854d65a7b5726.600x338.jpg?t=1679575283",
-					"path_full": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_1fab2d23d93d5b6e30a097b15d1854d65a7b5726.1920x1080.jpg?t=1679575283"
-				},
-				{
-					"id": 1,
-					"path_thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_aa84f60594357440c74c7a93e512a67547ba1627.600x338.jpg?t=1679575283",
-					"path_full": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_aa84f60594357440c74c7a93e512a67547ba1627.1920x1080.jpg?t=1679575283"
-				},
-				{
-					"id": 2,
-					"path_thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_98cb3b4ef9981f001a4cd36a7d1ed0d166635a62.600x338.jpg?t=1679575283",
-					"path_full": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_98cb3b4ef9981f001a4cd36a7d1ed0d166635a62.1920x1080.jpg?t=1679575283"
-				},
-				{
-					"id": 3,
-					"path_thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_857bd0df98cc1c86a680689e552fbd0393df4060.600x338.jpg?t=1679575283",
-					"path_full": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_857bd0df98cc1c86a680689e552fbd0393df4060.1920x1080.jpg?t=1679575283"
-				},
-				{
-					"id": 4,
-					"path_thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_e2eb4990df02020a6eabd2b3afb67d8e88bdf2db.600x338.jpg?t=1679575283",
-					"path_full": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_e2eb4990df02020a6eabd2b3afb67d8e88bdf2db.1920x1080.jpg?t=1679575283"
-				},
-				{
-					"id": 5,
-					"path_thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_971f04c5ad1b4701df427b76ca372ad24ce147c7.600x338.jpg?t=1679575283",
-					"path_full": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_971f04c5ad1b4701df427b76ca372ad24ce147c7.1920x1080.jpg?t=1679575283"
-				},
-				{
-					"id": 6,
-					"path_thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_813f77cccb566d7d8f518e352b0d9df392ba14f6.600x338.jpg?t=1679575283",
-					"path_full": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_813f77cccb566d7d8f518e352b0d9df392ba14f6.1920x1080.jpg?t=1679575283"
-				},
-				{
-					"id": 7,
-					"path_thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_491853f1437fce72dedbac61ec4af7039cfe1986.600x338.jpg?t=1679575283",
-					"path_full": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_491853f1437fce72dedbac61ec4af7039cfe1986.1920x1080.jpg?t=1679575283"
-				},
-				{
-					"id": 8,
-					"path_thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_0064d388376065514f11c5800b26fdc3a31561e7.600x338.jpg?t=1679575283",
-					"path_full": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_0064d388376065514f11c5800b26fdc3a31561e7.1920x1080.jpg?t=1679575283"
-				},
-				{
-					"id": 9,
-					"path_thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_973a6494583488fdda349f9ba5ab0845a5d89d1c.600x338.jpg?t=1679575283",
-					"path_full": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_973a6494583488fdda349f9ba5ab0845a5d89d1c.1920x1080.jpg?t=1679575283"
-				},
-				{
-					"id": 10,
-					"path_thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_d334e2e26039939883b8e737806c5956a2c374a1.600x338.jpg?t=1679575283",
-					"path_full": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_d334e2e26039939883b8e737806c5956a2c374a1.1920x1080.jpg?t=1679575283"
-				},
-				{
-					"id": 11,
-					"path_thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_9f437e2fd1f4ebc780337cb820550cae250cccdd.600x338.jpg?t=1679575283",
-					"path_full": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_9f437e2fd1f4ebc780337cb820550cae250cccdd.1920x1080.jpg?t=1679575283"
-				},
-				{
-					"id": 12,
-					"path_thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_6d5fd168de4d55885fcfafd789efaba64e2c5e2c.600x338.jpg?t=1679575283",
-					"path_full": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_6d5fd168de4d55885fcfafd789efaba64e2c5e2c.1920x1080.jpg?t=1679575283"
-				},
-				{
-					"id": 13,
-					"path_thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_b7450277ae15d8d916d361d1d4304586de352765.600x338.jpg?t=1679575283",
-					"path_full": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_b7450277ae15d8d916d361d1d4304586de352765.1920x1080.jpg?t=1679575283"
-				},
-				{
-					"id": 14,
-					"path_thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_d8d12a079fcbf2ff9e563596146f7b0db764d76e.600x338.jpg?t=1679575283",
-					"path_full": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_d8d12a079fcbf2ff9e563596146f7b0db764d76e.1920x1080.jpg?t=1679575283"
-				},
-				{
-					"id": 15,
-					"path_thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_e090ab92488443127b46c31bbffe4127cde081ba.600x338.jpg?t=1679575283",
-					"path_full": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_e090ab92488443127b46c31bbffe4127cde081ba.1920x1080.jpg?t=1679575283"
-				},
-				{
-					"id": 16,
-					"path_thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_5e75fbd8da7d29285faa3101c7d123f1ce9a88c7.600x338.jpg?t=1679575283",
-					"path_full": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/ss_5e75fbd8da7d29285faa3101c7d123f1ce9a88c7.1920x1080.jpg?t=1679575283"
-				}
-			],
-			"movies": [
-				{
-					"id": 256857498,
-					"name": "Update 10",
-					"thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/256857498\/movie.293x165.jpg?t=1635255825",
-					"webm": {
-						"480": "http:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/256857498\/movie480_vp9.webm?t=1635255825",
-						"max": "http:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/256857498\/movie_max_vp9.webm?t=1635255825"
-					},
-					"mp4": {
-						"480": "http:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/256857498\/movie480.mp4?t=1635255825",
-						"max": "http:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/256857498\/movie_max.mp4?t=1635255825"
-					},
-					"highlight": true
-				},
-				{
-					"id": 256791133,
-					"name": "U8",
-					"thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/256791133\/movie.293x165.jpg?t=1593380528",
-					"webm": {
-						"480": "http:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/256791133\/movie480_vp9.webm?t=1593380528",
-						"max": "http:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/256791133\/movie_max_vp9.webm?t=1593380528"
-					},
-					"mp4": {
-						"480": "http:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/256791133\/movie480.mp4?t=1593380528",
-						"max": "http:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/256791133\/movie_max.mp4?t=1593380528"
-					},
-					"highlight": true
-				},
-				{
-					"id": 256747288,
-					"name": "Update 5",
-					"thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/256747288\/movie.293x165.jpg?t=1554488769",
-					"webm": {
-						"480": "http:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/256747288\/movie480.webm?t=1554488769",
-						"max": "http:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/256747288\/movie_max.webm?t=1554488769"
-					},
-					"mp4": {
-						"480": "http:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/256747288\/movie480.mp4?t=1554488769",
-						"max": "http:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/256747288\/movie_max.mp4?t=1554488769"
-					},
-					"highlight": true
-				}
-			],
 			"recommendations": {
 				"total": 41553
 			},
 			"release_date": {
 				"coming_soon": false,
 				"date": "11 Dec, 2018"
-			},
-			"support_info": {
-				"url": "https:\/\/discord.gg\/4Ud5nUHrxu",
-				"email": ""
-			},
-			"background": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/page_bg_generated_v6b.jpg?t=1679575283",
-			"background_raw": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/629730\/page_bg_generated.jpg?t=1679575283",
-			"content_descriptors": {
-				"ids": [
-					2,
-					5
-				],
-				"notes": "This Game contain content not appropriate for all ages like frequent violence and gore."
 			}
 		}
 	}

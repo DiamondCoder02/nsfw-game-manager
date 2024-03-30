@@ -1,12 +1,15 @@
 import main.mainInit;
 import integrationCheck.systemCheck;
 
+
 public class mainApp {
 	public static void main(String[] args) {
 		if (!systemCheck.programSystemCheck()) { return; }
 		System.out.println("--- System check passed! ---");
 		// mainInit.mainStart();
 	}
+
+	// https://code-disaster.github.io/steamworks4j/getting-started.html
 }
 
 /* order of storage:

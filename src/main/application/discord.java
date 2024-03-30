@@ -20,6 +20,7 @@ import folderHandle.loadSaveGamesSettings.saveLoadDoc;
 public class discord {
 	static Integer allGames = saveLoadDoc.allGames;
 	static String image = "https://i.imgur.com/lJEl4eK.png";
+	// TODO - This seems to be broken, this needs fix
 	static ActivityButton button = new ActivityButton("Github", "https://github.com/DiamondPRO02/nsfw-game-manager");
 	static Boolean[] boolSettings;
 

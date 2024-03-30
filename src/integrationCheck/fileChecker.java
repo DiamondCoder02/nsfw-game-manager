@@ -1,9 +1,6 @@
 package integrationCheck;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.net.URL;
-import javax.imageio.ImageIO;
 
 public class fileChecker {
 	private static String[] filesNeeded = {"settings.xml", "hentai.xml"};
@@ -17,12 +14,10 @@ public class fileChecker {
 
 	public static boolean fileCheckingHandler(File mainDirectory) {
 		for (String file : filesNeeded) { 
-			System.out.println("Checking for file: " + file + "...");
 			success = checkFile(mainDirectory, file); 
 			if (!success) { return false; }
 		}
-		for (String[] file : onlineFilesNeeded) { 
-			System.out.println("Checking for file: " + file[0] + "...");
+		for (String[] file : onlineFilesNeeded) {
 			success = checkFile(mainDirectory, file); 
 			if (!success) { return false; }
 		}

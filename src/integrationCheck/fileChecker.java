@@ -33,19 +33,8 @@ public class fileChecker {
 		}
 	}
 
-	private static boolean checkFile(File mainDirectory, String[] fileName) {
-		// TODO - This need fix
+	private static boolean checkFile(File mainDirectory, String[] file) {
+		// TODO - This is stupid...
 		
-		/*if (!new File(mainDirectory + "/" + fileName[0]).exists()) {
-			try {
-				URL url = new URL(fileName[1]);
-				BufferedImage img = ImageIO.read(url);
-				ImageIO.write(img, "png", new File(mainDirectory + "/" + fileName[0]));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} 
-		*/
-		return true;
 	}
 }

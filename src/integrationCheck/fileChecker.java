@@ -1,23 +1,17 @@
 package integrationCheck;
 
 import java.io.File;
+import folderHandling.creatingDefaultDoc;
 
 public class fileChecker {
-	private static String[] filesNeeded = {"settings.xml", "hentai.xml"};
-	private static String[][] onlineFilesNeeded = {
-		{"language.csv", "https://raw.githubusercontent.com/DiamondCoder02/nsfw-game-manager/master/language.csv"},
-		{"pics/creditLogo.png", "https://raw.githubusercontent.com/DiamondCoder02/nsfw-game-manager/master/icons_doNotTouch/creditLogo.png"},
-		{"pics/nyaaa.png", "https://raw.githubusercontent.com/DiamondCoder02/nsfw-game-manager/master/icons_doNotTouch/nyaaa.png"},
-		{"discord/discord_game_sdk.dll", "https://dl-game-sdk.discordapp.net/3.2.1/discord_game_sdk.zip"}
-	};
 	private static boolean success = false;
 
 	public static boolean fileCheckingHandler(File mainDirectory) {
-		for (String file : filesNeeded) { 
+		for (String file : defaultValues.filesNeeded) { 
 			success = checkFile(mainDirectory, file); 
 			if (!success) { return false; }
 		}
-		for (String[] file : onlineFilesNeeded) {
+		for (String[] file : defaultValues.onlineFilesNeeded) {
 			success = checkFile(mainDirectory, file); 
 			if (!success) { return false; }
 		}
@@ -25,13 +19,13 @@ public class fileChecker {
 		return true;
 	}
 
-	private static boolean checkFile(File mainDirectory, String fileName) {
+	private static boolean checkFile(File directoryPlace, String fileName) {
 		boolean doneWith = false;
-		if (!new File(mainDirectory + "/" + fileName).exists()) {
+		if (!new File(directoryPlace + "/" + fileName).exists()) {
 			// TODO - This is stupid...
 			switch (fileName) {
-				case "settings.xml": doneWith = fileCreator.settingsCreate(mainDirectory); break;
-				case "hentai.xml": doneWith = fileCreator.databaseCreate(mainDirectory); break;
+				case "settings.xml": doneWith = creatingDefaultDoc.creatingDocHandler(directoryPlace + "/" + fileName, "settings", defaultValues.settings); break;
+				case "hentai.xml": doneWith = creatingDefaultDoc.creatingDocHandler(directoryPlace + "/" + fileName, "source", defaultValues.games); break;
 			}
 			return doneWith;
 		} else {

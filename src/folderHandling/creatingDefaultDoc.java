@@ -1,14 +1,6 @@
 package folderHandling;
 
-import java.io.File;
-
 import javax.swing.JOptionPane;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -23,12 +15,9 @@ public class creatingDefaultDoc {
 	 * '' &apos;
 	 * <name>John &amp; Doe</name>
 	 */
-	public static boolean creatingDocHandler(File mainDirectory, String endPath, String rootCreateElement, String[][] everythingNeeded) {
+	public static boolean creatingDocHandler(String directoryPath, String rootCreateElement, String[][] everythingNeeded) {
 		try {
-			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-			Document doc = docBuilder.newDocument();
-
+			Document doc = ADocHandle.create();
 			Element rootElement = doc.createElement(rootCreateElement);
 
 			switch (rootCreateElement) {
@@ -38,17 +27,10 @@ public class creatingDefaultDoc {
 			}
 
 			doc.appendChild(rootElement);
-			TransformerFactory transformerFactory = TransformerFactory.newInstance();
-			Transformer transformer = transformerFactory.newTransformer();
-			// TODO - is this needed?  transformer.setOutputProperty(OutputKeys.INDENT, "yes"); 
-			DOMSource domsource = new DOMSource(doc);
-			StreamResult result = new StreamResult(mainDirectory + "/" + endPath);
-			transformer.transform(domsource, result);
-			System.out.println("File created: "+endPath);
-			return true;
+			return ADocHandle.save(doc, directoryPath);
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error creating "+endPath+" file", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error creating "+directoryPath, "Error", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 	}

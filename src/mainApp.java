@@ -1,4 +1,4 @@
-import main.mainInit;
+import _main.mainInit;
 import integrationCheck.systemCheck;
 
 

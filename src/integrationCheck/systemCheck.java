@@ -5,6 +5,7 @@ import java.io.File;
 import javax.swing.JOptionPane;
 
 public class systemCheck {
+	// TODO - This is probably the only reason it wil not work on Linux (NEED TEST)
 	private static File mainDirectory = new File(System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager");
 	/*
 	 * Folder structure:

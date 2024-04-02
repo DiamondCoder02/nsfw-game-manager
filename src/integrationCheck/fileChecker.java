@@ -2,6 +2,7 @@ package integrationCheck;
 
 import java.io.File;
 import folderHandling.creatingDefaultDoc;
+import folderHandling.creatingMissingSettings;
 
 public class fileChecker {
 	private static boolean success = false;
@@ -22,17 +23,19 @@ public class fileChecker {
 	}
 
 	private static boolean checkFile(File directoryPlace, String fileName) {
-		boolean doneWith = false;
 		if (!new File(directoryPlace + "/" + fileName).exists()) {
 			// System.out.println("Creating: " + fileName);
 			// TODO - This is stupid...
 			switch (fileName) {
-				case "settings.xml": doneWith = creatingDefaultDoc.creatingDocHandler(directoryPlace + "/" + fileName, "settings", defaultValues.settings); break;
-				case "hentai.xml": doneWith = creatingDefaultDoc.creatingDocHandler(directoryPlace + "/" + fileName, "source", defaultValues.games); break;
+				case "settings.xml": return creatingDefaultDoc.creatingDocHandler(directoryPlace + "/" + fileName, "settings", defaultValues.settings);
+				case "hentai.xml": return creatingDefaultDoc.creatingDocHandler(directoryPlace + "/" + fileName, "source", defaultValues.games);
+				default: return false;
 			}
-			return doneWith;
+		} else if (fileName.equals("settings.xml")) {
+			// TODO - check the settings file and update if some values are missing
+			return creatingMissingSettings.creatingMissingSettingsHandler(directoryPlace + "/" + fileName, "settings", defaultValues.settings);
 		} else {
-			return true;
+			return false;
 		}
 	}
 }

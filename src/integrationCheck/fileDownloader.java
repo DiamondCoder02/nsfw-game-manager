@@ -1,31 +1,98 @@
 package integrationCheck;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.HttpURLConnection;
+import java.nio.file.Files;
+import java.util.Locale;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+
+import javax.imageio.ImageIO;
+
 public class fileDownloader {
 	public static boolean downloadFile(String url, String fullPath) {
 		// TODO - This is stupid...
-		String fileType = fullPath.split(".")[fullPath.split(".").length - 1];
-		System.out.println(fileType);
+		String[] pathSplit = fullPath.split("\\.");
+		switch (pathSplit[1]) {
+			case "xml": case "csv":
+				return fileDonloader(url, fullPath);
+			case "png":	case "jpg":
+				return imageDonloader(url, fullPath, pathSplit[1]);
+			case "dll":
+				// TODO - Discord donwload, this is stupid in future, but for now it's fine
+				return discordSdkDownload(url, pathSplit[0]);
+			default:
+				return false;
+		}
+	}
 
+	private static boolean imageDonloader(String url, String endFullDirectoryPath, String fileType) {
+		try{
+			BufferedImage img = ImageIO.read(new URL(url));
+			ImageIO.write(img, fileType, new File(endFullDirectoryPath));
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 
-		/* When downloading a different file
-		 * URL url = new URL("https://raw.githubusercontent.com/DiamondCoder02/nsfw-game-manager/master/doNotTouch/language.csv");
-				// System.out.println(url);
-				InputStream in = url.openStream();
-				FileOutputStream fos = new FileOutputStream(file);
-				byte[] buffer = new byte[4096];
-				int length;
-				while ((length = in.read(buffer)) > 0) {
-					fos.write(buffer, 0, length);
+	private static boolean fileDonloader(String url, String endFullDirectoryPath) {
+		try {
+			InputStream in = new URL(url).openStream();
+			FileOutputStream fos = new FileOutputStream(new File(endFullDirectoryPath));
+			byte[] buffer = new byte[4096];
+			int length;
+			while ((length = in.read(buffer)) > 0) {
+				fos.write(buffer, 0, length);
+			}
+			in.close(); fos.close();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	// thank you <3 ; https://github.com/JnCrMx/discord-game-sdk4j
+	private static boolean discordSdkDownload(String url, String directoryWithoutExtension){
+		System.out.println("Downloading: " + url);
+		String suffix;
+		String osName = System.getProperty("os.name").toLowerCase(Locale.ROOT);
+		String arch = System.getProperty("os.arch").toLowerCase(Locale.ROOT);
+		if (osName.contains("windows")) { suffix = ".dll";
+		} else if (osName.contains("linux")) { suffix = ".so";
+		} else if (osName.contains("mac os")) { suffix = ".dylib";
+		} else { throw new RuntimeException("cannot determine OS type: " + osName); }
+		if (arch.equals("amd64")) { arch = "x86_64"; }
+
+		try {
+			// TODO - return true if discord is set to false in settings
+			// Path of Discord's library inside the ZIP
+			String zipPath = "lib/" + arch + "/discord_game_sdk" + suffix;
+			// Open the URL as a ZipInputStream
+			HttpURLConnection connection = (HttpURLConnection) new URL("https://dl-game-sdk.discordapp.net/3.2.1/discord_game_sdk.zip").openConnection();
+			connection.setRequestProperty("User-Agent", "discord-game-sdk4j (https://github.com/JnCrMx/discord-game-sdk4j)");
+			ZipInputStream zin = new ZipInputStream(connection.getInputStream());
+
+			// Search for the right file inside the ZIP
+			ZipEntry entry;
+			while ((entry = zin.getNextEntry()) != null) {
+				if (entry.getName().equals(zipPath)) {
+					// Copy the file in the ZIP to our temporary file
+					Files.copy(zin, new File(directoryWithoutExtension + suffix).toPath());
+					zin.close();
+					return true;
 				}
-				in.close();
-				fos.close();
-		 */
-
-
-		/* If fullpath ends with .png or .jpg, download image
-		 * URL url = new URL("https://raw.githubusercontent.com/DiamondCoder02/nsfw-game-manager/master/icons_doNotTouch/" + picturesThatGets[i]);
-					BufferedImage img = ImageIO.read(url);
-					ImageIO.write(img, "png", file2);
-		 */
+				zin.closeEntry(); // next entry
+			}
+			zin.close();
+			return true;
+		} catch (Exception e) {
+			System.err.println("Error downloading Discord SDK.\n" + e);
+			return false;
+		}
 	}
 }

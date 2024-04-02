@@ -1,19 +1,16 @@
 package _main.application;
 
-// thank you <3 ; https://github.com/JnCrMx/discord-game-sdk4j
+
 import de.jcm.discordgamesdk.Core;
 import de.jcm.discordgamesdk.CreateParams;
 import de.jcm.discordgamesdk.activity.Activity;
 import de.jcm.discordgamesdk.activity.ActivityButton;
 
-import java.io.File;
 import java.io.IOException;
 import java.time.Instant;
-import java.util.Locale;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import _folderHandle.discord.downloadDiscordSDK;
 import _folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
 import _folderHandle.loadSaveGamesSettings.saveLoadDoc;
 
@@ -27,18 +24,6 @@ public class discord {
 	public static void loopDiscord() throws IOException {
 		boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
 		if (!boolSettings[3]) { return;}
-
-		String name = "discord_game_sdk"; String suffix;
-		String osName = System.getProperty("os.name").toLowerCase(Locale.ROOT);
-		String arch = System.getProperty("os.arch").toLowerCase(Locale.ROOT);
-		if (osName.contains("windows")) { suffix = ".dll";
-		} else if (osName.contains("linux")) { suffix = ".so";
-		} else if (osName.contains("mac os")) { suffix = ".dylib";
-		} else { throw new RuntimeException("cannot determine OS type: " + osName); }
-		if (arch.equals("amd64")) { arch = "x86_64"; }
-
-		File discordLibrary = downloadDiscordSDK.downloadDiscordLibrary(name, suffix, arch);
-		if (discordLibrary == null) { System.err.println("Error downloading Discord SDK."); return;}
 
 		Executors.newSingleThreadScheduledExecutor().schedule(() -> { discordRPC(); }, 0, TimeUnit.SECONDS);
 	}

@@ -1,7 +1,6 @@
 import _main.mainInit;
 import integrationCheck.systemCheck;
 
-
 public class mainApp {
 	public static void main(String[] args) {
 		if (!systemCheck.programSystemCheck()) { return; }

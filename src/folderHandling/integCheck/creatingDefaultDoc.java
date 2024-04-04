@@ -1,9 +1,11 @@
-package folderHandling;
+package folderHandling.integCheck;
 
 import javax.swing.JOptionPane;
-
+import org.json.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
+import folderHandling.ADocHandle;
 
 public class creatingDefaultDoc {
 	/*
@@ -21,7 +23,7 @@ public class creatingDefaultDoc {
 			Element rootElement = doc.createElement(rootCreateElement);
 
 			switch (rootCreateElement) {
-				case "settings": rootElement = createSettings(doc, rootElement, everythingNeeded); break;
+				// case "settings": rootElement = createSettings(doc, rootElement, everythingNeeded); break;
 				case "source": rootElement = createDatabase(doc, rootElement, everythingNeeded); break;
 				default: break;
 			}
@@ -35,19 +37,46 @@ public class creatingDefaultDoc {
 		}
 	}
 
-	// Create settings.xml
-	private static Element createSettings(Document doc, Element rootElement, String[][] everythingNeeded) {
-		for (String[] element : everythingNeeded) {
-			Element newElement = doc.createElement(element[0]);
-			if (element.length == 3) {
-				newElement.setAttribute(element[1].split("-")[0], element[1].split("-")[1]);
-				newElement.appendChild(doc.createTextNode(element[2]));
-			} else {
-				newElement.appendChild(doc.createTextNode(element[1]));
-			}
-			rootElement.appendChild(newElement);
+	public static boolean createJsonSettings(String[][] allSettings, String directoryPath) {
+		/*
+		[ … ] represents an array, so library will parse it to JSONArray
+		{ … } represents an object, so library will parse it to JSONObject
+
+		String jsonString = ... ; //assign your JSON String here
+		JSONObject obj = new JSONObject(jsonString);
+		String pageName = obj.getJSONObject("pageInfo").getString("pageName");
+
+		JSONArray arr = obj.getJSONArray("posts"); // notice that `"posts": [...]`
+		for (int i = 0; i < arr.length(); i++) {
+			String post_id = arr.getJSONObject(i).getString("post_id");
 		}
-		return rootElement;
+		 */
+
+		System.out.println("Creating settings.json");
+		JSONObject obj = new JSONObject();
+		for (int i = 0; i < allSettings.length; i++) {
+			if (allSettings[i][0] == "othersettings") {
+				JSONObject subObj = new JSONObject();
+				for (int j = 1; j < allSettings[i].length; j++) {
+					subObj.put(allSettings[i][j], false);
+				}
+				obj.put(allSettings[i][0], subObj);
+			} else if (allSettings[i][0] == "shownColumns") {
+				JSONObject subObj = new JSONObject();
+				for (int j = 1; j < allSettings[i].length; j++) {
+					subObj.put(allSettings[i][j], true);
+				}
+				obj.put(allSettings[i][0], subObj);
+			} else {
+				obj.put(allSettings[i][0], allSettings[i][1]);
+			}
+		}
+		System.out.println(obj.toString());
+		if (ADocHandle.save(obj, directoryPath)) {
+			System.out.println("File JSON win. YAY :3 ");
+			return true;
+		}
+		return false;
 	}
 
 	// Create database.xml

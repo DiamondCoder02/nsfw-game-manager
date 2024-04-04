@@ -1,8 +1,9 @@
 package integrationCheck;
 
 import java.io.File;
-import folderHandling.creatingDefaultDoc;
-import folderHandling.creatingMissingSettings;
+
+import folderHandling.integCheck.creatingDefaultDoc;
+import folderHandling.integCheck.creatingMissingSettings;
 
 public class fileChecker {
 	private static boolean success = false;
@@ -14,11 +15,21 @@ public class fileChecker {
 			if (!success) { return false; }
 		}
 		for (String[] file : defaultValues.onlineFilesNeeded) {
-			success = fileDownloader.downloadFile(file[1], mainDirectory + "/" + file[0]); 
-			// System.out.println(success + " - " + file[0]);
-			if (!success) { return false; }
+			if (!checkLocalBeforeOnline(mainDirectory + "/" + file[0])) {
+				// System.out.println("Downloading: " + file[0]);
+				success = fileDownloader.downloadFile(file[1], mainDirectory + "/" + file[0]); 
+				// System.out.println(success + " - " + file[0]);
+				if (!success) { return false; }
+			}
 		}
 		// System.out.println("*** All files are present! ***");
+		return true;
+	}
+
+	private static boolean checkLocalBeforeOnline(String localDir) {
+		if (!new File(localDir).exists()) {
+			return false;
+		}
 		return true;
 	}
 
@@ -27,15 +38,16 @@ public class fileChecker {
 			// System.out.println("Creating: " + fileName);
 			// TODO - This is stupid...
 			switch (fileName) {
-				case "settings.xml": return creatingDefaultDoc.creatingDocHandler(directoryPlace + "/" + fileName, "settings", defaultValues.settings);
+				case "settings.json": return creatingDefaultDoc.createJsonSettings(defaultValues.settings, directoryPlace + "/" + fileName);
 				case "hentai.xml": return creatingDefaultDoc.creatingDocHandler(directoryPlace + "/" + fileName, "source", defaultValues.games);
 				default: return false;
 			}
-		} else if (fileName.equals("settings.xml")) {
+		} else if (fileName.equals("settings.json")) {
 			// TODO - check the settings file and update if some values are missing
-			return creatingMissingSettings.creatingMissingSettingsHandler(directoryPlace + "/" + fileName, "settings", defaultValues.settings);
+			return true;
+			// return creatingMissingSettings.creatingMissingSettingsHandler(directoryPlace + "/" + fileName, "settings", defaultValues.settings);
 		} else {
-			return false;
+			return true;
 		}
 	}
 }

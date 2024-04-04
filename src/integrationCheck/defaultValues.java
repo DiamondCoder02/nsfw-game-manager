@@ -1,7 +1,7 @@
 package integrationCheck;
 
 public interface defaultValues {
-	String[] filesNeeded = {"settings.xml", "hentai.xml"};
+	String[] filesNeeded = {"settings.json", "hentai.xml"};
 	
 	String[][] onlineFilesNeeded = {
 		{"language.csv", "https://raw.githubusercontent.com/DiamondCoder02/nsfw-game-manager/master/doNotTouch/language.csv"},
@@ -11,29 +11,13 @@ public interface defaultValues {
 	};
 
 	String[][] settings = {
-		{"othersettings", "enabled-true", "Dark mode"},
-		{"othersettings", "enabled-false", "Auto fetch game info"},
-		{"othersettings", "enabled-false", "Auto fetch folders"},
-		{"othersettings", "enabled-false", "DiscordRPC"},
-		{"language", "english"},
-		{"folderLocation", "null"},
-		{"appVersion", "enabled-true", "0.1.1.4"},
-		{"showncolumns", "enabled-true", "Site"},
-		{"showncolumns", "enabled-true", "ID"},
-		{"showncolumns", "enabled-true", "Name"},
-		{"showncolumns", "enabled-true", "Developer"},
-		{"showncolumns", "enabled-true", "Played version"},
-		{"showncolumns", "enabled-true", "Last time play"},
-		{"showncolumns", "enabled-true", "Rated"},
-		{"showncolumns", "enabled-true", "Newest version"},
-		{"showncolumns", "enabled-true", "Last update"},
-		{"showncolumns", "enabled-true", "People rating"},
-		{"showncolumns", "enabled-true", "Player progress"},
-		{"showncolumns", "enabled-true", "Still on pc?"},
-		{"showncolumns", "enabled-true", "Engine"},
-		{"showncolumns", "enabled-true", "OS"},
-		{"showncolumns", "enabled-true", "Language"},
-		{"showncolumns", "enabled-true", "Personal Notes"}
+		{ "othersettings", "autoUpdateManager", "darkMode", "autoFetchNewGameInfos", "autoFetchLocalGameFolder", "DiscordRPC"},
+		{ "language", "english" },
+		{ "folderLocation", "null" },
+		{ "appVersion", "0.1.1.4"},
+		{ "shownColumns", "site", "id", "name", "developer", "playedVersion", "lastTimePlayed", "rated", 
+			"newestVersionOnline", "lastDateTimeUpdated", "peopleOnlineRating", "localPlayerProgress", 
+			"gameStillOnPc", "gameEngine", "os", "language", "localPersonalNotes"}
 	};
 
 	String[][] games = {

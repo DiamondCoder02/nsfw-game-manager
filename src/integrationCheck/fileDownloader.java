@@ -19,9 +19,9 @@ public class fileDownloader {
 		String[] pathSplit = fullPath.split("\\.");
 		switch (pathSplit[1]) {
 			case "xml": case "csv":
-				return fileDonloader(url, fullPath);
+				return fileDownloading(url, fullPath);
 			case "png":	case "jpg":
-				return imageDonloader(url, fullPath, pathSplit[1]);
+				return imageDownloader(url, fullPath, pathSplit[1]);
 			case "dll":
 				// TODO - Discord donwload, this is stupid in future, but for now it's fine
 				return discordSdkDownload(url, pathSplit[0]);
@@ -30,7 +30,7 @@ public class fileDownloader {
 		}
 	}
 
-	private static boolean imageDonloader(String url, String endFullDirectoryPath, String fileType) {
+	private static boolean imageDownloader(String url, String endFullDirectoryPath, String fileType) {
 		try{
 			BufferedImage img = ImageIO.read(new URL(url));
 			ImageIO.write(img, fileType, new File(endFullDirectoryPath));
@@ -40,7 +40,7 @@ public class fileDownloader {
 		}
 	}
 
-	private static boolean fileDonloader(String url, String endFullDirectoryPath) {
+	private static boolean fileDownloading(String url, String endFullDirectoryPath) {
 		try {
 			InputStream in = new URL(url).openStream();
 			FileOutputStream fos = new FileOutputStream(new File(endFullDirectoryPath));

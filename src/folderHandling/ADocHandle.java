@@ -1,9 +1,12 @@
 package folderHandling;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -61,7 +64,7 @@ public class ADocHandle {
 		return true;
 	}
 
-	public static boolean save(JSONObject json, String finalDirectory) {
+	public static boolean saveJson(JSONObject json, String finalDirectory) {
 		File file = new File(finalDirectory);
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(file,true));
@@ -75,6 +78,40 @@ public class ADocHandle {
 		} catch (IOException e) {
 			e.printStackTrace();
 			return false;
+		}
+	}
+
+	public static JSONObject loadJson(String directory) {
+		// TODO - This works?
+		File file = new File(directory);
+		JSONObject obj = new JSONObject();
+		try {
+			BufferedReader in = new BufferedReader(new FileReader(file));
+			String line;
+			
+			
+			/*
+			for (int i = 0; i < allSettings.length; i++) {
+				if (allSettings[i][0] == "othersettings") {
+					JSONObject subObj = new JSONObject();
+					for (int j = 1; j < allSettings[i].length; j++) {
+						subObj.put(allSettings[i][j], false);
+					}
+					obj.put(allSettings[i][0], subObj);
+				} else if (allSettings[i][0] == "shownColumns") {
+					JSONObject subObj = new JSONObject();
+					for (int j = 1; j < allSettings[i].length; j++) {
+						subObj.put(allSettings[i][j], true);
+					}
+					obj.put(allSettings[i][0], subObj);
+				} else {
+					obj.put(allSettings[i][0], allSettings[i][1]);
+				}
+			}*/
+			return obj;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 }

@@ -72,7 +72,7 @@ public class creatingDefaultDoc {
 			}
 		}
 		System.out.println(obj.toString());
-		if (ADocHandle.save(obj, directoryPath)) {
+		if (ADocHandle.saveJson(obj, directoryPath)) {
 			System.out.println("File JSON win. YAY :3 ");
 			return true;
 		}

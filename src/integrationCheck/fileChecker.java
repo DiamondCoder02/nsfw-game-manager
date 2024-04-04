@@ -43,9 +43,7 @@ public class fileChecker {
 				default: return false;
 			}
 		} else if (fileName.equals("settings.json")) {
-			// TODO - check the settings file and update if some values are missing
-			return true;
-			// return creatingMissingSettings.creatingMissingSettingsHandler(directoryPlace + "/" + fileName, "settings", defaultValues.settings);
+			return creatingMissingSettings.creatingMissingSettingsHandler(defaultValues.settings, directoryPlace + "/" + fileName);
 		} else {
 			return true;
 		}

@@ -19,6 +19,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -73,7 +74,7 @@ public class ADocHandle {
 	public static boolean saveSettingsJson(String finalDirectory, Map<String, Object> settingsSave) {
 		try {
 			BufferedWriter writer = Files.newBufferedWriter(Paths.get(finalDirectory));
-			Gson gson = new Gson();
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 			writer.write(gson.toJson(settingsSave));
 			writer.close();
@@ -88,7 +89,8 @@ public class ADocHandle {
 	public static boolean saveSettingsJson(String finalDirectory, JsonObject settingsSave) {
 		try {
 			BufferedWriter writer = Files.newBufferedWriter(Paths.get(finalDirectory));
-			Gson gson = new Gson();
+			// https://howtodoinjava.com/gson/pretty-print-json-output/
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 			writer.write(gson.toJson(settingsSave));
 			writer.close();

@@ -3,10 +3,10 @@ package folderHandling;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Map;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -16,8 +16,11 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.json.JSONObject;
 import org.w3c.dom.Document;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 public class ADocHandle {
 	public static Document create() {
@@ -64,51 +67,45 @@ public class ADocHandle {
 		return true;
 	}
 
-	public static boolean saveJson(JSONObject json, String finalDirectory) {
-		File file = new File(finalDirectory);
+	// Oh Jesus
+	// Alright, the problem to solve is that the tutorials are fucking confusing
+	// TODO - Fix later
+	public static boolean saveSettingsJson(String finalDirectory, Map<String, Object> settingsSave) {
 		try {
-			BufferedWriter out = new BufferedWriter(new FileWriter(file,true));
-			try{
-				out.append(json.toString());
-				out.newLine();
-			} finally {
-				out.close();
-			}
+			BufferedWriter writer = Files.newBufferedWriter(Paths.get(finalDirectory));
+			Gson gson = new Gson();
+
+			writer.write(gson.toJson(settingsSave));
+			writer.close();
+
 			return true;
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
 
-	public static JSONObject loadJson(String directory) {
-		// TODO - This works?
-		File file = new File(directory);
-		JSONObject obj = new JSONObject();
+	public static boolean saveSettingsJson(String finalDirectory, JsonObject settingsSave) {
 		try {
-			BufferedReader in = new BufferedReader(new FileReader(file));
-			String line;
-			
-			
-			/*
-			for (int i = 0; i < allSettings.length; i++) {
-				if (allSettings[i][0] == "othersettings") {
-					JSONObject subObj = new JSONObject();
-					for (int j = 1; j < allSettings[i].length; j++) {
-						subObj.put(allSettings[i][j], false);
-					}
-					obj.put(allSettings[i][0], subObj);
-				} else if (allSettings[i][0] == "shownColumns") {
-					JSONObject subObj = new JSONObject();
-					for (int j = 1; j < allSettings[i].length; j++) {
-						subObj.put(allSettings[i][j], true);
-					}
-					obj.put(allSettings[i][0], subObj);
-				} else {
-					obj.put(allSettings[i][0], allSettings[i][1]);
-				}
-			}*/
-			return obj;
+			BufferedWriter writer = Files.newBufferedWriter(Paths.get(finalDirectory));
+			Gson gson = new Gson();
+
+			writer.write(gson.toJson(settingsSave));
+			writer.close();
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static JsonObject loadSettingsJson(String directory) {
+		try{
+			BufferedReader reader = Files.newBufferedReader(Paths.get(directory));
+			JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();	
+			reader.close();
+			return parser;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

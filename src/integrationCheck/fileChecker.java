@@ -39,7 +39,7 @@ public class fileChecker {
 			// TODO - This is stupid...
 			switch (fileName) {
 				case "settings.json": return creatingDefaultDoc.createJsonSettings(defaultValues.settings, directoryPlace + "/" + fileName);
-				case "hentai.xml": return creatingDefaultDoc.creatingDocHandler(directoryPlace + "/" + fileName, "source", defaultValues.games);
+				case "hentai.xml": return creatingDefaultDoc.createDatabase(directoryPlace + "/" + fileName, "source", defaultValues.games);
 				default: return false;
 			}
 		} else if (fileName.equals("settings.json")) {

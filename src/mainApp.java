@@ -1,10 +1,23 @@
 import _main.mainInit;
+import folderHandling.initialFileLoading.loadSettings;
+import integrationCheck.newVersion;
 import integrationCheck.systemCheck;
 
 public class mainApp {
+	private static String mainDirectory = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager";
 	public static void main(String[] args) {
-		if (!systemCheck.programSystemCheck()) { return; }
+		if (!systemCheck.programSystemCheck(mainDirectory)) { return; }
 		System.out.println("--- System check passed! ---");
+
+		if (!loadSettings.load(mainDirectory)) { return; }
+		System.out.println("--- Settings loaded ---");
+
+		Boolean updateNeed = false;
+		System.out.println("--- Checking for new version ---" + loadSettings.othersettings[0]);
+		if (loadSettings.othersettings[0]) { updateNeed = newVersion.checkNewVersion();	}
+		if (updateNeed) { System.out.println("--- New Version Available ---"); return; }
+		System.out.println("--- No New Version ---");
+
 		// mainInit.mainStart();
 	}
 

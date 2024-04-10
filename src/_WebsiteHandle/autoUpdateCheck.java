@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import _folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
 import _main.mainInit;
+import integrationCheck.defaultValues;
 
 public class autoUpdateCheck {
 	public static String onlineVersion = null;
@@ -22,7 +23,7 @@ public class autoUpdateCheck {
 		String url = "https://github.com/DiamondCoder02/nsfw-game-manager/releases/latest";
 
 		Boolean updateNeeded = false;
-		onlineLocation = getOnlineLocation(url); if (onlineLocation == null) { return updateNeeded; }
+		onlineLocation = getOnlineLocation(); if (onlineLocation == null) { return updateNeeded; }
 		onlineVersion = onlineLocation.substring(onlineLocation.lastIndexOf("/") + 1, onlineLocation.length());
 		onlineVersion = onlineVersion.substring(0, onlineVersion.lastIndexOf("-"));
 		System.out.println(onlineVersion + " -> " + currentVersion);
@@ -31,11 +32,11 @@ public class autoUpdateCheck {
 		return updateNeeded;
 	}
 
-	private static String getOnlineLocation(String url) {
+	private static String getOnlineLocation() {
 		String onlineLocation = null;
 		int responseCode = 999;
 		try{
-			HttpURLConnection con = (HttpURLConnection) (new URL(url).openConnection());
+			HttpURLConnection con = (HttpURLConnection) (new URL(defaultValues.appGithubLink).openConnection());
 			con.setInstanceFollowRedirects(false);
 			con.connect();
 			responseCode = con.getResponseCode();

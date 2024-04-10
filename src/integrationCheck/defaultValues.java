@@ -1,8 +1,10 @@
 package integrationCheck;
 
 public interface defaultValues {
+	String appGithubLink = "https://github.com/DiamondCoder02/nsfw-game-manager/releases/latest";
+
 	String[] filesNeeded = {"settings.json", "hentai.xml"};
-	
+
 	String[][] onlineFilesNeeded = {
 		{"language.csv", "https://raw.githubusercontent.com/DiamondCoder02/nsfw-game-manager/master/doNotTouch/language.csv"},
 		{"pics/creditLogo.png", "https://raw.githubusercontent.com/DiamondCoder02/nsfw-game-manager/master/icons_doNotTouch/creditLogo.png"},
@@ -11,10 +13,10 @@ public interface defaultValues {
 	};
 
 	String[][] settings = {
-		{ "othersettings", "autoUpdateManager", "darkMode", "autoFetchNewGameInfos", "autoFetchLocalGameFolder", "DiscordRPC"},
-		{ "language", "english" },
-		{ "folderLocation", "null" },
 		{ "appVersion", "0.1.1.4"},
+		{ "appLanguage", "english" },
+		{ "folderLocation", "null" },
+		{ "othersettings", "autoUpdateManager", "darkMode", "autoFetchNewGameInfos", "autoFetchLocalGameFolder", "DiscordRPC"},
 		{ "shownColumns", "site", "id", "name", "developer", "playedVersion", "lastTimePlayed", "rated", 
 			"newestVersionOnline", "lastDateTimeUpdated", "peopleOnlineRating", "localPlayerProgress", 
 			"gameStillOnPc", "gameEngine", "os", "language", "localPersonalNotes"}

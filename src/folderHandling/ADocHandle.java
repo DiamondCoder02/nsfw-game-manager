@@ -70,10 +70,11 @@ public class ADocHandle {
 
 	// Oh Jesus
 	// Alright, the problem to solve is that the tutorials are fucking confusing
-	// TODO - Fix later
+	// TODO - Fix later and merge thw two?
 	public static boolean saveSettingsJson(String finalDirectory, Map<String, Object> settingsSave) {
 		try {
 			BufferedWriter writer = Files.newBufferedWriter(Paths.get(finalDirectory));
+			// https://howtodoinjava.com/gson/pretty-print-json-output/
 			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 			writer.write(gson.toJson(settingsSave));

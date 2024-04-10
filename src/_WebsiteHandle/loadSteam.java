@@ -7,8 +7,6 @@ import java.net.URL;
 
 import javax.swing.JOptionPane;
 
-import org.json.*;
-
 import _main.langLoad;
 
 public class loadSteam {
@@ -37,6 +35,7 @@ public class loadSteam {
 		String[] allTheInfo = new String[6];
 		for (int i = 0; i < allTheInfo.length; i++) { allTheInfo[i] = ""; }
 
+		/*
 		JSONObject obj = new JSONObject(content.toString());
 		// System.out.println(obj);
 		Boolean succ = obj.getJSONObject(gameIds.toString()).getBoolean("success");
@@ -79,6 +78,7 @@ public class loadSteam {
 		System.out.println(allTheInfo[3]);
 		System.out.println(allTheInfo[4]);
 		System.out.println(allTheInfo[5]);
+		*/
 		return null;
 	}
 }

@@ -1,5 +1,5 @@
 package folderHandling.initialFileLoading;
 
-public class LoadLanguage {
+public class loadLanguage {
 	
 }

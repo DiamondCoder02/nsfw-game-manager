@@ -43,7 +43,8 @@ public class fileChecker {
 				default: return false;
 			}
 		} else if (fileName.equals("settings.json")) {
-			return creatingMissingSettings.creatingMissingSettingsHandler(defaultValues.settings, directoryPlace + "/" + fileName);
+			// return true;
+			return creatingMissingSettings.creatingMissingSettingsHandler(defaultValues.settings, directoryPlace.toString());
 		} else {
 			return true;
 		}

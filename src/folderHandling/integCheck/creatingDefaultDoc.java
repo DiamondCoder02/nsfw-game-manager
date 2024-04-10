@@ -15,20 +15,14 @@ public class creatingDefaultDoc {
 		Map<String, Object> someSettings = new HashMap<>();
 
 		for (int i = 0; i < allSettings.length; i++) {
-			if (allSettings[i][0] == "othersettings") {
-				Map<String, Boolean> subSettings = new HashMap<>();
-				for (int j = 1; j < allSettings[i].length; j++) {
-					subSettings.put(allSettings[i][j], false);
-				}
-				someSettings.put(allSettings[i][0], subSettings);
-			} else if (allSettings[i][0] == "shownColumns") {
-				Map<String, Boolean> subSettings = new HashMap<>();
-				for (int j = 1; j < allSettings[i].length; j++) {
-					subSettings.put(allSettings[i][j], true);
-				}
-				someSettings.put(allSettings[i][0], subSettings);
-			} else {
+			if (allSettings[i].length == 2) {
 				someSettings.put(allSettings[i][0], allSettings[i][1]);
+			} else {
+				Map<String, Boolean> subSettings = new HashMap<>();
+				for (int j = 1; j < allSettings[i].length; j++) {
+					subSettings.put(allSettings[i][j], (allSettings[i][0] == "shownColumns" ? true : false));
+				}
+				someSettings.put(allSettings[i][0], subSettings);
 			}
 		}
 		return ADocHandle.saveSettingsJson(directoryPath, someSettings);

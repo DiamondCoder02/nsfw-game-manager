@@ -1,4 +1,5 @@
-import _main.mainInit;
+// import _main.mainInit;
+import folderHandling.changeSettings;
 import folderHandling.initialFileLoading.loadSettings;
 import integrationCheck.newVersion;
 import integrationCheck.systemCheck;
@@ -6,6 +7,9 @@ import integrationCheck.systemCheck;
 public class mainApp {
 	private static String mainDirectory = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager";
 	public static void main(String[] args) {
+		// TODO - This is stupid
+		changeSettings.retard(mainDirectory);
+
 		if (!systemCheck.programSystemCheck(mainDirectory)) { return; }
 		System.out.println("--- System check passed! ---");
 
@@ -13,10 +17,12 @@ public class mainApp {
 		System.out.println("--- Settings loaded ---");
 
 		Boolean updateNeed = false;
-		System.out.println("--- Checking for new version ---" + loadSettings.othersettings[0]);
+		System.out.println("--- Checking for new version --- Enabled:" + loadSettings.othersettings[0]);
 		if (loadSettings.othersettings[0]) { updateNeed = newVersion.checkNewVersion();	}
 		if (updateNeed) { System.out.println("--- New Version Available ---"); return; }
 		System.out.println("--- No New Version ---");
+
+		changeSettings.changeSetting("appVersion", "0.1.1.69");
 
 		// mainInit.mainStart();
 	}

@@ -5,7 +5,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import _WebsiteHandle.autoUpdateCheck;
 import _folderHandle.loadSaveGamesSettings.choices.*;
 import _main.langLoad;
 import _main.mainInit;
@@ -31,8 +30,6 @@ public class settingsManager {
 							case "lang": languageChoices.langChoose(dom); break;
 							case "gameInfoFolLoc": gamesLocationChoice.gamesLocationChoose(dom); break;
 							case "appVer": {
-								String update = autoUpdateCheck.onlineVersion;
-								e.getElementsByTagName("appVersion").item(0).setTextContent(update);
 								saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
 								break;
 							}

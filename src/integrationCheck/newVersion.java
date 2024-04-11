@@ -8,15 +8,43 @@ import javax.swing.JOptionPane;
 import folderHandling.initialFileLoading.loadSettings;
 
 public class newVersion {
-	public static boolean checkNewVersion() {
+	public static Boolean checkNewVersion() {
 		String onlineLocation = getOnlineLocation();
 		if (onlineLocation == null) { return false; }
 
 		String onlineVersion = onlineLocation.substring(onlineLocation.lastIndexOf("/") + 1, onlineLocation.length());
 		onlineVersion = onlineVersion.substring(0, onlineVersion.lastIndexOf("-"));
-		
-		if (!onlineVersion.equals(loadSettings.appVersion.toString())) { return true; }
-		return false;
+
+		if (onlineVersion.equals(loadSettings.appVersion.toString())) { return false; }
+		return getNewVersion(onlineLocation, onlineVersion);
+	}
+
+	private static Boolean getNewVersion(String onlineLocation, String onlineVersion){
+		String path, ext;
+		try{
+			path = newVersion.class.getProtectionDomain().getCodeSource().getLocation().toString();
+			path = path.replace("file:/", "");
+			System.out.println(path);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Error getting path (getNewestGithubVersion)", "Error", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		ext = path.substring(path.lastIndexOf(".") + 1, path.length());
+		onlineLocation = onlineLocation.replace("tag", "download").concat("/HentaiGameManager." + ext);
+
+		path = (System.getProperty("user.dir") + "/HentaiGameManager_"+onlineVersion+"."+ext);
+		System.out.println(path);
+		try{
+			boolean succ = fileDownloader.downloadFile(onlineLocation, path);
+			System.out.println(succ);
+			// TODO - change settings manager is still needed
+			// if (succ) { settingsManager.xmlSettings("appVersion", "appVer"); }
+
+			return succ;
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Error downloading from github (getNewestGithubVersion) \nGet newest from github.", "Error", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
 	}
 
 	private static String getOnlineLocation() {

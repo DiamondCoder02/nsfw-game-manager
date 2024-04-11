@@ -16,15 +16,16 @@ import javax.imageio.ImageIO;
 public class fileDownloader {
 	public static boolean downloadFile(String url, String fullPath) {
 		// TODO - This is stupid...
-		String[] pathSplit = fullPath.split("\\.");
-		switch (pathSplit[1]) {
-			case "xml": case "csv":
+		String fileType = fullPath.substring(fullPath.lastIndexOf(".") + 1, fullPath.length());
+		System.out.println("Downloading: " + fileType);
+		switch (fileType) {
+			case "xml": case "csv": case "jar": case "exe": 
 				return fileDownloading(url, fullPath);
 			case "png":	case "jpg":
-				return imageDownloader(url, fullPath, pathSplit[1]);
+				return imageDownloader(url, fullPath, fileType);
 			case "dll":
 				// TODO - Discord donwload, this is stupid in future, but for now it's fine
-				return discordSdkDownload(url, pathSplit[0]);
+				return discordSdkDownload(url, fullPath.split("\\.")[0]);
 			default:
 				return false;
 		}

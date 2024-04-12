@@ -65,4 +65,3 @@ If it doesn't begin with man, f95 ~~or dls(soon?)~~ it will be ignored. (man mea
 ### Used Libraries
 
 - Modified discord game sdk. [Original here](https://github.com/JnCrMx/discord-game-sdk4j)
-- Json reader [Original here](https://mvnrepository.com/artifact/org.json/json)

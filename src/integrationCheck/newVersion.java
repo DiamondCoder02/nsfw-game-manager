@@ -37,8 +37,6 @@ public class newVersion {
 		System.out.println(path);
 		try{
 			boolean succ = fileDownloader.downloadFile(onlineLocation, path);
-			System.out.println(succ);
-			// TODO - change settings manager is still needed
 			if (succ) { changeSettings.changeSetting("appVersion", onlineVersion); }
 
 			return succ;

@@ -9,6 +9,9 @@ public class loadLanguage {
 	// TODO - This needs to be changed
 	// TODO - The way this was done is fucking retarded
 
+	// TODO - Idea: Literally here do if a language is missing or some words are null
+	// TODO - If something is missing default to english column but keep the row
+
 	private static String[] tempBase = new String[30], tempBasic = new String[30], tempTabl = new String[30], 
 	tempjLaPa = new String[30], tempjRaBu = new String[30], tempbuton = new String[30], tempFold = new String[30],
 	tempSear = new String[30], tempRand = new String[30];

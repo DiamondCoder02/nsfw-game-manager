@@ -3,6 +3,7 @@ package folderHandling.initialFileLoading;
 import com.google.gson.JsonObject;
 
 import folderHandling.ADocHandle;
+import integrationCheck.defaultValues;
 
 public class loadSettings {
 	public static Boolean[] othersettings;
@@ -20,36 +21,17 @@ public class loadSettings {
 		othersettings = new Boolean[otherSet.size()];
 		shownColumns = new Boolean[shownSet.size()];
 
-		// TODO - Optimize this
-		othersettings[0] = otherSet.get("autoUpdateManager").getAsBoolean();
-		othersettings[1] = otherSet.get("darkMode").getAsBoolean();
-		othersettings[2] = otherSet.get("autoFetchNewGameInfos").getAsBoolean();
-		othersettings[3] = otherSet.get("autoFetchLocalGameFolder").getAsBoolean();
-		othersettings[4] = otherSet.get("DiscordRPC").getAsBoolean();
-
+		for (int i = 0; i < defaultValues.settings[3].length-1; i++) {
+			othersettings[i] = otherSet.get(defaultValues.settings[3][i+1]).getAsBoolean();
+		}
 
 		language = parser.get("appLanguage").getAsString();
 		folderLocation = parser.get("folderLocation").getAsString();
 		appVersion = parser.get("appVersion").getAsString();
 
-
-		// TODO - Optimize this too
-		shownColumns[0] = shownSet.get("site").getAsBoolean();
-		shownColumns[1] = shownSet.get("id").getAsBoolean();
-		shownColumns[2] = shownSet.get("name").getAsBoolean();
-		shownColumns[3] = shownSet.get("developer").getAsBoolean();
-		shownColumns[4] = shownSet.get("playedVersion").getAsBoolean();
-		shownColumns[5] = shownSet.get("lastTimePlayed").getAsBoolean();
-		shownColumns[6] = shownSet.get("rated").getAsBoolean();
-		shownColumns[7] = shownSet.get("newestVersionOnline").getAsBoolean();
-		shownColumns[8] = shownSet.get("lastDateTimeUpdated").getAsBoolean();
-		shownColumns[9] = shownSet.get("peopleOnlineRating").getAsBoolean();
-		shownColumns[10] = shownSet.get("localPlayerProgress").getAsBoolean();
-		shownColumns[11] = shownSet.get("gameStillOnPc").getAsBoolean();
-		shownColumns[12] = shownSet.get("gameEngine").getAsBoolean();
-		shownColumns[13] = shownSet.get("os").getAsBoolean();
-		shownColumns[14] = shownSet.get("language").getAsBoolean();
-		shownColumns[15] = shownSet.get("localPersonalNotes").getAsBoolean();
+		for (int i = 0; i < defaultValues.settings[4].length-1; i++) {
+			shownColumns[i] = shownSet.get(defaultValues.settings[4][i+1]).getAsBoolean();
+		}
 
 		return true;
 	}

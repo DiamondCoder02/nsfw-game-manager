@@ -55,7 +55,7 @@ public class ADocHandle {
 		try{
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
-			// TODO - is this needed? (So far, yes)
+			// is this needed? (So far, yes)
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes"); 
 			DOMSource domsource = new DOMSource(doc);
 			StreamResult result = new StreamResult(finalDirectory);

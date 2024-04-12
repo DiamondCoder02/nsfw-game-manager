@@ -2,6 +2,7 @@
 import folderHandling.changeSettings;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
+import frontEndGUI.mainFrame;
 import integrationCheck.newVersion;
 import integrationCheck.systemCheck;
 
@@ -21,7 +22,7 @@ public class mainApp {
 		System.out.println("--- Languages loaded ---");
 		// public static String[] base, basic, tabl, jlapa, jrabu, buton, folder, serc, rand;
 		// public static String[] langChoices, lanMeans;
-		System.out.println(loadLanguage.basic[0]);
+		// System.out.println(loadLanguage.basic[0]);
 
 		System.out.println("--- Checking for new version --- Enabled:" + loadSettings.othersettings[0]);
 		if (loadSettings.othersettings[0]) { 
@@ -31,7 +32,7 @@ public class mainApp {
 		}
 		System.out.println("--- No New Version ---");
 
-		// mainInit.mainStart();
+		mainFrame.createFrame(mainDirectory);
 	}
 
 	// https://code-disaster.github.io/steamworks4j/getting-started.html

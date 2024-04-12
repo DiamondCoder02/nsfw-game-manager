@@ -5,6 +5,7 @@ import java.net.URL;
 
 import javax.swing.JOptionPane;
 
+import folderHandling.changeSettings;
 import folderHandling.initialFileLoading.loadSettings;
 
 public class newVersion {
@@ -38,7 +39,7 @@ public class newVersion {
 			boolean succ = fileDownloader.downloadFile(onlineLocation, path);
 			System.out.println(succ);
 			// TODO - change settings manager is still needed
-			// if (succ) { settingsManager.xmlSettings("appVersion", "appVer"); }
+			if (succ) { changeSettings.changeSetting("appVersion", onlineVersion); }
 
 			return succ;
 		} catch (Exception e) {

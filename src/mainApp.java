@@ -1,5 +1,6 @@
 // import _main.mainInit;
 import folderHandling.changeSettings;
+import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
 import integrationCheck.newVersion;
 import integrationCheck.systemCheck;
@@ -16,13 +17,19 @@ public class mainApp {
 		if (!loadSettings.load(mainDirectory)) { return; }
 		System.out.println("--- Settings loaded ---");
 
-		Boolean updateNeed = false;
-		System.out.println("--- Checking for new version --- Enabled:" + loadSettings.othersettings[0]);
-		if (loadSettings.othersettings[0]) { updateNeed = newVersion.checkNewVersion();	}
-		if (updateNeed) { System.out.println("--- New Version Available ---"); return; }
-		System.out.println("--- No New Version ---");
+		if (!loadLanguage.load(mainDirectory)) { return; }
+		System.out.println("--- Languages loaded ---");
+		// public static String[] base, basic, tabl, jlapa, jrabu, buton, folder, serc, rand;
+		// public static String[] langChoices, lanMeans;
+		System.out.println(loadLanguage.basic[0]);
 
-		changeSettings.changeSetting("appVersion", "0.1.1.69");
+		System.out.println("--- Checking for new version --- Enabled:" + loadSettings.othersettings[0]);
+		if (loadSettings.othersettings[0]) { 
+			if (newVersion.checkNewVersion()) {
+				System.out.println("--- New Version Available ---"); return;
+			}
+		}
+		System.out.println("--- No New Version ---");
 
 		// mainInit.mainStart();
 	}

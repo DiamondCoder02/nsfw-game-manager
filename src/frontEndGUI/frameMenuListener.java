@@ -58,7 +58,8 @@ public class frameMenuListener implements ActionListener {
 			case "Credits": otherButtons.money(); break;
 			case "Exit": otherButtons.sureAboutExit(); break;
 			*/
-			default: JOptionPane.showMessageDialog(null, "Error, this should never happen!!!" + "(src/frontEndGUI/frameMenuListener_actionPerformed)", "Error", JOptionPane.ERROR_MESSAGE); break;
+			default: JOptionPane.showMessageDialog(null, "Error, this should never happen!!!" + " (src/frontEndGUI/frameMenuListener_actionPerformed)", "Error", JOptionPane.ERROR_MESSAGE); break;
 		}
+
 	}
 }

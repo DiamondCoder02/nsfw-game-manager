@@ -36,7 +36,7 @@ public interface defaultValues {
 		{"stillOnPc", "no"},
 		{"engine", "HTML"},
 		{"OS", "Windows"},
-		{"selfNote", "something"},
-		{"language", "English"}
+		{"language", "English"},
+		{"selfNote", "something"}
 	};
 }

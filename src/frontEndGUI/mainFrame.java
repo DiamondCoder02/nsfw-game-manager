@@ -14,14 +14,15 @@ public class mainFrame {
 		frame = frameCreate.WindowCreate(frame, mainDirectory);
 		
 
-		JTable table = frameTable.createTable();
-		JScrollPane pane = new JScrollPane(table);
-
-		frameColor.WindowRefresh(frame, pane, table);
-
+		JTable table = frameTable.createTable(mainDirectory);
 		frame.add(table.getTableHeader(), BorderLayout.PAGE_START);
 		frame.add(table, BorderLayout.CENTER);
+
+
+		JScrollPane pane = new JScrollPane(table);
 		frame.add(pane, BorderLayout.CENTER);
+		
+		frameColor.WindowRefresh(frame, pane, table);
 
 		frame.setVisible(true);
 	}

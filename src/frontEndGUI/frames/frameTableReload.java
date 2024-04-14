@@ -1,4 +1,4 @@
-package frontEndGUI;
+package frontendGUI.frames;
 
 import java.awt.Color;
 import java.awt.Component;

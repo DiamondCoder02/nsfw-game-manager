@@ -2,14 +2,11 @@ package folderHandling;
 
 import com.google.gson.JsonObject;
 
-public class changeSettings {
-	private static String mainDirectory;
-	// TODO - This is temp till I make this other OS compatible or just make the main directory a public
-	public static void retard(String lol) {
-		mainDirectory = lol;
-	}
+import integrationCheck.defaultValues;
 
+public class changeSettings {
 	public static boolean changeSetting(String mainChange, String toChange) {
+		String mainDirectory = defaultValues.mainDirectory;
 		JsonObject settings = ADocHandle.loadSettingsJson(mainDirectory + "/settings.json");
 		settings.entrySet().forEach(entry -> {
 			if (entry.getKey().startsWith(mainChange)) {

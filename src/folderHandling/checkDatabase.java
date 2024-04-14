@@ -1,17 +1,16 @@
-package _folderHandle;
+package folderHandling;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import _folderHandle.loadSaveGamesSettings.saveLoadDoc;
-import _main.mainInit;
+import integrationCheck.defaultValues;
 
-public class isIDInDatabase {
+public class checkDatabase {
 	public static boolean isInDatabase(String givenID, String sourceFrom){
 		try{
-			Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
+			Document dom = ADocHandle.load(defaultValues.mainDirectory + "/hentai.xml");
 			NodeList source = dom.getElementsByTagName("source");
 			for (int i = 0; i < source.getLength(); i++) {
 				Node sourceNode = source.item(i);

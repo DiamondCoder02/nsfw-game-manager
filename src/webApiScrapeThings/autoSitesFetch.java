@@ -1,4 +1,4 @@
-package _folderHandle.autoFetchChecks;
+package webApiScrapeThings;
 
 import java.awt.Dimension;
 import java.util.concurrent.CompletableFuture;
@@ -16,19 +16,18 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import _WebsiteHandle.loadF95site;
-import _folderHandle.isIDInDatabase;
-import _folderHandle.loadSaveGamesSettings.loadGamesFromXml;
-import _folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
-import _folderHandle.loadSaveGamesSettings.saveLoadDoc;
-import _main.langLoad;
-import _main.mainInit;
-import _main.application.frameCreate;
+import folderHandling.ADocHandle;
+import folderHandling.checkDatabase;
+import folderHandling.initialFileLoading.loadGames;
+import folderHandling.initialFileLoading.loadLanguage;
+import folderHandling.initialFileLoading.loadSettings;
+import integrationCheck.defaultValues;
+import webApiScrapeThings.sites.loadF95site;
 
-public class autoSiteFetching extends JFrame {
-	static Object[][] loadedGames = loadGamesFromXml.loadGames();
+public class autoSitesFetch {
+	static Object[][] loadedGames = loadGames.loadGamesFromXML(defaultValues.mainDirectory);
 	static boolean manualButton = false;
-	static String[] lf = langLoad.folder, bs = langLoad.base;
+	static String[] lf = loadLanguage.folder, bs = loadLanguage.base;
 
 	public static void fetchInfoAskConfirm() {
 		String text = lf[0]==null?"This will go through all games and check if there is new update.\nAre you sure?":lf[0];
@@ -53,7 +52,7 @@ public class autoSiteFetching extends JFrame {
 			frame.pack();
 			frame.setVisible(true);
 
-			Boolean[] otherSettings = loadSettingsFromXml.loadBooleanSettings("othersettings"); // loadBooleanSettings
+			Boolean[] otherSettings = loadSettings.othersettings;
 			if (otherSettings[1] || manualButton) {
 				ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 				for (int i = 0; i < loadedGames.length; i++) {
@@ -75,7 +74,8 @@ public class autoSiteFetching extends JFrame {
 				manualButton = false;
 				JOptionPane.showMessageDialog(null, lf[2]==null?"All game infos got updated":lf[2], bs[3]==null?"Update":bs[3], JOptionPane.INFORMATION_MESSAGE);
 				frame.dispose();
-				frameCreate.refreshTable();
+				// TODO - frame refreshTable
+				// frameCreate.refreshTable();
 			}
 		});
 	}
@@ -127,9 +127,9 @@ public class autoSiteFetching extends JFrame {
 			if (!oldos.equals(newosValue)) { loadedGames[LoadGamesLength][9] = newosValue; }
 			if (!oldlanguage.equals(newlanguageValue)) { loadedGames[LoadGamesLength][10] = newlanguageValue; }
 
-			if (isIDInDatabase.isInDatabase(id, "f95")) {
+			if (checkDatabase.isInDatabase(id, "f95")) {
 				try{
-					Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
+					Document dom = ADocHandle.load(defaultValues.mainDirectory + "/hentai.xml");
 					NodeList source = dom.getElementsByTagName("source");
 					for (int i = 0; i < source.getLength(); i++) {
 						Node sourceNode = source.item(i);
@@ -153,7 +153,7 @@ public class autoSiteFetching extends JFrame {
 											language.appendChild(dom.createTextNode(newlanguageValue));
 											e.appendChild(language);
 										}
-										saveLoadDoc.saveDocument(dom, mainInit.databasePath);
+										ADocHandle.save(dom, defaultValues.mainDirectory + "/hentai.xml");
 									}
 								}
 							}

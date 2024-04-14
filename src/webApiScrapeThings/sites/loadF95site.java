@@ -1,4 +1,4 @@
-package _WebsiteHandle;
+package webApiScrapeThings.sites;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -7,10 +7,10 @@ import java.net.URLConnection;
 
 import javax.swing.JOptionPane;
 
-import _main.langLoad;
+import folderHandling.initialFileLoading.loadLanguage;
 
 public class loadF95site {
-	static String[] lf = langLoad.folder, bs = langLoad.base;
+	static String[] lf = loadLanguage.folder, bs = loadLanguage.base;
 	public static String[] getf95UrlContents(String gameIds) {
 		String[] allTheInfo = new String[8];
 		StringBuilder content = new StringBuilder();

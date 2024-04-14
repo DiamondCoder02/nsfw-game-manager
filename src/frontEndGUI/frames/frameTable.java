@@ -1,12 +1,12 @@
-package frontEndGUI;
+package frontendGUI.frames;
 
 import javax.swing.JTable;
 
 import folderHandling.initialFileLoading.loadSettings;
 
 public class frameTable {
-	private static JTable table = new JTable();
-	public static JTable createTable(String mainDirectory){
+	// private static JTable table = new JTable();
+	public static JTable createTable(String mainDirectory, JTable table){
 		// TODO - Don't forget to add games to the table
 		frameTableReload.reloadTable(table, mainDirectory);
 		table.setBounds(30, 40, 200, 300);
@@ -16,7 +16,7 @@ public class frameTable {
 		return table;
 	}
 
-	private static void setColumns(JTable table){
+	public static void setColumns(JTable table){
 		Boolean[] boolColumns = loadSettings.shownColumns;
 		Integer counter = 0;
 

@@ -1,6 +1,8 @@
 package integrationCheck;
 
 public interface defaultValues {
+	String mainDirectory = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager";
+
 	String appGithubLink = "https://github.com/DiamondCoder02/nsfw-game-manager/releases/latest";
 
 	String[] filesNeeded = {"settings.json", "hentai.xml"};

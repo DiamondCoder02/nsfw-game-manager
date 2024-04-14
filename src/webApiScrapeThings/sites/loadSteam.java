@@ -1,4 +1,4 @@
-package _WebsiteHandle;
+package webApiScrapeThings.sites;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -7,10 +7,10 @@ import java.net.URL;
 
 import javax.swing.JOptionPane;
 
-import _main.langLoad;
+import folderHandling.initialFileLoading.loadLanguage;
 
 public class loadSteam {
-	static String[] lf = langLoad.folder, bs = langLoad.base;
+	static String[] lf = loadLanguage.folder, bs = loadLanguage.base;
 	public static String[] getSteamUrlContents(Integer gameIds) {
 		// https://store.steampowered.com/api/appdetails?appids=620980
 		StringBuilder content = new StringBuilder();

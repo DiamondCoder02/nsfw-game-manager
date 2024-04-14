@@ -1,4 +1,4 @@
-package frontEndGUI;
+package frontendGUI.frames;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -52,9 +52,9 @@ public class frameCreate {
 		mb.add(random);
 
 		JMenu search = new JMenu(bu[1]!=null?bu[1]:"Search");
-		JMenuItem searchById = new JMenuItem(bu[15]!=null?bu[15]:"Search by ID"); searchById.setActionCommand("Search by ID"); searchById.addActionListener(buttonListener);
-		JMenuItem searchByName = new JMenuItem(bu[16]!=null?bu[16]:"Search by name"); searchByName.setActionCommand("Search by name"); searchByName.addActionListener(buttonListener);
-		JMenuItem searchByDeveloper = new JMenuItem(bu[17]!=null?bu[17]:"Search by developer"); searchByDeveloper.setActionCommand("Search by developer"); searchByDeveloper.addActionListener(buttonListener);
+		JMenuItem searchById = new JMenuItem(bu[15]!=null?bu[15]:"Search by ID"); searchById.setActionCommand("searchId"); searchById.addActionListener(buttonListener);
+		JMenuItem searchByName = new JMenuItem(bu[16]!=null?bu[16]:"Search by name"); searchByName.setActionCommand("searchName"); searchByName.addActionListener(buttonListener);
+		JMenuItem searchByDeveloper = new JMenuItem(bu[17]!=null?bu[17]:"Search by developer"); searchByDeveloper.setActionCommand("searchDev"); searchByDeveloper.addActionListener(buttonListener);
 		
 		search.add(searchById); search.add(searchByName); search.add(searchByDeveloper);
 		mb.add(search);
@@ -86,8 +86,8 @@ public class frameCreate {
 		show.add(showPeopleRating); show.add(showhowFarUserPlayed); show.add(showDeletedFromPc); show.add(showEngine); 
 		show.add(showOS); show.add(showLanguage); show.add(ShowSelfNote);
 
-		JMenuItem changeLanguage  = new JMenuItem("🌐 "+(bu[4]!=null?bu[4]:"Language")); changeLanguage.setActionCommand("chanLan"); changeLanguage.addActionListener(buttonListener);
-		JMenuItem changeFolderLocation = new JMenuItem("📁 "+(bu[21]!=null?bu[21]:"Change folder location")); changeFolderLocation.setActionCommand("ChanFolLoc"); changeFolderLocation.addActionListener(buttonListener);
+		JMenuItem changeLanguage  = new JMenuItem("🌐 "+(bu[4]!=null?bu[4]:"Language")); changeLanguage.setActionCommand("appLanguage"); changeLanguage.addActionListener(buttonListener);
+		JMenuItem changeFolderLocation = new JMenuItem("📁 "+(bu[21]!=null?bu[21]:"Change folder location")); changeFolderLocation.setActionCommand("folderLocation"); changeFolderLocation.addActionListener(buttonListener);
 		JCheckBoxMenuItem autoUpdateWanted = new JCheckBoxMenuItem("🔁 "+"Auto update", boolSettings[0]); autoUpdateWanted.setActionCommand("autoUpdateManager"); autoUpdateWanted.addActionListener(buttonListener);
 		JCheckBoxMenuItem darkMode = new JCheckBoxMenuItem(bu[18]!=null?bu[18]:"Dark mode", boolSettings[1]); darkMode.setActionCommand("darkMode"); darkMode.addActionListener(buttonListener);
 		JCheckBoxMenuItem discordrpc = new JCheckBoxMenuItem("Discord RPC", boolSettings[4]); discordrpc.setActionCommand("DiscordRPC"); discordrpc.addActionListener(buttonListener);

@@ -1,4 +1,4 @@
-package frontEndGUI;
+package frontendGUI.frames;
 
 import java.awt.Color;
 
@@ -40,7 +40,7 @@ public class frameColor {
 			games.setBackground(bg).setForeground(fg);
 			addGame.setBackground(bg).setForeground(fg);
 			updateList.setBackground(bg).setForeground(fg);
-			removeGame.setBackground(bg); removeGame.setForeground(fg);
+			removeGame.setBackground(bg).setForeground(fg);
 
 			addF95zone.setBackground(bg); addF95zone.setForeground(fg);
 			updateF95.setBackground(bg); updateF95.setForeground(fg);

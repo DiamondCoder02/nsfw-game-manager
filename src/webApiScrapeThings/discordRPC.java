@@ -1,35 +1,21 @@
-package _main.application;
-
+package webApiScrapeThings;
 
 import de.jcm.discordgamesdk.Core;
 import de.jcm.discordgamesdk.CreateParams;
 import de.jcm.discordgamesdk.activity.Activity;
 import de.jcm.discordgamesdk.activity.ActivityButton;
+import folderHandling.initialFileLoading.loadGames;
+import folderHandling.initialFileLoading.loadSettings;
+import integrationCheck.defaultValues;
 
-import java.io.IOException;
 import java.time.Instant;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
-import _folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
-import _folderHandle.loadSaveGamesSettings.saveLoadDoc;
-
-public class discord {
-	static Integer allGames = saveLoadDoc.allGames;
+public class discordRPC {
 	static String image = "https://i.imgur.com/lJEl4eK.png";
 	// TODO - This seems to be broken, this needs fix
-	static ActivityButton button = new ActivityButton("Github", "https://github.com/DiamondPRO02/nsfw-game-manager");
-	static Boolean[] boolSettings;
-
-	public static void loopDiscord() throws IOException {
-		boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
-		if (!boolSettings[3]) { return;}
-
-		Executors.newSingleThreadScheduledExecutor().schedule(() -> { discordRPC(); }, 0, TimeUnit.SECONDS);
-	}
-
+	static ActivityButton button = new ActivityButton("Github", "https://github.com/DiamondCoder02/nsfw-game-manager");
 	static Instant time;
-	private static Runnable discordRPC() {
+	public static Runnable discordStarter(Boolean[] boolSettings) {
 		time = Instant.now();
 		try (CreateParams params = new CreateParams()) {
 			params.setClientID(1135539276692607086L);
@@ -37,7 +23,7 @@ public class discord {
 			// Create the Core
 			try (Core core = new Core(params)) {
 				try (Activity activity = new Activity()) {
-					allGames = saveLoadDoc.allGames;
+					Integer allGames = loadGames.loadGamesFromXML(defaultValues.mainDirectory).length;
 					// activity.setDetails("Managing my hentai games");
 					activity.setState("Currently managing " + allGames + " games");
 					// Setting a start time causes an "elapsed" field to appear
@@ -49,9 +35,9 @@ public class discord {
 					activity.addButton(button);
 					// Finally, update the current activity to our activity
 					core.activityManager().updateActivity(activity);
-					while(boolSettings[3]){
-						boolSettings = loadSettingsFromXml.loadBooleanSettings("othersettings");
-						if (!boolSettings[3]) { core.activityManager().clearActivity(); activity.close(); core.close(); return null;}
+					while(boolSettings[4]){
+						boolSettings = loadSettings.othersettings;
+						if (!boolSettings[4]) { core.activityManager().clearActivity(); activity.close(); core.close(); return null;}
 						try {
 							Thread.sleep(1000); // Sleep a bit to save CPU
 						}

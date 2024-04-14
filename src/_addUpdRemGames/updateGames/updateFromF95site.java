@@ -15,12 +15,12 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import _WebsiteHandle.loadF95site;
 import _folderHandle.isIDInDatabase;
 import _folderHandle.loadSaveGamesSettings.saveLoadDoc;
 import _main.langLoad;
 import _main.mainInit;
 import _main.application.frameCreate;
+import webApiScrapeThings.sites.loadF95site;
 
 public class updateFromF95site {
 	static String[] bc = langLoad.basic, bs = langLoad.base, jla = langLoad.jlapa, folder = langLoad.folder, jrb = langLoad.jrabu;

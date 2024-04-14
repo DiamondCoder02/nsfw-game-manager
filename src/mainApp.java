@@ -1,16 +1,13 @@
-// import _main.mainInit;
-import folderHandling.changeSettings;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
-import frontEndGUI.mainFrame;
+import frontendGUI.mainFrame;
+import integrationCheck.defaultValues;
 import integrationCheck.newVersion;
 import integrationCheck.systemCheck;
 
 public class mainApp {
-	private static String mainDirectory = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager";
 	public static void main(String[] args) {
-		// TODO - This is stupid
-		changeSettings.retard(mainDirectory);
+		String mainDirectory = defaultValues.mainDirectory;
 
 		if (!systemCheck.programSystemCheck(mainDirectory)) { return; }
 		System.out.println("--- System check passed! ---");
@@ -20,9 +17,6 @@ public class mainApp {
 
 		if (!loadLanguage.load(mainDirectory)) { return; }
 		System.out.println("--- Languages loaded ---");
-		// public static String[] base, basic, tabl, jlapa, jrabu, buton, folder, serc, rand;
-		// public static String[] langChoices, lanMeans;
-		// System.out.println(loadLanguage.basic[0]);
 
 		System.out.println("--- Checking for new version --- Enabled:" + loadSettings.othersettings[0]);
 		if (loadSettings.othersettings[0]) { 

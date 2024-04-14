@@ -1,4 +1,4 @@
-package _main.application;
+package frontendGUI.buttons;
 
 import java.awt.Desktop;
 
@@ -11,28 +11,43 @@ import javax.swing.JRadioButton;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 
-import _folderHandle.loadSaveGamesSettings.loadGamesFromXml;
-import _main.langLoad;
+import folderHandling.initialFileLoading.loadGames;
+import folderHandling.initialFileLoading.loadLanguage;
+import folderHandling.initialFileLoading.loadSettings;
+import integrationCheck.defaultValues;
 
-public class randomGame {
-	static String[] jrb = langLoad.jrabu, tlc = langLoad.tabl, ran= langLoad.rand;
+public class randomGames {
+	static String[] jrb = loadLanguage.jrabu, tlc = loadLanguage.tabl, ran= loadLanguage.rand;
 	private static String br = "<br>";
-	static Object[][] allGames = loadGamesFromXml.loadGames();
-	public static void fullyRandom() {
+
+	// TODO - optimise this
+	public static void randoms(String choice){
+		switch (choice) {
+			case "RandomFully": fullyRandom(); break;
+			case "RandomDev": randomFromDeveloper(); break;
+			case "RandomProgress": randomFromProgress(); break;
+			case "RandomEngine": randomWithEngine(); break;
+			case "RandomSite": randomFromSite(); break;
+			default: break;
+		}
+	}
+
+	static Object[][] allGames = loadGames.loadGamesFromXML(defaultValues.mainDirectory);
+	private static void fullyRandom() {
 		Integer amount = allGames.length;
 		Integer random = (int) (Math.random() * amount);
 		Object[] result = allGames[random];
 		resultShow(result, ran[1]!=null?ran[1]:"Fully random game");
 	}
 
-	public static void randomFromDeveloper() {
+	private static void randomFromDeveloper() {
 		String wantedRandomDev = JOptionPane.showInputDialog(null, ran[6]!=null?ran[6]:"Enter developer name you wish to search for:", ran[2]!=null?ran[2]:"Random game from developer", JOptionPane.QUESTION_MESSAGE);
 		if (wantedRandomDev == null) { return; }
 		Object[] result = randomFilter(3, ran[7]!=null?ran[7]:"from developer", wantedRandomDev);
 		if (result != null) {resultShow(result, ran[2]!=null?ran[2]:"Random game from developer");}
 	}
 
-	public static void randomFromProgress(){
+	private static void randomFromProgress(){
 		JRadioButton howFarUserPlayed_NotPlayed = new JRadioButton(jrb[0]!=null?jrb[0]:"Not played", true), howFarUserPlayed_Playing = new JRadioButton(jrb[1]!=null?jrb[1]:"In progress", false), howFarUserPlayed_Finished = new JRadioButton(jrb[2]!=null?jrb[2]:"Finish", false), howFarUserPlayed_100Percent = new JRadioButton(jrb[3]!=null?jrb[3]:"100% Finished", false);
 			howFarUserPlayed_NotPlayed.setActionCommand("Not played"); howFarUserPlayed_Playing.setActionCommand("In progress"); howFarUserPlayed_Finished.setActionCommand("Finish"); howFarUserPlayed_100Percent.setActionCommand("100% Finished");
 			ButtonGroup progressGroup = new ButtonGroup(); progressGroup.add(howFarUserPlayed_NotPlayed); progressGroup.add(howFarUserPlayed_Playing); progressGroup.add(howFarUserPlayed_Finished); progressGroup.add(howFarUserPlayed_100Percent);
@@ -42,7 +57,7 @@ public class randomGame {
 		if (result != null) {resultShow(result, ran[3]!=null?ran[3]:"Random game from progress");}
 	}
 
-	public static void randomWithEngine() {
+	private static void randomWithEngine() {
 		JRadioButton engine_Flash = new JRadioButton("Flash"), engine_HTML = new JRadioButton("HTML"), engine_Java = new JRadioButton("Java"), engine_QSP = new JRadioButton("QSP"), engine_RenPy = new JRadioButton("RenPy"), engine_RPGmaker = new JRadioButton("RPGmaker"), engine_Unity = new JRadioButton("Unity"), engine_Unreal = new JRadioButton("Unreal"), engine_WinGit = new JRadioButton("WinGit"), engine_WolfRPG = new JRadioButton("WolfRPG"), engine_other = new JRadioButton(jrb[7]!=null?jrb[7]:"other/unknown", true);
 			engine_Flash.setActionCommand("Flash"); engine_HTML.setActionCommand("HTML"); engine_Java.setActionCommand("Java"); engine_QSP.setActionCommand("QSP"); engine_RenPy.setActionCommand("Ren'Py"); engine_RPGmaker.setActionCommand("RPGM"); engine_Unity.setActionCommand("Unity"); engine_Unreal.setActionCommand("Unreal Engine"); engine_WinGit.setActionCommand("WinGit"); engine_WolfRPG.setActionCommand("WolfRPG"); engine_other.setActionCommand("other/unknown");
 			ButtonGroup engineGroup = new ButtonGroup(); engineGroup.add(engine_Flash); engineGroup.add(engine_HTML); engineGroup.add(engine_Java); engineGroup.add(engine_QSP); engineGroup.add(engine_RenPy); engineGroup.add(engine_RPGmaker); engineGroup.add(engine_Unity); engineGroup.add(engine_Unreal); engineGroup.add(engine_WinGit); engineGroup.add(engine_WolfRPG); engineGroup.add(engine_other);
@@ -53,7 +68,7 @@ public class randomGame {
 		if (result != null) {resultShow(result, ran[4]!=null?ran[4]:"Random game with engine");}
 	}
 
-	public static void randomFromSite() {
+	private static void randomFromSite() {
 		JRadioButton site_F95 = new JRadioButton("F95zone"), site_man = new JRadioButton("man", true);
 			site_F95.setActionCommand("f95"); site_man.setActionCommand("man");
 			ButtonGroup sitesGroup = new ButtonGroup(); sitesGroup.add(site_F95); sitesGroup.add(site_man);
@@ -87,7 +102,7 @@ public class randomGame {
 	}
 
 	private static void resultShow(Object[] result, String title) {
-		Boolean[] boolSettings = _folderHandle.loadSaveGamesSettings.loadSettingsFromXml.loadBooleanSettings("othersettings");
+		Boolean[] boolSettings = loadSettings.othersettings;
 		String color;
 		if (boolSettings[0]) { color = "white"; } else { color = "black"; }
 		String finalLink, updateLink = (ran[14]!=null?ran[14]:"Update link here if needed");

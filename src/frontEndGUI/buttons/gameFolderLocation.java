@@ -1,15 +1,12 @@
-package _folderHandle.loadSaveGamesSettings.choices;
+package frontendGUI.buttons;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import org.w3c.dom.Document;
+import folderHandling.changeSettings;
 
-import _folderHandle.loadSaveGamesSettings.saveLoadDoc;
-import _main.mainInit;
-
-public class gamesLocationChoice {
-	public static void gamesLocationChoose(Document dom) {
+public class gameFolderLocation {
+	public static void gamesLocationChoose() {
 		JFileChooser chooser = new JFileChooser(); 
 		chooser.setCurrentDirectory(new java.io.File("."));
 		chooser.setDialogTitle("Select game info folder location");
@@ -19,8 +16,7 @@ public class gamesLocationChoice {
 		if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
 			String path = chooser.getSelectedFile().toString();
 			if (!path.endsWith("\\")) { path = path+"\\"; }
-			dom.getElementsByTagName("folderLocation").item(0).setTextContent(path);
-			saveLoadDoc.saveDocument(dom, mainInit.settingsPath);
+			changeSettings.changeSetting("folderLocation", path);
 			JOptionPane.showMessageDialog(null, "Changes saved!" + "\n"+path, "Success", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else { return; }

@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import folderHandling.initialFileLoading.loadLanguage;
 
 public class loadSteam {
+	// TODO - steam
 	static String[] lf = loadLanguage.folder, bs = loadLanguage.base;
 	public static String[] getSteamUrlContents(Integer gameIds) {
 		// https://store.steampowered.com/api/appdetails?appids=620980
@@ -25,11 +26,6 @@ public class loadSteam {
 			JOptionPane.showMessageDialog(null,  "("+gameIds+")" + "Error while loading the site" + " (steam_getUrlContents)", "Error", JOptionPane.ERROR_MESSAGE);
 			return null;
 		}
-
-		/*
-		 * [ … ] represents an array, so library will parse it to JSONArray
-		 * { … } represents an object, so library will parse it to JSONObject
-		 */
 
 		// Name, Free/Paid, Developer, Platforms, Language, Recommendations
 		String[] allTheInfo = new String[6];

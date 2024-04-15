@@ -1,4 +1,4 @@
-package _addUpdRemGames.updateGames;
+package frontendGUI.gameButtons;
 
 import java.awt.GridLayout;
 
@@ -17,14 +17,15 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import _folderHandle.isIDInDatabase;
-import _folderHandle.loadSaveGamesSettings.saveLoadDoc;
-import _main.langLoad;
-import _main.mainInit;
-import _main.application.frameCreate;
+import folderHandling.ADocHandle;
+import folderHandling.checkDatabase;
+import folderHandling.initialFileLoading.loadLanguage;
+import frontendGUI.mainFrame;
+import integrationCheck.defaultValues;
 
-public class updateManually {
-	static String[] base = langLoad.base, basic = langLoad.basic, jla = langLoad.jlapa, folder = langLoad.folder, jrb = langLoad.jrabu;
+public class updateManual {
+	static String[] base = loadLanguage.base, basic = loadLanguage.basic, jla = loadLanguage.jlapa, 
+		folder = loadLanguage.folder, jrb = loadLanguage.jrabu;
 	public static void updateOneGameFromToFile(){
 		JOptionPane optionPane = new JOptionPane();
 		JPanel panel = new JPanel(new GridLayout(8*2, 2));
@@ -38,9 +39,9 @@ public class updateManually {
 		dialog.setVisible(true);
 		String idValue = id.getText();
 		if (idValue.equals("")) { JOptionPane.showMessageDialog(null, basic[0]!=null?basic[0]:"ID is required", base[1]!=null?base[1]:"Error", JOptionPane.ERROR_MESSAGE); return; }
-		if (isIDInDatabase.isInDatabase(idValue, "man")) {
+		if (checkDatabase.isInDatabase(idValue, "man")) {
 			try{
-				Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
+				Document dom = ADocHandle.load(defaultValues.mainDirectory + "/hentai.xml");
 				NodeList source = dom.getElementsByTagName("source");
 				for (int i = 0; i < source.getLength(); i++) {
 					Node sourceNode = source.item(i);
@@ -191,8 +192,8 @@ public class updateManually {
 										e.getElementsByTagName("OS").item(0).setTextContent(newosValue);
 										e.getElementsByTagName("language").item(0).setTextContent(newlanguageValue);
 										e.getElementsByTagName("selfNote").item(0).setTextContent(newselfNoteValue);
-										saveLoadDoc.saveDocument(dom, mainInit.databasePath);
-										frameCreate.refreshTable();
+										ADocHandle.save(dom, defaultValues.mainDirectory + "/hentai.xml");
+										mainFrame.refreshTable();
 										JOptionPane.showMessageDialog(null, newnameValue+", \nId: "+idValue +" "+ (basic[4]!=null?basic[4]:"has been updated"), base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
 										break;
 									} else {

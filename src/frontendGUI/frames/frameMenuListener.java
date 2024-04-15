@@ -18,6 +18,8 @@ import frontendGUI.buttons.gameFolderLocation;
 import frontendGUI.buttons.languageChoice;
 import frontendGUI.buttons.randomGames;
 import frontendGUI.buttons.search;
+import frontendGUI.gameButtons.addF95;
+import frontendGUI.gameButtons.addManual;
 import integrationCheck.defaultValues;
 import webApiScrapeThings.autoSitesFetch;
 
@@ -26,11 +28,12 @@ public class frameMenuListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// System.out.println("Button Clicked! " + e.getActionCommand());
 		switch (e.getActionCommand()) {
+			case "Add game": addManual.addOneGameToFile(); break;
+			case "Add F95zone": addF95.addFromF95(); break;
+
 			/*
-			case "Add game": addManually.addOneGameToFile(); break;
 			case "Update game": updateManually.updateOneGameFromToFile(); break;
 			case "Remove game": removeAnyGame.removeOneGameFromFile("man"); break;
-			case "Add F95zone": addFromF95site.addFromF95(); break;
 			case "Update F95zone": updateFromF95site.updatef95game(); break;
 			case "Remove F95zone": removeAnyGame.removeOneGameFromFile("f95"); break;
 			*/

@@ -1,4 +1,4 @@
-package _addUpdRemGames.addGames;
+package frontendGUI.gameButtons;
 
 import java.awt.GridLayout;
 
@@ -10,20 +10,14 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-import _folderHandle.isIDInDatabase;
-import _folderHandle.loadSaveGamesSettings.saveLoadDoc;
-import _main.langLoad;
-import _main.mainInit;
-import _main.application.frameCreate;
+import folderHandling.changeDatabase;
+import folderHandling.checkDatabase;
+import folderHandling.initialFileLoading.loadLanguage;
 import webApiScrapeThings.sites.loadF95site;
 
-public class addFromF95site {
-	static String[] bs = langLoad.base, bc = langLoad.basic, jla = langLoad.jlapa, lf = langLoad.folder, jrb = langLoad.jrabu;
+public class addF95 {
+	static String[] bs = loadLanguage.base, bc = loadLanguage.basic, jla = loadLanguage.jlapa, 
+		lf = loadLanguage.folder, jrb = loadLanguage.jrabu;
 	public static void addFromF95(){
 		boolean repeat = true;
 		while (repeat) {
@@ -31,7 +25,7 @@ public class addFromF95site {
 			String idValue = JOptionPane.showInputDialog(null, text, bs[2]!=null?bs[2]:"Add game", JOptionPane.PLAIN_MESSAGE);
 			if (idValue == null) { JOptionPane.showMessageDialog(null, bc[0]==null?"You must enter an id":bc[0], bs[1]==null?"Error":bs[1], JOptionPane.ERROR_MESSAGE); break; }
 
-			if (isIDInDatabase.isInDatabase(idValue, "f95")) {
+			if (checkDatabase.isInDatabase(idValue, "f95")) {
 				JOptionPane.showMessageDialog(null, lf[4]==null?"The id you entered is already in the F95zone database":lf[4], bs[1]==null?"Error":bs[1], JOptionPane.ERROR_MESSAGE);
 				break;
 			}
@@ -89,69 +83,16 @@ public class addFromF95site {
 			String howFarUserPlayedValue = howFarUserPlayed.getSelection().getActionCommand();
 			String stillOnPcValue = stillOnPc.getSelection().getActionCommand();
 			String selfNoteValue = selfNote.getText();
-			try{
-				Document dom = saveLoadDoc.loadDocument(mainInit.databasePath);
-				NodeList source = dom.getElementsByTagName("source");
-				for (int i = 0; i < source.getLength(); i++) {
-					Node sourceNode = source.item(i);
-					if (sourceNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element newGame = dom.createElement("game");
-						Element newName = dom.createElement("name");
-						Element newDeveloper = dom.createElement("developer");
-						Element newPlayed_version = dom.createElement("played_version");
-						Element newDateof_lastplay = dom.createElement("dateof_lastplay");
-						Element newUser_rating = dom.createElement("user_rating");
-						Element newNewest_version = dom.createElement("newest_version");
-						Element newDateof_lastupate = dom.createElement("dateof_lastupate");
-						Element newPeople_rating = dom.createElement("people_rating");
-						Element newHowFarUserPlayed = dom.createElement("howFarUserPlayed");
-						Element newstillOnPc = dom.createElement("stillOnPc");
-						Element newEngine = dom.createElement("engine");
-						Element newOS = dom.createElement("OS");
-						Element newLanguage = dom.createElement("language");
-						Element newSelfNote = dom.createElement("selfNote");
-						newGame.setAttribute("from", "f95");
-						newGame.setAttribute("id", idValue);
-						newName.setTextContent(nameValue);
-						newDeveloper.setTextContent(developerValue);
-						newPlayed_version.setTextContent(played_versionValue);
-						newDateof_lastplay.setTextContent(dateof_lastplayValue);
-						newUser_rating.setTextContent(user_ratingValue);
-						newNewest_version.setTextContent(newest_versionValue);
-						newDateof_lastupate.setTextContent(dateOfLastUpdateValue);
-						newPeople_rating.setTextContent(people_ratingValue);
-						newHowFarUserPlayed.setTextContent(howFarUserPlayedValue);
-						newstillOnPc.setTextContent(stillOnPcValue);
-						newEngine.setTextContent(engineValue);
-						newOS.setTextContent(osValue);
-						newLanguage.setTextContent(languageValue);
-						newSelfNote.setTextContent(selfNoteValue);
-						newGame.appendChild(newName);
-						newGame.appendChild(newDeveloper);
-						newGame.appendChild(newPlayed_version);
-						newGame.appendChild(newDateof_lastplay);
-						newGame.appendChild(newUser_rating);
-						newGame.appendChild(newNewest_version);
-						newGame.appendChild(newDateof_lastupate);
-						newGame.appendChild(newPeople_rating);
-						newGame.appendChild(newHowFarUserPlayed);
-						newGame.appendChild(newstillOnPc);
-						newGame.appendChild(newEngine);
-						newGame.appendChild(newOS);
-						newGame.appendChild(newLanguage);
-						newGame.appendChild(newSelfNote);
-						sourceNode.appendChild(newGame);
-						saveLoadDoc.saveDocument(dom, mainInit.databasePath);
-						frameCreate.refreshTable();
-						JOptionPane.showMessageDialog(null, nameValue+", \nId: "+idValue+" "+(bc[2]==null?"has been added":bc[2]), bs[0]==null?"Success":bs[0], JOptionPane.INFORMATION_MESSAGE);
 
-						int option = JOptionPane.showConfirmDialog(null, bc[3]==null?"Do you want to add another game?":bc[3], bs[2]==null?"Add game":bs[2], JOptionPane.YES_NO_OPTION);
-						if (option == JOptionPane.NO_OPTION) { repeat = false; break; } else { break; }
-					}
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			String[] allGameInfo = {idValue, nameValue, developerValue, played_versionValue, 
+					dateof_lastplayValue, user_ratingValue, newest_versionValue, dateOfLastUpdateValue, 
+					people_ratingValue, howFarUserPlayedValue, stillOnPcValue, engineValue, 
+					osValue, languageValue, selfNoteValue};
+			Boolean success = changeDatabase.addNewGameIntoDatabase("f95", allGameInfo);
+			if (!success) { break; }
+
+			int option = JOptionPane.showConfirmDialog(null, bc[3]==null?"Do you want to add another game?":bc[3], bs[2]==null?"Add game":bs[2], JOptionPane.YES_NO_OPTION);
+			if (option == JOptionPane.NO_OPTION) { repeat = false; break; } else { break; }
 		}
 	}
 }

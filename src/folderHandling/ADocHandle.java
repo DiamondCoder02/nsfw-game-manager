@@ -64,7 +64,7 @@ public class ADocHandle {
 			e.printStackTrace();
 			return false;
 		}
-		System.out.println("File saved at: "+finalDirectory);
+		// System.out.println("File saved at: "+finalDirectory);
 		return true;
 	}
 

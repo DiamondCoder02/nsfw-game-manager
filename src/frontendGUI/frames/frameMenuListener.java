@@ -20,6 +20,9 @@ import frontendGUI.buttons.randomGames;
 import frontendGUI.buttons.search;
 import frontendGUI.gameButtons.addF95;
 import frontendGUI.gameButtons.addManual;
+import frontendGUI.gameButtons.removeGame;
+import frontendGUI.gameButtons.updateF95;
+import frontendGUI.gameButtons.updateManual;
 import integrationCheck.defaultValues;
 import webApiScrapeThings.autoSitesFetch;
 
@@ -30,13 +33,10 @@ public class frameMenuListener implements ActionListener {
 		switch (e.getActionCommand()) {
 			case "Add game": addManual.addOneGameToFile(); break;
 			case "Add F95zone": addF95.addFromF95(); break;
-
-			/*
-			case "Update game": updateManually.updateOneGameFromToFile(); break;
-			case "Remove game": removeAnyGame.removeOneGameFromFile("man"); break;
-			case "Update F95zone": updateFromF95site.updatef95game(); break;
-			case "Remove F95zone": removeAnyGame.removeOneGameFromFile("f95"); break;
-			*/
+			case "Update game": updateManual.updateOneGameFromToFile(); break;
+			case "Update F95zone": updateF95.updatef95game(); break;
+			case "Remove game": removeGame.removeOneGameFromFile("man");
+			case "Remove F95zone": removeGame.removeOneGameFromFile("f95");
 
 			case "Save file copy": databaseCopy.saveFileCopy(); break;
 			case "Refresh table": localFolderHandle.fetchFoldersForTable(); break;

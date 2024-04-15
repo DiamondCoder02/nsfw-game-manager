@@ -7,10 +7,8 @@ import folderHandling.initialFileLoading.loadSettings;
 public class frameTable {
 	// private static JTable table = new JTable();
 	public static JTable createTable(String mainDirectory, JTable table){
-		// TODO - Don't forget to add games to the table
 		frameTableReload.reloadTable(table, mainDirectory);
 		table.setBounds(30, 40, 200, 300);
-		// TODO - fixed? 
 		setColumns(table);
 		table.setAutoCreateRowSorter(true);
 		return table;

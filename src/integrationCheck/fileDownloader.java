@@ -70,7 +70,6 @@ public class fileDownloader {
 		if (arch.equals("amd64")) { arch = "x86_64"; }
 
 		try {
-			// TODO - return true if discord is set to false in settings
 			// Path of Discord's library inside the ZIP
 			String zipPath = "lib/" + arch + "/discord_game_sdk" + suffix;
 			// Open the URL as a ZipInputStream
@@ -90,6 +89,7 @@ public class fileDownloader {
 				zin.closeEntry(); // next entry
 			}
 			zin.close();
+			connection.disconnect();
 			return true;
 		} catch (Exception e) {
 			System.err.println("Error downloading Discord SDK.\n" + e);

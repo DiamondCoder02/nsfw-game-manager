@@ -70,7 +70,7 @@ public class ADocHandle {
 
 	// Oh Jesus
 	// Alright, the problem to solve is that the tutorials are fucking confusing
-	// TODO - Fix later and merge thw two?
+	// TODO - Fix later and merge the two?
 	public static boolean saveSettingsJson(String finalDirectory, Map<String, Object> settingsSave) {
 		try {
 			BufferedWriter writer = Files.newBufferedWriter(Paths.get(finalDirectory));

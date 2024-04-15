@@ -6,9 +6,7 @@ import java.io.FileReader;
 import javax.swing.JOptionPane;
 
 public class loadLanguage {
-	// TODO - This needs to be changed
 	// TODO - The way this was done is fucking retarded
-
 	// TODO - Idea: Literally here do if a language is missing or some words are null
 	// TODO - If something is missing default to english column but keep the row
 

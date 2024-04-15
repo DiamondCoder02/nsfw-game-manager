@@ -21,6 +21,7 @@ import folderHandling.checkDatabase;
 import folderHandling.initialFileLoading.loadGames;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
+import frontendGUI.mainFrame;
 import integrationCheck.defaultValues;
 import webApiScrapeThings.sites.loadF95site;
 
@@ -74,8 +75,7 @@ public class autoSitesFetch {
 				manualButton = false;
 				JOptionPane.showMessageDialog(null, lf[2]==null?"All game infos got updated":lf[2], bs[3]==null?"Update":bs[3], JOptionPane.INFORMATION_MESSAGE);
 				frame.dispose();
-				// TODO - frame refreshTable
-				// frameCreate.refreshTable();
+				mainFrame.refreshTable();
 			}
 		});
 	}

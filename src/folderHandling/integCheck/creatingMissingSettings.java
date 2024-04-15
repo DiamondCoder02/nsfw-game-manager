@@ -5,7 +5,6 @@ import com.google.gson.JsonObject;
 import folderHandling.ADocHandle;
 
 public class creatingMissingSettings {
-	// TODO - check the settings file and update if some values are missing
 	public static boolean creatingMissingSettingsHandler(String[][] allSettings, String directoryPath) {
 		try {
 			JsonObject settings = ADocHandle.loadSettingsJson(directoryPath + "/settings.json");

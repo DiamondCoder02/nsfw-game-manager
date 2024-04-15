@@ -17,16 +17,15 @@ public class mainFrame {
 	private static JTable table = new JTable();
 	private static JScrollPane pane;
 	public static void createFrame(String mainDirectory) {
-		// TODO - This needs rewrite
 		frame = frameCreate.WindowCreate(frame, mainDirectory);
-		
+
 		table = frameTable.createTable(mainDirectory, table);
 		frame.add(table.getTableHeader(), BorderLayout.PAGE_START);
 		frame.add(table, BorderLayout.CENTER);
 
 		pane = new JScrollPane(table);
 		frame.add(pane, BorderLayout.CENTER);
-		
+
 		frameColor.WindowRefresh(frame, pane, table);
 
 		frame.setVisible(true);

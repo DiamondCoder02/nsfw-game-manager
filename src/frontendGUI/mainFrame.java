@@ -10,6 +10,7 @@ import frontendGUI.frames.frameColor;
 import frontendGUI.frames.frameCreate;
 import frontendGUI.frames.frameTable;
 import frontendGUI.frames.frameTableReload;
+import integrationCheck.defaultValues;
 
 public class mainFrame {
 	private static JFrame frame = new JFrame();
@@ -31,8 +32,8 @@ public class mainFrame {
 		frame.setVisible(true);
 	}
 
-	public static void refreshTable(String mainDirectory) {
-		frameTableReload.reloadTable(table, mainDirectory);
+	public static void refreshTable() {
+		frameTableReload.reloadTable(table, defaultValues.mainDirectory);
 		frameTable.setColumns(table);
 	}
 }

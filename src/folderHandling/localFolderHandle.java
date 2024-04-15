@@ -1,4 +1,4 @@
-package _folderHandle.autoFetchChecks;
+package folderHandling;
 
 import java.awt.Dimension;
 import java.io.IOException;
@@ -19,18 +19,17 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import _folderHandle.loadSaveGamesSettings.loadSettingsFromXml;
-import _folderHandle.loadSaveGamesSettings.saveLoadDoc;
-import _main.langLoad;
-import _main.mainInit;
-import _main.application.frameCreate;
+import folderHandling.initialFileLoading.loadLanguage;
+import folderHandling.initialFileLoading.loadSettings;
+import frontendGUI.mainFrame;
+import integrationCheck.defaultValues;
 
-public class autoFolderChecks {
-	static String[] lf = langLoad.folder, bs = langLoad.base;
+public class localFolderHandle {
+	static String[] lf = loadLanguage.folder, bs = loadLanguage.base;
 	public static void fetchFoldersForTable() {
-		String[] location = loadSettingsFromXml.loadStringSettings("folderLocation");
-		if (location[0].equals("null")) { JOptionPane.showMessageDialog(null, "No hentai folder selected. Please select, then try again!", "Error", JOptionPane.ERROR_MESSAGE); return; }
-		Path folder = Paths.get(location[0]);
+		String location = loadSettings.folderLocation;
+		if (location.equals("null")) { JOptionPane.showMessageDialog(null, "No hentai folder selected. Please select, then try again!", "Error", JOptionPane.ERROR_MESSAGE); return; }
+		Path folder = Paths.get(location);
 		
 		LocalDate currentTime = LocalDate.now();
 		// get the length of the folder
@@ -74,7 +73,7 @@ public class autoFolderChecks {
 				pbar.setValue(pbar.getMaximum());
 				frame.dispose();
 				JOptionPane.showMessageDialog(null, lf[2]==null?"All game infos got updated":lf[2], bs[3]==null?"Update":bs[3], JOptionPane.INFORMATION_MESSAGE);
-				frameCreate.refreshTable();
+				mainFrame.refreshTable();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -85,7 +84,7 @@ public class autoFolderChecks {
 		String nameToWorkWith, String versionToWorkWith, String lastModifiedToWorkWith
 	) {
 		//System.out.println(siteToWorkWith+" "+idToWorkWith+" "+nameToWorkWith+" "+versionToWorkWith+" "+lastModifiedToWorkWith); 
-		Document gameDatabase = saveLoadDoc.loadDocument(mainInit.databasePath);
+		Document gameDatabase = ADocHandle.load(defaultValues.mainDirectory + "/hentai.xml");
 		NodeList source = gameDatabase.getElementsByTagName("source");
 		for (int i = 0; i < source.getLength(); i++) {
 			Node sourceNode = source.item(i);
@@ -107,6 +106,6 @@ public class autoFolderChecks {
 				}
 			}
 		}
-		saveLoadDoc.saveDocument(gameDatabase, mainInit.databasePath);
+		ADocHandle.save(gameDatabase, defaultValues.mainDirectory + "/hentai.xml");
 	}
 }

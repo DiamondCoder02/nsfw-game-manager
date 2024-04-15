@@ -1,4 +1,4 @@
-package _folderHandle.checkAndBackup;
+package folderHandling;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -7,12 +7,12 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
 
-import _main.mainInit;
+import integrationCheck.defaultValues;
 
-public class backup {
+public class backupHandle {
 	public static void doBackup() {
-		String mainDataPath = mainInit.databasePath;
-		String backupPath = mainInit.mainPath+"backup";
+		String mainDataPath = defaultValues.mainDirectory + "/hentai.xml";
+		String backupPath = defaultValues.mainDirectory + "/backup";
 		// check backup folder
 		if (!new File(backupPath).exists()) {
 			new File(backupPath).mkdirs();

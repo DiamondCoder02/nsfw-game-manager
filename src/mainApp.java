@@ -1,9 +1,13 @@
+import folderHandling.backupHandle;
+import folderHandling.localFolderHandle;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
 import frontendGUI.mainFrame;
+import frontendGUI.buttons.discord;
 import integrationCheck.defaultValues;
 import integrationCheck.newVersion;
 import integrationCheck.systemCheck;
+import webApiScrapeThings.autoSitesFetch;
 
 public class mainApp {
 	public static void main(String[] args) {
@@ -26,6 +30,11 @@ public class mainApp {
 		}
 		System.out.println("--- No New Version ---");
 
+		if (loadSettings.othersettings[2]) { autoSitesFetch.fetchInfoThenUpdateTable(); }
+		if (loadSettings.othersettings[3]) { localFolderHandle.fetchFoldersForTable(); }
+		if (loadSettings.othersettings[4]) { discord.loopDiscord(); }
+
+		backupHandle.doBackup();
 		mainFrame.createFrame(mainDirectory);
 	}
 

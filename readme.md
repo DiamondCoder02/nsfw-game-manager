@@ -47,6 +47,10 @@ To do:
 - [ ] optimize search ( searchByName: dungeon )
 - [x] "This application requires a Java Runtime Environment." - fix this
 
+Stupid request from friends:
+
+- [ ] Cum counter
+
 ### Language support
 
 Currently supported languages: English( +EngwishUwU ), Hungarian

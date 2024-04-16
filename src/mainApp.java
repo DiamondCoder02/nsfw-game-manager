@@ -9,8 +9,23 @@ import integrationCheck.newVersion;
 import integrationCheck.systemCheck;
 import webApiScrapeThings.autoSitesFetch;
 
+// https://stackoverflow.com/questions/7704405/how-do-i-make-my-java-application-open-a-console-terminal-window
+import java.io.*;
+import java.awt.GraphicsEnvironment;
+import java.net.URISyntaxException;
 public class mainApp {
-	public static void main(String[] args) {
+	public static void main (String [] args) throws IOException, InterruptedException, URISyntaxException{
+        Console console = System.console();
+        if(console == null && !GraphicsEnvironment.isHeadless()){
+            String filename = mainApp.class.getProtectionDomain().getCodeSource().getLocation().toString().substring(6);
+            Runtime.getRuntime().exec(new String[]{"cmd","/c","start","cmd","/k","java -jar \"" + filename + "\""});
+        }else{
+            maintest(new String[0]);
+            System.out.println("This is bug --- Program has ended, please type 'exit' to close the console");
+        }
+    }
+
+	public static void maintest (String[] args) {
 		String mainDirectory = defaultValues.mainDirectory;
 
 		if (!systemCheck.programSystemCheck(mainDirectory)) { return; }

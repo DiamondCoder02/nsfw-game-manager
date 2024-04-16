@@ -1,6 +1,7 @@
 package integrationCheck;
 
 public interface defaultValues {
+	// TODO - This is probably the only reason it will not work on Linux (NEED TEST)
 	String mainDirectory = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager";
 
 	String appGithubLink = "https://github.com/DiamondCoder02/nsfw-game-manager/releases/latest";

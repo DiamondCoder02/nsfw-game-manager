@@ -36,6 +36,17 @@ If it's limited to some site, it will be in brackets ()
 - [ ] Rewrite Languages
 - [ ] Rewrite the whole program
 
+To do:
+
+- [ ] move database from xml ( MUST NOT BREAK - 0.1.2.1 ? )
+- [ ] add steam ( 0.1.2.1 ? )
+- [ ] fix bugs / do something with all the ~12 TODOs that is in the source code
+- [ ] fix and improve dark mode
+- [ ] Memory & CPU usage higher? ( Need more test )
+- [ ] Fix weird long pause after you change some setting?
+- [ ] optimize search ( searchByName: dungeon )
+- [x] "This application requires a Java Runtime Environment." - fix this
+
 ### Language support
 
 Currently supported languages: English( +EngwishUwU ), Hungarian

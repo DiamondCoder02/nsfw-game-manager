@@ -34,5 +34,6 @@ public class mainFrame {
 	public static void refreshTable() {
 		frameTableReload.reloadTable(table, defaultValues.mainDirectory);
 		frameTable.setColumns(table);
+		frameColor.WindowRefresh(frame, pane, table);
 	}
 }

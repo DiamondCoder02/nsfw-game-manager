@@ -10,13 +10,15 @@ import java.nio.file.Paths;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -56,7 +58,7 @@ public class ADocHandle {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			// is this needed? (So far, yes)
-			transformer.setOutputProperty(OutputKeys.INDENT, "yes"); 
+			// transformer.setOutputProperty(OutputKeys.INDENT, "yes"); 
 			DOMSource domsource = new DOMSource(doc);
 			StreamResult result = new StreamResult(finalDirectory);
 			transformer.transform(domsource, result);
@@ -66,6 +68,24 @@ public class ADocHandle {
 		}
 		// System.out.println("File saved at: "+finalDirectory);
 		return true;
+	}
+
+	public static Element getElementsFromDB(Document dom){
+		NodeList source = dom.getElementsByTagName("source");
+		for (int i = 0; i < source.getLength(); i++) {
+			Node sourceNode = source.item(i);
+			if (sourceNode.getNodeType() == Node.ELEMENT_NODE) {
+				NodeList game = sourceNode.getChildNodes();
+				for (int j = 0; j < game.getLength(); j++) {
+					Node gameNode = game.item(j);
+					if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element e = (Element) gameNode;
+						return e;
+					}
+				}
+			}
+		}
+		return null;
 	}
 
 	private static JsonObject jsonSettings;

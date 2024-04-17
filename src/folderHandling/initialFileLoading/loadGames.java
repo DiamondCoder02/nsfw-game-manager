@@ -15,6 +15,9 @@ public class loadGames {
 		String[] columnNames = enabledRows();
 		Object[][] allDataFromFile = null;
 		Integer counter = 0;
+
+		// Element e = ADocHandle.getElementsFromDB(dom);
+
 		NodeList source = dom.getElementsByTagName("source");
 		for (int i = 0; i < source.getLength(); i++) {
 			Node sourceNode = source.item(i);

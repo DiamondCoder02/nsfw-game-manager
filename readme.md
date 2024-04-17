@@ -27,17 +27,16 @@ If it's limited to some site, it will be in brackets ()
 ## TODO / Ideas
 
 - [ ] FAQ rewrite
-- [ ] Optimizations ( Low priority )
+- [ ] Optimizations ( ~Low~ High priority )
 - [ ] dlsite.com support
 - [ ] Steam support
 - [ ] Make it LINUX compatible
-- [ ] Reqrite folder handling so it's not a pain in the ass to handle a hentai game folder
-- [ ] Rewrite ReadMe
-- [ ] Rewrite Languages
 - [ ] Rewrite the whole program
 
-To do:
+Rewrite To do:
 
+- [ ] Rewrite ReadMe
+- [ ] Rewrite Languages
 - [ ] move database from xml ( MUST NOT BREAK - 0.1.2.1 ? )
 - [ ] add steam ( 0.1.2.1 ? )
 - [ ] fix bugs / do something with all the ~12 TODOs that is in the source code

@@ -7,8 +7,7 @@ import javax.swing.JOptionPane;
 
 public class loadLanguage {
 	// TODO - The way this was done is fucking retarded
-	// TODO - Idea: Literally here do if a language is missing or some words are null
-	// TODO - If something is missing default to english column but keep the row
+	// TODO - Idea: Literally here do if a language is missing or some words are null => default to english column but keep the row
 
 	private static String[] tempBase = new String[30], tempBasic = new String[30], tempTabl = new String[30], 
 	tempjLaPa = new String[30], tempjRaBu = new String[30], tempbuton = new String[30], tempFold = new String[30],
@@ -42,16 +41,21 @@ public class loadLanguage {
 			for (int i = 0; i < (languages.length-1); i++) { lanMeans[i] = languages[i+1]; }
 
 			String line = "";
+			String[] nextLine;
 			while ((line = br.readLine()) != null) { // returns a Boolean value
-				String[] nextLine = line.split(split); // use comma as separator
+				// System.out.println(line);
+				nextLine = line.split(split); // use comma as separator
+				// System.out.println(nextLine[0]);
 				if (!lastLang.equals(nextLine[0])) {
 					lastLang = nextLine[0];
 					temp = 0;
 				}
+				// System.out.println(nextLine[langindex]);
 				tempAr[temp] = nextLine[langindex];
 				if (tempAr[temp].contains("\\n")) {
 					tempAr[temp] = tempAr[temp].replace("\\n", "\n");
 				}
+				// System.out.println(tempAr[temp]);
 				switch (nextLine[0]) {
 					case "base": tempBase[temp] = tempAr[temp]; break;
 					case "basic": tempBasic[temp] = tempAr[temp]; break;
@@ -64,6 +68,7 @@ public class loadLanguage {
 					case "random": tempRand[temp] = tempAr[temp]; break;
 				}
 				temp++;
+				// System.out.println(temp + "\n-----------------------");
 			}
 			base = tempBase; basic = tempBasic; tabl = tempTabl; jlapa = tempjLaPa;
 			jrabu = tempjRaBu; buton = tempbuton; folder = tempFold; serc = tempSear;

@@ -74,7 +74,8 @@ public class frameColor {
 		frameCreate.autoFetchNews.setBackground(d?bg:null); frameCreate.autoFetchNews.setForeground(d?fg:null);
 		frameCreate.autoFetchFolders.setBackground(d?bg:null); frameCreate.autoFetchFolders.setForeground(d?fg:null);
 
-		frameCreate.show.setBackground(d?bg:null); frameCreate.show.setForeground(d?fg:null); // TODO - why no work?
+		// TODO - why no work?
+		// frameCreate.show.setBackground(d?bg:null); frameCreate.show.setForeground(d?fg:null);
 		frameCreate.showSite.setBackground(d?bg:null); frameCreate.showSite.setForeground(d?fg:null);
 		frameCreate.showID.setBackground(d?bg:null); frameCreate.showID.setForeground(d?fg:null);
 		frameCreate.showName.setBackground(d?bg:null); frameCreate.showName.setForeground(d?fg:null);

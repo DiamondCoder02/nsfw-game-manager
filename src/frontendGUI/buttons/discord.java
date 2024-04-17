@@ -4,10 +4,12 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import folderHandling.initialFileLoading.loadSettings;
+import integrationCheck.defaultValues;
 import webApiScrapeThings.discordRPC;
 
 public class discord {
 	public static void loopDiscord() {
+		loadSettings.load(defaultValues.mainDirectory);
 		Boolean [] boolSettings = loadSettings.othersettings;
 		if (!boolSettings[4]) { return;}
 

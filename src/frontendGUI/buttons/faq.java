@@ -35,8 +35,7 @@ public class faq {
 		"-----*Plans:*-----"+br+
 		"- Dlsite so only ID needed"+br+
 		"- (Far future) If I can, I will also add to download / autoupdate games"+br+br+
-		"Q: Support the project?"+br+"A: Patreon:"+" <font color = 64AFFF><a href=\"https://www.patreon.com/DiamondCoder\">https://www.patreon.com/DiamondCoder</a></font>"+br+
-		"or on Github:"+" <font color = 64AFFF><a href=\"https://github.com/sponsors/DiamondCoder02\">https://github.com/sponsors/DiamondCoder02</a></font>"+br+br+
+		"Q: Support the project?"+br+"A: Currently not available"+br+br+
 		"Q: Can I help code / Error in the program?"+br+"A: All isssue and help is accepted on GitHub:"+" <font color = 64AFFF><a href=\"https://github.com/DiamondCoder02/nsfw-game-manager\">https://github.com/DiamondCoder02/nsfw-game-manager</a></font>"+br+br+
 		"Q: placeholder?"+br+"A: placeholder!"+
 		"</span></p>");

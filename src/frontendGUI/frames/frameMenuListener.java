@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 import folderHandling.changeSettings;
 import folderHandling.localFolderHandle;
 import folderHandling.initialFileLoading.loadLanguage;
-import folderHandling.initialFileLoading.loadSettings;
 import frontendGUI.mainFrame;
 import frontendGUI.buttons.credits;
 import frontendGUI.buttons.databaseCopy;
@@ -23,7 +22,6 @@ import frontendGUI.gameButtons.addManual;
 import frontendGUI.gameButtons.removeGame;
 import frontendGUI.gameButtons.updateF95;
 import frontendGUI.gameButtons.updateManual;
-import integrationCheck.defaultValues;
 import webApiScrapeThings.autoSitesFetch;
 
 public class frameMenuListener implements ActionListener {
@@ -74,7 +72,6 @@ public class frameMenuListener implements ActionListener {
 
 			default: JOptionPane.showMessageDialog(null, "Error, this should never happen!!!" + " (src/frontEndGUI/frameMenuListener_actionPerformed)", "Error", JOptionPane.ERROR_MESSAGE); break;
 		}
-		loadSettings.load(defaultValues.mainDirectory);
 		mainFrame.refreshTable();
 	}
 

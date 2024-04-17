@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import folderHandling.initialFileLoading.loadSettings;
 import frontendGUI.frames.frameColor;
 import frontendGUI.frames.frameCreate;
 import frontendGUI.frames.frameTable;
@@ -32,6 +33,7 @@ public class mainFrame {
 	}
 
 	public static void refreshTable() {
+		loadSettings.load(defaultValues.mainDirectory);
 		frameTableReload.reloadTable(table, defaultValues.mainDirectory);
 		frameTable.setColumns(table);
 		frameColor.WindowRefresh(frame, pane, table);

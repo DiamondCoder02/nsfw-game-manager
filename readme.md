@@ -46,6 +46,7 @@ To do:
 - [ ] Fix weird long pause after you change some setting?
 - [ ] optimize search ( searchByName: dungeon )
 - [x] "This application requires a Java Runtime Environment." - fix this
+- [ ] Edit the FAQ part about support, those don't work?
 
 Stupid request from friends:
 

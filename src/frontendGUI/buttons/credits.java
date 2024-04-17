@@ -37,8 +37,7 @@ public class credits {
 		"The main reason for this was to convert my old excel file into something more readeble and more usefull."+br+
 		"Main focus is something dynamic and easy to use for hentai games."+br+br+
 		"Thank you for using this program, it gives me smile I can make something good."+br+br+
-		"Full open source:"+" <font color = 64AFFF><a href=\"https://github.com/DiamondCoder02/nsfw-game-manager\">https://github.com/DiamondCoder02/nsfw-game-manager</a></font>"+br+
-		"Support me on Github or on Patreon:"+" <font color = 64AFFF><a href=\"https://www.patreon.com/DiamondCoder\">https://www.patreon.com/DiamondCoder</a></font></span></p>"+br);
+		"Full open source:"+" <font color = 64AFFF><a href=\"https://github.com/DiamondCoder02/nsfw-game-manager\">https://github.com/DiamondCoder02/nsfw-game-manager</a></font>"+br);
 		ep.addHyperlinkListener(new HyperlinkListener() {
 			@Override
 			public void hyperlinkUpdate(HyperlinkEvent e) {

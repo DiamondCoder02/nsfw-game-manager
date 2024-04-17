@@ -32,18 +32,15 @@ public class fileChecker {
 		}
 		return true;
 	}
-
+	
 	private static boolean checkFile(File directoryPlace, String fileName) {
 		if (!new File(directoryPlace + "/" + fileName).exists()) {
-			// System.out.println("Creating: " + fileName);
-			// TODO - This is stupid...
 			switch (fileName) {
 				case "settings.json": return creatingDefaultDoc.createJsonSettings(defaultValues.settings, directoryPlace + "/" + fileName);
 				case "hentai.xml": return creatingDefaultDoc.createDatabase(directoryPlace + "/" + fileName, "source", defaultValues.games);
 				default: return false;
 			}
 		} else if (fileName.equals("settings.json")) {
-			// return true;
 			return creatingMissingSettings.creatingMissingSettingsHandler(defaultValues.settings, directoryPlace.toString());
 		} else {
 			return true;

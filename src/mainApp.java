@@ -20,13 +20,13 @@ public class mainApp {
 		if (loadSettings.load(defaultValues.mainDirectory)) { consoleNeeded = loadSettings.othersettings[5]; }
 		if (consoleNeeded) { 
 			Console console = System.console();
-			if(console == null && !GraphicsEnvironment.isHeadless()){
+			if (console == null && !GraphicsEnvironment.isHeadless()) {
 				String filename = mainApp.class.getProtectionDomain().getCodeSource().getLocation().toString().substring(6);
 				Runtime.getRuntime().exec(new String[]{"cmd","/c","start","cmd","/k","java -jar \"" + filename + "\""});
-			}else{
+			} else{
+				System.out.println("+ No console needed! +");
 				mainMain();
-				System.out.println("This line is a bug, but can't be asked to fix "+
-					"--- Program has ended, please type 'exit' to close the console");
+				System.out.println("+ No console needed! +");
 			}
 		} else { mainMain(); }
     }
@@ -45,10 +45,9 @@ public class mainApp {
 
 		System.out.println("--- Checking for new version --- Enabled:" + loadSettings.othersettings[0]);
 		if (loadSettings.othersettings[0]) { 
-			if (newVersion.checkNewVersion()) {
-				System.out.println("--- New Version Available ---"); return;
-			}
-		}
+		if (newVersion.checkNewVersion()) {
+			System.out.println("--- New Version Available ---"); return;
+		} }
 		System.out.println("--- No New Version ---");
 
 		if (loadSettings.othersettings[2]) { 

@@ -43,4 +43,8 @@ public interface defaultValues {
 		{"language", "English"},
 		{"selfNote", "something"}
 	};
+
+	String[] infoProgress = {"Not played", "In progress", "Finish", "100% Finished"};
+	String[] infoEngine = {"Flash", "HTML", "Java", "QSP", "Ren'Py", "RPGM", "Unity", "Unreal Engine", "WinGit", "WolfRPG", "other/unknown"};
+	String[] infoSite = {"f95", "man"};
 }

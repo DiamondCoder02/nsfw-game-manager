@@ -16,23 +16,28 @@ public class loadSettings {
 		try{ parser = ADocHandle.loadSettingsJson(directory + "/settings.json"); } 
 		catch (Exception e) { return false; }
 
-		JsonObject otherSet = parser.get("othersettings").getAsJsonObject();
-		JsonObject shownSet = parser.get("shownColumns").getAsJsonObject();
-		othersettings = new Boolean[otherSet.size()];
-		shownColumns = new Boolean[shownSet.size()];
+		try {
+			JsonObject otherSet = parser.get("othersettings").getAsJsonObject();
+			JsonObject shownSet = parser.get("shownColumns").getAsJsonObject();
+			othersettings = new Boolean[otherSet.size()];
+			shownColumns = new Boolean[shownSet.size()];
 
-		for (int i = 0; i < defaultValues.settings[3].length-1; i++) {
-			othersettings[i] = otherSet.get(defaultValues.settings[3][i+1]).getAsBoolean();
+			for (int i = 0; i < defaultValues.settings[3].length-1; i++) {
+				othersettings[i] = otherSet.get(defaultValues.settings[3][i+1]).getAsBoolean();
+			}
+
+			language = parser.get("appLanguage").getAsString();
+			folderLocation = parser.get("folderLocation").getAsString();
+			appVersion = parser.get("appVersion").getAsString();
+
+			for (int i = 0; i < defaultValues.settings[4].length-1; i++) {
+				shownColumns[i] = shownSet.get(defaultValues.settings[4][i+1]).getAsBoolean();
+			}
+
+			return true;
+		} catch (Exception e) {
+			return false;
 		}
-
-		language = parser.get("appLanguage").getAsString();
-		folderLocation = parser.get("folderLocation").getAsString();
-		appVersion = parser.get("appVersion").getAsString();
-
-		for (int i = 0; i < defaultValues.settings[4].length-1; i++) {
-			shownColumns[i] = shownSet.get(defaultValues.settings[4][i+1]).getAsBoolean();
-		}
-
-		return true;
+		
 	}
 }

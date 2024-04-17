@@ -68,32 +68,17 @@ public class ADocHandle {
 		return true;
 	}
 
-	// Oh Jesus
-	// Alright, the problem to solve is that the tutorials are fucking confusing
-	// TODO - Fix later and merge the two?
-	public static boolean saveSettingsJson(String finalDirectory, Map<String, Object> settingsSave) {
+	private static JsonObject jsonSettings;
+	private static Map<String, Object> mapSettings; // Yeah, I don't know how to merge the two. I'm sorry.
+	public static boolean saveSettingsJson(String finalDirectory, Map<String, Object> settingsSave) { 	mapSettings = settingsSave; return saveSettings(finalDirectory, false); }
+	public static boolean saveSettingsJson(String finalDirectory, JsonObject settingsSave) { 			jsonSettings = settingsSave; return saveSettings(finalDirectory, true); }
+	private static boolean saveSettings(String finalDirectory, Boolean a) {
 		try {
 			BufferedWriter writer = Files.newBufferedWriter(Paths.get(finalDirectory));
 			// https://howtodoinjava.com/gson/pretty-print-json-output/
 			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-			writer.write(gson.toJson(settingsSave));
-			writer.close();
-
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-
-	public static boolean saveSettingsJson(String finalDirectory, JsonObject settingsSave) {
-		try {
-			BufferedWriter writer = Files.newBufferedWriter(Paths.get(finalDirectory));
-			// https://howtodoinjava.com/gson/pretty-print-json-output/
-			Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-			writer.write(gson.toJson(settingsSave));
+			writer.write(gson.toJson(a? jsonSettings : mapSettings));
 			writer.close();
 
 			return true;

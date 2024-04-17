@@ -18,16 +18,35 @@ import integrationCheck.defaultValues;
 
 public class randomGames {
 	static String[] jrb = loadLanguage.jrabu, tlc = loadLanguage.tabl, ran= loadLanguage.rand;
-	private static String br = "<br>";
 
-	// TODO - optimise this
 	public static void randoms(String choice){
 		switch (choice) {
 			case "RandomFully": fullyRandom(); break;
 			case "RandomDev": randomFromDeveloper(); break;
-			case "RandomProgress": randomFromProgress(); break;
-			case "RandomEngine": randomWithEngine(); break;
-			case "RandomSite": randomFromSite(); break;
+			case "RandomProgress": createButtonGroup(
+				ran[8]!=null?ran[8]:"Select progress to search for:", 
+				ran[3]!=null?ran[3]:"Random game from progress", 
+				ran[10]!=null?ran[10]:"from progress",
+				10, 
+				defaultValues.infoProgress
+				); 
+				break;
+			case "RandomEngine":createButtonGroup(
+				ran[9]!=null?ran[9]:"Select engine to search for:", 
+				ran[4]!=null?ran[4]:"Random game with engine", 
+				ran[10]!=null?ran[10]:"with engine",
+				12, 
+				defaultValues.infoEngine
+				);
+				break;
+			case "RandomSite": createButtonGroup(
+				ran[11]!=null?ran[11]:"Select site to search from:", 
+				ran[5]!=null?ran[5]:"Random game from site", 
+				ran[12]!=null?ran[12]:"from site", 
+				0, 
+				defaultValues.infoSite
+				);
+				break;
 			default: break;
 		}
 	}
@@ -47,36 +66,22 @@ public class randomGames {
 		if (result != null) {resultShow(result, ran[2]!=null?ran[2]:"Random game from developer");}
 	}
 
-	private static void randomFromProgress(){
-		JRadioButton howFarUserPlayed_NotPlayed = new JRadioButton(jrb[0]!=null?jrb[0]:"Not played", true), howFarUserPlayed_Playing = new JRadioButton(jrb[1]!=null?jrb[1]:"In progress", false), howFarUserPlayed_Finished = new JRadioButton(jrb[2]!=null?jrb[2]:"Finish", false), howFarUserPlayed_100Percent = new JRadioButton(jrb[3]!=null?jrb[3]:"100% Finished", false);
-			howFarUserPlayed_NotPlayed.setActionCommand("Not played"); howFarUserPlayed_Playing.setActionCommand("In progress"); howFarUserPlayed_Finished.setActionCommand("Finish"); howFarUserPlayed_100Percent.setActionCommand("100% Finished");
-			ButtonGroup progressGroup = new ButtonGroup(); progressGroup.add(howFarUserPlayed_NotPlayed); progressGroup.add(howFarUserPlayed_Playing); progressGroup.add(howFarUserPlayed_Finished); progressGroup.add(howFarUserPlayed_100Percent);
-			JPanel progressPanel = new JPanel(); progressPanel.add(howFarUserPlayed_NotPlayed); progressPanel.add(howFarUserPlayed_Playing); progressPanel.add(howFarUserPlayed_Finished); progressPanel.add(howFarUserPlayed_100Percent);
-		JOptionPane.showMessageDialog(null, progressPanel, ran[3]!=null?ran[3]:"Random game from progress", JOptionPane.QUESTION_MESSAGE);
-		Object[] result = randomFilter(10, ran[8]!=null?ran[8]:"from progress", progressGroup.getSelection().getActionCommand());
-		if (result != null) {resultShow(result, ran[3]!=null?ran[3]:"Random game from progress");}
-	}
+	private static void createButtonGroup(String jLabel, String messageDialog, String fromWithWhere, Integer place, String[] options){
+		ButtonGroup allButtons = new ButtonGroup();
+		JLabel siteLabel = new JLabel(jLabel);
+		JPanel sitePanel = new JPanel(); 
+		sitePanel.add(siteLabel);
 
-	private static void randomWithEngine() {
-		JRadioButton engine_Flash = new JRadioButton("Flash"), engine_HTML = new JRadioButton("HTML"), engine_Java = new JRadioButton("Java"), engine_QSP = new JRadioButton("QSP"), engine_RenPy = new JRadioButton("RenPy"), engine_RPGmaker = new JRadioButton("RPGmaker"), engine_Unity = new JRadioButton("Unity"), engine_Unreal = new JRadioButton("Unreal"), engine_WinGit = new JRadioButton("WinGit"), engine_WolfRPG = new JRadioButton("WolfRPG"), engine_other = new JRadioButton(jrb[7]!=null?jrb[7]:"other/unknown", true);
-			engine_Flash.setActionCommand("Flash"); engine_HTML.setActionCommand("HTML"); engine_Java.setActionCommand("Java"); engine_QSP.setActionCommand("QSP"); engine_RenPy.setActionCommand("Ren'Py"); engine_RPGmaker.setActionCommand("RPGM"); engine_Unity.setActionCommand("Unity"); engine_Unreal.setActionCommand("Unreal Engine"); engine_WinGit.setActionCommand("WinGit"); engine_WolfRPG.setActionCommand("WolfRPG"); engine_other.setActionCommand("other/unknown");
-			ButtonGroup engineGroup = new ButtonGroup(); engineGroup.add(engine_Flash); engineGroup.add(engine_HTML); engineGroup.add(engine_Java); engineGroup.add(engine_QSP); engineGroup.add(engine_RenPy); engineGroup.add(engine_RPGmaker); engineGroup.add(engine_Unity); engineGroup.add(engine_Unreal); engineGroup.add(engine_WinGit); engineGroup.add(engine_WolfRPG); engineGroup.add(engine_other);
-			JLabel engineLabel = new JLabel(ran[9]!=null?ran[9]:"Select engine to search for:");
-			JPanel enginePanel = new JPanel(); enginePanel.add(engineLabel); enginePanel.add(engine_Flash); enginePanel.add(engine_HTML); enginePanel.add(engine_Java); enginePanel.add(engine_QSP); enginePanel.add(engine_RenPy); enginePanel.add(engine_RPGmaker); enginePanel.add(engine_Unity); enginePanel.add(engine_Unreal); enginePanel.add(engine_WinGit); enginePanel.add(engine_WolfRPG); enginePanel.add(engine_other);
-		JOptionPane.showMessageDialog(null, enginePanel, ran[4]!=null?ran[4]:"Random game with engine", JOptionPane.QUESTION_MESSAGE);
-		Object[] result = randomFilter(12, ran[10]!=null?ran[10]:"with engine", engineGroup.getSelection().getActionCommand());
-		if (result != null) {resultShow(result, ran[4]!=null?ran[4]:"Random game with engine");}
-	}
+		for (int i = 0; i < options.length; i++) {
+			JRadioButton site = new JRadioButton(options[i], i == 0);
+			site.setActionCommand(options[i]);
+			allButtons.add(site);
+			sitePanel.add(site);
+		}
 
-	private static void randomFromSite() {
-		JRadioButton site_F95 = new JRadioButton("F95zone"), site_man = new JRadioButton("man", true);
-			site_F95.setActionCommand("f95"); site_man.setActionCommand("man");
-			ButtonGroup sitesGroup = new ButtonGroup(); sitesGroup.add(site_F95); sitesGroup.add(site_man);
-			JLabel siteLabel = new JLabel(ran[11]!=null?ran[11]:"Select site to search from:");
-			JPanel sitePanel = new JPanel(); sitePanel.add(siteLabel) ;sitePanel.add(site_F95); sitePanel.add(site_man);
-		JOptionPane.showMessageDialog(null, sitePanel, ran[5]!=null?ran[5]:"Random game from site", JOptionPane.QUESTION_MESSAGE);
-		Object[] result = randomFilter(0, ran[12]!=null?ran[12]:"from site", sitesGroup.getSelection().getActionCommand());
-		if (result != null) {resultShow(result, ran[5]!=null?ran[5]:"Random game from site");}
+		JOptionPane.showMessageDialog(null, sitePanel, messageDialog, JOptionPane.QUESTION_MESSAGE);
+		Object[] result = randomFilter(place, fromWithWhere, allButtons.getSelection().getActionCommand());
+		if (result != null) { resultShow(result, messageDialog); }
 	}
 
 	private static Object[] randomFilter(Integer place, String fromWith, String wanted){
@@ -102,6 +107,7 @@ public class randomGames {
 	}
 
 	private static void resultShow(Object[] result, String title) {
+		String br = "<br>";
 		Boolean[] boolSettings = loadSettings.othersettings;
 		String color;
 		if (boolSettings[0]) { color = "white"; } else { color = "black"; }

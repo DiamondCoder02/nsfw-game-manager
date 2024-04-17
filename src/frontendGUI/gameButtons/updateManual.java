@@ -26,6 +26,16 @@ import integrationCheck.defaultValues;
 public class updateManual {
 	static String[] base = loadLanguage.base, basic = loadLanguage.basic, jla = loadLanguage.jlapa, 
 		folder = loadLanguage.folder, jrb = loadLanguage.jrabu;
+	
+	static ButtonGroup howFarUserPlayed = new ButtonGroup();
+	static JPanel howFarUserPlayedPanel = new JPanel();
+	static ButtonGroup stillOnPc = new ButtonGroup();
+	static JPanel stillOnPcPanel = new JPanel();
+	static ButtonGroup engineGroup = new ButtonGroup();
+	static JPanel enginePanel = new JPanel();
+
+	static JPanel osPanel = new JPanel();
+
 	public static void updateOneGameFromToFile(){
 		JOptionPane optionPane = new JOptionPane();
 		JPanel panel = new JPanel(new GridLayout(8*2, 2));
@@ -78,45 +88,18 @@ public class updateManual {
 									JTextField newpeople_rated = new JTextField();
 
 									// Not played, In progress, Finish, 100% Finished
-									JRadioButton howFarUserPlayed_NotPlayed = new JRadioButton(jrb[0]!=null?jrb[0]:"Not played", true), howFarUserPlayed_Playing = new JRadioButton(jrb[1]!=null?jrb[1]:"In progress", false), howFarUserPlayed_Finished = new JRadioButton(jrb[2]!=null?jrb[2]:"Finish", false), howFarUserPlayed_100Percent = new JRadioButton(jrb[3]!=null?jrb[3]:"100% Finished", false);
-									howFarUserPlayed_NotPlayed.setActionCommand("Not played"); howFarUserPlayed_Playing.setActionCommand("In progress"); howFarUserPlayed_Finished.setActionCommand("Finish"); howFarUserPlayed_100Percent.setActionCommand("100% Finished");
-									ButtonGroup howFarUserPlayed = new ButtonGroup(); howFarUserPlayed.add(howFarUserPlayed_NotPlayed); howFarUserPlayed.add(howFarUserPlayed_Playing); howFarUserPlayed.add(howFarUserPlayed_Finished); howFarUserPlayed.add(howFarUserPlayed_100Percent);
-									JPanel howFarUserPlayedPanel = new JPanel(); howFarUserPlayedPanel.add(howFarUserPlayed_NotPlayed); howFarUserPlayedPanel.add(howFarUserPlayed_Playing); howFarUserPlayedPanel.add(howFarUserPlayed_Finished); howFarUserPlayedPanel.add(howFarUserPlayed_100Percent);
-									for (int k = 0; k < howFarUserPlayedPanel.getComponentCount(); k++) {
-										JRadioButton r = (JRadioButton) howFarUserPlayedPanel.getComponent(k);
-										if (r.getActionCommand().equals(oldhowFarUserPlayed)) { r.setSelected(true); }
-									}
+									String[] jrb1 = {jrb[0]!=null?jrb[0]:"Not played", jrb[1]!=null?jrb[1]:"In progress", jrb[2]!=null?jrb[2]:"Finish", jrb[3]!=null?jrb[3]:"100% Finished"};
+									radioButtons("progress", jrb1, defaultValues.infoProgress, true, oldhowFarUserPlayed);
 									// Yes, No, Unknown
-									JRadioButton stillOnPc_yes = new JRadioButton(jrb[4]!=null?jrb[4]:"Yes", true), stillOnPc_no = new JRadioButton(jrb[5]!=null?jrb[5]:"No", false), stillOnPc_unknown = new JRadioButton(jrb[6]!=null?jrb[6]:"Unknown", false);
-									stillOnPc_yes.setActionCommand("yes"); stillOnPc_no.setActionCommand("no"); stillOnPc_unknown.setActionCommand("unknown");
-									ButtonGroup stillOnPc = new ButtonGroup(); stillOnPc.add(stillOnPc_yes); stillOnPc.add(stillOnPc_no); stillOnPc.add(stillOnPc_unknown);
-									JPanel stillOnPcPanel = new JPanel(); stillOnPcPanel.add(stillOnPc_yes); stillOnPcPanel.add(stillOnPc_no); stillOnPcPanel.add(stillOnPc_unknown);						
-									for (int k = 0; k < stillOnPcPanel.getComponentCount(); k++) {
-										JRadioButton r = (JRadioButton) stillOnPcPanel.getComponent(k);
-										if (r.getActionCommand().equals(oldstillOnPc)) { r.setSelected(true); }
-									}
+									String[] jrb2 = {jrb[4]!=null?jrb[4]:"Yes", jrb[5]!=null?jrb[5]:"No", jrb[6]!=null?jrb[6]:"Unknown"};
+									radioButtons("stillOnPc", jrb2, defaultValues.infoOnPc, true, oldstillOnPc);
 									// Flash, HTML, Java, QSP, RenPy, RPGmaker, Unity, Unreal, WinGit, WolfRPG, other/unknown
-									JRadioButton engine_Flash = new JRadioButton("Flash"), engine_HTML = new JRadioButton("HTML"), engine_Java = new JRadioButton("Java"), engine_QSP = new JRadioButton("QSP"), engine_RenPy = new JRadioButton("RenPy"), engine_RPGmaker = new JRadioButton("RPGmaker"), engine_Unity = new JRadioButton("Unity"), engine_Unreal = new JRadioButton("Unreal"), engine_WinGit = new JRadioButton("WinGit"), engine_WolfRPG = new JRadioButton("WolfRPG"), engine_other = new JRadioButton(jrb[7]!=null?jrb[7]:"other/unknown", true);
-									engine_Flash.setActionCommand("Flash"); engine_HTML.setActionCommand("HTML"); engine_Java.setActionCommand("Java"); engine_QSP.setActionCommand("QSP"); engine_RenPy.setActionCommand("RenPy"); engine_RPGmaker.setActionCommand("RPGmaker"); engine_Unity.setActionCommand("Unity"); engine_Unreal.setActionCommand("Unreal"); engine_WinGit.setActionCommand("WinGit"); engine_WolfRPG.setActionCommand("WolfRPG"); engine_other.setActionCommand("other/unknown");
-									ButtonGroup engineGroup = new ButtonGroup(); engineGroup.add(engine_Flash); engineGroup.add(engine_HTML); engineGroup.add(engine_Java); engineGroup.add(engine_QSP); engineGroup.add(engine_RenPy); engineGroup.add(engine_RPGmaker); engineGroup.add(engine_Unity); engineGroup.add(engine_Unreal); engineGroup.add(engine_WinGit); engineGroup.add(engine_WolfRPG); engineGroup.add(engine_other);
-									JPanel enginePanel = new JPanel(); enginePanel.add(engine_Flash); enginePanel.add(engine_HTML); enginePanel.add(engine_Java); enginePanel.add(engine_QSP); enginePanel.add(engine_RenPy); enginePanel.add(engine_RPGmaker); enginePanel.add(engine_Unity); enginePanel.add(engine_Unreal); enginePanel.add(engine_WinGit); enginePanel.add(engine_WolfRPG); enginePanel.add(engine_other);
-									for (int k = 0; k < enginePanel.getComponentCount(); k++) {
-										JRadioButton r = (JRadioButton) enginePanel.getComponent(k);
-										if (r.getActionCommand().equals(oldengine)) { r.setSelected(true); }
-									}
+									radioButtons("engine", defaultValues.infoEngine, defaultValues.infoEngine, true, oldengine);
 									// Windows, Linux, Mac, Android, other
-									JCheckBox os_win = new JCheckBox("Windows"), os_lin = new JCheckBox("Linux"), os_mac = new JCheckBox("Mac"), os_and = new JCheckBox("Android"), os_other = new JCheckBox(jrb[7]!=null?jrb[7]:"other");
-									os_win.setActionCommand("windows"); os_lin.setActionCommand("linux"); os_mac.setActionCommand("mac"); os_and.setActionCommand("android"); os_other.setActionCommand("other");
-									JPanel osPanel = new JPanel(); osPanel.add(os_win); osPanel.add(os_lin); osPanel.add(os_mac); osPanel.add(os_and); osPanel.add(os_other);
-									if (oldos.contains("Windows")) { os_win.setSelected(true); } if (oldos.contains("Linux")) { os_lin.setSelected(true); } if (oldos.contains("Mac")) { os_mac.setSelected(true); } if (oldos.contains("Android")) { os_and.setSelected(true); } if (oldos.contains("other")) { os_other.setSelected(true); }
+									radioButtons("os", defaultValues.infoOS, defaultValues.infoOS, false, oldos);
 									
 									JTextField newlanguage = new JTextField();
 									JTextField newselfNote = new JTextField();
-
-									howFarUserPlayedPanel.setLayout(new BoxLayout(howFarUserPlayedPanel, BoxLayout.X_AXIS));
-									stillOnPcPanel.setLayout(new BoxLayout(stillOnPcPanel, BoxLayout.X_AXIS));
-									enginePanel.setLayout(new BoxLayout(enginePanel, BoxLayout.X_AXIS));
-									osPanel.setLayout(new BoxLayout(osPanel, BoxLayout.X_AXIS));
 
 									JLabel Namelabel = new JLabel(jla[1]!=null?jla[1]:"Name:" + " ("+(base[5]!=null?base[5]:"old:")+" "+oldname+")");
 									panel.add(Namelabel); panel.add(newname);
@@ -160,12 +143,12 @@ public class updateManual {
 										String newstillOnPcValue = stillOnPc.getSelection().getActionCommand();
 										String newengineValue = engineGroup.getSelection().getActionCommand();
 										String newosValue = "";
-										if (os_win.isSelected()) { newosValue += "Windows / "; }
-										if (os_lin.isSelected()) { newosValue += "Linux / "; }
-										if (os_mac.isSelected()) { newosValue += "Mac / "; }
-										if (os_and.isSelected()) { newosValue += "Android / "; }
-										if (os_other.isSelected()) { newosValue += "other"; }
+										for (int ik = 0; ik < osPanel.getComponentCount(); ik++) {
+											JCheckBox os = (JCheckBox) osPanel.getComponent(ik);
+											if (os.isSelected()) { newosValue += os.getText() + " / "; }
+										}
 										if (newosValue.endsWith(" / ")) { newosValue = newosValue.substring(0, newosValue.length() - 3); }
+
 										String newlanguageValue = newlanguage.getText();
 										String newselfNoteValue = newselfNote.getText();
 										if (newnameValue.equals("")) { newnameValue = oldname; }
@@ -210,6 +193,38 @@ public class updateManual {
 			}
 		} else {
 			JOptionPane.showMessageDialog(null, idValue+" "+folder[13]!=null?folder[13]:"ID is not found between the manually given games", base[1]!=null?base[1]:"Error", JOptionPane.ERROR_MESSAGE); return;
+		}
+	}
+
+	private static void radioButtons(String buttonType, String[] jrbArray, String[] action, Boolean isRB, String selected) {
+		ButtonGroup allButtons = new ButtonGroup();
+		JPanel buttonPanel = new JPanel();
+
+		if (isRB) { 
+			for (int i = 0; i < jrbArray.length; i++) {
+				JRadioButton button = new JRadioButton(jrbArray[i], i == 0); 
+				button.setActionCommand(action[i]);
+				allButtons.add(button);
+				buttonPanel.add(button);
+				if (action[i].equals(selected)) { button.setSelected(true); }
+			}
+		}
+		else { 
+			for (int i = 0; i < jrbArray.length; i++) {
+				JCheckBox button = new JCheckBox(jrbArray[i], false);
+				button.setActionCommand(action[i]);
+				buttonPanel.add(button);
+				if (action[i].equals(selected)) { button.setSelected(true); }
+			}
+		}
+
+		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+
+		switch (buttonType) {
+			case "progress": howFarUserPlayedPanel = buttonPanel; howFarUserPlayed = allButtons; break;
+			case "stillOnPc": stillOnPcPanel = buttonPanel; stillOnPc = allButtons; break;
+			case "engine": enginePanel = buttonPanel; engineGroup = allButtons; break;
+			case "os": osPanel = buttonPanel; break;
 		}
 	}
 }

@@ -33,8 +33,8 @@ public class frameMenuListener implements ActionListener {
 			case "Add F95zone": addF95.addFromF95(); break;
 			case "Update game": updateManual.updateOneGameFromToFile(); break;
 			case "Update F95zone": updateF95.updatef95game(); break;
-			case "Remove game": removeGame.removeOneGameFromFile("man");
-			case "Remove F95zone": removeGame.removeOneGameFromFile("f95");
+			case "Remove game": removeGame.removeOneGameFromFile("man"); break;
+			case "Remove F95zone": removeGame.removeOneGameFromFile("f95"); break;
 
 			case "Save file copy": databaseCopy.saveFileCopy(); break;
 			case "Refresh table": localFolderHandle.fetchFoldersForTable(); break;

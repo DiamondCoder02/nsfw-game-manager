@@ -26,6 +26,12 @@ import webApiScrapeThings.sites.loadF95site;
 public class updateF95 {
 	static String[] bc = loadLanguage.basic, bs = loadLanguage.base, jla = loadLanguage.jlapa, 
 		folder = loadLanguage.folder, jrb = loadLanguage.jrabu;
+	
+	static ButtonGroup howFarUserPlayed = new ButtonGroup();
+	static JPanel howFarUserPlayedPanel = new JPanel();
+	static ButtonGroup stillOnPc = new ButtonGroup();
+	static JPanel stillOnPcPanel = new JPanel();
+
 	public static void updatef95game(){
 		JPanel panel = new JPanel(new GridLayout(10*2, 0));
 		String idValue = JOptionPane.showInputDialog(null, bc[6]!=null?bc[6]:"Enter the id of the game you want to update", bs[3]!=null?bs[3]:"Update game", JOptionPane.PLAIN_MESSAGE);
@@ -73,28 +79,13 @@ public class updateF95 {
 									JTextField newplayed_version = new JTextField();
 									JTextField newdateof_lastplay = new JTextField();
 									JTextField newuser_rated = new JTextField();
-									// Not played, In progress, Finish, 100% Finished
-									JRadioButton howFarUserPlayed_NotPlayed = new JRadioButton(jrb[0]!=null?jrb[0]:"Not played", true), howFarUserPlayed_Playing = new JRadioButton(jrb[1]!=null?jrb[1]:"In progress", false), howFarUserPlayed_Finished = new JRadioButton(jrb[2]!=null?jrb[2]:"Finish", false), howFarUserPlayed_100Percent = new JRadioButton(jrb[3]!=null?jrb[3]:"100% Finished", false);
-									howFarUserPlayed_NotPlayed.setActionCommand("Not played"); howFarUserPlayed_Playing.setActionCommand("In progress"); howFarUserPlayed_Finished.setActionCommand("Finish"); howFarUserPlayed_100Percent.setActionCommand("100% Finished");
-									ButtonGroup howFarUserPlayed = new ButtonGroup(); howFarUserPlayed.add(howFarUserPlayed_NotPlayed); howFarUserPlayed.add(howFarUserPlayed_Playing); howFarUserPlayed.add(howFarUserPlayed_Finished); howFarUserPlayed.add(howFarUserPlayed_100Percent);
-									JPanel howFarUserPlayedPanel = new JPanel(); howFarUserPlayedPanel.add(howFarUserPlayed_NotPlayed); howFarUserPlayedPanel.add(howFarUserPlayed_Playing); howFarUserPlayedPanel.add(howFarUserPlayed_Finished); howFarUserPlayedPanel.add(howFarUserPlayed_100Percent);
-									for (int k = 0; k < howFarUserPlayedPanel.getComponentCount(); k++) {
-										JRadioButton r = (JRadioButton) howFarUserPlayedPanel.getComponent(k);
-										if (r.getActionCommand().equals(oldhowFarUserPlayed)) { r.setSelected(true); }
-									}
-									// Yes, No, Unknown
-									JRadioButton stillOnPc_yes = new JRadioButton(jrb[4]!=null?jrb[4]:"Yes", true), stillOnPc_no = new JRadioButton(jrb[5]!=null?jrb[5]:"No", false), stillOnPc_unknown = new JRadioButton(jrb[6]!=null?jrb[6]:"Unknown", false);
-									stillOnPc_yes.setActionCommand("yes"); stillOnPc_no.setActionCommand("no"); stillOnPc_unknown.setActionCommand("unknown");
-									ButtonGroup stillOnPc = new ButtonGroup(); stillOnPc.add(stillOnPc_yes); stillOnPc.add(stillOnPc_no); stillOnPc.add(stillOnPc_unknown);
-									JPanel stillOnPcPanel = new JPanel(); stillOnPcPanel.add(stillOnPc_yes); stillOnPcPanel.add(stillOnPc_no); stillOnPcPanel.add(stillOnPc_unknown);						
-									for (int k = 0; k < stillOnPcPanel.getComponentCount(); k++) {
-										JRadioButton r = (JRadioButton) stillOnPcPanel.getComponent(k);
-										if (r.getActionCommand().equals(oldstillOnPc)) { r.setSelected(true); }
-									}
-									JTextField newselfNote = new JTextField();
 
-									howFarUserPlayedPanel.setLayout(new BoxLayout(howFarUserPlayedPanel, BoxLayout.X_AXIS));
-									stillOnPcPanel.setLayout(new BoxLayout(stillOnPcPanel, BoxLayout.X_AXIS));
+									// Not played, In progress, Finish, 100% Finished
+									radioButtons("progress", defaultValues.infoProgress, defaultValues.infoProgress, oldhowFarUserPlayed);
+									// Yes, No, Unknown
+									radioButtons("stillOnPc", defaultValues.infoOnPc, defaultValues.infoOnPc, oldstillOnPc);
+
+									JTextField newselfNote = new JTextField();
 
 									JLabel Namelabel, developerlabel, newest_versionlabel, dateOfLastUpdatelabel, people_ratedlabel, enginelabel, oslabel, languageLabel;
 									if (oldname.equals(newnameValue)) { Namelabel = new JLabel((jla[1]!=null?jla[1]:"Name: ")+ newnameValue); } 
@@ -174,6 +165,26 @@ public class updateF95 {
 			}
 		} else {
 			JOptionPane.showMessageDialog(null, "Id: "+idValue+" "+bc[1]!=null?bc[1]:"doesn't exists", bs[1]!=null?bs[1]:"Error", JOptionPane.ERROR_MESSAGE); return;
+		}
+	}
+
+	private static void radioButtons(String buttonType, String[] jrbArray, String[] action, String selected) {
+		ButtonGroup allButtons = new ButtonGroup();
+		JPanel buttonPanel = new JPanel();
+
+		for (int i = 0; i < jrbArray.length; i++) {
+			JRadioButton button = new JRadioButton(jrbArray[i], i == 0); 
+			button.setActionCommand(action[i]);
+			allButtons.add(button);
+			buttonPanel.add(button);
+			if (action[i].equals(selected)) { button.setSelected(true); }
+		}
+
+		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+
+		switch (buttonType) {
+			case "progress": howFarUserPlayedPanel = buttonPanel; howFarUserPlayed = allButtons; break;
+			case "stillOnPc": stillOnPcPanel = buttonPanel; stillOnPc = allButtons; break;
 		}
 	}
 }

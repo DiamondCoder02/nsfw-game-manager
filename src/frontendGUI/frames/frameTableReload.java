@@ -102,12 +102,11 @@ public class frameTableReload {
 				TableModel model = table.getModel();
 				int modelRow = table.getRowSorter().convertRowIndexToModel(row);
 				String status = (String) model.getValueAt(modelRow, playProgColumn);
-				String[] sta = new String[] {"Not played", "In progress", "Finish", "100% Finished"};
 
-				if (status.equals(sta[0])) { setBackground(np);
-				} else if (status.equals(sta[1])) { setBackground(ip);
-				} else if (status.equals(sta[2])) { setBackground(fi);
-				} else if (status.equals(sta[3])) { setBackground(ff);
+				if (status.equals(defaultValues.infoProgress[0])) { setBackground(np);
+				} else if (status.equals(defaultValues.infoProgress[1])) { setBackground(ip);
+				} else if (status.equals(defaultValues.infoProgress[2])) { setBackground(fi);
+				} else if (status.equals(defaultValues.infoProgress[3])) { setBackground(ff);
 				} else {
 					setBackground(table.getBackground());
 					setForeground(table.getForeground());

@@ -12,7 +12,6 @@ import java.time.Instant;
 
 public class discordRPC {
 	static String image = "https://i.imgur.com/lJEl4eK.png";
-	// TODO - This seems to be broken, this needs fix
 	static ActivityButton button = new ActivityButton("Github", "https://github.com/DiamondCoder02/nsfw-game-manager");
 	static Instant time;
 	public static Runnable discordStarter(Boolean[] boolSettings) {
@@ -31,6 +30,7 @@ public class discordRPC {
 					// Make a "cool" image show up
 					activity.assets().setLargeImage(image);
 					activity.assets().setLargeText("Horny :3");
+					// TODO - Discord custom button broken, this needs fix
 					// Custom button
 					activity.addButton(button);
 					// Finally, update the current activity to our activity

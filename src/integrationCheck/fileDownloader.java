@@ -15,7 +15,6 @@ import javax.imageio.ImageIO;
 
 public class fileDownloader {
 	public static boolean downloadFile(String url, String fullPath) {
-		// TODO - This is stupid...
 		String fileType = fullPath.substring(fullPath.lastIndexOf(".") + 1, fullPath.length());
 		System.out.println("Downloading: " + fileType);
 		switch (fileType) {

@@ -84,8 +84,8 @@ public class frameCreate {
 		search.add(searchById); search.add(searchByName); search.add(searchByDeveloper);
 		mb.add(search);
 
-		Boolean[] boolSettings = loadSettings.othersettings;
 		Boolean[] boolColumns = loadSettings.shownColumns;
+		Boolean[] boolSettings = loadSettings.othersettings;
 
 		settings = new JMenu(bu[2]!=null?bu[2]:"Settings");
 		show = new JMenu(bu[3]!=null?bu[3]:"Shown informations");

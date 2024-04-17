@@ -19,7 +19,8 @@ public interface defaultValues {
 		{ "appVersion", "0.1.1.4"},
 		{ "appLanguage", "english" },
 		{ "folderLocation", "null" },
-		{ "othersettings", "autoUpdateManager", "darkMode", "autoFetchNewGameInfos", "autoFetchLocalGameFolder", "DiscordRPC"},
+		{ "othersettings", "autoUpdateManager", "darkMode", "autoFetchNewGameInfos", "autoFetchLocalGameFolder", 
+			"DiscordRPC", "showConsole"},
 		{ "shownColumns", "site", "id", "name", "developer", "playedVersion", "lastTimePlayed", "rated", 
 			"newestVersionOnline", "lastDateTimeUpdated", "peopleOnlineRating", "localPlayerProgress", 
 			"gameStillOnPc", "gameEngine", "os", "language", "localPersonalNotes"}

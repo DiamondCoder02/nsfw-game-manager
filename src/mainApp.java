@@ -15,17 +15,22 @@ import java.awt.GraphicsEnvironment;
 import java.net.URISyntaxException;
 public class mainApp {
 	public static void main (String [] args) throws IOException, InterruptedException, URISyntaxException{
-        Console console = System.console();
-        if(console == null && !GraphicsEnvironment.isHeadless()){
-            String filename = mainApp.class.getProtectionDomain().getCodeSource().getLocation().toString().substring(6);
-            Runtime.getRuntime().exec(new String[]{"cmd","/c","start","cmd","/k","java -jar \"" + filename + "\""});
-        }else{
-            maintest(new String[0]);
-            System.out.println("This is bug --- Program has ended, please type 'exit' to close the console");
-        }
+		Boolean consoleNeeded = false;
+		if (loadSettings.load(defaultValues.mainDirectory)) { consoleNeeded = loadSettings.othersettings[5]; }
+		if (consoleNeeded) { 
+			Console console = System.console();
+			if(console == null && !GraphicsEnvironment.isHeadless()){
+				String filename = mainApp.class.getProtectionDomain().getCodeSource().getLocation().toString().substring(6);
+				Runtime.getRuntime().exec(new String[]{"cmd","/c","start","cmd","/k","java -jar \"" + filename + "\""});
+			}else{
+				mainMain();
+				System.out.println("This line is a bug, but can't be asked to fix "+
+					"--- Program has ended, please type 'exit' to close the console");
+			}
+		} else { mainMain(); }
     }
 
-	public static void maintest (String[] args) {
+	public static void mainMain() {
 		String mainDirectory = defaultValues.mainDirectory;
 
 		if (!systemCheck.programSystemCheck(mainDirectory)) { return; }
@@ -45,12 +50,24 @@ public class mainApp {
 		}
 		System.out.println("--- No New Version ---");
 
-		if (loadSettings.othersettings[2]) { autoSitesFetch.fetchInfoThenUpdateTable(); }
-		if (loadSettings.othersettings[3]) { localFolderHandle.fetchFoldersForTable(); }
-		if (loadSettings.othersettings[4]) { discord.loopDiscord(); }
+		if (loadSettings.othersettings[2]) { 
+			autoSitesFetch.fetchInfoThenUpdateTable(); 
+			System.out.println("--- Auto fetch online done ---");
+		}
+		if (loadSettings.othersettings[3]) { 
+			localFolderHandle.fetchFoldersForTable(); 
+			System.out.println("--- Local fetch done ---");
+		}
+		if (loadSettings.othersettings[4]) { 
+			discord.loopDiscord(); 
+			System.out.println("--- Discord loop started ---"); 
+		}
+		System.out.println("--- All random things done ---");
 
 		backupHandle.doBackup();
+		System.out.println("--- Backup started ---");
 		mainFrame.createFrame(mainDirectory);
+		System.out.println("--- GUI started ---");
 	}
 
 	// https://code-disaster.github.io/steamworks4j/getting-started.html

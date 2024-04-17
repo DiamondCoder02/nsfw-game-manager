@@ -10,7 +10,8 @@ import integrationCheck.systemCheck;
 import webApiScrapeThings.autoSitesFetch;
 
 // https://stackoverflow.com/questions/7704405/how-do-i-make-my-java-application-open-a-console-terminal-window
-import java.io.*;
+import java.io.Console;
+import java.io.IOException;
 import java.awt.GraphicsEnvironment;
 import java.net.URISyntaxException;
 public class mainApp {

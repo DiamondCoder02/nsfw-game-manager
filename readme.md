@@ -15,7 +15,7 @@ Mostly designed for f95zone ~~and dlsite (soon?) and Steam(if I can)~~. You can 
 - The program creates a backup of the games database every time it starts(, only saves the last 10)
 - JDK 17, nut sure if it's nice, but it's something
 
-## Features if you add game from a site
+### Features if you add game from a site
 
 If it's limited to some site, it will be in brackets ()
 
@@ -52,6 +52,12 @@ Stupid request from friends:
 
 - [ ] Cum counter
 
+## Additional information
+
+### Debuging
+
+There is a debug console that you can open, but you have to edit the config.json to enable it.
+
 ### Language support
 
 Currently supported languages: English( +EngwishUwU ), Hungarian
@@ -74,7 +80,7 @@ f95-696969_Good Game, try me_v12.31 DeveloperAndStuffMaybeNotes
 
 If it doesn't begin with man, f95 ~~or dls(soon?)~~ it will be ignored. (man means manually added game, so it's not connected to any site, you can give any ID you want it to have, but make it unique)
 
-## Needs restart
+### Needs restart
 
 - [ ] ~~If you change the language, you have to restart the program.~~ Fixed by asking user to restart the program again...
 

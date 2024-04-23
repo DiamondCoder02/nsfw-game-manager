@@ -26,7 +26,6 @@ public class mainApp {
 			} else{
 				System.out.println("+ No console needed! +");
 				mainMain();
-				System.out.println("+ No console needed! +");
 			}
 		} else { mainMain(); }
     }
@@ -38,31 +37,28 @@ public class mainApp {
 		System.out.println("--- System check passed! ---");
 
 		if (!loadSettings.load(mainDirectory)) { return; }
-		System.out.println("--- Settings loaded ---");
-
-		if (!loadLanguage.load(mainDirectory)) { return; }
-		System.out.println("--- Languages loaded ---");
+		if (!loadLanguage.loadLangFile()) { return; }
+		System.out.println("--- Settings / Languages loaded ---");
 
 		System.out.println("--- Checking for new version --- Enabled:" + loadSettings.othersettings[0]);
 		if (loadSettings.othersettings[0]) { 
 		if (newVersion.checkNewVersion()) {
-			System.out.println("--- New Version Available ---"); return;
+			System.out.println("-- New Version Available --"); return;
 		} }
-		System.out.println("--- No New Version ---");
+		System.out.println("-- No New Version --");
 
 		if (loadSettings.othersettings[2]) { 
 			autoSitesFetch.fetchInfoThenUpdateTable(); 
-			System.out.println("--- Auto fetch online done ---");
+			System.out.println("- Auto fetch online done -");
 		}
 		if (loadSettings.othersettings[3]) { 
 			localFolderHandle.fetchFoldersForTable(); 
-			System.out.println("--- Local fetch done ---");
+			System.out.println("- Local fetch done -");
 		}
 		if (loadSettings.othersettings[4]) { 
 			discord.loopDiscord(); 
-			System.out.println("--- Discord loop started ---"); 
+			System.out.println("- Discord loop started -"); 
 		}
-		System.out.println("--- All random things done ---");
 
 		backupHandle.doBackup();
 		System.out.println("--- Backup started ---");

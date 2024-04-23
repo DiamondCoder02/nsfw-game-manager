@@ -9,24 +9,23 @@ import javax.swing.JRadioButton;
 
 import folderHandling.changeSettings;
 import folderHandling.initialFileLoading.loadLanguage;
+import folderHandling.initialFileLoading.loadSettings;
 
 public class languageChoice {
 	static String[] folder = loadLanguage.folder, butt = loadLanguage.buton;
-	static String[] langs = loadLanguage.langChoices, langMeanings = loadLanguage.lanMeans;
 	public static void langChoose() {
-		String[] langButtons = langs;
-		String[] langMeaining = langMeanings;
+		String[][] languages = loadLanguage.loadLangChoices();
 		JPanel panel = new JPanel();
-		JRadioButton[] buttons = new JRadioButton[langButtons.length];
+		JRadioButton[] buttons = new JRadioButton[languages[0].length];
 		panel.setLayout(new GridLayout(2, 1));
 		ButtonGroup allTheLanguage = new ButtonGroup();
-		for (int i = 0; i < langButtons.length; i++) {
-			buttons[i] = new JRadioButton(langMeaining[i]);
-			buttons[i].setActionCommand(langButtons[i]);
+		for (int i = 0; i < languages[0].length; i++) {
+			buttons[i] = new JRadioButton(languages[1][i]);
+			buttons[i].setActionCommand(languages[0][i]);
 			allTheLanguage.add(buttons[i]);
 			panel.add(buttons[i]);
+			if (loadSettings.language.equals(languages[0][i])) { buttons[i].setSelected(true); }
 		}
-		buttons[0].setSelected(true);
 		int result = JOptionPane.showConfirmDialog(null, panel, "🌐 "+(butt[4]!=null?butt[4]:"Language"), JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 		if (result == JOptionPane.OK_OPTION) {
 			for (int i = 0; i < buttons.length; i++) {

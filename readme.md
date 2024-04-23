@@ -71,6 +71,7 @@ You can add a folder where you store your games, and it will automatically add t
 This list will probably change often as this is where I keep track of what I'm working on or what's temporarily not working.
 
 - [x] ~Rewrite ReadMe~ (Should be fine?)
+- [ ] Test writing a wiki on github?
 - [ ] Rewrite language.csv
 - [ ] move database from xml ( MUST NOT BREAK - 0.1.2.1 ? )
 - [ ] fix bugs / do something with all the ~12 TODOs that is in the source code

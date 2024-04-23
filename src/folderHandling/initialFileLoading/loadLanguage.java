@@ -5,79 +5,77 @@ import java.io.FileReader;
 
 import javax.swing.JOptionPane;
 
+import integrationCheck.defaultValues;
+
 public class loadLanguage {
 	// TODO - The way this was done is fucking retarded
-	// TODO - Idea: Literally here do if a language is missing or some words are null => default to english column but keep the row
+	
+	public static String[] base = new String[30], basic = new String[30], tabl = new String[30], 
+		jlapa = new String[30], jrabu = new String[30], buton = new String[30], 
+		folder = new String[30], serc = new String[30], rand = new String[30]; 
+	private static String split = ";";
+	private static String[] languages;
+	private static String[] lanMeans;
 
-	private static String[] tempBase = new String[30], tempBasic = new String[30], tempTabl = new String[30], 
-	tempjLaPa = new String[30], tempjRaBu = new String[30], tempbuton = new String[30], tempFold = new String[30],
-	tempSear = new String[30], tempRand = new String[30];
-	public static String[] base, basic, tabl, jlapa, jrabu, buton, folder, serc, rand;
-	public static String[] langChoices, lanMeans;
-
-	public static boolean load(String path){
-		Integer temp = 0; 
-		String lastLang = "", split = ";";
-		String[] tempAr = new String[30];
-		int langindex = 0;
-		BufferedReader br = null;
-
-		try {
-			// parsing a CSV file into BufferedReader class constructor
-			br = new BufferedReader(new FileReader(path+"/language.csv"));
+	public static String[][] loadLangChoices(){
+		try{
+			String[][] ret = new String[2][languages.length-1];
+			for (int i = 0; i < (languages.length-1); i++) { ret[0][i] = languages[i+1]; }
+			for (int i = 0; i < (languages.length-1); i++) { 
+				if (lanMeans[i+1].equals("")) { ret[1][i] = languages[i+1]; }
+					else { ret[1][i] = lanMeans[i+1]; }
+			}
+			return ret;
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error language file (loadLanguages)", "Error", JOptionPane.ERROR_MESSAGE);
-			return false;
+			JOptionPane.showMessageDialog(null, "Error language file (loadLangChoices)", "Error", JOptionPane.ERROR_MESSAGE);
+			return null;
 		}
-		try{
-			String[] languages = br.readLine().split(split);// first line is the language names
-			lanMeans = new String[languages.length-1];
-			langChoices = new String[languages.length-1];
-			for (int i = 0; i < languages.length; i++) { if (languages[i].equals(loadSettings.language)) { langindex = i; break; } }
-			if (langindex == 0) { langindex = 1; }
-			for (int i = 0; i < (languages.length-1); i++) { langChoices[i] = languages[i+1]; }
-			languages = br.readLine().split(split); // Second line is language in own language
-			for (int i = 0; i < (languages.length-1); i++) { lanMeans[i] = languages[i+1]; }
+	}
 
-			String line = "";
-			String[] nextLine;
-			while ((line = br.readLine()) != null) { // returns a Boolean value
-				// System.out.println(line);
-				nextLine = line.split(split); // use comma as separator
-				// System.out.println(nextLine[0]);
-				if (!lastLang.equals(nextLine[0])) {
-					lastLang = nextLine[0];
-					temp = 0;
+	public static boolean loadLangFile() {
+		try{
+			BufferedReader br = new BufferedReader( new FileReader(
+				defaultValues.mainDirectory+"/language.csv", 
+				java.nio.charset.Charset.forName("UTF-8")
+			));
+			languages = br.readLine().split(split);
+			lanMeans = br.readLine().split(split);
+
+			Integer langCol = 1;
+			for (int i = 1; i < languages.length; i++) { if (languages[i].equals(loadSettings.language)) { langCol = i; break; } }
+			if (langCol == 0) { langCol = 1; } // For safety
+
+			String line, lastLang="";
+			Integer tempInt = 0;
+			while ((line = br.readLine()) != null) {
+				String[] nextLine = line.split(split);
+
+				String langString = nextLine[langCol];
+				if (langString.contains("\\n")) {
+					langString = langString.replace("\\n", "\n");
 				}
-				// System.out.println(nextLine[langindex]);
-				tempAr[temp] = nextLine[langindex];
-				if (tempAr[temp].contains("\\n")) {
-					tempAr[temp] = tempAr[temp].replace("\\n", "\n");
-				}
-				// System.out.println(tempAr[temp]);
+				if (!lastLang.equals(nextLine[0])) { lastLang = nextLine[0]; tempInt = 0; }
+				// System.out.println(nextLine[0] + " - " + langString +" + "+ nextLine[langCol]);
+
 				switch (nextLine[0]) {
-					case "base": tempBase[temp] = tempAr[temp]; break;
-					case "basic": tempBasic[temp] = tempAr[temp]; break;
-					case "tablec": tempTabl[temp] = tempAr[temp]; break;
-					case "JLabPan": tempjLaPa[temp] = tempAr[temp]; break;
-					case "JRadBut": tempjRaBu[temp] = tempAr[temp]; break;
-					case "buttons": tempbuton[temp] = tempAr[temp]; break;
-					case "folders": tempFold[temp] = tempAr[temp]; break;
-					case "search": tempSear[temp] = tempAr[temp]; break;
-					case "random": tempRand[temp] = tempAr[temp]; break;
+					case "base": base[tempInt] = langString; break;
+					case "basic": basic[tempInt] = langString; break;
+					case "tablec": tabl[tempInt] = langString; break;
+					case "JLabPan": jlapa[tempInt] = langString; break;
+					case "JRadBut": jrabu[tempInt] = langString; break;
+					case "buttons": buton[tempInt] = langString; break;
+					case "folders": folder[tempInt] = langString; break;
+					case "search": serc[tempInt] = langString; break;
+					case "random": rand[tempInt] = langString; break;
 				}
-				temp++;
-				// System.out.println(temp + "\n-----------------------");
+				tempInt++;
 			}
-			base = tempBase; basic = tempBasic; tabl = tempTabl; jlapa = tempjLaPa;
-			jrabu = tempjRaBu; buton = tempbuton; folder = tempFold; serc = tempSear;
-			rand = tempRand;
 			br.close();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error language file (loadLanguages 2)", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error language file (loadLangFile)", "Error", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 	}

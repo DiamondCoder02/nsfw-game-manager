@@ -74,12 +74,12 @@ This list will probably change often as this is where I keep track of what I'm w
 - [ ] Test writing a wiki on github?
 - [ ] Rewrite language.csv
 - [ ] move database from xml ( MUST NOT BREAK - 0.1.2.1 ? )
-- [ ] fix bugs / do something with all the ~12 TODOs that is in the source code
+- [ ] fix bugs / do something with all the ~6 TODOs that is in the source code
 - [X] ~Fix weird long pause after you change some setting?~ (I haven't changed anything and it's fixed? )
 - [ ] optimize search ( searchByName: dungeon )
 - [X] ~Edit the FAQ part about support, those don't work?~
 - [ ] Write comments
-- [ ] Optimizations ( ~Low~ High priority )
+- [ ] Optimizations ( Low priority )
 
 ### Later planned
 

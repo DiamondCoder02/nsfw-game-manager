@@ -7,9 +7,8 @@ import javax.swing.JOptionPane;
 
 import integrationCheck.defaultValues;
 
+// The way this was done is fucking retarded
 public class loadLanguage {
-	// TODO - The way this was done is fucking retarded
-	
 	public static String[] base = new String[30], basic = new String[30], tabl = new String[30], 
 		jlapa = new String[30], jrabu = new String[30], buton = new String[30], 
 		folder = new String[30], serc = new String[30], rand = new String[30]; 

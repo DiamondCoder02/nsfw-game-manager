@@ -1,34 +1,14 @@
 package webApiScrapeThings.sites;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
-
-import javax.swing.JOptionPane;
-
 import folderHandling.initialFileLoading.loadLanguage;
+import webApiScrapeThings.loadSitesBufRead;
 
 public class loadF95site {
-	static String[] lf = loadLanguage.folder, bs = loadLanguage.base;
+	static String[] bs = loadLanguage.base;
 	public static String[] getf95UrlContents(String gameIds) {
+		StringBuilder content = loadSitesBufRead.loadSite("https://f95zone.to/threads/"+gameIds+"/", true);
+		if (content == null) { return null; }
 		String[] allTheInfo = new String[8];
-		StringBuilder content = new StringBuilder();
-		try {
-			URL url = new URL("https://f95zone.to/threads/"+gameIds+"/");
-			URLConnection urlConnection = url.openConnection();
-			InputStreamReader inputStreamReader = new InputStreamReader(urlConnection.getInputStream());
-			BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-			String line;
-			while ((line = bufferedReader.readLine()) != null) {
-				content.append(line + "\n");
-			}
-			inputStreamReader.close();
-			bufferedReader.close();
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null,  "("+gameIds+")" + (lf[5]!=null?lf[5]:"Error while loading the site") + " (f95_getUrlContents)", bs[1]==null?"Error":bs[1], JOptionPane.ERROR_MESSAGE);
-			return null;
-		}
 
 		// Name, Developer, Newest version, Date of last update, People rating, Engine, OS, Language
 		String longTitle, asd, engi[] = new String[9];

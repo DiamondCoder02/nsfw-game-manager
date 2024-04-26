@@ -1,31 +1,34 @@
 package webApiScrapeThings.sites;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-
-import javax.swing.JOptionPane;
-
 import folderHandling.initialFileLoading.loadLanguage;
+import webApiScrapeThings.loadSitesBufRead;
+
+/*
+https://store.steampowered.com/api/appdetails?appids=10
+From this api I can get:
+- If game is available
+- Name
+- Developers
+- SteamID
+- platforms OS
+- languages
+
+
+- Is free? (if not, price)
+- reccomendations ??? 
+
+https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=10
+From this:
+- Latest update time? 1702399041 (unix timestamp) => Tue Dec 12 16:37:21 2023 UTC
+*/
 
 public class loadSteam {
 	// TODO - steam
 	static String[] lf = loadLanguage.folder, bs = loadLanguage.base;
 	public static String[] getSteamUrlContents(Integer gameIds) {
 		// https://store.steampowered.com/api/appdetails?appids=620980
-		StringBuilder content = new StringBuilder();
-		try {
-			URL url = new URL("https://store.steampowered.com/api/appdetails?appids="+gameIds);
-			System.out.println(url);
-			InputStream input = url.openStream();
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(input));
-			content.append(bufferedReader.readLine());
-			bufferedReader.close();
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null,  "("+gameIds+")" + "Error while loading the site" + " (steam_getUrlContents)", "Error", JOptionPane.ERROR_MESSAGE);
-			return null;
-		}
+		StringBuilder content = loadSitesBufRead.loadSite("https://store.steampowered.com/api/appdetails?appids="+gameIds, false);
+		if (content == null) { return null; }
 
 		// Name, Free/Paid, Developer, Platforms, Language, Recommendations
 		String[] allTheInfo = new String[6];

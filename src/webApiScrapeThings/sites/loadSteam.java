@@ -44,11 +44,14 @@ From this:
 14 - data."10".common.supported_languages 
 
 
+Locally:
 4 - Played version
 5 - Last time play
+11 - Still on pc?
+
+???:
 6 - Rated
 10 - Player progress
-11 - Still on pc?
 12 - Engine	
 15 - Personal notes
 

@@ -1,4 +1,5 @@
 import folderHandling.backupHandle;
+import folderHandling.getSteamFilderInfos;
 import folderHandling.localFolderHandle;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
@@ -66,7 +67,8 @@ public class mainApp {
 		mainFrame.createFrame(mainDirectory);
 		System.out.println("--- GUI started ---");
 
-		loadSteam.getSteamUrlContents("10");
+		// loadSteam.getSteamUrlContents("10");
+		getSteamFilderInfos.getSteamFolders();
 	}
 
 	// https://code-disaster.github.io/steamworks4j/getting-started.html

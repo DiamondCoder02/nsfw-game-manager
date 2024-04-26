@@ -8,6 +8,7 @@ import integrationCheck.defaultValues;
 import integrationCheck.newVersion;
 import integrationCheck.systemCheck;
 import webApiScrapeThings.autoSitesFetch;
+import webApiScrapeThings.sites.loadSteam;
 
 // https://stackoverflow.com/questions/7704405/how-do-i-make-my-java-application-open-a-console-terminal-window
 import java.io.Console;
@@ -64,6 +65,8 @@ public class mainApp {
 		System.out.println("--- Backup started ---");
 		mainFrame.createFrame(mainDirectory);
 		System.out.println("--- GUI started ---");
+
+		loadSteam.getSteamUrlContents("10");
 	}
 
 	// https://code-disaster.github.io/steamworks4j/getting-started.html

@@ -27,6 +27,7 @@ public class loadSitesBufRead {
 			} else {
 				content.append(bufferedReader.readLine());
 			}
+
 			inputStreamReader.close();
 			bufferedReader.close();
 		} catch (Exception e) {

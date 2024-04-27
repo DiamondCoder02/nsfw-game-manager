@@ -9,26 +9,6 @@ import webApiScrapeThings.loadSitesBufRead;
 
 /*
 00- Steam
-https://store.steampowered.com/api/appdetails?appids=10
-From this api I can get:
-02- Name
-03- Developers
-01- SteamID
-13- platforms OS
-14- languages
-
-- Is free? (if not, price)
-
-https://partner.steamgames.com/doc/store/getreviews
-From this:
-09- Rated (likes and dislikes)
-
-
-https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=10
-From this:
-- Latest update time? 1702399041 (unix timestamp) => Tue Dec 12 16:37:21 2023 UTC
-
-
 https://api.steamcmd.net/v1/info/10
 From this:
 01 - data."10".appid
@@ -43,7 +23,6 @@ From this:
 13 - data."10".common.oslist (format a bit)
 14 - data."10".common.supported_languages 
 
-
 Locally:
 4 - Played version
 5 - Last time play
@@ -54,51 +33,6 @@ Locally:
 10 - Player progress
 12 - Engine	
 15 - Personal notes
-
-
-
-order of storage:
-0 - Site		1 - ID		2 - Name	3 - Developer
-4 - Played version			5 - Last time play
-6 - Rated		7 - Newest version		8 - Last update
-9 - People rating			10 - Player progress
-11 - Still on pc?			12 - Engine	
-13 - OS			14 - Language			15 - Personal notes
-
-
-{
-	"data": {
-		"10": {
-			"appid": "10",
-			"common": {
-				"associations": {
-				"0": {
-					"name": "Valve",
-					"type": "developer"
-				},
-				"1": {"name": "Valve", "type": "publisher" }
-				},
-				"gameid": "10",
-				"name": "Counter-Strike",
-				"oslist": "windows,macos,linux",
-				"review_percentage": "97",
-				"review_score": "9",
-				
-				"supported_languages": {"english": {"full_audio": "true", "supported": "true" }, "french": {"full_audio": "true", "supported": "true" }, "german": {"full_audio": "true", "supported": "true" }, "italian": {"full_audio": "true", "supported": "true" }, "koreana": {"full_audio": "true", "supported": "true" }, "schinese": {"full_audio": "true", "supported": "true" }, "spanish": {"full_audio": "true", "supported": "true" }, "tchinese": {"full_audio": "true", "supported": "true" } },
-				"type": "game"
-			},
-			"depots": {
-				"branches": {
-				"public": {
-					"buildid": "12934623",
-					"timeupdated": "1702399024"
-				}
-				},
-			},
-		}
-	},
-	"status": "success"
-}
 
 */
 
@@ -119,7 +53,7 @@ public class loadSteam {
 					JsonObject gameData = data.getAsJsonObject("data");
 					gameData.entrySet().forEach(gameEntry -> {
 						switch (gameEntry.getKey().toString()) {
-							/*
+							
 							case "name":
 								allInfo[0] = gameEntry.getValue().getAsString();
 								break;
@@ -139,11 +73,11 @@ public class loadSteam {
 							case "supported_languages":
 								allInfo[14] = gameEntry.getValue().getAsString();
 								break;
-							*/
+							
 							
 
 							default:
-								break;
+								break
 						}
 
 

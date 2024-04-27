@@ -10,6 +10,7 @@ import integrationCheck.defaultValues;
 
 import java.time.Instant;
 
+// https://github.com/JnCrMx/discord-game-sdk4j
 public class discordRPC {
 	static String image = "https://i.imgur.com/lJEl4eK.png";
 	static ActivityButton button = new ActivityButton("Github", "https://github.com/DiamondCoder02/nsfw-game-manager");

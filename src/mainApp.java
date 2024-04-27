@@ -1,5 +1,5 @@
 import folderHandling.backupHandle;
-import folderHandling.getSteamFilderInfos;
+import folderHandling.getSteamFolderInfos;
 import folderHandling.localFolderHandle;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
@@ -9,7 +9,6 @@ import integrationCheck.defaultValues;
 import integrationCheck.newVersion;
 import integrationCheck.systemCheck;
 import webApiScrapeThings.autoSitesFetch;
-import webApiScrapeThings.sites.loadSteam;
 
 // https://stackoverflow.com/questions/7704405/how-do-i-make-my-java-application-open-a-console-terminal-window
 import java.io.Console;
@@ -67,11 +66,9 @@ public class mainApp {
 		mainFrame.createFrame(mainDirectory);
 		System.out.println("--- GUI started ---");
 
-		// loadSteam.getSteamUrlContents("10");
-		getSteamFilderInfos.getSteamFolders();
+		// TODO - steam 
+		getSteamFolderInfos.loadSteamFolders();
 	}
-
-	// https://code-disaster.github.io/steamworks4j/getting-started.html
 }
 
 /* order of storage:
@@ -81,4 +78,4 @@ public class mainApp {
 9 - People rating			10 - Player progress
 11 - Still on pc?			12 - Engine	
 13 - OS			14 - Language			15 - Personal notes
- */
+*/

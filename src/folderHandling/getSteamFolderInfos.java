@@ -32,11 +32,11 @@ public class getSteamFolderInfos {
 				}
 			}
 			reader.close();
+			return appInfo;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
-		return appInfo;
 	}
 	/*
 "AppState"
@@ -78,7 +78,7 @@ public class getSteamFolderInfos {
 		return null;
 	}
 
-	public static String[][] loadSteamFolders() {
+	public static Boolean loadSteamFolders() {
 		try {
 			// libraryfolders.vdf
 			BufferedReader reader = Files.newBufferedReader(Paths.get(defaultValues.steamDirectory + "/libraryfolders.vdf"));
@@ -104,10 +104,11 @@ public class getSteamFolderInfos {
 			}
 			reader.close();
 			steamAvailable = true;
-			return mainSteamFolder;
+			steamFolders = mainSteamFolder;
+			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
-			return null;
+			return false;
 		}
 	}
 }

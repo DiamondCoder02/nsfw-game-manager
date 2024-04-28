@@ -9,6 +9,7 @@ import integrationCheck.defaultValues;
 import integrationCheck.newVersion;
 import integrationCheck.systemCheck;
 import webApiScrapeThings.autoSitesFetch;
+import webApiScrapeThings.sites.loadSteam;
 
 // https://stackoverflow.com/questions/7704405/how-do-i-make-my-java-application-open-a-console-terminal-window
 import java.io.Console;
@@ -67,7 +68,14 @@ public class mainApp {
 		System.out.println("--- GUI started ---");
 
 		// TODO - steam 
-		getSteamFolderInfos.loadSteamFolders();
+		if (getSteamFolderInfos.loadSteamFolders()) {  System.out.println("--- Steam loaded ---");
+		} else { System.out.println("--- Steam is not detected of not downloaded ---"); }
+
+
+		String[] test = getSteamFolderInfos.getSteamAppInfo("105600");
+		System.out.println(test[0] + " - " + test[1] + " - " + test[2]);
+
+		loadSteam.getSteamUrlContents("105600");
 	}
 }
 

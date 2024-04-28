@@ -1,97 +1,179 @@
 package webApiScrapeThings.sites;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import folderHandling.initialFileLoading.loadLanguage;
 import webApiScrapeThings.loadSitesBufRead;
 
-/*
-00- Steam
-https://api.steamcmd.net/v1/info/10
-From this:
-01 - data."10".appid
-
-02 - data."10".common.name
-03 - data."10".common.associations.0.name
-
-07 - data."10".depots.branches.public.buildid (cannot find game version so fuck it, I will use this)
-08 - data."10".depots.branches.public.timeupdated (UNIX timestamp)
-09 - data."10".common.review_percentage (all reviews)
-
-13 - data."10".common.oslist (format a bit)
-14 - data."10".common.supported_languages 
-
-Locally:
-4 - Played version
-5 - Last time play
-11 - Still on pc?
-
-???:
-6 - Rated
-10 - Player progress
-12 - Engine	
-15 - Personal notes
-
-*/
-
 public class loadSteam {
 	// TODO - steam
 	static String[] lf = loadLanguage.folder, bs = loadLanguage.base;
 	public static String[] getSteamUrlContents(String gameIds) {
-		StringBuilder content = loadSitesBufRead.loadSite("https://store.steampowered.com/api/appdetails?appids="+gameIds, false);
+		StringBuilder content = loadSitesBufRead.loadSite("https://api.steamcmd.net/v1/info/"+gameIds, false);
 		if (content == null) { return null; }
 
-		String[] allInfo = new String[8];
+		String[] allGameInfos = new String[8];
 
 		JsonObject obj = JsonParser.parseString(content.toString()).getAsJsonObject();
 		obj.entrySet().forEach(entry -> {
-			if (entry.getKey().equals(gameIds)) {
+			if (entry.getKey().equals("data")) {
 				JsonObject data = entry.getValue().getAsJsonObject();
-				if (data.get("success").getAsBoolean()) {
-					JsonObject gameData = data.getAsJsonObject("data");
-					gameData.entrySet().forEach(gameEntry -> {
-						switch (gameEntry.getKey().toString()) {
-							
-							case "name":
-								allInfo[0] = gameEntry.getValue().getAsString();
-								break;
-							case "developers":
-								allInfo[1] = "";
-								JsonArray developers = gameEntry.getValue().getAsJsonArray();
-								developers.forEach(developer -> { allInfo[1] += developer.getAsString() + ", "; });
-								allInfo[1] = allInfo[1].substring(0, allInfo[1].length() - 2);
-								break;
-							case "platforms":
-								JsonObject platforms = gameEntry.getValue().getAsJsonObject();
-								allInfo[13] = 
-									(platforms.get("windows").getAsBoolean() ? "Windows" : "") + 
-									(platforms.get("mac").getAsBoolean() ? "Mac" : "") + 
-									(platforms.get("linux").getAsBoolean() ? "Linux" : "");
-								break;
-							case "supported_languages":
-								allInfo[14] = gameEntry.getValue().getAsString();
-								break;
-							
-							
+				data.entrySet().forEach(allData -> {
+					if (allData.getKey().equals(gameIds)) {
+						JsonObject gameInfo = allData.getValue().getAsJsonObject();
+						if (gameInfo.size() < 1) {return;}
+						gameInfo.entrySet().forEach(allGameInfo -> {
+							switch (allGameInfo.getKey()) {
+								case "appid": allGameInfos[0] = allGameInfo.getValue().getAsString(); break;
+								case "common": 
+									String[] temp = commonHandle(allGameInfo.getValue().getAsJsonObject());
+									/*
+									allGameInfos[1] = temp[0];
+									allGameInfos[2] = temp[1];
 
-							default:
-								break
-						}
-
-
-
-					});
-				}
+									allGameInfos[5] = temp[2];
+									allGameInfos[6] = temp[3];
+									allGameInfos[7] = temp[4];
+									*/
+									break;
+								case "depots":
+									String[] temp2 = depotsBranchesPublicHandle(allGameInfo.getValue().getAsJsonObject());
+									allGameInfos[3] = temp2[0];
+									allGameInfos[4] = temp2[1];
+									break;
+							}
+						});
+					}
+				});
 			}
+			/*
+			01 - appid
+
+			02 - common.name
+			03 - common.associations.0.name (Must be and loop check every developer) 
+			Can't get from extended.developer
+			Example: https://api.steamcmd.net/v1/info/2707980
+
+			07 - depots.branches.public.buildid (cannot find game version so fuck it, I will use this)
+			08 - depots.branches.public.timeupdated (UNIX timestamp)
+			Note: If game is not out these 2 is not available. 
+			There is "releasestate": "prerelease" so it can be checked, but easier to assume it's not out
+
+			09 - common.review_percentage (all reviews)
+
+			13 - common.oslist (format a bit)
+			14 - common.supported_languages 
+			*/
 		});
 
 
-		for (int i = 0; i < allInfo.length; i++) {
-			System.out.println(allInfo[i]);
+		for (int i = 0; i < allGameInfos.length; i++) {
+			System.out.println(allGameInfos[i]);
 		}
 
 		return null;
 	}
+
+	private static String[] commonHandle(JsonObject toGetInfoFrom){
+		String[] temp = new String[5];
+		toGetInfoFrom.entrySet().forEach(entry1 -> {
+			switch (entry1.getKey()) {
+				case "name":
+					break;
+				case "associations":
+					break;
+				case "review_percentage":
+					break;
+				case "oslist":
+					break;
+				case "supported_languages":
+					break;
+			}
+		});
+
+		return null;
+	}
+
+	private static String[] depotsBranchesPublicHandle(JsonObject toGetInfoFrom){
+		String[] temp = new String[2];
+		toGetInfoFrom.entrySet().forEach(entry1 -> {
+			if (entry1.getKey().contains("branches")){
+				JsonObject obj1 = entry1.getValue().getAsJsonObject();
+				obj1.entrySet().forEach(entry2 -> {
+					if (entry2.getKey().contains("public")){
+						JsonObject obj2 = entry2.getValue().getAsJsonObject();
+						obj2.entrySet().forEach(entry3 -> {
+							switch (entry3.getKey()) {
+								case "buildid":
+									temp[0] = entry3.getValue().getAsString();
+									break;
+								case "timeupdated":
+									temp[1] = entry3.getValue().getAsString();
+									break;
+							
+								default:
+									break;
+							}
+						});
+					}
+				});
+			}
+		});
+		return temp;
+	}
 }
+
+/*
+{
+	"data": {
+		"365670": {
+			"appid": "365670",
+			"common": {
+				"associations": {
+					"0": {
+						"name": "Blender Foundation",
+						"type": "developer"
+					},
+					"1": {
+						"name": "Blender Foundation",
+						"type": "publisher"
+					}
+				},
+				"name": "Blender",
+				"oslist": "windows,macos,linux",
+				"review_percentage": "96",
+				"review_score": "9"
+			},
+			"supported_languages": {
+				"english": {
+					"supported": "true"
+				},
+				"french": {
+					"supported": "true"
+				},
+				"german": {
+					"supported": "true"
+				}
+			},
+			"type": "Application"
+		},
+		"depots": {
+			"branches": {
+				"public": {
+					"buildid": "14066810",
+					"timeupdated": "1713275230"
+				}
+			}
+		},
+		"extended": {
+			"developer": "Blender Foundation",
+			"disableoverlay": "1",
+			"gamedir": "",
+			"homepage": "https://www.blender.org",
+			"isfreeapp": "1",
+			"publisher": "Blender Foundation"
+		}
+	}
+}
+*/

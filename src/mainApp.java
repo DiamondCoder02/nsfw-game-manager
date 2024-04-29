@@ -5,11 +5,11 @@ import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
 import frontendGUI.mainFrame;
 import frontendGUI.buttons.discord;
+import frontendGUI.gameButtons.updateSteam;
 import integrationCheck.defaultValues;
 import integrationCheck.newVersion;
 import integrationCheck.systemCheck;
 import webApiScrapeThings.autoSitesFetch;
-import webApiScrapeThings.sites.loadSteam;
 
 // https://stackoverflow.com/questions/7704405/how-do-i-make-my-java-application-open-a-console-terminal-window
 import java.io.Console;
@@ -26,7 +26,7 @@ public class mainApp {
 				String filename = mainApp.class.getProtectionDomain().getCodeSource().getLocation().toString().substring(6);
 				Runtime.getRuntime().exec(new String[]{"cmd","/c","start","cmd","/k","java -jar \"" + filename + "\""});
 			} else{
-				System.out.println("+ No console needed! +");
+				System.out.println("+ Console needed! +");
 				mainMain();
 			}
 		} else { mainMain(); }
@@ -69,13 +69,9 @@ public class mainApp {
 
 		// TODO - steam 
 		if (getSteamFolderInfos.loadSteamFolders()) {  System.out.println("--- Steam loaded ---");
-		} else { System.out.println("--- Steam is not detected of not downloaded ---"); }
+		} else { System.out.println("--- Steam is not detected or not downloaded ---"); }
 
-
-		String[] test = getSteamFolderInfos.getSteamAppInfo("105600");
-		System.out.println(test[0] + " - " + test[1] + " - " + test[2]);
-
-		loadSteam.getSteamUrlContents("105600");
+		updateSteam.updateSteamGame();
 	}
 }
 

@@ -1,6 +1,5 @@
 package frontendGUI.gameButtons;
 
-
 import java.awt.GridLayout;
 
 import javax.swing.BoxLayout;

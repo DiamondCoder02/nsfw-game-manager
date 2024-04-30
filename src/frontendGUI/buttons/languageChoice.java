@@ -34,5 +34,6 @@ public class languageChoice {
 				}
 			}
 		}
+		// TODO - Warn user they have to restart the app for the changes to take effect
 	}
 }

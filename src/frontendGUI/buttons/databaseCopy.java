@@ -17,6 +17,8 @@ public class databaseCopy {
 		chooser.setDialogTitle(fld[18]!=null?fld[18]:"Save file copy");
 		chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		chooser.setAcceptAllFileFilterUsed(false);
+
+		// TODO - rewrite here everything
 		
 		if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
 			String path = chooser.getSelectedFile().toString();

@@ -1,8 +1,6 @@
 package folderHandling.localFoldersChange;
 
 import javax.swing.JOptionPane;
-import javax.swing.JDialog;
-import javax.swing.JTextField;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -10,7 +8,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import folderHandling.ADocHandle;
-import folderHandling.checkDatabase;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.localFoldersChange.changeDatabase;
 import frontendGUI.mainFrame;
@@ -49,48 +46,34 @@ public class changeDatabase {
 		}
 	}
 
-	public static boolean removeGameFromDatabase(String fromSite) {
-		JOptionPane optionPane = new JOptionPane();
-		JTextField id = new JTextField();
-		Object[] message = { jla[0]!=null?jla[0]:"ID of the game to remove:", id };
-		optionPane.setMessage(message);
-		optionPane.setMessageType(JOptionPane.PLAIN_MESSAGE);
-		JDialog dialog = optionPane.createDialog(null, base[4]!=null?base[4]:"Remove game");
-		dialog.setVisible(true);
-		String idValue = id.getText();
-		if (idValue.equals("")) { JOptionPane.showMessageDialog(null, basic[0]!=null?basic[0]:"ID is required", base[1]!=null?base[1]:"Error", JOptionPane.ERROR_MESSAGE); return false; }
-		if (checkDatabase.isInDatabase(idValue, fromSite)) {
-			try{
-				Document dom = ADocHandle.load(defaultValues.mainDirectory + "/hentai.xml");
-				Node sourceNode = ADocHandle.getSourceNodeFromDB(dom);
-				NodeList game = sourceNode.getChildNodes();
-				for (int j = 0; j < game.getLength(); j++) {
-					Node gameNode = game.item(j);
-					if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element e = (Element) gameNode;
-						String ids = e.getAttribute("id").trim();
-						String from = e.getAttribute("from").trim();
-						if ( ids.equals(idValue) && from.equals(fromSite)) {
-							String name = e.getElementsByTagName("name").item(0).getTextContent().trim();
-							int option = JOptionPane.showConfirmDialog(null, name + ", \nId: "+ids+" "+(folder[14]!=null?folder[14]:"will be removed. Are you sure?"), base[4]!=null?base[4]:"Remove game", JOptionPane.OK_CANCEL_OPTION);
-							if (option == JOptionPane.OK_OPTION) {
-								sourceNode.removeChild(gameNode);
-								ADocHandle.save(dom, defaultValues.mainDirectory + "/hentai.xml");
-								mainFrame.refreshTable();
-								JOptionPane.showMessageDialog(null, name + ", \nId: "+ids+" "+(folder[15]!=null?folder[15]:"has been removed."), base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
-							} else { JOptionPane.showMessageDialog(null, folder[16]!=null?folder[16]:"Cancelled", base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE); }
-							break;
-						}
+	public static boolean removeGameFromDatabase(String idValue, String fromSite) {
+		try{
+			Document dom = ADocHandle.load(defaultValues.mainDirectory + "/hentai.xml");
+			Node sourceNode = ADocHandle.getSourceNodeFromDB(dom);
+			NodeList game = sourceNode.getChildNodes();
+			for (int j = 0; j < game.getLength(); j++) {
+				Node gameNode = game.item(j);
+				if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element e = (Element) gameNode;
+					String ids = e.getAttribute("id").trim();
+					String from = e.getAttribute("from").trim();
+					if ( ids.equals(idValue) && from.equals(fromSite)) {
+						String name = e.getElementsByTagName("name").item(0).getTextContent().trim();
+						int option = JOptionPane.showConfirmDialog(null, name + ", \nId: "+ids+" "+(folder[14]!=null?folder[14]:"will be removed. Are you sure?"), base[4]!=null?base[4]:"Remove game", JOptionPane.OK_CANCEL_OPTION);
+						if (option == JOptionPane.OK_OPTION) {
+							sourceNode.removeChild(gameNode);
+							ADocHandle.save(dom, defaultValues.mainDirectory + "/hentai.xml");
+							mainFrame.refreshTable();
+							JOptionPane.showMessageDialog(null, name + ", \nId: "+ids+" "+(folder[15]!=null?folder[15]:"has been removed."), base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
+						} else { JOptionPane.showMessageDialog(null, folder[16]!=null?folder[16]:"Cancelled", base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE); }
+						break;
 					}
 				}
-			} catch (Exception e) {
-				e.printStackTrace();
-				return false;
 			}
-			return true;
-		} else {
-			JOptionPane.showMessageDialog(null, "Id: "+idValue+" "+(basic[1]!=null?basic[1]:"doesn't exists"), base[1]!=null?base[1]:"Error", JOptionPane.ERROR_MESSAGE);
+		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
+		return true;
 	}
 }

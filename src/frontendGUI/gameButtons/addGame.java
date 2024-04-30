@@ -1,14 +1,6 @@
 package frontendGUI.gameButtons;
 
-import java.awt.GridLayout;
-
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 
 import folderHandling.addGameHandle;
 import folderHandling.checkDatabase;
@@ -18,72 +10,37 @@ import webApiScrapeThings.sites.loadF95site;
 import webApiScrapeThings.sites.loadSteam;
 
 public class addGame {
-	static String[] base = loadLanguage.base, basic = loadLanguage.basic, jla = loadLanguage.jlapa, 
-		folder = loadLanguage.folder, jrb = loadLanguage.jrabu;
+	static String[] base = loadLanguage.base;
 	public static void addOneGame() {
-		// TODO - addGame
-		JPanel panel = new JPanel(new GridLayout(2, 2));
+		String[] webAndId = sites.requestSiteAndId(base[2]!=null?base[2]:"Add game");
+		if (webAndId == null) { return; }
 
-		ButtonGroup webButtons = new ButtonGroup();
-		JPanel webPanel = new JPanel();
-		// Buttons for possible websites (F95zone - f95, Steam - steam, Manually added - man)
-		JRadioButton button = new JRadioButton("F95zone", false); 
-		button.setActionCommand("f95");
-		JRadioButton button2 = new JRadioButton("Steam", false);
-		button2.setActionCommand("steam");
-		JRadioButton button3 = new JRadioButton("Manually added", true);
-		button3.setActionCommand("man");
-		webButtons.add(button); webButtons.add(button2); webButtons.add(button3);
-		webPanel.add(button); webPanel.add(button2); webPanel.add(button3);
-		webPanel.setLayout(new BoxLayout(webPanel, BoxLayout.X_AXIS));
-
-		JLabel IDlabel = new JLabel(jla[0]!=null?jla[0]:"ID: (required)");
-		JTextField id = new JTextField(8);
-
-		panel.add(IDlabel); panel.add(id);
-		panel.add(new JLabel("Website:"));	panel.add(webPanel);
-
-		//  CLOSED - -1  //  Yes-OK - 0  //  No - 1  //  Cancel - 2  //
-		Integer option = JOptionPane.showOptionDialog(null, panel, 
-			base[2]!=null?base[2]:"Add game", 
-			JOptionPane.OK_CANCEL_OPTION, 
-			JOptionPane.PLAIN_MESSAGE, 
-			null, null, null);
-		if (option != 0) { return; }
-
-		if (id.getText() == null) { 
+		if (checkDatabase.isInDatabase(webAndId[1], webAndId[0])) { 
 			JOptionPane.showMessageDialog(null, 
-				basic[0]!=null?basic[0]:"ID is required", base[1]!=null?base[1]:"Error", 
-				JOptionPane.ERROR_MESSAGE); 
-			return; 
-		}
-		String webSite = webButtons.getSelection().getActionCommand();
-		if (checkDatabase.isInDatabase(id.getText(), webSite)) { 
-			JOptionPane.showMessageDialog(null, 
-			webSite + " with the id "+id.getText()+" is already in the database", 
+			webAndId[0] + " with the id "+webAndId[1]+" is already in the database", 
 				base[1]!=null?base[1]:"Error", 
 				JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
 		String[] infos = null;
-		switch (webSite) {
+		switch (webAndId[0]) {
 			case "f95":
-				infos = getF95zone(id.getText());
+				infos = getF95zone(webAndId[1]);
 				break;
 			case "steam":
-				infos = getSteam(id.getText());
+				infos = getSteam(webAndId[1]);
 				break;
 			case "dls":
-				infos = getDLsite(id.getText());
+				infos = getDLsite(webAndId[1]);
 				break;
 			case "man":
-				infos = getManual(id.getText());
+				infos = getManual(webAndId[1]);
 				break;
 		}
 
 		if (infos == null) { return; }
-		addGameHandle.addGameToDB(webSite, infos);
+		addGameHandle.addGameToDB(webAndId[0], infos);
 	}
 
 	/* infos

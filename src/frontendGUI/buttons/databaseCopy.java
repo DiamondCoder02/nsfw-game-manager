@@ -19,6 +19,7 @@ public class databaseCopy {
 		chooser.setAcceptAllFileFilterUsed(false);
 
 		// TODO - rewrite here everything
+		// doesn't show it will save as xml. Maybe have other options?
 		
 		if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
 			String path = chooser.getSelectedFile().toString();

@@ -5,7 +5,6 @@ import folderHandling.localFoldersLoad.getSteamFolderInfos;
 import folderHandling.localFoldersLoad.localFolderHandle;
 import frontendGUI.mainFrame;
 import frontendGUI.buttons.discord;
-import frontendGUI.gameButtons.updateGame;
 import integrationCheck.defaultValues;
 import integrationCheck.newVersion;
 import integrationCheck.systemCheck;
@@ -63,7 +62,6 @@ public class mainApp {
 			System.out.println("- Discord loop started -"); 
 		}
 
-		// TODO - steam 
 		if (getSteamFolderInfos.loadSteamFolders()) {  System.out.println("--- Steam loaded ---");
 		} else { System.out.println("--- Steam is not detected or not downloaded ---"); }
 

@@ -4,8 +4,9 @@ Welcome to another game manager. The idea was simple, an easy to use manager tha
 
 --_**Warning: I have only tested the program on windows and probably only works on Windows. I will make it compatible with other OS later.**_--
 
-## Check the Wiki 
-https://github.com/DiamondCoder02/nsfw-game-manager/wiki
+## Check the Wiki
+
+<https://github.com/DiamondCoder02/nsfw-game-manager/wiki>
 
 ## Features
 

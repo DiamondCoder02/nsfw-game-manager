@@ -35,10 +35,8 @@ public class updateGameHandle {
 	
 	public static boolean updateGameInDB(Document dom, String site, String[] oldInfo, String[] newInfo) {
 		String[] finalInfo = new String[oldInfo.length];
-		// TODO - updateGameInDB
 		Element e = ADocHandle.getElementFromDB(dom, oldInfo[0]);
 		if (e == null) { return false; }
-
 		/*
 		0 - ID		1 - Name	2 - Developer	3 - Played version
 		4 - Last time play		5 - Rated		6 - Newest version

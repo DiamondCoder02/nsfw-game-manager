@@ -70,14 +70,21 @@ public class ADocHandle {
 		return true;
 	}
 
-	public static Element getElementsFromDB(Document dom){
-		Node sourceNode = getSourceNodeFromDB(dom);
-		NodeList game = sourceNode.getChildNodes();
-		for (int j = 0; j < game.getLength(); j++) {
-			Node gameNode = game.item(j);
-			if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
-				Element e = (Element) gameNode;
-				return e;
+	public static Element getElementFromDB(Document dom, String idValue) {
+		NodeList source = dom.getElementsByTagName("source");
+		for (int i = 0; i < source.getLength(); i++) {
+			Node sourceNode = source.item(i);
+			if (sourceNode.getNodeType() == Node.ELEMENT_NODE) {
+				NodeList game = sourceNode.getChildNodes();
+				for (int j = 0; j < game.getLength(); j++) {
+					Node gameNode = game.item(j);
+					if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element e = (Element) gameNode;
+						if (idValue.equals(e.getAttribute("id").trim())) {
+							return e;
+						}
+					}
+				}
 			}
 		}
 		return null;

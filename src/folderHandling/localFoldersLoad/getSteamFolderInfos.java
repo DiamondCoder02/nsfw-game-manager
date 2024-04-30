@@ -18,6 +18,7 @@ public class getSteamFolderInfos {
 		String[] appInfo = new String[5];
 		try {
 			BufferedReader reader = readGameFile(appId);
+			if (reader == null) { return null; }
 			String line;
 			while ((line = reader.readLine()) != null) {
 				if (line.contains("LastUpdated")) {

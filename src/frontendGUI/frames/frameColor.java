@@ -45,8 +45,6 @@ public class frameColor {
 		frameCreate.updateList.setBackground(d?bg:null); frameCreate.updateList.setForeground(d?fg:null);
 		frameCreate.removeGame.setBackground(d?bg:null); frameCreate.removeGame.setForeground(d?fg:null);
 
-		frameCreate.updateF95.setBackground(d?bg:null); frameCreate.updateF95.setForeground(d?fg:null);
-
 		frameCreate.saveFileToDifferent.setBackground(d?bg:null); frameCreate.saveFileToDifferent.setForeground(d?fg:null);
 		frameCreate.refreshTable.setBackground(d?bg:null); frameCreate.refreshTable.setForeground(d?fg:null);
 		frameCreate.refreshFromAPI.setBackground(d?bg:null); frameCreate.refreshFromAPI.setForeground(d?fg:null);

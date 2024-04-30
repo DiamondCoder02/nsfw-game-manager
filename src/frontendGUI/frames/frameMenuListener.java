@@ -19,8 +19,7 @@ import frontendGUI.buttons.randomGames;
 import frontendGUI.buttons.search;
 import frontendGUI.gameButtons.addGame;
 import frontendGUI.gameButtons.removeGame;
-import frontendGUI.gameButtons.updateF95;
-import frontendGUI.gameButtons.updateManual;
+import frontendGUI.gameButtons.updateGame;
 import webApiScrapeThings.autoSitesFetch;
 
 public class frameMenuListener implements ActionListener {
@@ -29,8 +28,7 @@ public class frameMenuListener implements ActionListener {
 		// System.out.println("Button Clicked! " + e.getActionCommand());
 		switch (e.getActionCommand()) {
 			case "Add game": addGame.addOneGame();; break;
-			case "Update game": updateManual.updateOneGameFromToFile(); break;
-			case "Update F95zone": updateF95.updatef95game(); break;
+			case "Update game": updateGame.updateOneGame();; break;
 			case "Remove game": removeGame.removeOneGame(); break;
 
 			case "Save file copy": databaseCopy.saveFileCopy(); break;

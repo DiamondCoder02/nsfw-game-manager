@@ -29,9 +29,14 @@ public class getGamesInfo {
 		String[] output = loadSteam.getSteamUrlContents(id);
 		if (output == null) { return null; }
 		// 0 - LastUpdated		1 - local buildid
-		String[] output2 = getSteamFolderInfos.getSteamAppInfo(id);
+		String[] output2;
+		output2 = getSteamFolderInfos.getSteamAppInfo(id);
 		Boolean isOnPc = false;
-		if (output2 != null) { isOnPc = true;}
+		if (output2 != null) { isOnPc = true;} 
+		if (output2 == null) { 
+			output2 = new String[2];
+			output2[0] = "???"; 
+			output2[1] = "???";}
 
 		String[] infos = {
 			output[0], output[1], output[2], output2[1], 

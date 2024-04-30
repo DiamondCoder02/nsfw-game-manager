@@ -36,6 +36,11 @@ public class addGame {
 		}
 
 		if (infos == null) { return; }
-		addGameHandle.addGameToDB(webAndId[0], infos);
+		if (!addGameHandle.addGameToDB(webAndId[0], infos)) {
+			JOptionPane.showMessageDialog(null, 
+				"Id: " + webAndId[1] + "(addGame.addOneGame)", 
+				base[1]!=null?base[1]:"Error", 
+				JOptionPane.ERROR_MESSAGE);
+		}
 	}
 }

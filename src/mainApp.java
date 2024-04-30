@@ -1,3 +1,4 @@
+import folderHandling.addGame;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
 import folderHandling.localFoldersChange.backupHandle;
@@ -71,7 +72,12 @@ public class mainApp {
 		if (getSteamFolderInfos.loadSteamFolders()) {  System.out.println("--- Steam loaded ---");
 		} else { System.out.println("--- Steam is not detected or not downloaded ---"); }
 
-		updateSteam.updateSteamGame();
+		// updateSteam.updateSteamGame();
+		String[] test = {"12","name","dev","playVer","LastTime","Rate","NewVer","LastUpd",
+			"PeopleRate","PlayProg","OnPc?","Engine","OS","Lang","Notes"};
+		String[] test2 = {"26",null,null,null,null,null,null,null,
+			null,null,null,null,null,null,null};
+		addGame.addGameToDB("man", test );
 	}
 }
 

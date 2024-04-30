@@ -41,7 +41,7 @@ public class frameCreate {
 	static String[] wfl = loadLanguage.folder, bu = loadLanguage.buton, tlc = loadLanguage.tabl, 
 		bc = loadLanguage.basic, bs = loadLanguage.base, ran = loadLanguage.rand;
 	public static JFrame WindowCreate(JFrame frame, String mainPath){
-		frame.setTitle(wfl[9]!=null?wfl[9]:"Hentai Game Database");
+		frame.setTitle(wfl[9]!=null?wfl[9]:"Hentai Game Manager");
 		frame.setSize(1500, 600);
 		frame.setMinimumSize(new Dimension(500, 200));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

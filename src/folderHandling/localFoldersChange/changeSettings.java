@@ -1,7 +1,8 @@
-package folderHandling;
+package folderHandling.localFoldersChange;
 
 import com.google.gson.JsonObject;
 
+import folderHandling.ADocHandle;
 import integrationCheck.defaultValues;
 
 public class changeSettings {

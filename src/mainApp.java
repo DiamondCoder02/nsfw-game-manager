@@ -1,8 +1,8 @@
-import folderHandling.backupHandle;
-import folderHandling.getSteamFolderInfos;
-import folderHandling.localFolderHandle;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
+import folderHandling.localFoldersChange.backupHandle;
+import folderHandling.localFoldersLoad.getSteamFolderInfos;
+import folderHandling.localFoldersLoad.localFolderHandle;
 import frontendGUI.mainFrame;
 import frontendGUI.buttons.discord;
 import frontendGUI.gameButtons.updateSteam;

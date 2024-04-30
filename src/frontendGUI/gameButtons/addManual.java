@@ -12,9 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import folderHandling.changeDatabase;
 import folderHandling.checkDatabase;
 import folderHandling.initialFileLoading.loadLanguage;
+import folderHandling.localFoldersChange.changeDatabase;
 import integrationCheck.defaultValues;
 
 public class addManual {

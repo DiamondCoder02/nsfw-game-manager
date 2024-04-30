@@ -16,8 +16,8 @@ import org.w3c.dom.Element;
 
 import folderHandling.ADocHandle;
 import folderHandling.checkDatabase;
-import folderHandling.getSteamFolderInfos;
 import folderHandling.initialFileLoading.loadLanguage;
+import folderHandling.localFoldersLoad.getSteamFolderInfos;
 import frontendGUI.mainFrame;
 import integrationCheck.defaultValues;
 import webApiScrapeThings.sites.loadSteam;

@@ -1,4 +1,4 @@
-package folderHandling;
+package folderHandling.localFoldersChange;
 
 import java.io.File;
 import java.nio.file.Files;

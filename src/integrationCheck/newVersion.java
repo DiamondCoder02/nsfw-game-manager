@@ -5,8 +5,8 @@ import java.net.URL;
 
 import javax.swing.JOptionPane;
 
-import folderHandling.changeSettings;
 import folderHandling.initialFileLoading.loadSettings;
+import folderHandling.localFoldersChange.changeSettings;
 
 public class newVersion {
 	public static Boolean checkNewVersion() {

@@ -7,9 +7,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-import folderHandling.changeSettings;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
+import folderHandling.localFoldersChange.changeSettings;
 
 public class languageChoice {
 	static String[] folder = loadLanguage.folder, butt = loadLanguage.buton;

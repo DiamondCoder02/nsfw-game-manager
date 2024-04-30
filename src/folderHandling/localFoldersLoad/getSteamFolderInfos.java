@@ -1,4 +1,4 @@
-package folderHandling;
+package folderHandling.localFoldersLoad;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import folderHandling.changeSettings;
-import folderHandling.localFolderHandle;
 import folderHandling.initialFileLoading.loadLanguage;
+import folderHandling.localFoldersChange.changeSettings;
+import folderHandling.localFoldersLoad.localFolderHandle;
 import frontendGUI.mainFrame;
 import frontendGUI.buttons.credits;
 import frontendGUI.buttons.databaseCopy;

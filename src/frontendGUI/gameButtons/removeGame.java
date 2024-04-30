@@ -2,8 +2,8 @@ package frontendGUI.gameButtons;
 
 import javax.swing.JOptionPane;
 
-import folderHandling.changeDatabase;
 import folderHandling.initialFileLoading.loadLanguage;
+import folderHandling.localFoldersChange.changeDatabase;
 
 public class removeGame {
 	static String[] base = loadLanguage.base, basic = loadLanguage.basic, jla = loadLanguage.jlapa, 

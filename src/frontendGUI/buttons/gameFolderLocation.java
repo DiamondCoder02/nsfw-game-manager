@@ -3,7 +3,7 @@ package frontendGUI.buttons;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import folderHandling.changeSettings;
+import folderHandling.localFoldersChange.changeSettings;
 
 public class gameFolderLocation {
 	public static void gamesLocationChoose() {

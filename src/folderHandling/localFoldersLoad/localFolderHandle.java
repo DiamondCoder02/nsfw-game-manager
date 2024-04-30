@@ -1,4 +1,4 @@
-package folderHandling;
+package folderHandling.localFoldersLoad;
 
 import java.awt.Dimension;
 import java.io.IOException;
@@ -19,6 +19,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import folderHandling.ADocHandle;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
 import frontendGUI.mainFrame;

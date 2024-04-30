@@ -1,4 +1,4 @@
-package folderHandling;
+package folderHandling.localFoldersChange;
 
 import javax.swing.JOptionPane;
 import javax.swing.JDialog;
@@ -9,8 +9,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import folderHandling.changeDatabase;
+import folderHandling.ADocHandle;
+import folderHandling.checkDatabase;
 import folderHandling.initialFileLoading.loadLanguage;
+import folderHandling.localFoldersChange.changeDatabase;
 import frontendGUI.mainFrame;
 import integrationCheck.defaultValues;
 

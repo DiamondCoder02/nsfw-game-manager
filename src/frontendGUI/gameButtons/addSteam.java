@@ -11,10 +11,10 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import folderHandling.changeDatabase;
 import folderHandling.checkDatabase;
-import folderHandling.getSteamFolderInfos;
 import folderHandling.initialFileLoading.loadLanguage;
+import folderHandling.localFoldersChange.changeDatabase;
+import folderHandling.localFoldersLoad.getSteamFolderInfos;
 import integrationCheck.defaultValues;
 import webApiScrapeThings.sites.loadSteam;
 

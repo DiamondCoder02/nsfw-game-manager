@@ -2,7 +2,7 @@
 
 Welcome to another game manager. The idea was simple, an easy to use manager that shows useful information and the newest infos about the stored games.
 
----_**Warning: I have only tested the program on windows, I have no idea if it works on other OS.**_---
+--_**Warning: I have only tested the program on windows and probably only works on Windows. I will make it compatible with other OS later.**_--
 
 ## Check the Wiki 
 https://github.com/DiamondCoder02/nsfw-game-manager/wiki
@@ -34,3 +34,5 @@ Check the [wiki](https://github.com/DiamondCoder02/nsfw-game-manager/wiki/Featur
 - [ ] optimize search ( searchByName: dungeon )
 - [ ] Write comments
 - [ ] Rewrite FAQ in the program, now that wiki on GitHub is up.
+
+More info [here](https://github.com/DiamondCoder02/nsfw-game-manager/wiki/TODOs-checklist)

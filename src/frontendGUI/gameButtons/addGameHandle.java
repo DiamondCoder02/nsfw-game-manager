@@ -1,4 +1,4 @@
-package folderHandling;
+package frontendGUI.gameButtons;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;

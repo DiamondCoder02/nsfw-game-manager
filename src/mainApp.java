@@ -20,6 +20,7 @@ public class mainApp {
 		Boolean consoleNeeded = false;
 		if (loadSettings.load(defaultValues.mainDirectory)) { consoleNeeded = loadSettings.othersettings[5]; }
 		if (consoleNeeded) { 
+			System.out.println("+ Console needed! +");
 			Console console = System.console();
 			if (console == null && !GraphicsEnvironment.isHeadless()) {
 				String filename = mainApp.class.getProtectionDomain().getCodeSource().getLocation().toString().substring(6);
@@ -28,7 +29,7 @@ public class mainApp {
 				System.out.println("+ Console needed! +");
 				mainMain();
 			}
-		} else { mainMain(); }
+		} else { System.out.println("- No console needed! -"); mainMain(); }
     }
 
 	public static void mainMain() {
@@ -61,14 +62,14 @@ public class mainApp {
 			System.out.println("- Discord loop started -"); 
 		}
 
+		// TODO - steam 
+		if (getSteamFolderInfos.loadSteamFolders()) {  System.out.println("--- Steam loaded ---");
+		} else { System.out.println("--- Steam is not detected or not downloaded ---"); }
+
 		backupHandle.doBackup();
 		System.out.println("--- Backup started ---");
 		mainFrame.createFrame(mainDirectory);
 		System.out.println("--- GUI started ---");
-
-		// TODO - steam 
-		if (getSteamFolderInfos.loadSteamFolders()) {  System.out.println("--- Steam loaded ---");
-		} else { System.out.println("--- Steam is not detected or not downloaded ---"); }
 	}
 }
 

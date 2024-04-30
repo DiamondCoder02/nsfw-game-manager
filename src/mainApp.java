@@ -1,4 +1,4 @@
-import folderHandling.addGame;
+import folderHandling.addGameHandle;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
 import folderHandling.localFoldersChange.backupHandle;
@@ -6,6 +6,7 @@ import folderHandling.localFoldersLoad.getSteamFolderInfos;
 import folderHandling.localFoldersLoad.localFolderHandle;
 import frontendGUI.mainFrame;
 import frontendGUI.buttons.discord;
+import frontendGUI.gameButtons.addGame;
 import frontendGUI.gameButtons.updateSteam;
 import integrationCheck.defaultValues;
 import integrationCheck.newVersion;
@@ -72,12 +73,15 @@ public class mainApp {
 		if (getSteamFolderInfos.loadSteamFolders()) {  System.out.println("--- Steam loaded ---");
 		} else { System.out.println("--- Steam is not detected or not downloaded ---"); }
 
+		addGame.addOneGame();
 		// updateSteam.updateSteamGame();
 		String[] test = {"12","name","dev","playVer","LastTime","Rate","NewVer","LastUpd",
 			"PeopleRate","PlayProg","OnPc?","Engine","OS","Lang","Notes"};
 		String[] test2 = {"26",null,null,null,null,null,null,null,
 			null,null,null,null,null,null,null};
-		addGame.addGameToDB("man", test );
+		String[] test3 = {"26",null,"dev","playVer","LastTime","Rate","NewVer","LastUpd",
+			"PeopleRate",null,null,null,null,"Lang","Notes"};
+		// addGameHandle.addGameToDB("man", test );
 	}
 }
 

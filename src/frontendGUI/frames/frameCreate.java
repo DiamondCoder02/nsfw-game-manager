@@ -17,7 +17,7 @@ public class frameCreate {
 
 	static JMenu games;
 	static JMenuItem addGame, updateList, removeGame;
-	static JMenuItem addF95zone, updateF95, removeF95;
+	static JMenuItem updateF95, removeF95;
 	static JMenuItem saveFileToDifferent, refreshTable, refreshFromAPI;
 
 	static JMenu random;
@@ -54,7 +54,6 @@ public class frameCreate {
 		addGame = new JMenuItem(bs[2]!=null?bs[2]:"Add games"); addGame.setActionCommand("Add game"); addGame.addActionListener(buttonListener);
 		updateList = new JMenuItem(bs[3]!=null?bs[3]:"Update games"); updateList.setActionCommand("Update game"); updateList.addActionListener(buttonListener);
 		removeGame = new JMenuItem(bs[4]!=null?bs[4]:"Remove games"); removeGame.setActionCommand("Remove game"); removeGame.addActionListener(buttonListener);
-		addF95zone = new JMenuItem(bu[9]!=null?bu[9]:"Add from F95zone"); addF95zone.setActionCommand("Add F95zone"); addF95zone.addActionListener(buttonListener);
 		updateF95 = new JMenuItem(bu[10]!=null?bu[10]:"Update F95zone"); updateF95.setActionCommand("Update F95zone"); updateF95.addActionListener(buttonListener);
 		removeF95 = new JMenuItem(bu[11]!=null?bu[11]:"Remove F95zone"); removeF95.setActionCommand("Remove F95zone"); removeF95.addActionListener(buttonListener);
 		saveFileToDifferent = new JMenuItem(bu[12]!=null?bu[12]:"Save file copy"); saveFileToDifferent.setActionCommand("Save file copy"); saveFileToDifferent.addActionListener(buttonListener);
@@ -62,7 +61,7 @@ public class frameCreate {
 		refreshFromAPI = new JMenuItem(bu[14]!=null?bu[14]:"API refresh"); refreshFromAPI.setActionCommand("API refresh"); refreshFromAPI.addActionListener(buttonListener);
 
 		games.add(addGame); games.add(updateList); games.add(removeGame); games.addSeparator();
-		games.add(addF95zone); games.add(updateF95); games.add(removeF95); games.addSeparator();
+		games.add(updateF95); games.add(removeF95); games.addSeparator();
 		games.add(saveFileToDifferent); games.add(refreshTable); games.add(refreshFromAPI);
 		mb.add(games);
 

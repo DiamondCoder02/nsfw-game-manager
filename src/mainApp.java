@@ -72,6 +72,40 @@ public class mainApp {
 	}
 }
 
+/* [version number] ( to do / done / all ) 
+TODO list: [0.1.2.0] (4/4/8) 
+
+- Update FAQ in program
+- fix bugs / do something with all the ~10 TODOs that is in the source code
+- optimize search ( searchByName: dungeon )
+- Write comments in the program
+
+
+- Written wiki on Github
+- settings moved to json
+- added steam
+- Fixed exe saying "This application requires a Java Runtime Environment."
+
+
+TODO list: [0.1.3.0] (4/0/4)
+
+- move database from xml ( MUST NOT BREAK - 0.1.2.1 ? )
+- Rewrite language.csv
+- improve dark mode
+- Cum counter ( ͡° ͜ʖ ͡°)
+
+TODO list: [0.1.4.0] (2/0/2)
+
+- [ ] dlsite.com support
+- [ ] Make it LINUX compatible
+
+
+TODO random: [???]
+
+- [ ] Memory & CPU usage higher? ( Need more test )
+  - This happened when I run a full database update with API refreshes?
+ */
+
 /* order of table:
 0 - Site		1 - ID		2 - Name	3 - Developer
 4 - Played version			5 - Last time play

@@ -27,8 +27,6 @@ Check the [wiki](https://github.com/DiamondCoder02/nsfw-game-manager/wiki/Featur
 
 ## TODO / Future ideas
 
-- [ ] Test writing a wiki on GitHub?
-- [ ] Steam support ( 0.1.2.1 ? )
 - [ ] fix bugs / do something with all the ~6 TODOs that is in the source code
 - [ ] Rewrite language.csv
 - [ ] move database from xml ( MUST NOT BREAK - 0.1.2.1 ? )

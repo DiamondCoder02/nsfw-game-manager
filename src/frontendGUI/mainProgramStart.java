@@ -15,6 +15,7 @@ import integrationCheck.systemCheck;
 import webApiScrapeThings.autoSitesFetch;
 
 public class mainProgramStart {
+	private static boolean discordStart = false;
 	public static void mainMenuFullChange(){
 		loadSettings.load(defaultValues.mainDirectory);
 		loadLanguage.loadLangFile();
@@ -48,9 +49,10 @@ public class mainProgramStart {
 			localFolderHandle.fetchFoldersForTable(); 
 			System.out.println("- Local fetch done -");
 		}
-		if (loadSettings.othersettings[4]) { 
+		if (loadSettings.othersettings[4] && !discordStart) { 
 			discord.loopDiscord(); 
 			System.out.println("- Discord loop started -"); 
+			discordStart = true;
 		}
 
 		if (getSteamFolderInfos.loadSteamFolders()) {  System.out.println("--- Steam loaded ---");

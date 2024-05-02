@@ -1,14 +1,6 @@
-import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
-import folderHandling.localFoldersChange.backupHandle;
-import folderHandling.localFoldersLoad.getSteamFolderInfos;
-import folderHandling.localFoldersLoad.localFolderHandle;
-import frontendGUI.mainFrame;
-import frontendGUI.buttons.discord;
+import frontendGUI.mainProgramStart;
 import integrationCheck.defaultValues;
-import integrationCheck.newVersion;
-import integrationCheck.systemCheck;
-import webApiScrapeThings.autoSitesFetch;
 
 // https://stackoverflow.com/questions/7704405/how-do-i-make-my-java-application-open-a-console-terminal-window
 import java.io.Console;
@@ -27,49 +19,10 @@ public class mainApp {
 				Runtime.getRuntime().exec(new String[]{"cmd","/c","start","cmd","/k","java -jar \"" + filename + "\""});
 			} else{
 				System.out.println("+ Console needed! +");
-				mainMain();
+				mainProgramStart.mainMain();
 			}
-		} else { System.out.println("- No console needed! -"); mainMain(); }
+		} else { System.out.println("- No console needed! -"); mainProgramStart.mainMain(); }
     }
-
-	public static void mainMain() {
-		String mainDirectory = defaultValues.mainDirectory;
-
-		if (!systemCheck.programSystemCheck(mainDirectory)) { return; }
-		System.out.println("--- System check passed! ---");
-
-		if (!loadSettings.load(mainDirectory)) { return; }
-		if (!loadLanguage.loadLangFile()) { return; }
-		System.out.println("--- Settings / Languages loaded ---");
-
-		System.out.println("--- Checking for new version --- Enabled:" + loadSettings.othersettings[0]);
-		if (loadSettings.othersettings[0]) { 
-		if (newVersion.checkNewVersion()) {
-			System.out.println("-- New Version Available --"); return;
-		} }
-		System.out.println("-- No New Version --");
-
-		if (loadSettings.othersettings[2]) { 
-			autoSitesFetch.fetchInfoThenUpdateTable(); 
-			System.out.println("- Auto fetch online done -");
-		}
-		if (loadSettings.othersettings[3]) { 
-			localFolderHandle.fetchFoldersForTable(); 
-			System.out.println("- Local fetch done -");
-		}
-		if (loadSettings.othersettings[4]) { 
-			discord.loopDiscord(); 
-			System.out.println("- Discord loop started -"); 
-		}
-
-		if (getSteamFolderInfos.loadSteamFolders()) {  System.out.println("--- Steam loaded ---");
-		} else { System.out.println("--- Steam is not detected or not downloaded ---"); }
-
-		backupHandle.doBackup();
-		System.out.println("--- Backup started ---");
-		mainFrame.createFrame(mainDirectory);
-		System.out.println("--- GUI started ---");
-	}
 }
 
 /* [version number] ( to do / done / all ) 
@@ -79,6 +32,7 @@ TODO list: [0.1.2.0] (4/4/8)
 - fix bugs / do something with all the ~10 TODOs that is in the source code
 - optimize search ( searchByName: dungeon )
 - Write comments in the program
+- Fix Discord custom button
 
 
 - Written wiki on Github

@@ -14,7 +14,7 @@ import frontendGUI.frames.frameTableReload;
 import integrationCheck.defaultValues;
 
 public class mainFrame {
-	private static JFrame frame = new JFrame();
+	public static JFrame frame = new JFrame();
 	private static JTable table = new JTable();
 	private static JScrollPane pane;
 	public static void createFrame(String mainDirectory) {

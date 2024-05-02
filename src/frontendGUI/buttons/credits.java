@@ -25,7 +25,7 @@ public class credits {
 
 		Boolean[] boolSettings = loadSettings.othersettings;
 		String color;
-		if (boolSettings[0]) { color = "white"; } else { color = "black"; }
+		if (boolSettings[1]) { color = "white"; } else { color = "black"; }
 
 		JEditorPane ep = new JEditorPane();
 		ep.setContentType("text/html");

@@ -31,7 +31,6 @@ public class discordRPC {
 					// Make a "cool" image show up
 					activity.assets().setLargeImage(image);
 					activity.assets().setLargeText("Horny :3");
-					// TODO - Discord custom button broken, this needs fix
 					// Custom button
 					activity.addButton(button);
 					// Finally, update the current activity to our activity

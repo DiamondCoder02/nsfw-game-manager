@@ -15,7 +15,7 @@ public class faq {
 	public static void FACKQU(){
 		Boolean[] boolSettings = loadSettings.othersettings;
 		String color;
-		if (boolSettings[0]) { color = "white"; } else { color = "black"; }
+		if (boolSettings[1]) { color = "white"; } else { color = "black"; }
 		JEditorPane ep = new JEditorPane();
 		ep.setContentType("text/html");
 		ep.setText("<p style=\"font-family: Arial\"><span style=\"color:"+color+"\">"+(fld[19]!=null?fld[19]:"FAQ")+br+br+

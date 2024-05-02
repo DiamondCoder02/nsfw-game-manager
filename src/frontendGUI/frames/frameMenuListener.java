@@ -9,6 +9,7 @@ import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.localFoldersChange.changeSettings;
 import folderHandling.localFoldersLoad.localFolderHandle;
 import frontendGUI.mainFrame;
+import frontendGUI.mainProgramStart;
 import frontendGUI.buttons.credits;
 import frontendGUI.buttons.databaseCopy;
 import frontendGUI.buttons.discord;
@@ -49,9 +50,14 @@ public class frameMenuListener implements ActionListener {
 				changeSettings.changeSetting("shownColumns", e.getActionCommand()); 
 				break;
 
-			case "autoUpdateManager": case "autoFetchNewGameInfos": case "autoFetchLocalGameFolder": case "darkMode":
+			case "autoUpdateManager": case "autoFetchNewGameInfos": case "autoFetchLocalGameFolder":
 				changeSettings.changeSetting("othersettings", e.getActionCommand()); 
 				break;
+			case "darkMode":
+				changeSettings.changeSetting("othersettings", e.getActionCommand()); 
+				mainProgramStart.mainMenuFullChange();
+				break;
+
 
 			case "DiscordRPC": 
 				changeSettings.changeSetting("othersettings", e.getActionCommand()); 
@@ -59,7 +65,10 @@ public class frameMenuListener implements ActionListener {
 				break;
 			
 			case "folderLocation": gameFolderLocation.gamesLocationChoose(); break;
-			case "appLanguage": languageChoice.langChoose(); break;
+			case "appLanguage": 
+				languageChoice.langChoose(); 
+				mainProgramStart.mainMenuFullChange(); 
+				break;
 
 			case "FAQ": faq.FACKQU(); break;
 			case "Credits": credits.money(); break;

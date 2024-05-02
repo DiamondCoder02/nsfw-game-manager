@@ -10,23 +10,35 @@ import javax.swing.UIManager;
 import folderHandling.initialFileLoading.loadSettings;
 
 public class frameColor {
-	public static void WindowRefresh(JFrame frame, JScrollPane pane, JTable table){
-		Color bg = new Color(100, 100, 100);
-		Color fg = new Color(255, 255, 255);
-		Color textdark = new Color(30, 30, 30);
+	static Color bg = new Color(100, 100, 100);
+	static Color fg = new Color(255, 255, 255);
+	static Color textdark = new Color(30, 30, 30);
 
+	public static void UIColorChangeShit(){
 		Boolean d = loadSettings.othersettings[1];
 
-		pane.getViewport().setBackground(d?bg:fg);
-		table.setBackground(d?bg:fg);
-		table.getTableHeader().setBackground(d?bg:fg);
-		table.getTableHeader().setForeground(d?fg:bg);
+		UIManager.put("Menu.foreground", d?fg:null);
+		UIManager.put("Menu.background", d?bg:null);
+		UIManager.put("MenuBar.foreground", d?fg:null);
+		UIManager.put("MenuBar.background", d?bg:null);
+		UIManager.put("MenuItem.foreground", d?fg:null);
+		UIManager.put("MenuItem.background", d?bg:null);
+		UIManager.put("CheckBoxMenuItem.foreground", d?fg:null);
+		UIManager.put("CheckBoxMenuItem.background", d?bg:null);
+
+
 		UIManager.put("OptionPane.background", d?bg:null);
 		UIManager.put("OptionPane.messageForeground", d?fg:null);
+
+		UIManager.put("OptionPane.background", d?bg:null);
+		UIManager.put("OptionPane.messageForeground", d?fg:null);
+
 		UIManager.put("Panel.background", d?bg:null);
 		UIManager.put("Panel.messageForeground", d?fg:null);
-		UIManager.put("Button.background", null);
-		UIManager.put("Button.foreground", null);
+		UIManager.put("Button.foreground", d?fg:null);
+		UIManager.put("Button.background", d?bg:null);
+		// UIManager.put("Button.border", d?fg:bg);
+
 		UIManager.put("Label.foreground", d?fg:null);
 		UIManager.put("Label.background", d?bg:null);
 		UIManager.put("RadioButton.background", d?bg:null);
@@ -35,10 +47,23 @@ public class frameColor {
 		UIManager.put("CheckBox.foreground", d?fg:null);
 		UIManager.put("TextField.background", d?textdark:null);
 		UIManager.put("TextField.foreground", d?fg:null);
-		UIManager.put("Panel.background", d?bg:null);
-		UIManager.put("Panel.messageForeground", d?fg:null);
+	}
+
+	public static void WindowRefresh(JFrame frame, JScrollPane pane, JTable table){
+		Boolean d = loadSettings.othersettings[1];
+	
+		pane.getViewport().setBackground(d?bg:fg);
+		table.setBackground(d?bg:fg);
+		table.getTableHeader().setBackground(d?bg:fg);
+		table.getTableHeader().setForeground(d?fg:bg);
 		frame.getContentPane().setBackground(d?bg:null);
+
 		
+
+
+		
+
+		/*
 		frameCreate.mb.setBackground(d?bg:null); frameCreate.mb.setForeground(d?fg:null);
 		frameCreate.games.setBackground(d?bg:null); frameCreate.games.setForeground(d?fg:null);
 		frameCreate.addGame.setBackground(d?bg:null); frameCreate.addGame.setForeground(d?fg:null);
@@ -93,5 +118,6 @@ public class frameColor {
 		frameCreate.faq.setBackground(d?bg:null); frameCreate.faq.setForeground(d?fg:null);
 		frameCreate.credits.setBackground(d?bg:null); frameCreate.credits.setForeground(d?fg:null);
 		frameCreate.exit.setBackground(d?bg:null); frameCreate.exit.setForeground(d?fg:null);
+		*/
 	}
 }

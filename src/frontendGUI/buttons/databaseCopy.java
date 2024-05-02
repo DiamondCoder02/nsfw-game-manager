@@ -2,6 +2,7 @@ package frontendGUI.buttons;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.w3c.dom.Document;
 
@@ -17,10 +18,8 @@ public class databaseCopy {
 		chooser.setDialogTitle(fld[18]!=null?fld[18]:"Save file copy");
 		chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		chooser.setAcceptAllFileFilterUsed(false);
+		chooser.setFileFilter(new FileNameExtensionFilter("XML file", "xml"));
 
-		// TODO - rewrite here everything
-		// doesn't show it will save as xml. Maybe have other options?
-		
 		if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
 			String path = chooser.getSelectedFile().toString();
 			if (!path.endsWith(".xml")) { path = path+".xml"; }

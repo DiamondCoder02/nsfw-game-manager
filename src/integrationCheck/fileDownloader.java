@@ -23,7 +23,6 @@ public class fileDownloader {
 			case "png":	case "jpg":
 				return imageDownloader(url, fullPath, fileType);
 			case "dll":
-				// TODO - Discord donwload, this is stupid in future, but for now it's fine
 				return discordSdkDownload(url, fullPath.split("\\.")[0]);
 			default:
 				return false;

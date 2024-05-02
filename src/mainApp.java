@@ -26,20 +26,18 @@ public class mainApp {
 }
 
 /* [version number] ( to do / done / all ) 
-TODO list: [0.1.2.0] (4/4/8) 
+TODO list: [0.1.2.0] (3/5/8) 
 
-- Update FAQ in program
-- fix bugs / do something with all the ~10 TODOs that is in the source code
 - optimize search ( searchByName: dungeon )
 - Write comments in the program
 - Fix Discord custom button
 
 
 - Written wiki on Github
+- Update FAQ in program
 - settings moved to json
 - added steam
 - Fixed exe saying "This application requires a Java Runtime Environment."
-
 
 TODO list: [0.1.3.0] (4/0/4)
 
@@ -53,8 +51,7 @@ TODO list: [0.1.4.0] (2/0/2)
 - dlsite.com support
 - Make it LINUX compatible
 
-
-TODO random: [???]
+TODO random: [???] ( All Todos: 2 )
 
 - Memory & CPU usage higher? ( Need more test )
   - This happened when I run a full database update with API refreshes?

@@ -11,7 +11,6 @@ public class gameFolderLocation {
 		chooser.setCurrentDirectory(new java.io.File("."));
 		chooser.setDialogTitle("Select game info folder location");
 		chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-		chooser.setAcceptAllFileFilterUsed(false);
 
 		if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
 			String path = chooser.getSelectedFile().toString();

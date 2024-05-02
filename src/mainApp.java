@@ -50,13 +50,13 @@ TODO list: [0.1.3.0] (4/0/4)
 
 TODO list: [0.1.4.0] (2/0/2)
 
-- [ ] dlsite.com support
-- [ ] Make it LINUX compatible
+- dlsite.com support
+- Make it LINUX compatible
 
 
 TODO random: [???]
 
-- [ ] Memory & CPU usage higher? ( Need more test )
+- Memory & CPU usage higher? ( Need more test )
   - This happened when I run a full database update with API refreshes?
  */
 

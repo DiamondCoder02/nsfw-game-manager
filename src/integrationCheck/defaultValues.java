@@ -47,7 +47,7 @@ public interface defaultValues {
 	};
 
 	String[] infoSite = {"man", "f95"};
-	String[] infoProgress = {"Not played", "In progress", "Finish", "100% Finished"};
+	String[] infoProgress = {"Not played", "In progress", "Finish", "100% Finished", "Dropped"};
 	String[] infoOnPc = {"yes", "no", "unknown"};
 	String[] infoEngine = {"Flash", "HTML", "Java", "QSP", "Ren'Py", "RPGM", "Unity", "Unreal Engine", "WinGit", "WolfRPG", "other/unknown"};
 	String[] infoOS = {"Windows", "Linux", "Mac", "Android", "IOS", "other"};

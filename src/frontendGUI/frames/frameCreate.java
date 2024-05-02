@@ -83,6 +83,19 @@ public class frameCreate {
 		Boolean[] boolSettings = loadSettings.othersettings;
 
 		settings = new JMenu(bu[2]!=null?bu[2]:"Settings");
+		changeLanguage  = new JMenuItem("🌐 "+(bu[4]!=null?bu[4]:"Language")); changeLanguage.setActionCommand("appLanguage"); changeLanguage.addActionListener(buttonListener);
+		changeFolderLocation = new JMenuItem("📁 "+(bu[21]!=null?bu[21]:"Change folder location")); changeFolderLocation.setActionCommand("folderLocation"); changeFolderLocation.addActionListener(buttonListener);
+		autoUpdateWanted = new JCheckBoxMenuItem("🔁 "+"Auto update", boolSettings[0]); autoUpdateWanted.setActionCommand("autoUpdateManager"); autoUpdateWanted.addActionListener(buttonListener);
+		darkMode = new JCheckBoxMenuItem(bu[18]!=null?bu[18]:"Dark mode", boolSettings[1]); darkMode.setActionCommand("darkMode"); darkMode.addActionListener(buttonListener);
+		discordrpc = new JCheckBoxMenuItem("Discord RPC", boolSettings[4]); discordrpc.setActionCommand("DiscordRPC"); discordrpc.addActionListener(buttonListener);
+		autoFetchNews = new JCheckBoxMenuItem(bu[19]!=null?bu[19]:"Auto fetch game info", boolSettings[2]); autoFetchNews.setActionCommand("autoFetchNewGameInfos"); autoFetchNews.addActionListener(buttonListener);
+		autoFetchFolders = new JCheckBoxMenuItem(bu[20]!=null?bu[20]:"Auto fetch folders", boolSettings[3]); autoFetchFolders.setActionCommand("autoFetchLocalGameFolder"); autoFetchFolders.addActionListener(buttonListener);
+		
+		settings.add(changeLanguage); settings.add(changeFolderLocation); settings.addSeparator();
+		settings.add(autoUpdateWanted); settings.add(darkMode); settings.add(discordrpc); settings.addSeparator();
+		settings.add(autoFetchNews); settings.add(autoFetchFolders);
+		mb.add(settings);
+
 		show = new JMenu(bu[3]!=null?bu[3]:"Shown informations");
 		showSite = new JCheckBoxMenuItem(tlc[0]!=null?tlc[0]:"Site", boolColumns[0]); showSite.setActionCommand("site"); showSite.addActionListener(buttonListener);
 		showID = new JCheckBoxMenuItem(tlc[1]!=null?tlc[1]:"ID", boolColumns[1]); showID.setActionCommand("id"); showID.addActionListener(buttonListener);
@@ -105,19 +118,7 @@ public class frameCreate {
 		show.add(showLastTimeplay); show.add(showRated); show.add(showNewestVersion); show.add(showDateOfLastUpdate); 
 		show.add(showPeopleRating); show.add(showhowFarUserPlayed); show.add(showDeletedFromPc); show.add(showEngine); 
 		show.add(showOS); show.add(showLanguage); show.add(ShowSelfNote);
-
-		changeLanguage  = new JMenuItem("🌐 "+(bu[4]!=null?bu[4]:"Language")); changeLanguage.setActionCommand("appLanguage"); changeLanguage.addActionListener(buttonListener);
-		changeFolderLocation = new JMenuItem("📁 "+(bu[21]!=null?bu[21]:"Change folder location")); changeFolderLocation.setActionCommand("folderLocation"); changeFolderLocation.addActionListener(buttonListener);
-		autoUpdateWanted = new JCheckBoxMenuItem("🔁 "+"Auto update", boolSettings[0]); autoUpdateWanted.setActionCommand("autoUpdateManager"); autoUpdateWanted.addActionListener(buttonListener);
-		darkMode = new JCheckBoxMenuItem(bu[18]!=null?bu[18]:"Dark mode", boolSettings[1]); darkMode.setActionCommand("darkMode"); darkMode.addActionListener(buttonListener);
-		discordrpc = new JCheckBoxMenuItem("Discord RPC", boolSettings[4]); discordrpc.setActionCommand("DiscordRPC"); discordrpc.addActionListener(buttonListener);
-		autoFetchNews = new JCheckBoxMenuItem(bu[19]!=null?bu[19]:"Auto fetch game info", boolSettings[2]); autoFetchNews.setActionCommand("autoFetchNewGameInfos"); autoFetchNews.addActionListener(buttonListener);
-		autoFetchFolders = new JCheckBoxMenuItem(bu[20]!=null?bu[20]:"Auto fetch folders", boolSettings[3]); autoFetchFolders.setActionCommand("autoFetchLocalGameFolder"); autoFetchFolders.addActionListener(buttonListener);
-
-		settings.add(show); settings.add(changeLanguage); settings.add(changeFolderLocation); settings.addSeparator();
-		settings.add(autoUpdateWanted); settings.add(darkMode); settings.add(discordrpc); settings.addSeparator();
-		settings.add(autoFetchNews); settings.add(autoFetchFolders);
-		mb.add(settings);
+		mb.add(show); 
 
 		help = new JMenu(bu[5]!=null?bu[5]:"Other");
 		faq = new JMenuItem(bu[6]!=null?bu[6]:"FAQ"); faq.setActionCommand("FAQ"); faq.addActionListener(buttonListener);

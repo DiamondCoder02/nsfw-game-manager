@@ -7,7 +7,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import folderHandling.initialFileLoading.loadSettings;
-import frontendGUI.frames.frameColor;
+import frontendGUI.colors.frameColor;
 import frontendGUI.frames.frameCreate;
 import frontendGUI.frames.frameTable;
 import frontendGUI.frames.frameTableReload;
@@ -27,7 +27,7 @@ public class mainFrame {
 		pane = new JScrollPane(table);
 		frame.add(pane, BorderLayout.CENTER);
 
-		frameColor.WindowRefresh(frame, pane, table);
+		frameColor.WindowRefresh(pane, table);
 
 		frame.setVisible(true);
 	}
@@ -36,6 +36,6 @@ public class mainFrame {
 		loadSettings.load(defaultValues.mainDirectory);
 		frameTableReload.reloadTable(table, defaultValues.mainDirectory);
 		frameTable.setColumns(table);
-		frameColor.WindowRefresh(frame, pane, table);
+		frameColor.WindowRefresh(pane, table);
 	}
 }

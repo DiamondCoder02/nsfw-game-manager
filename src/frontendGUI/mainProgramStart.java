@@ -8,7 +8,7 @@ import folderHandling.localFoldersChange.backupHandle;
 import folderHandling.localFoldersLoad.getSteamFolderInfos;
 import folderHandling.localFoldersLoad.localFolderHandle;
 import frontendGUI.buttons.discord;
-import frontendGUI.frames.frameColor;
+import frontendGUI.colors.frameColor;
 import integrationCheck.defaultValues;
 import integrationCheck.newVersion;
 import integrationCheck.systemCheck;

@@ -1,15 +1,11 @@
 package frontendGUI.frames;
 
-import java.awt.Color;
-import java.awt.Component;
-
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableModel;
 
 import folderHandling.initialFileLoading.loadGames;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
+import frontendGUI.colors.tableColor;
 import integrationCheck.defaultValues;
 
 public class frameTableReload {
@@ -41,7 +37,7 @@ public class frameTableReload {
 			}
 		}
 		table.setModel(new JTable(data, columnNames).getModel());
-		getNewRenderedTable(table, (tbl[10]!=null?tbl[10]:"Player progress"));
+		tableColor.getNewRenderedTable(table, (tbl[10]!=null?tbl[10]:"Player progress"));
 	}
 
 	private static String[] enabledRows() {
@@ -61,60 +57,5 @@ public class frameTableReload {
 		}
 
 		return enabledRows2;
-	}
-
-	private static JTable getNewRenderedTable(final JTable table, String playProgColName) {
-		// change row color - Not played: red, In progress: yellow, Finish: blue, 100% Finished: green
-		// boolean[] otherSettings = settingsManager.loadSettings("othersettings");
-		Color np, ip, fi, ff;
-		// if (otherSettings[0]){
-			np = new Color(255, 110, 130);
-			ip = new Color(255, 255, 120);
-			fi = new Color(100, 170, 255);
-			ff = new Color(130, 255, 130);
-		/* 
-		} else {
-			np = new Color(255, 0, 0);
-			ip = new Color(255, 255, 0);
-			fi = new Color(0, 0, 255);
-			ff = new Color(0, 255, 0);
-		}
-		*/
-
-		int playColumnCount = 0;
-		for (int i = 0; i < table.getColumnCount(); i++) {
-			if (table.getColumnName(i).equals(playProgColName)) {
-				playColumnCount = i;
-				break;
-			}
-		}
-		int playProgColumn = playColumnCount;
-		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-			@Override
-			public Component getTableCellRendererComponent(
-				JTable table,
-				Object value, 
-				boolean isSelected, 
-				boolean hasFocus, 
-				int row, 
-				int col
-			) {
-				TableModel model = table.getModel();
-				int modelRow = table.getRowSorter().convertRowIndexToModel(row);
-				String status = (String) model.getValueAt(modelRow, playProgColumn);
-
-				if (status.equals(defaultValues.infoProgress[0])) { setBackground(np);
-				} else if (status.equals(defaultValues.infoProgress[1])) { setBackground(ip);
-				} else if (status.equals(defaultValues.infoProgress[2])) { setBackground(fi);
-				} else if (status.equals(defaultValues.infoProgress[3])) { setBackground(ff);
-				} else {
-					setBackground(table.getBackground());
-					setForeground(table.getForeground());
-				}
-				setText(value != null ? value.toString() : "");
-				return this;
-			}
-		});
-		return table;
 	}
 }

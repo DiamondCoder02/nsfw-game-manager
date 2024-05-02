@@ -49,7 +49,7 @@ public class addGameHandle {
 			if (allKnownGameInfo[i] == null) {
 				switch (i) {
 					case 9:
-						String[] jrb1 = {jrb[0]!=null?jrb[0]:"Not played", jrb[1]!=null?jrb[1]:"In progress", jrb[2]!=null?jrb[2]:"Finish", jrb[3]!=null?jrb[3]:"100% Finished"};
+						String[] jrb1 = {jrb[0]!=null?jrb[0]:"Not played", jrb[1]!=null?jrb[1]:"In progress", jrb[2]!=null?jrb[2]:"Finish", jrb[3]!=null?jrb[3]:"100% Finished","Dropped"};
 						radioButtons("progress", jrb1, defaultValues.infoProgress, true);
 						panel.add(new JLabel(jla[i]!=null?jla[i]:"N/A")); panel.add(howFarUserPlayedPanel);
 						break;
@@ -123,7 +123,7 @@ public class addGameHandle {
 		JPanel buttonPanel = new JPanel();
 
 		if (isRB) { 
-			for (int i = 0; i < jrbArray.length; i++) {
+			for (int i = 0; i < action.length; i++) {
 				JRadioButton button = new JRadioButton(jrbArray[i], i == 0); 
 				button.setActionCommand(action[i]);
 				allButtons.add(button);
@@ -131,7 +131,7 @@ public class addGameHandle {
 			}
 		}
 		else { 
-			for (int i = 0; i < jrbArray.length; i++) {
+			for (int i = 0; i < action.length; i++) {
 				JCheckBox button = new JCheckBox(jrbArray[i], false);
 				button.setActionCommand(action[i]);
 				buttonPanel.add(button);

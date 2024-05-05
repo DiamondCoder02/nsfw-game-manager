@@ -17,6 +17,10 @@ public class mainFrame {
 	public static JFrame frame = new JFrame();
 	private static JTable table = new JTable();
 	private static JScrollPane pane;
+	/**
+	 * Creates the main frame
+	 * @param mainDirectory - The main directory of the program
+	 */
 	public static void createFrame(String mainDirectory) {
 		frame = frameCreate.WindowCreate(frame, mainDirectory);
 
@@ -32,6 +36,9 @@ public class mainFrame {
 		frame.setVisible(true);
 	}
 
+	/**
+	 * Refreshes the table with the new data
+	 */
 	public static void refreshTable() {
 		loadSettings.load(defaultValues.mainDirectory);
 		frameTableReload.reloadTable(table, defaultValues.mainDirectory);

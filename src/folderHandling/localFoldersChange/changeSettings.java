@@ -6,6 +6,12 @@ import folderHandling.ADocHandle;
 import integrationCheck.defaultValues;
 
 public class changeSettings {
+	/**
+	 * This function will change a setting in the settings.json file.
+	 * @param mainChange - The main setting to change.
+	 * @param toChange - The sub setting to change.
+	 * @return boolean - returns true if the setting was changed successfully.
+	 */
 	public static boolean changeSetting(String mainChange, String toChange) {
 		String mainDirectory = defaultValues.mainDirectory;
 		JsonObject settings = ADocHandle.loadSettingsJson(mainDirectory + "/settings.json");

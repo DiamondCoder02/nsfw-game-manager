@@ -26,6 +26,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 public class ADocHandle {
+	/**
+	 * Create a new document
+	 * @return Document - returns a new document
+	 */
 	public static Document create() {
 		Document doc;
 		try {
@@ -39,6 +43,11 @@ public class ADocHandle {
 		return doc;
 	}
 
+	/**
+	 * Load a document from a directory
+	 * @param directory - The directory of the document
+	 * @return Document - returns the loaded document
+	 */
 	public static Document load(String directory) {
 		Document doc;
 		try {
@@ -53,6 +62,12 @@ public class ADocHandle {
 		return doc;
 	}
 
+	/**
+	 * Save a document to a directory
+	 * @param doc - The document to save
+	 * @param finalDirectory - The directory to save the document
+	 * @return boolean - returns true if the document was saved successfully
+	 */
 	public static boolean save(Document doc, String finalDirectory) {
 		try{
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -70,6 +85,12 @@ public class ADocHandle {
 		return true;
 	}
 
+	/**
+	 * Get an element from a document
+	 * @param dom - The document to get the element from
+	 * @param idValue - The ID of the element
+	 * @return Element - returns the element
+	 */
 	public static Element getElementFromDB(Document dom, String idValue) {
 		NodeList source = dom.getElementsByTagName("source");
 		for (int i = 0; i < source.getLength(); i++) {
@@ -90,6 +111,11 @@ public class ADocHandle {
 		return null;
 	}
 
+	/**
+	 * Get the source node from a document
+	 * @param dom - The document to get the source node from
+	 * @return Node - returns the source node
+	 */
 	public static Node getSourceNodeFromDB(Document dom){
 		NodeList source = dom.getElementsByTagName("source");
 		for (int i = 0; i < source.getLength(); i++) {
@@ -121,6 +147,11 @@ public class ADocHandle {
 		}
 	}
 
+	/**
+	 * Load a settings json file
+	 * @param directory - The directory of the settings json file
+	 * @return JsonObject - returns the loaded settings json file
+	 */
 	public static JsonObject loadSettingsJson(String directory) {
 		try{
 			BufferedReader reader = Files.newBufferedReader(Paths.get(directory));

@@ -8,6 +8,13 @@ import java.io.IOException;
 import java.awt.GraphicsEnvironment;
 import java.net.URISyntaxException;
 public class mainApp {
+	/**
+	 * This function will start the program.
+	 * @param args - The arguments of the program.
+	 * @throws IOException - If there is an error.
+	 * @throws InterruptedException - If there is an error.
+	 * @throws URISyntaxException - If there is an error.
+	 */
 	public static void main (String [] args) throws IOException, InterruptedException, URISyntaxException{
 		Boolean consoleNeeded = false;
 		if (loadSettings.load(defaultValues.mainDirectory)) { consoleNeeded = loadSettings.othersettings[5]; }

@@ -19,6 +19,15 @@ public class systemCheck {
 	 * 	- hentai.xml
 	 * 	- language.csv
 	 */
+	/**
+	 * This function will check if the system is ready to run the program.
+	 * @param mainDir - The main directory of the program.
+	 * @return boolean - returns true if the system is ready.
+	 * @see #mainDirectoryCheck(File)
+	 * @see #foldersCheck(String)
+	 * @see fileChecker#fileCheckingHandler(File)
+	 * @implSpec This function will check if the main directory exists, if the folders exist and if the files exist.
+	 */
 	public static boolean programSystemCheck(String mainDir) {
 		File mainDirectory = new File(mainDir);
 		if (mainDirectoryCheck(mainDirectory)) {
@@ -31,7 +40,11 @@ public class systemCheck {
 		return false;
 	}
 
-	// Check if the folders exist
+	/**
+	 * This function will check if the folders exist.
+	 * @param mainDirectory - The main directory of the program. 
+	 * @return boolean - returns true if the folders exist.
+	 */
 	private static boolean foldersCheck(String mainDirectory) {
 		File discord = new File(mainDirectory + "/discord");
 		File pics = new File(mainDirectory + "/pics");
@@ -41,7 +54,11 @@ public class systemCheck {
 		return true;
 	}
 
-	// Check if the main folder in AppData exists
+	/**
+	 * Check if the main folder in AppData exists
+	 * @param mainDirectory - The main directory of the program.
+	 * @return boolean - returns true if the main directory exists.
+	 */
 	private static boolean mainDirectoryCheck(File mainDirectory) {
 		if (!mainDirectory.exists()) {
 			try {

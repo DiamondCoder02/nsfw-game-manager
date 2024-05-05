@@ -16,6 +16,9 @@ import webApiScrapeThings.autoSitesFetch;
 
 public class mainProgramStart {
 	private static boolean discordStart = false;
+	/**
+	 * Changes the main menu fully
+	 */
 	public static void mainMenuFullChange(){
 		loadSettings.load(defaultValues.mainDirectory);
 		loadLanguage.loadLangFile();
@@ -24,6 +27,9 @@ public class mainProgramStart {
 		mainMain();
 	}
 
+	/**
+	 * Main function to start the program
+	 */
 	public static void mainMain() {
 		String mainDirectory = defaultValues.mainDirectory;
 

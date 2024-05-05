@@ -12,9 +12,12 @@ import java.time.Instant;
 
 // https://github.com/JnCrMx/discord-game-sdk4j
 public class discordRPC {
-	static String image = "https://i.imgur.com/lJEl4eK.png";
-	static ActivityButton button = new ActivityButton("Github", "https://github.com/DiamondCoder02/nsfw-game-manager");
 	static Instant time;
+	/**
+	 * This function will start the Discord RPC.
+	 * @param boolSettings - The settings of the program.
+	 * @return Runnable - returns null.
+	 */
 	public static Runnable discordStarter(Boolean[] boolSettings) {
 		time = Instant.now();
 		try (CreateParams params = new CreateParams()) {
@@ -29,9 +32,10 @@ public class discordRPC {
 					// Setting a start time causes an "elapsed" field to appear
 					activity.timestamps().setStart(time);
 					// Make a "cool" image show up
-					activity.assets().setLargeImage(image);
-					activity.assets().setLargeText("Horny :3");
+					activity.assets().setLargeImage("https://cdn.discordapp.com/avatars/1135539276692607086/519c4b431278ba6326f8304da37c2848");
+					activity.assets().setLargeText("Hen-Tie Gamer");
 					// Custom button
+					ActivityButton button = new ActivityButton("Github", "https://github.com/DiamondCoder02/nsfw-game-manager");
 					activity.addButton(button);
 					// Finally, update the current activity to our activity
 					core.activityManager().updateActivity(activity);

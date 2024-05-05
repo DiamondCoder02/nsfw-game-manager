@@ -9,7 +9,12 @@ import org.w3c.dom.Element;
 import folderHandling.ADocHandle;
 
 public class creatingDefaultDoc {
-	// Create settings.json
+	/**
+	 * Create settings.json
+	 * @param allSettings - The settings that will be saved in the settings.json file
+	 * @param directoryPath - The directory where the settings file will be saved **with** the file name or extension
+	 * @return boolean - returns true if the settings file was created successfully
+	 */
 	public static boolean createJsonSettings(String[][] allSettings, String directoryPath) {
 		System.out.println("Creating settings.json");
 		Map<String, Object> someSettings = new HashMap<>();
@@ -37,7 +42,13 @@ public class creatingDefaultDoc {
 	 * '' &apos;
 	 * <name>John &amp; Doe</name>
 	*/
-	// Create database.xml
+	/**
+	 * Create a new database
+	 * @param directoryPath - The directory where the XML file will be saved **with** the file name or extension
+	 * @param rootCreateElement - The root element of the XML file
+	 * @param everythingNeeded - The elements that will be saved in the XML file
+	 * @return boolean - returns true if the XML file was created successfully
+	 */
 	public static boolean createDatabase(String directoryPath, String rootCreateElement, String[][] everythingNeeded) {
 		Document doc = ADocHandle.create();
 		Element rootElement = doc.createElement(rootCreateElement);

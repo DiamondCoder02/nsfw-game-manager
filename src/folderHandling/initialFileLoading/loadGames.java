@@ -10,6 +10,10 @@ import folderHandling.ADocHandle;
 
 public class loadGames {
 	static String[] bac = loadLanguage.basic;
+	/**
+	 * @param mainDirectory - The needed path to the XML file without the file name or extension
+	 * @return - Object[][] - Returns all the games from the XML file
+	 */
 	public static Object[][] loadGamesFromXML(String mainDirectory){
 		Document dom = ADocHandle.load(mainDirectory + "/hentai.xml");
 		String[] columnNames = enabledRows();
@@ -72,10 +76,15 @@ public class loadGames {
 				}
 			}
 		}
-
 		return allDataFromFile2;
 	}
 
+	/**
+	 * Site / ID / Name / Developer / Played version / Last time play / Rated / Newest version / <p>
+	 * Last update / People rating / Player progress / Still on pc? / Engine / OS / Language / Personal notes
+	 * @return String[] - Returns the enabled rows from the settings
+	 * @see src/integrationCheck/defaultValues.java
+	 */
 	private static String[] enabledRows() {
 		String[] allColumnNames = defaultValues.settings[4];
 		String[] enabledRows = new String[allColumnNames.length-1];

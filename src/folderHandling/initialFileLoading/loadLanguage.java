@@ -16,6 +16,9 @@ public class loadLanguage {
 	private static String[] languages;
 	private static String[] lanMeans;
 
+	/**
+	 * @return String[][] - returns strings of all possible languages
+	 */
 	public static String[][] loadLangChoices(){
 		try{
 			String[][] ret = new String[2][languages.length-1];
@@ -32,6 +35,9 @@ public class loadLanguage {
 		}
 	}
 
+	/**
+	 * @return boolean - returns true if the language file was loaded successfully
+	 */
 	public static boolean loadLangFile() {
 		try{
 			BufferedReader br = new BufferedReader( new FileReader(

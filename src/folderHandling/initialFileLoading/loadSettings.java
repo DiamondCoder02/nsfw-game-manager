@@ -11,6 +11,10 @@ public class loadSettings {
 	public static String language;
 	public static String folderLocation;
 	public static String appVersion;
+	/**
+	 * @param directory - The directory where the settings file is located without the file name or extension
+	 * @return boolean - returns true if the settings file was loaded successfully
+	 */
 	public static Boolean load(String directory) {
 		JsonObject parser;
 		try{ parser = ADocHandle.loadSettingsJson(directory + "/settings.json"); } 
@@ -33,11 +37,9 @@ public class loadSettings {
 			for (int i = 0; i < defaultValues.settings[4].length-1; i++) {
 				shownColumns[i] = shownSet.get(defaultValues.settings[4][i+1]).getAsBoolean();
 			}
-
 			return true;
 		} catch (Exception e) {
 			return false;
 		}
-		
 	}
 }

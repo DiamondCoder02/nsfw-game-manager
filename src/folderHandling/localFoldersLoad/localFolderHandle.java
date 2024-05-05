@@ -26,7 +26,11 @@ import frontendGUI.mainFrame;
 import integrationCheck.defaultValues;
 
 public class localFolderHandle {
+	// TODO - please fucking kill my eyes. This is horrible
 	static String[] lf = loadLanguage.folder, bs = loadLanguage.base;
+	/**
+	 * Fetches all folders in the selected folder and updates the database with the new information
+	 */
 	public static void fetchFoldersForTable() {
 		String location = loadSettings.folderLocation;
 		if (location.equals("null")) { JOptionPane.showMessageDialog(null, "No hentai folder selected. Please select, then try again!", "Error", JOptionPane.ERROR_MESSAGE); return; }

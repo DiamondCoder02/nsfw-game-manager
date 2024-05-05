@@ -16,6 +16,14 @@ import integrationCheck.defaultValues;
 public class changeDatabase {
 	static String[] jla = loadLanguage.jlapa, folder = loadLanguage.folder, jrb = loadLanguage.jrabu;
 	static String[] base = loadLanguage.base, basic = loadLanguage.basic;
+	/**
+	 * Adds a new game into the database
+	 * @param fromSite - The site where the game is from
+	 * @param gameInfo - The information of the game<p>
+	 * [ ID / Name / Developer / Played version / Last time play / Rated / Newest version / <p>
+	 * Last update / People rating / Player progress / Still on pc? / Engine / OS / Language / Personal notes ]
+	 * @return boolean - returns true if the game was added successfully
+	 */
 	public static boolean addNewGameIntoDatabase(String fromSite, String[] gameInfo) {
 		try{
 			Document dom = ADocHandle.load(defaultValues.mainDirectory + "/hentai.xml");
@@ -46,6 +54,12 @@ public class changeDatabase {
 		}
 	}
 
+	/**
+	 * Removes a game from the database
+	 * @param idValue - The ID of the game
+	 * @param fromSite - The site where the game is from
+	 * @return boolean - returns true if the game was removed successfully
+	 */
 	public static boolean removeGameFromDatabase(String idValue, String fromSite) {
 		try{
 			Document dom = ADocHandle.load(defaultValues.mainDirectory + "/hentai.xml");

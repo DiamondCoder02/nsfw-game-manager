@@ -5,11 +5,16 @@ import com.google.gson.JsonObject;
 import folderHandling.ADocHandle;
 
 public class creatingMissingSettings {
+	/**
+	 * This function will create missing settings in the settings.json file.
+	 * @param allSettings - 2D array of settings that are missing in the settings.json file.
+	 * @param directoryPath - Path to the directory where the settings.json file is located without the file name or extension.
+	 * @return boolean - returns true if the settings were created successfully.
+	 */
 	public static boolean creatingMissingSettingsHandler(String[][] allSettings, String directoryPath) {
 		try {
 			JsonObject settings = ADocHandle.loadSettingsJson(directoryPath + "/settings.json");
 			String[][] toReduce = new String[5][20];
-			// This is retarded, but fuck me >:3
 			for (int i = 0; i < allSettings.length; i++) { for (int j = 0; j < allSettings[i].length; j++) { toReduce[i][j] = allSettings[i][j]; } }
 
 			settings.entrySet().forEach(entry -> {

@@ -14,6 +14,12 @@ import java.util.zip.ZipInputStream;
 import javax.imageio.ImageIO;
 
 public class fileDownloader {
+	/**
+	 * This function will download a file from the internet.
+	 * @param url - The url of the file.
+	 * @param fullPath - The full path of the file.
+	 * @return boolean - returns true if the file is downloaded.
+	 */
 	public static boolean downloadFile(String url, String fullPath) {
 		String fileType = fullPath.substring(fullPath.lastIndexOf(".") + 1, fullPath.length());
 		System.out.println("Downloading: " + fileType);
@@ -29,6 +35,13 @@ public class fileDownloader {
 		}
 	}
 
+	/**
+	 * This function will download an image from the internet.
+	 * @param url - The url of the image. 
+	 * @param endFullDirectoryPath - The full path of the image.
+	 * @param fileType - The file type of the image.
+	 * @return boolean - returns true if the image is downloaded.
+	 */
 	private static boolean imageDownloader(String url, String endFullDirectoryPath, String fileType) {
 		try{
 			BufferedImage img = ImageIO.read(new URL(url));
@@ -39,6 +52,12 @@ public class fileDownloader {
 		}
 	}
 
+	/**
+	 * This function will download a file from the internet.
+	 * @param url - The url of the file.
+	 * @param endFullDirectoryPath - The full path of the file.
+	 * @return boolean - returns true if the file is downloaded.
+	 */
 	private static boolean fileDownloading(String url, String endFullDirectoryPath) {
 		try {
 			InputStream in = new URL(url).openStream();
@@ -55,7 +74,13 @@ public class fileDownloader {
 		}
 	}
 
-	// thank you <3 ; https://github.com/JnCrMx/discord-game-sdk4j
+	/**
+	 * This function will download the Discord SDK from the internet.
+	 * @param url - The url of the Discord SDK.
+	 * @param directoryWithoutExtension - The directory of the Discord SDK without the extension.
+	 * @return boolean - returns true if the Discord SDK is downloaded.
+	 * @see a Huge thank you <a href="https://github.com/JnCrMx/discord-game-sdk4j">JnCrMx/discord-game-sdk4j</a> <3
+	 */
 	private static boolean discordSdkDownload(String url, String directoryWithoutExtension){
 		System.out.println("Downloading: " + url);
 		String suffix;

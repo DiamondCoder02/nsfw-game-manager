@@ -11,6 +11,12 @@ import folderHandling.initialFileLoading.loadLanguage;
 
 public class loadSitesBufRead {
 	static String[] lf = loadLanguage.folder, bs = loadLanguage.base;
+	/**
+	 * This function will load the site and return the content.
+	 * @param webSite - The site to load.
+	 * @param slashN - If the content should have a new line at the end.
+	 * @return StringBuilder - returns the content of the site.
+	 */
 	public static StringBuilder loadSite(String webSite, Boolean slashN) {
 		StringBuilder content = new StringBuilder();
 		String line;

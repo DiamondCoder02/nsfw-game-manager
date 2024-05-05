@@ -10,6 +10,9 @@ import java.util.Date;
 import integrationCheck.defaultValues;
 
 public class backupHandle {
+	/**
+	 * Create a backup of the main data file
+	 */
 	public static void doBackup() {
 		String mainDataPath = defaultValues.mainDirectory + "/hentai.xml";
 		String backupPath = defaultValues.mainDirectory + "/backup";

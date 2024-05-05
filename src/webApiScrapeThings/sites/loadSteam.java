@@ -11,6 +11,11 @@ import webApiScrapeThings.loadSitesBufRead;
 
 public class loadSteam {
 	static String[] lf = loadLanguage.folder, bs = loadLanguage.base;
+	/**
+	 * This function will get the content of the steamcmd.net site.
+	 * @param gameIds - The game ID to get the content from.
+	 * @return String[] - returns the content of the site.
+	 */
 	public static String[] getSteamUrlContents(String gameIds) {
 		StringBuilder content = loadSitesBufRead.loadSite("https://api.steamcmd.net/v1/info/"+gameIds, false);
 		if (content == null) { return null; }
@@ -72,6 +77,11 @@ public class loadSteam {
 		return allGameInfos;
 	}
 
+	/**
+	 * This function will get the content of the steamcmd.net site.
+	 * @param toGetInfoFrom - The game JSON to get the content from.
+	 * @return String[] - returns the *common* content info of the site.
+	 */
 	private static String[] commonHandle(JsonObject toGetInfoFrom){
 		String[] temp = new String[5];
 		toGetInfoFrom.entrySet().forEach(entry1 -> {
@@ -83,10 +93,14 @@ public class loadSteam {
 				case "supported_languages": temp[4] = supLanguagesCommonHandle(entry1.getValue().getAsJsonObject()); break;
 			}
 		});
-
 		return temp;
 	}
 
+	/**
+	 * This function will get all developers of a ame.
+	 * @param toGetInfoFrom - The game JSON to get the content from.
+	 * @return String[] - returns the developers of the game.
+	 */
 	private static String developerCommonHandle(JsonObject toGetInfoFrom){
 		String[] temp = new String[1];
 		toGetInfoFrom.entrySet().forEach(entry1 -> {
@@ -103,6 +117,11 @@ public class loadSteam {
 		return temp[0];
 	}
 
+	/**
+	 * This function will get all supported languages of a game.
+	 * @param toGetInfoFrom - The game JSON to get the content from.
+	 * @return String[] - returns the supported languages of the game.
+	 */
 	private static String supLanguagesCommonHandle(JsonObject toGetInfoFrom){
 		String[] temp = new String[1];
 		toGetInfoFrom.entrySet().forEach(entry1 -> {
@@ -117,6 +136,11 @@ public class loadSteam {
 		return temp[0];
 	}
 
+	/**
+	 * This function will get the content of the steamcmd.net site.
+	 * @param toGetInfoFrom - The game JSON to get the content from.
+	 * @return String[] - returns the *depots.branches.public* content info of the site.
+	 */
 	private static String[] depotsBranchesPublicHandle(JsonObject toGetInfoFrom){
 		String[] temp = new String[2];
 		toGetInfoFrom.entrySet().forEach(entry1 -> {

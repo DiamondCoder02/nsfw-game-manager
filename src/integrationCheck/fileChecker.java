@@ -8,6 +8,11 @@ import folderHandling.integCheck.creatingMissingSettings;
 public class fileChecker {
 	private static boolean success = false;
 
+	/**
+	 * This function will check if all the needed files are present in the main directory.
+	 * @param mainDirectory - The main directory of the program.
+	 * @return boolean - returns true if all the files are present.
+	 */
 	public static boolean fileCheckingHandler(File mainDirectory) {
 		for (String file : defaultValues.filesNeeded) { 
 			success = checkFile(mainDirectory, file); 
@@ -26,13 +31,24 @@ public class fileChecker {
 		return true;
 	}
 
+	/**
+	 * This function will check if the local directory is present before downloading the online file.
+	 * @param localDir - The local directory to check.
+	 * @return boolean - returns true if the local directory is present.
+	 */
 	private static boolean checkLocalBeforeOnline(String localDir) {
 		if (!new File(localDir).exists()) {
 			return false;
 		}
 		return true;
 	}
-	
+
+	/**
+	 * This function will check if the file is present in the directory and if not, create it.
+	 * @param directoryPlace - The directory to check.
+	 * @param fileName - The file name to check.
+	 * @return boolean - returns true if the file is present.
+	 */
 	private static boolean checkFile(File directoryPlace, String fileName) {
 		if (!new File(directoryPlace + "/" + fileName).exists()) {
 			switch (fileName) {

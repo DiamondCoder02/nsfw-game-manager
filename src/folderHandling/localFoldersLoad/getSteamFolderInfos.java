@@ -13,6 +13,11 @@ public class getSteamFolderInfos {
 	private static String[][] steamFolders;
 	public static Boolean steamAvailable = false;
 
+	/**
+	 * Get the steam app info
+	 * @param appId - The app id of the game
+	 * @return String[] - returns the **local** app info
+	 */
 	public static String[] getSteamAppInfo(String appId){
 		// LastUpdated - buildid
 		String[] appInfo = new String[5];
@@ -59,6 +64,11 @@ public class getSteamFolderInfos {
 }
 */
 
+	/**
+	 * Read the game file
+	 * @param appId - The app id of the game
+	 * @return BufferedReader - returns the buffered reader of the game file
+	 */
 	private static BufferedReader readGameFile(String appId){
 		for (int i = 0; i < steamFolders.length; i++) {
 			for (int j = 0; j < steamFolders[i].length; j++) {
@@ -79,6 +89,10 @@ public class getSteamFolderInfos {
 		return null;
 	}
 
+	/**
+	 * Load the steam folders
+	 * @return Boolean - returns true if the steam folders were loaded successfully
+	 */
 	public static Boolean loadSteamFolders() {
 		try {
 			// libraryfolders.vdf
@@ -96,7 +110,6 @@ public class getSteamFolderInfos {
 				if (line.contains("}")) { apps = false; appIndex = 0; }
 				if (apps) {
 					if (line.contains("\"")) {
-						// 		"228980"		"281442308"
 						appIndex++;
 						mainSteamFolder[folderIndex][appIndex] = line.split("\"")[1];
 					}
@@ -113,31 +126,3 @@ public class getSteamFolderInfos {
 		}
 	}
 }
-
-/* how do I read this?
-
-"libraryfolders"
-{
-	"0"
-	{
-		"path"		"C:\\Program Files (x86)\\Steam"
-		"label"		""
-		"apps"
-		{
-			"228980"		"281442308"
-			"365670"		"1271238204"
-		}
-	}
-	"1"
-	{
-		"path"		"D:\\SteamLibrary"
-		"label"		""
-		"apps"
-		{
-			"105600"		"687925078"
-			"230270"		"1025481560"
-			"371970"		"867275641"
-		}
-	}
-}
-*/

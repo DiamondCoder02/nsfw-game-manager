@@ -5,6 +5,11 @@ import webApiScrapeThings.loadSitesBufRead;
 
 public class loadF95site {
 	static String[] bs = loadLanguage.base;
+	/**
+	 * This function will get the content of the f95zone.to site.
+	 * @param gameIds - The game ID to get the content from.
+	 * @return String[] - returns the content of the site.
+	 */
 	public static String[] getf95UrlContents(String gameIds) {
 		StringBuilder content = loadSitesBufRead.loadSite("https://f95zone.to/threads/"+gameIds+"/", true);
 		if (content == null) { return null; }

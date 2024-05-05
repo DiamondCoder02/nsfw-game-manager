@@ -30,6 +30,9 @@ public class autoSitesFetch {
 	static boolean manualButton = false;
 	static String[] lf = loadLanguage.folder, bs = loadLanguage.base;
 
+	/**
+	 * This function will fetch the info from the sites and update the table.
+	 */
 	public static void fetchInfoAskConfirm() {
 		String text = lf[0]==null?"This will go through all games and check if there is new update.\nAre you sure?":lf[0];
 		int option = JOptionPane.showConfirmDialog(null, text, bs[3]==null?"Update":bs[3], JOptionPane.OK_CANCEL_OPTION);
@@ -39,6 +42,9 @@ public class autoSitesFetch {
 		}
 	}
 
+	/**
+	 * This function will fetch the info from the sites and update the table.
+	 */
 	public static void fetchInfoThenUpdateTable() {
 		CompletableFuture.runAsync(() -> {
 			JProgressBar pbar = new JProgressBar(0, loadedGames.length);
@@ -97,6 +103,13 @@ public class autoSitesFetch {
 14	case "Language":
 15	case "Personal Notes": 
 */
+	/**
+	 * This function will check if there is a new update for the game.<p>
+	 * This is a huge loop that will check every game in the table.
+	 * @param id - The game ID to check.
+	 * @param LoadGamesLength - The length of the loaded games.
+	 * @return Runnable - returns null.
+	 */
 	private static Runnable myF95Task(String id, int LoadGamesLength) {
 		String[] gameInfo = loadF95site.getf95UrlContents(id);
 		String dateOfLastUpdateValue = gameInfo[3].toString();

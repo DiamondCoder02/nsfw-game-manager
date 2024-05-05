@@ -9,6 +9,10 @@ import folderHandling.initialFileLoading.loadSettings;
 import folderHandling.localFoldersChange.changeSettings;
 
 public class newVersion {
+	/**
+	 * This function will check if there is a new version available.
+	 * @return boolean - returns true if there is a new version available.
+	 */
 	public static Boolean checkNewVersion() {
 		String onlineLocation = getOnlineLocation();
 		if (onlineLocation == null) { return false; }
@@ -20,6 +24,12 @@ public class newVersion {
 		return getNewVersion(onlineLocation, onlineVersion);
 	}
 
+	/**
+	 * This function will download the new version from github.
+	 * @param onlineLocation - The online location of the new version.
+	 * @param onlineVersion - The online version of the new version.
+	 * @return boolean - returns true if the new version is downloaded.
+	 */
 	private static Boolean getNewVersion(String onlineLocation, String onlineVersion){
 		String path, ext;
 		try{
@@ -46,6 +56,10 @@ public class newVersion {
 		}
 	}
 
+	/**
+	 * This function will get the online location of the new version.
+	 * @return String - returns the online location of the new version.
+	 */
 	private static String getOnlineLocation() {
 		String onlineLocation = null;
 		int responseCode = 999;

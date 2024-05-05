@@ -31,12 +31,12 @@ public class mainApp {
  *  These are not final and can be changed at any time.
  */
 /*	[version number] ( to do / done / all ) 
-TODO list: [0.1.2.0] (2/6/8) 
+TODO list: [0.1.2.0] (1/7/8) 
 
 - Write comments in the program
+
+
 - Fix Discord custom button
-
-
 - optimize search ( searchByName: dungeon ) [Now it won't overflow]
 - Written wiki on Github
 - Update FAQ in program

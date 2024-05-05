@@ -37,7 +37,7 @@ public class discordRPC {
 					core.activityManager().updateActivity(activity);
 					while(boolSettings[4]){
 						boolSettings = loadSettings.othersettings;
-						if (!boolSettings[4]) { core.activityManager().clearActivity(); activity.close(); core.close(); return null;}
+						if (!boolSettings[4]) { core.activityManager().clearActivity(); core.close(); return null;}
 						try {
 							Thread.sleep(1000); // Sleep a bit to save CPU
 						}

@@ -7,23 +7,33 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
 
+import folderHandling.initialFileLoading.loadSettings;
 import integrationCheck.defaultValues;
 
 public class tableColor {
 	public static JTable getNewRenderedTable(final JTable table, String playProgColName) {
 		Color np, ip, fi, ff, dr;
+		if (loadSettings.othersettings[1]){
 			np = new Color(251, 165, 206);
 			ip = new Color(255, 255, 120);
 			fi = new Color(130, 255, 130);
 			ff = new Color(100, 170, 255);
 			dr = new Color(255, 110, 130);
-		/* 
-		not played = 251, 165, 206		(Pink)
-		in progress = 255, 255, 120		(Yellow)
-		finished = 130, 255, 130		(Green)
-		100% finished = 100, 170, 255	(Blue)
-		Dropped = 255, 110, 130			(Red)
-		*/
+		} else {
+			/* 
+			not played = 251, 165, 206		(Pink)
+			in progress = 255, 255, 120		(Yellow)
+			finished = 130, 255, 130		(Green)
+			100% finished = 100, 170, 255	(Blue)
+			Dropped = 255, 110, 130			(Red)
+			*/
+			np = new Color(251, 165, 206);
+			ip = new Color(255, 255, 120);
+			fi = new Color(130, 255, 130);
+			ff = new Color(100, 170, 255);
+			dr = new Color(255, 110, 130);
+		}
+		
 
 		int playColumnCount = 0;
 		for (int i = 0; i < table.getColumnCount(); i++) {

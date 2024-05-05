@@ -30,8 +30,7 @@ public class mainApp {
  *  This is just a rough draft on future plans.
  *  These are not final and can be changed at any time.
  */
-
-/* [version number] ( to do / done / all ) 
+/*	[version number] ( to do / done / all ) 
 TODO list: [0.1.2.0] (2/6/8) 
 
 - Write comments in the program
@@ -49,8 +48,8 @@ TODO list: [0.1.3.0] (4/0/4)
 
 - move database from xml ( MUST NOT BREAK - 0.1.2.1 ? )
 - Rewrite language.csv
-- improve dark mode
 - Cum counter ( ͡° ͜ʖ ͡°)
+- improve dark mode?
 
 TODO list: [0.1.4.0] (2/0/2)
 

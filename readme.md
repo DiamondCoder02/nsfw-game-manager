@@ -30,7 +30,6 @@ Check the [wiki](https://github.com/DiamondCoder02/nsfw-game-manager/wiki/Featur
 - [ ] fix bugs / do something with all the ~6 TODOs that is in the source code
 - [ ] Rewrite language.csv
 - [ ] move database from xml ( MUST NOT BREAK - 0.1.2.1 ? )
-- [ ] optimize search ( searchByName: dungeon )
 - [ ] Write comments
 - [ ] Rewrite FAQ in the program, now that wiki on GitHub is up.
 

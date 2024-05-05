@@ -38,9 +38,10 @@ public class mainApp {
  *  These are not final and can be changed at any time.
  */
 /*	[version number] ( to do / done / all ) 
-TODO list: [0.1.2.0] (0/8/8) 
+TODO list: [0.1.2.0] (0/9/9) 
 
-
+- Updated images and huge thanks to @NyanekoNNK for the new logo!
+  - Yes, it's a pun
 - Write comments in the program
 - Fix Discord custom button
 - optimize search ( searchByName: dungeon ) [Now it won't overflow]

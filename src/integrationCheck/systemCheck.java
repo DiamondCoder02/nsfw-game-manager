@@ -14,7 +14,7 @@ public class systemCheck {
 	 *  - - discord_game_sdk.dll
 	 * 	- pics\
 	 *  - - creditLogo.png
-	 *  - - nyaaa.png
+	 *  - - HGM_logo.png
 	 * 	- settings.xml
 	 * 	- hentai.xml
 	 * 	- language.csv

@@ -38,11 +38,10 @@ public class mainApp {
  *  These are not final and can be changed at any time.
  */
 /*	[version number] ( to do / done / all ) 
-TODO list: [0.1.2.0] (1/7/8) 
+TODO list: [0.1.2.0] (0/8/8) 
+
 
 - Write comments in the program
-
-
 - Fix Discord custom button
 - optimize search ( searchByName: dungeon ) [Now it won't overflow]
 - Written wiki on Github
@@ -63,7 +62,7 @@ TODO list: [0.1.4.0] (2/0/2)
 - dlsite.com support
 - Make it LINUX compatible
 
-TODO random: [???] ( All other todos in this app: 2 )
+TODO random: [???] ( All other todos in this app: 3 )
 
 - Memory & CPU usage higher? ( Need more test )
   - This happened when I run a full database update with API refreshes?

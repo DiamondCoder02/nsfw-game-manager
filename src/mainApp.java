@@ -38,16 +38,19 @@ public class mainApp {
  *  These are not final and can be changed at any time.
  */
 /*	[version number] ( to do / done / all ) 
-TODO list: [0.1.2.0] (0/9/9) 
+TODO list: [0.1.2.0] (0/10/10) 
 
+- Experimenting with colors, will probably change next update.
 - Updated images and huge thanks to @NyanekoNNK for the new logo!
-  - Yes, it's a pun
-- Write comments in the program
+  - Yes, the image is a pun
+- Written comments in the program so future development will be easier hopefully.
 - Fix Discord custom button
-- optimize search ( searchByName: dungeon ) [Now it won't overflow]
+- optimize search ( searchByName: dungeon ) 
+  - Now it won't overflow out of your screen
 - Written wiki on Github
 - Update FAQ in program
 - settings moved to json
+  - You will have to redo it, sorry for that >.<
 - added steam
 - Fixed exe saying "This application requires a Java Runtime Environment."
 

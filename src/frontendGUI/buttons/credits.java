@@ -52,7 +52,7 @@ public class credits {
 			}
 		});
 		ep.setEditable(false);
-		ep.setOpaque(boolSettings[0] ? false : true);
+		ep.setOpaque(boolSettings[1] ? false : true);
 		JOptionPane.showMessageDialog(null, ep, btn[7]!=null?btn[7]:"Credit", JOptionPane.INFORMATION_MESSAGE, icon);
 	}
 }

@@ -70,6 +70,7 @@ TODO random: [???] ( All other todos in this app: 3 )
 
 - Memory & CPU usage higher? ( Need more test )
   - This happened when I run a full database update with API refreshes?
+- Patchnotes and Info when starting
  */
 
 /* order of table:

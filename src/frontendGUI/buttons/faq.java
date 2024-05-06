@@ -41,7 +41,7 @@ public class faq {
 			}
 		});
 		ep.setEditable(false);
-		ep.setOpaque(boolSettings[0] ? false : true);
+		ep.setOpaque(boolSettings[1] ? false : true);
 		JOptionPane.showMessageDialog(null, ep, fld[19]!=null?fld[19]:"Frequently Asked Questions", JOptionPane.INFORMATION_MESSAGE);
 	}
 }

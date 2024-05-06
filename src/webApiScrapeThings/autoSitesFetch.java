@@ -66,6 +66,7 @@ public class autoSitesFetch {
 					String id = loadedGames[i][1].toString();
 					String site = loadedGames[i][0].toString();
 					try {
+						// TODO steam here
 						if (site.equals("f95")) {
 							executorService.scheduleAtFixedRate(myF95Task(id, i), 0, 1, TimeUnit.SECONDS);
 						}

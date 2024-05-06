@@ -159,7 +159,7 @@ public class ADocHandle {
 			reader.close();
 			return parser;
 		} catch (Exception e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 			return null;
 		}
 	}

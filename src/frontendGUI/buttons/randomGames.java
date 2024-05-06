@@ -118,10 +118,11 @@ public class randomGames {
 		String br = "<br>";
 		Boolean[] boolSettings = loadSettings.othersettings;
 		String color;
-		if (boolSettings[0]) { color = "white"; } else { color = "black"; }
+		if (boolSettings[1]) { color = "white"; } else { color = "black"; }
 		String finalLink, updateLink = (ran[14]!=null?ran[14]:"Update link here if needed");
 		switch (result[0].toString()) {
 			case "f95": finalLink = "<font color = 64AFFF><a href=\"https://f95zone.to/threads/"+result[1]+"/\">"+updateLink+"</a></font>"; break;
+			case "steam": finalLink = "<font color = 64AFFF><a href=\"https://store.steampowered.com/app/"+result[1]+"/\">"+updateLink+"</a></font>"; break;
 		// 	case "dls": "aaaaaaaaaaaaaaaa"; break;
 			default: finalLink = (ran[15]!=null?ran[15]:"No link available");
 		}
@@ -150,7 +151,7 @@ public class randomGames {
 			}
 		});
 		ep.setEditable(false);
-		ep.setOpaque(boolSettings[0] ? false : true);
+		ep.setOpaque(boolSettings[1] ? false : true);
 		JOptionPane.showMessageDialog(null, ep, title, JOptionPane.INFORMATION_MESSAGE);
 	}
 }

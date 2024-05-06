@@ -1,6 +1,5 @@
 package integrationCheck;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -10,8 +9,6 @@ import java.nio.file.Files;
 import java.util.Locale;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
-
-import javax.imageio.ImageIO;
 
 public class fileDownloader {
 	/**
@@ -26,29 +23,10 @@ public class fileDownloader {
 		switch (fileType) {
 			case "xml": case "csv": case "jar": case "exe": 
 				return fileDownloading(url, fullPath);
-			case "png":	case "jpg":
-				return imageDownloader(url, fullPath, fileType);
 			case "dll":
 				return discordSdkDownload(url, fullPath.split("\\.")[0]);
 			default:
 				return false;
-		}
-	}
-
-	/**
-	 * This function will download an image from the internet.
-	 * @param url - The url of the image. 
-	 * @param endFullDirectoryPath - The full path of the image.
-	 * @param fileType - The file type of the image.
-	 * @return boolean - returns true if the image is downloaded.
-	 */
-	private static boolean imageDownloader(String url, String endFullDirectoryPath, String fileType) {
-		try{
-			BufferedImage img = ImageIO.read(new URL(url));
-			ImageIO.write(img, fileType, new File(endFullDirectoryPath));
-			return true;
-		} catch (Exception e) {
-			return false;
 		}
 	}
 

@@ -1,6 +1,9 @@
 package frontendGUI.buttons;
 
 import java.awt.Desktop;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 import javax.swing.JEditorPane;
 import javax.swing.JOptionPane;
 import javax.swing.event.HyperlinkEvent;
@@ -13,6 +16,11 @@ public class faq {
 	private static String br = "<br>";
 	static String[] fld = loadLanguage.folder;
 	public static void FACKQU(){
+		ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("_icons/HGM_logo.png"));
+		Image img = icon.getImage();
+		Image newimg = img.getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH);
+		icon = new ImageIcon(newimg);
+
 		Boolean[] boolSettings = loadSettings.othersettings;
 		String color;
 		if (boolSettings[1]) { color = "white"; } else { color = "black"; }
@@ -42,6 +50,6 @@ public class faq {
 		});
 		ep.setEditable(false);
 		ep.setOpaque(boolSettings[1] ? false : true);
-		JOptionPane.showMessageDialog(null, ep, fld[19]!=null?fld[19]:"Frequently Asked Questions", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, ep, fld[19]!=null?fld[19]:"Frequently Asked Questions", JOptionPane.INFORMATION_MESSAGE, icon);
 	}
 }

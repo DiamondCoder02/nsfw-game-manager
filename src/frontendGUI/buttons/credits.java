@@ -17,10 +17,9 @@ public class credits {
 	private static String br = "<br>";
 	static String[] btn = loadLanguage.buton;
 	public static void money(){
-		String icons = (System.getenv("APPDATA") + "\\DiamondCoder\\nsfwGameManager\\pics\\creditLogo.png");
-		ImageIcon icon = new ImageIcon(icons);
+		ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("_icons/DiamondCoderLogo.png"));
 		Image img = icon.getImage();
-		Image newimg = img.getScaledInstance(43*4, 120*4,  java.awt.Image.SCALE_SMOOTH);
+		Image newimg = img.getScaledInstance(100, 300,  java.awt.Image.SCALE_SMOOTH);
 		icon = new ImageIcon(newimg);
 
 		Boolean[] boolSettings = loadSettings.othersettings;

@@ -48,6 +48,8 @@ public class updateGameHandle {
 		JTextField[] textField = new JTextField[oldInfo.length];
 		
 		for (int i = 0; i < oldInfo.length; i++) {
+			System.out.println("oldInfo["+i+"]: "+oldInfo[i]);
+			System.out.println("newInfo["+i+"]: "+newInfo[i]);
 			if (!oldInfo[i].equals(newInfo[i]) && newInfo[i] != null) {
 				JLabel label = new JLabel(jla[i]!=null?jla[i]:"N/A");
 				panel.add(label);

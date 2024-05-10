@@ -1,8 +1,5 @@
 package frontendGUI.gameButtons;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
@@ -11,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.localFoldersChange.changeDatabase;
@@ -26,6 +24,7 @@ public class addGameHandle {
 	static JPanel stillOnPcPanel = new JPanel();
 	static ButtonGroup engineGroup = new ButtonGroup();
 	static JPanel enginePanel = new JPanel();
+	static JPanel enginePanel2 = new JPanel();
 
 	static String osValue = "";
 	static JPanel osPanel = new JPanel();
@@ -42,8 +41,12 @@ public class addGameHandle {
 		10 - Still on pc?			11 - Engine		12 - OS
 		13 - Language			14 - Personal notes
 		*/
-		JPanel panel = new JPanel(new GridLayout(8*2, 2));
+		// JPanel panel = new JPanel(new GridLayout(8*2, 2));
 		JTextField[] textField = new JTextField[allKnownGameInfo.length];
+		String spac = "        "; //8
+		JLabel[] right = new JLabel[allKnownGameInfo.length];
+		JLabel[] left = new JLabel[allKnownGameInfo.length];
+		JPanel[] rightP = new JPanel[allKnownGameInfo.length];
 
 		for (int i = 0; i < allKnownGameInfo.length; i++) {
 			if (allKnownGameInfo[i] == null) {
@@ -51,32 +54,36 @@ public class addGameHandle {
 					case 9:
 						String[] jrb1 = {jrb[0]!=null?jrb[0]:"Not played", jrb[1]!=null?jrb[1]:"In progress", jrb[2]!=null?jrb[2]:"Finish", jrb[3]!=null?jrb[3]:"100% Finished","Dropped"};
 						radioButtons("progress", jrb1, defaultValues.infoProgress, true);
-						panel.add(new JLabel(jla[i]!=null?jla[i]:"N/A")); panel.add(howFarUserPlayedPanel);
+						left[i] = new JLabel((jla[i]!=null?jla[i]:"N/A") + spac, SwingConstants.RIGHT);
+						rightP[i] = howFarUserPlayedPanel;
 						break;
 					case 10:
 						String[] jrb2 = {jrb[4]!=null?jrb[4]:"Yes", jrb[5]!=null?jrb[5]:"No", jrb[6]!=null?jrb[6]:"Unknown"};
 						radioButtons("stillOnPc", jrb2, defaultValues.infoOnPc, true);
-						panel.add(new JLabel(jla[i]!=null?jla[i]:"N/A")); panel.add(stillOnPcPanel);
+						left[i] = new JLabel((jla[i]!=null?jla[i]:"N/A") + spac, SwingConstants.RIGHT); 
+						rightP[i] = stillOnPcPanel;
 						break;
 					case 11:
 						radioButtons("engine", defaultValues.infoEngine, defaultValues.infoEngine, true);
-						panel.add(new JLabel(jla[i]!=null?jla[i]:"N/A")); panel.add(enginePanel);
+						left[i] = new JLabel((jla[i]!=null?jla[i]:"N/A") + spac, SwingConstants.RIGHT); 
+						rightP[i] = enginePanel;
 						break;
 					case 12:
 						radioButtons("os", defaultValues.infoOS, defaultValues.infoOS, false);
-						panel.add(new JLabel(jla[i]!=null?jla[i]:"N/A")); panel.add(osPanel);
+						left[i] = new JLabel((jla[i]!=null?jla[i]:"N/A") + spac, SwingConstants.RIGHT); 
+						rightP[i] = osPanel;
 						break;
 					default:
 						textField[i] = new JTextField(30);
-						JLabel label = new JLabel(jla[i]!=null?jla[i]:"N/A");
-						panel.add(label, BorderLayout.WEST); panel.add(textField[i]);
+						left[i] = new JLabel((jla[i]!=null?jla[i]:"N/A") + spac, SwingConstants.RIGHT);
 				}
 			} else {
-				JLabel label = new JLabel(jla[i]!=null?jla[i]:"N/A");
-				JLabel value = new JLabel(allKnownGameInfo[i]);
-				panel.add(label); panel.add(value);
+				left[i] = new JLabel((jla[i]!=null?jla[i]:"N/A") + spac, SwingConstants.RIGHT);
+				right[i] = new JLabel(allKnownGameInfo[i]);
 			}
 		}
+
+		JPanel panel = dynamicPanel.frameCreate(right, left, rightP, textField);
 
 		//  CLOSED - -1  //  Yes-OK - 0  //  No - 1  //  Cancel - 2  //
 		Integer option = JOptionPane.showOptionDialog(null, panel, 
@@ -143,7 +150,10 @@ public class addGameHandle {
 		switch (buttonType) {
 			case "progress": howFarUserPlayedPanel = buttonPanel; howFarUserPlayed = allButtons; break;
 			case "stillOnPc": stillOnPcPanel = buttonPanel; stillOnPc = allButtons; break;
-			case "engine": enginePanel = buttonPanel; engineGroup = allButtons; break;
+			case "engine": 
+				enginePanel = buttonPanel; 
+				engineGroup = allButtons; 
+			break;
 			case "os": osPanel = buttonPanel; break;
 		}
 	}

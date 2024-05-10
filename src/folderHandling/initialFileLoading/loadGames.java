@@ -86,7 +86,7 @@ public class loadGames {
 	 * @see src/integrationCheck/defaultValues.java
 	 */
 	private static String[] enabledRows() {
-		String[] allColumnNames = defaultValues.settings[4];
+		String[] allColumnNames = defaultValues.settings[1];
 		String[] enabledRows = new String[allColumnNames.length-1];
 		Boolean[] enabledCol = loadSettings.shownColumns;
 		int counter = 0;

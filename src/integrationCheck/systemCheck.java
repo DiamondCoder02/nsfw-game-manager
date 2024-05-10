@@ -12,9 +12,6 @@ public class systemCheck {
 	 *  - - backup1.xml
 	 *  - discord\
 	 *  - - discord_game_sdk.dll
-	 * 	- pics\
-	 *  - - creditLogo.png
-	 *  - - HGM_logo.png
 	 * 	- settings.xml
 	 * 	- hentai.xml
 	 * 	- language.csv
@@ -47,10 +44,8 @@ public class systemCheck {
 	 */
 	private static boolean foldersCheck(String mainDirectory) {
 		File discord = new File(mainDirectory + "/discord");
-		File pics = new File(mainDirectory + "/pics");
 		if (!new File(mainDirectory + "/backup").exists()) { try { new File(mainDirectory + "/backup").mkdirs(); } catch (Exception e) { return false; } }
 		if (!discord.exists()) { try { discord.mkdirs(); } catch (Exception e) { return false; } }
-		if (!pics.exists()) { try { pics.mkdirs(); } catch (Exception e) { return false; } }
 		return true;
 	}
 

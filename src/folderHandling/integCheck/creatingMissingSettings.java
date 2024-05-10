@@ -14,7 +14,7 @@ public class creatingMissingSettings {
 	public static boolean creatingMissingSettingsHandler(String[][] allSettings, String directoryPath) {
 		try {
 			JsonObject settings = ADocHandle.loadSettingsJson(directoryPath + "/settings.json");
-			String[][] toReduce = new String[5][20];
+			String[][] toReduce = new String[10][20];
 			for (int i = 0; i < allSettings.length; i++) { for (int j = 0; j < allSettings[i].length; j++) { toReduce[i][j] = allSettings[i][j]; } }
 
 			settings.entrySet().forEach(entry -> {

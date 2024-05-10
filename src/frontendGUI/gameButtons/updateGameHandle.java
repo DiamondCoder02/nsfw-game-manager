@@ -48,8 +48,6 @@ public class updateGameHandle {
 		JTextField[] textField = new JTextField[oldInfo.length];
 		
 		for (int i = 0; i < oldInfo.length; i++) {
-			System.out.println("oldInfo["+i+"]: "+oldInfo[i]);
-			System.out.println("newInfo["+i+"]: "+newInfo[i]);
 			if (!oldInfo[i].equals(newInfo[i]) && newInfo[i] != null) {
 				JLabel label = new JLabel(jla[i]!=null?jla[i]:"N/A");
 				panel.add(label);
@@ -102,12 +100,7 @@ public class updateGameHandle {
 		}
 
 		int option = JOptionPane.showConfirmDialog(null, panel, base[3]!=null?base[3]:"Update game", JOptionPane.OK_CANCEL_OPTION);
-		if (option != JOptionPane.OK_OPTION) {
-			JOptionPane.showMessageDialog(null, 
-				oldInfo[1]+", \nId: "+oldInfo[0] +" "+ (basic[4]!=null?basic[4]:"was not updated."), 
-				base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
-			return false;
-		}
+		if (option != JOptionPane.OK_OPTION) { return false; }
 
 		for (int i = 0; i < textField.length; i++) {
 			if (textField[i] != null) { finalInfo[i] = textField[i].getText(); }

@@ -38,14 +38,15 @@ public interface defaultValues {
 	 * The default settings for the program
 	 */
 	String[][] settings = {
-		{ "appVersion", "0.1.1.4"},
-		{ "appLanguage", "english" },
-		{ "folderLocation", "null" },
 		{ "othersettings", "autoUpdateManager", "darkMode", "autoFetchNewGameInfos", "autoFetchLocalGameFolder", 
 			"DiscordRPC", "showConsole"},
 		{ "shownColumns", "site", "id", "name", "developer", "playedVersion", "lastTimePlayed", "rated", 
 			"newestVersionOnline", "lastDateTimeUpdated", "peopleOnlineRating", "localPlayerProgress", 
-			"gameStillOnPc", "gameEngine", "os", "language", "localPersonalNotes"}
+			"gameStillOnPc", "gameEngine", "os", "language", "localPersonalNotes"},
+		{ "appVersion", "0.1.1.4"},
+		{ "languageVersion", "0.1"},
+		{ "appLanguage", "english" },
+		{ "folderLocation", "null" }
 	};
 
 	/**

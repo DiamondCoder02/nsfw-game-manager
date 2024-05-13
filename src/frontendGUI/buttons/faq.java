@@ -2,6 +2,7 @@ package frontendGUI.buttons;
 
 import java.awt.Desktop;
 import java.awt.Image;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JEditorPane;
@@ -16,7 +17,7 @@ public class faq {
 	private static String br = "<br>";
 	static String[] fld = loadLanguage.folder;
 	public static void FACKQU(){
-		ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("_icons/HGM_logo.png"));
+		ImageIcon icon = new ImageIcon(new File("../Assets/Pics/HGM_logo.png").getAbsolutePath());
 		Image img = icon.getImage();
 		Image newimg = img.getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH);
 		icon = new ImageIcon(newimg);

@@ -1,0 +1,31 @@
+{
+	"folderLocation": "null",
+	"appVersion": "0.1.1.4",
+	"appLanguage": "english",
+	"othersettings": {
+		"autoUpdateManager": false,
+		"darkMode": true,
+		"autoFetchNewGameInfos": false,
+		"autoFetchLocalGameFolder": false,
+		"DiscordRPC": false,
+		"showConsole": true
+	},
+	"shownColumns": {
+		"site": true,
+		"id": true,
+		"name": true,
+		"developer": true,
+		"playedVersion": true,
+		"lastTimePlayed": true,
+		"rated": true,
+		"newestVersionOnline": true,
+		"lastDateTimeUpdated": true,
+		"peopleOnlineRating": true,
+		"localPlayerProgress": true,
+		"gameStillOnPc": true,
+		"gameEngine": true,
+		"os": true,
+		"language": true,
+		"localPersonalNotes": true
+	}
+}

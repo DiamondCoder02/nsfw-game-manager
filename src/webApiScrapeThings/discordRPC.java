@@ -6,7 +6,6 @@ import de.jcm.discordgamesdk.activity.Activity;
 import de.jcm.discordgamesdk.activity.ActivityButton;
 import folderHandling.initialFileLoading.loadGames;
 import folderHandling.initialFileLoading.loadSettings;
-import integrationCheck.defaultValues;
 
 import java.time.Instant;
 
@@ -18,7 +17,7 @@ public class discordRPC {
 	 * @param boolSettings - The settings of the program.
 	 * @return Runnable - returns null.
 	 */
-	public static Runnable discordStarter(Boolean[] boolSettings) {
+	public static Runnable discordStarter(Boolean[] boolSettings, String mainDir) {
 		time = Instant.now();
 		try (CreateParams params = new CreateParams()) {
 			params.setClientID(1135539276692607086L);
@@ -26,7 +25,7 @@ public class discordRPC {
 			// Create the Core
 			try (Core core = new Core(params)) {
 				try (Activity activity = new Activity()) {
-					Integer allGames = loadGames.loadGamesFromXML(defaultValues.mainDirectory).length;
+					Integer allGames = loadGames.loadGamesFromXML(mainDir).length;
 					// activity.setDetails("Managing my hentai games");
 					activity.setState("Currently managing " + allGames + " games");
 					// Setting a start time causes an "elapsed" field to appear

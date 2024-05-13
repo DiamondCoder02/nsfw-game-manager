@@ -9,14 +9,14 @@ import folderHandling.localFoldersChange.changeDatabase;
 public class removeGame {
 	static String[] base = loadLanguage.base, basic = loadLanguage.basic, jla = loadLanguage.jlapa, 
 		folder = loadLanguage.folder, jrb = loadLanguage.jrabu;
-	public static void removeOneGame(){
+	public static void removeOneGame(String mainDir){
 		boolean repeat = true;
 		while (repeat) {
 			String[] webAndId = sites.requestSiteAndId(base[4]!=null?base[4]:"Remove game");
 			if (webAndId == null) { return; }
 
-			if (checkDatabase.isInDatabase(webAndId[1], webAndId[0])) {
-				Boolean success = changeDatabase.removeGameFromDatabase(webAndId[1], webAndId[0]);
+			if (checkDatabase.isInDatabase(mainDir, webAndId[1], webAndId[0])) {
+				Boolean success = changeDatabase.removeGameFromDatabase(mainDir, webAndId[1], webAndId[0]);
 				if (!success) { repeat = false; return; }
 			} else {
 				JOptionPane.showMessageDialog(null, "Id: "+webAndId[1]+" "+(basic[1]!=null?basic[1]:"doesn't exists"), base[1]!=null?base[1]:"Error", JOptionPane.ERROR_MESSAGE);

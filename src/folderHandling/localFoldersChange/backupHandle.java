@@ -7,22 +7,18 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
 
-import integrationCheck.defaultValues;
-
 public class backupHandle {
 	/**
 	 * Create a backup of the main data file
 	 */
-	public static void doBackup() {
-		String mainDataPath = defaultValues.mainDirectory + "/hentai.xml";
-		String backupPath = defaultValues.mainDirectory + "/backup";
+	public static void doBackup(String mainDir) {
 		// check backup folder
-		if (!new File(backupPath).exists()) {
-			new File(backupPath).mkdirs();
+		if (!new File(mainDir + "/backup").exists()) {
+			new File(mainDir + "/backup").mkdirs();
 		}
 
 		// delete files except the latest 10
-		File[] files = new File(backupPath).listFiles();
+		File[] files = new File(mainDir + "/backup").listFiles();
 		Arrays.sort(files, new Comparator<File>() {
 			public int compare(File f1, File f2) {
 				return Long.valueOf(f1.lastModified()).compareTo(f2.lastModified());
@@ -36,10 +32,10 @@ public class backupHandle {
 
 		// create backup file with date and time
 		String date = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
-		String backupFile = backupPath+"/backup_"+date+".xml";
+		String backupFile = mainDir + "/backup/backup_"+date+".xml";
 		// copy main file to backup file
 		try {
-			Files.copy(new File(mainDataPath).toPath(), new File(backupFile).toPath());
+			Files.copy(new File(mainDir + "/hentai.xml").toPath(), new File(backupFile).toPath());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

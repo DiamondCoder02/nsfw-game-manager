@@ -4,17 +4,6 @@ package integrationCheck;
  * This interface contains the default values for the program.
  */
 public interface defaultValues {
-	// TODO - This is probably the only reason it will not work on Linux (NEED TEST)
-	/**
-	 * The main directory of the program
-	 */
-	String mainDirectory = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager";
-	
-	/**
-	 * The steam directory
-	 */
-	String steamDirectory = System.getenv("ProgramFiles(x86)") + "/Steam/steamapps";
-
 	/**
 	 * The link to the github page of the app
 	 */
@@ -24,13 +13,12 @@ public interface defaultValues {
 	 * setting and hentai files needed in the main directory
 	 * @see #mainDirectory
 	 */
-	String[] filesNeeded = {"settings.json", "hentai.xml"};
+	String[] filesNeeded = {"settings.json", "hentai.xml", "language.csv"};
 
 	/**
 	 * online files needed to be downloaded from github
 	 */
 	String[][] onlineFilesNeeded = {
-		{"language.csv", "https://raw.githubusercontent.com/DiamondCoder02/nsfw-game-manager/master/doNotTouch/language.csv"},
 		{"discord/discord_game_sdk.dll", "https://dl-game-sdk.discordapp.net/3.2.1/discord_game_sdk.zip"}
 	};
 
@@ -44,7 +32,7 @@ public interface defaultValues {
 			"newestVersionOnline", "lastDateTimeUpdated", "peopleOnlineRating", "localPlayerProgress", 
 			"gameStillOnPc", "gameEngine", "os", "language", "localPersonalNotes"},
 		{ "appVersion", "0.1.1.4"},
-		{ "languageVersion", "0.1"},
+		// { "languageVersion", "0.1"},
 		{ "appLanguage", "english" },
 		{ "folderLocation", "null" }
 	};
@@ -69,6 +57,12 @@ public interface defaultValues {
 		{"language", "English"},
 		{"selfNote", "something"}
 	};
+
+	/**
+	 * The possible values for the game information
+	 */
+	String[] gameInfos = {"from", "id", "name", "developer", "played_version", "dateof_lastplay", "user_rating", "newest_version", 
+		"dateof_lastupate", "people_rating", "howFarUserPlayed", "stillOnPc", "engine", "OS", "language", "selfNote"};
 
 	/**
 	 * 	The possible values for some of the game information

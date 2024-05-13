@@ -2,6 +2,7 @@ package frontendGUI.frames;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.io.File;
 
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
@@ -44,7 +45,7 @@ public class frameCreate {
 		frame.setSize(1500, 600);
 		frame.setMinimumSize(new Dimension(500, 200));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setIconImage(frame.getToolkit().getImage(ClassLoader.getSystemResource("_icons/HGM_logo.png")));
+		frame.setIconImage(frame.getToolkit().getImage(new File("../Assets/Pics/HGM_logo.png").getAbsolutePath()));
 
 		mb = new JMenuBar();
 		frameMenuListener buttonListener = new frameMenuListener();
@@ -54,8 +55,8 @@ public class frameCreate {
 		updateList = new JMenuItem(bs[3]!=null?bs[3]:"Update games"); updateList.setActionCommand("Update game"); updateList.addActionListener(buttonListener);
 		removeGame = new JMenuItem(bs[4]!=null?bs[4]:"Remove games"); removeGame.setActionCommand("Remove game"); removeGame.addActionListener(buttonListener);
 		saveFileToDifferent = new JMenuItem(bu[12]!=null?bu[12]:"Save file copy"); saveFileToDifferent.setActionCommand("Save file copy"); saveFileToDifferent.addActionListener(buttonListener);
-		refreshTable = new JMenuItem(bu[13]!=null?bu[13]:"Refresh table"); refreshTable.setActionCommand("Refresh table"); refreshTable.addActionListener(buttonListener);
-		refreshFromAPI = new JMenuItem(bu[14]!=null?bu[14]:"API refresh"); refreshFromAPI.setActionCommand("API refresh"); refreshFromAPI.addActionListener(buttonListener);
+		refreshTable = new JMenuItem("Refresh Local Games"); refreshTable.setActionCommand("Refresh table"); refreshTable.addActionListener(buttonListener);
+		refreshFromAPI = new JMenuItem("Check Online Updates"); refreshFromAPI.setActionCommand("API refresh"); refreshFromAPI.addActionListener(buttonListener);
 
 		games.add(addGame); games.add(updateList); games.add(removeGame); games.addSeparator();
 		games.add(saveFileToDifferent); games.add(refreshTable); games.add(refreshFromAPI);
@@ -84,8 +85,8 @@ public class frameCreate {
 
 		settings = new JMenu(bu[2]!=null?bu[2]:"Settings");
 		changeLanguage  = new JMenuItem("🌐 "+(bu[4]!=null?bu[4]:"Language")); changeLanguage.setActionCommand("appLanguage"); changeLanguage.addActionListener(buttonListener);
-		changeFolderLocation = new JMenuItem("📁 "+(bu[21]!=null?bu[21]:"Change folder location")); changeFolderLocation.setActionCommand("folderLocation"); changeFolderLocation.addActionListener(buttonListener);
-		autoUpdateWanted = new JCheckBoxMenuItem("🔁 "+"Auto update", boolSettings[0]); autoUpdateWanted.setActionCommand("autoUpdateManager"); autoUpdateWanted.addActionListener(buttonListener);
+		changeFolderLocation = new JMenuItem("📁 "+("Change hentai folder location")); changeFolderLocation.setActionCommand("folderLocation"); changeFolderLocation.addActionListener(buttonListener);
+		autoUpdateWanted = new JCheckBoxMenuItem("🔁 "+"Auto update application", boolSettings[0]); autoUpdateWanted.setActionCommand("autoUpdateManager"); autoUpdateWanted.addActionListener(buttonListener);
 		darkMode = new JCheckBoxMenuItem(bu[18]!=null?bu[18]:"Dark mode", boolSettings[1]); darkMode.setActionCommand("darkMode"); darkMode.addActionListener(buttonListener);
 		discordrpc = new JCheckBoxMenuItem("Discord RPC", boolSettings[4]); discordrpc.setActionCommand("DiscordRPC"); discordrpc.addActionListener(buttonListener);
 		autoFetchNews = new JCheckBoxMenuItem(bu[19]!=null?bu[19]:"Auto fetch game info", boolSettings[2]); autoFetchNews.setActionCommand("autoFetchNewGameInfos"); autoFetchNews.addActionListener(buttonListener);

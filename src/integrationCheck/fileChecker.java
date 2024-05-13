@@ -14,11 +14,8 @@ public class fileChecker {
 	 * @return boolean - returns true if all the files are present.
 	 */
 	public static boolean fileCheckingHandler(File mainDirectory) {
-		for (String file : defaultValues.filesNeeded) { 
-			success = checkFile(mainDirectory, file); 
-			// System.out.println(success + " - " + file);
-			if (!success) { return false; }
-		}
+		success = checkFile(mainDirectory);
+		if (!success) { return false; }
 		for (String[] file : defaultValues.onlineFilesNeeded) {
 			if (!checkLocalBeforeOnline(mainDirectory + "/" + file[0])) {
 				// System.out.println("Downloading: " + file[0]);
@@ -49,17 +46,21 @@ public class fileChecker {
 	 * @param fileName - The file name to check.
 	 * @return boolean - returns true if the file is present.
 	 */
-	private static boolean checkFile(File directoryPlace, String fileName) {
-		if (!new File(directoryPlace + "/" + fileName).exists()) {
-			switch (fileName) {
-				case "settings.json": return creatingDefaultDoc.createJsonSettings(defaultValues.settings, directoryPlace + "/" + fileName);
-				case "hentai.xml": return creatingDefaultDoc.createDatabase(directoryPlace + "/" + fileName, "source", defaultValues.games);
-				default: return false;
+	private static boolean checkFile(File directoryPlace) {
+		String[] fileName = defaultValues.filesNeeded;
+		Boolean success = false;
+
+		for (String file : fileName) {
+			if (!new File(directoryPlace + "/" + file).exists()) {
+				success = creatingDefaultDoc.copyFromLocal(directoryPlace + "/" + file, "Assets/default_" + file);
+			} else if (file.equals("settings.json")) {
+				success = creatingMissingSettings.creatingMissingSettingsHandler(defaultValues.settings, directoryPlace.toString());
+			} else {
+				success = true;
 			}
-		} else if (fileName.equals("settings.json")) {
-			return creatingMissingSettings.creatingMissingSettingsHandler(defaultValues.settings, directoryPlace.toString());
-		} else {
-			return true;
+			if (!success) { return false; }
 		}
+
+		return success;
 	}
 }

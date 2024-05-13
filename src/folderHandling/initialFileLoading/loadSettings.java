@@ -33,7 +33,7 @@ public class loadSettings {
 			language = parser.get("appLanguage").getAsString();
 			folderLocation = parser.get("folderLocation").getAsString();
 			appVersion = parser.get("appVersion").getAsString();
-			languageVersion = parser.get("languageVersion").getAsString();
+			// languageVersion = parser.get("languageVersion").getAsString();
 
 			for (int i = 0; i < defaultValues.settings[1].length-1; i++) {
 				shownColumns[i] = shownSet.get(defaultValues.settings[1][i+1]).getAsBoolean();

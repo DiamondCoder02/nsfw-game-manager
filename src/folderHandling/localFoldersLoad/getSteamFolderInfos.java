@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import integrationCheck.defaultValues;
+import frontendGUI.mainProgramStart;
 
 public class getSteamFolderInfos {
 	private static String[][] steamFolders;
@@ -96,7 +96,7 @@ public class getSteamFolderInfos {
 	public static Boolean loadSteamFolders() {
 		try {
 			// libraryfolders.vdf
-			BufferedReader reader = Files.newBufferedReader(Paths.get(defaultValues.steamDirectory + "/libraryfolders.vdf"));
+			BufferedReader reader = Files.newBufferedReader(Paths.get(mainProgramStart.steamDir + "/libraryfolders.vdf"));
 			String line;
 			String[][] mainSteamFolder = new String[10][50];
 			Boolean apps = false;

@@ -25,17 +25,18 @@ import webApiScrapeThings.autoSitesFetch;
 
 public class frameMenuListener implements ActionListener {
 	static String[] btn = loadLanguage.buton, fld = loadLanguage.folder;
+	private static String mainDir = mainProgramStart.mainProgDir;
 	public void actionPerformed(ActionEvent e) {
 		// System.out.println("Button Clicked! " + e.getActionCommand());
 		switch (e.getActionCommand()) {
 			// frontendGUI/frames/frameCreate.java
-			case "Add game": addGame.addOneGame();; break;
-			case "Update game": updateGame.updateOneGame();; break;
-			case "Remove game": removeGame.removeOneGame(); break;
+			case "Add game": addGame.addOneGame(mainDir); break;
+			case "Update game": updateGame.updateOneGame(mainDir); break;
+			case "Remove game": removeGame.removeOneGame(mainDir); break;
 
-			case "Save file copy": databaseCopy.saveFileCopy(); break;
-			case "Refresh table": localFolderHandle.fetchFoldersForTable(); break;
-			case "API refresh": autoSitesFetch.fetchInfoAskConfirm(); break;
+			case "Save file copy": databaseCopy.saveFileCopy(mainDir); break;
+			case "Refresh table": localFolderHandle.fetchFoldersForTable(mainDir); break;
+			case "API refresh": autoSitesFetch.fetchInfoAskConfirm(mainDir); break;
 
 			case "RandomFully": case "RandomDev": case "RandomProgress": case "RandomEngine": case "RandomSite": 
 				randomGames.randoms(e.getActionCommand());
@@ -48,26 +49,26 @@ public class frameMenuListener implements ActionListener {
 			case "site": case "id": case "name": case "developer": case "playedVersion": case "lastTimePlayed": case "rated": 
 			case "newestVersionOnline": case "lastDateTimeUpdated": case "peopleOnlineRating": case "localPlayerProgress": 
 			case "gameStillOnPc": case "gameEngine": case "os": case "language": case "localPersonalNotes":
-				changeSettings.changeSetting("shownColumns", e.getActionCommand()); 
+				changeSettings.changeSetting(mainDir, "shownColumns", e.getActionCommand()); 
 				break;
 
 			case "autoUpdateManager": case "autoFetchNewGameInfos": case "autoFetchLocalGameFolder":
-				changeSettings.changeSetting("othersettings", e.getActionCommand()); 
+				changeSettings.changeSetting(mainDir, "othersettings", e.getActionCommand()); 
 				break;
 			case "darkMode":
-				changeSettings.changeSetting("othersettings", e.getActionCommand()); 
+				changeSettings.changeSetting(mainDir, "othersettings", e.getActionCommand()); 
 				mainProgramStart.mainMenuFullChange();
 				break;
 
 
 			case "DiscordRPC": 
-				changeSettings.changeSetting("othersettings", e.getActionCommand()); 
-				discord.loopDiscord();
+				changeSettings.changeSetting(mainDir, "othersettings", e.getActionCommand()); 
+				discord.loopDiscord(mainDir);
 				break;
 			
-			case "folderLocation": gameFolderLocation.gamesLocationChoose(); break;
+			case "folderLocation": gameFolderLocation.gamesLocationChoose(mainDir); break;
 			case "appLanguage": 
-				languageChoice.langChoose(); 
+				languageChoice.langChoose(mainDir); 
 				mainProgramStart.mainMenuFullChange(); 
 				break;
 
@@ -77,7 +78,7 @@ public class frameMenuListener implements ActionListener {
 
 			default: JOptionPane.showMessageDialog(null, "Error, this should never happen!!!" + " (src/frontEndGUI/frameMenuListener_actionPerformed)", "Error", JOptionPane.ERROR_MESSAGE); break;
 		}
-		mainFrame.refreshTable();
+		mainFrame.refreshTable(mainDir);
 	}
 
 	private static void sureAboutExit(){

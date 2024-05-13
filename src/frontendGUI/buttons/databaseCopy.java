@@ -8,11 +8,9 @@ import org.w3c.dom.Document;
 
 import folderHandling.ADocHandle;
 import folderHandling.initialFileLoading.loadLanguage;
-import integrationCheck.defaultValues;
-
 public class databaseCopy {
 	static String[] btn = loadLanguage.buton, fld = loadLanguage.folder;
-	public static void saveFileCopy(){
+	public static void saveFileCopy(String mainDir){
 		JFileChooser chooser = new JFileChooser(); 
 		chooser.setCurrentDirectory(new java.io.File("."));
 		chooser.setDialogTitle(fld[18]!=null?fld[18]:"Save file copy");
@@ -23,7 +21,7 @@ public class databaseCopy {
 		if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
 			String path = chooser.getSelectedFile().toString();
 			if (!path.endsWith(".xml")) { path = path+".xml"; }
-			Document doc = ADocHandle.load(defaultValues.mainDirectory + "/hentai.xml");
+			Document doc = ADocHandle.load(mainDir + "/hentai.xml");
 			if (ADocHandle.save(doc, path)) {
 				JOptionPane.showMessageDialog(null, "File saved successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
 			}

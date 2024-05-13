@@ -7,11 +7,11 @@ import folderHandling.initialFileLoading.loadLanguage;
 
 public class addGame {
 	static String[] base = loadLanguage.base;
-	public static void addOneGame() {
+	public static void addOneGame(String mainDir) {
 		String[] webAndId = sites.requestSiteAndId(base[2]!=null?base[2]:"Add game");
 		if (webAndId == null) { return; }
 
-		if (checkDatabase.isInDatabase(webAndId[1], webAndId[0])) { 
+		if (checkDatabase.isInDatabase(mainDir, webAndId[1], webAndId[0])) { 
 			JOptionPane.showMessageDialog(null, 
 			webAndId[0] + " with the id "+webAndId[1]+" is already in the database", 
 				base[1]!=null?base[1]:"Error", 
@@ -36,9 +36,9 @@ public class addGame {
 		}
 
 		if (infos == null) { return; }
-		if (!addGameHandle.addGameToDB(webAndId[0], infos)) {
+		if (!addGameHandle.addGameToDB(mainDir, webAndId[0], infos)) {
 			JOptionPane.showMessageDialog(null, 
-				"Id: " + webAndId[1] + "(addGame.addOneGame)", 
+				"Id: " + webAndId[1] + "Game Not added! "+"(addGame.addOneGame)", 
 				base[1]!=null?base[1]:"Error", 
 				JOptionPane.ERROR_MESSAGE);
 		}

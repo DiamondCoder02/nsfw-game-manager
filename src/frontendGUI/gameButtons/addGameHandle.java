@@ -33,7 +33,7 @@ public class addGameHandle {
 	// allKnownGameInfo is an array that has all game info we know and if 
 	//  an array is empty, we ask the user to fill it in
 	//  while showing the user the info we know
-	public static boolean addGameToDB(String site, String[] allKnownGameInfo){
+	public static boolean addGameToDB(String mainDir, String site, String[] allKnownGameInfo){
 		/* allKnownGameInfo
 		0 - ID		1 - Name	2 - Developer	3 - Played version
 		4 - Last time play		5 - Rated		6 - Newest version
@@ -120,7 +120,7 @@ public class addGameHandle {
 			}
 		}
 
-		Boolean success = changeDatabase.addNewGameIntoDatabase(site, allKnownGameInfo);
+		Boolean success = changeDatabase.addNewGameIntoDatabase(mainDir, site, allKnownGameInfo);
 		if (!success) { return false; }
 		return true;
 	}

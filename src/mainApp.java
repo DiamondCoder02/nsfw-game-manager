@@ -1,23 +1,29 @@
-import folderHandling.initialFileLoading.loadSettings;
-import frontendGUI.mainProgramStart;
-import integrationCheck.defaultValues;
-
 // https://stackoverflow.com/questions/7704405/how-do-i-make-my-java-application-open-a-console-terminal-window
 import java.io.Console;
 import java.io.IOException;
 import java.awt.GraphicsEnvironment;
 import java.net.URISyntaxException;
+
+import folderHandling.initialFileLoading.loadSettings;
+import frontendGUI.mainProgramStart;
 public class mainApp {
+	private static String tempDir;
 	/**
 	 * This function will start the program.
-	 * @param args - The arguments of the program.
-	 * @throws IOException - If there is an error.
-	 * @throws InterruptedException - If there is an error.
-	 * @throws URISyntaxException - If there is an error.
+	 * @param args -
+	 * @throws IOException -
+	 * @throws InterruptedException -
+	 * @throws URISyntaxException -
 	 */
 	public static void main (String [] args) throws IOException, InterruptedException, URISyntaxException{
+		System.out.println("--- Starting program ---");
+		checkOS();
+		System.out.println("Main: "+mainProgramStart.mainProgDir);
+		System.out.println("Steam: "+mainProgramStart.steamDir);
+		System.out.println("--- OS checked ---");
+
 		Boolean consoleNeeded = false;
-		if (loadSettings.load(defaultValues.mainDirectory)) { consoleNeeded = loadSettings.othersettings[5]; }
+		if (loadSettings.load(tempDir)) { consoleNeeded = loadSettings.othersettings[5]; }
 		if (consoleNeeded) { 
 			System.out.println("+ Console needed! +");
 			Console console = System.console();
@@ -30,6 +36,33 @@ public class mainApp {
 			}
 		} else { System.out.println("- No console needed! -"); mainProgramStart.mainMain(); }
     }
+
+	// TODO - Linux NEED TEST
+	/**
+	 * This function will check the OS and set the directories.
+	 * @return true if the OS is known, false if unknown
+	 */
+	private static Boolean checkOS(){
+		String sysOS = System.getProperty("os.name").toLowerCase();
+		System.out.println("OS: "+sysOS);
+		if (sysOS.contains("win")) {
+			mainProgramStart.mainProgDir = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager";
+			tempDir = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager";
+			mainProgramStart.steamDir = System.getenv("ProgramFiles(x86)") + "/Steam/steamapps";
+			return true;
+		/*
+		} else if (sysOS.contains("nix") || sysOS.contains("nux") || sysOS.contains("aix")) {
+			mainProgramStart.mainProgDir = System.getenv("???") + "/DiamondCoder/nsfwGameManager";
+			mainProgramStart.steamDir = System.getenv("???") + "/Steam/steamapps";
+			return true;
+		/*
+		} else if (sysOS.contains("mac")) {
+			mainProgramStart.mainProgDir = System.getenv("???") + "/DiamondCoder/nsfwGameManager";
+			mainProgramStart.steamDir = System.getenv("???") + "/Steam/steamapps";
+			return true;
+		*/
+		} else { return false; }
+	}
 }
 
 /*
@@ -38,7 +71,17 @@ public class mainApp {
  *  These are not final and can be changed at any time.
  */
 /*	[version number] ( to do / done / all ) 
-TODO list: [0.1.2.0] (0/10/10) 
+TODO list: [0.1.2.0] (?/?/?) 
+
+- Fixed exe saying "This application requires a Java Runtime Environment."
+  - https://www.quora.com/Can-the-JVM-be-bundled-with-a-Java-program-so-it-runs-on-a-computer-without-a-JVM-installed
+- Patchnotes and Info when starting
+- Save slots
+  -https://github.com/DiamondCoder02/nsfw-game-manager/issues/7
+- Change pictures in Credit and FAQ
+- Rewrite Wiki again
+
+
 
 - Experimenting with colors, will probably change next update.
 - Updated images and huge thanks to @NyanekoNNK for the new logo!
@@ -52,7 +95,9 @@ TODO list: [0.1.2.0] (0/10/10)
 - settings moved to json
   - You will have to redo it, sorry for that >.<
 - added steam
-- Fixed exe saying "This application requires a Java Runtime Environment."
+- Load steam when start loop thing api 
+- remake files
+  - Asset folder LOL
 
 TODO list: [0.1.3.0] (4/0/4)
 
@@ -70,8 +115,9 @@ TODO random: [???] ( All other todos in this app: 3 )
 
 - Memory & CPU usage higher? ( Need more test )
   - This happened when I run a full database update with API refreshes?
-- Patchnotes and Info when starting
- */
+
+
+*/
 
 /* order of table:
 0 - Site		1 - ID		2 - Name	3 - Developer

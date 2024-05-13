@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 import folderHandling.localFoldersChange.changeSettings;
 
 public class gameFolderLocation {
-	public static void gamesLocationChoose() {
+	public static void gamesLocationChoose(String mainDir) {
 		JFileChooser chooser = new JFileChooser(); 
 		chooser.setCurrentDirectory(new java.io.File("."));
 		chooser.setDialogTitle("Select game info folder location");
@@ -15,7 +15,7 @@ public class gameFolderLocation {
 		if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
 			String path = chooser.getSelectedFile().toString();
 			if (!path.endsWith("\\")) { path = path+"\\"; }
-			changeSettings.changeSetting("folderLocation", path);
+			changeSettings.changeSetting(mainDir, "folderLocation", path);
 			JOptionPane.showMessageDialog(null, "Changes saved!" + "\n"+path, "Success", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else { return; }

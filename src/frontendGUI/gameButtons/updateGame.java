@@ -12,11 +12,11 @@ import integrationCheck.defaultValues;
 
 public class updateGame {
 	static String[] bc = loadLanguage.basic, base = loadLanguage.base;
-	public static void updateOneGame() {
+	public static void updateOneGame(String mainDir) {
 		String[] webAndId = sites.requestSiteAndId(base[3]!=null?base[3]:"Update game");
 		if (webAndId == null) { return; }
 
-		if (!checkDatabase.isInDatabase(webAndId[1], webAndId[0])) { 
+		if (!checkDatabase.isInDatabase(mainDir, webAndId[1], webAndId[0])) { 
 			JOptionPane.showMessageDialog(null, 
 				"Id: " + webAndId[1] + " ("+webAndId[1]+")"+(bc[5]!=null?bc[5]:"was not been updated"), 
 				base[1]!=null?base[1]:"Error", 
@@ -41,7 +41,7 @@ public class updateGame {
 		}
 		if (newInfos == null) { return; }
 
-		Document dom = ADocHandle.load(defaultValues.mainDirectory + "/hentai.xml");
+		Document dom = ADocHandle.load(mainDir + "/hentai.xml");
 		Element e = ADocHandle.getElementFromDB(dom, webAndId[1]);
 		if (e == null) { return; }
 
@@ -52,7 +52,7 @@ public class updateGame {
 		}
 		// Funny IDs check because why not
 		if (oldInfos[0].equals(newInfos[0])) {
-			if (!updateGameHandle.updateGameInDB(dom, webAndId[0], oldInfos, newInfos)) {
+			if (!updateGameHandle.updateGameInDB(mainDir, dom, webAndId[0], oldInfos, newInfos)) {
 				JOptionPane.showMessageDialog(null, 
 					"Id: " + webAndId[1] + " ("+webAndId[1]+")"+(bc[5]!=null?bc[5]:"was not been updated"), 
 					base[1]!=null?base[1]:"Error", 

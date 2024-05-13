@@ -13,7 +13,7 @@ public class newVersion {
 	 * This function will check if there is a new version available.
 	 * @return boolean - returns true if there is a new version available.
 	 */
-	public static Boolean checkNewVersion() {
+	public static Boolean checkNewVersion(String mainDir) {
 		String onlineLocation = getOnlineLocation();
 		if (onlineLocation == null) { return false; }
 
@@ -21,7 +21,7 @@ public class newVersion {
 		onlineVersion = onlineVersion.substring(0, onlineVersion.lastIndexOf("-"));
 
 		if (onlineVersion.equals(loadSettings.appVersion.toString())) { return false; }
-		return getNewVersion(onlineLocation, onlineVersion);
+		return getNewVersion(mainDir, onlineLocation, onlineVersion);
 	}
 
 	/**
@@ -30,7 +30,7 @@ public class newVersion {
 	 * @param onlineVersion - The online version of the new version.
 	 * @return boolean - returns true if the new version is downloaded.
 	 */
-	private static Boolean getNewVersion(String onlineLocation, String onlineVersion){
+	private static Boolean getNewVersion(String mainDir, String onlineLocation, String onlineVersion){
 		String path, ext;
 		try{
 			path = newVersion.class.getProtectionDomain().getCodeSource().getLocation().toString();
@@ -47,7 +47,7 @@ public class newVersion {
 		System.out.println(path);
 		try{
 			boolean succ = fileDownloader.downloadFile(onlineLocation, path);
-			if (succ) { changeSettings.changeSetting("appVersion", onlineVersion); }
+			if (succ) { changeSettings.changeSetting(mainDir, "appVersion", onlineVersion); }
 
 			return succ;
 		} catch (Exception e) {

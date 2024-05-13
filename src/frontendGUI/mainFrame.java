@@ -11,7 +11,6 @@ import frontendGUI.colors.frameColor;
 import frontendGUI.frames.frameCreate;
 import frontendGUI.frames.frameTable;
 import frontendGUI.frames.frameTableReload;
-import integrationCheck.defaultValues;
 
 public class mainFrame {
 	public static JFrame frame = new JFrame();
@@ -39,9 +38,9 @@ public class mainFrame {
 	/**
 	 * Refreshes the table with the new data
 	 */
-	public static void refreshTable() {
-		loadSettings.load(defaultValues.mainDirectory);
-		frameTableReload.reloadTable(table, defaultValues.mainDirectory);
+	public static void refreshTable(String mainDir) {
+		loadSettings.load(mainDir);
+		frameTableReload.reloadTable(table, mainDir);
 		frameTable.setColumns(table);
 		frameColor.WindowRefresh(pane, table);
 	}

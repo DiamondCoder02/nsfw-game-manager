@@ -5,8 +5,6 @@ import java.io.FileReader;
 
 import javax.swing.JOptionPane;
 
-import integrationCheck.defaultValues;
-
 // The way this was done is fucking retarded
 public class loadLanguage {
 	public static String[] base = new String[30], basic = new String[30], tabl = new String[30], 
@@ -38,10 +36,10 @@ public class loadLanguage {
 	/**
 	 * @return boolean - returns true if the language file was loaded successfully
 	 */
-	public static boolean loadLangFile() {
+	public static boolean loadLangFile(String mainDir) {
 		try{
 			BufferedReader br = new BufferedReader( new FileReader(
-				defaultValues.mainDirectory+"/language.csv", 
+				mainDir+"/language.csv", 
 				java.nio.charset.Charset.forName("UTF-8")
 			));
 			languages = br.readLine().split(split);

@@ -14,6 +14,7 @@ import javax.swing.event.HyperlinkListener;
 import folderHandling.initialFileLoading.loadGames;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
+import frontendGUI.mainProgramStart;
 import integrationCheck.defaultValues;
 
 public class randomGames {
@@ -51,7 +52,7 @@ public class randomGames {
 		}
 	}
 
-	static Object[][] allGames = loadGames.loadGamesFromXML(defaultValues.mainDirectory);
+	static Object[][] allGames = loadGames.loadGamesFromXML(mainProgramStart.mainProgDir);
 	private static void fullyRandom() {
 		Integer amount = allGames.length;
 		Integer random = (int) (Math.random() * amount);
@@ -133,8 +134,8 @@ public class randomGames {
 		(tlc[2]!=null?tlc[2]:"Name")+": "+result[2]+br+
 		(tlc[3]!=null?tlc[3]:"Developer")+": "+result[3]+br+
 		(tlc[12]!=null?tlc[12]:"Engine")+": "+result[12]+br+
-		(tlc[13]!=null?tlc[13]:"Is still on pc")+" - "+(result[13].equals("yes")?"✔ :3":"❌ :/")+br+
-		(tlc[14]!=null?tlc[14]:"Language(s)")+": "+result[14]+br+
+		("Is still on pc?")+" - "+(result[13].equals("yes")?"✔ :3":"❌ :/")+br+
+		("Language(s)")+": "+result[14]+br+
 		"👆: "+finalLink+
 		"</span></p>");
 		ep.addHyperlinkListener(new HyperlinkListener() {

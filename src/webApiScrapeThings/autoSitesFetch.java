@@ -13,39 +13,36 @@ import javax.swing.JRootPane;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 import folderHandling.ADocHandle;
-import folderHandling.checkDatabase;
 import folderHandling.initialFileLoading.loadGames;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
 import frontendGUI.mainFrame;
+import frontendGUI.gameButtons.getGamesInfo;
 import integrationCheck.defaultValues;
-import webApiScrapeThings.sites.loadF95site;
 
 public class autoSitesFetch {
-	static Object[][] loadedGames = loadGames.loadGamesFromXML(defaultValues.mainDirectory);
 	static boolean manualButton = false;
 	static String[] lf = loadLanguage.folder, bs = loadLanguage.base;
 
 	/**
 	 * This function will fetch the info from the sites and update the table.
 	 */
-	public static void fetchInfoAskConfirm() {
+	public static void fetchInfoAskConfirm(String mainDire) {
 		String text = lf[0]==null?"This will go through all games and check if there is new update.\nAre you sure?":lf[0];
 		int option = JOptionPane.showConfirmDialog(null, text, bs[3]==null?"Update":bs[3], JOptionPane.OK_CANCEL_OPTION);
 		if (option == JOptionPane.OK_OPTION) {
 			manualButton = true;
-			fetchInfoThenUpdateTable();
+			fetchInfoThenUpdateTable(mainDire);
 		}
 	}
 
 	/**
 	 * This function will fetch the info from the sites and update the table.
 	 */
-	public static void fetchInfoThenUpdateTable() {
+	public static void fetchInfoThenUpdateTable(String mainDire) {
+		Object[][] loadedGames = loadGames.loadGamesFromXML(mainDire);
 		CompletableFuture.runAsync(() -> {
 			JProgressBar pbar = new JProgressBar(0, loadedGames.length);
 			pbar.setStringPainted(true);
@@ -63,29 +60,40 @@ public class autoSitesFetch {
 			if (otherSettings[1] || manualButton) {
 				ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 				for (int i = 0; i < loadedGames.length; i++) {
-					String id = loadedGames[i][1].toString();
 					String site = loadedGames[i][0].toString();
 					try {
-						// TODO steam here
-						if (site.equals("f95")) {
-							executorService.scheduleAtFixedRate(myF95Task(id, i), 0, 1, TimeUnit.SECONDS);
+						// TODO Dlsite later
+						switch (site) {
+							case "f95":
+								String[] newF95Game = getGamesInfo.getF95zone(loadedGames[i][1].toString());
+								executorService.scheduleAtFixedRate(myRunTask(mainDire, loadedGames[i], newF95Game), 0, 1, TimeUnit.SECONDS);
+								break;
+							case "steam":
+								String[] newSteamGame = getGamesInfo.getSteam(loadedGames[i][1].toString());
+								executorService.scheduleAtFixedRate(myRunTask(mainDire, loadedGames[i], newSteamGame), 0, 1, TimeUnit.SECONDS);
+								break;
+							default:
+								break;
 						}
 					} catch (Exception e) { 
-						//System.out.println(e);
-						//System.out.println("(¬_¬ )"); 
+						/*
+						System.out.println("+(¬_¬ )"); 
+						System.out.println(e);
+						*/
 						// /* /ᐠ｡ꞈ｡ᐟ\ */ 
 					}
-					frame.setTitle((lf[1]!=null?lf[1]:"Checking games...") +" "+ site + ":" + id);
+					frame.setTitle((lf[1]!=null?lf[1]:"Checking games...") +" "+ site + ":" + loadedGames[i][1].toString());
 					pbar.setValue(i);
 				}
 				pbar.setValue(loadedGames.length);
 				manualButton = false;
 				JOptionPane.showMessageDialog(null, lf[2]==null?"All game infos got updated":lf[2], bs[3]==null?"Update":bs[3], JOptionPane.INFORMATION_MESSAGE);
 				frame.dispose();
-				mainFrame.refreshTable();
+				mainFrame.refreshTable(mainDire);
 			}
 		});
 	}
+
 /* 
 0	case "Site" :
 1	case "ID": 
@@ -107,77 +115,47 @@ public class autoSitesFetch {
 	/**
 	 * This function will check if there is a new update for the game.<p>
 	 * This is a huge loop that will check every game in the table.
+	 * @param mainDir - The main directory of the program.
 	 * @param id - The game ID to check.
 	 * @param LoadGamesLength - The length of the loaded games.
 	 * @return Runnable - returns null.
 	 */
-	private static Runnable myF95Task(String id, int LoadGamesLength) {
-		String[] gameInfo = loadF95site.getf95UrlContents(id);
-		String dateOfLastUpdateValue = gameInfo[3].toString();
-		String olddateOfLastUpdateValue = loadedGames[LoadGamesLength][4].toString();
-		if (!olddateOfLastUpdateValue.equals(dateOfLastUpdateValue)) {
-			String oldname = loadedGames[LoadGamesLength][2].toString();
-			String olddeveloper = loadedGames[LoadGamesLength][3].toString();
-			String oldnewest_version = loadedGames[LoadGamesLength][5].toString();
-			String olddateof_lastupate = loadedGames[LoadGamesLength][4].toString();
-			String oldpeople_rated = loadedGames[LoadGamesLength][7].toString();
-			String oldengine = loadedGames[LoadGamesLength][8].toString();
-			String oldos = loadedGames[LoadGamesLength][9].toString();
-			String oldlanguage = loadedGames[LoadGamesLength][10].toString();
-			String newnameValue = gameInfo[0].toString();
-			String newdeveloperValue = gameInfo[1].toString();
-			String newnewest_versionValue = gameInfo[2].toString();
-			String newdateof_lastupateValue = gameInfo[3].toString();
-			String newpeople_ratedValue = gameInfo[4].toString();
-			String newengineValue = gameInfo[5].toString();
-			String newosValue = gameInfo[6].toString();
-			String newlanguageValue = gameInfo[7].toString();
-			if (!oldname.equals(newnameValue)) { loadedGames[LoadGamesLength][2] = newnameValue; }
-			if (!olddeveloper.equals(newdeveloperValue)) { loadedGames[LoadGamesLength][3] = newdeveloperValue; }
-			if (!oldnewest_version.equals(newnewest_versionValue)) { loadedGames[LoadGamesLength][5] = newnewest_versionValue; }
-			if (!olddateof_lastupate.equals(newdateof_lastupateValue)) { loadedGames[LoadGamesLength][4] = newdateof_lastupateValue; }
-			if (!oldpeople_rated.equals(newpeople_ratedValue)) { loadedGames[LoadGamesLength][7] = newpeople_ratedValue; }
-			if (!oldengine.equals(newengineValue)) { loadedGames[LoadGamesLength][8] = newengineValue; }
-			if (!oldos.equals(newosValue)) { loadedGames[LoadGamesLength][9] = newosValue; }
-			if (!oldlanguage.equals(newlanguageValue)) { loadedGames[LoadGamesLength][10] = newlanguageValue; }
+	private static Runnable myRunTask(String mainDir, Object[] oldLoadGame, String[] newGame) {
+		String dateOfLastUpdateValue = newGame[6].toString();
+		String olddateOfLastUpdateValue = oldLoadGame[7].toString();
 
-			if (checkDatabase.isInDatabase(id, "f95")) {
-				try{
-					Document dom = ADocHandle.load(defaultValues.mainDirectory + "/hentai.xml");
-					NodeList source = dom.getElementsByTagName("source");
-					for (int i = 0; i < source.getLength(); i++) {
-						Node sourceNode = source.item(i);
-						if (sourceNode.getNodeType() == Node.ELEMENT_NODE) {
-							NodeList game = sourceNode.getChildNodes();
-							for (int j = 0; j < game.getLength(); j++) {
-								Node gameNode = game.item(j);
-								if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
-									Element e = (Element) gameNode;
-									if (e.getAttribute("id").trim().equals(id)) {
-										e.getElementsByTagName("name").item(0).setTextContent(newnameValue);
-										e.getElementsByTagName("developer").item(0).setTextContent(newdeveloperValue);
-										e.getElementsByTagName("newest_version").item(0).setTextContent(newnewest_versionValue);
-										e.getElementsByTagName("dateof_lastupate").item(0).setTextContent(newdateof_lastupateValue);
-										e.getElementsByTagName("people_rating").item(0).setTextContent(newpeople_ratedValue);
-										e.getElementsByTagName("engine").item(0).setTextContent(newengineValue);
-										e.getElementsByTagName("OS").item(0).setTextContent(newosValue);
-										try {e.getElementsByTagName("language").item(0).setTextContent(newlanguageValue);} 
-										catch (Exception e2) {
-											Element language = dom.createElement("language");
-											language.appendChild(dom.createTextNode(newlanguageValue));
-											e.appendChild(language);
-										}
-										ADocHandle.save(dom, defaultValues.mainDirectory + "/hentai.xml");
-									}
-								}
-							}
+		if (!olddateOfLastUpdateValue.equals(dateOfLastUpdateValue)) {
+			String[] gameInfos = new String[oldLoadGame.length];
+			gameInfos[0] = oldLoadGame[0].toString();
+			for (int i = 1; i < oldLoadGame.length; i++) {
+				// System.out.println(oldLoadGame[i] + " " + i + " " + newGame[i-1]);
+				if (newGame[i-1] != null) { gameInfos[i] = newGame[i-1]; } 
+				else { gameInfos[i] = oldLoadGame[i].toString(); }
+			}
+
+			String[] defaultGamesInfo = defaultValues.gameInfos;
+			try{
+				Document dom = ADocHandle.load(mainDir + "/hentai.xml");
+				Element e = ADocHandle.getElementFromDB(dom, oldLoadGame[1].toString());
+				if (e != null) {
+					for (int i = 2; i < defaultGamesInfo.length; i++) {
+						try {
+							if (gameInfos[i] == null) { gameInfos[i] = "N/A"; }
+							e.getElementsByTagName(defaultGamesInfo[i]).item(0).setTextContent(gameInfos[i]);
+						} catch (Exception e1) {
+							Element newElement = dom.createElement(defaultGamesInfo[i]);
+							newElement.setTextContent(gameInfos[i]);
+							e.appendChild(newElement);
 						}
 					}
-				} catch (Exception e) {
-					e.printStackTrace();
+					ADocHandle.save(dom, mainDir + "/hentai.xml");
 				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
+
 		return null;
 	}
+
 }

@@ -36,6 +36,7 @@ public class creatingMissingSettings {
 				} else {
 					for (int i = 0; i < toReduce.length; i++) {
 						if (toReduce[i] == null) { continue; }
+						if (toReduce[i][0] == null) { continue; }
 						if (toReduce[i][0].equals(entry.getKey())) {
 							toReduce[i] = null;
 							return;

@@ -6,8 +6,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import integrationCheck.defaultValues;
-
 public class checkDatabase {
 	/**
 	 * This function will check if a game is in the database.
@@ -15,9 +13,9 @@ public class checkDatabase {
 	 * @param sourceFrom - The source of the game to check.
 	 * @return boolean - returns true if the game is in the database.
 	 */
-	public static boolean isInDatabase(String givenID, String sourceFrom){
+	public static boolean isInDatabase(String mainDri, String givenID, String sourceFrom){
 		try{
-			Document dom = ADocHandle.load(defaultValues.mainDirectory + "/hentai.xml");
+			Document dom = ADocHandle.load(mainDri + "/hentai.xml");
 			NodeList source = dom.getElementsByTagName("source");
 			for (int i = 0; i < source.getLength(); i++) {
 				Node sourceNode = source.item(i);

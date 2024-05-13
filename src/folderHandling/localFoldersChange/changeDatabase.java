@@ -24,9 +24,9 @@ public class changeDatabase {
 	 * Last update / People rating / Player progress / Still on pc? / Engine / OS / Language / Personal notes ]
 	 * @return boolean - returns true if the game was added successfully
 	 */
-	public static boolean addNewGameIntoDatabase(String fromSite, String[] gameInfo) {
+	public static boolean addNewGameIntoDatabase(String mainDir, String fromSite, String[] gameInfo) {
 		try{
-			Document dom = ADocHandle.load(defaultValues.mainDirectory + "/hentai.xml");
+			Document dom = ADocHandle.load(mainDir + "/hentai.xml");
 			NodeList source = dom.getElementsByTagName("source");
 			String[][] game = defaultValues.games;
 			for (int i = 0; i < source.getLength(); i++) {
@@ -41,8 +41,8 @@ public class changeDatabase {
 						newGame.appendChild(newElement);
 					}
 					sourceNode.appendChild(newGame);
-					ADocHandle.save(dom, defaultValues.mainDirectory + "/hentai.xml");
-					mainFrame.refreshTable();
+					ADocHandle.save(dom, mainDir + "/hentai.xml");
+					mainFrame.refreshTable(mainDir);
 					JOptionPane.showMessageDialog(null, gameInfo[1]+", \nId: "+gameInfo[0]+" "+(basic[2]==null?"has been added":basic[2]), base[0]==null?"Success":base[0], JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
@@ -60,9 +60,9 @@ public class changeDatabase {
 	 * @param fromSite - The site where the game is from
 	 * @return boolean - returns true if the game was removed successfully
 	 */
-	public static boolean removeGameFromDatabase(String idValue, String fromSite) {
+	public static boolean removeGameFromDatabase(String mainDir, String idValue, String fromSite) {
 		try{
-			Document dom = ADocHandle.load(defaultValues.mainDirectory + "/hentai.xml");
+			Document dom = ADocHandle.load(mainDir + "/hentai.xml");
 			Node sourceNode = ADocHandle.getSourceNodeFromDB(dom);
 			NodeList game = sourceNode.getChildNodes();
 			for (int j = 0; j < game.getLength(); j++) {
@@ -76,8 +76,8 @@ public class changeDatabase {
 						int option = JOptionPane.showConfirmDialog(null, name + ", \nId: "+ids+" "+(folder[14]!=null?folder[14]:"will be removed. Are you sure?"), base[4]!=null?base[4]:"Remove game", JOptionPane.OK_CANCEL_OPTION);
 						if (option == JOptionPane.OK_OPTION) {
 							sourceNode.removeChild(gameNode);
-							ADocHandle.save(dom, defaultValues.mainDirectory + "/hentai.xml");
-							mainFrame.refreshTable();
+							ADocHandle.save(dom, mainDir + "/hentai.xml");
+							mainFrame.refreshTable(mainDir);
 							JOptionPane.showMessageDialog(null, name + ", \nId: "+ids+" "+(folder[15]!=null?folder[15]:"has been removed."), base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
 						} else { JOptionPane.showMessageDialog(null, folder[16]!=null?folder[16]:"Cancelled", base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE); }
 						break;

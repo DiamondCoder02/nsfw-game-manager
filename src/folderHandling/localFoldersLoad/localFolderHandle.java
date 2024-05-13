@@ -23,7 +23,6 @@ import folderHandling.ADocHandle;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
 import frontendGUI.mainFrame;
-import integrationCheck.defaultValues;
 
 public class localFolderHandle {
 	// TODO - please fucking kill my eyes. This is horrible
@@ -31,9 +30,14 @@ public class localFolderHandle {
 	/**
 	 * Fetches all folders in the selected folder and updates the database with the new information
 	 */
-	public static void fetchFoldersForTable() {
+	public static void fetchFoldersForTable(String mainDir) {
 		String location = loadSettings.folderLocation;
-		if (location.equals("null")) { JOptionPane.showMessageDialog(null, "No hentai folder selected. Please select, then try again!", "Error", JOptionPane.ERROR_MESSAGE); return; }
+		if (location.equals("null")) { 
+			// JOptionPane.showMessageDialog(null, "No hentai folder selected. Please select, then try again!", "Error", JOptionPane.ERROR_MESSAGE); 
+			mainFrame.refreshTable(mainDir);
+			JOptionPane.showMessageDialog(null, "Table refreshed, but no hentai folder is detected", "Info", JOptionPane.INFORMATION_MESSAGE); 
+			return; 
+		}
 		Path folder = Paths.get(location);
 		
 		LocalDate currentTime = LocalDate.now();
@@ -69,7 +73,7 @@ public class localFolderHandle {
 									frame.setTitle((lf[1]!=null?lf[1]:"Checking games...") +" "+ site + ":" + id);
 									pbar.setValue(pbar.getValue()+1);
 									
-									checkAllGameAndUpdate(site, id, name, version, lastModified);
+									checkAllGameAndUpdate(mainDir, site, id, name, version, lastModified);
 								} catch (IOException e) { JOptionPane.showMessageDialog(null, "Error reading folder directory! (folderHandle.autoFetchChecks)", "Error", JOptionPane.ERROR_MESSAGE); return; }
 							} catch (Exception e) { JOptionPane.showMessageDialog(null, file.toString() + "\n file doesn't have the correct name!\n" + "man-000000_{gameName}_{gameVersion} {anythingElseYouWant}", "Error", JOptionPane.ERROR_MESSAGE); return; }
 						}
@@ -78,18 +82,18 @@ public class localFolderHandle {
 				pbar.setValue(pbar.getMaximum());
 				frame.dispose();
 				JOptionPane.showMessageDialog(null, lf[2]==null?"All game infos got updated":lf[2], bs[3]==null?"Update":bs[3], JOptionPane.INFORMATION_MESSAGE);
-				mainFrame.refreshTable();
+				mainFrame.refreshTable(mainDir);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		});
 	}
 
-	private static void checkAllGameAndUpdate( String siteToWorkWith, String idToWorkWith, 
+	private static void checkAllGameAndUpdate(String mainDir, String siteToWorkWith, String idToWorkWith, 
 		String nameToWorkWith, String versionToWorkWith, String lastModifiedToWorkWith
 	) {
 		//System.out.println(siteToWorkWith+" "+idToWorkWith+" "+nameToWorkWith+" "+versionToWorkWith+" "+lastModifiedToWorkWith); 
-		Document gameDatabase = ADocHandle.load(defaultValues.mainDirectory + "/hentai.xml");
+		Document gameDatabase = ADocHandle.load(mainDir + "/hentai.xml");
 		NodeList source = gameDatabase.getElementsByTagName("source");
 		for (int i = 0; i < source.getLength(); i++) {
 			Node sourceNode = source.item(i);
@@ -111,6 +115,6 @@ public class localFolderHandle {
 				}
 			}
 		}
-		ADocHandle.save(gameDatabase, defaultValues.mainDirectory + "/hentai.xml");
+		ADocHandle.save(gameDatabase, mainDir + "/hentai.xml");
 	}
 }

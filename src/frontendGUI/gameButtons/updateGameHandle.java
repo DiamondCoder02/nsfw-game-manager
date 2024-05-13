@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -33,7 +34,7 @@ public class updateGameHandle {
 	static String osValue = "";
 	static JPanel osPanel = new JPanel();
 	
-	public static boolean updateGameInDB(Document dom, String site, String[] oldInfo, String[] newInfo) {
+	public static boolean updateGameInDB(String mainDir, Document dom, String site, String[] oldInfo, String[] newInfo) {
 		String[] finalInfo = new String[oldInfo.length];
 		Element e = ADocHandle.getElementFromDB(dom, oldInfo[0]);
 		if (e == null) { return false; }
@@ -46,16 +47,17 @@ public class updateGameHandle {
 		*/
 		JPanel panel = new JPanel(new GridLayout(8*2, 2));
 		JTextField[] textField = new JTextField[oldInfo.length];
+		String spac = "        "; //8
 		
 		for (int i = 0; i < oldInfo.length; i++) {
 			if (!oldInfo[i].equals(newInfo[i]) && newInfo[i] != null) {
-				JLabel label = new JLabel(jla[i]!=null?jla[i]:"N/A");
+				JLabel label = new JLabel((jla[i]!=null?jla[i]:"N/A") + spac, SwingConstants.RIGHT);
 				panel.add(label);
 				JLabel label2 = new JLabel(oldInfo[i] + " -> " + newInfo[i]);
 				panel.add(label2);
 				finalInfo[i] = newInfo[i];
 			} else if (oldInfo[i].equals(newInfo[i])) { 
-				JLabel label = new JLabel(jla[i]!=null?jla[i]:"N/A");
+				JLabel label = new JLabel((jla[i]!=null?jla[i]:"N/A") + spac, SwingConstants.RIGHT);
 				panel.add(label);
 				JLabel label2 = new JLabel(oldInfo[i]);
 				panel.add(label2);
@@ -65,30 +67,30 @@ public class updateGameHandle {
 					case 9:
 						String[] jrb1 = {jrb[0]!=null?jrb[0]:"Not played", jrb[1]!=null?jrb[1]:"In progress", jrb[2]!=null?jrb[2]:"Finish", jrb[3]!=null?jrb[3]:"100% Finished", "Dropped"};
 						radioButtons("progress", jrb1, defaultValues.infoProgress, true, oldInfo[i]);
-						panel.add(new JLabel(jla[i]!=null?jla[i]:"N/A")); panel.add(howFarUserPlayedPanel);
+						panel.add(new JLabel((jla[i]!=null?jla[i]:"N/A") + spac, SwingConstants.RIGHT)); panel.add(howFarUserPlayedPanel);
 						break;
 					case 10:
 						String[] jrb2 = {jrb[4]!=null?jrb[4]:"Yes", jrb[5]!=null?jrb[5]:"No", jrb[6]!=null?jrb[6]:"Unknown"};
 						radioButtons("stillOnPc", jrb2, defaultValues.infoOnPc, true, oldInfo[i]);
-						panel.add(new JLabel(jla[i]!=null?jla[i]:"N/A")); panel.add(stillOnPcPanel);
+						panel.add(new JLabel((jla[i]!=null?jla[i]:"N/A") + spac, SwingConstants.RIGHT)); panel.add(stillOnPcPanel);
 						break;
 					case 11:
 						radioButtons("engine", defaultValues.infoEngine, defaultValues.infoEngine, true, oldInfo[i]);
-						panel.add(new JLabel(jla[i]!=null?jla[i]:"N/A")); panel.add(enginePanel);
+						panel.add(new JLabel((jla[i]!=null?jla[i]:"N/A") + spac, SwingConstants.RIGHT)); panel.add(enginePanel);
 						break;
 					case 12:
 						radioButtons("os", defaultValues.infoOS, defaultValues.infoOS, false, oldInfo[i]);
-						panel.add(new JLabel(jla[i]!=null?jla[i]:"N/A")); panel.add(osPanel);
+						panel.add(new JLabel((jla[i]!=null?jla[i]:"N/A") + spac, SwingConstants.RIGHT)); panel.add(osPanel);
 						break;
 				}
 			} else if (!oldInfo[i].equals(newInfo[i]) && newInfo[i] == null) {
-				JLabel label = new JLabel(jla[i]!=null?jla[i]:"N/A" + " ("+oldInfo[i]+")");
+				JLabel label = new JLabel((jla[i]!=null?jla[i]:"N/A") + " ("+oldInfo[i]+")" + spac, SwingConstants.RIGHT);
 				panel.add(label);
 				textField[i] = new JTextField();
 				textField[i].setText(oldInfo[i]);
 				panel.add(textField[i]);
 			} else if (oldInfo[i].equals("")) {
-				JLabel label = new JLabel(jla[i]!=null?jla[i]:"N/A" + " ("+oldInfo[i]+")");
+				JLabel label = new JLabel((jla[i]!=null?jla[i]:"N/A") + " ("+oldInfo[i]+")" + spac, SwingConstants.RIGHT);
 				panel.add(label);
 				textField[i] = new JTextField();
 				panel.add(textField[i]);
@@ -128,8 +130,8 @@ public class updateGameHandle {
 			}
 		}
 
-		ADocHandle.save(dom, defaultValues.mainDirectory + "/hentai.xml");
-		mainFrame.refreshTable();
+		ADocHandle.save(dom, mainDir + "/hentai.xml");
+		mainFrame.refreshTable(mainDir);
 		JOptionPane.showMessageDialog(null, newInfo[1]+", \nId: "+newInfo[0] +" "+ (basic[4]!=null?basic[4]:"has been updated"), base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
 		return true;
 	}

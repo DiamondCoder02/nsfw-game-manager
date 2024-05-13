@@ -3,7 +3,6 @@ package folderHandling.localFoldersChange;
 import com.google.gson.JsonObject;
 
 import folderHandling.ADocHandle;
-import integrationCheck.defaultValues;
 
 public class changeSettings {
 	/**
@@ -12,9 +11,8 @@ public class changeSettings {
 	 * @param toChange - The sub setting to change.
 	 * @return boolean - returns true if the setting was changed successfully.
 	 */
-	public static boolean changeSetting(String mainChange, String toChange) {
-		String mainDirectory = defaultValues.mainDirectory;
-		JsonObject settings = ADocHandle.loadSettingsJson(mainDirectory + "/settings.json");
+	public static boolean changeSetting(String mainDir,String mainChange, String toChange) {
+		JsonObject settings = ADocHandle.loadSettingsJson(mainDir + "/settings.json");
 		settings.entrySet().forEach(entry -> {
 			if (entry.getKey().startsWith(mainChange)) {
 				if (entry.getValue().isJsonObject()) {
@@ -29,6 +27,6 @@ public class changeSettings {
 			}
 		});
 
-		return ADocHandle.saveSettingsJson(mainDirectory + "/settings.json", settings);
+		return ADocHandle.saveSettingsJson(mainDir + "/settings.json", settings);
 	}
 }

@@ -80,6 +80,8 @@ TODO list: [0.1.2.0] (?/?/?)
   -https://github.com/DiamondCoder02/nsfw-game-manager/issues/7
 - Change pictures in Credit and FAQ
 - Rewrite Wiki again
+- App unable to start if there is space anywhere in the path of the program
+  - Why? 
 
 
 

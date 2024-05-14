@@ -11,6 +11,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import folderHandling.initialFileLoading.loadLanguage;
+import integrationCheck.defaultValues;
 
 public class sites {
 	static String[] base = loadLanguage.base, basic = loadLanguage.basic, jla = loadLanguage.jlapa;
@@ -19,16 +20,12 @@ public class sites {
 
 		ButtonGroup webButtons = new ButtonGroup();
 		JPanel webPanel = new JPanel();
-		// TODO - defaultValues.sites
-		// Buttons for possible websites (F95zone - f95, Steam - steam, Manually added - man)
-		JRadioButton button = new JRadioButton("F95zone", false); 
-		button.setActionCommand("f95");
-		JRadioButton button2 = new JRadioButton("Steam", false);
-		button2.setActionCommand("steam");
-		JRadioButton button3 = new JRadioButton("Manually added", true);
-		button3.setActionCommand("man");
-		webButtons.add(button); webButtons.add(button2); webButtons.add(button3);
-		webPanel.add(button); webPanel.add(button2); webPanel.add(button3);
+
+		for (int i = 0; i < defaultValues.infoSite.length; i++) {
+			JRadioButton button = new JRadioButton(defaultValues.infoSites2LOL[i], i==0? true : false); 
+			button.setActionCommand(defaultValues.infoSite[i]);
+			webButtons.add(button); webPanel.add(button);
+		}
 		webPanel.setLayout(new BoxLayout(webPanel, BoxLayout.X_AXIS));
 
 		JLabel IDlabel = new JLabel(jla[0]!=null?jla[0]:"ID: (required)");

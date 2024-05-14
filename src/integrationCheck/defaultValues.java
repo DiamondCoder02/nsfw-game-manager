@@ -43,6 +43,7 @@ public interface defaultValues {
 	String[] gameInfos = {"from", "id", "name", "developer", "played_version", "dateof_lastplay", "user_rating", "newest_version", 
 		"dateof_lastupate", "people_rating", "howFarUserPlayed", "stillOnPc", "engine", "OS", "language", "selfNote"};
 
+	String[] infoSites2LOL = {"Manually added games", "F95zone", "Steam"};
 	/**
 	 * 	The possible values for some of the game information
 	 */

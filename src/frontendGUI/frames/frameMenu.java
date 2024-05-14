@@ -13,7 +13,7 @@ import javax.swing.JMenuItem;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
 
-public class frameCreate {
+public class frameMenu {
 	static JMenuBar mb;
 
 	static JMenu games;

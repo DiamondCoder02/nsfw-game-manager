@@ -4,8 +4,8 @@ import de.jcm.discordgamesdk.Core;
 import de.jcm.discordgamesdk.CreateParams;
 import de.jcm.discordgamesdk.activity.Activity;
 import de.jcm.discordgamesdk.activity.ActivityButton;
-import folderHandling.initialFileLoading.loadGames;
 import folderHandling.initialFileLoading.loadSettings;
+import frontendGUI.frames.frameCounter;
 
 import java.time.Instant;
 
@@ -25,9 +25,8 @@ public class discordRPC {
 			// Create the Core
 			try (Core core = new Core(params)) {
 				try (Activity activity = new Activity()) {
-					Integer allGames = loadGames.loadGamesFromXML(mainDir).length;
 					// activity.setDetails("Managing my hentai games");
-					activity.setState("Currently managing " + allGames + " games");
+					activity.setState("Currently managing " + frameCounter.gameCounts[0] + " games");
 					// Setting a start time causes an "elapsed" field to appear
 					activity.timestamps().setStart(time);
 					// Make a "cool" image show up

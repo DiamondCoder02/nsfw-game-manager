@@ -100,12 +100,14 @@ TODO list: [0.1.2.0] (?/?/?)
 - Patchnotes and Info when starting
 - Save slots
   -https://github.com/DiamondCoder02/nsfw-game-manager/issues/7
-- Change pictures in Credit and FAQ
 - Rewrite Wiki again
 
 
 
 
+- Added a counter for the sites of game and all games counter
+- Change pictures in Credit and FAQ
+- Able to click and copy values from table, but no longer edit them as originally planned.
 - Experimenting with colors, will probably change next update.
 - Updated images and huge thanks to @NyanekoNNK for the new logo!
   - Yes, the image is a pun

@@ -38,27 +38,6 @@ public interface defaultValues {
 	};
 
 	/**
-	 * The default values for a game as an example
-	 */
-	String[][] games = {
-		{"game", "from-f95/id-19095"},
-		{"name", "2037 - Almost ready, Inc."},
-		{"developer", "MadAlice"},
-		{"played_version", "0.9.6"},
-		{"dateof_lastplay", "2020-06-22"},
-		{"user_rating", ""},
-		{"newest_version", "✖ v0.9.6"},
-		{"dateof_lastupate", "N/A"},
-		{"people_rating", "N/A"},
-		{"howFarUserPlayed", "Finish"},
-		{"stillOnPc", "no"},
-		{"engine", "HTML"},
-		{"OS", "Windows"},
-		{"language", "English"},
-		{"selfNote", "something"}
-	};
-
-	/**
 	 * The possible values for the game information
 	 */
 	String[] gameInfos = {"from", "id", "name", "developer", "played_version", "dateof_lastplay", "user_rating", "newest_version", 
@@ -67,7 +46,7 @@ public interface defaultValues {
 	/**
 	 * 	The possible values for some of the game information
 	 */
-	String[] infoSite = {"man", "f95"};
+	String[] infoSite = {"man", "f95", "steam"};
 	String[] infoProgress = {"Not played", "In progress", "Finish", "100% Finished", "Dropped"};
 	String[] infoOnPc = {"yes", "no", "unknown"};
 	String[] infoEngine = {"Flash", "HTML", "Java", "QSP", "Ren'Py", "RPGM", "Unity", "Unreal Engine", "WinGit", "WolfRPG", "other/unknown"};

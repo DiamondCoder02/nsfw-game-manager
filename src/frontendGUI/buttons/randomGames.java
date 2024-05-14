@@ -61,7 +61,11 @@ public class randomGames {
 	}
 
 	private static void randomFromDeveloper() {
-		String wantedRandomDev = JOptionPane.showInputDialog(null, ran[6]!=null?ran[6]:"Enter developer name you wish to search for:", ran[2]!=null?ran[2]:"Random game from developer", JOptionPane.QUESTION_MESSAGE);
+		String wantedRandomDev = JOptionPane.showInputDialog(null, 
+			ran[6]!=null?ran[6]:"Enter developer name you wish to search for:", 
+			ran[2]!=null?ran[2]:"Random game from developer", 
+			JOptionPane.QUESTION_MESSAGE
+		);
 		if (wantedRandomDev == null) { return; }
 		Object[] result = randomFilter(3, ran[7]!=null?ran[7]:"from developer", wantedRandomDev);
 		if (result != null) {resultShow(result, ran[2]!=null?ran[2]:"Random game from developer");}
@@ -80,7 +84,8 @@ public class randomGames {
 			sitePanel.add(site);
 		}
 
-		JOptionPane.showMessageDialog(null, sitePanel, messageDialog, JOptionPane.QUESTION_MESSAGE);
+		Integer resul = JOptionPane.showConfirmDialog(null, sitePanel, messageDialog, JOptionPane.OK_CANCEL_OPTION);
+		if (resul != JOptionPane.OK_OPTION) { return; }
 		Object[] result = randomFilter(place, fromWithWhere, allButtons.getSelection().getActionCommand());
 		if (result != null) { resultShow(result, messageDialog); }
 	}

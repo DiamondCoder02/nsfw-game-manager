@@ -20,8 +20,8 @@ public class frameTable {
 
 		Integer[] ind = new Integer[]{
 			5,	// dl - dlsite / f95 - f95zone / man - manually added
-			25,	// id
-			235,// name
+			30,	// id
+			230,// name
 			90,	// developer
 			65,	// played version
 			50,	// last time play

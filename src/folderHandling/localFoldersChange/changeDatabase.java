@@ -28,15 +28,14 @@ public class changeDatabase {
 		try{
 			Document dom = ADocHandle.load(mainDir + "/hentai.xml");
 			NodeList source = dom.getElementsByTagName("source");
-			String[][] game = defaultValues.games;
 			for (int i = 0; i < source.getLength(); i++) {
 				Node sourceNode = source.item(i);
 				if (sourceNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element newGame = dom.createElement("game");
 					newGame.setAttribute("from", fromSite);
 					newGame.setAttribute("id", gameInfo[0]);
-					for (int j = 1; j < game.length; j++) {
-						Element newElement = dom.createElement(game[j][0]);
+					for (int j = 2; j < defaultValues.gameInfos.length; j++) {
+						Element newElement = dom.createElement(defaultValues.gameInfos[j]);
 						newElement.setTextContent(gameInfo[j]);
 						newGame.appendChild(newElement);
 					}

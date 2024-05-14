@@ -33,7 +33,6 @@ public class tableColor {
 			ff = new Color(100, 170, 255);
 			dr = new Color(255, 110, 130);
 		}
-		
 
 		int playColumnCount = 0;
 		for (int i = 0; i < table.getColumnCount(); i++) {
@@ -46,12 +45,9 @@ public class tableColor {
 		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
 			@Override
 			public Component getTableCellRendererComponent(
-				JTable table,
-				Object value, 
-				boolean isSelected, 
-				boolean hasFocus, 
-				int row, 
-				int col
+				JTable table, Object value, 
+				boolean isSelected, boolean hasFocus, 
+				int row, int col
 			) {
 				TableModel model = table.getModel();
 				int modelRow = table.getRowSorter().convertRowIndexToModel(row);

@@ -126,13 +126,13 @@ public class updateGameHandle {
 		for (int i = 0; i < finalInfo.length; i++) {
 			if (i == 0) { continue; }
 			if (finalInfo[i] != null) {
-				e.getElementsByTagName(defaultValues.games[i][0]).item(0).setTextContent(finalInfo[i]);
+				e.getElementsByTagName(defaultValues.gameInfos[i+1]).item(0).setTextContent(finalInfo[i]);
 			}
 		}
 
 		ADocHandle.save(dom, mainDir + "/hentai.xml");
 		mainFrame.refreshTable(mainDir);
-		JOptionPane.showMessageDialog(null, newInfo[1]+", \nId: "+newInfo[0] +" "+ (basic[4]!=null?basic[4]:"has been updated"), base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, finalInfo[1]+", \nId: "+finalInfo[0] +" "+ (basic[4]!=null?basic[4]:"has been updated"), base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
 		return true;
 	}
 

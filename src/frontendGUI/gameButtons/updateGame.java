@@ -45,10 +45,10 @@ public class updateGame {
 		Element e = ADocHandle.getElementFromDB(dom, webAndId[1]);
 		if (e == null) { return; }
 
-		String[] oldInfos = new String[defaultValues.games.length];
+		String[] oldInfos = new String[defaultValues.gameInfos.length-1];
 		oldInfos[0] = e.getAttribute("id").trim();
-		for (int i = 1; i < defaultValues.games.length; i++) {
-			oldInfos[i] = e.getElementsByTagName(defaultValues.games[i][0]).item(0).getTextContent().trim();
+		for (int i = 1; i < defaultValues.gameInfos.length-1; i++) {
+			oldInfos[i] = e.getElementsByTagName(defaultValues.gameInfos[i+1]).item(0).getTextContent().trim();
 		}
 		// Funny IDs check because why not
 		if (oldInfos[0].equals(newInfos[0])) {

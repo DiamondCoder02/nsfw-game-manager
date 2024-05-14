@@ -19,6 +19,7 @@ public class sites {
 
 		ButtonGroup webButtons = new ButtonGroup();
 		JPanel webPanel = new JPanel();
+		// TODO - defaultValues.sites
 		// Buttons for possible websites (F95zone - f95, Steam - steam, Manually added - man)
 		JRadioButton button = new JRadioButton("F95zone", false); 
 		button.setActionCommand("f95");

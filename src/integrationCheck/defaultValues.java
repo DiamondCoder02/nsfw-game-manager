@@ -16,7 +16,7 @@ public interface defaultValues {
 	String[] filesNeeded = {"settings.json", "hentai.xml", "language.csv"};
 
 	/**
-	 * online files needed to be downloaded from github
+	 * online files needed to be downloaded
 	 */
 	String[][] onlineFilesNeeded = {
 		{"discord/discord_game_sdk.dll", "https://dl-game-sdk.discordapp.net/3.2.1/discord_game_sdk.zip"}

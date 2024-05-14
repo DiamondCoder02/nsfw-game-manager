@@ -1,8 +1,13 @@
-// https://stackoverflow.com/questions/7704405/how-do-i-make-my-java-application-open-a-console-terminal-window
-import java.io.Console;
+import java.awt.BorderLayout;
 import java.io.IOException;
-import java.awt.GraphicsEnvironment;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.net.URISyntaxException;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 import folderHandling.initialFileLoading.loadSettings;
 import frontendGUI.mainProgramStart;
@@ -15,26 +20,43 @@ public class mainApp {
 	 * @throws InterruptedException -
 	 * @throws URISyntaxException -
 	 */
-	public static void main (String [] args) throws IOException, InterruptedException, URISyntaxException{
-		System.out.println("--- Starting program ---");
+	public static void main (String [] args){
 		checkOS();
-		System.out.println("Main: "+mainProgramStart.mainProgDir);
-		System.out.println("Steam: "+mainProgramStart.steamDir);
-		System.out.println("--- OS checked ---");
 
 		Boolean consoleNeeded = false;
 		if (loadSettings.load(tempDir)) { consoleNeeded = loadSettings.othersettings[5]; }
 		if (consoleNeeded) { 
-			System.out.println("+ Console needed! +");
-			Console console = System.console();
-			if (console == null && !GraphicsEnvironment.isHeadless()) {
-				String filename = mainApp.class.getProtectionDomain().getCodeSource().getLocation().toString().substring(6);
-				Runtime.getRuntime().exec(new String[]{"cmd","/c","start","cmd","/k","java -jar \"" + filename + "\""});
-			} else{
-				System.out.println("+ Console needed! +");
-				mainProgramStart.mainMain();
-			}
-		} else { System.out.println("- No console needed! -"); mainProgramStart.mainMain(); }
+			// https://www.codeease.net/programming/java/how-to-create-a-console-in-java-gui
+			JFrame frame = new JFrame();
+			frame.setTitle("HGM - Console");
+			frame.add( new JLabel(" Outout" ), BorderLayout.NORTH );
+			JTextArea ta = new JTextArea();
+			ta.setEditable( false );
+			ta.setLineWrap( false );
+			
+			PrintStream ps = new PrintStream( new OutputStream() {
+				@Override
+				public void write(int b) throws IOException {
+					ta.append( String.valueOf( (char) b ) );
+				}
+			} );
+			System.setOut(ps);
+			System.setErr(ps);
+
+			frame.add(new JScrollPane( ta ));
+			frame.pack();
+			frame.setVisible(true);
+			frame.setSize(800,300);
+
+			System.out.println("- Console enabled! -");
+		} else { 
+			System.out.println("- No console needed! -"); 
+		}
+		System.out.println("--- Starting program ---");
+		System.out.println("Main: "+mainProgramStart.mainProgDir);
+		System.out.println("Steam: "+mainProgramStart.steamDir);
+		System.out.println("--- OS checked ---");
+		mainProgramStart.mainMain();
     }
 
 	// TODO - Linux NEED TEST
@@ -80,8 +102,7 @@ TODO list: [0.1.2.0] (?/?/?)
   -https://github.com/DiamondCoder02/nsfw-game-manager/issues/7
 - Change pictures in Credit and FAQ
 - Rewrite Wiki again
-- App unable to start if there is space anywhere in the path of the program
-  - Why? 
+
 
 
 
@@ -100,6 +121,8 @@ TODO list: [0.1.2.0] (?/?/?)
 - Load steam when start loop thing api 
 - remake files
   - Asset folder LOL
+- App unable to start if there is space anywhere in the path of the program
+  - Only if developer console is enabled. Somehow the console commits unalive
 
 TODO list: [0.1.3.0] (4/0/4)
 

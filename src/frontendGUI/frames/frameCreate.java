@@ -45,7 +45,7 @@ public class frameCreate {
 		frame.setSize(1500, 600);
 		frame.setMinimumSize(new Dimension(500, 200));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setIconImage(frame.getToolkit().getImage(new File("../Assets/Pics/HGM_logo.png").getAbsolutePath()));
+		frame.setIconImage(frame.getToolkit().getImage(new File("Assets/Pics/HGM_logo.png").getAbsolutePath()));
 
 		mb = new JMenuBar();
 		frameMenuListener buttonListener = new frameMenuListener();

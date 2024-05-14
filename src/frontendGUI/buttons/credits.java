@@ -18,7 +18,7 @@ public class credits {
 	private static String br = "<br>";
 	static String[] btn = loadLanguage.buton;
 	public static void money(){
-		ImageIcon icon = new ImageIcon(new File("../Assets/Pics/DiamondCoderLogo.png").getAbsolutePath());
+		ImageIcon icon = new ImageIcon(new File("Assets/Pics/DiamondCoderLogo.png").getAbsolutePath());
 
 		Image img = icon.getImage();
 		Image newimg = img.getScaledInstance(100, 300,  java.awt.Image.SCALE_SMOOTH);

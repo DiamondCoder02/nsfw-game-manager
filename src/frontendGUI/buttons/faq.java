@@ -17,7 +17,7 @@ public class faq {
 	private static String br = "<br>";
 	static String[] fld = loadLanguage.folder;
 	public static void FACKQU(){
-		ImageIcon icon = new ImageIcon(new File("../Assets/Pics/HGM_logo.png").getAbsolutePath());
+		ImageIcon icon = new ImageIcon(new File("Assets/Pics/HGM_logo.png").getAbsolutePath());
 		Image img = icon.getImage();
 		Image newimg = img.getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH);
 		icon = new ImageIcon(newimg);

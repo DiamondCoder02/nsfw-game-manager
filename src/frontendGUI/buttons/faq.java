@@ -30,10 +30,10 @@ public class faq {
 		ep.setText("<p style=\"font-family: Arial\"><span style=\"color:"+color+"\">"+(fld[19]!=null?fld[19]:"FAQ")+br+br+
 		"Q: What is this?"+br+"A: A simple excel like hentai game manager."+br+br+
 		"Q: Why this exist?"+br+"A: Because I had enough managing my games in an excel table and wanted something better."+br+br+
-		"Q: What can this program do?"+br+" Check out the wiki for all the possibilities: <font color = 64AFFF><a href=\"https://github.com/DiamondCoder02/nsfw-game-manager/wiki\">nsfw game manager wiki</a></font>"+br+br+
+		"Q: What can this program do?"+br+" Check out the wiki for all the possibilities: <font color = 64AFFF><a href=\"https://github.com/DiamondCoder02/nsfw-game-manager/wiki\">Hentai game manager wiki</a></font>"+br+br+
 		"Q: Where the data is stored?"+br+"A: Everything is saved at:"+" C:\\Users\\{name}\\AppData\\Roaming\\DiamondCoder\\nsfwGameManager\\hentai.xml"+br+br+
 		"Q: Support the project?"+br+"A: Currently not available"+br+br+
-		"Q: Can I help code / Error in the program?"+br+"A: All isssue and help is accepted on GitHub:"+" <font color = 64AFFF><a href=\"https://github.com/DiamondCoder02/nsfw-game-manager\">https://github.com/DiamondCoder02/nsfw-game-manager</a></font>"+br+br+
+		"Q: Can I help coding? / The program not working correctly? / Want a new feature?"+br+"A: All isssue, requests and help is accepted on GitHub:"+" <font color = 64AFFF><a href=\"https://github.com/DiamondCoder02/nsfw-game-manager/issues/new/choose\">HGM Github</a></font>"+br+br+
 		"Q: placeholder?"+br+"A: placeholder!"+
 		"</span></p>");
 		ep.addHyperlinkListener(new HyperlinkListener() {

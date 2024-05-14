@@ -1,6 +1,14 @@
 package frontendGUI.frames;
 
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import folderHandling.initialFileLoading.loadGames;
 import folderHandling.initialFileLoading.loadLanguage;
@@ -36,7 +44,28 @@ public class frameTableReload {
 				default: break;
 			}
 		}
-		table.setModel(new JTable(data, columnNames).getModel());
+		// TODO Write this into wiki that with double click you can copy
+		table.setModel(new DefaultTableModel(data, columnNames) { // set the table model as a subclass of DefaultTableModel
+			@Override
+			public boolean isCellEditable(int row, int column) { // override the isCellEditable method
+				return false; // return false for all cells
+			}
+		});
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getClickCount() == 2) {
+					System.out.println("double click");
+					Point p = e.getPoint();
+					int row = table.rowAtPoint(p);
+					int col = table.columnAtPoint(p);
+					Object value = table.getValueAt(row, col);
+					StringSelection stringSelection = new StringSelection(value.toString());
+					Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+					clipboard.setContents(stringSelection, stringSelection);
+				}
+			}
+		});
 		tableColor.getNewRenderedTable(table, (tbl[10]!=null?tbl[10]:"Player progress"));
 	}
 

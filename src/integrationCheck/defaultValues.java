@@ -27,14 +27,15 @@ public interface defaultValues {
 	 */
 	String[][] settings = {
 		{ "othersettings", "autoUpdateManager", "darkMode", "autoFetchNewGameInfos", "autoFetchLocalGameFolder", 
-			"DiscordRPC", "showConsole"},
+			"DiscordRPC", "showConsole", "firstTimeRunDone"},
 		{ "shownColumns", "site", "id", "name", "developer", "playedVersion", "lastTimePlayed", "rated", 
 			"newestVersionOnline", "lastDateTimeUpdated", "peopleOnlineRating", "localPlayerProgress", 
 			"gameStillOnPc", "gameEngine", "os", "language", "localPersonalNotes"},
 		{ "appVersion", "0.1.1.4"},
 		// { "languageVersion", "0.1"},
 		{ "appLanguage", "english" },
-		{ "folderLocation", "null" }
+		{ "folderLocation", "null" },
+		{ "databaseNumber", "0"}
 	};
 
 	/**

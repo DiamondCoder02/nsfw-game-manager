@@ -14,6 +14,7 @@ import frontendGUI.buttons.credits;
 import frontendGUI.buttons.databaseCopy;
 import frontendGUI.buttons.discord;
 import frontendGUI.buttons.faq;
+import frontendGUI.buttons.firstWelcomeMessage;
 import frontendGUI.buttons.gameFolderLocation;
 import frontendGUI.buttons.languageChoice;
 import frontendGUI.buttons.randomGames;
@@ -72,6 +73,7 @@ public class frameMenuListener implements ActionListener {
 				mainProgramStart.mainMenuFullChange(); 
 				break;
 
+			case "welcomeMessage": firstWelcomeMessage.welcomeMessage(mainDir); break;
 			case "FAQ": faq.FACKQU(); break;
 			case "Credits": credits.money(); break;
 			case "Exit": sureAboutExit(); break;

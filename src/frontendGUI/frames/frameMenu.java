@@ -34,7 +34,7 @@ public class frameMenu {
 	static JCheckBoxMenuItem showDateOfLastUpdate, showPeopleRating, showhowFarUserPlayed, showDeletedFromPc, showEngine, showOS, showLanguage, ShowSelfNote;
 
 	static JMenu help;
-	static JMenuItem faq, credits;
+	static JMenuItem faq, credits, welcome;
 
 	static JMenuItem exit;
 
@@ -122,10 +122,11 @@ public class frameMenu {
 		mb.add(show); 
 
 		help = new JMenu(bu[5]!=null?bu[5]:"Other");
+		welcome = new JMenuItem("Welcome"); welcome.setActionCommand("welcomeMessage"); welcome.addActionListener(buttonListener);
 		faq = new JMenuItem(bu[6]!=null?bu[6]:"FAQ"); faq.setActionCommand("FAQ"); faq.addActionListener(buttonListener);
 		credits = new JMenuItem(bu[7]!=null?bu[7]:"Credits"); credits.setActionCommand("Credits"); credits.addActionListener(buttonListener);
 
-		help.add(faq); help.add(credits);
+		help.add(welcome); help.add(faq); help.add(credits); 
 		mb.add(help);
 
 		exit = new JMenuItem(bu[8]!=null?bu[8]:"Exit"); exit.setActionCommand("Exit"); exit.addActionListener(buttonListener);

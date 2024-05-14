@@ -10,6 +10,7 @@ import folderHandling.localFoldersChange.backupHandle;
 import folderHandling.localFoldersLoad.getSteamFolderInfos;
 import folderHandling.localFoldersLoad.localFolderHandle;
 import frontendGUI.buttons.discord;
+import frontendGUI.buttons.firstWelcomeMessage;
 import frontendGUI.colors.frameColor;
 import integrationCheck.newVersion;
 import integrationCheck.systemCheck;
@@ -76,5 +77,7 @@ public class mainProgramStart {
 		System.out.println("--- Color change done ---");
 		mainFrame.createFrame(mainProgDir);
 		System.out.println("--- GUI started ---");
+
+		if (!loadSettings.othersettings[6]) { firstWelcomeMessage.welcomeMessage(mainProgDir); }
 	}
 }

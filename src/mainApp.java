@@ -92,58 +92,55 @@ public class mainApp {
  *  This is just a rough draft on future plans.
  *  These are not final and can be changed at any time.
  */
-/*	[version number] ( to do / done / all ) 
-TODO list: [0.1.2.0] (?/?/?) 
-
-- Fixed exe saying "This application requires a Java Runtime Environment."
-  - https://www.quora.com/Can-the-JVM-be-bundled-with-a-Java-program-so-it-runs-on-a-computer-without-a-JVM-installed
-- Patchnotes and Info when starting
-- Save slots
-  -https://github.com/DiamondCoder02/nsfw-game-manager/issues/7
-- Rewrite Wiki again
-
-
-
-
-- Added a counter for the sites of game and all games counter
-- Change pictures in Credit and FAQ
-- Able to click and copy values from table, but no longer edit them as originally planned.
-- Experimenting with colors, will probably change next update.
-- Updated images and huge thanks to @NyanekoNNK for the new logo!
+/*
+### [version number] (tasks)
+## Release => [0.1.2.0] (tasks: 16) 
+- [x] Added a counter for the sites of game and all games counter
+- [x] Change pictures in Credit and FAQ
+- [x] Able to click and copy values from table, but no longer edit them as originally planned.
+- [x] Experimenting with colors, will probably change next update.
+- [x] Updated images and huge thanks to @NyanekoNNK for the new logo!
   - Yes, the image is a pun
-- Written comments in the program so future development will be easier hopefully.
-- Fix Discord custom button
-- optimize search ( searchByName: dungeon ) 
+- [x] Written comments in the program so future development will be easier hopefully.
+- [x] Fix Discord custom button
+- [x] optimize search ( searchByName: dungeon ) 
   - Now it won't overflow out of your screen
-- Written wiki on Github
-- Update FAQ in program
-- settings moved to json
+- [x] Written wiki on Github
+- [x] Update FAQ in program
+- [x] settings moved to json
   - You will have to redo it, sorry for that >.<
-- added steam
-- Load steam when start loop thing api 
-- remake files
+- [x] added steam
+- [x] Load steam when start loop thing api 
+- [x] remake files
   - Asset folder LOL
-- App unable to start if there is space anywhere in the path of the program
+- [x] App unable to start if there is space anywhere in the path of the program
   - Only if developer console is enabled. Somehow the console commits unalive
+- [x] Info when starting
 
-TODO list: [0.1.3.0] (4/0/4)
 
-- move database from xml ( MUST NOT BREAK - 0.1.2.1 ? )
-- Rewrite language.csv
-- Cum counter ( ͡° ͜ʖ ͡°)
-- improve dark mode?
+## Todo => [0.1.2.0] (tasks: 3)
+- [ ] Fixed exe saying "This application requires a Java Runtime Environment."
+  - https://www.quora.com/Can-the-JVM-be-bundled-with-a-Java-program-so-it-runs-on-a-computer-without-a-JVM-installed
+- [ ] Save slots
+  -https://github.com/DiamondCoder02/nsfw-game-manager/issues/7
+- [ ] Rewrite Wiki again
 
-TODO list: [0.1.4.0] (2/0/2)
+## TODO [0.1.3.0] (tasks: 3)
 
-- dlsite.com support
-- Make it LINUX compatible
+- [ ] Rewrite language.csv
+- [ ] Cum counter ( ͡° ͜ʖ ͡°)
+- [ ] improve dark mode?
 
-TODO random: [???] ( All other todos in this app: 3 )
+## TODO [0.1.4.0] (tasks: 2)
 
-- Memory & CPU usage higher? ( Need more test )
+- [ ] dlsite.com support
+- [ ] Make it LINUX compatible
+
+## TODO random: [???] 
+
+- [ ] move database from xml ( MUST NOT BREAK )
+- [ ] Memory & CPU usage higher? ( Need more test )
   - This happened when I run a full database update with API refreshes?
-
-
 */
 
 /* order of table:

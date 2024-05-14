@@ -29,4 +29,23 @@ public class changeSettings {
 
 		return ADocHandle.saveSettingsJson(mainDir + "/settings.json", settings);
 	}
+
+	public static boolean setSetting(String mainDir, String mainChange, String toChange, boolean value) {
+		JsonObject settings = ADocHandle.loadSettingsJson(mainDir + "/settings.json");
+		settings.entrySet().forEach(entry -> {
+			if (entry.getKey().startsWith(mainChange)) {
+				if (entry.getValue().isJsonObject()) {
+					entry.getValue().getAsJsonObject().entrySet().forEach(subEntry -> {
+						if (subEntry.getKey().equals(toChange)) {
+							entry.getValue().getAsJsonObject().addProperty(toChange, value);
+						}
+					});
+				} else {
+					settings.addProperty(mainChange, toChange);
+				}
+			}
+		});
+
+		return ADocHandle.saveSettingsJson(mainDir + "/settings.json", settings);
+	}
 }

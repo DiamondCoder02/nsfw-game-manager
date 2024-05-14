@@ -44,7 +44,7 @@ public class frameTableReload {
 				default: break;
 			}
 		}
-		// TODO Write this into wiki that with double click you can copy
+		// Double click to copy value to clipboard
 		table.setModel(new DefaultTableModel(data, columnNames) { // set the table model as a subclass of DefaultTableModel
 			@Override
 			public boolean isCellEditable(int row, int column) { // override the isCellEditable method

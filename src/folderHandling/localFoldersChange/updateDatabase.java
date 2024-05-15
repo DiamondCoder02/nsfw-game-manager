@@ -9,11 +9,11 @@ import org.w3c.dom.NodeList;
 
 import folderHandling.ADocHandle;
 import folderHandling.initialFileLoading.loadLanguage;
-import folderHandling.localFoldersChange.changeDatabase;
+import folderHandling.localFoldersChange.updateDatabase;
 import frontendGUI.mainFrame;
 import integrationCheck.defaultValues;
 
-public class changeDatabase {
+public class updateDatabase {
 	static String[] jla = loadLanguage.jlapa, folder = loadLanguage.folder, jrb = loadLanguage.jrabu;
 	static String[] base = loadLanguage.base, basic = loadLanguage.basic;
 	/**
@@ -26,7 +26,7 @@ public class changeDatabase {
 	 */
 	public static boolean addNewGameIntoDatabase(String mainDir, String fromSite, String[] gameInfo) {
 		try{
-			Document dom = ADocHandle.load(mainDir + "/hentai.xml");
+			Document dom = ADocHandle.load(mainDir);
 			NodeList source = dom.getElementsByTagName("source");
 			for (int i = 0; i < source.getLength(); i++) {
 				Node sourceNode = source.item(i);
@@ -36,11 +36,11 @@ public class changeDatabase {
 					newGame.setAttribute("id", gameInfo[0]);
 					for (int j = 2; j < defaultValues.gameInfos.length; j++) {
 						Element newElement = dom.createElement(defaultValues.gameInfos[j]);
-						newElement.setTextContent(gameInfo[j]);
+						newElement.setTextContent(gameInfo[j-1]);
 						newGame.appendChild(newElement);
 					}
 					sourceNode.appendChild(newGame);
-					ADocHandle.save(dom, mainDir + "/hentai.xml");
+					ADocHandle.save(dom, mainDir);
 					mainFrame.refreshTable(mainDir);
 					JOptionPane.showMessageDialog(null, gameInfo[1]+", \nId: "+gameInfo[0]+" "+(basic[2]==null?"has been added":basic[2]), base[0]==null?"Success":base[0], JOptionPane.INFORMATION_MESSAGE);
 				}
@@ -61,7 +61,7 @@ public class changeDatabase {
 	 */
 	public static boolean removeGameFromDatabase(String mainDir, String idValue, String fromSite) {
 		try{
-			Document dom = ADocHandle.load(mainDir + "/hentai.xml");
+			Document dom = ADocHandle.load(mainDir);
 			Node sourceNode = ADocHandle.getSourceNodeFromDB(dom);
 			NodeList game = sourceNode.getChildNodes();
 			for (int j = 0; j < game.getLength(); j++) {
@@ -75,7 +75,7 @@ public class changeDatabase {
 						int option = JOptionPane.showConfirmDialog(null, name + ", \nId: "+ids+" "+(folder[14]!=null?folder[14]:"will be removed. Are you sure?"), base[4]!=null?base[4]:"Remove game", JOptionPane.OK_CANCEL_OPTION);
 						if (option == JOptionPane.OK_OPTION) {
 							sourceNode.removeChild(gameNode);
-							ADocHandle.save(dom, mainDir + "/hentai.xml");
+							ADocHandle.save(dom, mainDir);
 							mainFrame.refreshTable(mainDir);
 							JOptionPane.showMessageDialog(null, name + ", \nId: "+ids+" "+(folder[15]!=null?folder[15]:"has been removed."), base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
 						} else { JOptionPane.showMessageDialog(null, folder[16]!=null?folder[16]:"Cancelled", base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE); }

@@ -25,41 +25,63 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import folderHandling.initialFileLoading.loadSettings;
+
 public class ADocHandle {
 	/**
-	 * Create a new document
-	 * @return Document - returns a new document
+	 * This function will load the correct database. <p>
+	 * If the database does not exist then it will create a new one. <p>
+	 * If the database is not the main database then it will load the correct one. <p>
+	 * @param mainDirectory - The needed path to the XML file without the file name or extension
+	 * @return Document - Returns the correct database
 	 */
-	public static Document create() {
-		Document doc;
+	public static Document load(String mainDirectory) {
+		Document dom = null;
 		try {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-			doc = docBuilder.newDocument();
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException("Error creating document");
-		}
-		return doc;
-	}
+			String dbNum = loadSettings.databaseNumber;
+			String[] databases = new String[loadSettings.databaseNames.split("//").length];
+			boolean maindb = false;
+			for (int i = 0; i < databases.length; i++) {
+				// get all files that names start with "hentai" and end with ".xml"
+				File[] files = new File(mainDirectory).listFiles((dir, name) -> name.startsWith("hentai") && name.endsWith(".xml"));
+				for (int j = 0; j < files.length; j++) {
+					if (files[j].getName().equals("hentai.xml") && !maindb) {
+						databases[i] = files[j].getName();
+						maindb = true;
+					}
+					if (files[j].getName().equals("hentai"+i+".xml")) {
+						databases[i] = files[j].getName();
+					}
+				}
+			}
+			for (int i = 0; i < databases.length; i++) {
+				if (databases[i] == null) {
+					dom = docBuilder.parse(new File("Assets/default_hentai.xml"));
+					dom.normalize();
+					ADocHandle.save(dom, mainDirectory);
+				}
+			}
 
-	/**
-	 * Load a document from a directory
-	 * @param directory - The directory of the document
-	 * @return Document - returns the loaded document
-	 */
-	public static Document load(String directory) {
-		Document doc;
-		try {
-			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-			doc = docBuilder.parse(new File(directory));
-			doc.normalize();
+			for (int i = 0; i < databases.length; i++) {
+				if (dbNum.equals("0")) {
+					dom = docBuilder.parse(new File(mainDirectory + "/hentai.xml"));
+					dom.normalize();
+					return dom;
+				}
+				if (databases[i].equals("hentai"+dbNum+".xml")) {
+					dom = docBuilder.parse(new File(mainDirectory + "/hentai"+dbNum+".xml"));
+					dom.normalize();
+					return dom;
+				}
+			}
+			if (dom == null) { dom = docBuilder.parse(new File(mainDirectory + "/hentai.xml")); dom.normalize(); }
+			return dom;
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException("Error loading document");
 		}
-		return doc;
 	}
 
 	/**
@@ -69,6 +91,12 @@ public class ADocHandle {
 	 * @return boolean - returns true if the document was saved successfully
 	 */
 	public static boolean save(Document doc, String finalDirectory) {
+		String dbNum = loadSettings.databaseNumber;
+		if (dbNum.equals("0")) {
+			finalDirectory = finalDirectory + "/hentai.xml";
+		} else {
+			finalDirectory = finalDirectory + "/hentai"+dbNum+".xml";
+		}
 		try{
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
@@ -91,7 +119,7 @@ public class ADocHandle {
 	 * @param idValue - The ID of the element
 	 * @return Element - returns the element
 	 */
-	public static Element getElementFromDB(Document dom, String idValue) {
+	public static Element getElementFromDB(Document dom, String idValue, String fromSite) {
 		NodeList source = dom.getElementsByTagName("source");
 		for (int i = 0; i < source.getLength(); i++) {
 			Node sourceNode = source.item(i);
@@ -101,7 +129,7 @@ public class ADocHandle {
 					Node gameNode = game.item(j);
 					if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
 						Element e = (Element) gameNode;
-						if (idValue.equals(e.getAttribute("id").trim())) {
+						if (idValue.equals(e.getAttribute("id").trim()) && fromSite.equals(e.getAttribute("from").trim())) {
 							return e;
 						}
 					}

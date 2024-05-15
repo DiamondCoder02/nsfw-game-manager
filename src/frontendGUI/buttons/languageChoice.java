@@ -9,7 +9,7 @@ import javax.swing.JRadioButton;
 
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
-import folderHandling.localFoldersChange.changeSettings;
+import folderHandling.localFoldersChange.updateSettings;
 
 public class languageChoice {
 	static String[] folder = loadLanguage.folder, butt = loadLanguage.buton;
@@ -30,7 +30,7 @@ public class languageChoice {
 		if (result == JOptionPane.OK_OPTION) {
 			for (int i = 0; i < buttons.length; i++) {
 				if (buttons[i].isSelected()) {
-					changeSettings.changeSetting(mainDir, "appLanguage", buttons[i].getActionCommand());
+					updateSettings.changeSetting(mainDir, "appLanguage", buttons[i].getActionCommand());
 				}
 			}
 		}

@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import folderHandling.initialFileLoading.loadLanguage;
-import folderHandling.localFoldersChange.changeDatabase;
+import folderHandling.localFoldersChange.updateDatabase;
 import integrationCheck.defaultValues;
 
 public class addGameHandle {
@@ -120,7 +120,7 @@ public class addGameHandle {
 			}
 		}
 
-		Boolean success = changeDatabase.addNewGameIntoDatabase(mainDir, site, allKnownGameInfo);
+		Boolean success = updateDatabase.addNewGameIntoDatabase(mainDir, site, allKnownGameInfo);
 		if (!success) { return false; }
 		return true;
 	}

@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 
 import folderHandling.ADocHandle;
 
-public class changeSettings {
+public class updateSettings {
 	/**
 	 * This function will change a setting in the settings.json file.
 	 * @param mainChange - The main setting to change.

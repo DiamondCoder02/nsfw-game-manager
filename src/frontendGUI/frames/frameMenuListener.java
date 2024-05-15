@@ -6,11 +6,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import folderHandling.initialFileLoading.loadLanguage;
-import folderHandling.localFoldersChange.changeSettings;
+import folderHandling.localFoldersChange.updateSettings;
 import folderHandling.localFoldersLoad.localFolderHandle;
 import frontendGUI.mainFrame;
 import frontendGUI.mainProgramStart;
 import frontendGUI.buttons.credits;
+import frontendGUI.buttons.databaseChange;
 import frontendGUI.buttons.databaseCopy;
 import frontendGUI.buttons.discord;
 import frontendGUI.buttons.faq;
@@ -50,23 +51,27 @@ public class frameMenuListener implements ActionListener {
 			case "site": case "id": case "name": case "developer": case "playedVersion": case "lastTimePlayed": case "rated": 
 			case "newestVersionOnline": case "lastDateTimeUpdated": case "peopleOnlineRating": case "localPlayerProgress": 
 			case "gameStillOnPc": case "gameEngine": case "os": case "language": case "localPersonalNotes":
-				changeSettings.changeSetting(mainDir, "shownColumns", e.getActionCommand()); 
+				updateSettings.changeSetting(mainDir, "shownColumns", e.getActionCommand()); 
 				break;
 
 			case "autoUpdateManager": case "autoFetchNewGameInfos": case "autoFetchLocalGameFolder":
-				changeSettings.changeSetting(mainDir, "othersettings", e.getActionCommand()); 
+				updateSettings.changeSetting(mainDir, "othersettings", e.getActionCommand()); 
 				break;
 			case "darkMode":
-				changeSettings.changeSetting(mainDir, "othersettings", e.getActionCommand()); 
+				updateSettings.changeSetting(mainDir, "othersettings", e.getActionCommand()); 
 				mainProgramStart.mainMenuFullChange();
 				break;
 
 
 			case "DiscordRPC": 
-				changeSettings.changeSetting(mainDir, "othersettings", e.getActionCommand()); 
+				updateSettings.changeSetting(mainDir, "othersettings", e.getActionCommand()); 
 				discord.loopDiscord(mainDir);
 				break;
 			
+			case "dbChange": 
+				databaseChange.changeDatabase(mainDir); 
+				mainProgramStart.mainMenuFullChange(); 
+				break;
 			case "folderLocation": gameFolderLocation.gamesLocationChoose(mainDir); break;
 			case "appLanguage": 
 				languageChoice.langChoose(mainDir); 

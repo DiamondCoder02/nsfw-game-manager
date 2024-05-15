@@ -35,7 +35,8 @@ public interface defaultValues {
 		// { "languageVersion", "0.1"},
 		{ "appLanguage", "english" },
 		{ "folderLocation", "null" },
-		{ "databaseNumber", "0"}
+		{ "databaseNumber", "0"},
+		{ "databaseNames", "hentai//?//?//?//?"}
 	};
 
 	/**

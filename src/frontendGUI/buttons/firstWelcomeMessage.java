@@ -9,7 +9,7 @@ import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 
 import folderHandling.initialFileLoading.loadSettings;
-import folderHandling.localFoldersChange.changeSettings;
+import folderHandling.localFoldersChange.updateSettings;
 
 public class firstWelcomeMessage {
 	private static String br = "<br>";
@@ -49,7 +49,7 @@ public class firstWelcomeMessage {
 		});
 		ep.setEditable(false);
 		ep.setOpaque(loadSettings.othersettings[1] ? false : true);
-		changeSettings.setSetting(mainDir, "othersettings", "firstTimeRunDone", true);
+		updateSettings.setSetting(mainDir, "othersettings", "firstTimeRunDone", true);
 		JOptionPane.showMessageDialog(null, ep, "Welcome!", JOptionPane.INFORMATION_MESSAGE);
 	}
 }

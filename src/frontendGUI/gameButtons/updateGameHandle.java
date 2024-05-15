@@ -36,7 +36,7 @@ public class updateGameHandle {
 	
 	public static boolean updateGameInDB(String mainDir, Document dom, String site, String[] oldInfo, String[] newInfo) {
 		String[] finalInfo = new String[oldInfo.length];
-		Element e = ADocHandle.getElementFromDB(dom, oldInfo[0]);
+		Element e = ADocHandle.getElementFromDB(dom, oldInfo[0], site);
 		if (e == null) { return false; }
 		/*
 		0 - ID		1 - Name	2 - Developer	3 - Played version
@@ -130,7 +130,7 @@ public class updateGameHandle {
 			}
 		}
 
-		ADocHandle.save(dom, mainDir + "/hentai.xml");
+		ADocHandle.save(dom, mainDir);
 		mainFrame.refreshTable(mainDir);
 		JOptionPane.showMessageDialog(null, finalInfo[1]+", \nId: "+finalInfo[0] +" "+ (basic[4]!=null?basic[4]:"has been updated"), base[0]!=null?base[0]:"Success", JOptionPane.INFORMATION_MESSAGE);
 		return true;

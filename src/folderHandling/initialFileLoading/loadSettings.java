@@ -13,6 +13,7 @@ public class loadSettings {
 	public static String appVersion;
 	// public static String languageVersion;
 	public static String databaseNumber;
+	public static String databaseNames;
 	/**
 	 * @param directory - The directory where the settings file is located without the file name or extension
 	 * @return boolean - returns true if the settings file was loaded successfully
@@ -36,6 +37,7 @@ public class loadSettings {
 			appVersion = parser.get("appVersion").getAsString();
 			// languageVersion = parser.get("languageVersion").getAsString();
 			databaseNumber = parser.get("databaseNumber").getAsString();
+			databaseNames = parser.get("databaseNames").getAsString();
 
 			for (int i = 0; i < defaultValues.settings[1].length-1; i++) {
 				shownColumns[i] = shownSet.get(defaultValues.settings[1][i+1]).getAsBoolean();

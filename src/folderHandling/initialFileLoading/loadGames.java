@@ -10,17 +10,17 @@ import integrationCheck.defaultValues;
 
 public class loadGames {
 	static String[] bac = loadLanguage.basic;
+	// TODO Note: this loads double
+	// TODO note: this reloads so many times...
 	/**
 	 * @param mainDirectory - The needed path to the XML file without the file name or extension
 	 * @return - Object[][] - Returns all the games from the XML file
 	 */
 	public static Object[][] loadGamesFromXML(String mainDirectory){
-		Document dom = ADocHandle.load(mainDirectory + "/hentai.xml");
+		Document dom = ADocHandle.load(mainDirectory);
 		String[] columnNames = enabledRows();
 		Object[][] allDataFromFile = null;
 		Integer counter = 0;
-
-		// Element e = ADocHandle.getElementsFromDB(dom);
 
 		NodeList source = dom.getElementsByTagName("source");
 		for (int i = 0; i < source.getLength(); i++) {

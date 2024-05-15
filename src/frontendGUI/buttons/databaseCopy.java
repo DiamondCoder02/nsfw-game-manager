@@ -21,7 +21,7 @@ public class databaseCopy {
 		if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
 			String path = chooser.getSelectedFile().toString();
 			if (!path.endsWith(".xml")) { path = path+".xml"; }
-			Document doc = ADocHandle.load(mainDir + "/hentai.xml");
+			Document doc = ADocHandle.load(mainDir);
 			if (ADocHandle.save(doc, path)) {
 				JOptionPane.showMessageDialog(null, "File saved successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
 			}

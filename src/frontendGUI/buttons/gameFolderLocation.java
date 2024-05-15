@@ -3,7 +3,7 @@ package frontendGUI.buttons;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import folderHandling.localFoldersChange.changeSettings;
+import folderHandling.localFoldersChange.updateSettings;
 
 public class gameFolderLocation {
 	public static void gamesLocationChoose(String mainDir) {
@@ -15,7 +15,7 @@ public class gameFolderLocation {
 		if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
 			String path = chooser.getSelectedFile().toString();
 			if (!path.endsWith("\\")) { path = path+"\\"; }
-			changeSettings.changeSetting(mainDir, "folderLocation", path);
+			updateSettings.changeSetting(mainDir, "folderLocation", path);
 			JOptionPane.showMessageDialog(null, "Changes saved!" + "\n"+path, "Success", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else { return; }

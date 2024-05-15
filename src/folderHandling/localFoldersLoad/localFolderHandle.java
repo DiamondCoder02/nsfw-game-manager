@@ -93,7 +93,7 @@ public class localFolderHandle {
 		String nameToWorkWith, String versionToWorkWith, String lastModifiedToWorkWith
 	) {
 		//System.out.println(siteToWorkWith+" "+idToWorkWith+" "+nameToWorkWith+" "+versionToWorkWith+" "+lastModifiedToWorkWith); 
-		Document gameDatabase = ADocHandle.load(mainDir + "/hentai.xml");
+		Document gameDatabase = ADocHandle.load(mainDir);
 		NodeList source = gameDatabase.getElementsByTagName("source");
 		for (int i = 0; i < source.getLength(); i++) {
 			Node sourceNode = source.item(i);
@@ -115,6 +115,6 @@ public class localFolderHandle {
 				}
 			}
 		}
-		ADocHandle.save(gameDatabase, mainDir + "/hentai.xml");
+		ADocHandle.save(gameDatabase, mainDir);
 	}
 }

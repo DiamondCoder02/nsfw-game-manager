@@ -94,7 +94,7 @@ public class mainApp {
  */
 /*
 ### [version number] (tasks)
-## Release => [0.1.2.0] (tasks: 16) 
+## Release => [0.1.2.0] (tasks: 17) 
 - [x] Added a counter for the sites of game and all games counter
 - [x] Change pictures in Credit and FAQ
 - [x] Able to click and copy values from table, but no longer edit them as originally planned.
@@ -116,13 +116,13 @@ public class mainApp {
 - [x] App unable to start if there is space anywhere in the path of the program
   - Only if developer console is enabled. Somehow the console commits unalive
 - [x] Info when starting
+- [x] Save slots
+  -https://github.com/DiamondCoder02/nsfw-game-manager/issues/7
 
 
-## Todo => [0.1.2.0] (tasks: 3)
+## Todo => [0.1.2.0] (tasks: 2)
 - [ ] Fixed exe saying "This application requires a Java Runtime Environment."
   - https://www.quora.com/Can-the-JVM-be-bundled-with-a-Java-program-so-it-runs-on-a-computer-without-a-JVM-installed
-- [ ] Save slots
-  -https://github.com/DiamondCoder02/nsfw-game-manager/issues/7
 - [ ] Rewrite Wiki again
 
 ## TODO [0.1.3.0] (tasks: 3)

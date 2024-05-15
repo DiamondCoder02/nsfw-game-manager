@@ -27,7 +27,7 @@ public class frameMenu {
 	static JMenuItem searchById, searchByName, searchByDeveloper;
 
 	static JMenu settings;
-	static JMenuItem changeLanguage, changeFolderLocation;
+	static JMenuItem changeDB, changeLanguage, changeFolderLocation;
 	static JCheckBoxMenuItem darkMode, discordrpc, autoFetchNews, autoFetchFolders, autoUpdateWanted;
 	static JMenu show;
 	static JCheckBoxMenuItem showSite, showID, showName, showDeveloper, showPlayedVersion, showLastTimeplay, showRated, showNewestVersion;
@@ -84,6 +84,7 @@ public class frameMenu {
 		Boolean[] boolSettings = loadSettings.othersettings;
 
 		settings = new JMenu(bu[2]!=null?bu[2]:"Settings");
+		changeDB  = new JMenuItem("📁 Database"); changeDB.setActionCommand("dbChange"); changeDB.addActionListener(buttonListener);
 		changeLanguage  = new JMenuItem("🌐 "+(bu[4]!=null?bu[4]:"Language")); changeLanguage.setActionCommand("appLanguage"); changeLanguage.addActionListener(buttonListener);
 		changeFolderLocation = new JMenuItem("📁 "+("Change hentai folder location")); changeFolderLocation.setActionCommand("folderLocation"); changeFolderLocation.addActionListener(buttonListener);
 		autoUpdateWanted = new JCheckBoxMenuItem("🔁 "+"Auto update application", boolSettings[0]); autoUpdateWanted.setActionCommand("autoUpdateManager"); autoUpdateWanted.addActionListener(buttonListener);
@@ -92,7 +93,7 @@ public class frameMenu {
 		autoFetchNews = new JCheckBoxMenuItem(bu[19]!=null?bu[19]:"Auto fetch game info", boolSettings[2]); autoFetchNews.setActionCommand("autoFetchNewGameInfos"); autoFetchNews.addActionListener(buttonListener);
 		autoFetchFolders = new JCheckBoxMenuItem(bu[20]!=null?bu[20]:"Auto fetch folders", boolSettings[3]); autoFetchFolders.setActionCommand("autoFetchLocalGameFolder"); autoFetchFolders.addActionListener(buttonListener);
 		
-		settings.add(changeLanguage); settings.add(changeFolderLocation); settings.addSeparator();
+		settings.add(changeDB); settings.add(changeLanguage); settings.add(changeFolderLocation); settings.addSeparator();
 		settings.add(autoUpdateWanted); settings.add(darkMode); settings.add(discordrpc); settings.addSeparator();
 		settings.add(autoFetchNews); settings.add(autoFetchFolders);
 		mb.add(settings);

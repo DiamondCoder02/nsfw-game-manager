@@ -135,8 +135,8 @@ public class autoSitesFetch {
 
 			String[] defaultGamesInfo = defaultValues.gameInfos;
 			try{
-				Document dom = ADocHandle.load(mainDir + "/hentai.xml");
-				Element e = ADocHandle.getElementFromDB(dom, oldLoadGame[1].toString());
+				Document dom = ADocHandle.load(mainDir);
+				Element e = ADocHandle.getElementFromDB(dom, oldLoadGame[1].toString(), oldLoadGame[0].toString());
 				if (e != null) {
 					for (int i = 2; i < defaultGamesInfo.length; i++) {
 						try {
@@ -148,7 +148,7 @@ public class autoSitesFetch {
 							e.appendChild(newElement);
 						}
 					}
-					ADocHandle.save(dom, mainDir + "/hentai.xml");
+					ADocHandle.save(dom, mainDir);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

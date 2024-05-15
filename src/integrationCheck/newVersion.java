@@ -6,7 +6,7 @@ import java.net.URL;
 import javax.swing.JOptionPane;
 
 import folderHandling.initialFileLoading.loadSettings;
-import folderHandling.localFoldersChange.changeSettings;
+import folderHandling.localFoldersChange.updateSettings;
 
 public class newVersion {
 	/**
@@ -47,7 +47,7 @@ public class newVersion {
 		System.out.println(path);
 		try{
 			boolean succ = fileDownloader.downloadFile(onlineLocation, path);
-			if (succ) { changeSettings.changeSetting(mainDir, "appVersion", onlineVersion); }
+			if (succ) { updateSettings.changeSetting(mainDir, "appVersion", onlineVersion); }
 
 			return succ;
 		} catch (Exception e) {

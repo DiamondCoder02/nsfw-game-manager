@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 import folderHandling.checkDatabase;
 import folderHandling.initialFileLoading.loadLanguage;
-import folderHandling.localFoldersChange.changeDatabase;
+import folderHandling.localFoldersChange.updateDatabase;
 
 public class removeGame {
 	static String[] base = loadLanguage.base, basic = loadLanguage.basic, jla = loadLanguage.jlapa, 
@@ -16,7 +16,7 @@ public class removeGame {
 			if (webAndId == null) { return; }
 
 			if (checkDatabase.isInDatabase(mainDir, webAndId[1], webAndId[0])) {
-				Boolean success = changeDatabase.removeGameFromDatabase(mainDir, webAndId[1], webAndId[0]);
+				Boolean success = updateDatabase.removeGameFromDatabase(mainDir, webAndId[1], webAndId[0]);
 				if (!success) { repeat = false; return; }
 			} else {
 				JOptionPane.showMessageDialog(null, "Id: "+webAndId[1]+" "+(basic[1]!=null?basic[1]:"doesn't exists"), base[1]!=null?base[1]:"Error", JOptionPane.ERROR_MESSAGE);

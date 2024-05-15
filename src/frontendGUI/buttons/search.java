@@ -38,7 +38,8 @@ public class search {
 
 	private static void searchDynamic(String inDialog1, String inDialog2, String errorDialog, Integer seatchNum){
 		String searchFor = JOptionPane.showInputDialog(null, inDialog1, inDialog2, JOptionPane.QUESTION_MESSAGE);
-		if (searchFor == null || searchFor.equals("")) { JOptionPane.showMessageDialog(null, errorDialog, base[1]!=null?base[1]:"Error", JOptionPane.ERROR_MESSAGE); return; }
+		if (searchFor == null) { return; }
+		if (searchFor.equals("")) { JOptionPane.showMessageDialog(null, errorDialog, base[1]!=null?base[1]:"Error", JOptionPane.ERROR_MESSAGE); return; }
 
 		String[][] foundData = searchDB(searchFor, seatchNum);
 

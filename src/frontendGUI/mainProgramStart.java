@@ -24,6 +24,9 @@ public class mainProgramStart {
 	 * Changes the main menu fully
 	 */
 	public static void mainMenuFullChange(){
+		System.out.println("-----------------------------");
+		System.out.println("--- Main menu full change ---");
+		System.out.println("-----------------------------");
 		loadSettings.load(mainProgDir);
 		loadLanguage.loadLangFile(mainProgDir);
 		mainFrame.frame.dispose();

@@ -41,8 +41,8 @@ public class updateGame {
 		}
 		if (newInfos == null) { return; }
 
-		Document dom = ADocHandle.load(mainDir + "/hentai.xml");
-		Element e = ADocHandle.getElementFromDB(dom, webAndId[1]);
+		Document dom = ADocHandle.load(mainDir);
+		Element e = ADocHandle.getElementFromDB(dom, webAndId[1], webAndId[0]);
 		if (e == null) { return; }
 
 		String[] oldInfos = new String[defaultValues.gameInfos.length-1];

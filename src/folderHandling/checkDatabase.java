@@ -15,7 +15,7 @@ public class checkDatabase {
 	 */
 	public static boolean isInDatabase(String mainDri, String givenID, String sourceFrom){
 		try{
-			Document dom = ADocHandle.load(mainDri + "/hentai.xml");
+			Document dom = ADocHandle.load(mainDri);
 			NodeList source = dom.getElementsByTagName("source");
 			for (int i = 0; i < source.getLength(); i++) {
 				Node sourceNode = source.item(i);

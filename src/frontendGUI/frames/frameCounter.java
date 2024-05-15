@@ -30,11 +30,11 @@ public class frameCounter {
 
 		// "<html> asd <font color='red'>red</font></html>"
 		mainFrame.label.setText(
-			"<html>  <font color='#FF99FF'>Game List: "+gameCounts[0]+"</font>  / / / / /  "+
+			"<html><body style=\"background-color:#646464;\">  <font color='#FF99FF'>Game List: "+gameCounts[0]+"</font>  / / / / /  "+
 			"<font color='#88FF88'>Manually added: "+gameCounts[1]+"</font> // "+
 			"<font color='#FF6666'>F95zone: "+gameCounts[2]+"</font> // "+
 			"<font color='#88FFFF'>Steam: "+gameCounts[3]+"</font> "+
-			"</html>"
+			"</body></html>"
 		);
 		// dlsite #FF5500
 	}

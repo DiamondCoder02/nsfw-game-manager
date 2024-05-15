@@ -83,7 +83,7 @@ public class firstWelcomeMessage {
 			+ "Short explanation of the top menu:" + br
 			+ "<html><img src='file:"+logo3[0][0]+"' width="+logo3[0][1]+" height="+logo3[0][2]+"></img>" + br
 			+ "- Games: You can add, update and remove games from the table" + br
-			+ "- Random: Randomly get a game if you don't know what to play today. You can also filter if you want something specific randomly" + br
+			+ "- Random: Randomly get a game( from the table) if you don't know what to play today. You can also filter if you want something specific randomly" + br
 			+ "- Search: Search through the games" + br
 			+ "- Settings: Change the settings of the program, like language, Dark mode, enable Discord or change tables." + br
 			+ "- Show informations: Shows the informations of a game and you can disable columns you are not interested to see." + br

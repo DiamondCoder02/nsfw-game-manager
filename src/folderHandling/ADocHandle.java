@@ -28,6 +28,7 @@ import com.google.gson.JsonParser;
 import folderHandling.initialFileLoading.loadSettings;
 
 public class ADocHandle {
+	// TODO note: Reloads a lot
 	/**
 	 * This function will load the correct database. <p>
 	 * If the database does not exist then it will create a new one. <p>
@@ -37,12 +38,14 @@ public class ADocHandle {
 	 */
 	public static Document load(String mainDirectory) {
 		Document dom = null;
+		loadSettings.load(mainDirectory);
 		try {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			String dbNum = loadSettings.databaseNumber;
 			String[] databases = new String[loadSettings.databaseNames.split("//").length];
 			boolean maindb = false;
+			// TODO shorten this. Integer in databeses so this big for loop is not needed
 			for (int i = 0; i < databases.length; i++) {
 				// get all files that names start with "hentai" and end with ".xml"
 				File[] files = new File(mainDirectory).listFiles((dir, name) -> name.startsWith("hentai") && name.endsWith(".xml"));
@@ -60,12 +63,11 @@ public class ADocHandle {
 				if (databases[i] == null) {
 					dom = docBuilder.parse(new File("Assets/default_hentai.xml"));
 					dom.normalize();
-					ADocHandle.save(dom, mainDirectory);
+					ADocHandle.saveAll(dom, mainDirectory, "/hentai"+i+".xml");
 				}
 			}
-
 			for (int i = 0; i < databases.length; i++) {
-				if (dbNum.equals("0")) {
+				if (databases[i] == null || dbNum.equals("0")) {
 					dom = docBuilder.parse(new File(mainDirectory + "/hentai.xml"));
 					dom.normalize();
 					return dom;
@@ -82,6 +84,30 @@ public class ADocHandle {
 			e.printStackTrace();
 			throw new RuntimeException("Error loading document");
 		}
+	}
+
+	/**
+	 * Save a document to a directory
+	 * @param doc - The document to save
+	 * @param finalDirectory - The directory to save the document
+	 * @param finalPath - The path to save the document
+	 * @return boolean - returns true if the document was saved successfully
+	 */
+	private static boolean saveAll(Document doc, String finalDirectory, String finalPath) {
+		try{
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			// is this needed? (So far, yes)
+			// transformer.setOutputProperty(OutputKeys.INDENT, "yes"); 
+			DOMSource domsource = new DOMSource(doc);
+			StreamResult result = new StreamResult(finalDirectory + finalPath);
+			transformer.transform(domsource, result);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		// System.out.println("File saved at: "+finalDirectory);
+		return true;
 	}
 
 	/**

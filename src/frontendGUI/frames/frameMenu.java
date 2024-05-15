@@ -84,7 +84,7 @@ public class frameMenu {
 		Boolean[] boolSettings = loadSettings.othersettings;
 
 		settings = new JMenu(bu[2]!=null?bu[2]:"Settings");
-		changeDB  = new JMenuItem("📁 Database"); changeDB.setActionCommand("dbChange"); changeDB.addActionListener(buttonListener);
+		changeDB  = new JMenuItem("📁 Save slots"); changeDB.setActionCommand("dbChange"); changeDB.addActionListener(buttonListener);
 		changeLanguage  = new JMenuItem("🌐 "+(bu[4]!=null?bu[4]:"Language")); changeLanguage.setActionCommand("appLanguage"); changeLanguage.addActionListener(buttonListener);
 		changeFolderLocation = new JMenuItem("📁 "+("Change hentai folder location")); changeFolderLocation.setActionCommand("folderLocation"); changeFolderLocation.addActionListener(buttonListener);
 		autoUpdateWanted = new JCheckBoxMenuItem("🔁 "+"Auto update application", boolSettings[0]); autoUpdateWanted.setActionCommand("autoUpdateManager"); autoUpdateWanted.addActionListener(buttonListener);

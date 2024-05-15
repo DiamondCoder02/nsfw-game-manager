@@ -90,8 +90,8 @@ public class frameMenu {
 		autoUpdateWanted = new JCheckBoxMenuItem("🔁 "+"Auto update application", boolSettings[0]); autoUpdateWanted.setActionCommand("autoUpdateManager"); autoUpdateWanted.addActionListener(buttonListener);
 		darkMode = new JCheckBoxMenuItem(bu[18]!=null?bu[18]:"Dark mode", boolSettings[1]); darkMode.setActionCommand("darkMode"); darkMode.addActionListener(buttonListener);
 		discordrpc = new JCheckBoxMenuItem("Discord RPC", boolSettings[4]); discordrpc.setActionCommand("DiscordRPC"); discordrpc.addActionListener(buttonListener);
-		autoFetchNews = new JCheckBoxMenuItem(bu[19]!=null?bu[19]:"Auto fetch game info", boolSettings[2]); autoFetchNews.setActionCommand("autoFetchNewGameInfos"); autoFetchNews.addActionListener(buttonListener);
-		autoFetchFolders = new JCheckBoxMenuItem(bu[20]!=null?bu[20]:"Auto fetch folders", boolSettings[3]); autoFetchFolders.setActionCommand("autoFetchLocalGameFolder"); autoFetchFolders.addActionListener(buttonListener);
+		autoFetchNews = new JCheckBoxMenuItem("Auto fetch online games info", boolSettings[2]); autoFetchNews.setActionCommand("autoFetchNewGameInfos"); autoFetchNews.addActionListener(buttonListener);
+		autoFetchFolders = new JCheckBoxMenuItem("Auto fetch hentai folders", boolSettings[3]); autoFetchFolders.setActionCommand("autoFetchLocalGameFolder"); autoFetchFolders.addActionListener(buttonListener);
 		
 		settings.add(changeDB); settings.add(changeLanguage); settings.add(changeFolderLocation); settings.addSeparator();
 		settings.add(autoUpdateWanted); settings.add(darkMode); settings.add(discordrpc); settings.addSeparator();

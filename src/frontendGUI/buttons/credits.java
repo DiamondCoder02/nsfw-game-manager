@@ -23,16 +23,40 @@ public class credits {
 		};
 
 		// "<html><img src='file:"+logos[0][0]+"' width="+logos[0][1]+" height="+logos[0][2]+"></img>"
-		String textInside = "<html><img src='file:"+logos[0][0]+"' width="+logos[0][1]+" height="+logos[0][2]+"></img>"+br+
-		"<p style=\"font-family: Arial\"><span style=\"color:"+color+"\">"+(btn[7]!=null?btn[7]:"Credits")+br+br+
-		"Hi, I'm DiamondCoder or Diamond."+br+
-		"This is a small project for learning Java in university."+br+
-		"The main reason for this was to convert my old excel file into something more readeble and more usefull."+br+
+		String textInside = "<html><p style=\"font-family: Arial\"><span style=\"color:"+color+"\">"+(btn[7]!=null?btn[7]:"Credits")+br+
+		"<img src='file:"+logos[1][0]+"' width="+logos[1][1]+" height="+logos[1][2]+"></img>"+br+
+		
+		"Originally: This was a small project to learn Java for university."+br+
 		"Main focus is something dynamic and easy to use for hentai games."+br+
-		"Thank you for using this program, it gives me smile I can make something good."+br+
-		"Full open source:"+" <font color = 64AFFF><a href=\"https://github.com/DiamondCoder02/nsfw-game-manager\">https://github.com/DiamondCoder02/nsfw-game-manager</a></font>"+br+br+
-		"Also, huge thanks to Nyaneko who made graphic elements and helped me finish writing this program. <3"+br+
-		"<html><img src='file:"+logos[1][0]+"' width="+logos[1][1]+" height="+logos[1][2]+"></img>";
+		"This whole program is just to convert my old excel file into a smart storage"+br+
+		"Full open source:"+" <font color = 64AFFF><a href=\"https://github.com/DiamondCoder02/nsfw-game-manager\">https://github.com/DiamondCoder02/nsfw-game-manager</a></font>"+br+
+		"----------------------------------------------------------------"+br+br+ // 64
+
+		"Hi, I'm DiamondCoder or Diamond."+br+
+		"University student, programer, stupid gamer"+br+
+		"I started the project in 2023, handling Steam, check issues, still coding and arguing with Nyaneko why the UI looks from 2008"+br+
+		"Thank you for using this program, it gives me smile I can make something for others :3"+br+
+		"Huge thanks to Nyaneko who made graphic elements and helped me mentally and pushed me to work more on this program. <3"+br+
+
+		"<img src='file:"+logos[0][0]+"' width="+logos[0][1]+" height="+logos[0][2]+"></img>"+br+ // Picture as break
+
+		"Hi, I'm NyanekoNNK or Nyaneko."+br+
+		"Graphic designer and I'm here to help Diamond with this project."+br+
+		"I'm responsible some graphic elements, the Steam store, legal matters and guality control."+br+
+		"I can and will break everything so I will make sure there are close to no bugs in the application"+br+br+
+
+		"----------------------------------------------------------------"+br+ // 64
+		"Contact us:"+br+
+		"Support Email: KnockyNekos@gmail.com"+br+
+		"Github Issues:	<font color = 64AFFF><a href=\"https://github.com/DiamondCoder02/nsfw-game-manager/issues/new/choose\">Github Feedback</a></font>"+br+
+		"Github Wiki: <font color = 64AFFF><a href=\"https://github.com/DiamondCoder02/nsfw-game-manager/wiki/\">Github Wiki</a></font>"+br
+
+		/*
+		Support Email:  	KnockyNekos@gmail.com
+		Github Issues:		https://github.com/DiamondCoder02/nsfw-game-manager/issues/new/choose
+		Github Wiki: 		https://github.com/DiamondCoder02/nsfw-game-manager/wiki/
+		*/
+		;
 
 		// Small popup with credits
 		JEditorPane ep = new JEditorPane();

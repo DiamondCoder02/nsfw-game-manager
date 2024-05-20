@@ -14,7 +14,6 @@ import javax.swing.event.HyperlinkListener;
 import folderHandling.initialFileLoading.loadGames;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
-import frontendGUI.mainProgramStart;
 import integrationCheck.defaultValues;
 
 public class randomGames {
@@ -52,11 +51,10 @@ public class randomGames {
 		}
 	}
 
-	static Object[][] allGames = loadGames.loadGamesFromXML(mainProgramStart.mainProgDir);
 	private static void fullyRandom() {
-		Integer amount = allGames.length;
+		Integer amount = loadGames.data.length;
 		Integer random = (int) (Math.random() * amount);
-		Object[] result = allGames[random];
+		Object[] result = loadGames.data[random];
 		resultShow(result, ran[1]!=null?ran[1]:"Fully random game");
 	}
 
@@ -99,6 +97,7 @@ public class randomGames {
 	13 - OS			14 - Language			15 - Personal notes
 	*/
 	private static Object[] randomFilter(Integer place, String fromWith, String wanted){
+		Object[][] allGames = loadGames.data;
 		Integer length = 0;
 		Object[] result;
 		for (int i = 0; i < allGames.length; i++) {

@@ -7,6 +7,7 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,7 +20,11 @@ import integrationCheck.defaultValues;
 public class frameTableReload {
 	public static void reloadTable(JTable table, String mainDirectory) {
 		String[] columnNames = enabledRows();
-		Object[][] data = loadGames.loadGamesFromXML(mainDirectory);
+		if (!loadGames.loadGamesFromXML(mainDirectory)) { 
+			JOptionPane.showMessageDialog(null, "No games loaded. ERROR (frameTableReload.reloadTable)", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+			return; 
+		}
+		Object[][] data = loadGames.data;
 		String[] tbl = loadLanguage.tabl;
 
 		for (int i = 0; i < columnNames.length; i++) {

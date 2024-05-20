@@ -24,14 +24,13 @@ public class mainFrame {
 	 * @param mainDirectory - The main directory of the program
 	 */
 	public static void createFrame(String mainDirectory) {
-		frameCounter.getNumberOfGames(mainDirectory);
+		
 		frame = frameMenu.WindowCreate(frame, mainDirectory);
-		// label.setText("Game List");
-		frame.add(label, BorderLayout.PAGE_START);
-
 		table = frameTable.createTable(mainDirectory, table);
-		frame.add(table.getTableHeader());
-		frame.add(table, BorderLayout.CENTER);
+		frameCounter.getNumberOfGames(mainDirectory);
+
+		frame.add(label, BorderLayout.PAGE_START);
+		frame.add(table.getTableHeader(), BorderLayout.CENTER);
 
 		pane = new JScrollPane(table);
 		frame.add(pane, BorderLayout.CENTER);

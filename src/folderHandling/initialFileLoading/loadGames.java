@@ -10,13 +10,13 @@ import integrationCheck.defaultValues;
 
 public class loadGames {
 	static String[] bac = loadLanguage.basic;
-	// TODO Note: this loads double
-	// TODO note: this reloads so many times...
+	public static Object[][] data = null;
 	/**
 	 * @param mainDirectory - The needed path to the XML file without the file name or extension
-	 * @return - Object[][] - Returns all the games from the XML file
+	 * @return - Boolean - If data was successfully loaded from the XML file into Object[][] data variable 
 	 */
-	public static Object[][] loadGamesFromXML(String mainDirectory){
+	public static Boolean loadGamesFromXML(String mainDirectory){
+		System.out.println("loadGames.loadGamesFromXML reloaded again...");
 		Document dom = ADocHandle.load(mainDirectory);
 		String[] columnNames = enabledRows();
 		Object[][] allDataFromFile = null;
@@ -76,7 +76,8 @@ public class loadGames {
 				}
 			}
 		}
-		return allDataFromFile2;
+		data = allDataFromFile2;
+		return true;
 	}
 
 	/**

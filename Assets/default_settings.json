@@ -3,6 +3,7 @@
 	"appVersion": "0.1.1.4",
 	"appLanguage": "english",
 	"databaseNumber": "0",
+	"databaseNames": "main//sfw//?//?//?",
 	"othersettings": {
 		"autoUpdateManager": false,
 		"darkMode": false,

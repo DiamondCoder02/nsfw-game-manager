@@ -28,7 +28,6 @@ import com.google.gson.JsonParser;
 import folderHandling.initialFileLoading.loadSettings;
 
 public class ADocHandle {
-	// TODO note: Reloads a lot
 	/**
 	 * This function will load the correct database. <p>
 	 * If the database does not exist then it will create a new one. <p>
@@ -37,6 +36,7 @@ public class ADocHandle {
 	 * @return Document - Returns the correct database
 	 */
 	public static Document load(String mainDirectory) {
+		System.out.println("ADocHandle.load reloaded again...");
 		Document dom = null;
 		loadSettings.load(mainDirectory);
 		try {
@@ -45,18 +45,18 @@ public class ADocHandle {
 			String dbNum = loadSettings.databaseNumber;
 			String[] databases = new String[loadSettings.databaseNames.split("//").length];
 			boolean maindb = false;
-			// TODO shorten this. Integer in databeses so this big for loop is not needed
-			for (int i = 0; i < databases.length; i++) {
-				// get all files that names start with "hentai" and end with ".xml"
-				File[] files = new File(mainDirectory).listFiles((dir, name) -> name.startsWith("hentai") && name.endsWith(".xml"));
-				for (int j = 0; j < files.length; j++) {
-					if (files[j].getName().equals("hentai.xml") && !maindb) {
-						databases[i] = files[j].getName();
-						maindb = true;
-					}
-					if (files[j].getName().equals("hentai"+i+".xml")) {
-						databases[i] = files[j].getName();
-					}
+			Integer counter = 0;
+			// get all files that names start with "hentai" and end with ".xml"
+			File[] files = new File(mainDirectory).listFiles((dir, name) -> name.startsWith("hentai") && name.endsWith(".xml"));
+			for (int j = 0; j < files.length; j++) {
+				if (files[j].getName().equals("hentai.xml") && !maindb) {
+					databases[counter] = files[j].getName();
+					maindb = true;
+					counter++;
+				}
+				if (files[j].getName().equals("hentai"+counter+".xml")) {
+					databases[counter] = files[j].getName();
+					counter++;
 				}
 			}
 			for (int i = 0; i < databases.length; i++) {

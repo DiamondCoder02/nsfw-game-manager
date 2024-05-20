@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.localFoldersChange.updateSettings;
 import folderHandling.localFoldersLoad.localFolderHandle;
-import frontendGUI.mainFrame;
 import frontendGUI.mainProgramStart;
 import frontendGUI.buttons.credits;
 import frontendGUI.buttons.databaseChange;
@@ -85,7 +84,8 @@ public class frameMenuListener implements ActionListener {
 
 			default: JOptionPane.showMessageDialog(null, "Error, this should never happen!!!" + " (src/frontEndGUI/frameMenuListener_actionPerformed)", "Error", JOptionPane.ERROR_MESSAGE); break;
 		}
-		mainFrame.refreshTable(mainDir);
+		// ???
+		// mainFrame.refreshTable(mainDir);
 	}
 
 	private static void sureAboutExit(){

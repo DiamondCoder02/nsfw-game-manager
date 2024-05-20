@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 
 import folderHandling.initialFileLoading.loadGames;
 import folderHandling.initialFileLoading.loadLanguage;
-import frontendGUI.mainProgramStart;
 
 public class search {
 	static String[] base = loadLanguage.base, basic = loadLanguage.basic, tabl = loadLanguage.tabl, serc = loadLanguage.serc;
@@ -92,7 +91,7 @@ public class search {
 	}
 
 	private static String[][] searchDB(String searchFor, Integer seatchNum){
-		Object[][] data = loadGames.loadGamesFromXML(mainProgramStart.mainProgDir);
+		Object[][] data = loadGames.data;
 		Integer foundNum = 0;
 		String[][] foundData = new String[data.length][data[0].length];
 		for (int i = 0; i < data.length; i++) {

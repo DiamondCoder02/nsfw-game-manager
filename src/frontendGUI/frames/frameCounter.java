@@ -16,7 +16,7 @@ public class frameCounter {
 
 	public static void getNumberOfGames(String mainProgDir){
 		gameCounts = new Integer[defaultValues.infoSite.length+1];
-		Object[][] allGames = loadGames.loadGamesFromXML(mainProgDir);
+		Object[][] allGames = loadGames.data;
 		gameCounts[0] = allGames.length;
 		gameCounts[1] = 0;
 		gameCounts[2] = 0;

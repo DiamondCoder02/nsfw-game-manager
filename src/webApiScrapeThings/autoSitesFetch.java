@@ -42,7 +42,11 @@ public class autoSitesFetch {
 	 * This function will fetch the info from the sites and update the table.
 	 */
 	public static void fetchInfoThenUpdateTable(String mainDire) {
-		Object[][] loadedGames = loadGames.loadGamesFromXML(mainDire);
+		if (!loadGames.loadGamesFromXML(mainDire)) { 
+			JOptionPane.showMessageDialog(null, "No games loaded. ERROR (autoSitesFetch.fetchInfoThenUpdateTable)", bs[3]==null?"Update":bs[3], JOptionPane.INFORMATION_MESSAGE);
+			return; 
+		}
+		Object[][] loadedGames = loadGames.data;
 		CompletableFuture.runAsync(() -> {
 			JProgressBar pbar = new JProgressBar(0, loadedGames.length);
 			pbar.setStringPainted(true);

@@ -6,6 +6,7 @@ import java.net.URISyntaxException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -21,7 +22,12 @@ public class mainApp {
 	 * @throws URISyntaxException -
 	 */
 	public static void main (String [] args){
-		checkOS();
+		if (!checkOS()) {
+			System.out.println("OS not supported!");
+			JOptionPane.showMessageDialog(null, "OS not supported! Quiting!", "Error", JOptionPane.ERROR_MESSAGE);
+			System.exit(0);
+		}
+
 
 		Boolean consoleNeeded = false;
 		if (loadSettings.load(tempDir)) { consoleNeeded = loadSettings.othersettings[5]; }

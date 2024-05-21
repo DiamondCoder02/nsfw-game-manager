@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import frontendGUI.mainProgramStart;
+import backendThings.mainProgramStart;
 
 public class getSteamFolderInfos {
 	private static String[][] steamFolders;

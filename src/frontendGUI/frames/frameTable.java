@@ -39,7 +39,7 @@ public class frameTable {
 
 		for (int i = 0; i < ind.length; i++) {
 			if (boolColumns[i]) { 
-				// System.out.println(boolColumns[i]+"Setting column " + i + " to " + ind[i] + " with width ");
+				// log.print(boolColumns[i]+"Setting column " + i + " to " + ind[i] + " with width ");
 				table.getColumnModel().getColumn(counter).setPreferredWidth(ind[i]); 
 				counter++;
 			}

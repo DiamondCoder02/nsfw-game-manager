@@ -25,6 +25,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import backendThings.log;
 import folderHandling.initialFileLoading.loadSettings;
 
 public class ADocHandle {
@@ -36,7 +37,7 @@ public class ADocHandle {
 	 * @return Document - Returns the correct database
 	 */
 	public static Document load(String mainDirectory) {
-		System.out.println("ADocHandle.load reloaded again...");
+		log.print("ADocHandle.load reloaded again...");
 		Document dom = null;
 		loadSettings.load(mainDirectory);
 		try {
@@ -106,7 +107,7 @@ public class ADocHandle {
 			e.printStackTrace();
 			return false;
 		}
-		// System.out.println("File saved at: "+finalDirectory);
+		// log.print("File saved at: "+finalDirectory);
 		return true;
 	}
 
@@ -135,7 +136,7 @@ public class ADocHandle {
 			e.printStackTrace();
 			return false;
 		}
-		// System.out.println("File saved at: "+finalDirectory);
+		// log.print("File saved at: "+finalDirectory);
 		return true;
 	}
 

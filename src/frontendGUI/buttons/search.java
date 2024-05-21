@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import backendThings.log;
 import folderHandling.initialFileLoading.loadGames;
 import folderHandling.initialFileLoading.loadLanguage;
 
@@ -65,9 +66,9 @@ public class search {
 				counter++; 
 			}
 			counter = pagination(tempData, counter, inDialog2, foundData.length); 
-			System.out.println("Counter: " + counter);
+			log.print("Counter: " + counter);
 			if (counter >= foundData.length) { return; }
-			System.out.println("Counter: " + counter);
+			log.print("Counter: " + counter);
 		} while (counter > 0);
 		return; 
 	}

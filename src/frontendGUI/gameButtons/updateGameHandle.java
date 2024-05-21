@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import backendThings.log;
 import folderHandling.ADocHandle;
 import folderHandling.initialFileLoading.loadLanguage;
 import frontendGUI.mainFrame;
@@ -95,9 +96,9 @@ public class updateGameHandle {
 				textField[i] = new JTextField();
 				panel.add(textField[i]);
 			} else {
-				System.out.println("Error in updateGameHandle.java");
-				System.out.println("newInfo["+i+"]: "+newInfo[i]);
-				System.out.println("oldInfo["+i+"]: "+oldInfo[i]);
+				log.print("Error in updateGameHandle.java", log.ERROR);
+				log.print("newInfo["+i+"]: "+newInfo[i], log.ERROR);
+				log.print("oldInfo["+i+"]: "+oldInfo[i], log.ERROR);
 			}
 		}
 

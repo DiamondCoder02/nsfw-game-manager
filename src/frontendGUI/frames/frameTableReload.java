@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import backendThings.log;
 import folderHandling.initialFileLoading.loadGames;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
@@ -60,7 +61,7 @@ public class frameTableReload {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getClickCount() == 2) {
-					System.out.println("double click");
+					log.print("double click");
 					Point p = e.getPoint();
 					int row = table.rowAtPoint(p);
 					int col = table.columnAtPoint(p);

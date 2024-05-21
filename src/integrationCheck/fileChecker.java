@@ -18,13 +18,13 @@ public class fileChecker {
 		if (!success) { return false; }
 		for (String[] file : defaultValues.onlineFilesNeeded) {
 			if (!checkLocalBeforeOnline(mainDirectory + "/" + file[0])) {
-				// System.out.println("Downloading: " + file[0]);
+				// log.print("Downloading: " + file[0]);
 				success = fileDownloader.downloadFile(file[1], mainDirectory + "/" + file[0]); 
-				// System.out.println(success + " - " + file[0]);
+				// log.print(success + " - " + file[0]);
 				if (!success) { return false; }
 			}
 		}
-		// System.out.println("*** All files are present! ***");
+		// log.print("*** All files are present! ***");
 		return true;
 	}
 

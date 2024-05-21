@@ -5,10 +5,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import backendThings.mainProgramStart;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.localFoldersChange.updateSettings;
 import folderHandling.localFoldersLoad.localFolderHandle;
-import frontendGUI.mainProgramStart;
 import frontendGUI.buttons.credits;
 import frontendGUI.buttons.databaseChange;
 import frontendGUI.buttons.databaseCopy;
@@ -28,7 +28,7 @@ public class frameMenuListener implements ActionListener {
 	static String[] btn = loadLanguage.buton, fld = loadLanguage.folder;
 	private static String mainDir = mainProgramStart.mainProgDir;
 	public void actionPerformed(ActionEvent e) {
-		// System.out.println("Button Clicked! " + e.getActionCommand());
+		// log.print("Button Clicked! " + e.getActionCommand());
 		switch (e.getActionCommand()) {
 			// frontendGUI/frames/frameCreate.java
 			case "Add game": addGame.addOneGame(mainDir); break;

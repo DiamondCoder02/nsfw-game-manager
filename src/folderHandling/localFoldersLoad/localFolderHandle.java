@@ -92,7 +92,7 @@ public class localFolderHandle {
 	private static void checkAllGameAndUpdate(String mainDir, String siteToWorkWith, String idToWorkWith, 
 		String nameToWorkWith, String versionToWorkWith, String lastModifiedToWorkWith
 	) {
-		//System.out.println(siteToWorkWith+" "+idToWorkWith+" "+nameToWorkWith+" "+versionToWorkWith+" "+lastModifiedToWorkWith); 
+		//log.print(siteToWorkWith+" "+idToWorkWith+" "+nameToWorkWith+" "+versionToWorkWith+" "+lastModifiedToWorkWith); 
 		Document gameDatabase = ADocHandle.load(mainDir);
 		NodeList source = gameDatabase.getElementsByTagName("source");
 		for (int i = 0; i < source.getLength(); i++) {

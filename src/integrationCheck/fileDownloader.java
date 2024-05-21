@@ -10,6 +10,8 @@ import java.util.Locale;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import backendThings.log;
+
 public class fileDownloader {
 	/**
 	 * This function will download a file from the internet.
@@ -19,7 +21,7 @@ public class fileDownloader {
 	 */
 	public static boolean downloadFile(String url, String fullPath) {
 		String fileType = fullPath.substring(fullPath.lastIndexOf(".") + 1, fullPath.length());
-		System.out.println("Downloading: " + fileType);
+		log.print("Downloading: " + fileType, log.WARNING);
 		switch (fileType) {
 			case "xml": case "csv": case "jar": case "exe": 
 				return fileDownloading(url, fullPath);
@@ -60,7 +62,7 @@ public class fileDownloader {
 	 * @see a Huge thank you <a href="https://github.com/JnCrMx/discord-game-sdk4j">JnCrMx/discord-game-sdk4j</a> <3
 	 */
 	private static boolean discordSdkDownload(String url, String directoryWithoutExtension){
-		System.out.println("Downloading: " + url);
+		log.print("Downloading: " + url);
 		String suffix;
 		String osName = System.getProperty("os.name").toLowerCase(Locale.ROOT);
 		String arch = System.getProperty("os.arch").toLowerCase(Locale.ROOT);

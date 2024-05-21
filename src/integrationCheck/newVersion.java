@@ -5,6 +5,7 @@ import java.net.URL;
 
 import javax.swing.JOptionPane;
 
+import backendThings.log;
 import folderHandling.initialFileLoading.loadSettings;
 import folderHandling.localFoldersChange.updateSettings;
 
@@ -35,7 +36,7 @@ public class newVersion {
 		try{
 			path = newVersion.class.getProtectionDomain().getCodeSource().getLocation().toString();
 			path = path.replace("file:/", "");
-			System.out.println(path);
+			log.print(path);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Error getting path (getNewestGithubVersion)", "Error", JOptionPane.ERROR_MESSAGE);
 			return false;
@@ -44,7 +45,7 @@ public class newVersion {
 		onlineLocation = onlineLocation.replace("tag", "download").concat("/HentaiGameManager." + ext);
 
 		path = (System.getProperty("user.dir") + "/HentaiGameManager_"+onlineVersion+"."+ext);
-		System.out.println(path);
+		log.print(path);
 		try{
 			boolean succ = fileDownloader.downloadFile(onlineLocation, path);
 			if (succ) { updateSettings.changeSetting(mainDir, "appVersion", onlineVersion); }

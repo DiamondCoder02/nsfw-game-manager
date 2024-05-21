@@ -59,7 +59,7 @@ public class loadLanguage {
 					langString = langString.replace("\\n", "\n");
 				}
 				if (!lastLang.equals(nextLine[0])) { lastLang = nextLine[0]; tempInt = 0; }
-				// System.out.println(nextLine[0] + " - " + langString +" + "+ nextLine[langCol]);
+				// log.print(nextLine[0] + " - " + langString +" + "+ nextLine[langCol]);
 
 				switch (nextLine[0]) {
 					case "base": base[tempInt] = langString; break;

@@ -9,6 +9,8 @@ import frontendGUI.frames.frameCounter;
 
 import java.time.Instant;
 
+import backendThings.log;
+
 // https://github.com/JnCrMx/discord-game-sdk4j
 public class discordRPC {
 	static Instant time;
@@ -44,11 +46,11 @@ public class discordRPC {
 							Thread.sleep(1000); // Sleep a bit to save CPU
 						}
 						catch(InterruptedException e) {
-							System.out.println("<.<"); e.printStackTrace();
+							log.print("<.<", log.ERROR); e.printStackTrace();
 						}
 					}
 				} catch (Exception e) { 
-					System.out.println(">.>"); e.printStackTrace(); 
+					log.print(">.>", log.ERROR); e.printStackTrace(); 
 				}
 			}
 		}

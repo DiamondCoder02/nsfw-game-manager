@@ -87,7 +87,7 @@ public class loadF95site {
 			}
 		}
 
-		// for (int i = 0; i < allTheInfo.length; i++) { System.out.println(allTheInfo[i]); }
+		// for (int i = 0; i < allTheInfo.length; i++) { log.print(allTheInfo[i]); }
 		return allTheInfo;
 	}
 }

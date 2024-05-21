@@ -1,4 +1,4 @@
-package frontendGUI;
+package backendThings;
 
 import java.io.File;
 
@@ -9,6 +9,7 @@ import folderHandling.initialFileLoading.loadSettings;
 import folderHandling.localFoldersChange.backupHandle;
 import folderHandling.localFoldersLoad.getSteamFolderInfos;
 import folderHandling.localFoldersLoad.localFolderHandle;
+import frontendGUI.mainFrame;
 import frontendGUI.buttons.discord;
 import frontendGUI.buttons.firstWelcomeMessage;
 import frontendGUI.colors.frameColor;
@@ -24,9 +25,9 @@ public class mainProgramStart {
 	 * Changes the main menu fully
 	 */
 	public static void mainMenuFullChange(){
-		System.out.println("-----------------------------");
-		System.out.println("--- Main menu full change ---");
-		System.out.println("-----------------------------");
+		log.print("-----------------------------");
+		log.print("--- Main menu full change ---");
+		log.print("-----------------------------");
 		loadSettings.load(mainProgDir);
 		loadLanguage.loadLangFile(mainProgDir);
 		mainFrame.frame.dispose();
@@ -39,47 +40,47 @@ public class mainProgramStart {
 	 */
 	public static void mainMain() {
 		if (!systemCheck.programSystemCheck(mainProgDir)) { return; }
-		System.out.println("--- System check passed! ---");
+		log.print("--- System check passed! ---");
 
 		if (!loadSettings.load(mainProgDir)) { return; }
 		if (!loadLanguage.loadLangFile(mainProgDir)) { return; }
-		System.out.println("--- Settings / Languages loaded ---");
+		log.print("--- Settings / Languages loaded ---");
 
-		System.out.println("--- Checking for new version --- Enabled:" + loadSettings.othersettings[0]);
+		log.print("--- Checking for new version --- Enabled:" + loadSettings.othersettings[0]);
 		if (!new File("../../../steamapps").exists()) {
 			if (loadSettings.othersettings[0]) { 
 				if (newVersion.checkNewVersion(mainProgDir)) {
-					System.out.println("-- New Version Available --"); return;
+					log.print("-- New Version Available --"); return;
 				} 
 			}
-			System.out.println("-- No New Version --");
+			log.print("-- No New Version --");
 		} else {
-			System.out.println("-- Steam detected --");
+			log.print("-- Steam detected --", log.WARNING);
 		}
 
 		if (loadSettings.othersettings[2]) { 
 			autoSitesFetch.fetchInfoThenUpdateTable(mainProgDir); 
-			System.out.println("- Auto fetch online done -");
+			log.print("- Auto fetch online done -");
 		}
 		if (loadSettings.othersettings[3]) { 
 			localFolderHandle.fetchFoldersForTable(mainProgDir); 
-			System.out.println("- Local fetch done -");
+			log.print("- Local fetch done -");
 		}
 		if (loadSettings.othersettings[4] && !discordStart) { 
 			discord.loopDiscord(mainProgDir); 
-			System.out.println("- Discord loop started -"); 
+			log.print("- Discord loop started -"); 
 			discordStart = true;
 		}
 
-		if (getSteamFolderInfos.loadSteamFolders()) {  System.out.println("--- Steam loaded ---");
-		} else { System.out.println("--- Steam is not detected or not downloaded ---"); }
+		if (getSteamFolderInfos.loadSteamFolders()) {  log.print("--- Steam loaded ---");
+		} else { log.print("--- Steam is not detected or not downloaded ---", log.WARNING); }
 
 		backupHandle.doBackup(mainProgDir);
-		System.out.println("--- Backup started ---");
+		log.print("--- Backup started ---");
 		frameColor.UIColorChangeShit();
-		System.out.println("--- Color change done ---");
+		log.print("--- Color change done ---");
 		mainFrame.createFrame(mainProgDir);
-		System.out.println("--- GUI started ---");
+		log.print("--- GUI started ---");
 
 		if (!loadSettings.othersettings[6]) { firstWelcomeMessage.welcomeMessage(mainProgDir); }
 	}

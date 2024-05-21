@@ -1,18 +1,10 @@
-import java.awt.BorderLayout;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintStream;
 import java.net.URISyntaxException;
-import java.sql.Time;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 
+import backendThings.log;
+import backendThings.mainProgramStart;
 import folderHandling.initialFileLoading.loadSettings;
-import frontendGUI.mainProgramStart;
 public class mainApp {
 	private static String tempDir;
 	/**
@@ -24,65 +16,49 @@ public class mainApp {
 	 */
 	public static void main (String [] args){
 		if (!checkOS()) {
-			System.out.println("OS not supported!");
+			log.print("OS not supported!", log.ERROR);
 			JOptionPane.showMessageDialog(null, "OS not supported! Quiting!", "Error", JOptionPane.ERROR_MESSAGE);
 			System.exit(0);
 		}
-
-
 		Boolean consoleNeeded = false;
 		if (loadSettings.load(tempDir)) { consoleNeeded = loadSettings.othersettings[5]; }
 		if (consoleNeeded) { 
-			// https://www.codeease.net/programming/java/how-to-create-a-console-in-java-gui
-			JFrame frame = new JFrame();
-			frame.setTitle("HGM - Console");
-			frame.add( new JLabel(" Output" ), BorderLayout.NORTH );
-			JTextArea ta = new JTextArea();
-			ta.setEditable( false );
-			ta.setLineWrap( false );
-			
-			PrintStream ps = new PrintStream( new OutputStream() {
-				@Override
-				public void write(int b) throws IOException {
-					ta.append( String.valueOf( (char) b ) );
-				}
-			} );
-			System.setOut(ps);
-			System.setErr(ps);
-
-			frame.add(new JScrollPane( ta ));
-			frame.pack();
-			frame.setVisible(true);
-			frame.setSize(800,300);
-
-			System.out.println("- Console enabled! -");
+			log.frameLog();
+			log.print("- Console enabled! -");
 		} else { 
-			System.out.println("- No console needed! -"); 
+			log.print("- No console needed! -"); 
 		}
-		System.out.println("--- Starting program ---");
-		System.out.println("Main: "+mainProgramStart.mainProgDir);
-		System.out.println("Steam: "+mainProgramStart.steamDir);
-		System.out.println("--- OS checked ---");
+		log.print("TEST");
+		log.print("TEST", log.INFO);
+		log.print("TEST", log.WARNING);
+		log.print("TEST", log.ERROR);
+		log.print("This is just a test for logging, the format is: [yyyy-MM-dd HH:mm:ss.SSS] [Info/Warning/Error] Message");
+		log.print("Example: [2021-08-01 12:00:00.000] [Info] This is a test message");
+		log.print("");
+
+		log.print("--- Starting program ---");
+		log.print("Main: "+mainProgramStart.mainProgDir);
+		log.print("Steam: "+mainProgramStart.steamDir);
+		log.print("--- OS checked ---");
 		mainProgramStart.mainMain();
     }
 
-	// TODO - Linux NEED TEST
 	/**
 	 * This function will check the OS and set the directories.
 	 * @return true if the OS is known, false if unknown
 	 */
 	private static Boolean checkOS(){
 		String sysOS = System.getProperty("os.name").toLowerCase();
-		System.out.println("OS: "+sysOS);
+		log.print("OS: "+sysOS);
 		if (sysOS.contains("win")) {
 			mainProgramStart.mainProgDir = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager";
 			tempDir = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager";
 			mainProgramStart.steamDir = System.getenv("ProgramFiles(x86)") + "/Steam/steamapps";
 			return true;
-		/*
+		// TODO - Test needed
 		} else if (sysOS.contains("nix") || sysOS.contains("nux") || sysOS.contains("aix")) {
-			mainProgramStart.mainProgDir = System.getenv("???") + "/DiamondCoder/nsfwGameManager";
-			mainProgramStart.steamDir = System.getenv("???") + "/Steam/steamapps";
+			mainProgramStart.mainProgDir = System.getenv("HOME") + "/DiamondCoder/nsfwGameManager";
+			mainProgramStart.steamDir = System.getenv("HOME") + "/.steam/steam/steamapps";
 			return true;
 		/*
 		} else if (sysOS.contains("mac")) {

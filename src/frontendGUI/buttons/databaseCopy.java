@@ -6,6 +6,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.w3c.dom.Document;
 
+import backendThings.log;
 import folderHandling.ADocHandle;
 import folderHandling.initialFileLoading.loadLanguage;
 public class databaseCopy {
@@ -27,7 +28,7 @@ public class databaseCopy {
 			}
 		}
 		else {
-			System.out.println("No Selection.");
+			log.print("No Selection for saving file copy.");
 			return;
 		}
 	}

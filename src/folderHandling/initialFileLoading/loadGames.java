@@ -5,6 +5,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import backendThings.log;
 import folderHandling.ADocHandle;
 import integrationCheck.defaultValues;
 
@@ -16,7 +17,7 @@ public class loadGames {
 	 * @return - Boolean - If data was successfully loaded from the XML file into Object[][] data variable 
 	 */
 	public static Boolean loadGamesFromXML(String mainDirectory){
-		System.out.println("loadGames.loadGamesFromXML reloaded again...");
+		log.print("loadGames.loadGamesFromXML reloaded again...");
 		Document dom = ADocHandle.load(mainDirectory);
 		String[] columnNames = enabledRows();
 		Object[][] allDataFromFile = null;
@@ -33,7 +34,7 @@ public class loadGames {
 					if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
 						Element e = (Element) gameNode;
 						for (int n = 0; n < columnNames.length; n++) {
-							// System.out.println(columnNames[n]);
+							// log.print(columnNames[n]);
 							try{
 								switch (columnNames[n]) {
 									case "shownColumns": break;
@@ -53,11 +54,11 @@ public class loadGames {
 									case "os": allDataFromFile[counter][n] = e.getElementsByTagName("OS").item(0).getTextContent().trim(); break;
 									case "language": allDataFromFile[counter][n] = e.getElementsByTagName("language").item(0).getTextContent().trim(); break;
 									case "localPersonalNotes": allDataFromFile[counter][n] = e.getElementsByTagName("selfNote").item(0).getTextContent().trim(); break;
-									default:  allDataFromFile[counter][n] = "N/A???"; System.out.println("allDataFromFile: N/A" + columnNames[n]);break;
+									default:  allDataFromFile[counter][n] = "N/A???"; log.print("allDataFromFile: N/A" + columnNames[n], log.ERROR);break;
 								}
 							} catch (Exception e2) {
 								// allDataFromFile[counter][n] = "???N/A";
-								// System.out.println("allDataFromFile: N/A");
+								// log.print("allDataFromFile: N/A", log.ERROR);
 							}
 						}
 						counter++;

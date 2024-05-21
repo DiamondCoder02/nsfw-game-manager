@@ -81,8 +81,8 @@ public class autoSitesFetch {
 						}
 					} catch (Exception e) { 
 						/*
-						System.out.println("+(¬_¬ )"); 
-						System.out.println(e);
+						log.print("+(¬_¬ )", log.ERROR); 
+						log.print(e);
 						*/
 						// /* /ᐠ｡ꞈ｡ᐟ\ */ 
 					}
@@ -132,7 +132,7 @@ public class autoSitesFetch {
 			String[] gameInfos = new String[oldLoadGame.length];
 			gameInfos[0] = oldLoadGame[0].toString();
 			for (int i = 1; i < oldLoadGame.length; i++) {
-				// System.out.println(oldLoadGame[i] + " " + i + " " + newGame[i-1]);
+				// log.print(oldLoadGame[i] + " " + i + " " + newGame[i-1]);
 				if (newGame[i-1] != null) { gameInfos[i] = newGame[i-1]; } 
 				else { gameInfos[i] = oldLoadGame[i].toString(); }
 			}

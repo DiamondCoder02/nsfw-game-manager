@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.URISyntaxException;
+import java.sql.Time;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -35,7 +36,7 @@ public class mainApp {
 			// https://www.codeease.net/programming/java/how-to-create-a-console-in-java-gui
 			JFrame frame = new JFrame();
 			frame.setTitle("HGM - Console");
-			frame.add( new JLabel(" Outout" ), BorderLayout.NORTH );
+			frame.add( new JLabel(" Output" ), BorderLayout.NORTH );
 			JTextArea ta = new JTextArea();
 			ta.setEditable( false );
 			ta.setLineWrap( false );

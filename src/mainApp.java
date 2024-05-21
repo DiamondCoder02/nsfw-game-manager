@@ -28,7 +28,7 @@ public class mainApp {
 		} else { 
 			log.print("- No console needed! -"); 
 		}
-		log.print("TEST");
+		log.print("TEST, no error level");
 		log.print("TEST", log.INFO);
 		log.print("TEST", log.WARNING);
 		log.print("TEST", log.ERROR);

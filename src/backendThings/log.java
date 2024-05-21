@@ -24,16 +24,22 @@ public class log {
 	 */
 	public static void print(String message, int errorLevel) {
 		StringBuilder fullMessage = new StringBuilder();
-		fullMessage.append("[").append(formatter.get().format(new Date())).append("] ");
 		switch(errorLevel) {
 			case INFO:
-				fullMessage.append("[Info] ");
+				fullMessage.append("(-)[").append(formatter.get().format(new Date())).append("] ").append("[Info] ");
+				// fullMessage.append("[Info] ");
 				break;
 			case WARNING:
+				fullMessage.append("(!!)[").append(formatter.get().format(new Date())).append("] ");
 				fullMessage.append("[Warning] ");
 				break;
 			case ERROR:
+				fullMessage.append("(+!)[").append(formatter.get().format(new Date())).append("] ");
 				fullMessage.append("[Error] ");
+				break;
+			default:
+				fullMessage.append("(.)[").append(formatter.get().format(new Date())).append("] ");
+				fullMessage.append("[ - ] ");
 				break;
 		}
 		fullMessage.append(message);
@@ -45,7 +51,7 @@ public class log {
 	 */
 	public static void print(String message) {
 		StringBuilder fullMessage = new StringBuilder();
-		fullMessage.append("[").append(formatter.get().format(new Date())).append("] ");
+		fullMessage.append("(-)[").append(formatter.get().format(new Date())).append("] ");
 		fullMessage.append("[Info] ");
 		fullMessage.append(message);
 		System.out.println(fullMessage.toString());

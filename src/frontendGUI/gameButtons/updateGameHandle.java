@@ -39,13 +39,7 @@ public class updateGameHandle {
 		String[] finalInfo = new String[oldInfo.length];
 		Element e = ADocHandle.getElementFromDB(dom, oldInfo[0], site);
 		if (e == null) { return false; }
-		/*
-		0 - ID		1 - Name	2 - Developer	3 - Played version
-		4 - Last time play		5 - Rated		6 - Newest version
-		7 - Last update		8 - People rating	9 - Player progress
-		10 - Still on pc?			11 - Engine		12 - OS
-		13 - Language			14 - Personal notes
-		*/
+		// Notes.md -1 (site)
 		JPanel panel = new JPanel(new GridLayout(8*2, 2));
 		JTextField[] textField = new JTextField[oldInfo.length];
 		String spac = "        "; //8

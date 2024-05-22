@@ -5,13 +5,7 @@ import webApiScrapeThings.sites.loadF95site;
 import webApiScrapeThings.sites.loadSteam;
 
 public class getGamesInfo {
-	/* infos
-	0 - ID		1 - Name	2 - Developer	3 - Played version
-	4 - Last time play		5 - Rated		6 - Newest version
-	7 - Last update		8 - People rating	9 - Player progress
-	10 - Still on pc?			11 - Engine		12 - OS
-	13 - Language			14 - Personal notes
-	*/
+	// Notes.md -1 (site)
 	public static String[] getF95zone(String id) {
 		String[] output = loadF95site.getf95UrlContents(id);
 			if (output == null) { return null; }

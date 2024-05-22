@@ -44,25 +44,6 @@ public class getSteamFolderInfos {
 			return null;
 		}
 	}
-	/*
-"AppState"
-{
-	"appid"		"105600"
-	"universe"		"1"
-	"LauncherPath"		"C:\\Program Files (x86)\\Steam\\steam.exe"
-	"name"		"Terraria"
-	"StateFlags"		"4"
-	"installdir"		"Terraria"
-	"LastUpdated"		"1700826683"
-	"SizeOnDisk"		"687925078"
-	"StagingSize"		"0"
-	"buildid"		"9965506"
-	"LastOwner"		"76561198365394948"
-	"AutoUpdateBehavior"		"0"
-	"AllowOtherDownloadsWhileRunning"		"0"
-	"ScheduledAutoUpdate"		"0"
-}
-*/
 
 	/**
 	 * Read the game file

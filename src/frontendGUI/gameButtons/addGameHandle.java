@@ -34,13 +34,7 @@ public class addGameHandle {
 	//  an array is empty, we ask the user to fill it in
 	//  while showing the user the info we know
 	public static boolean addGameToDB(String mainDir, String site, String[] allKnownGameInfo){
-		/* allKnownGameInfo
-		0 - ID		1 - Name	2 - Developer	3 - Played version
-		4 - Last time play		5 - Rated		6 - Newest version
-		7 - Last update		8 - People rating	9 - Player progress
-		10 - Still on pc?			11 - Engine		12 - OS
-		13 - Language			14 - Personal notes
-		*/
+		// Notes.md -1 (site)
 		// JPanel panel = new JPanel(new GridLayout(8*2, 2));
 		JTextField[] textField = new JTextField[allKnownGameInfo.length];
 		String spac = "        "; //8

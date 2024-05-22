@@ -98,24 +98,7 @@ public class autoSitesFetch {
 		});
 	}
 
-/* 
-0	case "Site" :
-1	case "ID": 
-2	case "Name": 
-3	case "Developer": 
-4	case "Played version": 
-5	case "Last time play":
-6	case "Rated": 
-7	case "Newest version": 
-8	case "Last update": 
-9	case "People rating": 
-10	case "Player progress": 
-11	case "Still on pc?":
-12	case "Engine": 
-13	case "OS": 
-14	case "Language":
-15	case "Personal Notes": 
-*/
+	// Notes.md
 	/**
 	 * This function will check if there is a new update for the game.<p>
 	 * This is a huge loop that will check every game in the table.

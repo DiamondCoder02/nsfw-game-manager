@@ -5,10 +5,10 @@ import javax.swing.JOptionPane;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import backendThings.integrationCheck.defaultValues;
 import folderHandling.ADocHandle;
 import folderHandling.checkDatabase;
 import folderHandling.initialFileLoading.loadLanguage;
-import integrationCheck.defaultValues;
 
 public class updateGame {
 	static String[] bc = loadLanguage.basic, base = loadLanguage.base;

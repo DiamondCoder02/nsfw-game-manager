@@ -1,4 +1,4 @@
-package integrationCheck;
+package backendThings.integrationCheck;
 
 /**
  * This interface contains the default values for the program.

@@ -54,7 +54,7 @@ public class frameMenu {
 		addGame = new JMenuItem(bs[2]!=null?bs[2]:"Add games"); addGame.setActionCommand("Add game"); addGame.addActionListener(buttonListener);
 		updateList = new JMenuItem(bs[3]!=null?bs[3]:"Update games"); updateList.setActionCommand("Update game"); updateList.addActionListener(buttonListener);
 		removeGame = new JMenuItem(bs[4]!=null?bs[4]:"Remove games"); removeGame.setActionCommand("Remove game"); removeGame.addActionListener(buttonListener);
-		saveFileToDifferent = new JMenuItem(bu[12]!=null?bu[12]:"Save file copy"); saveFileToDifferent.setActionCommand("Save file copy"); saveFileToDifferent.addActionListener(buttonListener);
+		saveFileToDifferent = new JMenuItem("Save a copy of current table"); saveFileToDifferent.setActionCommand("Save file copy"); saveFileToDifferent.addActionListener(buttonListener);
 		refreshTable = new JMenuItem("Refresh Local Games"); refreshTable.setActionCommand("Refresh table"); refreshTable.addActionListener(buttonListener);
 		refreshFromAPI = new JMenuItem("Check Online Updates"); refreshFromAPI.setActionCommand("API refresh"); refreshFromAPI.addActionListener(buttonListener);
 

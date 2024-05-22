@@ -12,11 +12,11 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import backendThings.log;
+import backendThings.integrationCheck.defaultValues;
 import folderHandling.initialFileLoading.loadGames;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
 import frontendGUI.colors.tableColor;
-import integrationCheck.defaultValues;
 
 public class frameTableReload {
 	public static void reloadTable(JTable table, String mainDirectory) {

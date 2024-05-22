@@ -28,7 +28,7 @@ public class mainApp {
 		} else { 
 			log.print("- No console needed! -"); 
 		}
-		log.print("TEST, no error level");
+		log.print("TEST, no error level given");
 		log.print("TEST", log.INFO);
 		log.print("TEST", log.WARNING);
 		log.print("TEST", log.ERROR);
@@ -98,12 +98,13 @@ public class mainApp {
   - Asset folder LOL
 - [x] App unable to start if there is space anywhere in the path of the program
   - Only if developer console is enabled. Somehow the console commits unalive
+  - Fixed by changing to other console method
 - [x] Info when starting
 - [x] Save slots
   -https://github.com/DiamondCoder02/nsfw-game-manager/issues/7
 
 
-## Todo => [0.1.2.0] (tasks: 2)
+## TODO => [0.1.2.0] (tasks: 2)
 - [ ] Fixed exe saying "This application requires a Java Runtime Environment."
   - https://www.quora.com/Can-the-JVM-be-bundled-with-a-Java-program-so-it-runs-on-a-computer-without-a-JVM-installed
 - [ ] Rewrite Wiki again

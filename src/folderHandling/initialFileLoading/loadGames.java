@@ -6,8 +6,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import backendThings.log;
+import backendThings.integrationCheck.defaultValues;
 import folderHandling.ADocHandle;
-import integrationCheck.defaultValues;
 
 public class loadGames {
 	static String[] bac = loadLanguage.basic;

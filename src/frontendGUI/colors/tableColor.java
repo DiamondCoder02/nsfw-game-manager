@@ -7,8 +7,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
 
+import backendThings.integrationCheck.defaultValues;
 import folderHandling.initialFileLoading.loadSettings;
-import integrationCheck.defaultValues;
 
 public class tableColor {
 	public static JTable getNewRenderedTable(final JTable table, String playProgColName) {

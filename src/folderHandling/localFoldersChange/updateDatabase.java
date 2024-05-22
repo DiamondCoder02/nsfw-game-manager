@@ -7,11 +7,11 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import backendThings.integrationCheck.defaultValues;
 import folderHandling.ADocHandle;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.localFoldersChange.updateDatabase;
 import frontendGUI.mainFrame;
-import integrationCheck.defaultValues;
 
 public class updateDatabase {
 	static String[] jla = loadLanguage.jlapa, folder = loadLanguage.folder, jrb = loadLanguage.jrabu;

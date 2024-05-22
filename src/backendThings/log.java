@@ -26,19 +26,19 @@ public class log {
 		StringBuilder fullMessage = new StringBuilder();
 		switch(errorLevel) {
 			case INFO:
-				fullMessage.append("(-)[").append(formatter.get().format(new Date())).append("] ").append("[Info] ");
+				fullMessage.append("[").append(formatter.get().format(new Date())).append("] ").append("[Info] ");
 				// fullMessage.append("[Info] ");
 				break;
 			case WARNING:
-				fullMessage.append("(!!)[").append(formatter.get().format(new Date())).append("] ");
+				fullMessage.append("[").append(formatter.get().format(new Date())).append("] ");
 				fullMessage.append("[Warning] ");
 				break;
 			case ERROR:
-				fullMessage.append("(+!)[").append(formatter.get().format(new Date())).append("] ");
+				fullMessage.append("[").append(formatter.get().format(new Date())).append("] ");
 				fullMessage.append("[Error] ");
 				break;
 			default:
-				fullMessage.append("(.)[").append(formatter.get().format(new Date())).append("] ");
+				fullMessage.append("[").append(formatter.get().format(new Date())).append("] ");
 				fullMessage.append("[ - ] ");
 				break;
 		}
@@ -46,12 +46,14 @@ public class log {
 		System.out.println(fullMessage.toString());
 	}
 	/**
+	 * This function will print a message with the current date and time.
+	 * You can't set the error level with this function.
+	 * It will always be INFO.
 	 * @param message Message that you want to send to print.
-	 * @param errorLevel Type of message you want to send.
 	 */
 	public static void print(String message) {
 		StringBuilder fullMessage = new StringBuilder();
-		fullMessage.append("(-)[").append(formatter.get().format(new Date())).append("] ");
+		fullMessage.append("[").append(formatter.get().format(new Date())).append("] ");
 		fullMessage.append("[Info] ");
 		fullMessage.append(message);
 		System.out.println(fullMessage.toString());

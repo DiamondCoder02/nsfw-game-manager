@@ -16,10 +16,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import backendThings.log;
+import backendThings.integrationCheck.defaultValues;
 import folderHandling.ADocHandle;
 import folderHandling.initialFileLoading.loadLanguage;
 import frontendGUI.mainFrame;
-import integrationCheck.defaultValues;
 
 public class updateGameHandle {
 	static String[] base = loadLanguage.base, basic = loadLanguage.basic, jla = loadLanguage.jlapa, 

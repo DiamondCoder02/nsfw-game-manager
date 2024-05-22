@@ -11,10 +11,10 @@ import javax.swing.JRadioButton;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 
+import backendThings.integrationCheck.defaultValues;
 import folderHandling.initialFileLoading.loadGames;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
-import integrationCheck.defaultValues;
 
 public class randomGames {
 	static String[] jrb = loadLanguage.jrabu, tlc = loadLanguage.tabl, ran= loadLanguage.rand;

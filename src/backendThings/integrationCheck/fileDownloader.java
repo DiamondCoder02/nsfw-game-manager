@@ -1,4 +1,4 @@
-package integrationCheck;
+package backendThings.integrationCheck;
 
 import java.io.File;
 import java.io.FileOutputStream;

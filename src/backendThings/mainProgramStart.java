@@ -4,6 +4,8 @@ import java.io.File;
 
 import javax.swing.JFrame;
 
+import backendThings.integrationCheck.newVersion;
+import backendThings.integrationCheck.systemCheck;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
 import folderHandling.localFoldersChange.backupHandle;
@@ -13,8 +15,6 @@ import frontendGUI.mainFrame;
 import frontendGUI.buttons.discord;
 import frontendGUI.buttons.firstWelcomeMessage;
 import frontendGUI.colors.frameColor;
-import integrationCheck.newVersion;
-import integrationCheck.systemCheck;
 import webApiScrapeThings.autoSitesFetch;
 
 public class mainProgramStart {

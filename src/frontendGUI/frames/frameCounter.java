@@ -1,8 +1,8 @@
 package frontendGUI.frames;
 
+import backendThings.integrationCheck.defaultValues;
 import folderHandling.initialFileLoading.loadGames;
 import frontendGUI.mainFrame;
-import integrationCheck.defaultValues;
 
 public class frameCounter {
 	/**

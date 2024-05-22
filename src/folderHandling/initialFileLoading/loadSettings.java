@@ -2,8 +2,8 @@ package folderHandling.initialFileLoading;
 
 import com.google.gson.JsonObject;
 
+import backendThings.integrationCheck.defaultValues;
 import folderHandling.ADocHandle;
-import integrationCheck.defaultValues;
 
 public class loadSettings {
 	public static Boolean[] othersettings;

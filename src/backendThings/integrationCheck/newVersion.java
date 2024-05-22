@@ -1,4 +1,4 @@
-package integrationCheck;
+package backendThings.integrationCheck;
 
 import java.net.HttpURLConnection;
 import java.net.URL;

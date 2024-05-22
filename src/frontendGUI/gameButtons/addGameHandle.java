@@ -10,9 +10,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import backendThings.integrationCheck.defaultValues;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.localFoldersChange.updateDatabase;
-import integrationCheck.defaultValues;
 
 public class addGameHandle {
 	static String[] base = loadLanguage.base, basic = loadLanguage.basic, jla = loadLanguage.jlapa, 

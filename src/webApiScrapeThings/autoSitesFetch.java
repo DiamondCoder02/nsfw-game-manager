@@ -14,13 +14,13 @@ import javax.swing.JRootPane;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import backendThings.integrationCheck.defaultValues;
 import folderHandling.ADocHandle;
 import folderHandling.initialFileLoading.loadGames;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
 import frontendGUI.mainFrame;
 import frontendGUI.gameButtons.getGamesInfo;
-import integrationCheck.defaultValues;
 
 public class autoSitesFetch {
 	static boolean manualButton = false;

@@ -1,5 +1,32 @@
 # HGM Changelog and Notes
 
+## To compile the app
+
+<https://stackoverflow.com/a/49553161>
+
+HGM.rar must contain:
+
+```text
+Folder/rar/zip structure:
++ Assets ( default files and needed pictures, these found in the root next to src folder )
+  + Pics ( pictures for the program )
+    ...
+  - default_hentai.xml
+  - default_language.csv
+  - default_settings.json
++ jre_17_win64 ( or any JRE for that OS )
+- HentaiGameManager.exe ( or any application )
+- HentaiGameManager.jar 
+- THIS IS NOT STORAGE.txt
+```
+
+When compiling with Launch4j, the JRE must have "jre_17" as value or anything that has the JRE with the bin/conf/lib folders.
+
+Note: don't include the JDK, it' 3X bigger than the JRE, use JRE
+
+---
+---
+
 order of table:
 0 - Site
 1 - ID
@@ -29,7 +56,7 @@ These are not final and can be changed at any time.
 
 [TODO/Release] [version number] (tasks)
 
-## Release => [0.1.2.0] (tasks: 17)
+## Release => [0.1.2.0] (tasks: 18)
 
 - [x] Added a counter for the sites of game and all games counter
 - [x] Change pictures in Credit and FAQ
@@ -54,25 +81,22 @@ These are not final and can be changed at any time.
   - Fixed by changing to other console method
 - [x] Info when starting
 - [x] Save slots
-  -<https://github.com/DiamondCoder02/nsfw-game-manager/issues/7>
+  - <https://github.com/DiamondCoder02/nsfw-game-manager/issues/7>
+- [x] Fixed exe saying "This application requires a Java Runtime Environment."
+  - <https://stackoverflow.com/questions/7071133/how-to-bundle-a-jre-with-launch4j?rq=3>
 
-## TODO => [0.1.2.0] (tasks: 2)
+## TODO => [0.1.2.0] (tasks: 1)
 
-- [ ] Fixed exe saying "This application requires a Java Runtime Environment."
-  - <https://www.quora.com/Can-the-JVM-be-bundled-with-a-Java-program-so-it-runs-on-a-computer-without-a-JVM-installed>
 - [ ] Rewrite Wiki again
 
-## TODO [0.1.3.0] (tasks: 3)
+## TODO [0.1.3.0] (tasks: 6)
 
 - [ ] Rewrite language.csv
 - [ ] Cum counter ( ͡° ͜ʖ ͡°)
 - [ ] improve dark mode?
 - [ ] In app wiki
-
-## TODO [0.1.4.0] (tasks: 2)
-
-- [ ] dlsite.com support
 - [ ] Make it LINUX compatible
+- [ ] dlsite.com support
 
 ## TODO random: [???]
 

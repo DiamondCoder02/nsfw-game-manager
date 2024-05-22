@@ -4,11 +4,11 @@
   <headerType>gui</headerType>
   <jar>TODO</jar>
   <outfile>TODO</outfile>
-  <errTitle>Install Java 8</errTitle>
+  <errTitle>Install Java 17 OR newer</errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
   <priority>normal</priority>
-  <downloadUrl>http://java.com/download</downloadUrl>
+  <downloadUrl>https://www.oracle.com/java/technologies/downloads/#jre17</downloadUrl>
   <supportUrl>https://github.com/DiamondCoder02/nsfw-game-manager</supportUrl>
   <stayAlive>true</stayAlive>
   <restartOnCrash>false</restartOnCrash>
@@ -19,10 +19,10 @@
     <windowTitle>HentaiGameManager</windowTitle>
   </singleInstance>
   <jre>
-    <path>%JAVA_HOME%;%PATH%</path>
-    <requiresJdk>true</requiresJdk>
+    <path>jre_17_win64</path>
+    <requiresJdk>false</requiresJdk>
     <requires64Bit>false</requires64Bit>
-    <minVersion>1.8.0</minVersion>
+    <minVersion></minVersion>
     <maxVersion></maxVersion>
   </jre>
   <versionInfo>
@@ -34,7 +34,7 @@
     <txtProductVersion>0.1.2.0</txtProductVersion>
     <productName>Hentai Game Manager</productName>
     <companyName>DiamondCoder</companyName>
-    <internalName>Po_Game_Collection</internalName>
+    <internalName>HGM</internalName>
     <originalFilename>HentaiGameManager.exe</originalFilename>
     <trademarks>nope</trademarks>
     <language>ENGLISH_US</language>

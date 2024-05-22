@@ -74,8 +74,8 @@ public class mainApp {
  *  IMPORTANT:
  *  This is just a rough draft on future plans.
  *  These are not final and can be changed at any time.
- */
-/*
+ * 
+
 ### [version number] (tasks)
 ## Release => [0.1.2.0] (tasks: 17) 
 - [x] Added a counter for the sites of game and all games counter
@@ -125,9 +125,9 @@ public class mainApp {
 - [ ] move database from xml ( MUST NOT BREAK )
 - [ ] Memory & CPU usage higher? ( Need more test )
   - This happened when I run a full database update with API refreshes?
-*/
 
-/* order of table:
+ * 
+ * order of table:
 0 - Site		1 - ID		2 - Name	3 - Developer
 4 - Played version			5 - Last time play
 6 - Rated		7 - Newest version		8 - Last update

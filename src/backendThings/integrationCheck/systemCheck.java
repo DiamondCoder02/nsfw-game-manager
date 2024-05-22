@@ -5,17 +5,6 @@ import java.io.File;
 import javax.swing.JOptionPane;
 
 public class systemCheck {
-	/*
-	 * Folder structure:
-	 * AppData\Roaming\DiamondCoder\nsfwGameManager\
-	 *  - backup\
-	 *  - - backup1.xml
-	 *  - discord\
-	 *  - - discord_game_sdk.dll
-	 * 	- settings.xml
-	 * 	- hentai.xml
-	 * 	- language.csv
-	 */
 	/**
 	 * This function will check if the system is ready to run the program.
 	 * @param mainDir - The main directory of the program.

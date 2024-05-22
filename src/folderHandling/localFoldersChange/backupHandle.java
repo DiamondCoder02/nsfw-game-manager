@@ -9,9 +9,9 @@ import java.util.Comparator;
 import java.util.Date;
 
 public class backupHandle {
-	// TODO remake for multiple database
 	/**
 	 * Create a backup of the main data file
+	 * @param mainDir - The main directory of the program
 	 */
 	public static void doBackup(String mainDir) {
 		for (int dbN = 0; dbN < 5; dbN++) {
@@ -38,7 +38,6 @@ public class backupHandle {
 			String backupFile = mainDir + "/backup/hentai"+dbN+"/backup_"+date+".xml";
 			// copy main file to backup file
 			try {
-				// Files.copy(new File(mainDir + "/hentai.xml").toPath(), new File(backupFile).toPath());
 				if (dbN == 0) {
 					Files.copy(Paths.get(mainDir + "/hentai.xml"), Paths.get(backupFile));
 				} else {

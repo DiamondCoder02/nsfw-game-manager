@@ -13,7 +13,7 @@ import folderHandling.localFoldersChange.updateSettings;
 
 public class languageChoice {
 	static String[] folder = loadLanguage.folder, butt = loadLanguage.buton;
-	public static void langChoose(String mainDir) {
+	public static boolean langChoose(String mainDir) {
 		String[][] languages = loadLanguage.loadLangChoices();
 		JPanel panel = new JPanel();
 		JRadioButton[] buttons = new JRadioButton[languages[0].length];
@@ -31,8 +31,10 @@ public class languageChoice {
 			for (int i = 0; i < buttons.length; i++) {
 				if (buttons[i].isSelected()) {
 					updateSettings.changeSetting(mainDir, "appLanguage", buttons[i].getActionCommand());
+					return true;
 				}
 			}
 		}
+		return false;
 	}
 }

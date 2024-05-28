@@ -36,7 +36,7 @@ public class databaseChange {
 		JRadioButton[] buttons = new JRadioButton[5];
 		ButtonGroup allButtons = new ButtonGroup();
 		for (int i = 0; i < buttons.length; i++) {
-			buttons[i] = new JRadioButton("Db "+(i+1) + ": - " + currentDBnames[i]);
+			buttons[i] = new JRadioButton("Save"+(i+1) + ": " + currentDBnames[i]);
 			buttons[i].setActionCommand(i+"");
 			allButtons.add(buttons[i]);
 			panel.add(buttons[i]);

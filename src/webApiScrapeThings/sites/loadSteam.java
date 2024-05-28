@@ -17,6 +17,8 @@ public class loadSteam {
 	 * @return String[] - returns the content of the site.
 	 */
 	public static String[] getSteamUrlContents(String gameIds) {
+		// TODO, if not id is given, check if it's a full url
+		// https://store.steampowered.com/app/2074330/Femboys__Fries/
 		StringBuilder content = loadSitesBufRead.loadSite("https://api.steamcmd.net/v1/info/"+gameIds, false);
 		if (content == null) { return null; }
 

@@ -9,6 +9,7 @@ import backendThings.integrationCheck.defaultValues;
 import folderHandling.ADocHandle;
 import folderHandling.checkDatabase;
 import folderHandling.initialFileLoading.loadLanguage;
+import webApiScrapeThings.getGamesInfo;
 
 public class updateGame {
 	static String[] bc = loadLanguage.basic, base = loadLanguage.base;

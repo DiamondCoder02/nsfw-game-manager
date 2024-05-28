@@ -27,7 +27,7 @@ public class mainFrame {
 		
 		frame = frameMenu.WindowCreate(frame, mainDirectory);
 		table = frameTable.createTable(mainDirectory, table);
-		frameCounter.getNumberOfGames(mainDirectory);
+		frameCounter.getNumberOfGames();
 
 		frame.add(label, BorderLayout.PAGE_START);
 		frame.add(table.getTableHeader(), BorderLayout.CENTER);
@@ -44,7 +44,7 @@ public class mainFrame {
 	 * Refreshes the table with the new data
 	 */
 	public static void refreshTable(String mainDir) {
-		frameCounter.getNumberOfGames(mainDir);
+		frameCounter.getNumberOfGames();
 		loadSettings.load(mainDir);
 		frameTableReload.reloadTable(table, mainDir);
 		frameTable.setColumns(table);

@@ -1,6 +1,7 @@
-package frontendGUI.gameButtons;
+package webApiScrapeThings;
 
 import folderHandling.localFoldersLoad.getSteamFolderInfos;
+import webApiScrapeThings.sites.loadDlsite;
 import webApiScrapeThings.sites.loadF95site;
 import webApiScrapeThings.sites.loadSteam;
 
@@ -43,8 +44,14 @@ public class getGamesInfo {
 	}
 
 	public static String[] getDLsite(String id) {
-		// TODO - DLsite
-		return null;
+		// name, developer, latestUpdateDate, allLanguages, allOs
+		String[] output = loadDlsite.getDlsiteUrlContents(id);
+		String[] infos = {id, output[0], output[1],null,
+			null,null,null,
+			output[2],null,null,
+			null,null, output[4],
+			output[3],null};
+		return infos;
 	}
 
 	public static String[] getManual(String id) {

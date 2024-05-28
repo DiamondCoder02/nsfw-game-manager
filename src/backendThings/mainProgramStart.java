@@ -66,12 +66,6 @@ public class mainProgramStart {
 			localFolderHandle.fetchFoldersForTable(mainProgDir); 
 			log.print("- Local fetch done -");
 		}
-		if (loadSettings.othersettings[4] && !discordStart) { 
-			discord.loopDiscord(mainProgDir); 
-			log.print("- Discord loop started -"); 
-			discordStart = true;
-		}
-
 		if (getSteamFolderInfos.loadSteamFolders()) {  log.print("--- Steam loaded ---");
 		} else { log.print("--- Steam is not detected or not downloaded ---", log.WARNING); }
 
@@ -81,6 +75,11 @@ public class mainProgramStart {
 		log.print("--- Color change done ---");
 		mainFrame.createFrame(mainProgDir);
 		log.print("--- GUI started ---");
+		if (loadSettings.othersettings[4] && !discordStart) { 
+			discord.loopDiscord(mainProgDir); 
+			log.print("- Discord loop started -"); 
+			discordStart = true;
+		}
 
 		if (!loadSettings.othersettings[6]) { firstWelcomeMessage.welcomeMessage(mainProgDir); }
 	}

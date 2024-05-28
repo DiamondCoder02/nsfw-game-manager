@@ -11,6 +11,8 @@ public class loadF95site {
 	 * @return String[] - returns the content of the site.
 	 */
 	public static String[] getf95UrlContents(String gameIds) {
+		// TODO, if not id is given, check if it's a full url
+		// https://f95zone.to/threads/123456/
 		StringBuilder content = loadSitesBufRead.loadSite("https://f95zone.to/threads/"+gameIds+"/", true);
 		if (content == null) { return null; }
 		String[] allTheInfo = new String[8];

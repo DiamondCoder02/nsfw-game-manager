@@ -84,10 +84,11 @@ These are not final and can be changed at any time.
   - <https://github.com/DiamondCoder02/nsfw-game-manager/issues/7>
 - [x] Fixed exe saying "This application requires a Java Runtime Environment."
   - <https://stackoverflow.com/questions/7071133/how-to-bundle-a-jre-with-launch4j?rq=3>
+- If steam is detected, the update application is not shown as Steam will update and the buttons is useless
 
 ## TODO => [0.1.2.0] (tasks: 1)
 
-- [ ] Rewrite Wiki again
+- [ ] Write detailed wiki both in app and on Github
 
 ## TODO [0.1.3.0] (tasks: 6)
 

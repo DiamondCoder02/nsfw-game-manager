@@ -20,7 +20,6 @@ import folderHandling.initialFileLoading.loadGames;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.initialFileLoading.loadSettings;
 import frontendGUI.mainFrame;
-import frontendGUI.gameButtons.getGamesInfo;
 
 public class autoSitesFetch {
 	static boolean manualButton = false;

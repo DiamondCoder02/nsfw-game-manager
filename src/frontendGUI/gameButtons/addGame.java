@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import folderHandling.checkDatabase;
 import folderHandling.initialFileLoading.loadLanguage;
+import webApiScrapeThings.getGamesInfo;
 
 public class addGame {
 	static String[] base = loadLanguage.base;

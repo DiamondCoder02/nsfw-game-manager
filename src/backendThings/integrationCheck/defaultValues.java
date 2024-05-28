@@ -45,11 +45,11 @@ public interface defaultValues {
 	String[] gameInfos = {"from", "id", "name", "developer", "played_version", "dateof_lastplay", "user_rating", "newest_version", 
 		"dateof_lastupate", "people_rating", "howFarUserPlayed", "stillOnPc", "engine", "OS", "language", "selfNote"};
 
-	String[] infoSites2LOL = {"Manually added games", "F95zone", "Steam"};
+	String[] infoSites2LOL = {"Manually added games", "F95zone", "Steam", "DLsite"};
 	/**
 	 * 	The possible values for some of the game information
 	 */
-	String[] infoSite = {"man", "f95", "steam"};
+	String[] infoSite = {"man", "f95", "steam", "dls"};
 	String[] infoProgress = {"Not played", "In progress", "Finish", "100% Finished", "Dropped"};
 	String[] infoOnPc = {"yes", "no", "unknown"};
 	String[] infoEngine = {"Flash", "HTML", "Java", "QSP", "Ren'Py", "RPGM", "Unity", "Unreal Engine", "WinGit", "WolfRPG", "other/unknown"};

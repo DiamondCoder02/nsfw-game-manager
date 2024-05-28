@@ -31,6 +31,9 @@ public class sites {
 		JLabel IDlabel = new JLabel(jla[0]!=null?jla[0]:"ID: (required)");
 		JTextField id = new JTextField(8);
 
+		// TODO check what's the id field has
+		// if it's a full url, get the id from it
+
 		panel.add(IDlabel); panel.add(id);
 		panel.add(new JLabel("Website:"));	panel.add(webPanel);
 

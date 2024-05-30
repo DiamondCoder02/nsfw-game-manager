@@ -85,6 +85,7 @@ These are not final and can be changed at any time.
 - [x] Fixed exe saying "This application requires a Java Runtime Environment."
   - <https://stackoverflow.com/questions/7071133/how-to-bundle-a-jre-with-launch4j?rq=3>
 - If steam is detected, the update application is not shown as Steam will update and the buttons is useless
+- [x] dlsite.com support **TESTING NEEDED**
 
 ## TODO => [0.1.2.0] (tasks: 1)
 
@@ -97,7 +98,6 @@ These are not final and can be changed at any time.
 - [ ] improve dark mode?
 - [ ] In app wiki
 - [ ] Make it LINUX compatible
-- [ ] dlsite.com support
 
 ## TODO random: [???]
 

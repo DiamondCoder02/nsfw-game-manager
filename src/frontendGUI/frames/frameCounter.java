@@ -12,6 +12,7 @@ public class frameCounter {
 	 * [1] = Manually added <p>
 	 * [2] = F95zone <p>
 	 * [3] = Steam <p>
+	 * [4] = Dlsite <p>
 	 */
 	public static Integer[] gameCounts;
 

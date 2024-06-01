@@ -3,11 +3,12 @@ package webApiScrapeThings.sites;
 import webApiScrapeThings.loadSitesBufRead;
 
 public class loadDlsite {
+	/**
+	 * This function will get the content of the DLSite page.
+	 * @param gameIds - The ID of the game.
+	 * @return String[] - returns the name, developer, latest update date, languages and OS.
+	 */
 	public static String[] getDlsiteUrlContents(String gameIds) {
-		// TODO, if not id is given, check if it's a full url
-		// https://www.dlsite.com/appx/work/=/product_id/RJ01169385.html
-		// Shortest url: https://www.dlsite.com/appx/RJ01169385/?locale=en_US
-
 		/*
 		I have weirdest theory, and if this works, I'm a genius.
 		* RJ  - Smartphone - https://www.dlsite.com/appx/work/=/product_id/RJ413985.html/?locale=en_US

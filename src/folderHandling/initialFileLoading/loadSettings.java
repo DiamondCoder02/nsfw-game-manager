@@ -2,8 +2,10 @@ package folderHandling.initialFileLoading;
 
 import com.google.gson.JsonObject;
 
+import backendThings.mainProgramStart;
 import backendThings.integrationCheck.defaultValues;
 import folderHandling.ADocHandle;
+import folderHandling.localFoldersChange.updateSettings;
 
 public class loadSettings {
 	public static Boolean[] othersettings;
@@ -38,6 +40,10 @@ public class loadSettings {
 			// languageVersion = parser.get("languageVersion").getAsString();
 			databaseNumber = parser.get("databaseNumber").getAsString();
 			databaseNames = parser.get("databaseNames").getAsString();
+			if (!parser.get("mainProgDir").getAsString().equals("null")) { mainProgramStart.mainProgDir = parser.get("mainProgDir").getAsString(); }
+			else { updateSettings.changeSetting(directory, "mainProgDir", mainProgramStart.mainProgDir ); }
+			if (!parser.get("steamDir").getAsString().equals("null")) { mainProgramStart.steamDir = parser.get("steamDir").getAsString(); }
+			else { updateSettings.changeSetting(directory, "steamDir", mainProgramStart.steamDir ); }
 
 			for (int i = 0; i < defaultValues.settings[1].length-1; i++) {
 				shownColumns[i] = shownSet.get(defaultValues.settings[1][i+1]).getAsBoolean();

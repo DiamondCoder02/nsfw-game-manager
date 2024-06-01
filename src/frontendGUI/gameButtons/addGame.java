@@ -2,23 +2,14 @@ package frontendGUI.gameButtons;
 
 import javax.swing.JOptionPane;
 
-import folderHandling.checkDatabase;
 import folderHandling.initialFileLoading.loadLanguage;
 import webApiScrapeThings.getGamesInfo;
 
 public class addGame {
 	static String[] base = loadLanguage.base;
 	public static void addOneGame(String mainDir) {
-		String[] webAndId = sites.requestSiteAndId(base[2]!=null?base[2]:"Add game");
+		String[] webAndId = sites.requestSiteAndId(mainDir, "add", base[2]!=null?base[2]:"Add game");
 		if (webAndId == null) { return; }
-
-		if (checkDatabase.isInDatabase(mainDir, webAndId[1], webAndId[0])) { 
-			JOptionPane.showMessageDialog(null, 
-			webAndId[0] + " with the id "+webAndId[1]+" is already in the database", 
-				base[1]!=null?base[1]:"Error", 
-				JOptionPane.ERROR_MESSAGE);
-			return;
-		}
 
 		String[] infos = null;
 		switch (webAndId[0]) {

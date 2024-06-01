@@ -14,6 +14,7 @@ import javax.swing.JRootPane;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import backendThings.log;
 import backendThings.integrationCheck.defaultValues;
 import folderHandling.ADocHandle;
 import folderHandling.initialFileLoading.loadGames;
@@ -65,24 +66,18 @@ public class autoSitesFetch {
 				for (int i = 0; i < loadedGames.length; i++) {
 					String site = loadedGames[i][0].toString();
 					try {
-						// TODO Dlsite later
+						String[] newGame = null;
 						switch (site) {
-							case "f95":
-								String[] newF95Game = getGamesInfo.getF95zone(loadedGames[i][1].toString());
-								executorService.scheduleAtFixedRate(myRunTask(mainDire, loadedGames[i], newF95Game), 0, 1, TimeUnit.SECONDS);
-								break;
-							case "steam":
-								String[] newSteamGame = getGamesInfo.getSteam(loadedGames[i][1].toString());
-								executorService.scheduleAtFixedRate(myRunTask(mainDire, loadedGames[i], newSteamGame), 0, 1, TimeUnit.SECONDS);
-								break;
-							default:
-								break;
+							case "f95": newGame = getGamesInfo.getF95zone(loadedGames[i][1].toString()); break;
+							case "steam": newGame = getGamesInfo.getSteam(loadedGames[i][1].toString()); break;
+							case "dls": newGame = getGamesInfo.getDLsite(loadedGames[i][1].toString()); break;
+							default: break;
 						}
+						if (newGame == null) { continue; }
+						executorService.scheduleAtFixedRate(myRunTask(mainDire, loadedGames[i], newGame), 0, 1, TimeUnit.SECONDS);
 					} catch (Exception e) { 
-						/*
 						log.print("+(¬_¬ )", log.ERROR); 
-						log.print(e);
-						*/
+						System.out.println(e);
 						// /* /ᐠ｡ꞈ｡ᐟ\ */ 
 					}
 					frame.setTitle((lf[1]!=null?lf[1]:"Checking games...") +" "+ site + ":" + loadedGames[i][1].toString());

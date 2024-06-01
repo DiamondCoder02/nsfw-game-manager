@@ -86,6 +86,7 @@ These are not final and can be changed at any time.
   - <https://stackoverflow.com/questions/7071133/how-to-bundle-a-jre-with-launch4j?rq=3>
 - If steam is detected, the update application is not shown as Steam will update and the buttons is useless
 - [x] dlsite.com support **TESTING NEEDED**
+- [x] full URL support. You don't need just the ID, you can paste the full URL
 
 ## TODO => [0.1.2.0] (tasks: 1)
 

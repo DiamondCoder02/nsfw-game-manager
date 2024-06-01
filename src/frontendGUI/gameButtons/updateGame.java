@@ -7,23 +7,14 @@ import org.w3c.dom.Element;
 
 import backendThings.integrationCheck.defaultValues;
 import folderHandling.ADocHandle;
-import folderHandling.checkDatabase;
 import folderHandling.initialFileLoading.loadLanguage;
 import webApiScrapeThings.getGamesInfo;
 
 public class updateGame {
 	static String[] bc = loadLanguage.basic, base = loadLanguage.base;
 	public static void updateOneGame(String mainDir) {
-		String[] webAndId = sites.requestSiteAndId(base[3]!=null?base[3]:"Update game");
+		String[] webAndId = sites.requestSiteAndId(mainDir, "update", base[3]!=null?base[3]:"Update game");
 		if (webAndId == null) { return; }
-
-		if (!checkDatabase.isInDatabase(mainDir, webAndId[1], webAndId[0])) { 
-			JOptionPane.showMessageDialog(null, 
-				"Id: " + webAndId[1] + " ("+webAndId[1]+")"+(bc[5]!=null?bc[5]:"was not been updated"), 
-				base[1]!=null?base[1]:"Error", 
-				JOptionPane.ERROR_MESSAGE);
-			return;
-		}
 
 		String[] newInfos = null;
 		switch (webAndId[0]) {

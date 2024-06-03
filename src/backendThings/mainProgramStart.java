@@ -19,8 +19,8 @@ import webApiScrapeThings.autoSitesFetch;
 
 public class mainProgramStart {
 	private static Boolean discordStart = false;
-	public static String mainProgDir;
-	public static String steamDir;
+	public static String mainProgDir = null;
+	public static String steamDir = null;
 	/**
 	 * Changes the main menu fully
 	 */

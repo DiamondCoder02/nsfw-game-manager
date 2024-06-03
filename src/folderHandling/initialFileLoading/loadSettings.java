@@ -40,9 +40,7 @@ public class loadSettings {
 			// languageVersion = parser.get("languageVersion").getAsString();
 			databaseNumber = parser.get("databaseNumber").getAsString();
 			databaseNames = parser.get("databaseNames").getAsString();
-			if (!parser.get("mainProgDir").getAsString().equals("null")) { mainProgramStart.mainProgDir = parser.get("mainProgDir").getAsString(); }
-			else { updateSettings.changeSetting(directory, "mainProgDir", mainProgramStart.mainProgDir ); }
-			if (!parser.get("steamDir").getAsString().equals("null")) { mainProgramStart.steamDir = parser.get("steamDir").getAsString(); }
+			if (mainProgramStart.steamDir == null) { mainProgramStart.steamDir = parser.get("steamDir").getAsString(); }
 			else { updateSettings.changeSetting(directory, "steamDir", mainProgramStart.steamDir ); }
 
 			for (int i = 0; i < defaultValues.settings[1].length-1; i++) {

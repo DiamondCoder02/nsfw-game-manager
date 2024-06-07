@@ -1,9 +1,11 @@
 import java.io.IOException;
 import java.net.URISyntaxException;
+
 import javax.swing.JOptionPane;
 
 import backendThings.log;
 import backendThings.mainProgramStart;
+import folderHandling.askManualPath;
 import folderHandling.initialFileLoading.loadSettings;
 public class mainApp {
 	private static String tempDir;
@@ -16,9 +18,10 @@ public class mainApp {
 	 */
 	public static void main (String [] args){
 		if (!checkOS()) {
-			log.print("OS not supported!", log.ERROR);
+			log.print("OS not supported! Must give manually", log.ERROR);
+			askManualPath.askManual();
 			JOptionPane.showMessageDialog(null, "OS not supported! Quiting!", "Error", JOptionPane.ERROR_MESSAGE);
-			System.exit(0);
+			// System.exit(0);
 		}
 		Boolean consoleNeeded = false;
 		if (loadSettings.load(tempDir)) { consoleNeeded = loadSettings.othersettings[5]; }

@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import backendThings.log;
 import backendThings.mainProgramStart;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.localFoldersChange.updateSettings;
@@ -23,6 +22,7 @@ import frontendGUI.buttons.search;
 import frontendGUI.gameButtons.addGame;
 import frontendGUI.gameButtons.removeGame;
 import frontendGUI.gameButtons.updateGame;
+import frontendGUI.wikiPages.wikiMain;
 import webApiScrapeThings.autoSitesFetch;
 
 public class frameMenuListener implements ActionListener {
@@ -81,9 +81,7 @@ public class frameMenuListener implements ActionListener {
 			case "welcomeMessage": firstWelcomeMessage.welcomeMessage(mainDir); break;
 			case "FAQ": faq.FACKQU(); break;
 			case "Credits": credits.money(); break;
-			case "wiki": 
-				log.print("TODO", log.ERROR);
-				break;
+			case "wiki": wikiMain.startWikiPages();	break;
 			case "Exit": sureAboutExit(); break;
 
 			default: JOptionPane.showMessageDialog(null, "Error, this should never happen!!!" + " (src/frontEndGUI/frameMenuListener_actionPerformed)", "Error", JOptionPane.ERROR_MESSAGE); break;

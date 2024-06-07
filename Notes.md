@@ -105,3 +105,76 @@ These are not final and can be changed at any time.
 - [ ] move database from xml ( MUST NOT BREAK )
 - [ ] Memory & CPU usage higher? ( Need more test )
   - This happened when I run a full database update with API refreshes?
+
+---
+
+---
+{num} number
+
+## Wiki pages
+
+Note: make everything dynamic
+
+IF {} it's a picture
+{name, width, height}
+  so this: string.replace( "" , <img src= name width= width height= height ></img> )
+
+if [] it's a link
+{link, text}
+  so this: string.replace( "" , <font color = 64AFFF><a href= link > text </a></font>")
+
+Note this might note of I use different to display the text
+if text has \n, it's a new line
+  so this: string.replace( "\n" , <br>)
+
+### 0 - welcome
+
+Welcome to the hentai Game Manager wiki!
+This little window should tell every possibility that you can do with the program.
+On the left side, you can see the pages that you can visit.
+If you have any questions, encounter bugs or anything, check the {num} - Credits page.
+
+Version: 0.1.2.0
+Last update date: 2024.06.03
+
+---
+
+### {num} - FAQ
+
+"Q: What is this?"+br+"A: A simple excel like hentai game manager."+br+br+
+"Q: Why this exist?"+br+"A: Because I had enough managing my games in an excel table and wanted something better."+br+br+
+"Q: What can this program do?"+br+" Check out the wiki for all the possibilities: <font color = 64AFFF><a href=\"https://github.com/DiamondCoder02/nsfw-game-manager/wiki\">Hentai game manager wiki</a></font>"+br+br+
+"Q: Support the project?"+br+"A: Currently not available"+br+br+
+"Q: Can I help coding? / The program not working correctly? / Want a new feature?"+br+"A: All isssue, requests and help is accepted on GitHub:"+" <font color = 64AFFF><a href=\"https://github.com/DiamondCoder02/nsfw-game-manager/issues/new/choose\">HGM Github</a></font>"+br+br+
+"Q: placeholder?"+br+"A: placeholder!"+
+
+---
+
+### {num} - Credits
+
+"<img src='file:"+logos[1][0]+"' width="+logos[1][1]+" height="+logos[1][2]+"></img>"+br+
+
+"Originally: This was a small project to learn Java for university."+br+
+"Main focus is something dynamic and easy to use for hentai games."+br+
+"This whole program is just to convert my old excel file into a smart storage"+br+
+"Full open source:"+" <font color = 64AFFF><a href=\"https://github.com/DiamondCoder02/nsfw-game-manager\">https://github.com/DiamondCoder02/nsfw-game-manager</a></font>"+br+
+"----------------------------------------------------------------"+br+br+ // 64
+
+"Hi, I'm DiamondCoder or Diamond."+br+
+"University student, programer, stupid gamer"+br+
+"I started the project in 2023, handling Steam, check issues, still coding and arguing with Nyaneko why the UI looks from 2008"+br+
+"Thank you for using this program, it gives me smile I can make something for others :3"+br+
+"Huge thanks to Nyaneko who made graphic elements and helped me mentally and pushed me to work more on this program."+br+
+
+"<img src='file:"+logos[0][0]+"' width="+logos[0][1]+" height="+logos[0][2]+"></img>"+br+ // Picture as break
+
+"Hi, I'm NyanekoNNK or Nyaneko."+br+
+"Graphic designer and I'm here to help Diamond with this project."+br+
+"I'm responsible some graphic elements, the Steam store, legal matters and quality control."+br+
+"I can and will break everything so I will make sure there are close to no bugs in the application"+br+br+
+
+"----------------------------------------------------------------"+br+ // 64
+"Contact us:"+br+
+"Support Email: <KnockyNekos@gmail.com>"+br+
+"Github Issues: <font color = 64AFFF><a href=\"https://github.com/DiamondCoder02/nsfw-game-manager/issues/new/choose\">Github Feedback</a></font>"+br+
+"Github Wiki: <font color = 64AFFF><a href=\"https://github.com/DiamondCoder02/nsfw-game-manager/wiki/\">Github Wiki</a></font>"+br

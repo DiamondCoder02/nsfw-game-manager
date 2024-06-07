@@ -1,58 +1,36 @@
-# Hentai game manager
+# Hentai game manager ( 0.1.1.4 )
 
-This is a *hentai* game manager. The idea was simple, an easy to use manager that shows useful information and the newest infos about the stored games. Although it only shows what you have added already yourself. If you have a game folder it can read that too, but later on that.
+Welcome to another game manager. The idea was simple, an easy to use manager that shows useful information and the newest infos about the stored games.
 
-Mostly designed for f95zone ~~and dlsite (soon?) and Steam(if I can)~~. You can also add your own manually if the program don't support the site although of course it won't get updated if a new version is on the web.
+--_**Warning: I have only tested the program on windows and probably only works on Windows. I will make it compatible with other OS later.**_--
 
-**Warning: I have only tested the program on windows, I have no idea if it works on other OS.**
+## Check the Wiki
 
-## Some nice features
+<https://github.com/DiamondCoder02/nsfw-game-manager/wiki>
+
+## Features
 
 - Easy to read table, excel like design
 - Small and lightweight program
-- I am a Discord nerd, so it has activity feature for it (Default off)
-- Multi language support( more on that later)
-- The program creates a backup of the games database every time it starts(, only saves the last 10)
-- JDK 17, nut sure if it's nice, but it's something
+- Multiple language (English, EngwishUwU, Hungarian)
 
-## Features if you add game from a site
+Details [here](https://github.com/DiamondCoder02/nsfw-game-manager/wiki/Features).
 
-If it's limited to some site, it will be in brackets ()
+## Features( or "Why this is better then writing it in a notepad or an excel")
 
-- If the game is the final version, it gets a "✔" at the version column
-- If game is abandoned, it gets a "✖" at the version column
-- For VisualNovels there will be a "[VN]" at the name column
-- If a game has VR tag, it will have "[VR]" at the engine column
+- Supported websites: [f95zone](https://f95zone.to/), [steam](https://store.steampowered.com/), ~~[dlsite](https://www.dlsite.com/pro/?locale=en_US)~~(soon)
+- Shows the name, developer, latest version, date and engine the game is available on
+- Shows what platform the game you can play (Windows, Linux, Android, IOS...)
+- You can even write small notes for yourself as a reminder for each game
 
-### Language support
+Check the [wiki](https://github.com/DiamondCoder02/nsfw-game-manager/wiki/Features#the-program-tracks) for more info.
 
-Currently supported languages: English( +EngwishUwU ), Hungarian
+## TODO / Future ideas
 
-Languages work like an excel. Top row is the language in English(, in lowercase). The first column is for the program, **second** column is to be translated from. I hope the small example shows it.
+- [ ] fix bugs / do something with all the ~6 TODOs that is in the source code
+- [ ] Rewrite language.csv
+- [ ] move database from xml ( MUST NOT BREAK - 0.1.2.1 ? )
+- [ ] Write comments
+- [ ] Rewrite FAQ in the program, now that wiki on GitHub is up.
 
-### How the program handles games folder
-
-- Every settings and language is saved:
-  - (Windows) C:\Users\\{youUser}\AppData\Roaming\DiamondCoder\nsfwGameManager
-- I have tested the program with my ~500 games, it works fine...
-
-- If you add the game folder, you have to save your games in a specific format. It is unfortunate, but it works. Because I'm stupid and a programmer, currently the program only supports this format:
-
-``` text
-man-000000_{gameName}_{gameVersion} {anythingElseYouWant}
-
-f95-696969_Good Game, try me_v12.31 DeveloperAndStuffMaybeNotes
-```
-
-If it doesn't begin with man, f95 ~~or dls(soon?)~~ it will be ignored. (man means manually added game, so it's not connected to any site, you can give any ID you want it to have, but make it unique)
-
-## TODO / Ideas
-
-- [ ] FAQ rewrite
-- [ ] Optimizations
-- [ ] dlsite.com support
-- [ ] Steam support
-
-## Needs restart
-
-- [ ] ~~If you change the language, you have to restart the program.~~ Fixed by asking user to restart the program again...
+More info [here](https://github.com/DiamondCoder02/nsfw-game-manager/wiki/TODOs-checklist)

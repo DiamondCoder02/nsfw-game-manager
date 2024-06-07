@@ -1,0 +1,127 @@
+﻿lang;english;engwishUwU;hungarian
+lanMea;English;Nyaaa~~ UwU;Magyar / Hungarian
+base;Success;Success OwO;Siker
+base;Error;Ewwow;Hiba
+base;Add game;Awd game;Játék hozzáadás
+base;Update game;Upwate game;Játék frissítés
+base;Remove game;Remowe game;Játék törlése
+base;Previous:;Pwevious:;Előző:
+basic;You must enter an id.;You must entew an ID.;Meg kell adnod egy ID-t.
+basic;doesn't exists.;dwoesn't exists. OwO';nem létezik.
+basic;has been added.;has been added. :3;hozzá lett adva.
+basic;Do you want to add another game?;Dow you want to awd anothew game? UwU;Szeretnél még egy játékot hozzá adni?
+basic;has been updated.;has been updated. Meow :3;információ frissítve.
+basic;was not updated.;was not updated.;nem lett frissítve.
+basic;Enter the id of the game you want to update.;Entew the ID of the gwame you want to update.;Írd be a játék ID-jét amit frissíteni szeretnél.
+basic;Error! This should be impossible!!!;Ewwow! this shouwd be impossibwe!!!;Hiba! Lehetetlen kéne hogy ez legyen.
+tablec;Site;Swite;Oldal
+tablec;ID;ID;ID
+tablec;Name;Nyame;Név
+tablec;Developer;Devewopew;Fejlesztő
+tablec;Played version;Pwayed vewsion;Játszott verzió
+tablec;Last time play;Last twime play;Utoljára játszott
+tablec;Rated;Wated;Értékelés
+tablec;Newest version;Newewest version;Legújabb verzió
+tablec;Last update;Wast update;Utolsó fejlesztés
+tablec;People rating;Peopwe wating;Publik értékelés
+tablec;Player progress;Pwayew pwogwess;Haladás
+tablec;Still on pc?;Stiww on pc?;Még mindig PCn?
+tablec;Engine;Engine;Motor
+tablec;OS;OS;OS
+tablec;Personal Notes;Pewsonaw notes;Jegyzetek
+tablec;Language;Lawnguage;Nyelv
+JLabPan;ID: (required);ID: (wequiwed);ID: (Kötelező)
+JLabPan;Name:;Name:;Név:
+JLabPan;Developer:;Devewopew:;Fejlesztő:
+JLabPan;Last version you played:;Last vewsion you pwayed:;Utolsó verzió amivel játszott:
+JLabPan;Last time you updated the game:;Last time you updated the game:;Utolsó idő amikor játszott:
+JLabPan;Rating by you:;Rating by you:;Értékelésed:
+JLabPan;Online newest version:;Onwine newest vewsion:;Legújabb online verzió:
+JLabPan;Online date of last update:;Onwine date of wast update:;Legútolsó verzió időpontja:
+JLabPan;Rating by online people:;Rating by onwine peopwe:;Online értékelés másoktól:
+JLabPan;How far you progressed in the game:;How faw you pwogwessed in the game:;Mennyit haladt a játékkal:
+JLabPan;Is the game still on pc?;Is the game stiww on pc?;Még mindig le van töltve a játék?
+JLabPan;Engine:;Engine:;Motor:
+JLabPan;OS:;OS:;OS:
+JLabPan;Languages you can play it in:;Lawnguagews yyou cawn pwayy it iwn:;Elérhető nyelvek:
+JLabPan;Self note for the game:;Sewf note fow the game:;Saját jegyzetek játékhoz:
+JRadBut;Not played;Not pwayed;Nem játszott
+JRadBut;In progress;In pwogwess;Be nem fejezett
+JRadBut;Finished;Finish;Kész
+JRadBut;100% Finished;100% Finished;100% Befejezve
+JRadBut;Yes;Yes OwO;Igen
+JRadBut;No;No UwU;Nem
+JRadBut;Unknown;IDK sowwy;Ismeretlen
+JRadBut;Other/Unknown;Other/Unknown;Egyébb/Ismeretlen
+buttons;Games;Games;Játékok
+buttons;Search;Seawch;Keresés
+buttons;Settings;Settings;Beállítások
+buttons;Shown informations;Shown infowmations;Mutatandó infó
+buttons;Language;Language;Nyelv
+buttons;Other;Othew;Egyébb
+buttons;FAQ;FAQ;GYIK
+buttons;Credits;Cwedits;Kredit
+buttons;Exit;Exit;Kilép
+buttons;Add F95zone;Add f95zone;Hozzáad F95zone
+buttons;Update F95zone;Update f95zone;Frissít F95zone
+buttons;Remove F95zone;Remove f95zone;Töröl F95zone
+buttons;Save file copy;Save fiwe copy;Másolat mentés
+buttons;Refresh table;Refwesh tabwe;Tábla frissítés
+buttons;API refresh;Api wefwesh;API frissít
+buttons;Search by ID;Seawch by id;ID keresés
+buttons;Search by name;Seawch by name;Név keresés
+buttons;Search by developer ;Seawch by devewopew ;Fejlesztő keresés 
+buttons;Dark mode;Dawk mode;Sötét mód
+buttons;Auto fetch game info;Auto fetch game info;Auto játék infó frissítés
+buttons;Auto fetch folders;Auto fwetch fwoldews;Automatikus fájlok ellenörzése
+buttons;Change folder location;Cwange fowdew wocation;Játék fájlok helyének változtatása
+folders;This will go through all games and check if there is new update. \nAre you sure?;This wiww go thwough aww games and check if thewe is new update. \nAwe you suwe?;Ez végigmegy az összes játékon, és ellenőrzi, hogy van-e új frissítés.\nBiztos vagy benne?
+folders;Checking games...;Chwecking games... Meow^^;Játékok ellenőrzése...
+folders;All game infos got updated!;Aww game infos got updated!;Minden játék információ frissítve lett!
+folders;Enter the id of the game you want to add, from f95zone website.;Entew the id of the game you want to add, fwom f95zone website.;Írd be a játék id-jét amit hozzá szeretnél adni, a f95zone oldaláról.
+folders;The id you entered is already in the F95zone database.;The id you entewed is awweady in the f95zone database.;Az ID ami meg lett adva már benne van az adatbázisban.
+folders;Error while loading the site.;Ewwow whiwe woading the site.;Hiba az oldal töltése közben.
+folders;Error checking settings.;Ewwow checking settings.;Hiba beállítások ellenőrzéskor.
+folders;Settings got updated. Please restart the program to make sure everything is correct.;Settings got updated. \nPwease westawt the pwogwam to make suwe evewything is cowwect.;Beállítások frissítve lettek. \nKérlek indítsad újra a programot, hogy biztos minden rendben legyen.
+folders;Settings updated;Swettings updated UwU;Beállítások frissítése
+folders;Hentai Game Database;Hentai Game Database;Hentai játék adatbázis
+folders;Error loading settings file;Ewwow woading settings fiwe;Hiba beállítások betöltésekor
+folders;Error loading database file;Ewwow woading database fiwe;Hiba adatbázis betöltésekor
+folders;The id you entered is already in the *MANUAL* database;The id you entewed is awweady in the *manual* database;Az ID ami meg lett adva már benne van az adatbázisban.
+folders;ID is not found between the manually given games;Id is not found between the manuawwy given games;Az ID nem található a játékok között
+folders;will be removed. Are you sure?;Wiww be wemoved. Awe you suwe?;törölve lesz. Biztos benne?
+folders;has been removed.;has been wemoved.;törölve lett.
+folders;Cancelled deleting.;Cancelled deleting.;Vissza vonva.
+folders;Do you want to delete another game?;Do you want to dewete anothew game?;Szeretne másik játékot törölni?
+folders;Save copy of the file;Save copy of the fiwe;Fájl másolat mentése
+folders;Frequently Asked Questions;Fwequentwy asked questions;Gyakran Ismételt Kérdések
+folders;Are you sure you want to exit?;Awe you suwe you want to exit?;Biztos ki akarsz lépni?
+search;Search by ID;Seawch by ID;Keresés ID alapján
+search;Search by Name;Seawch by Name;Keresés név alapján
+search;Search by Developer;Seawch by Devewopew;Keresés fejlesztő alapján
+search;ID of the game to search:;Id of the game to seawch:;ID-je a keresett játéknak:
+search;Name of the game to search:;Name of the game to seawch:;Neve a keresett játéknak:
+search;Developer of the game to search:;Devewopew of the game to seawch:;Fejlesztője a keresett játéknak:
+search;Name is required:;Name is wequiwed:;Név kötelező:
+search;Developer is required:;Devewopew  is wequiwed:;Fejlesztő kötelező:
+search;Game was not found!!!;Game was not found!!! owo';Nem talált ilyen játék!!!
+search;Maybe try searching by other ways?;Maybe twy seawching by othew ways?;Talán másképpen megvan a játék?
+search;You can search by ID, name and developer too!;You can seawch by id, name and devewopew too!;Lehet keresni ID, név és fejlesztő alapján is!
+search;Found game(s):;OWO Fwound game(s):;Talált játék(ok):
+random;Random;Wandom;Random
+random;Fully random game;Fuwwy wandom game;Teljesen véletlen játék
+random;Random game by developer;Wandom game by devewopew;Véletlen fejlesztő alapján
+random;Random by player progress;Wandom by pwayew pwogwess;Véletlen haladás alapján
+random;Random by engine;Wandom by engine;Véletlen motor alapján
+random;Random by site;Wandom by swite;Véletlen oldal alapján
+random;Enter developer name you wish to search for:;Entew devewopew name you wish to seawch fow:;Írd be a fejlesztő nevét amit keresel:
+random;from developer;fwom devewopew;fejlesztőtől
+random;from progress;fwom pwogwess;haladástól
+random;Select engine to search for:;Sewect engine to seawch fow:;Válaszd ki a motort amit keresel:
+random;with engine;with engwine;motorral
+random;Select site to search from:;Sewect swite to seawch fwom:;Válaszd ki az oldalt amit keresel:
+random;from site;fwom swite;oldaltól
+random;No games found;No gwames found;Nincs találat
+random;Update here if needed;Upwate liwnk hewe if needed;Frissítési link ha szükséges itt
+random;No link available;No wink avaiwabwe;Nincs elérhető link
+random;Found a game!;Fwound a game!;Talált játék!

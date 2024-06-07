@@ -1,0 +1,35 @@
+{
+	"folderLocation": "null",
+	"appVersion": "0.1.1.4",
+	"appLanguage": "english",
+	"databaseNumber": "0",
+	"databaseNames": "main//sfw//?//?//?",
+	"steamDir": "null",
+	"othersettings": {
+		"autoUpdateManager": false,
+		"darkMode": false,
+		"autoFetchNewGameInfos": false,
+		"autoFetchLocalGameFolder": false,
+		"DiscordRPC": false,
+		"showConsole": false,
+		"firstTimeRunDone": false
+	},
+	"shownColumns": {
+		"site": true,
+		"id": true,
+		"name": true,
+		"developer": true,
+		"playedVersion": true,
+		"lastTimePlayed": true,
+		"rated": true,
+		"newestVersionOnline": true,
+		"lastDateTimeUpdated": true,
+		"peopleOnlineRating": true,
+		"localPlayerProgress": true,
+		"gameStillOnPc": true,
+		"gameEngine": true,
+		"os": true,
+		"language": true,
+		"localPersonalNotes": true
+	}
+}

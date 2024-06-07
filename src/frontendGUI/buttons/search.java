@@ -88,10 +88,12 @@ public class search {
 		for (int i = 0; i < data.length; i++) { if (data[i][3] != null) {panel.add(new JLabel("|| "+(tabl[3]!=null?tabl[3]:"Developer:")+" " + data[i][3].toString())); }}
 		for (int i = 0; i < data.length; i++) { if (data[i][4] != null) {panel.add(new JLabel("|| "+(tabl[4]!=null?tabl[4]:"Played version:")+" " + data[i][4].toString())); }}
 		for (int i = 0; i < data.length; i++) { if (data[i][5] != null) {panel.add(new JLabel("|| "+(tabl[5]!=null?tabl[5]:"Last time playing:")+" " + data[i][5].toString())); }}
-		for (int i = 0; i < data.length; i++) { if (data[i][6] != null) {panel.add(new JLabel("|| "+"Notes:"+" " + data[i][15].toString())); }}
+		for (int i = 0; i < data.length; i++) { if (data[i][6] != null) {panel.add(new JLabel("|| "+"Rated: "+" " + data[i][6].toString())); }}
+		for (int i = 0; i < data.length; i++) { if (data[i][10] != null) {panel.add(new JLabel("|| "+"Progress: "+" " + data[i][10].toString())); }}
+		for (int i = 0; i < data.length; i++) { if (data[i][15] != null) {panel.add(new JLabel("|| "+"Notes: "+" " + data[i][15].toString())); }}
 		panel.add(new JLabel("---------- "+(serc[11]!=null?serc[11]:"Found game(s):")+" " + (allDataLength) + " ---------- " + "Page " + (counter/3) + " / " + (isThree==0 ? allDataLength/3:allDataLength/3+1) + "----------"));
 		// Note change the row number if more row info is added
-		panel.setLayout(new GridLayout(9, isThree==0 ? data.length+1:data.length+2));
+		panel.setLayout(new GridLayout(10, isThree==0 ? data.length+1:data.length+2));
 		JOptionPane.showMessageDialog(null, panel, inDialog2, JOptionPane.INFORMATION_MESSAGE);
 
 		return counter;

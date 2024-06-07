@@ -4,6 +4,7 @@
 	"appLanguage": "english",
 	"databaseNumber": "0",
 	"databaseNames": "main//sfw//?//?//?",
+	"steamDir": "null",
 	"othersettings": {
 		"autoUpdateManager": false,
 		"darkMode": false,

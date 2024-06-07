@@ -34,9 +34,10 @@ public interface defaultValues {
 		{ "appVersion", "0.1.1.4"},
 		// { "languageVersion", "0.1"},
 		{ "appLanguage", "english" },
-		{ "folderLocation", "null" },
 		{ "databaseNumber", "0"},
-		{ "databaseNames", "main//sfw//?//?//?"}
+		{ "databaseNames", "main//sfw//?//?//?"},
+		{ "steamDir", "null" },
+		{ "folderLocation", "null" }
 	};
 
 	/**

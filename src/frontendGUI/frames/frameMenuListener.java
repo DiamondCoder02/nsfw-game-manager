@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import backendThings.log;
 import backendThings.mainProgramStart;
+import folderHandling.askSteamPath;
 import folderHandling.initialFileLoading.loadLanguage;
 import folderHandling.localFoldersChange.updateSettings;
 import folderHandling.localFoldersLoad.localFolderHandle;
@@ -61,7 +62,10 @@ public class frameMenuListener implements ActionListener {
 				updateSettings.changeSetting(mainDir, "othersettings", e.getActionCommand()); 
 				mainProgramStart.mainMenuFullChange();
 				break;
-
+			
+			case "changeSteamDir":
+				askSteamPath.changeSetting();
+				break;
 
 			case "DiscordRPC": 
 				updateSettings.changeSetting(mainDir, "othersettings", e.getActionCommand()); 

@@ -2,7 +2,7 @@ import javax.swing.JOptionPane;
 
 import backendThings.log;
 import backendThings.mainProgramStart;
-import folderHandling.askManualPath;
+import folderHandling.askSteamPath;
 import folderHandling.initialFileLoading.loadSettings;
 public class mainApp {
 	private static String tempDir;
@@ -17,7 +17,7 @@ public class mainApp {
 			log.print("OS not supported! Must give manually", log.ERROR);
 			// True if success or doesn't want to give path
 			// False if error happens
-			if (!askManualPath.askManual()) {
+			if (!askSteamPath.askBeforeInit()) {
 				JOptionPane.showMessageDialog(
 					null, 
 					"Directory is not correct, program will start, but please change the settings, if you wanna use local loading feature.", 

@@ -1,6 +1,3 @@
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 import javax.swing.JOptionPane;
 
 import backendThings.log;
@@ -10,27 +7,27 @@ import folderHandling.initialFileLoading.loadSettings;
 public class mainApp {
 	private static String tempDir;
 	/**
-	 * This function will start the program.
-	 * @param args -
-	 * @throws IOException -
-	 * @throws InterruptedException -
-	 * @throws URISyntaxException -
+	 * This function will start the program. Duh...
 	 */
 	public static void main (String [] args){
-		if (!checkOS()) {
-			log.print("OS not supported! Must give manually", log.ERROR);
-			askManualPath.askManual();
-			JOptionPane.showMessageDialog(null, "OS not supported! Quiting!", "Error", JOptionPane.ERROR_MESSAGE);
-			// System.exit(0);
-		}
 		Boolean consoleNeeded = false;
 		if (loadSettings.load(tempDir)) { consoleNeeded = loadSettings.othersettings[5]; }
-		if (consoleNeeded) { 
-			log.frameLog();
-			log.print("- Console enabled! -");
-		} else { 
-			log.print("- No console needed! -"); 
+
+		if (!checkOS()) {
+			log.print("OS not supported! Must give manually", log.ERROR);
+			// True if success or doesn't want to give path
+			// False if error happens
+			if (!askManualPath.askManual()) {
+				JOptionPane.showMessageDialog(
+					null, 
+					"Directory is not correct, program will start, but please change the settings, if you wanna use local loading feature.", 
+					"Error", 
+					JOptionPane.ERROR_MESSAGE);
+				// System.exit(0); 
+			}
 		}
+
+		if (consoleNeeded) { log.frameLog(); }
 		log.print("TEST, no error level given");
 		log.print("TEST", log.INFO);
 		log.print("TEST", log.WARNING);

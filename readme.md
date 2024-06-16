@@ -1,5 +1,7 @@
 # Hentai game manager ( 0.1.1.4 )
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B0Z6MBI)
+
 Welcome to another game manager. The idea was simple, an easy to use manager that shows useful information and the newest infos about the stored games.
 
 --_**Warning: I have only tested the program on windows and probably only works on Windows. I will make it compatible with other OS later.**_--

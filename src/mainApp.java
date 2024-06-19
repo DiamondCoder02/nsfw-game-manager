@@ -17,7 +17,7 @@ public class mainApp {
 			log.print("OS not supported! Must give manually", log.ERROR);
 			// True if success or doesn't want to give path
 			// False if error happens
-			if (!askSteamPath.askBeforeInit()) {
+			if (!askSteamPath.askBeforeInit() && mainProgramStart.steamDir == null) {
 				JOptionPane.showMessageDialog(
 					null, 
 					"Directory is not correct, program will start, but please change the settings, if you wanna use local loading feature.", 
@@ -55,7 +55,6 @@ public class mainApp {
 			tempDir = System.getenv("APPDATA") + "/DiamondCoder/nsfwGameManager";
 			mainProgramStart.steamDir = System.getenv("ProgramFiles(x86)") + "/Steam/steamapps";
 			return true;
-		// TODO - Test needed
 		} else if (sysOS.contains("nix") || sysOS.contains("nux") || sysOS.contains("aix")) {
 			mainProgramStart.mainProgDir = System.getenv("HOME") + "/DiamondCoder/nsfwGameManager";
 			mainProgramStart.steamDir = System.getenv("HOME") + "/.steam/steam/steamapps";

@@ -56,7 +56,7 @@ These are not final and can be changed at any time.
 
 [TODO/Release] [version number] (tasks)
 
-## Release => [0.1.2.0] (tasks: 18)
+## Release => [0.1.2.1] (tasks: 19)
 
 - [x] Added a counter for the sites of game and all games counter
 - [x] Change pictures in Credit and FAQ
@@ -87,18 +87,17 @@ These are not final and can be changed at any time.
 - If steam is detected, the update application is not shown as Steam will update and the buttons is useless
 - [x] dlsite.com support **TESTING NEEDED**
 - [x] full URL support. You don't need just the ID, you can paste the full URL
+- [x] Make it LINUX compatible **Should be good**
 
 ## TODO => [0.1.2.0] (tasks: 1)
 
 - [ ] Write detailed wiki both in app and on Github
 
-## TODO [0.1.3.0] (tasks: 6)
+## TODO [0.1.3.0] (tasks: 3)
 
 - [ ] Rewrite language.csv
 - [ ] Cum counter ( ͡° ͜ʖ ͡°)
 - [ ] improve dark mode?
-- [ ] In app wiki
-- [ ] Make it LINUX compatible
 
 ## TODO random: [???]
 

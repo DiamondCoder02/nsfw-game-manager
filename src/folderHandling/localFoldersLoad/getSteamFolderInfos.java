@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import backendThings.log;
 import backendThings.mainProgramStart;
 
 public class getSteamFolderInfos {
@@ -102,7 +103,9 @@ public class getSteamFolderInfos {
 			steamFolders = mainSteamFolder;
 			return true;
 		} catch (IOException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
+			log.print("Steam ERROR", log.ERROR);
+			log.print(e.getMessage(), 0);
 			return false;
 		}
 	}

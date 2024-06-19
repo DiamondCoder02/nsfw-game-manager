@@ -30,6 +30,13 @@ public class updateSettings {
 		return ADocHandle.saveSettingsJson(mainDir + "/settings.json", settings);
 	}
 
+	/**
+	 * This function will set a setting in the settings.json file.
+	 * @param mainChange - The main setting to change.
+	 * @param toChange - The sub setting to change.
+	 * @param value - The value to set the setting to.
+	 * @return boolean - returns true if the setting was set successfully.
+	 */
 	public static boolean setSetting(String mainDir, String mainChange, String toChange, boolean value) {
 		JsonObject settings = ADocHandle.loadSettingsJson(mainDir + "/settings.json");
 		settings.entrySet().forEach(entry -> {

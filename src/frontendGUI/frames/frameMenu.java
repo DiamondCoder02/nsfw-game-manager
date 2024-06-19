@@ -27,7 +27,7 @@ public class frameMenu {
 	static JMenuItem searchById, searchByName, searchByDeveloper;
 
 	static JMenu settings;
-	static JMenuItem changeDB, changeLanguage, changeFolderLocation;
+	static JMenuItem changeDB, changeLanguage, changeFolderLocation, changeSteamFolderLoc;
 	static JCheckBoxMenuItem darkMode, discordrpc, autoFetchNews, autoFetchFolders, autoUpdateWanted;
 	static JMenu show;
 	static JCheckBoxMenuItem showSite, showID, showName, showDeveloper, showPlayedVersion, showLastTimeplay, showRated, showNewestVersion;
@@ -87,6 +87,7 @@ public class frameMenu {
 		changeDB  = new JMenuItem("📚 Save slots"); changeDB.setActionCommand("dbChange"); changeDB.addActionListener(buttonListener);
 		changeLanguage  = new JMenuItem("🌐 "+(bu[4]!=null?bu[4]:"Language")); changeLanguage.setActionCommand("appLanguage"); changeLanguage.addActionListener(buttonListener);
 		changeFolderLocation = new JMenuItem("📁 "+("Change hentai folder location")); changeFolderLocation.setActionCommand("folderLocation"); changeFolderLocation.addActionListener(buttonListener);
+		changeSteamFolderLoc = new JMenuItem("📁 Change Steam location"); changeSteamFolderLoc.setActionCommand("changeSteamDir"); changeSteamFolderLoc.addActionListener(buttonListener);
 		if (!new File("../../../steamapps").exists()) {
 			autoUpdateWanted = new JCheckBoxMenuItem("🔁 "+"Auto update application", boolSettings[0]); autoUpdateWanted.setActionCommand("autoUpdateManager"); autoUpdateWanted.addActionListener(buttonListener);
 		}
@@ -95,7 +96,7 @@ public class frameMenu {
 		autoFetchNews = new JCheckBoxMenuItem("Auto fetch online games info", boolSettings[2]); autoFetchNews.setActionCommand("autoFetchNewGameInfos"); autoFetchNews.addActionListener(buttonListener);
 		autoFetchFolders = new JCheckBoxMenuItem("Auto fetch hentai folders", boolSettings[3]); autoFetchFolders.setActionCommand("autoFetchLocalGameFolder"); autoFetchFolders.addActionListener(buttonListener);
 		
-		settings.add(changeDB); settings.add(changeLanguage); settings.add(changeFolderLocation); settings.addSeparator();
+		settings.add(changeDB); settings.add(changeLanguage); settings.add(changeFolderLocation); settings.add(changeSteamFolderLoc); settings.addSeparator();
 		if (!new File("../../../steamapps").exists()) {settings.add(autoUpdateWanted); }
 		settings.add(darkMode); settings.add(discordrpc); settings.addSeparator();
 		settings.add(autoFetchNews); settings.add(autoFetchFolders);
@@ -131,7 +132,7 @@ public class frameMenu {
 		credits = new JMenuItem(bu[7]!=null?bu[7]:"Credits"); credits.setActionCommand("Credits"); credits.addActionListener(buttonListener);
 		wiki = new JMenuItem("Wiki"); wiki.setActionCommand("wiki"); wiki.addActionListener(buttonListener);
 
-		help.add(welcome); help.add(faq); help.add(credits);  help.add(wiki);
+		help.add(welcome); help.add(faq); help.add(credits); help.add(wiki);
 		mb.add(help);
 
 		exit = new JMenuItem(bu[8]!=null?bu[8]:"Exit"); exit.setActionCommand("Exit"); exit.addActionListener(buttonListener);

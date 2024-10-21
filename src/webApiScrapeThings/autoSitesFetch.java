@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.JFrame;
@@ -74,7 +75,11 @@ public class autoSitesFetch {
 							default: break;
 						}
 						if (newGame == null) { continue; }
-						executorService.scheduleAtFixedRate(myRunTask(mainDire, loadedGames[i], newGame), 0, 1, TimeUnit.SECONDS);
+						// TODO - So if the executionService finishes, somehow it throws an error while technically everything is perfect...
+						// What?
+						ScheduledFuture<?> yay = executorService.scheduleAtFixedRate(myRunTask(mainDire, loadedGames[i], newGame), 0, 1, TimeUnit.SECONDS);
+						System.out.print(yay);
+						System.out.println("WHY?");
 					} catch (Exception e) { 
 						log.print("+(¬_¬ )", log.ERROR); 
 						System.out.println(e);
@@ -102,10 +107,26 @@ public class autoSitesFetch {
 	 * @return Runnable - returns null.
 	 */
 	private static Runnable myRunTask(String mainDir, Object[] oldLoadGame, String[] newGame) {
+		System.out.println("-----------------------------------");
+		for (int i = 0; i < oldLoadGame.length; i++) {
+			System.out.println(oldLoadGame[i]);
+		}
+		System.out.println("///////////");
+		for (int i = 0; i < newGame.length; i++) {
+			System.out.println(newGame[i]);
+		}
+		System.out.println(mainDir);
+		System.out.println("_________________________________");
+
+		System.out.println(newGame[6]);
+		System.out.println(oldLoadGame[7]);
 		String dateOfLastUpdateValue = newGame[6].toString();
 		String olddateOfLastUpdateValue = oldLoadGame[7].toString();
+		System.out.println("Something Fucky wucky...1");
+		System.out.println(olddateOfLastUpdateValue.equals(dateOfLastUpdateValue));
 
 		if (!olddateOfLastUpdateValue.equals(dateOfLastUpdateValue)) {
+			System.out.println("Something Fucky wucky...111");
 			String[] gameInfos = new String[oldLoadGame.length];
 			gameInfos[0] = oldLoadGame[0].toString();
 			for (int i = 1; i < oldLoadGame.length; i++) {
@@ -113,13 +134,17 @@ public class autoSitesFetch {
 				if (newGame[i-1] != null) { gameInfos[i] = newGame[i-1]; } 
 				else { gameInfos[i] = oldLoadGame[i].toString(); }
 			}
+			System.out.println("Something Fucky wucky...2");
 
 			String[] defaultGamesInfo = defaultValues.gameInfos;
 			try{
+				System.out.println("Something Fucky wucky...3");
 				Document dom = ADocHandle.load(mainDir);
 				Element e = ADocHandle.getElementFromDB(dom, oldLoadGame[1].toString(), oldLoadGame[0].toString());
 				if (e != null) {
+					System.out.println("Something Fucky wucky...4");
 					for (int i = 2; i < defaultGamesInfo.length; i++) {
+						System.out.println("Something Fucky wucky...5");
 						try {
 							if (gameInfos[i] == null) { gameInfos[i] = "N/A"; }
 							e.getElementsByTagName(defaultGamesInfo[i]).item(0).setTextContent(gameInfos[i]);
@@ -131,11 +156,12 @@ public class autoSitesFetch {
 					}
 					ADocHandle.save(dom, mainDir);
 				}
+				System.out.println("Something Fucky wucky...6");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-
+		System.out.println("Something Fucky wucky...7");
 		return null;
 	}
 

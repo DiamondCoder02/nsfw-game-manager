@@ -1,6 +1,7 @@
 package backendThings.integrationCheck;
 
 import java.io.File;
+import java.util.Locale;
 
 import folderHandling.integCheck.creatingDefaultDoc;
 import folderHandling.integCheck.creatingMissingSettings;
@@ -17,7 +18,7 @@ public class fileChecker {
 		success = checkFile(mainDirectory);
 		if (!success) { return false; }
 		for (String[] file : defaultValues.onlineFilesNeeded) {
-			if (!checkLocalBeforeOnline(mainDirectory + "/" + file[0])) {
+			if (!checkLocalBeforeOnline(file, mainDirectory + "/" + file[0])) {
 				// log.print("Downloading: " + file[0]);
 				success = fileDownloader.downloadFile(file[1], mainDirectory + "/" + file[0]); 
 				// log.print(success + " - " + file[0]);
@@ -33,7 +34,15 @@ public class fileChecker {
 	 * @param localDir - The local directory to check.
 	 * @return boolean - returns true if the local directory is present.
 	 */
-	private static boolean checkLocalBeforeOnline(String localDir) {
+	private static boolean checkLocalBeforeOnline(String[] file, String localDir) {
+		// TODO - Temporary fix, but as it turns out I was forcing the check for the windows DLL not checking the other
+		// This should be fine...
+		if (file[0] == "discord/discord_game_sdk") {
+			String osName = System.getProperty("os.name").toLowerCase(Locale.ROOT);
+			if (osName.contains("windows")) { localDir += ".dll";
+			} else if (osName.contains("linux")) { localDir += ".so";
+			} else if (osName.contains("mac os")) { localDir += ".dylib"; }
+		}
 		if (!new File(localDir).exists()) {
 			return false;
 		}

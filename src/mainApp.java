@@ -11,6 +11,8 @@ public class mainApp {
 	 */
 	public static void main (String [] args){
 		Boolean consoleNeeded = false;
+		// TODO - small problem here. This will always start as null as there is nothing to change the tempDir variable
+		// This will always throw a fucking arrow
 		if (loadSettings.load(tempDir)) { consoleNeeded = loadSettings.othersettings[5]; }
 
 		if (!checkOS()) {

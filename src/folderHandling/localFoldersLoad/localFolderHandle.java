@@ -58,26 +58,27 @@ public class localFolderHandle {
 		CompletableFuture.runAsync(() -> {
 			try {
 				Files.walk(folder, 1).forEach(file -> {
-					if (Files.isDirectory(file)) {
-						String fileName = file.getFileName().toString().trim();
-						if (fileName.startsWith("f95") || fileName.startsWith("man") || fileName.startsWith("dls")) {
-							String site="-", id="-", name="-", version="-";
-							try{ site = fileName.split("-")[0];
-								id = fileName.split("-")[1].split("_")[0];
-								name = fileName.split("_")[1].split("_")[0];
-								version = fileName.split("_")[2].split(" ")[0];
-								try {
-									BasicFileAttributes attr = Files.readAttributes(file, BasicFileAttributes.class);
-									String lastModified = attr.lastModifiedTime().toString().substring(0, 10);
-									if (lastModified.equals(currentTime.toString())) { return; }
-									frame.setTitle((lf[1]!=null?lf[1]:"Checking games...") +" "+ site + ":" + id);
-									pbar.setValue(pbar.getValue()+1);
-									
-									checkAllGameAndUpdate(mainDir, site, id, name, version, lastModified);
-								} catch (IOException e) { JOptionPane.showMessageDialog(null, "Error reading folder directory! (folderHandle.autoFetchChecks)", "Error", JOptionPane.ERROR_MESSAGE); return; }
-							} catch (Exception e) { JOptionPane.showMessageDialog(null, file.toString() + "\n file doesn't have the correct name!\n" + "man-000000_{gameName}_{gameVersion} {anythingElseYouWant}", "Error", JOptionPane.ERROR_MESSAGE); return; }
-						}
-					}
+					if (!Files.isDirectory(file)) return;
+					String fileName = file.getFileName().toString().trim();
+					if (fileName.startsWith("f95") || fileName.startsWith("man") || fileName.startsWith("dls")) {} else {return;}
+					
+					String site="-", id="-", name="-", version="-";
+					try{ 
+						site = fileName.split("-")[0];
+						id = fileName.split("-")[1].split("_")[0];
+						name = fileName.split("_")[1].split("_")[0];
+						version = fileName.split("_")[2].split(" ")[0];
+						try {
+							BasicFileAttributes attr = Files.readAttributes(file, BasicFileAttributes.class);
+							String lastModified = attr.lastModifiedTime().toString().substring(0, 10);
+							if (lastModified.equals(currentTime.toString())) { return; }
+							frame.setTitle((lf[1]!=null?lf[1]:"Checking games...") +" "+ site + ":" + id);
+							pbar.setValue(pbar.getValue()+1);
+							
+							checkAllGameAndUpdate(mainDir, site, id, name, version, lastModified);
+						} catch (IOException e) { JOptionPane.showMessageDialog(null, "Error reading folder directory! (folderHandle.autoFetchChecks)", "Error", JOptionPane.ERROR_MESSAGE); return; }
+					} catch (Exception e) { JOptionPane.showMessageDialog(null, file.toString() + "\n file doesn't have the correct name!\n" + "man-000000_{gameName}_{gameVersion} {anythingElseYouWant}", "Error", JOptionPane.ERROR_MESSAGE); return; }
+				
 				});
 				pbar.setValue(pbar.getMaximum());
 				frame.dispose();
@@ -92,27 +93,25 @@ public class localFolderHandle {
 	private static void checkAllGameAndUpdate(String mainDir, String siteToWorkWith, String idToWorkWith, 
 		String nameToWorkWith, String versionToWorkWith, String lastModifiedToWorkWith
 	) {
-		//log.print(siteToWorkWith+" "+idToWorkWith+" "+nameToWorkWith+" "+versionToWorkWith+" "+lastModifiedToWorkWith); 
+		// log.print(siteToWorkWith+" "+idToWorkWith+" "+nameToWorkWith+" "+versionToWorkWith+" "+lastModifiedToWorkWith); 
 		Document gameDatabase = ADocHandle.load(mainDir);
 		NodeList source = gameDatabase.getElementsByTagName("source");
 		for (int i = 0; i < source.getLength(); i++) {
 			Node sourceNode = source.item(i);
-			if (sourceNode.getNodeType() == Node.ELEMENT_NODE) {
-				NodeList game = sourceNode.getChildNodes();
-				for (int j = 0; j < game.getLength(); j++) {
-					Node gameNode = game.item(j);
-					if (gameNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element e = (Element) gameNode;
-						String id = e.getAttribute("id").trim();
-						String site = e.getAttribute("from").trim();
-						if (id.equals(idToWorkWith) && site.equals(siteToWorkWith)) {
-							if (site.equals("man")) {e.getElementsByTagName("name").item(0).setTextContent(nameToWorkWith);}
-							e.getElementsByTagName("played_version").item(0).setTextContent(versionToWorkWith);
-							e.getElementsByTagName("dateof_lastplay").item(0).setTextContent(lastModifiedToWorkWith);
-							e.getElementsByTagName("stillOnPc").item(0).setTextContent("yes");
-						}
-					}
-				}
+			if (sourceNode.getNodeType() != Node.ELEMENT_NODE) return;
+			NodeList game = sourceNode.getChildNodes();
+			for (int j = 0; j < game.getLength(); j++) {
+				Node gameNode = game.item(j);
+				if (gameNode.getNodeType() == Node.ELEMENT_NODE) return;
+				Element e = (Element) gameNode;
+				String id = e.getAttribute("id").trim();
+				String site = e.getAttribute("from").trim();
+				if (!id.equals(idToWorkWith) || !site.equals(siteToWorkWith)) return;
+
+				if (site.equals("man")) {e.getElementsByTagName("name").item(0).setTextContent(nameToWorkWith);}
+				e.getElementsByTagName("played_version").item(0).setTextContent(versionToWorkWith);
+				e.getElementsByTagName("dateof_lastplay").item(0).setTextContent(lastModifiedToWorkWith);
+				e.getElementsByTagName("stillOnPc").item(0).setTextContent("yes");
 			}
 		}
 		ADocHandle.save(gameDatabase, mainDir);

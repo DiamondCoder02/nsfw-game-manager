@@ -10,11 +10,6 @@ public class mainApp {
 	 * This function will start the program. Duh...
 	 */
 	public static void main (String [] args){
-		Boolean consoleNeeded = false;
-		// TODO - small problem here. This will always start as null as there is nothing to change the tempDir variable
-		// This will always throw a fucking arrow
-		if (loadSettings.load(tempDir)) { consoleNeeded = loadSettings.othersettings[5]; }
-
 		if (!checkOS()) {
 			log.print("OS not supported! Must give manually", log.ERROR);
 			// True if success or doesn't want to give path
@@ -28,6 +23,9 @@ public class mainApp {
 				// System.exit(0); 
 			}
 		}
+
+		Boolean consoleNeeded = false;
+		if (loadSettings.load(tempDir)) { consoleNeeded = loadSettings.othersettings[5]; }
 
 		if (consoleNeeded) { log.frameLog(); }
 		log.print("TEST, no error level given");
@@ -59,11 +57,13 @@ public class mainApp {
 			return true;
 		} else if (sysOS.contains("nix") || sysOS.contains("nux") || sysOS.contains("aix")) {
 			mainProgramStart.mainProgDir = System.getenv("HOME") + "/DiamondCoder/nsfwGameManager";
+			tempDir = System.getenv("HOME") + "/DiamondCoder/nsfwGameManager";
 			mainProgramStart.steamDir = System.getenv("HOME") + "/.steam/steam/steamapps";
 			return true;
 		/*
 		} else if (sysOS.contains("mac")) {
 			mainProgramStart.mainProgDir = System.getenv("???") + "/DiamondCoder/nsfwGameManager";
+			tempDir = System.getenv("???") + "/DiamondCoder/nsfwGameManager";
 			mainProgramStart.steamDir = System.getenv("???") + "/Steam/steamapps";
 			return true;
 		*/

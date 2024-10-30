@@ -18,12 +18,11 @@ public class fileChecker {
 		success = checkFile(mainDirectory);
 		if (!success) { return false; }
 		for (String[] file : defaultValues.onlineFilesNeeded) {
-			if (!checkLocalBeforeOnline(file, mainDirectory + "/" + file[0])) {
-				// log.print("Downloading: " + file[0]);
-				success = fileDownloader.downloadFile(file[1], mainDirectory + "/" + file[0]); 
-				// log.print(success + " - " + file[0]);
-				if (!success) { return false; }
-			}
+			if (checkLocalBeforeOnline(file, mainDirectory + "/" + file[0])) return false;
+			// log.print("Downloading: " + file[0]);
+			success = fileDownloader.downloadFile(file[1], mainDirectory + "/" + file[0]); 
+			// log.print(success + " - " + file[0]);
+			if (!success) { return false; }
 		}
 		// log.print("*** All files are present! ***");
 		return true;
@@ -35,7 +34,6 @@ public class fileChecker {
 	 * @return boolean - returns true if the local directory is present.
 	 */
 	private static boolean checkLocalBeforeOnline(String[] file, String localDir) {
-		// TODO - Temporary fix, but as it turns out I was forcing the check for the windows DLL not checking the other
 		// This should be fine...
 		if (file[0] == "discord/discord_game_sdk") {
 			String osName = System.getProperty("os.name").toLowerCase(Locale.ROOT);

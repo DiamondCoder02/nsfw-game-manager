@@ -30,7 +30,8 @@ public class loadDlsite {
 		// <h1 itemprop="name" id="work_name">
 		String name = webInfos.substring(webInfos.indexOf("<h1 itemprop=\"name\" id=\"work_name\">") + 35, webInfos.indexOf("</h1>"));
 
-		// TODO <span class="point average_count">{{ product.rate_average_2dp }}</span>
+		// TODO I was uneable to get star or any rating, will check back later
+		// <span class="point average_count">{{ product.rate_average_2dp }}</span>
 		// <span class="point average_count">4.41</span>
 		// String rating = webInfos.substring(webInfos.indexOf("<span class=\"point average_count\">") + 33, 4);
 		// log.print(rating);

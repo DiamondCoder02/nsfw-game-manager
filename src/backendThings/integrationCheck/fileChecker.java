@@ -3,6 +3,7 @@ package backendThings.integrationCheck;
 import java.io.File;
 import java.util.Locale;
 
+import backendThings.log;
 import folderHandling.integCheck.creatingDefaultDoc;
 import folderHandling.integCheck.creatingMissingSettings;
 
@@ -18,13 +19,11 @@ public class fileChecker {
 		success = checkFile(mainDirectory);
 		if (!success) { return false; }
 		for (String[] file : defaultValues.onlineFilesNeeded) {
-			if (checkLocalBeforeOnline(file, mainDirectory + "/" + file[0])) return false;
-			// log.print("Downloading: " + file[0]);
+			if (checkLocalBeforeOnline(file, mainDirectory + "/" + file[0])) return true;
 			success = fileDownloader.downloadFile(file[1], mainDirectory + "/" + file[0]); 
-			// log.print(success + " - " + file[0]);
 			if (!success) { return false; }
 		}
-		// log.print("*** All files are present! ***");
+		log.print("*** All files are present! ***");
 		return true;
 	}
 

@@ -154,6 +154,7 @@ What we haven't talked about:
   - While testing I saw some weirdness, but that might have been already fixed.
 - How to better scrap/use API to get informations
   - One main problem is the inconsistency of scraping
+- Remake the fake "restart" that the program does. It doesn't actually restart itself from exe.
 
 ---
 

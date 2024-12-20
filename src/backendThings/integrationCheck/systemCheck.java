@@ -4,6 +4,8 @@ import java.io.File;
 
 import javax.swing.JOptionPane;
 
+import backendThings.log;
+
 public class systemCheck {
 	/**
 	 * This function will check if the system is ready to run the program.
@@ -17,8 +19,11 @@ public class systemCheck {
 	public static boolean programSystemCheck(String mainDir) {
 		File mainDirectory = new File(mainDir);
 		if (mainDirectoryCheck(mainDirectory)) {
+			log.print("--- Directory check passed! ---");
 			if (foldersCheck(mainDir)) {
+				log.print("--- Folders check passed! ---");
 				if (fileChecker.fileCheckingHandler(mainDirectory)) {
+					log.print("--- Files check passed! ---");
 					return true;
 				}
 			}

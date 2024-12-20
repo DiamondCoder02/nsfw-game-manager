@@ -14,7 +14,6 @@ import javax.swing.JRootPane;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import backendThings.log;
 import backendThings.integrationCheck.defaultValues;
 import folderHandling.ADocHandle;
 import folderHandling.initialFileLoading.loadGames;
@@ -61,34 +60,33 @@ public class autoSitesFetch {
 			frame.setVisible(true);
 
 			Boolean[] otherSettings = loadSettings.othersettings;
-			if (otherSettings[1] || manualButton) {
-				ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-				for (int i = 0; i < loadedGames.length; i++) {
-					String site = loadedGames[i][0].toString();
-					try {
-						String[] newGame = null;
-						switch (site) {
-							case "f95": newGame = getGamesInfo.getF95zone(loadedGames[i][1].toString()); break;
-							case "steam": newGame = getGamesInfo.getSteam(loadedGames[i][1].toString()); break;
-							case "dls": newGame = getGamesInfo.getDLsite(loadedGames[i][1].toString()); break;
-							default: break;
-						}
-						if (newGame == null) { continue; }
-						executorService.scheduleAtFixedRate(myRunTask(mainDire, loadedGames[i], newGame), 0, 1, TimeUnit.SECONDS);
-					} catch (Exception e) { 
-						log.print("+(¬_¬ )", log.ERROR); 
-						System.out.println(e);
-						// /* /ᐠ｡ꞈ｡ᐟ\ */ 
-					}
-					frame.setTitle((lf[1]!=null?lf[1]:"Checking games...") +" "+ site + ":" + loadedGames[i][1].toString());
-					pbar.setValue(i);
+			if (!otherSettings[1] || !manualButton) return;
+
+			ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+			for (int i = 0; i < loadedGames.length; i++) {
+				String site = loadedGames[i][0].toString();
+				String[] newGame = null;
+				switch (site) {
+					case "f95": newGame = getGamesInfo.getF95zone(loadedGames[i][1].toString()); break;
+					case "steam": newGame = getGamesInfo.getSteam(loadedGames[i][1].toString()); break;
+					case "dls": newGame = getGamesInfo.getDLsite(loadedGames[i][1].toString()); break;
+					default: break;
 				}
-				pbar.setValue(loadedGames.length);
-				manualButton = false;
-				JOptionPane.showMessageDialog(null, lf[2]==null?"All game infos got updated":lf[2], bs[3]==null?"Update":bs[3], JOptionPane.INFORMATION_MESSAGE);
-				frame.dispose();
-				mainFrame.refreshTable(mainDire);
+				if (newGame == null) { continue; }
+				// This will be future problem. To bad :3
+				try {
+					executorService.scheduleAtFixedRate(myRunTask(mainDire, loadedGames[i], newGame), 0, 1, TimeUnit.SECONDS);
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+				frame.setTitle((lf[1]!=null?lf[1]:"Checking games...") +" "+ site + ":" + loadedGames[i][1].toString());
+				pbar.setValue(i);
 			}
+			pbar.setValue(loadedGames.length);
+			manualButton = false;
+			JOptionPane.showMessageDialog(null, lf[2]==null?"All game infos got updated":lf[2], bs[3]==null?"Update":bs[3], JOptionPane.INFORMATION_MESSAGE);
+			frame.dispose();
+			mainFrame.refreshTable(mainDire);
 		});
 	}
 
@@ -105,37 +103,36 @@ public class autoSitesFetch {
 		String dateOfLastUpdateValue = newGame[6].toString();
 		String olddateOfLastUpdateValue = oldLoadGame[7].toString();
 
-		if (!olddateOfLastUpdateValue.equals(dateOfLastUpdateValue)) {
-			String[] gameInfos = new String[oldLoadGame.length];
-			gameInfos[0] = oldLoadGame[0].toString();
-			for (int i = 1; i < oldLoadGame.length; i++) {
-				// log.print(oldLoadGame[i] + " " + i + " " + newGame[i-1]);
-				if (newGame[i-1] != null) { gameInfos[i] = newGame[i-1]; } 
-				else { gameInfos[i] = oldLoadGame[i].toString(); }
-			}
-
-			String[] defaultGamesInfo = defaultValues.gameInfos;
-			try{
-				Document dom = ADocHandle.load(mainDir);
-				Element e = ADocHandle.getElementFromDB(dom, oldLoadGame[1].toString(), oldLoadGame[0].toString());
-				if (e != null) {
-					for (int i = 2; i < defaultGamesInfo.length; i++) {
-						try {
-							if (gameInfos[i] == null) { gameInfos[i] = "N/A"; }
-							e.getElementsByTagName(defaultGamesInfo[i]).item(0).setTextContent(gameInfos[i]);
-						} catch (Exception e1) {
-							Element newElement = dom.createElement(defaultGamesInfo[i]);
-							newElement.setTextContent(gameInfos[i]);
-							e.appendChild(newElement);
-						}
-					}
-					ADocHandle.save(dom, mainDir);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		if (!olddateOfLastUpdateValue.equals(dateOfLastUpdateValue)) return null;
+		String[] gameInfos = new String[oldLoadGame.length];
+		gameInfos[0] = oldLoadGame[0].toString();
+		for (int i = 1; i < oldLoadGame.length; i++) {
+			// log.print(oldLoadGame[i] + " " + i + " " + newGame[i-1]);
+			if (newGame[i-1] != null) { gameInfos[i] = newGame[i-1]; } 
+			else { gameInfos[i] = oldLoadGame[i].toString(); }
 		}
 
+		String[] defaultGamesInfo = defaultValues.gameInfos;
+		try{
+			Document dom = ADocHandle.load(mainDir);
+			Element e = ADocHandle.getElementFromDB(dom, oldLoadGame[1].toString(), oldLoadGame[0].toString());
+			if (e == null) return null;
+
+			for (int i = 2; i < defaultGamesInfo.length; i++) {
+				try {
+					if (gameInfos[i] == null) { gameInfos[i] = "N/A"; }
+					e.getElementsByTagName(defaultGamesInfo[i]).item(0).setTextContent(gameInfos[i]);
+				} catch (Exception e1) {
+					Element newElement = dom.createElement(defaultGamesInfo[i]);
+					newElement.setTextContent(gameInfos[i]);
+					e.appendChild(newElement);
+				}
+			}
+			ADocHandle.save(dom, mainDir);
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
 		return null;
 	}
 

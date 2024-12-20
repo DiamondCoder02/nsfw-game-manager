@@ -19,7 +19,7 @@ public interface defaultValues {
 	 * online files needed to be downloaded
 	 */
 	String[][] onlineFilesNeeded = {
-		{"discord/discord_game_sdk.dll", "https://dl-game-sdk.discordapp.net/3.2.1/discord_game_sdk.zip"}
+		{"discord/discord_game_sdk", "https://dl-game-sdk.discordapp.net/3.2.1/discord_game_sdk.zip"}
 	};
 
 	/**

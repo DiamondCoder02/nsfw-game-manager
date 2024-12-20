@@ -45,62 +45,130 @@ order of table:
 14 - Language
 15 - Personal notes
 
-Or if I'm retarded just -1 to everything and site is handled seperatly and not in Array
+Or if I'm retarded just -1 to everything and site is handled seperatly and not in Array ( What? )
 
 ---
 ---
+---
+---
 
-IMPORTANT:
-This is just a rough draft on future plans.
-These are not final and can be changed at any time.
+## For the future, notes
 
-[TODO/Release] [version number] (tasks)
+- [NK] NyanekoNNK -> Design, testing and emotional support
+- [BF] Blackfox -> Frontend, backend and emotional support
+- [DC] DiamondCoder (me) -> yes
 
-## Release => [0.1.2.1] (tasks: 19)
+[1-9] higher, the better
 
-- [x] Added a counter for the sites of game and all games counter
-- [x] Change pictures in Credit and FAQ
-- [x] Able to click and copy values from table, but no longer edit them as originally planned.
-- [x] Experimenting with colors, will probably change next update.
-- [x] Updated images and huge thanks to @NyanekoNNK for the new logo!
-  - Yes, the image is a pun
-- [x] Written comments in the program so future development will be easier hopefully.
-- [x] Fix Discord custom button
-- [x] optimize search ( searchByName: dungeon )
-  - Now it won't overflow out of your screen
-- [x] Written wiki on Github
-- [x] Update FAQ in program
-- [x] settings moved to json
-  - You will have to redo it, sorry for that >.<
-- [x] added steam
-- [x] Load steam when start loop thing api
-- [x] remake files
-  - Asset folder LOL
-- [x] App unable to start if there is space anywhere in the path of the program
-  - Only if developer console is enabled. Somehow the console commits unalive
-  - Fixed by changing to other console method
-- [x] Info when starting
-- [x] Save slots
-  - <https://github.com/DiamondCoder02/nsfw-game-manager/issues/7>
-- [x] Fixed exe saying "This application requires a Java Runtime Environment."
-  - <https://stackoverflow.com/questions/7071133/how-to-bundle-a-jre-with-launch4j?rq=3>
-- If steam is detected, the update application is not shown as Steam will update and the buttons is useless
-- [x] dlsite.com support **TESTING NEEDED**
-- [x] full URL support. You don't need just the ID, you can paste the full URL
-- [x] Make it LINUX compatible **Should be good**
+1 - Low priority / Not important idea / Not fully fledged idea, feature
 
-## TODO => [0.1.2.0] (tasks: 1)
+9 - Important / must be feature / perfect idea
 
-- [ ] Write detailed wiki both in app and on Github
+### Frontend / UI
 
-## TODO [0.1.3.0] (tasks: 3)
+- [9] Remake UI with QT or anything that is less ass and not from 2007 ( This can stay Java )
+  - [2] If bored we could make a website if some people prefer it and search in it with pictures (HTML, JS, CSS)
+  - [6] Have a terminal version with a bit limited functionality ( What is universal? )
+    - Keep search, random, add, update, remove function, minimal ASCII art as UI
+  - [NK] Will do the testing and design, blame her if something doesn't look right unless I [DC] hate the design
+  - Main idea was to have multiple option, depending user need
 
-- [ ] Rewrite language.csv
-- [ ] Cum counter ( ͡° ͜ʖ ͡°)
-- [ ] improve dark mode?
+- [7] Wikipedia / guide / documentation about the whole project was an idea, just the problem that it's shit.
+  - [NK] PDF version, smart as both online and offline can work.
+    - [DC] It can be shown on Github and be opened with any browser.
+    - Or the program itself can open it too?
+  - [BF] Have a text / terminal version. (From Linux) have help command in terminal or something
+  - ( Two version, one with PDF and one with text )
 
-## TODO random: [???]
+### Backend / server
 
-- [ ] move database from xml ( MUST NOT BREAK )
-- [ ] Memory & CPU usage higher? ( Need more test )
-  - This happened when I run a full database update with API refreshes?
+- [9] Separeta the program into GUI and Server with GET and POST ( Java? Python? )
+  - Only reason I'm [DC] focused on Java or Python to make it compatible with most if not every platform easily
+  - [DC] is stupid and wants to do it from scratch, don't let me...
+
+- [9] Remake the storage and config. XML wasn't bad, but for multiple database and for the future remake it ( SQlite? )
+  - [BF] is right that JSON is not the best, but better in my opinion than other config, and XML might be good, but if I open manually, my VSCode shits itself
+  - < Send data in JSON? >
+
+### Features add / remove / rework
+
+- [5] Auto Update was good while Itch.io and Steam wasn't in plan, now it's half broken?
+  - Best idea to just let the user get a notification that there is a new version and they can update manually if they wish.
+  - Also maybe ask user where they planning to update from so they can the appropiate notification.
+  - There is already a toggle !!! ( [BF] "DON'T REMIND ME TILL THE NEXT VERSION" button )
+
+- [8] Cum Counter... I will be choked if I don't add it so if the new UI and server is up I will add the button
+  - [BF] Have a "Are you masturbating?" button, then a cum button so it adds +1 to that game you were playing
+  - [NK] Most people update their games before or after they play so add a popup when updating the database.
+    - A button with "Did you cum?" button
+  - [BF] If we also know what the executeable is for a game, we could check if a game is running and then we ask the user after that process is over if they cummed.
+    - If we have the exe, we can also track playtime and how many times the game opened.
+
+---
+---
+---
+
+## To sort
+
+This is just a summary of our conversations and thoughts.
+The initial queation were asked by DiamondCoder [DC].
+
+- Local game folder search? (Steam will stay)
+
+  Do we even need this? If the program itself could download and handle the games, than we could say what file is what.
+  Or the version of writing one extra file into the game folder itself which stores information.
+
+  It has a very much fucked up version to check:
+  
+  `folderName: {type}-{gameId}_{gameName}_{gameVersion} {anythingElseYouWant}`
+
+  - [NK] I don't see why, it's useless trying for something not many people will use.
+  - [DC] Steam has an amazing system for this and even I can use some of that information, but DLsite and F95 doesn't have this.
+
+    I just want user friendly and convinient folder handling, but this will be on hold then temporary.
+  - [BF] I don't see any negativity in putting one additional file in game folders. The most problem would be auto detect probably.
+
+    I can also imagine that you store the starting executeable for the game and next to it you put the local infos.
+    ( ! Check Lutris ! ) ( Maybe even start the apps from the mannager like Steam? )
+  - [DC] I have been thinking of moving the database away from XML then I would feel comfortable adding more and game paths into the DB too.
+
+    My biggest problem will remain as most people like to just delete previous game then all of inside content is lost.
+    Additionally all references to itt will either throw error or just shit itself as there is nothing and don't know where the game went.
+    ( Lutris? )
+
+(Continue from 7.)
+
+- [BF] Lutrsis does something similar on what you are working on. Store games and list them. As they are open source, you could check how they done the storing system.
+  For update you can just ask the games exe path or if you are feeling brave you can try Regex so it's version compatible
+- [DC] While I like the idea and I'm a masochist for Regex we will see how I can handle it.
+  Also if we work on a server and different storage, we could put a password on the database.
+- [BF] Use Symetric algorithm for password, easy to add it and that should be enough. <https://stackoverflow.com/questions/10303767/encrypt-and-decrypt-in-java>
+
+---
+
+What we haven't talked about:
+
+- Language.csv rewrite
+- Start game from app
+- RAM and CPU management/useage high
+  - While testing I saw some weirdness, but that might have been already fixed.
+- How to better scrap/use API to get informations
+  - One main problem is the inconsistency of scraping
+- Remake the fake "restart" that the program does. It doesn't actually restart itself from exe.
+
+---
+
+From my Discord pins:
+
+- <https://github.com/JnCrMx/discord-game-sdk4j>
+- Problem: Might have to rewrite how folders and files are checked...
+  - Idea: Check if there is setting file, if not use written in version. Stupid as I might forget to update it, but it solves the problem.
+  - Logic: If setting file:
+    - no: Check inside the class what version the program is and check online. If different:
+      - Different: update
+      - Not: Continue
+    - yes: check version
+      - old config, no version: Fuck it and copy what's inside and continue.
+      - newest version: Good, continue.
+      - old version: update.
+- Discord Rich Presence buttons seems to be broken. Fix probably needed

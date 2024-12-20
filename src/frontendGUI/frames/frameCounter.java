@@ -46,6 +46,5 @@ public class frameCounter {
 			"<font color='#FF5500'>DLsite: "+gameCounts[4]+"</font>"+
 			"</body></html>"
 		);
-		// dlsite #FF5500
 	}
 }

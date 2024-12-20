@@ -1,13 +1,16 @@
-# Hentai game manager ( 0.1.1.4 )
+# Hentai game manager ( 0.1.1.4 / 2024.12.20)
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B0Z6MBI)
 
 Welcome to another game manager. The idea was simple, an easy to use manager that shows useful information and the newest infos about the stored games.
 
---_**Warning: I have only tested the program on windows and Linux. I will make it compatible with other OS later.**_--
+--_**Warning: I have only tested the program on windows and Arch Linux. I will make it compatible with other OS later if something is not correct.**_--
 
 ## Check the Wiki
 
+The project is not dead, I was just busy but check Notes.md
+
+"Old" wiki:
 <https://github.com/DiamondCoder02/nsfw-game-manager/wiki>
 
 ## Features
@@ -29,10 +32,4 @@ Check the [wiki](https://github.com/DiamondCoder02/nsfw-game-manager/wiki/Featur
 
 ## TODO / Future ideas
 
-- [ ] fix bugs / do something with all the ~6 TODOs that is in the source code
-- [ ] Rewrite language.csv
-- [ ] move database from xml ( MUST NOT BREAK - 0.1.2.1 ? )
-- [ ] Write comments
-- [ ] Rewrite FAQ in the program, now that wiki on GitHub is up.
-
-More info [here](https://github.com/DiamondCoder02/nsfw-game-manager/wiki/TODOs-checklist)
+For the informations, check the Notes.md file!

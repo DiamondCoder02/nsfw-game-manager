@@ -172,3 +172,29 @@ From my Discord pins:
       - newest version: Good, continue.
       - old version: update.
 - Discord Rich Presence buttons seems to be broken. Fix probably needed
+
+## Project: Lightweight "installer"
+
+User gets an installer. -> Installer ask what the user likes and wants?
+User selects the prefered look and sites -> Installer downloads "packages".
+
+Example:
+  user ask for a cmd style and only uses f95 and dlsite, but not Steam
+  installer gets the cmd style module and also gets the f95 and dlsite webscrapper
+
+Each module can have version and updates
+
+---
+
+Java       JRE and bundle, meh
+Python     same as java problem
+Rust       Fucker can't make their shit dynamic
+C#
+C++        "C++? I know you are a masochist, but if you use C++, I'll give u a pointer to the closest corner to think about your choices." - Blackfox
+JS/HTML    I would rather jump of a bridge
+
+UI Framworks:
+
+.NET MAUI
+Avalonia
+QT

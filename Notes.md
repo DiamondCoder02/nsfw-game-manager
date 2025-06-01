@@ -198,3 +198,7 @@ UI Framworks:
 .NET MAUI
 Avalonia
 QT
+
+dotnet run
+  New project:
+dotnet new console -n <name> -lang "C#" -f net8.0 --use-program-main

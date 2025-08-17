@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
+# fastapi dev ./src_backend/test.py
 app = FastAPI()
 
 # In-memory database (for demonstration purposes)

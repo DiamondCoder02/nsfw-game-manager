@@ -261,3 +261,6 @@ Discord integration
   new possibility, "Compiting in gooning" status
     <https://discord.com/developers/docs/developer-tools/game-sdk#activitytype-enum>
   two buttons: "Join the fun" and "Goonecting"?
+
+Future huge idea.
+  If backend detect that you open a page about a game you played in the past, show a warning or a small transparent window about stats

@@ -1,5 +1,7 @@
 # Hentai game manager ( 0.2.0 / 2025.08.15)
 
+"C++? I know you are a masochist, but if you use C++, I'll give u a pointer to the closest corner to think about your choices." - Blackfox
+
 ## WARNING: Rewrite in progress
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B0Z6MBI)

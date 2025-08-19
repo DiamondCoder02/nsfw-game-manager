@@ -1,4 +1,2 @@
-.vscode
-
-# folder cache
-__pycache__
+### VS Code ###
+.vscode/

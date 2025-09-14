@@ -264,3 +264,21 @@ Discord integration
 
 Future huge idea.
   If backend detect that you open a page about a game you played in the past, show a warning or a small transparent window about stats
+
+Nyaneko:
+
+  1. Able to export/import database.
+    Only have a single file when export/import
+    (Idea, zip file)
+  
+  2. Make the application portable
+    Ask user on first startup for portable version ?
+
+  3. When asking user use *YOUR_NAME* or *your shit*
+
+Idea: Brother idea (Swoi)
+ Gooner counter gets plates depending count
+  5 - bronze trophy or something
+  10 - silver
+  25 - gold
+  69 - platinum

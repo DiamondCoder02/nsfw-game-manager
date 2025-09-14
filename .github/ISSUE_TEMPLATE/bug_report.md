@@ -13,7 +13,6 @@ Write down the problem and the way how you created it
 **System**
 Important what operating system you use (Windows, Linux...)
 
-
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 

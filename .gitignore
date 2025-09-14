@@ -1,2 +1,5 @@
 ### VS Code ###
 .vscode/
+
+# Do not save auto generated folders/files
+_saveMe

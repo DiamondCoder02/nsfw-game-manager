@@ -1,0 +1,43 @@
+{
+	"onlineFilesToDownload": {
+		"discord": "https://dl-game-sdk.discordapp.net/3.2.1/discord_game_sdk.zip",
+		"appsGithub": "DiamondCoder02/nsfw-game-manager"
+	},
+	"appInfo": {
+		"steamDir": "null",
+		"frontendType": 0,
+		"chosenDatabase": 0,
+		"databaseNames": [
+			"Main"
+		],
+		"version": "0.2.0"
+	},
+	"language": "en",
+	"othersettings": {
+		"showConsole": false,
+		"firstTimeRunDone": false,
+		"discordRPC": false,
+		"darkMode": true,
+		"autoFetchLocalGameFolder": false,
+		"autoUpdateManager": false,
+		"autoFetchNewGameInfos": false
+	},
+	"shownColumns": {
+		"playedVersion": true,
+		"gameStillOnPc": true,
+		"os": true,
+		"language": true,
+		"rated": true,
+		"localPlayerProgress": true,
+		"site": true,
+		"newestVersionOnline": true,
+		"peopleOnlineRating": true,
+		"lastDateTimeUpdated": true,
+		"localPersonalNotes": true,
+		"name": true,
+		"gameEngine": true,
+		"developer": true,
+		"id": true,
+		"lastTimePlayed": true
+	}
+}

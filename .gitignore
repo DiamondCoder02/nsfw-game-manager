@@ -1,5 +1,9 @@
 ### VS Code ###
 .vscode/
 
+# Temp remove till I figure out license and other
+hgm_backend/lib/
+hgm_frontend/lib/
+
 # Do not save auto generated folders/files
 _saveMe

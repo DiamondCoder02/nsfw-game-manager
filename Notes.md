@@ -150,7 +150,7 @@ Database IDs and accepteable variables
       1 - F95
       2 - Steam
       3 - Dlsite
-2   Int   SiteIDNew project:
+2   Int   SiteID
       Simply the ID on the site so easier to ask info from site
     Set it to either 0 or -1 if unknown
       If manual game and user wants to give ID 0 or negative, just no.
@@ -184,19 +184,12 @@ Database IDs and accepteable variables
 11  Float User_Cum_Counter
       Thank you Balazs
       Why float? Ruined counts half, frick you
-
-12  Bool  Local_available
-      True if downloaded, false if deleted
-      As to how local game detection, that's TODO to figure out
-        (Blackfox recommended: Create a single file in each game folder and store the executeable, version and other small info, to check)
-        (Maybe implement a download feature? )
 12  Str   Local_path_to_exe
       If I wanna check if game is available, why not just check the exe is still there
       If path is null or not found then it's not there.
         (And because I specially want the exe I can do what Blackfox suggested)
       Special path cases will be a bitch.
       I can use this to start the games too, maybe hour/time counting like Steam
-
 13  Str   Local_Version
       Local version
 14  Date  Local_Last_Play_Date
@@ -276,7 +269,7 @@ Nyaneko:
 
   3. When asking user use *YOUR_NAME* or *your shit*
 
-Idea: Brother idea (Swoi)
+Brother idea: (Swoi)
  Gooner counter gets plates depending count
   5 - bronze trophy or something
   10 - silver

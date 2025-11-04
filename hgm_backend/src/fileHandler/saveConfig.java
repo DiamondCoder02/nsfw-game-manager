@@ -48,7 +48,7 @@ public class saveConfig {
 				while(innerKeys.hasNext()) {
 					String innerKey = innerKeys.next();
 					if (innerKey.equals(name)) {
-						if (type == arr) {}
+						if (type == arr) {} // TODO finish array
 						else if (type == num) {object.put(name, Integer.parseInt(value));}
 						else if (type == str) {object.put(name, value);}
 						else if (type == boo) {object.put(name, !loadConfig.configOpject.getJSONObject(key).getBoolean(name) );}

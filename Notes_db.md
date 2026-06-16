@@ -1,8 +1,9 @@
 # Shut up error handler
+https://www.w3schools.com/sql/sql_datatypes.asp
 
 SQL types
 0   Unsigned_INT		Key / internal ID
-1   Unsigned_SMALLINT	SiteNum
+1   Unsigned_TINYINT	SiteNum
 2   TEXT			SiteID
 3   MEDIUMTEXT		Online_Name
 4   TEXT			Online_Developer
@@ -11,7 +12,7 @@ SQL types
 7   DATE			Online_Last_Version_Date
 8   Unsigned_TINYINT	User_Played_Progress
 9   Unsigned_TINYINT	User_rating
-10  LONGTEXT		User_Notes
+10  MEDIUMTEXT		User_Notes
 11  Unsigned_SMALLINT	User_Cum_Counter
 12  TEXT			Local_path_to_exe
 13  TEXT			Local_Version
@@ -31,17 +32,18 @@ Database IDs and accepteable variables
 1   Int   SiteNum
       Just use numbers and assign each to a string, less data to store
     Possible values:
-      1 - Manual ( Not on any supported site)
-      2 - F95
-      4 - Steam
-      8 - Dlsite
-2   Int   SiteID
+      0 - Manual ( Not on any supported site)
+      1 - F95
+      2 - Steam
+      4 - Dlsite
+      8 - 
+2   Str   SiteID
       Simply the ID on the site so easier to ask info from site
-    Set it to either 0 or -1 if unknown
-      If manual game and user wants to give ID 0 or negative, just no.
+      Set it to either 0 or -1 if unknown
+        If manual game and user wants to give ID 0 or negative, just no.
 3   Str   Online_Name
       Largest problem is the coding, so make sure to support at least UTF-8
-      Probably test with UTF-16 or more
+      Probably test with UTF-16
 4   Str   Online_Developer
 5   Str   Online_Publisher
       Meh, seperate them so at least you can search for it.
@@ -60,15 +62,14 @@ Database IDs and accepteable variables
       3 - In progress ( Currently playing, duh )
       4 - Planned   ( To play )
 9   Int   User_rating
-      Should be just a general rating between 1 and 10?
+      Should be just a general rating between 1 and 10? Maybe 1-100?
         (Maybe be it string? but this should be just a number)
 10  Str   User_Notes
       Basicly notes on game Limit needed?
       Support .md format?
       A length of 1024 char limit?
-11  Float User_Cum_Counter
-      Thank you Balazs
-      Why float? Ruined counts half, frick you
+11  Int   User_Cum_Counter
+      Can store 65535. That means cumming every day for 179 years.
 12  Str   Local_path_to_exe
       If I wanna check if game is available, why not just check the exe is still there
       If path is null or not found then it's not there.
@@ -109,6 +110,7 @@ Database IDs and accepteable variables
       64 - Online only
 18  Str   Local_Language
       Array of languages, maybe unicode flags?
-19  Float Local_playTime
+19  Int   Local_playTime
+      Should be enough to calculate with seconds precision for 136 years
 20  Str   Online_links
       Additional website link of array on where to find the dev, or game
